@@ -180,12 +180,9 @@ Following action selection, users can modify protocol parameters, a critical ste
 
 [![3.png](https://i.postimg.cc/02TkVgh8/3.png)](https://postimg.cc/0bC1N483)
 
-In the third phase, the diagram details the token-specific operations, providing options for users to buy or sell tokens. This step interacts with the CurvesERC20 contract functions, which manage the core token mechanics such as minting and [![2.png](https://i.postimg.cc/ryYFtRJR/2.png)](https://postimg.cc/qgydPRWp)
+In the third phase, the diagram details the token-specific operations, providing options for users to buy or sell tokens. This step interacts with the CurvesERC20 contract functions, which manage the core token mechanics such as minting and burning. Users decide whether to inject new tokens into circulation via minting or reduce the supply by burning existing tokens. This aspect of the activity diagram underscores the importance of token supply management in the protocol's economy and directly ties back to the fee structure and incentive mechanisms established earlier.
 
-burning. Users decide whether to inject new tokens into circulation via minting or reduce the supply by burning existing tokens. This aspect of the activity diagram underscores the importance of token supply management in the protocol's economy and directly ties back to
-
-the fee structure and incentive mechanisms established earlier.
-
+[![2.png](https://i.postimg.cc/ryYFtRJR/2.png)](https://postimg.cc/qgydPRWp)
 
 The final part of the activity flow involves decisions around fee distribution, which is a critical operation for token holders to receive their due rewards. The FeeSplitter contract plays a significant role here, managing the claims and distributions of fees. An alternative path leads to security management, where actions such as setting managerial roles or transferring contract ownership are handled. This segment of the diagram illustrates the close relationship between economic incentives and the overarching security framework of the protocol.
 
