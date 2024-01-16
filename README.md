@@ -80,6 +80,9 @@ Overall, my approach to reviewing the codebase was structured and thorough. It b
 ## Architecture of the project
 To provide insights on the architecture of the Curves project, I will focus on the purpose of key functions in each file and how they interact with each other. This analysis is based on the structure and content of the Solidity files provided.
 
+## OverAll Call graph of the Contracts to track functions
+[![Screenshot-from-2024-01-17-00-43-10.png](https://i.postimg.cc/DZcQJSpT/Screenshot-from-2024-01-17-00-43-10.png)](https://postimg.cc/hzfQNtqy)
+
 ### Curves.sol
 - **Key Functions & Interactions**:
   - `setFeeRedistributor`, `setMaxFeePercent`, `setProtocolFeePercent`: These functions are used for configuring the fee structure. They likely interact with `FeeSplitter.sol` for fee distribution.
@@ -100,6 +103,8 @@ To provide insights on the architecture of the Curves project, I will focus on t
   - `mint`, `burn`: These functions control the token supply. They are likely called by `Curves.sol` during the process of buying and selling tokens.
   - `transferOwnership`: Allows transferring control of the token contract, important for administrative purposes.
   - This contract appears to be a standard ERC20 implementation with added functionalities specific to the Curves protocol.
+ 
+   [![Screenshot-from-2024-01-17-00-41-05.png](https://i.postimg.cc/Hkj6q9Z7/Screenshot-from-2024-01-17-00-41-05.png)](https://postimg.cc/cvy7YwNs)
 
 ### CurvesERC20Factory.sol
 - **Key Functions & Interactions**:
