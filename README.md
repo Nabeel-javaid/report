@@ -83,10 +83,18 @@ To provide insights on the architecture of the Curves project, I will focus on t
 ## OverAll Call graph of the Contracts to track functions
 [![Screenshot-from-2024-01-17-00-43-10.png](https://i.postimg.cc/DZcQJSpT/Screenshot-from-2024-01-17-00-43-10.png)](https://postimg.cc/hzfQNtqy)
 
+
+## UML of whole system
+[![UML.png](https://i.postimg.cc/4xpJMLTp/UML.png)](https://postimg.cc/k2X3RyG5)
+
+
 ### Curves.sol
 - **Key Functions & Interactions**:
   - `setFeeRedistributor`, `setMaxFeePercent`, `setProtocolFeePercent`: These functions are used for configuring the fee structure. They likely interact with `FeeSplitter.sol` for fee distribution.
 - `buyCurvesToken`, `sellCurvesToken`: Central to the protocol, these functions handle the buying and selling of tokens. They likely interact with `CurvesERC20.sol` for token minting/burning and with `FeeSplitter.sol` for fee handling.
+
+ ## Call Graph of Curve.sol
+[![JYgz8VS.md.png](https://iili.io/JYgz8VS.md.png)](https://freeimage.host/i/JYgz8VS)
 
 ## buyCurvesToken Sequence Diagram:
 
@@ -114,6 +122,10 @@ To provide insights on the architecture of the Curves project, I will focus on t
 - **Key Functions & Interactions**:
   - `claimFees`, `addFees`: Manage fee distribution and accumulation. These functions probably interact closely with `Curves.sol` especially in the context of transaction fee handling.
   - `setCurves`: This function likely establishes a link to the `Curves.sol` contract, indicating a direct interaction for fee-related activities.
+ 
+  
+## Call Graph for FeeSplitter.sol
+[![JYgz8VS.md.png](https://iili.io/JYgz8VS.md.png)](https://freeimage.host/i/JYgz8VS)
 
 ### Security.sol
 - **Key Functions & Interactions**:
@@ -134,14 +146,10 @@ After a detailed analysis of the files in the Curves project, here are some spec
 ### Curves.sol
 - **Functionality**: Contains key functions like `setFeeRedistributor`, `setMaxFeePercent`, `buyCurvesToken`, `sellCurvesToken`, etc. These functions are integral to the protocol's operations.
 
-## UML of whole system
-[![UML.png](https://i.postimg.cc/4xpJMLTp/UML.png)](https://postimg.cc/k2X3RyG5)
-
 - **Access Control**: Utilizes `onlyOwner` and `onlyManager` modifiers for function access control. Ensure these are consistently and correctly applied to protect sensitive operations.
 - **Integration with Other Contracts**: Interacts with other contracts such as `CurvesERC20` and `FeeSplitter`. Verify the integrity of these interactions, especially in terms of state changes and value transfers.
 - **Pricing Logic**: Includes functions like `getPrice`, `getBuyPrice`, and `getSellPrice`. Ensure that the pricing logic is robust and tested against edge cases.
-## Call Graph of Curve.sol
-[![JYgz8VS.md.png](https://iili.io/JYgz8VS.md.png)](https://freeimage.host/i/JYgz8VS)
+
 
 ### CurvesERC20.sol
 - **Token Management**: Provides token minting and burning functionalities. These should be audited for security, particularly to prevent unauthorized minting or burning.
@@ -154,8 +162,6 @@ After a detailed analysis of the files in the Curves project, here are some spec
 - **Fee Distribution**: Manages fee distribution among token holders. It's essential to verify that the fee calculation and distribution logic are accurate and resistant to manipulation.
 - **Batch Operations**: Contains functions like `batchClaiming`, which should be optimized for gas efficiency and should not fail due to block gas limits.
 
-## Call Graph for FeeSplitter.sol
-[![JYgz8VS.md.png](https://iili.io/JYgz8VS.md.png)](https://freeimage.host/i/JYgz8VS)
 
 ### Security.sol
 - **Access Control Implementation**: Defines and implements access control mechanisms, including `onlyOwner` and `onlyManager` modifiers. These are crucial for maintaining the security of the protocol.
