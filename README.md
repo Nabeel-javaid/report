@@ -1,12 +1,10 @@
-Absolutely, I'll incorporate the specified technologies (React for the frontend and Supabase for the backend) into the proposal, along with a separate section for recommended features and detailed milestones with associated budgets. Here's the updated proposal:
 
----
 
 # Proposal for P2P Crypto Exchange Platform Development (USDT/RUB)
 
 ## Introduction
 
-This proposal details the development of a minimal viable product (MVP) for a peer-to-peer (P2P) crypto exchange platform akin to Bitpapa, focusing on USDT (Tether) and RUB (Russian Ruble) trading pair, utilizing React for frontend development and Supabase for backend services.
+This proposal details the development of a minimal viable product (MVP) for a peer-to-peer (P2P) crypto exchange platform, focusing on USDT (Tether) and RUB (Russian Ruble) trading pair, utilizing React for frontend development and Supabase for backend services.
 
 ## Project Overview
 
