@@ -4,83 +4,79 @@
 
 ## Introduction
 
-This proposal details the development of a minimal viable product (MVP) for a peer-to-peer (P2P) crypto exchange platform, focusing on USDT (Tether) and RUB (Russian Ruble) trading pair, utilizing React for frontend development and Supabase for backend services.
+This proposal presents the development plan for a minimal viable product (MVP) for a peer-to-peer (P2P) crypto exchange platform. Modeled after Bitpapa, the focus will be on the USDT/RUB trading pair, emphasizing a user-friendly and secure trading environment.
 
-## Project Overview
-
-The platform aims to offer a secure, efficient, and user-friendly trading environment. Key operations include USDT deposit, P2P trading, and a strong emphasis on security and usability.
-
-### Technologies:
+## Technology Stack
 
 - **Frontend:** React
-- **Backend:** Supabase
+- **Backend:** Supabase/MongoDB
+
+## Client-Requested Must-Have Features
+
+### Essential Features:
+
+1. **User Authentication:** Secure sign-up/login functionality.
+2. **Wallet Integration:** For handling USDT deposits and withdrawals.
+3. **P2P Trading Board:** Enabling direct USDT/RUB trades between users.
+4. **KYC Compliance:** Mandatory user verification for security.
+5. **Two-Step Verification:** Additional security for user accounts.
+6. **Escrow System:** Secure holding of funds during transactions.
+7. **Responsive Design:** Compatibility across various devices and screen sizes.
+8. **Transaction History:** Detailed record of users' trading activities.
+9. **User Feedback System:** For ratings and reviews of trade experiences.
+
+
+## Recommended and Advanced Features
 
 ### Recommended Features:
 
-#### 1. Advanced Security Measures:
-   - Two-factor authentication.
-   - Encryption of sensitive data.
-   - Regular security audits.
+1. **Administrative Dashboard:** For efficient platform management.
+2. **Automated Dispute Resolution:** Mechanisms for handling transaction disputes.
+3. **Reporting and Analytics:** Tools for analyzing trading patterns and platform usage.
+4. **Real-Time Notifications:** For trade updates and account alerts.
 
-#### 2. User-Friendly Interface:
-   - Responsive design for various devices.
-   - Intuitive navigation and workflow.
 
-#### 3. Robust KYC/AML Compliance:
-   - Automated identity verification.
-   - Monitoring and reporting of suspicious activities.
+## Project Milestones & Budget
 
-#### 4. Real-time Trading Engine:
-   - Efficient order matching.
-   - Real-time updates and notifications.
+### Milestone 1: Design Phase
+- Duration: 1 weeks
+- Tasks: Figma creation, UI/UX design.
+- Budget: 200$
 
-#### 5. Comprehensive Admin Dashboard:
-   - Tools for monitoring trading activities.
-   - User management capabilities.
+### Milestone 2: Frontend Development Phase
+- Tasks: Frontend will be developed for the entire application on the basis of
+approved figma. Please note that this will only be the frontend and not the working application.
+We will develop the backend on its basis.
 
-#### 6. Customer Support System:
-   - Integrated chat support.
-   - FAQ and help center.
+- Duration: 7 days
+- Budget: 500$
 
-## Milestones, Timeframes, and Budget Estimates
+### Milestone 3: Backend Development Phase
+- Tasks: This milestone will contain the complete implementation of the entire backend of the system
+including all other functionalities.Moreover the system will be in working condition ready to use
 
-### Milestone 1: Design Phase (3 weeks)
-- Activities: Wireframing, UI/UX design.
-- Budget: $[X,000]
+- Duration: 7 days
+- Budget: 400$
 
-### Milestone 2: Development Phase (8 weeks)
-1. **Backend Development (4 weeks)**
-   - Setting up Supabase, API development.
-   - Budget: $[X,000]
 
-2. **Frontend Development (3 weeks)**
-   - Building the React-based interface.
-   - Budget: $[X,000]
+### Milestone 4: Deployment and Testing
+- Duration: 3 days
+- Tasks: In this Milestone we will make the entire system live on any of the domain hosting. Moreover the system will be tested from the perspective of a Real time user.
+- Budget: 100$
 
-3. **Integration Phase (1 week)**
-   - Integrating frontend with backend.
-   - Budget: $[X,000]
+### Milestone 5: Post-Launch Support 
+- Tasks: On the basis of need.
+- Budget: Free of Cost (but if any new feature is requested it will cost)
 
-### Milestone 3: Testing & Debugging (3 weeks)
-- Activities: Feature testing, security checks, user experience enhancement.
-- Budget: $[X,000]
+**Total Estimated Budget:** 1200$
 
-### Milestone 4: Deployment and Go-Live (1 week)
-- Activities: Server setup, deployment, initial monitoring.
-- Budget: $[X,000]
-
-### Milestone 5: Post-Launch Support (4 weeks)
-- Activities: Performance monitoring, user feedback incorporation.
-- Budget: $[X,000]
-
-**Total Estimated Budget:** $[Total Amount]
-
-*Note: The budget is an estimate and may vary based on final specifications and requirements.*
+*Note: The budget figures will be refined based on a more detailed project scope definition.*
 
 ## Conclusion
 
-This MVP will establish a foundation for a scalable and user-friendly P2P crypto exchange platform, focusing on USDT/RUB trading. We are committed to delivering a high-quality product that aligns with your expectations and requirements.
+This MVP is aimed at establishing a robust, user-friendly P2P crypto exchange platform focusing on USDT/RUB trades. The project milestones and budget are designed to ensure a thorough and successful development, testing, and deployment process, resulting in a high-quality trading platform.
+
+We look forward to the opportunity to bring this project to fruition and deliver a platform that meets both your and your users' expectations.
 
 ---
 
-Please adjust the budget figures and other details as per your estimations and discussions with the client. This proposal should provide a comprehensive outline to guide your project planning and execution.
