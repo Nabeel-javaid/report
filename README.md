@@ -12,9 +12,9 @@
 |f) |Security Approach of the Project | Audit approach of the Project |
 |g) |Codebase Quality | Overall Code Quality of the Project |
 |h) |Other Audit Reports and Automated Findings | What are the previous Audit reports and their analysis |
+|h) |Full representation of the project’s risk model| What are the risks associated with the project |
 |i) |Packages and Dependencies Analysis | Details about the project Packages |
 |j) |New insights and learning of project from this audit | Things learned from the project |
-
 
 
 
@@ -69,7 +69,7 @@ Accordingly, I would analyze and audit the subject in the following steps;
 |8|Infographic|[Figma](https://www.figma.com/)|Tried to make Visual drawings to understand the hard-to-understand mechanisms|
 |9|Special focus on Areas of  Concern|[Areas of Concern](https://github.com/code-423n4/2024-01-decent?tab=readme-ov-file#attack-ideas-where-to-look-for-bugs)|Code where I should focus more|
 
-## c) Analysis of the code base
+## d) Analysis of the code base
 
 The most important summary in analyzing the code base is the stacking of codes to be analyzed.
 In this way, many predictions can be made, including the difficulty levels of the contracts, which one is more important for the auditor, the features they contain that are important for security (payable functions, uses assembly, etc.), the audit cost of the project, and the time to be allocated to the audit;
@@ -132,7 +132,11 @@ Uses Consensys Solidity Metrics
 
 [![Screenshot-from-2024-01-23-21-31-57.png](https://i.postimg.cc/J4H3LypK/Screenshot-from-2024-01-23-21-31-57.png)](https://postimg.cc/4mZHv3kh)
 
-# UML diagram of important Contracts
+## Contract Integration Graph
+
+[![Screenshot-from-2024-01-23-23-38-26.png](https://i.postimg.cc/PqWL1BW7/Screenshot-from-2024-01-23-23-38-26.png)](https://postimg.cc/PLqrjVFb)
+
+
 
 # High Level Domain Model
 
@@ -145,7 +149,7 @@ This domain model provides an overview of the key components  and how they are i
 ## SwapAndExecute()
 [![Whats-App-Image-2024-01-23-at-10-59-13-PM.jpg](https://i.postimg.cc/qvx8chx0/Whats-App-Image-2024-01-23-at-10-59-13-PM.jpg)](https://postimg.cc/5XjYbtrk)
 
-## d) Test analysis
+## e) Test analysis
 
  **Foundry Testing:**
    
@@ -182,7 +186,7 @@ Ref:https://xin-xia.github.io/publication/icse194.pdf
 
 - 2) Test Coverage of the protocol is around 75% which is very less, the recommended test coverage of any protocol is above 90% so it is recommended to increase the coverage to at least 90%
 
-## e) Security Approach of the Project
+## f) Security Approach of the Project
 
 ### Successful current security understanding of the project;
 
@@ -219,7 +223,7 @@ All authorizations, including NPM passwords and authorizations, should be reserv
 https://twitter.com/Ledger/status/1735326240658100414?t=UAuzoir9uliXplerqP-Ing&s=19
 
 
-## f) Codebase Quality
+## g) Codebase Quality
 
 Overall, I consider the quality of the ReNFT protocol codebase to be Good. The code appears to be mature and well-developed. We have noticed the implementation of various standards adhere to appropriately. Details are explained below:
 
@@ -232,7 +236,7 @@ Overall, I consider the quality of the ReNFT protocol codebase to be Good. The c
 | **Code Structure and Formatting** | The code follows a structured and well-organized format. Functions and variables are appropriately named, enhancing code readability. However, additional documentation within the code, especially for complex functions and interactions, would further improve code structure and understanding.
 
 
-## g) Other Audit Reports and Automated Findings 
+## h) Other Audit Reports and Automated Findings 
 
 **Automated Findings:**
 https://github.com/code-423n4/2024-01-decent/blob/main/bot-report.md
@@ -243,13 +247,29 @@ There isn't any Previous Audit
 **4naly3er report**
 https://github.com/code-423n4/2024-01-decent/blob/main/4naly3er-report.md
 
-##  h) Packages and Dependencies Analysis 📦
+## i) Full representation of the project’s risk model
+
+### Systemic Risks
+**Interoperability Issues:** As a cross-chain solution, Decent relies heavily on the stability and security of other blockchains. Issues in connected networks can cascade into the Decent ecosystem.
+
+###  Technical Risks
+**Smart Contract Vulnerabilities:** Bugs or flaws in smart contracts can lead to loss of funds or malfunctioning of the platform.
+
+**Scalability Concerns:** As transaction volumes grow, the platform must scale without compromising performance or security.
+
+### Integration Risks
+
+**Compatibility with Different Blockchains:**  Ensuring that Decent works seamlessly across multiple chains requires constant updates and monitoring of changes in those ecosystems.
+
+**Cross-Chain Security:** Security inconsistencies across different blockchains can expose vulnerabilities in cross-chain transactions.
+
+##  j) Packages and Dependencies Analysis 📦
 
 | Package | Version | Usage | 
 | --- | --- | --- | 
 | [`Solmate`](https://www.npmjs.com/package/solmate?activeTab=dependents) | [![npm]([![images.png](https://i.postimg.cc/MK89GbgX/images.png)](https://postimg.cc/pyqfG8Wt))](https://www.npmjs.com/package/solmate?activeTab=dependents) |  Project uses latest version of Solmate 
 
-## i) New insights and learning of project from this audit:
+## k) New insights and learning of project from this audit:
 
 After thoroughly reviewing the Decent project's codebase and documentation, several new insights and learnings have emerged.
 
@@ -261,18 +281,8 @@ After thoroughly reviewing the Decent project's codebase and documentation, seve
 
 
 
-## Weakspots and any single points of failure:
-
-1): There isn't any deadline specified in the functions like `swapExactIn()` and `swapExactOut()` which is a point of failure and weakSpot for the project, consider implementing a deadline after that the transaction will no longer valid
-
-2): The protocol is using `ecrecover` which is suspect-able to Signature Malleability, consider using ECDSA.
-
 Note: I didn't tracked the time, the time I mentioned is just an estimate
 
 
-
-
-
-
 ### Time spent:
-3 hours
+5 hours
