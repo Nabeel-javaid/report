@@ -175,27 +175,32 @@ Sequence diagrams are a good way to understand the overall interaction of the cl
 
 
 ## d) Test analysis
+
+ **Foundry Testing:**
+   
+   Foundry, a modern smart contract testing framework, was utilized to test the reNFT contracts. This involved several key steps:
+   
+   a. **Installation and Setup:**
+      - Foundry was installed using the command `curl -L https://foundry.paradigm.xyz | bash`, followed by `foundryup` to ensure the latest version was in use.
+      - Dependencies were installed using `forge install`and `pnpm i`, ensuring all necessary components were available for the testing process.
+      - Then to run the tests, I simply added the relevant files to the .env, referencing .env.example.
+   
+   b. **Execution of Tests:**
+      - Tests were run using `forge test`, executing a suite of predefined test cases that covered various functionalities and scenarios within the reNFT contracts.
+      - A gas report was generated using `forge test --gas-report`. This report provided insights into the gas efficiency of the contracts, which is crucial for optimizing transaction costs on the blockchain.
+   
+   c. **Test Coverage and Documentation:**
+      - The overview of the testing suite, as referred to in the provided documentation, likely details the scope, scenarios, and objectives of each test, ensuring a comprehensive assessment of the contracts.
+   
+
 ### What did the project do differently? ;
 -   1) It can be said that the developers of the project did a quality job, there is a test structure consisting of tests with quality content. In particular, tests have been written successfully.
 
--   2) Overall line coverage percentage provided by your tests : 80
+-   2) Overall line coverage percentage provided by your tests : 75
 
 ### What could they have done better?
 
--  1) In order to understand the test scenarios and develop more effective test scenarios, the following bob, alice and other roles are can be defined one by one, in this way role definitions increase the quality and readability in tests
-
-```solidity
-
- // Sample labels
-vm.label(bob, 'bob');
-vm.label(alice, 'alice');
-vm.label(DEPLOYER, 'deployer');
-vm.label(USD_OWNER, 'usd owner');
-vm.label(POOL_PROXY, 'lending pool');
-```
-
-
--  2) If we look at the test scope and content of the project with a systematic checklist, we can see which parts are good and which areas have room for improvement As a result of my analysis, those marked in green are the ones that the project has fully achieved. The remaining areas are the development areas of the project in terms of testing ;
+-  1) If we look at the test scope and content of the project with a systematic checklist, we can see which parts are good and which areas have room for improvement As a result of my analysis, those marked in green are the ones that the project has fully achieved. The remaining areas are the development areas of the project in terms of testing ;
 
 
 [![test-cases.jpg](https://i.postimg.cc/1zgD5wCt/test-cases.jpg)](https://postimg.cc/v1s40gdF)
@@ -204,95 +209,13 @@ Ref:https://xin-xia.github.io/publication/icse194.pdf
 
 [![nabeel-1.jpg](https://i.postimg.cc/6qtBdLQW/nabeel-1.jpg)](https://postimg.cc/bDVXPnbW)
 
-- 3) Test Coverage of the protocol is around 80% which is very less, the recommended test coverage of any protocol is above 90% so it is recommended to increase the coverage to at least 90%
-
-# Test-case analysis of Contracts
-
-### General Information
-- **Solc Version:** 0.8.22
-- **Block Limit:** 30,000,000 gas
-
-
-### Storage.sol: Storage contract
-
-Deployment Cost: 1,553,625
-Deployment Size: 8,094
-
-| Function Name             | Min    | Avg    | Median | Max    | # Calls |
-|---------------------------|--------|--------|--------|--------|---------|
-| INIT                      | 361    | 361    | 361    | 361    | 215     |
-| KEYCODE                   | 229    | 229    | 229    | 229    | 430     |
-| MODULE_PROXY_INSTANTIATION| 441    | 22,729 | 22,928 | 22,928 | 215     |
-| addRentalSafe             | 487    | 28,733 | 24,787 | 44,687 | 1,069   |
-| addRentals                | 1,046  | 49,008 | 51,497 | 53,997 | 40      |
-
-### Admin.sol: Admin contract
-
-Deployment Cost: 921,484
-Deployment Size: 4,670
-
-| Function Name             | Min    | Avg    | Median | Max    | # Calls |
-|---------------------------|--------|--------|--------|--------|---------|
-| changeKernel              | 795    | 795    | 795    | 795    | 2       |
-| configureDependencies     | 4,104  | 47,496 | 47,904 | 47,904 | 215     |
-| freezePaymentEscrow       | 8,093  | 33,399 | 46,052 | 46,052 | 3       |
-| freezeStorage             | 8,017  | 33,335 | 45,994 | 45,994 | 3       |
-
-### Create.sol: Create contract
-
-Deployment Cost: 2,653,662
-Deployment Size: 15,175
-
-| Function Name             | Min    | Avg    | Median | Max    | # Calls |
-|---------------------------|--------|--------|--------|--------|---------|
-| changeKernel              | 750    | 750    | 750    | 750    | 2       |
-| configureDependencies     | 4,104  | 47,496 | 47,904 | 47,904 | 215     |
-| domainSeparator          | 280    | 280    | 280    | 280    | 36      |
-| getOrderMetadataHash     | 2,272  | 2,678  | 2,272  | 4,277  | 36      |
-
-### Factory.sol: Factory contract
-
-Deployment Cost: 692,196
-Deployment Size: 3,906
-
-| Function Name             | Min    | Avg    | Median | Max    | # Calls |
-|---------------------------|--------|--------|--------|--------|---------|
-| changeKernel              | 773    | 773    | 773    | 773    | 2       |
-| configureDependencies     | 2,369  | 24,065 | 24,269 | 24,269 | 215     |
-| deployRentalSafe          | 647    | 311,013| 307,194| 334,994| 1,068   |
-| initializeRentalSafe      | 50,851 | 50,853 | 50,851 | 53,351 | 1,066   |
-
-### Guard.sol: Guard contract
-
-Deployment Cost: 1,030,196
-Deployment Size: 5,213
-
-| Function Name             | Min    | Avg    | Median | Max    | # Calls |
-|---------------------------|--------|--------|--------|--------|---------|
-| changeKernel              | 750    | 750    | 750    | 750    | 2       |
-| checkAfterExecution      | 329    | 329    | 329    | 329    | 7       |
-| checkTransaction         | 1,844  | 16,044 | 14,463 | 29,012 | 35      |
-| configureDependencies     | 2,346  | 23,941 | 24,246 | 24,246 | 216     |
-
-### Stop.sol: Stop contract
-
-Deployment Cost: 2,167,126
-Deployment Size: 12,705
-
-| Function Name             | Min    | Avg    | Median | Max    | # Calls |
-|---------------------------|--------|--------|--------|--------|---------|
-| changeKernel              | 728    | 728    | 728    | 728    | 2       |
-| configureDependencies     | 4,059  | 47,051 | 47,859 | 47,859 | 217     |
-| reclaimRentalOrder       | 8,532  | 23,159 | 28,432 | 30,932 | 13      |
-| stopRent                  | 66,457 | 106,027| 100,096| 139,512| 7       |
-
-
+- 2) Test Coverage of the protocol is around 75% which is very less, the recommended test coverage of any protocol is above 90% so it is recommended to increase the coverage to at least 90%
 
 ## e) Security Approach of the Project
 
 ### Successful current security understanding of the project;
 
-1- The project hasn't underwent any audits, this innovative assessments on Code4rena is the first, where multiple auditors are scrutinizing the code.
+1- The project hasn't underwent any audits(nothing stated in the docs), this innovative assessments on Code4rena is the first, where multiple auditors are scrutinizing the code.
 
 ### What the project should add in the understanding of Security;
 
@@ -304,7 +227,6 @@ For example ; This bot tracks any DEFI transactions in which wrapping, unwrappin
 
 3- After the Code4rena audit is completed and the project is live, I recommend the audit process to continue, projects like immunefi do this. 
 https://immunefi.com/
-
 
 4- Emergency Action Plan
 In a high-level security approach, there should be a crisis handbook like the one below and the strategic members of the project should be trained on this subject and drills should be carried out. Naturally, this information and road plan will not be available to the public.
@@ -332,12 +254,14 @@ Overall, I consider the quality of the ReNFT protocol codebase to be Good. The c
 
 | Codebase Quality Categories              | Comments                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | ---------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Code Maintainability and Reliability** | The ReNFT Protocol contracts demonstrates good maintainability through modular structure, consistent naming, and efficient use of libraries. It also prioritizes reliability by handling errors, conducting security checks. However, for enhanced reliability, consider professional security audits and documentation improvements. Regular updates are crucial in the evolving space.                                                                                                                                                                                                                                                                                                       |
-| **Code Comments**                        | During the audit of the ReNFT contracts codebase, I found that some areas lacked sufficient internal documentation to enable independent comprehension. While comments provided high-level context for certain constructs, lower-level logic flows and variables were not fully explained within the code itself. Following best practices like NatSpec could strengthen self-documentation. As an auditor without additional context, it was challenging to analyze code sections without external reference docs. To further understand implementation intent for those complex parts, referencing supplemental documentation was necessary.                                                 |
-| **Documentation** | The ReNFT project currently lacks comprehensive documentation, with only a basic readme file(code4rena audit page) available. We strongly recommend creating a detailed Whitepaper and documentation. These documents should provide an in-depth overview of the ReNFT protocol's architecture and functions, complemented by diagrams to illustrate contract interactions and functions. This documentation is essential to help users, developers, and auditors understand and trust the ReNFT's project.
-| **Testing**                              | The audit scope of the contracts to be audited is modules, packages, Policies, Create2Deployer,  Kernel.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-| **Code Structure and Formatting**        | The codebase contracts are well-structured and formatted. but some order of functions does not follow the Solidity Style Guide According to the Solidity Style Guide, functions should be grouped according to their visibility and ordered: constructor, receive, fallback, external, public, internal, private. Within a grouping, place the view and pure functions last.                                                                                                                                                                                                                                                                                                                  |
-| **Error**                                | Use custom errors, custom errors are available from solidity version 0.8.4. Custom errors are more easily processed in try-catch blocks, and are easier to re-use and maintain.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| Aspect                           | Assessment                                                                                                                                                    |
+|----------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Code Maintainability and Reliability** | The Decent project exhibits a structured approach to smart contract development, ensuring maintainability and reliability. Key functionalities are modularized across different contracts (like UTB, UTBExecutor, UTBFeeCollector), aiding in code clarity and future scalability. |
+| **Code Comments**                | The codebase could benefit from more comprehensive commenting. While key functions are documented, additional in-line comments explaining complex logic, especially in the UTB and bridge adapter contracts, would enhance readability and maintainability.                     |
+| **Documentation**                | The project's documentation aligns well with the codebase, providing a clear overview of its functionalities and architecture. However, deeper technical documentation, especially regarding interaction patterns and security considerations, would be beneficial.           |
+| **Testing**                      | With a reported 75% test coverage, the project demonstrates a commitment to testing. However, aiming for higher coverage, especially for edge cases and failure modes in cross-chain interactions, would further bolster the code's reliability.                              |
+| **Code Structure and Formatting** | The code is well-structured and follows standard Solidity formatting and styling conventions. This consistency aids in readability and comprehension. However, attention to even more granular structuring might be advantageous for complex functions.                        |
+| **Error Handling**               | The project implements error handling, primarily through `require` statements for input validation and operational checks. Expanding this to include more comprehensive exception handling and rollback mechanisms in transactional functions would enhance robustness.         |
 
 
 ## g) Other Audit Reports and Automated Findings 
