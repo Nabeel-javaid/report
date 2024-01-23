@@ -134,41 +134,16 @@ Uses Consensys Solidity Metrics
 
 # UML diagram of important Contracts
 
-## UML diagram of PaymentEscrow.sol
+# High Level Domain Model
 
-[![Screenshot-from-2024-01-17-21-59-54.png](https://i.postimg.cc/c1bFp7tv/Screenshot-from-2024-01-17-21-59-54.png)](https://postimg.cc/5j85vC3J)
+This domain model provides an overview of the key components  and how they are interconnected.
 
+[![Screenshot-from-2024-01-23-22-57-18.png](https://i.postimg.cc/L52fwmTL/Screenshot-from-2024-01-23-22-57-18.png)](https://postimg.cc/k6YBt3Lg)
 
-## UML diagram of Create.sol
+# Sequence diagram of Important functions
 
-[![Screenshot-from-2024-01-17-22-02-07.png](https://i.postimg.cc/66PNMv90/Screenshot-from-2024-01-17-22-02-07.png)](https://postimg.cc/QVcPtVK9)
-
-
-## UML diagram of Signer.sol
-
-[![Screenshot-from-2024-01-17-22-52-42.png](https://i.postimg.cc/02ZpwD78/Screenshot-from-2024-01-17-22-52-42.png)](https://postimg.cc/2VbbpqHJ)
-
-## UML diagram of Guard.sol
-
-[![Screenshot-from-2024-01-17-22-54-44.png](https://i.postimg.cc/SR1xySzp/Screenshot-from-2024-01-17-22-54-44.png)](https://postimg.cc/PvZjyk46) 
-
-# Sequence diagram of the protocol
-Sequence diagrams are a good way to understand the overall interaction of the classes or files in the protocol
-
-[![Screenshot-from-2024-01-17-23-00-13.png](https://i.postimg.cc/K8CSmKqN/Screenshot-from-2024-01-17-23-00-13.png)](https://postimg.cc/pmQ1Zdth)
-
-# Sequence diagrams of the important functions of the protocol
-
-## `ValidateOrder()`
-[![Screenshot-from-2024-01-17-23-04-45.png](https://i.postimg.cc/YSj6z0MJ/Screenshot-from-2024-01-17-23-04-45.png)](https://postimg.cc/xkDN00kR)
-
-## `_settlePayment()`
-[![Screenshot-from-2024-01-17-23-13-40.png](https://i.postimg.cc/kDr1k8X6/Screenshot-from-2024-01-17-23-13-40.png)](https://postimg.cc/q6LxKNK4)
-
-## `stopRent()`
-[![Screenshot-from-2024-01-17-23-20-39.png](https://i.postimg.cc/vBKx8tnB/Screenshot-from-2024-01-17-23-20-39.png)](https://postimg.cc/phDLq8qb)
-
-
+## SwapAndExecute()
+[![Whats-App-Image-2024-01-23-at-10-59-13-PM.jpg](https://i.postimg.cc/qvx8chx0/Whats-App-Image-2024-01-23-at-10-59-13-PM.jpg)](https://postimg.cc/5XjYbtrk)
 
 ## d) Test analysis
 
