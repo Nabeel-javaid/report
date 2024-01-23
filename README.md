@@ -251,10 +251,21 @@ https://github.com/code-423n4/2024-01-decent/blob/main/4naly3er-report.md
 
 ## i) New insights and learning of project from this audit:
 
-1. **Integration with Seaport**: The project's integration with Seaport for order processing demonstrates the complexity and potential challenges of interfacing with external protocols. This requires careful consideration of compatibility and security implications.
+After thoroughly reviewing the Decent project's codebase and documentation, several new insights and learnings have emerged.
 
-5. **Emergency Measures**: The project's code could benefit from implementing emergency measures like circuit breakers or pause functions, particularly in critical administrative functions, to mitigate risks in case of detected vulnerabilities.
+1. **Innovative Approach to Cross-Chain Interactions**: Decent's utilization of a combination of bridging and swapping mechanisms to facilitate cross-chain transactions is a notable innovation. This approach addresses one of the most significant challenges in the blockchain ecosystem - the seamless transfer of value and interactions across different networks.
 
+2. **Fee Management and Optimization**: The way Decent handles transaction fees, particularly in cross-chain contexts, provides valuable insights into cost optimization in blockchain applications.
+
+3. **Scalability and Extensibility**: Decent's architecture, especially the use of adapter patterns for bridging and swapping, demonstrates a scalable approach to blockchain development. The ability to add new swappers and bridge adapters without overhauling the core system architecture allows for future extensibility.
+
+
+
+## Weakspots and any single points of failure:
+
+1): There isn't any deadline specified in the functions like `swapExactIn()` and `swapExactOut()` which is a point of failure and weakSpot for the project, consider implementing a deadline after that the transaction will no longer valid
+
+2): The protocol is using `ecrecover` which is suspect-able to Signature Malleability, consider using ECDSA.
 
 Note: I didn't tracked the time, the time I mentioned is just an estimate
 
