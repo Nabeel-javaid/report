@@ -134,8 +134,7 @@ Uses Consensys Solidity Metrics
 
 ## Contract Integration Graph
 
-[![Screenshot-from-2024-01-23-23-38-26.png](https://i.postimg.cc/PqWL1BW7/Screenshot-from-2024-01-23-23-38-26.png)](https://postimg.cc/PLqrjVFb)
-
+[![Screenshot-from-2024-01-23-23-43-44.png](https://i.postimg.cc/mZCbkQSd/Screenshot-from-2024-01-23-23-43-44.png)](https://postimg.cc/SjQ0tY38)
 
 
 # High Level Domain Model
