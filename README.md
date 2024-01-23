@@ -121,23 +121,19 @@ Uses Consensys Solidity Metrics
 
 # Call Graph of Important Contracts
 
-## Call graph of Kernel.sol
+## Call graph of `swappers` contract
+[![Screenshot-from-2024-01-23-21-28-41.png](https://i.postimg.cc/DwzvtsvY/Screenshot-from-2024-01-23-21-28-41.png)](https://postimg.cc/MvhJBnjy)
 
-[![Screenshot-from-2024-01-17-21-47-36.png](https://i.postimg.cc/5NFrPQrw/Screenshot-from-2024-01-17-21-47-36.png)](https://postimg.cc/1fsMXXst)
+## Call graph of `bridge_adapters` contracts
 
-## Call graph of Stop.sol
+[![Screenshot-from-2024-01-23-21-30-26.png](https://i.postimg.cc/ZRs2vBt0/Screenshot-from-2024-01-23-21-30-26.png)](https://postimg.cc/62RYDQQN)
 
-[![Screenshot-from-2024-01-17-21-50-10.png](https://i.postimg.cc/MT7LWCyd/Screenshot-from-2024-01-17-21-50-10.png)](https://postimg.cc/5YtggkKC)
+## Call graph of `src` contracts
 
-## Call graph of Guard.sol
-
-[![Screenshot-from-2024-01-17-21-51-25.png](https://i.postimg.cc/bdcdQ2Gz/Screenshot-from-2024-01-17-21-51-25.png)](https://postimg.cc/Fkp9vzgq)
-
-## Call graph of Create.sol
-
-[![Screenshot-from-2024-01-17-21-52-52.png](https://i.postimg.cc/CKmNmwsy/Screenshot-from-2024-01-17-21-52-52.png)](https://postimg.cc/xkNMdDZg)
+[![Screenshot-from-2024-01-23-21-31-57.png](https://i.postimg.cc/J4H3LypK/Screenshot-from-2024-01-23-21-31-57.png)](https://postimg.cc/4mZHv3kh)
 
 # UML diagram of important Contracts
+
 ## UML diagram of PaymentEscrow.sol
 
 [![Screenshot-from-2024-01-17-21-59-54.png](https://i.postimg.cc/c1bFp7tv/Screenshot-from-2024-01-17-21-59-54.png)](https://postimg.cc/5j85vC3J)
@@ -254,32 +250,29 @@ Overall, I consider the quality of the ReNFT protocol codebase to be Good. The c
 
 | Codebase Quality Categories              | Comments                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | ---------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Aspect                           | Assessment                                                                                                                                                    |
-|----------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Code Maintainability and Reliability** | The Decent project exhibits a structured approach to smart contract development, ensuring maintainability and reliability. Key functionalities are modularized across different contracts (like UTB, UTBExecutor, UTBFeeCollector), aiding in code clarity and future scalability. |
-| **Code Comments**                | The codebase could benefit from more comprehensive commenting. While key functions are documented, additional in-line comments explaining complex logic, especially in the UTB and bridge adapter contracts, would enhance readability and maintainability.                     |
-| **Documentation**                | The project's documentation aligns well with the codebase, providing a clear overview of its functionalities and architecture. However, deeper technical documentation, especially regarding interaction patterns and security considerations, would be beneficial.           |
-| **Testing**                      | With a reported 75% test coverage, the project demonstrates a commitment to testing. However, aiming for higher coverage, especially for edge cases and failure modes in cross-chain interactions, would further bolster the code's reliability.                              |
-| **Code Structure and Formatting** | The code is well-structured and follows standard Solidity formatting and styling conventions. This consistency aids in readability and comprehension. However, attention to even more granular structuring might be advantageous for complex functions.                        |
-| **Error Handling**               | The project implements error handling, primarily through `require` statements for input validation and operational checks. Expanding this to include more comprehensive exception handling and rollback mechanisms in transactional functions would enhance robustness.         |
+| **Code Maintainability and Reliability** | The code exhibits good maintainability and reliability practices. It is well-commented, making it easier to understand the logic and functionality of the contracts. However, it should be noted that the documentation of the protocol is lacking, which could impact long-term maintainability.
+| **Code Comments** | The code is adequately commented, providing insights into the purpose and functionality of various functions and sections. These comments enhance code readability and help developers understand the implementation details.
+| **Documentation** | Unfortunately, the documentation of the protocol is notably lacking. There is a need for comprehensive documentation that explains the core concepts, interactions, and usage of the smart contracts. Such documentation is essential for developers and auditors to understand the protocol thoroughly.
+| **Testing** | There are test cases but it's important to strive for higher test coverage to ensure the reliability and robustness of the protocol. A test coverage of 75% indicates that a significant portion of the code has been tested, but there may still be areas that lack coverage. It's advisable to aim for as close to 100% coverage as possible to minimize the risk of undiscovered bugs and vulnerabilities. 
+| **Code Structure and Formatting** | The code follows a structured and well-organized format. Functions and variables are appropriately named, enhancing code readability. However, additional documentation within the code, especially for complex functions and interactions, would further improve code structure and understanding.
 
 
 ## g) Other Audit Reports and Automated Findings 
 
 **Automated Findings:**
-https://github.com/code-423n4/2024-01-renft/blob/main/bot-report.md
+https://github.com/code-423n4/2024-01-decent/blob/main/bot-report.md
 
 **Previous Audits**
 There isn't any Previous Audit
 
 **4naly3er report**
-https://github.com/code-423n4/2024-01-renft/blob/main/4naly3er-report.md
+https://github.com/code-423n4/2024-01-decent/blob/main/4naly3er-report.md
 
 ##  h) Packages and Dependencies Analysis 📦
 
 | Package | Version | Usage | 
 | --- | --- | --- | 
-| [`openzeppelin`](https://www.npmjs.com/package/@openzeppelin/contracts) | [![npm](https://img.shields.io/npm/v/@openzeppelin/contracts.svg)](https://www.npmjs.com/package/@openzeppelin/contracts) |  Project uses version `4.9.2`; consider updating to `5.0.1` 
+| [`Solmate`](https://www.npmjs.com/package/solmate?activeTab=dependents) | [![npm]([![images.png](https://i.postimg.cc/MK89GbgX/images.png)](https://postimg.cc/pyqfG8Wt))](https://www.npmjs.com/package/solmate?activeTab=dependents) |  Project uses latest version of Solmate 
 
 ## i) New insights and learning of project from this audit:
 
