@@ -4,7 +4,7 @@
 ### Summary
 | List |Head |Details|
 |:--|:----------------|:------|
-|a) |Overview of the Decent Project| Summary of the whole Protocol |
+|a) |Overview of the Salty.IO Project| Summary of the whole Protocol |
 |b) |Technical Architecture| Architecture of the smart contracts |
 |c) |The approach I would follow when reviewing the code | Stages in my code review and analysis |
 |d) |Analysis of the code base | What is unique? How are the existing patterns used? "Solidity-metrics" was used  |
@@ -20,19 +20,23 @@
 
 ## a) Overview of the Decent Project
 
-Decent Project is an innovative blockchain initiative designed to address the challenges of interoperability and fluidity in transactions across multiple blockchain networks. At its core, Decent aims to simplify and streamline the process of executing transactions on various blockchains, enhancing the user experience in the decentralized finance (DeFi) and blockchain space. Here's an overview of its key aspects:
+The Salty.IO project is a comprehensive ecosystem, focusing on token staking, liquidity provision, and efficient management of digital assets. The project is designed to incentivize users to participate actively in the ecosystem through staking and liquidity provision, while also ensuring secure and efficient management of crucial wallet addresses.
 
 ### Key Features and Functionalities:
 
-1. **Cross-Chain Transactions**: Decent facilitates seamless transactions across different blockchain networks. This capability is pivotal in a landscape where assets and liquidity are spread across various chains.
+1. **Staking Rewards Management:**
+   - Manages the distribution of rewards for users staking SALT tokens or liquidity shares.
+   - Provides mechanisms for users to claim accumulated rewards based on their share in the staking pool.
 
-2. **Swapping and Bridging Mechanisms**: The platform integrates sophisticated swapping and bridging functionalities, allowing users to convert and transfer assets between different tokens and blockchains efficiently. This feature is crucial for users who engage in activities across multiple chains.
+2. **Token Staking System:**
+   - Allows users to stake SALT tokens and receive xSALT, representing their staked amount.
+   - Implements a flexible unstaking process with varying durations, influencing the amount of SALT reclaimed.
+   - Includes a feature for expedited unstaking with reduced returns, offering users a choice between speed and efficiency.
 
-3. **Fee Management**: The platform incorporates an effective fee management system, ensuring that transactions are economically viable for users and sustainable for the platform's longevity.
-
-## b) Technical Architecture:
-
-Decent's architecture is built around a set of smart contracts, each serving specific roles:
+3. **Secure Wallet Management:**
+   - Manages critical wallet addresses using a dual-wallet system (main and confirmation wallets).
+   - Enables secure and controlled changes to wallet addresses through a proposal and confirmation process.
+   - Incorporates a 30-day timelock for implementing confirmed changes, adding an extra layer of security.
 
 
 | File Name               | Core Functionality                                      | Technical Characteristics                                                                                               | Importance and Management                                                 |
