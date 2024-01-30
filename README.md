@@ -220,6 +220,661 @@ Ref:https://xin-xia.github.io/publication/icse194.pdf
 
 [![nabeel-1.jpg](https://i.postimg.cc/6qtBdLQW/nabeel-1.jpg)](https://postimg.cc/bDVXPnbW)
 
+### Test cases coverage with gas report
+# AccessManager.sol:AccessManager contract
+
+| Metric               | Value   |
+|----------------------|---------|
+| Deployment Cost      | 322399  |
+| Deployment Size      | 1786    |
+
+## Function Metrics
+
+| Function Name            | min   | avg   | median | max   | # calls |
+|--------------------------|-------|-------|--------|-------|---------|
+| dao                      | 194   | 194   | 194    | 194   | 1       |
+| excludedCountriesUpdated | 291   | 16381 | 20372  | 22372 | 13      |
+| geoVersion               | 317   | 761   | 317    | 2317  | 9       |
+| grantAccess              | 10466 | 28761 | 28366  | 30366 | 2305    |
+| walletHasAccess          | 706   | 1261  | 706    | 4706  | 2005    |
+
+# ExchangeConfig.sol:ExchangeConfig contract
+
+| Metric               | Value   |
+|----------------------|---------|
+| Deployment Cost      | 537588  |
+| Deployment Size      | 3176    |
+
+## Function Metrics
+
+| Function Name          | min   | avg    | median | max    | # calls |
+|------------------------|-------|--------|--------|--------|---------|
+| accessManager          | 390   | 390    | 390    | 390    | 11      |
+| airdrop                | 370   | 592    | 370    | 2370   | 9       |
+| dai                    | 237   | 237    | 237    | 237    | 1536    |
+| dao                    | 370   | 378    | 370    | 2370   | 2548    |
+| daoVestingWallet       | 391   | 1191   | 391    | 2391   | 30      |
+| initialDistribution    | 370   | 397    | 370    | 2370   | 2515    |
+| managedTeamWallet      | 238   | 238    | 238    | 238    | 47      |
+| salt                   | 260   | 260    | 260    | 260    | 6304    |
+| setAccessManager       | 620   | 23705  | 23829  | 23829  | 513     |
+| setContracts           | 1104  | 133564 | 133824 | 133824 | 511     |
+| teamVestingWallet      | 368   | 747    | 368    | 2368   | 58      |
+| transferOwnership      | 2331  | 2331   | 2331   | 2331   | 509     |
+| upkeep                 | 348   | 731    | 348    | 2348   | 334     |
+| usds                   | 238   | 238    | 238    | 238    | 2580    |
+| walletHasAccess        | 551   | 3343   | 1886   | 14386  | 2054    |
+| wbtc                   | 283   | 283    | 283    | 283    | 2120    |
+| weth                   | 239   | 239    | 239    | 239    | 3136    |
+
+# ManagedWallet.sol:ManagedWallet contract
+
+| Metric               | Value   |
+|----------------------|---------|
+| Deployment Cost      | 500593  |
+| Deployment Size      | 2427    |
+
+## Function Metrics
+
+| Function Name                | min  | avg   | median | max   | # calls |
+|------------------------------|------|-------|--------|-------|---------|
+| activeTimelock               | 340  | 340   | 340    | 340   | 7       |
+| changeWallets                | 373  | 1924  | 2373   | 2966  | 6       |
+| confirmationWallet           | 303  | 303   | 303    | 303   | 2       |
+| mainWallet                   | 325  | 805   | 325    | 2325  | 50      |
+| proposeWallets               | 693  | 27356 | 46368  | 46368 | 12      |
+| proposedConfirmationWallet   | 324  | 324   | 324    | 324   | 3       |
+| proposedMainWallet           | 346  | 346   | 346    | 346   | 3       |
+| receive                      | 0    | 324   | 381    | 381   | 8       |
+
+# Salt.sol:Salt contract
+
+| Metric               | Value   |
+|----------------------|---------|
+| Deployment Cost      | 807853  |
+| Deployment Size      | 4396    |
+
+## Function Metrics
+
+| Function Name          | min   | avg   | median | max   | # calls |
+|------------------------|-------|-------|--------|-------|---------|
+| approve                | 2604  | 24431 | 24604  | 24604 | 3631    |
+| balanceOf              | 583   | 752   | 583    | 2583  | 1474    |
+| burnTokensInContract   | 3921  | 6131  | 6721   | 8721  | 38      |
+| decimals               | 266   | 266   | 266    | 266   | 18      |
+| name                   | 3198  | 3198  | 3198   | 3198  | 1       |
+| symbol                 | 3263  | 3263  | 3263   | 3263  | 1       |
+| totalBurned            | 562   | 673   | 562    | 2562  | 18      |
+| totalSupply            | 349   | 820   | 349    | 2349  | 174     |
+| transfer               | 3034  | 23949 | 24934  | 29734 | 3205    |
+| transferFrom           | 879   | 21241 | 25342  | 32142 | 1178    |
+
+# Upkeep.sol:Upkeep contract
+
+| Metric               | Value    |
+|----------------------|----------|
+| Deployment Cost      | 2894667  |
+| Deployment Size      | 15896    |
+
+## Function Metrics
+
+| Function Name                         | min    | avg     | median  | max     | # calls |
+|---------------------------------------|--------|---------|---------|---------|---------|
+| currentRewardsForCallingPerformUpkeep | 6760   | 6760    | 6760    | 6760    | 3       |
+| lastUpkeepTimeEmissions               | 352    | 602     | 352     | 2352    | 8       |
+| lastUpkeepTimeRewardsEmitters         | 331    | 331     | 331     | 331     | 7       |
+| performUpkeep                         | 192560 | 1379272 | 816341  | 6812784 | 17      |
+
+# TestArbitrageSearch.sol:TestArbitrageSearch contract
+
+| Metric               | Value   |
+|----------------------|---------|
+| Deployment Cost      | 384038  |
+| Deployment Size      | 2538    |
+
+## Function Metrics
+
+| Function Name    | min  | avg | median | max | # calls |
+|------------------|------|-----|--------|-----|---------|
+| arbitragePath    | 645  | 689 | 692    | 716 | 5       |
+| bisectionSearch  | 669  | 683 | 669    | 711 | 3       |
+
+# DAO.sol:DAO contract
+
+| Metric               | Value    |
+|----------------------|----------|
+| Deployment Cost      | 4574105  |
+| Deployment Size      | 23799    |
+
+## Function Metrics
+
+| Function Name               | min   | avg    | median | max    | # calls |
+|-----------------------------|-------|--------|--------|--------|---------|
+| collateralAndLiquidity      | 251   | 251    | 251    | 251    | 1       |
+| countryIsExcluded           | 825   | 1396   | 825    | 2825   | 7       |
+| daoConfig                   | 293   | 293    | 293    | 293    | 1       |
+| exchangeConfig              | 274   | 274    | 274    | 274    | 1       |
+| finalizeBallot              | 7296  | 85003  | 50499  | 520797 | 137     |
+| formPOL                     | 5950  | 208196 | 208151 | 279651 | 50      |
+| liquidityRewardsEmitter     | 272   | 272    | 272    | 272    | 1       |
+| pools                       | 294   | 294    | 294    | 294    | 307     |
+| poolsConfig                 | 294   | 294    | 294    | 294    | 1       |
+| priceAggregator             | 251   | 251    | 251    | 251    | 1       |
+| processRewardsFromPOL       | 5674  | 62314  | 74013  | 114013 | 30      |
+| proposals                   | 251   | 251    | 251    | 251    | 1       |
+| rewardsConfig               | 250   | 250    | 250    | 250    | 1       |
+| stableConfig                | 250   | 250    | 250    | 250    | 1       |
+| stakingConfig               | 295   | 295    | 295    | 295    | 1       |
+| websiteURL                  | 1318  | 2489   | 3075   | 3075   | 3       |
+| withdrawArbitrageProfits    | 2402  | 44638  | 59649  | 64449  | 34      |
+| withdrawPOL                 | 661   | 74841  | 3930   | 179861 | 21      |
+
+# DAOConfig.sol:DAOConfig contract
+
+| Metric               | Value   |
+|----------------------|---------|
+| Deployment Cost      | 709932  |
+| Deployment Size      | 2723    |
+
+## Function Metrics
+
+| Function Name                           | min  | avg  | median | max  | # calls |
+|-----------------------------------------|------|------|--------|------|---------|
+| arbitrageProfitsPercentPOL              | 352  | 923  | 352    | 2352 | 42      |
+| ballotMinimumDuration                   | 352  | 961  | 352    | 2352 | 220     |
+| baseBallotQuorumPercentTimes1000        | 374  | 724  | 374    | 2374 | 194     |
+| bootstrappingRewards                    | 373  | 887  | 373    | 2373 | 35      |
+| changeArbitrageProfitsPercentPOL        | 1773 | 2866 | 2084   | 4884 | 17      |
+| changeBallotDuration                    | 1772 | 2713 | 2072   | 4883 | 21      |
+| changeBaseBallotQuorumPercent           | 1773 | 2509 | 2073   | 4884 | 31      |
+| changeBootstrappingRewards              | 1771 | 2999 | 2071   | 6882 | 21      |
+| changeMaxPendingTokensForWhitelisting   | 1772 | 2918 | 2077   | 8872 | 24      |
+| changePercentPolRewardsBurned           | 1794 | 2736 | 2094   | 4905 | 21      |
+| changeRequiredProposalPercentStake      | 1751 | 2390 | 2051   | 4862 | 40      |
+| changeUpkeepRewardPercent               | 1773 | 2747 | 2073   | 4884 | 20      |
+| maxPendingTokensForWhitelisting         | 351  | 1030 | 351    | 2351 | 53      |
+| percentPolRewardsBurned                 | 350  | 850  | 350    | 2350 | 44      |
+| requiredProposalPercentStakeTimes1000   | 329  | 919  | 329    | 2329 | 227     |
+| transferOwnership                       | 2323 | 2323 | 2323   | 2323 | 466     |
+| upkeepRewardPercent                     | 351  | 802  | 351    | 2351 | 62      |
+
+# Proposals.sol:Proposals contract
+
+| Metric               | Value    |
+|----------------------|----------|
+| Deployment Cost      | 4648516  |
+| Deployment Size      | 23842    |
+
+## Function Metrics
+
+| Function Name                           | min   | avg    | median | max    | # calls |
+|-----------------------------------------|-------|--------|--------|--------|---------|
+| ballotForID                             | 4651  | 4703   | 4651   | 5180   | 515     |
+| ballotIsApproved                        | 744   | 783    | 744    | 2744   | 51      |
+| canFinalizeBallot                       | 3372  | 14390  | 14721  | 20728  | 145     |
+| castVote                                | 6488  | 63761  | 77263  | 77651  | 181     |
+| createConfirmationProposal              | 6595  | 255127 | 258680 | 314216 | 14      |
+| lastUserVoteForBallot                   | 1153  | 1153   | 1153   | 1153   | 8       |
+| markBallotAsFinalized                   | 4265  | 8326   | 8144   | 11332  | 141     |
+| nextBallotID                            | 364   | 1252   | 364    | 2364   | 9       |
+| openBallots                             | 833   | 1244   | 1256   | 1609   | 6       |
+| openBallotsByName                       | 861   | 1210   | 861    | 2873   | 23      |
+| openBallotsForTokenWhitelisting         | 1163  | 1269   | 1163   | 1398   | 11      |
+| proposeCallContract                     | 5829  | 301459 | 375867 | 375867 | 5       |
+| proposeCountryExclusion                 | 5925  | 245790 | 300803 | 300803 | 6       |
+| proposeCountryInclusion                 | 5936  | 234925 | 291125 | 300825 | 10      |
+| proposeParameterBallot                  | 6763  | 273206 | 281771 | 418283 | 107     |
+| proposeSendSALT                         | 5767  | 165956 | 167908 | 322904 | 6       |
+| proposeSetContractAddress               | 6046  | 254465 | 281400 | 326390 | 21      |
+| proposeTokenUnwhitelisting              | 10259 | 126914 | 13406  | 382471 | 12      |
+| proposeTokenWhitelisting                | 5649  | 334836 | 419569 | 459409 | 27      |
+| proposeWebsiteUpdate                    | 6211  | 240083 | 301120 | 345580 | 8       |
+| requiredQuorumForBallotType             | 1391  | 4323   | 3987   | 10399  | 11      |
+| tokenWhitelistingBallotWithTheMostVotes | 5230  | 5901   | 5279   | 9205   | 8       |
+| totalVotesCastForBallot                 | 4005  | 5795   | 6069   | 8069   | 7       |
+| userHasActiveProposal                   | 563   | 563    | 563    | 563    | 2       |
+| votesCastForBallot                      | 696   | 696    | 696    | 696    | 9       |
+| winningParameterVote                    | 1047  | 1103   | 1049   | 5047   | 85      |
+
+# ExcessiveSupplyToken.sol:ExcessiveSupplyToken contract
+
+| Metric               | Value   |
+|----------------------|---------|
+| Deployment Cost      | 660895  |
+| Deployment Size      | 3608    |
+
+## Function Metrics
+
+| Function Name | min  | avg | median | max | # calls |
+|---------------|------|-----|--------|-----|---------|
+| totalSupply   | 304  | 304 | 304    | 304 | 1       |
+
+# TestCallReceiver.sol:TestCallReceiver contract
+
+| Metric               | Value   |
+|----------------------|---------|
+| Deployment Cost      | 35487   |
+| Deployment Size      | 208     |
+
+## Function Metrics
+
+| Function Name | min   | avg   | median | max   | # calls |
+|---------------|-------|-------|--------|-------|---------|
+| callFromDAO   | 22312 | 22312 | 22312  | 22312 | 1       |
+| value         | 261   | 1261  | 1261   | 2261  | 2       |
+
+# TestParameters.sol:TestParameters contract
+
+| Metric               | Value   |
+|----------------------|---------|
+| Deployment Cost      | 673308  |
+| Deployment Size      | 3395    |
+
+## Function Metrics
+
+| Function Name           | min  | avg  | median | max  | # calls |
+|-------------------------|------|------|--------|------|---------|
+| executeParameterChange  | 3094 | 4411 | 4163   | 9370 | 517     |
+
+# Deployment.sol:Deployment contract
+
+| Metric               | Value    |
+|----------------------|----------|
+| Deployment Cost      | 43500402 |
+| Deployment Size      | 211773   |
+
+## Function Metrics
+
+| Function Name      | min  | avg  | median | max  | # calls |
+|--------------------|------|------|--------|------|---------|
+| DEPLOYER           | 316  | 316  | 316    | 316  | 6       |
+| dai                | 459  | 459  | 459    | 459  | 6       |
+| dao                | 438  | 2188 | 2438   | 2438 | 8       |
+| exchangeConfig     | 440  | 440  | 440    | 440  | 14      |
+| managedTeamWallet  | 415  | 415  | 415    | 415  | 6       |
+| pools              | 459  | 977  | 459    | 2459 | 27      |
+| poolsConfig        | 395  | 736  | 395    | 2395 | 41      |
+| salt               | 415  | 415  | 415    | 415  | 6       |
+| upkeep             | 416  | 1616 | 2416   | 2416 | 5       |
+| usds               | 437  | 437  | 437    | 437  | 6       |
+| wbtc               | 416  | 416  | 416    | 416  | 18      |
+| weth               | 416  | 701  | 416    | 2416 | 7       |
+
+# Utils.sol:Utils contract
+
+| Metric               | Value   |
+|----------------------|---------|
+| Deployment Cost      | 3285643 |
+| Deployment Size      | 16442   |
+
+## Function Metrics
+
+| Function Name              | min  | avg | median | max  | # calls |
+|----------------------------|------|-----|--------|------|---------|
+| determineZapSwapAmount     | 4904 | 4914| 4914   | 4925 | 2       |
+| estimateAddedLiquidity     | 877  | 882 | 882    | 887  | 2       |
+| quoteAmountOut             | 3456 | 3465| 3465   | 3475 | 2       |
+
+# Airdrop.sol:Airdrop contract
+
+| Metric               | Value   |
+|----------------------|---------|
+| Deployment Cost      | 751105  |
+| Deployment Size      | 4101    |
+
+## Function Metrics
+
+| Function Name         | min   | avg   | median | max    | # calls |
+|-----------------------|-------|-------|--------|--------|---------|
+| allowClaiming         | 1102  | 69116 | 69740  | 78240  | 319     |
+| authorizeWallet       | 1982  | 31722 | 46740  | 77640  | 1266    |
+| claimAirdrop          | 3953  | 91179 | 99765  | 173417 | 10      |
+| claimed               | 580   | 1830  | 2580   | 2580   | 8       |
+| claimingAllowed       | 355   | 1021  | 355    | 2355   | 6       |
+| isAuthorized          | 670   | 2003  | 2670   | 2670   | 6       |
+| numberAuthorized      | 437   | 1237  | 437    | 2437   | 5       |
+| saltAmountForEachUser | 318   | 318   | 318    | 318    | 3       |
+
+# BootstrapBallot.sol:BootstrapBallot contract
+
+| Metric               | Value   |
+|----------------------|---------|
+| Deployment Cost      | 639758  |
+| Deployment Size      | 3557    |
+
+## Function Metrics
+
+| Function Name            | min  | avg    | median | max    | # calls |
+|--------------------------|------|--------|--------|--------|---------|
+| ballotFinalized          | 366  | 1032   | 366    | 2366   | 3       |
+| completionTimestamp      | 240  | 240    | 240    | 240    | 312     |
+| finalizeBallot           | 3508 | 563807 | 575983 | 708305 | 314     |
+| hasVoted                 | 526  | 526    | 526    | 526    | 4       |
+| startExchangeNo          | 317  | 817    | 317    | 2317   | 4       |
+| startExchangeYes         | 318  | 984    | 318    | 2318   | 3       |
+| vote                     | 3831 | 43895  | 51830  | 134603 | 637     |
+
+# InitialDistribution.sol:InitialDistribution contract
+
+| Metric               | Value   |
+|----------------------|---------|
+| Deployment Cost      | 744373  |
+| Deployment Size      | 4620    |
+
+## Function Metrics
+
+| Function Name            | min  | avg    | median | max    | # calls |
+|--------------------------|------|--------|--------|--------|---------|
+| airdrop                  | 260  | 260    | 260    | 260    | 1       |
+| bootstrapBallot          | 215  | 215    | 215    | 215    | 1574    |
+| collateralAndLiquidity   | 217  | 217    | 217    | 217    | 1       |
+| dao                      | 216  | 216    | 216    | 216    | 1       |
+| daoVestingWallet         | 260  | 260    | 260    | 260    | 1       |
+| distributionApproved     | 366  | 507020 | 508709 | 588609 | 318     |
+| emissions                | 238  | 238    | 238    | 238    | 1       |
+| poolsConfig              | 238  | 238    | 238    | 238    | 1       |
+| salt                     | 237  | 237    | 237    | 237    | 1       |
+| saltRewards              | 239  | 239    | 239    | 239    | 1       |
+| teamVestingWallet        | 259  | 259    | 259    | 259    | 1       |
+
+# Pools.sol:Pools contract
+
+| Metric               | Value    |
+|----------------------|----------|
+| Deployment Cost      | 3098405  |
+| Deployment Size      | 16381    |
+
+## Function Metrics
+
+| Function Name              | min   | avg   | median | max    | # calls |
+|----------------------------|-------|-------|--------|--------|---------|
+| addLiquidity               | 1148  | 47913 | 44560  | 92398  | 1847    |
+| arbitrageIndicies          | 838   | 1474  | 838    | 2838   | 22      |
+| clearProfitsForPools       | 8086  | 12044 | 8086   | 63508  | 28      |
+| deposit                    | 5600  | 28509 | 29913  | 58801  | 995     |
+| depositDoubleSwapWithdraw  | 56379 | 85017 | 85017  | 113656 | 2       |
+| depositSwapWithdraw        | 5686  | 37728 | 29973  | 84156  | 546     |
+| depositedUserBalance       | 743   | 1014  | 743    | 2743   | 140     |
+| exchangeIsLive             | 410   | 1410  | 1410   | 2410   | 4       |
+| getPoolReserves            | 1178  | 1560  | 1197   | 3197   | 574     |
+| profitsForWhitelistedPools | 9285  | 37491 | 26180  | 224644 | 29      |
+| removeLiquidity            | 6070  | 24070 | 7874   | 57472  | 203     |
+| setContracts               | 670   | 46745 | 46836  | 46836  | 512     |
+| startExchangeApproved      | 13838 | 38664 | 37843  | 93465  | 307     |
+| swap                       | 3688  | 28232 | 29662  | 84559  | 35      |
+| updateArbitrageIndicies    | 8135  | 57382 | 37157  | 922812 | 5773    |
+| withdraw                   | 3865  | 20890 | 27721  | 32521  | 41      |
+
+# PoolsConfig.sol:PoolsConfig contract
+
+| Metric               | Value   |
+|----------------------|---------|
+| Deployment Cost      | 857978  |
+| Deployment Size      | 4083    |
+
+## Function Metrics
+
+| Function Name                             | min  | avg   | median | max    | # calls |
+|-------------------------------------------|------|-------|--------|--------|---------|
+| changeMaximumInternalSwapPercentTimes1000 | 1816 | 2908  | 2116   | 4927   | 17      |
+| changeMaximumWhitelistedPools             | 1793 | 3390  | 2104   | 8904   | 30      |
+| isWhitelisted                             | 333  | 657   | 510    | 2510   | 6266    |
+| maximumInternalSwapPercentTimes1000       | 317  | 1182  | 317    | 2317   | 67      |
+| maximumWhitelistedPools                   | 362  | 1028  | 362    | 2362   | 57      |
+| numberOfWhitelistedPools                  | 393  | 1133  | 393    | 2393   | 100     |
+| tokenHasBeenWhitelisted                   | 1084 | 3454  | 3616   | 5617   | 51      |
+| transferOwnership                         | 2352 | 2352  | 2352   | 2352   | 509     |
+| underlyingTokenPair                       | 780  | 963   | 840    | 4840   | 47666   |
+| unwhitelistPool                           | 743  | 67735 | 54909  | 155188 | 12      |
+| whitelistPool                             | 1056 | 151797| 132033 | 1015267| 5765    |
+| whitelistedPools                          | 1118 | 3317  | 2528   | 45822  | 6533    |
+
+# PoolStats.t.sol:TestPoolStats contract
+
+| Metric               | Value     |
+|----------------------|-----------|
+| Deployment Cost      | 53458244  |
+| Deployment Size      | 254209    |
+
+## Function Metrics
+
+| Function Name                 | min   | avg   | median | max   | # calls |
+|-------------------------------|-------|-------|--------|-------|---------|
+| clearProfitsForPools          | 5741  | 8923  | 8923   | 12106 | 2       |
+| profitsForWhitelistedPools    | 11755 | 31957 | 34651  | 39124 | 7       |
+| updateArbitrageIndicies       | 57151 | 189076| 198380 | 241171| 8       |
+| updateProfitsFromArbitrage    | 23103 | 23105 | 23103  | 23113 | 7       |
+
+# CoreChainlinkFeed.sol:CoreChainlinkFeed contract
+
+| Metric               | Value   |
+|----------------------|---------|
+| Deployment Cost      | 192457  |
+| Deployment Size      | 1221    |
+
+## Function Metrics
+
+| Function Name       | min   | avg  | median | max   | # calls |
+|---------------------|-------|------|--------|-------|---------|
+| CHAINLINK_BTC_USD   | 226   | 226  | 226    | 226   | 1       |
+| CHAINLINK_ETH_USD   | 204   | 204  | 204    | 204   | 1       |
+| getPriceBTC         | 1020  | 3206 | 3661   | 3996  | 8       |
+| getPriceETH         | 1985  | 7396 | 3985   | 19632 | 4       |
+
+# CoreSaltyFeed.sol:CoreSaltyFeed contract
+
+| Metric               | Value   |
+|----------------------|---------|
+| Deployment Cost      | 241566  |
+| Deployment Size      | 1910    |
+
+## Function Metrics
+
+| Function Name | min   | avg  | median | max  | # calls |
+|---------------|-------|------|--------|------|---------|
+| getPriceBTC   | 2047  | 4215 | 4215   | 6384 | 10      |
+| getPriceETH   | 1863  | 2898 | 2026   | 6363 | 9       |
+| pools         | 248   | 248  | 248    | 248  | 1       |
+| usds          | 204   | 204  | 204    | 204  | 1       |
+| wbtc          | 227   | 227  | 227    | 227  | 1       |
+| weth          | 249   | 249  | 249    | 249  | 1       |
+
+# CoreUniswapFeed.sol:CoreUniswapFeed contract
+
+| Metric               | Value    |
+|----------------------|----------|
+| Deployment Cost      | 1024416  |
+| Deployment Size      | 5672     |
+
+## Function Metrics
+
+| Function Name         | min    | avg   | median | max   | # calls |
+|-----------------------|--------|-------|--------|-------|---------|
+| _getUniswapTwapWei    | 13241  | 25452 | 26241  | 30769 | 5       |
+| getPriceBTC           | 58530  | 58530 | 58530  | 58530 | 2       |
+| getPriceETH           | 14050  | 14050 | 14050  | 14050 | 1       |
+
+# PriceAggregator.sol:PriceAggregator contract
+
+| Metric               | Value   |
+|----------------------|---------|
+| Deployment Cost      | 796713  |
+| Deployment Size      | 3779    |
+
+## Function Metrics
+
+| Function Name                                | min   | avg   | median | max    | # calls |
+|----------------------------------------------|-------|-------|--------|--------|---------|
+| changeMaximumPriceFeedPercentDifferenceTimes1000 | 1771 | 2821  | 2071   | 6882   | 26      |
+| changePriceFeedModificationCooldown          | 1773  | 3296  | 2084   | 4884   | 11      |
+| getPriceBTC                                  | 3430  | 7078  | 4293   | 32333  | 264     |
+| getPriceETH                                  | 3304  | 4587  | 4107   | 10743  | 246     |
+| maximumPriceFeedPercentDifferenceTimes1000   | 352   | 610   | 352    | 2352   | 31      |
+| setInitialFeeds                              | 871   | 67035 | 67163  | 67163  | 521     |
+| setPriceFeed                                 | 638   | 13023 | 7538   | 33415  | 20      |
+| transferOwnership                            | 2352  | 2352  | 2352   | 2352   | 509     |
+
+# TestCoreSaltyFeed.t.sol:TestCoreSaltyFeed contract
+
+| Metric               | Value    |
+|----------------------|----------|
+| Deployment Cost      | 88408810 |
+| Deployment Size      | 424066   |
+
+## Function Metrics
+
+| Function Name            | min    | avg    | median | max    | # calls |
+|--------------------------|--------|--------|--------|--------|---------|
+| setPriceInPoolsWBTC      | 338129 | 338129 | 338129 | 338129 | 2       |
+| setPriceInPoolsWETH      | 263326 | 263326 | 263326 | 263326 | 2       |
+
+# ForcedPriceFeed.sol:ForcedPriceFeed contract
+
+| Metric               | Value   |
+|----------------------|---------|
+| Deployment Cost      | 357441  |
+| Deployment Size      | 1710    |
+
+## Function Metrics
+
+| Function Name | min  | avg  | median | max  | # calls |
+|---------------|------|------|--------|------|---------|
+| getPriceBTC   | 453  | 740  | 506    | 4506 | 66      |
+| getPriceETH   | 398  | 840  | 462    | 2462 | 15      |
+| setBTCPrice   | 522  | 2525 | 522    | 7422 | 31      |
+| setRevertNext | 3198 | 4698 | 5198   | 5198 | 8       |
+
+# TestChainlinkAggregator.sol:TestChainlinkAggregator contract
+
+| Metric               | Value   |
+|----------------------|---------|
+| Deployment Cost      | 315090  |
+| Deployment Size      | 1560    |
+
+## Function Metrics
+
+| Function Name    | min   | avg   | median | max   | # calls |
+|------------------|-------|-------|--------|-------|---------|
+| latestRoundData  | 362   | 2162  | 2886   | 2896  | 9       |
+| setPrice         | 543   | 5471  | 7443   | 7443  | 7       |
+| setShouldFail    | 24462 | 24462 | 24462  | 24462 | 1       |
+| setShouldTimeout | 24441 | 24441 | 24441  | 24441 | 1       |
+
+# TestPriceAggregator.sol:TestPriceAggregator contract
+
+| Metric               | Value   |
+|----------------------|---------|
+| Deployment Cost      | 834752  |
+| Deployment Size      | 3969    |
+
+## Function Metrics
+
+| Function Name     | min  | avg | median | max | # calls |
+|-------------------|------|-----|--------|-----|---------|
+| absoluteDifference| 526  | 529 | 526    | 536 | 3       |
+
+# Emissions.sol:Emissions contract
+
+| Metric               | Value   |
+|----------------------|---------|
+| Deployment Cost      | 524296  |
+| Deployment Size      | 3127    |
+
+## Function Metrics
+
+| Function Name  | min   | avg   | median | max   | # calls |
+|----------------|-------|-------|--------|-------|---------|
+| performUpkeep  | 5496  | 19577 | 11927  | 45536 | 39      |
+
+# RewardsConfig.sol:RewardsConfig contract
+
+| Metric               | Value   |
+|----------------------|---------|
+| Deployment Cost      | 438327  |
+| Deployment Size      | 1777    |
+
+## Function Metrics
+
+| Function Name                         | min   | avg  | median | max  | # calls |
+|---------------------------------------|-------|------|--------|------|---------|
+| changeEmissionsWeeklyPercent          | 1794  | 2952 | 2078   | 4886 | 9       |
+| changePercentRewardsSaltUSDS          | 1750  | 2749 | 2034   | 4842 | 11      |
+| changeRewardsEmitterDailyPercent      | 1771  | 2576 | 2055   | 6863 | 19      |
+| changeStakingRewardsPercent           | 1751  | 2450 | 2035   | 4843 | 19      |
+| emissionsWeeklyPercentTimes1000       | 351   | 551  | 351    | 2351 | 10      |
+| percentRewardsSaltUSDS                | 306   | 472  | 306    | 2306 | 12      |
+| rewardsEmitterDailyPercentTimes1000   | 329   | 429  | 329    | 2329 | 20      |
+| stakingRewardsPercent                 | 330   | 430  | 330    | 2330 | 20      |
+
+# RewardsEmitter.sol:RewardsEmitter contract
+
+| Metric               | Value    |
+|----------------------|----------|
+| Deployment Cost      | 1038397  |
+| Deployment Size      | 5800     |
+
+## Function Metrics
+
+| Function Name            | min   | avg   | median | max     | # calls |
+|--------------------------|-------|-------|--------|---------|---------|
+| addSALTRewards           | 4816  | 137216| 55965  | 2202778 | 712     |
+| pendingRewardsForPools   | 1285  | 2047  | 1712   | 5712    | 49      |
+| performUpkeep            | 1041  | 206401| 71381  | 2671355 | 76      |
+
+# SaltRewards.sol:SaltRewards contract
+
+| Metric               | Value   |
+|----------------------|---------|
+| Deployment Cost      | 910492  |
+| Deployment Size      | 5513    |
+
+## Function Metrics
+
+| Function Name              | min   | avg    | median | max     | # calls |
+|----------------------------|-------|--------|--------|---------|---------|
+| liquidityRewardsEmitter    | 237   | 237    | 237    | 237     | 28      |
+| performUpkeep              | 4193  | 134574 | 44767  | 2330225 | 28      |
+| sendInitialSaltRewards     | 299526| 301139 | 299526 | 336126  | 315     |
+| stakingRewardsEmitter      | 215   | 215    | 215    | 215     | 28      |
+
+# TestSaltRewards.sol:TestSaltRewards contract
+
+| Metric               | Value    |
+|----------------------|----------|
+| Deployment Cost      | 1068081  |
+| Deployment Size      | 6289     |
+
+## Function Metrics
+
+| Function Name                  | min    | avg   | median | max   | # calls |
+|--------------------------------|--------|-------|--------|-------|---------|
+| performUpkeep                  | 3645   | 42520 | 4518   | 157401| 4       |
+| sendInitialLiquidityRewards    | 115396 | 128460| 128460 | 141525| 2       |
+| sendInitialSaltRewards         | 3414   | 65756 | 65756  | 128098| 2       |
+| sendInitialStakingRewards      | 60174  | 60174 | 60174  | 60174 | 2       |
+| sendLiquidityRewards           | 10121  | 69770 | 84078  | 88328 | 6       |
+| sendStakingRewards             | 12968  | 44424 | 60152  | 60152 | 3       |
+
+# TestERC20.sol:TestERC20 contract
+
+| Metric               | Value   |
+|----------------------|---------|
+| Deployment Cost      | 711153  |
+| Deployment Size      | 4317    |
+
+## Function Metrics
+
+| Function Name | min   | avg   | median | max   | # calls |
+|---------------|-------|-------|--------|-------|---------|
+| approve       | 2603  | 23045 | 24603  | 24603 | 11224   |
+| balanceOf     | 561   | 1271  | 561    | 2561  | 721     |
+| decimals      | 356   | 365   | 356    | 2356  | 1330    |
+| totalSupply   | 349   | 502   | 349    | 2349  | 26      |
+| transfer      | 3034  | 21233 | 24934  | 29734 | 3941    |
+| transferFrom  | 857   | 9388  | 5608   | 32308 | 8369    |
+
+
+
 
 ## f) Security Approach of the Project
 
