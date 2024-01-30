@@ -222,7 +222,7 @@ Ref:https://xin-xia.github.io/publication/icse194.pdf
 
 ## Test cases coverage with gas report
 
-# ExchangeConfig.sol:ExchangeConfig contract
+### ExchangeConfig.sol:ExchangeConfig contract
 
 | Metric               | Value   |
 |----------------------|---------|
