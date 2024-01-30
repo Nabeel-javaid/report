@@ -87,8 +87,10 @@ Accordingly, I would analyze and audit the subject in the following steps;
 |7|Using Solodit for common vulnerabilities|[Solodit](https://solodit.xyz/)|Using solodit to find common vulnerabilites related to Lending Borrowing protocol|
 |8|Infographic|[Figma](https://www.figma.com/)|Tried to make Visual drawings to understand the hard-to-understand mechanisms|
 |9|Special focus on Areas of  Concern|[Areas of Concern](https://github.com/code-423n4/2024-01-salty?tab=readme-ov-file#attack-ideas-where-to-look-for-bugs)|Code where I should focus more|
+
 <br/>
 <br/>
+
 ## d) Analysis of the code base
 
 The most important summary in analyzing the code base is the stacking of codes to be analyzed.
@@ -192,6 +194,7 @@ This domain model provides an overview of the key components  and how they are i
 
 <br/>
 <br/>
+
 ## e) Test analysis
 
  **Foundry Testing:**
