@@ -40,6 +40,7 @@ The Salty.IO project is a comprehensive ecosystem, focusing on token staking, li
 
 
 
+## b) Technical Architecture
 
 | File Name               | Core Functionality                                      | Technical Characteristics                                                                                               | Importance and Management                                                 |
 |-------------------------|---------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------|
