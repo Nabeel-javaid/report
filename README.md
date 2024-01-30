@@ -1,5 +1,5 @@
-# 🛠️ Analysis - Decent
-***Decent enables one-click transactions using any token across chains.***
+# 🛠️ Analysis - Salty.IO
+***An Ethereum-based DEX with zero swap fees, yield-generating Automatic Arbitrage, and a native WBTC/WETH backed stablecoin.***
 
 ### Summary
 | List |Head |Details|
@@ -53,21 +53,21 @@ Decent's architecture is built around a set of smart contracts, each serving spe
 ## c) The approach I would follow when reviewing the code
 
 First, by examining the scope of the code, I determined my code review and analysis strategy.
-https://code4rena.com/audits/2024-01-decent
+https://code4rena.com/audits/2024-01-saltyio
 
 Accordingly, I would analyze and audit the subject in the following steps;
 
 | Number |Stage |Details|Information|
 |:--|:----------------|:------|:------|
-|1|Compile and Run Test|[Installation](https://github.com/code-423n4/2024-01-decent?tab=readme-ov-file#tests)|Test and installation structure is simple, cleanly designed|
-|2|Architecture Review| [Decent](https://github.com/code-423n4/2024-01-decent/tree/main/src) |Provides a basic architectural teaching for General Architecture|
+|1|Compile and Run Test|[Installation](https://github.com/code-423n4/2024-01-salty?tab=readme-ov-file#build--test-instructions)|Test and installation structure is simple, cleanly designed|
+|2|Architecture Review| [Salty](https://github.com/code-423n4/2024-01-salty/tree/main/src) |Provides a basic architectural teaching for General Architecture|
 |3|Graphical Analysis  |Graphical Analysis with [Solidity-metrics](https://github.com/ConsenSys/solidity-metrics)|A visual view has been made to dominate the general structure of the codes of the project.|
 |4|Slither Analysis  | [Slither Report](https://github.com/crytic/slither)| Slither report of the project for some basic analysis|
-|5|Test Suits|[Tests](https://github.com/code-423n4/2024-01-decent?tab=readme-ov-file#tests)|In this section, the scope and content of the tests of the project are analyzed.|
-|6|Manuel Code Review|[Scope](https://github.com/code-423n4/2024-01-decent?tab=readme-ov-file#scope)||
+|5|Test Suits|[Tests](https://github.com/code-423n4/2024-01-salty?tab=readme-ov-file#build--test-instructions)|In this section, the scope and content of the tests of the project are analyzed.|
+|6|Manuel Code Review|[Scope](https://github.com/code-423n4/2024-01-salty?tab=readme-ov-file#scope)||
 |7|Using Solodit for common vulnerabilities|[Solodit](https://solodit.xyz/)|Using solodit to find common vulnerabilites related to NFT protocol|
 |8|Infographic|[Figma](https://www.figma.com/)|Tried to make Visual drawings to understand the hard-to-understand mechanisms|
-|9|Special focus on Areas of  Concern|[Areas of Concern](https://github.com/code-423n4/2024-01-decent?tab=readme-ov-file#attack-ideas-where-to-look-for-bugs)|Code where I should focus more|
+|9|Special focus on Areas of  Concern|[Areas of Concern](https://github.com/code-423n4/2024-01-salty?tab=readme-ov-file#attack-ideas-where-to-look-for-bugs)|Code where I should focus more|
 
 ## d) Analysis of the code base
 
@@ -92,49 +92,80 @@ Uses Consensys Solidity Metrics
 
 -  **Complex. Score:** This field may indicate a complexity score or metric for the source file. 
 
-## Analysis of sloc of `bridge_adapters` contracts
+## Analysis of sloc of `Dao` contracts
 
-[![Screenshot-from-2024-01-23-18-46-44.png](https://i.postimg.cc/Y0BFnxJT/Screenshot-from-2024-01-23-18-46-44.png)](https://postimg.cc/FdG110Fx)
+[![Screenshot-from-2024-01-30-12-40-36.png](https://i.postimg.cc/gk1md16Z/Screenshot-from-2024-01-30-12-40-36.png)](https://postimg.cc/bs0K9Cgy)
 
-## Analysis of sloc of `Swappers` contracts
+## Analysis of sloc of `Launch` contracts
 
-[![Screenshot-from-2024-01-23-18-48-08.png](https://i.postimg.cc/QdzJgcdZ/Screenshot-from-2024-01-23-18-48-08.png)](https://postimg.cc/qN8K4hK1)
+[![Screenshot-from-2024-01-30-12-41-44.png](https://i.postimg.cc/TwhF478X/Screenshot-from-2024-01-30-12-41-44.png)](https://postimg.cc/47kWK1N8)
 
+## Analysis of sloc of `Pools` contracts
 
-## Analysis of sloc of `decent_bridge` contracts
+[![Screenshot-from-2024-01-30-12-42-23.png](https://i.postimg.cc/PxLV4CZX/Screenshot-from-2024-01-30-12-42-23.png)](https://postimg.cc/47g14NBq)
 
-[![Screenshot-from-2024-01-23-18-50-46.png](https://i.postimg.cc/BvnYC2Dq/Screenshot-from-2024-01-23-18-50-46.png)](https://postimg.cc/fV1fztBF)
+## Analysis of sloc of `price_feed` contracts
+
+[![Screenshot-from-2024-01-30-12-43-47.png](https://i.postimg.cc/y6v0fy35/Screenshot-from-2024-01-30-12-43-47.png)](https://postimg.cc/s1GBxSc9)
+
+## Analysis of sloc of `Rewards` contracts
+
+[![Screenshot-from-2024-01-30-12-44-35.png](https://i.postimg.cc/2SK4x2xW/Screenshot-from-2024-01-30-12-44-35.png)](https://postimg.cc/5X8Y45T9)
+
+## Analysis of sloc of `Stable` contracts
+
+[![Screenshot-from-2024-01-30-12-45-10.png](https://i.postimg.cc/2yGWLw6V/Screenshot-from-2024-01-30-12-45-10.png)](https://postimg.cc/rRdsv55k)
+
+## Analysis of sloc of `Staking` contracts
+
+[![Screenshot-from-2024-01-30-12-45-46.png](https://i.postimg.cc/RZyHtqMQ/Screenshot-from-2024-01-30-12-45-46.png)](https://postimg.cc/bZ0rcySs)
 
 ## Analysis of sloc of src contracts
 
-[![Screenshot-from-2024-01-23-19-04-10.png](https://i.postimg.cc/90QG7Hn1/Screenshot-from-2024-01-23-19-04-10.png)](https://postimg.cc/jwBWpmKJ)
+[![Screenshot-from-2024-01-30-12-47-00.png](https://i.postimg.cc/1tTVQJ05/Screenshot-from-2024-01-30-12-47-00.png)](https://postimg.cc/LYt8kk0r)
 
 ## Comment-to-Source Ratio:
 
-**`Swappers` contracts:** On average there are **15.8** code lines per comment (lower=better).
+**`DAO` contracts:** On average there are **4.69** code lines per comment (lower=better).
 
-**`bridge_adapters` contracts:** On average there are **14.91** code lines per comment (lower=better).
+**`Launch` contracts:** On average there are **4.39** code lines per comment (lower=better).
 
-**`decent_bridge` contracts:** On average there are **7.96** code lines per comment (lower=better).
+**`Pools` contracts:** On average there are **1.82** code lines per comment (lower=better).
 
-**`src` contracts:** On average there are **2.72** code lines per comment (lower=better).
+**`price_feed` contracts:** On average there are **4.49** code lines per comment (lower=better).
+
+**`Rewards` contracts:** On average there are **3.54** code lines per comment (lower=better).
+
+**`Stable` contracts:** On average there are **3.26** code lines per comment (lower=better).
+
+**`Staking` contracts:** On average there are **2.98** code lines per comment (lower=better).
+
+**`src` contracts:** On average there are **3.22** code lines per comment (lower=better).
 
 # Call Graph of Important Contracts
 
-## Call graph of `swappers` contract
-[![Screenshot-from-2024-01-23-21-28-41.png](https://i.postimg.cc/DwzvtsvY/Screenshot-from-2024-01-23-21-28-41.png)](https://postimg.cc/MvhJBnjy)
+## Call graph of `Launch` contract
+[![Screenshot-from-2024-01-30-12-52-14.png](https://i.postimg.cc/RVRdrJp6/Screenshot-from-2024-01-30-12-52-14.png)](https://postimg.cc/w71LLMpg)
 
-## Call graph of `bridge_adapters` contracts
+## Call graph of `Pools` contracts
 
-[![Screenshot-from-2024-01-23-21-30-26.png](https://i.postimg.cc/ZRs2vBt0/Screenshot-from-2024-01-23-21-30-26.png)](https://postimg.cc/62RYDQQN)
+[![Screenshot-from-2024-01-30-12-53-45.png](https://i.postimg.cc/R09vW8Qb/Screenshot-from-2024-01-30-12-53-45.png)](https://postimg.cc/G4MWNXfk)
 
-## Call graph of `src` contracts
+## Call graph of `Price_feed` contracts
 
-[![Screenshot-from-2024-01-23-21-31-57.png](https://i.postimg.cc/J4H3LypK/Screenshot-from-2024-01-23-21-31-57.png)](https://postimg.cc/4mZHv3kh)
+[![Screenshot-from-2024-01-30-15-46-04.png](https://i.postimg.cc/SKZfSKhb/Screenshot-from-2024-01-30-15-46-04.png)](https://postimg.cc/R3HHG4hg)
+
+## Call graph of `Rewards` contracts
+
+[![Screenshot-from-2024-01-30-15-47-49.png](https://i.postimg.cc/L8Wsmdb0/Screenshot-from-2024-01-30-15-47-49.png)](https://postimg.cc/ZWrmLQZr)
+
+## Call graph of `Staking` contracts
+
+[![Screenshot-from-2024-01-30-15-53-21.png](https://i.postimg.cc/nL5TKLwY/Screenshot-from-2024-01-30-15-53-21.png)](https://postimg.cc/QBQphjDH)
 
 ## Contract Integration Graph
 
-[![Screenshot-from-2024-01-23-23-43-44.png](https://i.postimg.cc/mZCbkQSd/Screenshot-from-2024-01-23-23-43-44.png)](https://postimg.cc/SjQ0tY38)
+[![Screenshot-from-2024-01-30-15-54-15.png](https://i.postimg.cc/5yfz8d1S/Screenshot-from-2024-01-30-15-54-15.png)](https://postimg.cc/cg56Nzvv)
 
 
 # High Level Domain Model
@@ -161,12 +192,11 @@ This domain model provides an overview of the key components  and how they are i
    
    a. **Installation and Setup:**
       - Foundry was installed using the command `curl -L https://foundry.paradigm.xyz | bash`, followed by `foundryup` to ensure the latest version was in use.
-      - Dependencies were installed using `forge install`and `pnpm i`, ensuring all necessary components were available for the testing process.
+      - Dependencies were installed using `forge install`, ensuring all necessary components were available for the testing process.
       - Then to run the tests, I simply added the relevant files to the .env, referencing .env.example.
    
    b. **Execution of Tests:**
-      - Tests were run using `forge test`, executing a suite of predefined test cases that covered various functionalities and scenarios within the reNFT contracts.
-      - A gas report was generated using `forge test --gas-report`. This report provided insights into the gas efficiency of the contracts, which is crucial for optimizing transaction costs on the blockchain.
+      - Tests were run using `forge test COVERAGE="yes" NETWORK="sep" forge test -vv --rpc-url http://x.x.x.x:yyy`, executing a suite of predefined test cases that covered various functionalities and scenarios.
    
    c. **Test Coverage and Documentation:**
       - The overview of the testing suite, as referred to in the provided documentation, likely details the scope, scenarios, and objectives of each test, ensuring a comprehensive assessment of the contracts.
@@ -175,7 +205,7 @@ This domain model provides an overview of the key components  and how they are i
 ### What did the project do differently? ;
 -   1) It can be said that the developers of the project did a quality job, there is a test structure consisting of tests with quality content. In particular, tests have been written successfully.
 
--   2) Overall line coverage percentage provided by your tests : 75
+-   2) Overall line coverage percentage provided by your tests : 99
 
 ### What could they have done better?
 
@@ -188,7 +218,6 @@ Ref:https://xin-xia.github.io/publication/icse194.pdf
 
 [![nabeel-1.jpg](https://i.postimg.cc/6qtBdLQW/nabeel-1.jpg)](https://postimg.cc/bDVXPnbW)
 
-- 2) Test Coverage of the protocol is around 75% which is very less, the recommended test coverage of any protocol is above 90% so it is recommended to increase the coverage to at least 90%
 
 ## f) Security Approach of the Project
 
@@ -233,23 +262,27 @@ Overall, I consider the quality of the ReNFT protocol codebase to be Good. The c
 
 | Codebase Quality Categories              | Comments                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | ---------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Code Maintainability and Reliability** | The code exhibits good maintainability and reliability practices. It is well-commented, making it easier to understand the logic and functionality of the contracts. However, it should be noted that the documentation of the protocol is lacking, which could impact long-term maintainability.
-| **Code Comments** | The code is adequately commented, providing insights into the purpose and functionality of various functions and sections. These comments enhance code readability and help developers understand the implementation details.
-| **Documentation** | Unfortunately, the documentation of the protocol is notably lacking. There is a need for comprehensive documentation that explains the core concepts, interactions, and usage of the smart contracts. Such documentation is essential for developers and auditors to understand the protocol thoroughly.
-| **Testing** | There are test cases but it's important to strive for higher test coverage to ensure the reliability and robustness of the protocol. A test coverage of 75% indicates that a significant portion of the code has been tested, but there may still be areas that lack coverage. It's advisable to aim for as close to 100% coverage as possible to minimize the risk of undiscovered bugs and vulnerabilities. 
-| **Code Structure and Formatting** | The code follows a structured and well-organized format. Functions and variables are appropriately named, enhancing code readability. However, additional documentation within the code, especially for complex functions and interactions, would further improve code structure and understanding.
+| **Code Maintainability and Reliability** | The code demonstrates strong maintainability and reliability practices. It is well-structured and adheres to good programming standards, aiding in the understanding of its logic and functionality. While inline documentation is present, expanding it, especially for complex areas, could further enhance long-term maintainability. The external documentation of the project is comprehensive and of high quality, greatly facilitating a thorough understanding of the protocol.
 
+| **Code Comments** | The code includes inline comments that offer insights into the purposes and functionalities of various functions and sections. These comments aid in readability, but there is potential for more extensive and detailed commenting, particularly in complex sections of the code, to further enhance understanding and maintainability.
+
+| **Documentation** | The external documentation of the protocol is comprehensive and well-crafted. It effectively explains the core concepts, interactions, and usage of the smart contracts, which is crucial for developers and auditors to fully grasp and effectively work with the protocol.
+
+| **Testing** | The project has a foundational level of test coverage, currently at 99%. While this indicates that a significant portion of the code has been tested, striving for 100% coverage is recommended. Higher test coverage would ensure greater reliability and robustness of the protocol, minimizing the risk of undiscovered bugs and vulnerabilities.
+
+| **Code Structure and Formatting** | The code is well-structured, following a clear and organized format. Functions and variables are appropriately named, enhancing readability. However, incorporating more detailed inline documentation, especially for complex functions and interactions, would further improve the code structure and understanding.
 
 ## h) Other Audit Reports and Automated Findings 
 
 **Automated Findings:**
-https://github.com/code-423n4/2024-01-decent/blob/main/bot-report.md
+https://github.com/code-423n4/2024-01-salty/blob/main/bot-report.md
 
 **Previous Audits**
-There isn't any Previous Audit
+[ABDK Audit](https://github.com/abdk-consulting/audits/blob/main/othernet_global_pte_ltd/ABDK_OthernetGlobalPTELTD_SaltyIO_v_2_0.pdf)
+[Trail of Bits](https://github.com/trailofbits/publications/blob/master/reviews/2023-10-saltyio-securityreview.pdf)
 
 **4naly3er report**
-https://github.com/code-423n4/2024-01-decent/blob/main/4naly3er-report.md
+https://github.com/code-423n4/2024-01-salty/blob/main/4naly3er-report.md
 
 ## i) Full representation of the project’s risk model
 
@@ -271,7 +304,7 @@ https://github.com/code-423n4/2024-01-decent/blob/main/4naly3er-report.md
 
 | Package | Version | Usage | 
 | --- | --- | --- | 
-| [`Solmate`](https://www.npmjs.com/package/solmate?activeTab=dependents) | [![npm]([![images.png](https://i.postimg.cc/MK89GbgX/images.png)](https://postimg.cc/pyqfG8Wt))](https://www.npmjs.com/package/solmate?activeTab=dependents) |  Project uses latest version of Solmate 
+| [`openzeppelin`](https://www.npmjs.com/package/@openzeppelin/contracts) | [![npm]([![images.png](https://i.postimg.cc/MK89GbgX/images.png)](https://postimg.cc/pyqfG8Wt))](https://www.npmjs.com/package/@openzeppelin/contracts) |  Project uses version `4.9.3` while the recommended version is latest i.e: `5.0.1` 
 
 ## k) New insights and learning of project from this audit:
 
@@ -291,3 +324,7 @@ Note: I didn't tracked the time, the time I mentioned is just an estimate
 ### Time spent:
 5 hours
 
+
+
+### Time spent:
+5 hours
