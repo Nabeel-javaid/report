@@ -287,33 +287,17 @@ https://github.com/code-423n4/2024-01-salty/blob/main/4naly3er-report.md
 
 ## i) Full representation of the project’s risk model
 
-Given the extensive documentation and smart contract code of the Salty.IO project, I will analyze and represent the project's risk model across different dimensions:
-
 ### 1. Admin Abuse Risks:
 - **Centralized Control Points**: The project's governance is heavily reliant on smart contracts like `ManagedWallet.sol`, `ExchangeConfig.sol`, and the `DAO`. While these contracts ostensibly distribute control, there's a risk of centralization if few actors hold significant control.
 - **Upgrade and Proposal Approval**: The `DAO` and `ManagedWallet.sol` contracts have functionalities to approve upgrades and changes. If these mechanisms are compromised or controlled by a small group, they could be used maliciously.
-- **Emergency Functions**: Certain contracts may have emergency functions or owner-only privileges that could be exploited.
 
 ### 2. Systemic Risks:
-- **Interconnected Contract Dependencies**: The project's DeFi ecosystem comprises various interdependent contracts (like `Liquidity.sol`, `Staking.sol`, `Emissions.sol`). A malfunction or exploitation in one contract could ripple through the entire system.
-- **Market Volatility**: The project is exposed to market risks, especially due to its reliance on token prices (`SALT`, `USDS`, etc.). Sharp price movements can affect loan collateralization ratios, liquidity pool stability, and staking rewards.
+- **Interconnected Contract Dependencies**: The project's DeFi ecosystem comprises various interdependent contracts (like `Liquidity.sol`, `Staking.sol`, `Emissions.sol`). A malfunction or exploitation in one contract could ripple through the entire system.\
 - **Liquidity Risks**: The liquidity pools (`Pools.sol`) are central to the ecosystem. Any liquidity crunch or imbalance can pose systemic risks.
 
 ### 3. Technical Risks:
 - **Smart Contract Vulnerabilities**: Given the complexity of contracts like `Upkeep.sol`, `Staking.sol`, and others, there's a risk of bugs or vulnerabilities that could be exploited, despite thorough auditing.
 - **Oracle Failures**: The system relies on `PriceAggregator.sol` for market data. Any failure or manipulation in the price feeds can lead to incorrect valuations and system responses.
-- **Upgradeability Issues**: If the system's contracts are upgradable, there's a risk of introducing new vulnerabilities during upgrades.
-
-### 4. Integration Risks:
-- **Third-Party Dependencies**: Dependencies on external protocols or contracts, such as OpenZeppelin's contracts (`SafeERC20.sol`, `ReentrancyGuard.sol`), can be a point of risk if these external elements have vulnerabilities.
-- **Interoperability with Other Chains and Services**: Any integration with other blockchains or external services increases the risk of compatibility issues or security breaches from those external systems.
-- **User Interface and External Application Integration**: Risks can arise from the integration of the core smart contracts with user interfaces or external applications, which might misrepresent or incorrectly interact with the underlying contracts.
-
-### Mitigation Strategies:
-1. **Decentralization and Governance**: Encourage broader participation in governance to reduce the concentration of power.
-2. **Continuous Audits and Monitoring**: Regular audits of smart contracts and monitoring of system health to identify and rectify vulnerabilities.
-3. **Insurance Mechanisms**: Exploring DeFi insurance options to mitigate potential losses due to systemic failures.
-4. **Oracle Diversification**: Utilizing multiple oracles to mitigate the risk of single-point oracle failure.
 
 By continuously monitoring these risk factors and implementing robust mitigation strategies, Salty.IO can aim to ensure a secure and resilient DeFi ecosystem for its users.
 
