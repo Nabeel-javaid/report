@@ -68,6 +68,8 @@ The Salty.IO project is a comprehensive ecosystem, focusing on token staking, li
 | `ManagedWallet.sol`     | Secure management of crucial wallet addresses           | Ensures safe and controlled management of key wallets, a crucial aspect of platform security                            | Vital for maintaining trust and security in managing significant assets  |
 
 
+<br/>
+<br/>
 ## c) The approach I would follow when reviewing the code
 
 First, by examining the scope of the code, I determined my code review and analysis strategy.
@@ -86,7 +88,8 @@ Accordingly, I would analyze and audit the subject in the following steps;
 |7|Using Solodit for common vulnerabilities|[Solodit](https://solodit.xyz/)|Using solodit to find common vulnerabilites related to Lending Borrowing protocol|
 |8|Infographic|[Figma](https://www.figma.com/)|Tried to make Visual drawings to understand the hard-to-understand mechanisms|
 |9|Special focus on Areas of  Concern|[Areas of Concern](https://github.com/code-423n4/2024-01-salty?tab=readme-ov-file#attack-ideas-where-to-look-for-bugs)|Code where I should focus more|
-
+<br/>
+<br/>
 ## d) Analysis of the code base
 
 The most important summary in analyzing the code base is the stacking of codes to be analyzed.
@@ -188,7 +191,8 @@ This domain model provides an overview of the key components  and how they are i
 
 [![Screenshot-from-2024-01-30-22-20-55.png](https://i.postimg.cc/P51HHnpR/Screenshot-from-2024-01-30-22-20-55.png)](https://postimg.cc/RWCy18T7)
 
-
+<br/>
+<br/>
 ## e) Test analysis
 
  **Foundry Testing:**
