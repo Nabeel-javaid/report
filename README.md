@@ -12,9 +12,9 @@
 |f) |Security Approach of the Project | Audit approach of the Project |
 |g) |Codebase Quality | Overall Code Quality of the Project |
 |h) |Other Audit Reports and Automated Findings | What are the previous Audit reports and their analysis |
-|h) |Full representation of the project’s risk model| What are the risks associated with the project |
-|i) |Packages and Dependencies Analysis | Details about the project Packages |
-|j) |New insights and learning of project from this audit | Things learned from the project |
+|i) |Full representation of the project’s risk model| What are the risks associated with the project |
+|j) |Packages and Dependencies Analysis | Details about the project Packages |
+|k) |New insights and learning of project from this audit | Things learned from the project |
 
 
 
