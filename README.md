@@ -223,14 +223,13 @@ Ref:https://xin-xia.github.io/publication/icse194.pdf
 
 [![nabeel-1.jpg](https://i.postimg.cc/6qtBdLQW/nabeel-1.jpg)](https://postimg.cc/bDVXPnbW)
 
+<br/>
+<br/>
+
+
 ## Imp Test cases coverage with gas report
 
 ### ExchangeConfig.sol:ExchangeConfig contract
-
-| Metric               | Value   |
-|----------------------|---------|
-| Deployment Cost      | 537588  |
-| Deployment Size      | 3176    |
 
 ### Function Metrics
 
@@ -256,11 +255,6 @@ Ref:https://xin-xia.github.io/publication/icse194.pdf
 
 ### ManagedWallet.sol:ManagedWallet contract
 
-| Metric               | Value   |
-|----------------------|---------|
-| Deployment Cost      | 500593  |
-| Deployment Size      | 2427    |
-
 ### Function Metrics
 
 | Function Name                | min  | avg   | median | max   | # calls |
@@ -276,10 +270,6 @@ Ref:https://xin-xia.github.io/publication/icse194.pdf
 
 ### Salt.sol:Salt contract
 
-| Metric               | Value   |
-|----------------------|---------|
-| Deployment Cost      | 807853  |
-| Deployment Size      | 4396    |
 
 ### Function Metrics
 
@@ -297,11 +287,6 @@ Ref:https://xin-xia.github.io/publication/icse194.pdf
 | transferFrom           | 879   | 21241 | 25342  | 32142 | 1178    |
 
 ### DAO.sol:DAO contract
-
-| Metric               | Value    |
-|----------------------|----------|
-| Deployment Cost      | 4574105  |
-| Deployment Size      | 23799    |
 
 ### Function Metrics
 
