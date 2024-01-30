@@ -40,8 +40,6 @@ The Salty.IO project is a comprehensive ecosystem, focusing on token staking, li
 
 
 
-<br/>
-
 ## b) Technical Architecture
 [![Screenshot-from-2024-01-30-23-20-24.png](https://i.postimg.cc/B6FHcCmy/Screenshot-from-2024-01-30-23-20-24.png)](https://postimg.cc/CBFRwbTH)
 <br/>
@@ -70,6 +68,7 @@ The Salty.IO project is a comprehensive ecosystem, focusing on token staking, li
 
 <br/>
 <br/>
+
 ## c) The approach I would follow when reviewing the code
 
 First, by examining the scope of the code, I determined my code review and analysis strategy.
