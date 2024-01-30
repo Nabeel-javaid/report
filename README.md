@@ -309,23 +309,19 @@ https://github.com/code-423n4/2024-01-salty/blob/main/4naly3er-report.md
 
 ## k) New insights and learning of project from this audit:
 
-After thoroughly reviewing the Decent project's codebase and documentation, several new insights and learnings have emerged.
+After thoroughly reviewing the Salty.io project's codebase and documentation, several new insights and learnings have emerged.
 
-1. **Innovative Approach to Cross-Chain Interactions**: Decent's utilization of a combination of bridging and swapping mechanisms to facilitate cross-chain transactions is a notable innovation. This approach addresses one of the most significant challenges in the blockchain ecosystem - the seamless transfer of value and interactions across different networks.
+1. **Use of Uniswap and Chainlink**: The project utilizes Uniswap for decentralized trading and Chainlink for secure and reliable external data. This combination indicates an emphasis on robustness and security in obtaining market data and executing trades.
 
-2. **Fee Management and Optimization**: The way Decent handles transaction fees, particularly in cross-chain contexts, provides valuable insights into cost optimization in blockchain applications.
+2. **Stablecoin Implementation**: The `USDS.sol` contract and related `StableConfig.sol` suggest the implementation of a stablecoin (`USDS`), backed by crypto assets like WBTC and WETH. This approach is critical for maintaining stability in a volatile crypto market.
 
-3. **Scalability and Extensibility**: Decent's architecture, especially the use of adapter patterns for bridging and swapping, demonstrates a scalable approach to blockchain development. The ability to add new swappers and bridge adapters without overhauling the core system architecture allows for future extensibility.
+3. **Rewards and Incentivization**: Contracts like `SaltRewards.sol` and `StakingRewards.sol` indicate a mechanism to reward users for participating in the ecosystem, such as through liquidity provision or staking. This is a common practice in DeFi to encourage user participation and liquidity.
 
+4. **Governance and DAO**: The use of a DAO (Decentralized Autonomous Organization) structure for governance, as seen in `DAO.sol` and `ExchangeConfig.sol`, indicates a decentralized governance model. This aligns with the broader ethos of the DeFi sector promoting community-driven decision-making.
 
+5. **Risk Management**: Contracts like `CollateralAndLiquidity.sol` and `Liquidizer.sol` show mechanisms for managing risks associated with collateralized debt positions and liquidity provision. This is essential for maintaining the system's health and user trust.
+
+Overall, your project presents a sophisticated and multifaceted DeFi ecosystem, incorporating key elements like liquidity provision, stablecoin implementation, rewards, governance, and compliance. It shows a strong alignment with DeFi's principles of open finance and community governance, while also considering critical aspects like security and risk management.
 
 Note: I didn't tracked the time, the time I mentioned is just an estimate
 
-
-### Time spent:
-5 hours
-
-
-
-### Time spent:
-5 hours
