@@ -220,23 +220,7 @@ Ref:https://xin-xia.github.io/publication/icse194.pdf
 
 [![nabeel-1.jpg](https://i.postimg.cc/6qtBdLQW/nabeel-1.jpg)](https://postimg.cc/bDVXPnbW)
 
-### Test cases coverage with gas report
-# AccessManager.sol:AccessManager contract
-
-| Metric               | Value   |
-|----------------------|---------|
-| Deployment Cost      | 322399  |
-| Deployment Size      | 1786    |
-
-## Function Metrics
-
-| Function Name            | min   | avg   | median | max   | # calls |
-|--------------------------|-------|-------|--------|-------|---------|
-| dao                      | 194   | 194   | 194    | 194   | 1       |
-| excludedCountriesUpdated | 291   | 16381 | 20372  | 22372 | 13      |
-| geoVersion               | 317   | 761   | 317    | 2317  | 9       |
-| grantAccess              | 10466 | 28761 | 28366  | 30366 | 2305    |
-| walletHasAccess          | 706   | 1261  | 706    | 4706  | 2005    |
+## Test cases coverage with gas report
 
 # ExchangeConfig.sol:ExchangeConfig contract
 
@@ -245,7 +229,7 @@ Ref:https://xin-xia.github.io/publication/icse194.pdf
 | Deployment Cost      | 537588  |
 | Deployment Size      | 3176    |
 
-## Function Metrics
+### Function Metrics
 
 | Function Name          | min   | avg    | median | max    | # calls |
 |------------------------|-------|--------|--------|--------|---------|
@@ -267,14 +251,14 @@ Ref:https://xin-xia.github.io/publication/icse194.pdf
 | wbtc                   | 283   | 283    | 283    | 283    | 2120    |
 | weth                   | 239   | 239    | 239    | 239    | 3136    |
 
-# ManagedWallet.sol:ManagedWallet contract
+### ManagedWallet.sol:ManagedWallet contract
 
 | Metric               | Value   |
 |----------------------|---------|
 | Deployment Cost      | 500593  |
 | Deployment Size      | 2427    |
 
-## Function Metrics
+### Function Metrics
 
 | Function Name                | min  | avg   | median | max   | # calls |
 |------------------------------|------|-------|--------|-------|---------|
@@ -287,14 +271,14 @@ Ref:https://xin-xia.github.io/publication/icse194.pdf
 | proposedMainWallet           | 346  | 346   | 346    | 346   | 3       |
 | receive                      | 0    | 324   | 381    | 381   | 8       |
 
-# Salt.sol:Salt contract
+### Salt.sol:Salt contract
 
 | Metric               | Value   |
 |----------------------|---------|
 | Deployment Cost      | 807853  |
 | Deployment Size      | 4396    |
 
-## Function Metrics
+### Function Metrics
 
 | Function Name          | min   | avg   | median | max   | # calls |
 |------------------------|-------|-------|--------|-------|---------|
@@ -309,44 +293,14 @@ Ref:https://xin-xia.github.io/publication/icse194.pdf
 | transfer               | 3034  | 23949 | 24934  | 29734 | 3205    |
 | transferFrom           | 879   | 21241 | 25342  | 32142 | 1178    |
 
-# Upkeep.sol:Upkeep contract
-
-| Metric               | Value    |
-|----------------------|----------|
-| Deployment Cost      | 2894667  |
-| Deployment Size      | 15896    |
-
-## Function Metrics
-
-| Function Name                         | min    | avg     | median  | max     | # calls |
-|---------------------------------------|--------|---------|---------|---------|---------|
-| currentRewardsForCallingPerformUpkeep | 6760   | 6760    | 6760    | 6760    | 3       |
-| lastUpkeepTimeEmissions               | 352    | 602     | 352     | 2352    | 8       |
-| lastUpkeepTimeRewardsEmitters         | 331    | 331     | 331     | 331     | 7       |
-| performUpkeep                         | 192560 | 1379272 | 816341  | 6812784 | 17      |
-
-# TestArbitrageSearch.sol:TestArbitrageSearch contract
-
-| Metric               | Value   |
-|----------------------|---------|
-| Deployment Cost      | 384038  |
-| Deployment Size      | 2538    |
-
-## Function Metrics
-
-| Function Name    | min  | avg | median | max | # calls |
-|------------------|------|-----|--------|-----|---------|
-| arbitragePath    | 645  | 689 | 692    | 716 | 5       |
-| bisectionSearch  | 669  | 683 | 669    | 711 | 3       |
-
-# DAO.sol:DAO contract
+### DAO.sol:DAO contract
 
 | Metric               | Value    |
 |----------------------|----------|
 | Deployment Cost      | 4574105  |
 | Deployment Size      | 23799    |
 
-## Function Metrics
+### Function Metrics
 
 | Function Name               | min   | avg    | median | max    | # calls |
 |-----------------------------|-------|--------|--------|--------|---------|
@@ -369,14 +323,14 @@ Ref:https://xin-xia.github.io/publication/icse194.pdf
 | withdrawArbitrageProfits    | 2402  | 44638  | 59649  | 64449  | 34      |
 | withdrawPOL                 | 661   | 74841  | 3930   | 179861 | 21      |
 
-# DAOConfig.sol:DAOConfig contract
+### DAOConfig.sol:DAOConfig contract
 
 | Metric               | Value   |
 |----------------------|---------|
 | Deployment Cost      | 709932  |
 | Deployment Size      | 2723    |
 
-## Function Metrics
+### Function Metrics
 
 | Function Name                           | min  | avg  | median | max  | # calls |
 |-----------------------------------------|------|------|--------|------|---------|
@@ -398,14 +352,14 @@ Ref:https://xin-xia.github.io/publication/icse194.pdf
 | transferOwnership                       | 2323 | 2323 | 2323   | 2323 | 466     |
 | upkeepRewardPercent                     | 351  | 802  | 351    | 2351 | 62      |
 
-# Proposals.sol:Proposals contract
+### Proposals.sol:Proposals contract
 
 | Metric               | Value    |
 |----------------------|----------|
 | Deployment Cost      | 4648516  |
 | Deployment Size      | 23842    |
 
-## Function Metrics
+### Function Metrics
 
 | Function Name                           | min   | avg    | median | max    | # calls |
 |-----------------------------------------|-------|--------|--------|--------|---------|
@@ -436,54 +390,14 @@ Ref:https://xin-xia.github.io/publication/icse194.pdf
 | votesCastForBallot                      | 696   | 696    | 696    | 696    | 9       |
 | winningParameterVote                    | 1047  | 1103   | 1049   | 5047   | 85      |
 
-# ExcessiveSupplyToken.sol:ExcessiveSupplyToken contract
-
-| Metric               | Value   |
-|----------------------|---------|
-| Deployment Cost      | 660895  |
-| Deployment Size      | 3608    |
-
-## Function Metrics
-
-| Function Name | min  | avg | median | max | # calls |
-|---------------|------|-----|--------|-----|---------|
-| totalSupply   | 304  | 304 | 304    | 304 | 1       |
-
-# TestCallReceiver.sol:TestCallReceiver contract
-
-| Metric               | Value   |
-|----------------------|---------|
-| Deployment Cost      | 35487   |
-| Deployment Size      | 208     |
-
-## Function Metrics
-
-| Function Name | min   | avg   | median | max   | # calls |
-|---------------|-------|-------|--------|-------|---------|
-| callFromDAO   | 22312 | 22312 | 22312  | 22312 | 1       |
-| value         | 261   | 1261  | 1261   | 2261  | 2       |
-
-# TestParameters.sol:TestParameters contract
-
-| Metric               | Value   |
-|----------------------|---------|
-| Deployment Cost      | 673308  |
-| Deployment Size      | 3395    |
-
-## Function Metrics
-
-| Function Name           | min  | avg  | median | max  | # calls |
-|-------------------------|------|------|--------|------|---------|
-| executeParameterChange  | 3094 | 4411 | 4163   | 9370 | 517     |
-
-# Deployment.sol:Deployment contract
+### Deployment.sol:Deployment contract
 
 | Metric               | Value    |
 |----------------------|----------|
 | Deployment Cost      | 43500402 |
 | Deployment Size      | 211773   |
 
-## Function Metrics
+### Function Metrics
 
 | Function Name      | min  | avg  | median | max  | # calls |
 |--------------------|------|------|--------|------|---------|
@@ -500,68 +414,15 @@ Ref:https://xin-xia.github.io/publication/icse194.pdf
 | wbtc               | 416  | 416  | 416    | 416  | 18      |
 | weth               | 416  | 701  | 416    | 2416 | 7       |
 
-# Utils.sol:Utils contract
 
-| Metric               | Value   |
-|----------------------|---------|
-| Deployment Cost      | 3285643 |
-| Deployment Size      | 16442   |
-
-## Function Metrics
-
-| Function Name              | min  | avg | median | max  | # calls |
-|----------------------------|------|-----|--------|------|---------|
-| determineZapSwapAmount     | 4904 | 4914| 4914   | 4925 | 2       |
-| estimateAddedLiquidity     | 877  | 882 | 882    | 887  | 2       |
-| quoteAmountOut             | 3456 | 3465| 3465   | 3475 | 2       |
-
-# Airdrop.sol:Airdrop contract
-
-| Metric               | Value   |
-|----------------------|---------|
-| Deployment Cost      | 751105  |
-| Deployment Size      | 4101    |
-
-## Function Metrics
-
-| Function Name         | min   | avg   | median | max    | # calls |
-|-----------------------|-------|-------|--------|--------|---------|
-| allowClaiming         | 1102  | 69116 | 69740  | 78240  | 319     |
-| authorizeWallet       | 1982  | 31722 | 46740  | 77640  | 1266    |
-| claimAirdrop          | 3953  | 91179 | 99765  | 173417 | 10      |
-| claimed               | 580   | 1830  | 2580   | 2580   | 8       |
-| claimingAllowed       | 355   | 1021  | 355    | 2355   | 6       |
-| isAuthorized          | 670   | 2003  | 2670   | 2670   | 6       |
-| numberAuthorized      | 437   | 1237  | 437    | 2437   | 5       |
-| saltAmountForEachUser | 318   | 318   | 318    | 318    | 3       |
-
-# BootstrapBallot.sol:BootstrapBallot contract
-
-| Metric               | Value   |
-|----------------------|---------|
-| Deployment Cost      | 639758  |
-| Deployment Size      | 3557    |
-
-## Function Metrics
-
-| Function Name            | min  | avg    | median | max    | # calls |
-|--------------------------|------|--------|--------|--------|---------|
-| ballotFinalized          | 366  | 1032   | 366    | 2366   | 3       |
-| completionTimestamp      | 240  | 240    | 240    | 240    | 312     |
-| finalizeBallot           | 3508 | 563807 | 575983 | 708305 | 314     |
-| hasVoted                 | 526  | 526    | 526    | 526    | 4       |
-| startExchangeNo          | 317  | 817    | 317    | 2317   | 4       |
-| startExchangeYes         | 318  | 984    | 318    | 2318   | 3       |
-| vote                     | 3831 | 43895  | 51830  | 134603 | 637     |
-
-# InitialDistribution.sol:InitialDistribution contract
+### InitialDistribution.sol:InitialDistribution contract
 
 | Metric               | Value   |
 |----------------------|---------|
 | Deployment Cost      | 744373  |
 | Deployment Size      | 4620    |
 
-## Function Metrics
+### Function Metrics
 
 | Function Name            | min  | avg    | median | max    | # calls |
 |--------------------------|------|--------|--------|--------|---------|
@@ -577,14 +438,14 @@ Ref:https://xin-xia.github.io/publication/icse194.pdf
 | saltRewards              | 239  | 239    | 239    | 239    | 1       |
 | teamVestingWallet        | 259  | 259    | 259    | 259    | 1       |
 
-# Pools.sol:Pools contract
+### Pools.sol:Pools contract
 
 | Metric               | Value    |
 |----------------------|----------|
 | Deployment Cost      | 3098405  |
 | Deployment Size      | 16381    |
 
-## Function Metrics
+### Function Metrics
 
 | Function Name              | min   | avg   | median | max    | # calls |
 |----------------------------|-------|-------|--------|--------|---------|
@@ -605,14 +466,14 @@ Ref:https://xin-xia.github.io/publication/icse194.pdf
 | updateArbitrageIndicies    | 8135  | 57382 | 37157  | 922812 | 5773    |
 | withdraw                   | 3865  | 20890 | 27721  | 32521  | 41      |
 
-# PoolsConfig.sol:PoolsConfig contract
+### PoolsConfig.sol:PoolsConfig contract
 
 | Metric               | Value   |
 |----------------------|---------|
 | Deployment Cost      | 857978  |
 | Deployment Size      | 4083    |
 
-## Function Metrics
+### Function Metrics
 
 | Function Name                             | min  | avg   | median | max    | # calls |
 |-------------------------------------------|------|-------|--------|--------|---------|
@@ -629,46 +490,15 @@ Ref:https://xin-xia.github.io/publication/icse194.pdf
 | whitelistPool                             | 1056 | 151797| 132033 | 1015267| 5765    |
 | whitelistedPools                          | 1118 | 3317  | 2528   | 45822  | 6533    |
 
-# PoolStats.t.sol:TestPoolStats contract
 
-| Metric               | Value     |
-|----------------------|-----------|
-| Deployment Cost      | 53458244  |
-| Deployment Size      | 254209    |
-
-## Function Metrics
-
-| Function Name                 | min   | avg   | median | max   | # calls |
-|-------------------------------|-------|-------|--------|-------|---------|
-| clearProfitsForPools          | 5741  | 8923  | 8923   | 12106 | 2       |
-| profitsForWhitelistedPools    | 11755 | 31957 | 34651  | 39124 | 7       |
-| updateArbitrageIndicies       | 57151 | 189076| 198380 | 241171| 8       |
-| updateProfitsFromArbitrage    | 23103 | 23105 | 23103  | 23113 | 7       |
-
-# CoreChainlinkFeed.sol:CoreChainlinkFeed contract
-
-| Metric               | Value   |
-|----------------------|---------|
-| Deployment Cost      | 192457  |
-| Deployment Size      | 1221    |
-
-## Function Metrics
-
-| Function Name       | min   | avg  | median | max   | # calls |
-|---------------------|-------|------|--------|-------|---------|
-| CHAINLINK_BTC_USD   | 226   | 226  | 226    | 226   | 1       |
-| CHAINLINK_ETH_USD   | 204   | 204  | 204    | 204   | 1       |
-| getPriceBTC         | 1020  | 3206 | 3661   | 3996  | 8       |
-| getPriceETH         | 1985  | 7396 | 3985   | 19632 | 4       |
-
-# CoreSaltyFeed.sol:CoreSaltyFeed contract
+### CoreSaltyFeed.sol:CoreSaltyFeed contract
 
 | Metric               | Value   |
 |----------------------|---------|
 | Deployment Cost      | 241566  |
 | Deployment Size      | 1910    |
 
-## Function Metrics
+### Function Metrics
 
 | Function Name | min   | avg  | median | max  | # calls |
 |---------------|-------|------|--------|------|---------|
@@ -679,29 +509,14 @@ Ref:https://xin-xia.github.io/publication/icse194.pdf
 | wbtc          | 227   | 227  | 227    | 227  | 1       |
 | weth          | 249   | 249  | 249    | 249  | 1       |
 
-# CoreUniswapFeed.sol:CoreUniswapFeed contract
-
-| Metric               | Value    |
-|----------------------|----------|
-| Deployment Cost      | 1024416  |
-| Deployment Size      | 5672     |
-
-## Function Metrics
-
-| Function Name         | min    | avg   | median | max   | # calls |
-|-----------------------|--------|-------|--------|-------|---------|
-| _getUniswapTwapWei    | 13241  | 25452 | 26241  | 30769 | 5       |
-| getPriceBTC           | 58530  | 58530 | 58530  | 58530 | 2       |
-| getPriceETH           | 14050  | 14050 | 14050  | 14050 | 1       |
-
-# PriceAggregator.sol:PriceAggregator contract
+### PriceAggregator.sol:PriceAggregator contract
 
 | Metric               | Value   |
 |----------------------|---------|
 | Deployment Cost      | 796713  |
 | Deployment Size      | 3779    |
 
-## Function Metrics
+### Function Metrics
 
 | Function Name                                | min   | avg   | median | max    | # calls |
 |----------------------------------------------|-------|-------|--------|--------|---------|
@@ -714,28 +529,14 @@ Ref:https://xin-xia.github.io/publication/icse194.pdf
 | setPriceFeed                                 | 638   | 13023 | 7538   | 33415  | 20      |
 | transferOwnership                            | 2352  | 2352  | 2352   | 2352   | 509     |
 
-# TestCoreSaltyFeed.t.sol:TestCoreSaltyFeed contract
-
-| Metric               | Value    |
-|----------------------|----------|
-| Deployment Cost      | 88408810 |
-| Deployment Size      | 424066   |
-
-## Function Metrics
-
-| Function Name            | min    | avg    | median | max    | # calls |
-|--------------------------|--------|--------|--------|--------|---------|
-| setPriceInPoolsWBTC      | 338129 | 338129 | 338129 | 338129 | 2       |
-| setPriceInPoolsWETH      | 263326 | 263326 | 263326 | 263326 | 2       |
-
-# ForcedPriceFeed.sol:ForcedPriceFeed contract
+### ForcedPriceFeed.sol:ForcedPriceFeed contract
 
 | Metric               | Value   |
 |----------------------|---------|
 | Deployment Cost      | 357441  |
 | Deployment Size      | 1710    |
 
-## Function Metrics
+#### Function Metrics
 
 | Function Name | min  | avg  | median | max  | # calls |
 |---------------|------|------|--------|------|---------|
@@ -744,14 +545,14 @@ Ref:https://xin-xia.github.io/publication/icse194.pdf
 | setBTCPrice   | 522  | 2525 | 522    | 7422 | 31      |
 | setRevertNext | 3198 | 4698 | 5198   | 5198 | 8       |
 
-# TestChainlinkAggregator.sol:TestChainlinkAggregator contract
+### TestChainlinkAggregator.sol:TestChainlinkAggregator contract
 
 | Metric               | Value   |
 |----------------------|---------|
 | Deployment Cost      | 315090  |
 | Deployment Size      | 1560    |
 
-## Function Metrics
+### Function Metrics
 
 | Function Name    | min   | avg   | median | max   | # calls |
 |------------------|-------|-------|--------|-------|---------|
@@ -760,40 +561,14 @@ Ref:https://xin-xia.github.io/publication/icse194.pdf
 | setShouldFail    | 24462 | 24462 | 24462  | 24462 | 1       |
 | setShouldTimeout | 24441 | 24441 | 24441  | 24441 | 1       |
 
-# TestPriceAggregator.sol:TestPriceAggregator contract
-
-| Metric               | Value   |
-|----------------------|---------|
-| Deployment Cost      | 834752  |
-| Deployment Size      | 3969    |
-
-## Function Metrics
-
-| Function Name     | min  | avg | median | max | # calls |
-|-------------------|------|-----|--------|-----|---------|
-| absoluteDifference| 526  | 529 | 526    | 536 | 3       |
-
-# Emissions.sol:Emissions contract
-
-| Metric               | Value   |
-|----------------------|---------|
-| Deployment Cost      | 524296  |
-| Deployment Size      | 3127    |
-
-## Function Metrics
-
-| Function Name  | min   | avg   | median | max   | # calls |
-|----------------|-------|-------|--------|-------|---------|
-| performUpkeep  | 5496  | 19577 | 11927  | 45536 | 39      |
-
-# RewardsConfig.sol:RewardsConfig contract
+### RewardsConfig.sol:RewardsConfig contract
 
 | Metric               | Value   |
 |----------------------|---------|
 | Deployment Cost      | 438327  |
 | Deployment Size      | 1777    |
 
-## Function Metrics
+### Function Metrics
 
 | Function Name                         | min   | avg  | median | max  | # calls |
 |---------------------------------------|-------|------|--------|------|---------|
@@ -806,29 +581,14 @@ Ref:https://xin-xia.github.io/publication/icse194.pdf
 | rewardsEmitterDailyPercentTimes1000   | 329   | 429  | 329    | 2329 | 20      |
 | stakingRewardsPercent                 | 330   | 430  | 330    | 2330 | 20      |
 
-# RewardsEmitter.sol:RewardsEmitter contract
-
-| Metric               | Value    |
-|----------------------|----------|
-| Deployment Cost      | 1038397  |
-| Deployment Size      | 5800     |
-
-## Function Metrics
-
-| Function Name            | min   | avg   | median | max     | # calls |
-|--------------------------|-------|-------|--------|---------|---------|
-| addSALTRewards           | 4816  | 137216| 55965  | 2202778 | 712     |
-| pendingRewardsForPools   | 1285  | 2047  | 1712   | 5712    | 49      |
-| performUpkeep            | 1041  | 206401| 71381  | 2671355 | 76      |
-
-# SaltRewards.sol:SaltRewards contract
+### SaltRewards.sol:SaltRewards contract
 
 | Metric               | Value   |
 |----------------------|---------|
 | Deployment Cost      | 910492  |
 | Deployment Size      | 5513    |
 
-## Function Metrics
+#### Function Metrics
 
 | Function Name              | min   | avg    | median | max     | # calls |
 |----------------------------|-------|--------|--------|---------|---------|
@@ -837,14 +597,14 @@ Ref:https://xin-xia.github.io/publication/icse194.pdf
 | sendInitialSaltRewards     | 299526| 301139 | 299526 | 336126  | 315     |
 | stakingRewardsEmitter      | 215   | 215    | 215    | 215     | 28      |
 
-# TestSaltRewards.sol:TestSaltRewards contract
+### TestSaltRewards.sol:TestSaltRewards contract
 
 | Metric               | Value    |
 |----------------------|----------|
 | Deployment Cost      | 1068081  |
 | Deployment Size      | 6289     |
 
-## Function Metrics
+### Function Metrics
 
 | Function Name                  | min    | avg   | median | max   | # calls |
 |--------------------------------|--------|-------|--------|-------|---------|
@@ -855,14 +615,14 @@ Ref:https://xin-xia.github.io/publication/icse194.pdf
 | sendLiquidityRewards           | 10121  | 69770 | 84078  | 88328 | 6       |
 | sendStakingRewards             | 12968  | 44424 | 60152  | 60152 | 3       |
 
-# TestERC20.sol:TestERC20 contract
+### TestERC20.sol:TestERC20 contract
 
 | Metric               | Value   |
 |----------------------|---------|
 | Deployment Cost      | 711153  |
 | Deployment Size      | 4317    |
 
-## Function Metrics
+### Function Metrics
 
 | Function Name | min   | avg   | median | max   | # calls |
 |---------------|-------|-------|--------|-------|---------|
