@@ -18,7 +18,7 @@
 
 
 
-## a) Overview of the Decent Project
+## a) Overview of the Salty Project
 
 The Salty.IO project is a comprehensive ecosystem, focusing on token staking, liquidity provision, and efficient management of digital assets. The project is designed to incentivize users to participate actively in the ecosystem through staking and liquidity provision, while also ensuring secure and efficient management of crucial wallet addresses.
 
@@ -76,7 +76,7 @@ Accordingly, I would analyze and audit the subject in the following steps;
 |4|Slither Analysis  | [Slither Report](https://github.com/crytic/slither)| Slither report of the project for some basic analysis|
 |5|Test Suits|[Tests](https://github.com/code-423n4/2024-01-salty?tab=readme-ov-file#build--test-instructions)|In this section, the scope and content of the tests of the project are analyzed.|
 |6|Manuel Code Review|[Scope](https://github.com/code-423n4/2024-01-salty?tab=readme-ov-file#scope)||
-|7|Using Solodit for common vulnerabilities|[Solodit](https://solodit.xyz/)|Using solodit to find common vulnerabilites related to NFT protocol|
+|7|Using Solodit for common vulnerabilities|[Solodit](https://solodit.xyz/)|Using solodit to find common vulnerabilites related to Lending Borrowing protocol|
 |8|Infographic|[Figma](https://www.figma.com/)|Tried to make Visual drawings to understand the hard-to-understand mechanisms|
 |9|Special focus on Areas of  Concern|[Areas of Concern](https://github.com/code-423n4/2024-01-salty?tab=readme-ov-file#attack-ideas-where-to-look-for-bugs)|Code where I should focus more|
 
@@ -166,10 +166,6 @@ Uses Consensys Solidity Metrics
 
 [![Screenshot-from-2024-01-30-15-46-04.png](https://i.postimg.cc/SKZfSKhb/Screenshot-from-2024-01-30-15-46-04.png)](https://postimg.cc/R3HHG4hg)
 
-## Call graph of `Rewards` contracts
-
-[![Screenshot-from-2024-01-30-15-47-49.png](https://i.postimg.cc/L8Wsmdb0/Screenshot-from-2024-01-30-15-47-49.png)](https://postimg.cc/ZWrmLQZr)
-
 ## Call graph of `Staking` contracts
 
 [![Screenshot-from-2024-01-30-15-53-21.png](https://i.postimg.cc/nL5TKLwY/Screenshot-from-2024-01-30-15-53-21.png)](https://postimg.cc/QBQphjDH)
@@ -190,7 +186,7 @@ This domain model provides an overview of the key components  and how they are i
 
  **Foundry Testing:**
    
-   Foundry, a modern smart contract testing framework, was utilized to test the reNFT contracts. This involved several key steps:
+   Foundry, a modern smart contract testing framework, was utilized to test the Salty contracts. This involved several key steps:
    
    a. **Installation and Setup:**
       - Foundry was installed using the command `curl -L https://foundry.paradigm.xyz | bash`, followed by `foundryup` to ensure the latest version was in use.
@@ -287,19 +283,6 @@ https://github.com/code-423n4/2024-01-salty/blob/main/4naly3er-report.md
 
 ## i) Full representation of the project’s risk model
 
-### Systemic Risks
-**Interoperability Issues:** As a cross-chain solution, Decent relies heavily on the stability and security of other blockchains. Issues in connected networks can cascade into the Decent ecosystem.
-
-###  Technical Risks
-**Smart Contract Vulnerabilities:** Bugs or flaws in smart contracts can lead to loss of funds or malfunctioning of the platform.
-
-**Scalability Concerns:** As transaction volumes grow, the platform must scale without compromising performance or security.
-
-### Integration Risks
-
-**Compatibility with Different Blockchains:**  Ensuring that Decent works seamlessly across multiple chains requires constant updates and monitoring of changes in those ecosystems.
-
-**Cross-Chain Security:** Security inconsistencies across different blockchains can expose vulnerabilities in cross-chain transactions.
 
 ##  j) Packages and Dependencies Analysis 📦
 
