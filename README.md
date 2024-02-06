@@ -241,7 +241,10 @@ Although the security Report of previous Audit isn't public but we can see it th
 
 | Package | Version | Usage | 
 | --- | --- | --- | 
-| [`openzeppelin`](https://www.npmjs.com/package/@openzeppelin/contracts) | [![npm]([![images.png](https://i.postimg.cc/MK89GbgX/images.png)](https://postimg.cc/pyqfG8Wt))](https://www.npmjs.com/package/@openzeppelin/contracts) |  Project uses version `4.9.3` while the recommended version is latest i.e: `5.0.1` 
+| [`starknet`](https://docs.swmansion.com/scarb/download.html#stable-version)  |  Project uses version `2.4.0` while the recommended version is latest stable version i.e: `2.5.3` 
+| [`snforge_std`](https://github.com/foundry-rs/starknet-foundry)  |  Project uses version `0.13.1` while the recommended version is latest stable version i.e: `0.16.0` 
+
+
 
 ## k) New insights and learning of project from this audit:
 
@@ -261,7 +264,3 @@ Note: I didn't tracked the time, the time I mentioned is just an estimate
 ### Time spent:
 5 hours
 
-
-
-### Time spent:
-5 hours
