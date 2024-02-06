@@ -76,72 +76,42 @@ In this way, many predictions can be made, including the difficulty levels of th
 Uses Consensys Solidity Metrics
 
 
--  **File:** This field contains the name or path of the source file being analyzed.
+-  **filename:** This field contains the name or path of the source file being analyzed.
 
--  **Logic Contracts:** This field indicates the number of Contracts involves
+-  **filename:** This field indicates the language in which smart contracts are written
 
--  **Interfaces:** This field indicated specify the number or details of interfaces defined in the source file.
+-  **Code:** This field indicates the number of actual lines of code in the smart contract.
 
--  **Lines:** This field represents the total number of lines in the source file, including code lines, comments, and blank lines.
+-  **Comment:** This field indicates the number of lines in the smart contract.
 
--  **nLines:** nLines typically stands for "normalized lines" and represents the total number of lines in the source file excluding blank lines. 
+-  **Blank:** This field indicates the number of Blank lines in the smart contract.
 
--  **nSLOC:** nSLOC stands for "normalized source lines of code," and it further refines nLines by excluding both blank lines and comments. It gives a more accurate measure of the code's complexity.
+-  **Total:** This field indicates the number of Total lines (code + comment + blank) in the smart contract.
 
--  **Comment Lines:** This field specifies the number of lines in the source file that contain comments.
+## Analysis of sloc of `core` contracts
 
--  **Complex. Score:** This field may indicate a complexity score or metric for the source file. 
+Total : 13 files,  3990 codes, 1489 comments, 1115 blanks, all 6594 lines
 
-## Analysis of sloc of `Dao` contracts
-
-[![Screenshot-from-2024-01-30-12-40-36.png](https://i.postimg.cc/gk1md16Z/Screenshot-from-2024-01-30-12-40-36.png)](https://postimg.cc/bs0K9Cgy)
-
-## Analysis of sloc of `Launch` contracts
-
-[![Screenshot-from-2024-01-30-12-41-44.png](https://i.postimg.cc/TwhF478X/Screenshot-from-2024-01-30-12-41-44.png)](https://postimg.cc/47kWK1N8)
-
-## Analysis of sloc of `Pools` contracts
-
-[![Screenshot-from-2024-01-30-12-42-23.png](https://i.postimg.cc/PxLV4CZX/Screenshot-from-2024-01-30-12-42-23.png)](https://postimg.cc/47g14NBq)
-
-## Analysis of sloc of `price_feed` contracts
-
-[![Screenshot-from-2024-01-30-12-43-47.png](https://i.postimg.cc/y6v0fy35/Screenshot-from-2024-01-30-12-43-47.png)](https://postimg.cc/s1GBxSc9)
-
-## Analysis of sloc of `Rewards` contracts
-
-[![Screenshot-from-2024-01-30-12-44-35.png](https://i.postimg.cc/2SK4x2xW/Screenshot-from-2024-01-30-12-44-35.png)](https://postimg.cc/5X8Y45T9)
-
-## Analysis of sloc of `Stable` contracts
-
-[![Screenshot-from-2024-01-30-12-45-10.png](https://i.postimg.cc/2yGWLw6V/Screenshot-from-2024-01-30-12-45-10.png)](https://postimg.cc/rRdsv55k)
-
-## Analysis of sloc of `Staking` contracts
-
-[![Screenshot-from-2024-01-30-12-45-46.png](https://i.postimg.cc/RZyHtqMQ/Screenshot-from-2024-01-30-12-45-46.png)](https://postimg.cc/bZ0rcySs)
-
-## Analysis of sloc of src contracts
-
-[![Screenshot-from-2024-01-30-12-47-00.png](https://i.postimg.cc/1tTVQJ05/Screenshot-from-2024-01-30-12-47-00.png)](https://postimg.cc/LYt8kk0r)
+## Files
+| filename | filename | code | comment | blank | total |
+| :--- | :--- | ---: | ---: | ---: | ---: |
+| [src/core/abbot.cairo](/src/core/abbot.cairo) | Cairo | 160 | 57 | 47 | 264 |
+| [src/core/absorber.cairo](/src/core/absorber.cairo) | Cairo | 645 | 266 | 199 | 1,110 |
+| [src/core/allocator.cairo](/src/core/allocator.cairo) | Cairo | 88 | 48 | 34 | 170 |
+| [src/core/caretaker.cairo](/src/core/caretaker.cairo) | Cairo | 208 | 102 | 62 | 372 |
+| [src/core/controller.cairo](/src/core/controller.cairo) | Cairo | 207 | 28 | 58 | 293 |
+| [src/core/equalizer.cairo](/src/core/equalizer.cairo) | Cairo | 133 | 48 | 42 | 223 |
+| [src/core/flash_mint.cairo](/src/core/flash_mint.cairo) | Cairo | 88 | 35 | 32 | 155 |
+| [src/core/gate.cairo](/src/core/gate.cairo) | Cairo | 136 | 58 | 40 | 234 |
+| [src/core/purger.cairo](/src/core/purger.cairo) | Cairo | 379 | 150 | 96 | 625 |
+| [src/core/roles.cairo](/src/core/roles.cairo) | Cairo | 221 | 0 | 41 | 262 |
+| [src/core/seer.cairo](/src/core/seer.cairo) | Cairo | 168 | 42 | 32 | 242 |
+| [src/core/sentinel.cairo](/src/core/sentinel.cairo) | Cairo | 189 | 50 | 53 | 292 |
+| [src/core/shrine.cairo](/src/core/shrine.cairo) | Cairo | 1,368 | 605 | 379 | 2,352 |
 
 ## Comment-to-Source Ratio:
 
-**`DAO` contracts:** On average there are **4.69** code lines per comment (lower=better).
-
-**`Launch` contracts:** On average there are **4.39** code lines per comment (lower=better).
-
-**`Pools` contracts:** On average there are **1.82** code lines per comment (lower=better).
-
-**`price_feed` contracts:** On average there are **4.49** code lines per comment (lower=better).
-
-**`Rewards` contracts:** On average there are **3.54** code lines per comment (lower=better).
-
-**`Stable` contracts:** On average there are **3.26** code lines per comment (lower=better).
-
-**`Staking` contracts:** On average there are **2.98** code lines per comment (lower=better).
-
-**`src` contracts:** On average there are **3.22** code lines per comment (lower=better).
-
+**`Core` contracts:** On average there are **4.69** code lines per comment (lower=better).
 
 ## e) Test analysis
 
@@ -239,15 +209,17 @@ Overall, I consider the quality of the Opus protocol codebase to be Good. The co
 
 ## h) Other Audit Reports and Automated Findings 
 
-**Automated Findings:**
-https://github.com/code-423n4/2024-01-salty/blob/main/bot-report.md
-
 **Previous Audits**
-[ABDK Audit](https://github.com/abdk-consulting/audits/blob/main/othernet_global_pte_ltd/ABDK_OthernetGlobalPTELTD_SaltyIO_v_2_0.pdf)
-[Trail of Bits](https://github.com/trailofbits/publications/blob/master/reviews/2023-10-saltyio-securityreview.pdf)
+Although the security Report of previous Audit isn't public but we can see it the docs that the `opus_contracts` already went an audit
+[Trail of Bits](https://demo-35.gitbook.io/untitled/security/external)
 
-**4naly3er report**
-https://github.com/code-423n4/2024-01-salty/blob/main/4naly3er-report.md
+**[Known issues and risks](https://github.com/code-423n4/2024-01-opus?tab=readme-ov-file#automated-findings--publicly-known-issues)**
+
+- The protocol relies on a trusted and honest admin with superuser privileges for all modules with access control at launch.
+- There is currently no fallback oracle. This is planned once more oracles are live on Starknet.
+- Interest is not accrued on redistributed debt until they have been attributed to a trove. This is intended as the alternative would be too computationally intensive.
+- Interest that have not been accrued at the time of shutdown will result in a permanent loss of debt surplus i.e. income. This is intended as the alternative to charge interest on all troves would be too expensive.
+
 
 ## i) Full representation of the project’s risk model
 
