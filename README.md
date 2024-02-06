@@ -59,15 +59,15 @@ Accordingly, I would analyze and audit the subject in the following steps;
 
 | Number |Stage |Details|Information|
 |:--|:----------------|:------|:------|
-|1|Compile and Run Test|[Installation](https://github.com/code-423n4/2024-01-salty?tab=readme-ov-file#build--test-instructions)|Test and installation structure is simple, cleanly designed|
-|2|Architecture Review| [Salty](https://github.com/code-423n4/2024-01-salty/tree/main/src) |Provides a basic architectural teaching for General Architecture|
+|1|Compile and Run Test|[Installation](https://github.com/code-423n4/2024-01-opus?tab=readme-ov-file#tests)|Test and installation structure is simple, cleanly designed|
+|2|Architecture Review| [Opus](https://github.com/code-423n4/2024-01-opus/tree/main/src) |Provides a basic architectural teaching for General Architecture|
 |3|Graphical Analysis  |Graphical Analysis with [Solidity-metrics](https://github.com/ConsenSys/solidity-metrics)|A visual view has been made to dominate the general structure of the codes of the project.|
 |4|Slither Analysis  | [Slither Report](https://github.com/crytic/slither)| Slither report of the project for some basic analysis|
-|5|Test Suits|[Tests](https://github.com/code-423n4/2024-01-salty?tab=readme-ov-file#build--test-instructions)|In this section, the scope and content of the tests of the project are analyzed.|
-|6|Manuel Code Review|[Scope](https://github.com/code-423n4/2024-01-salty?tab=readme-ov-file#scope)||
+|5|Test Suits|[Tests](https://github.com/code-423n4/2024-01-opus?tab=readme-ov-file#tests)|In this section, the scope and content of the tests of the project are analyzed.|
+|6|Manuel Code Review|[Scope](https://github.com/code-423n4/2024-01-opus?tab=readme-ov-file#scope)||
 |7|Using Solodit for common vulnerabilities|[Solodit](https://solodit.xyz/)|Using solodit to find common vulnerabilites related to NFT protocol|
 |8|Infographic|[Figma](https://www.figma.com/)|Tried to make Visual drawings to understand the hard-to-understand mechanisms|
-|9|Special focus on Areas of  Concern|[Areas of Concern](https://github.com/code-423n4/2024-01-salty?tab=readme-ov-file#attack-ideas-where-to-look-for-bugs)|Code where I should focus more|
+|9|Special focus on Areas of  Concern|[Areas of Concern](https://github.com/code-423n4/2024-01-opus/tree/main/src/core)|Code where I should focus more|
 
 ## d) Analysis of the code base
 
@@ -142,70 +142,25 @@ Uses Consensys Solidity Metrics
 
 **`src` contracts:** On average there are **3.22** code lines per comment (lower=better).
 
-# Call Graph of Important Contracts
-
-## Call graph of `Launch` contract
-[![Screenshot-from-2024-01-30-12-52-14.png](https://i.postimg.cc/RVRdrJp6/Screenshot-from-2024-01-30-12-52-14.png)](https://postimg.cc/w71LLMpg)
-
-## Call graph of `Pools` contracts
-
-[![Screenshot-from-2024-01-30-12-53-45.png](https://i.postimg.cc/R09vW8Qb/Screenshot-from-2024-01-30-12-53-45.png)](https://postimg.cc/G4MWNXfk)
-
-## Call graph of `Price_feed` contracts
-
-[![Screenshot-from-2024-01-30-15-46-04.png](https://i.postimg.cc/SKZfSKhb/Screenshot-from-2024-01-30-15-46-04.png)](https://postimg.cc/R3HHG4hg)
-
-## Call graph of `Rewards` contracts
-
-[![Screenshot-from-2024-01-30-15-47-49.png](https://i.postimg.cc/L8Wsmdb0/Screenshot-from-2024-01-30-15-47-49.png)](https://postimg.cc/ZWrmLQZr)
-
-## Call graph of `Staking` contracts
-
-[![Screenshot-from-2024-01-30-15-53-21.png](https://i.postimg.cc/nL5TKLwY/Screenshot-from-2024-01-30-15-53-21.png)](https://postimg.cc/QBQphjDH)
-
-## Contract Integration Graph
-
-[![Screenshot-from-2024-01-30-15-54-15.png](https://i.postimg.cc/5yfz8d1S/Screenshot-from-2024-01-30-15-54-15.png)](https://postimg.cc/cg56Nzvv)
-
-
-# High Level Domain Model
-
-This domain model provides an overview of the key components  and how they are interconnected.
-
-[![Screenshot-from-2024-01-23-22-57-18.png](https://i.postimg.cc/L52fwmTL/Screenshot-from-2024-01-23-22-57-18.png)](https://postimg.cc/k6YBt3Lg)
-
-# Sequence diagram of Important functions
-
-## SwapAndExecute()
-
-[![Whats-App-Image-2024-01-23-at-10-59-13-PM.jpg](https://i.postimg.cc/qvx8chx0/Whats-App-Image-2024-01-23-at-10-59-13-PM.jpg)](https://postimg.cc/5XjYbtrk)
-
-## bridgeAndExecure()
-
-[![bridge.png](https://i.postimg.cc/rwbmh0bg/bridge.png)](https://postimg.cc/mPYBkDTF)
 
 ## e) Test analysis
 
- **Foundry Testing:**
-   
-   Foundry, a modern smart contract testing framework, was utilized to test the reNFT contracts. This involved several key steps:
-   
-   a. **Installation and Setup:**
-      - Foundry was installed using the command `curl -L https://foundry.paradigm.xyz | bash`, followed by `foundryup` to ensure the latest version was in use.
-      - Dependencies were installed using `forge install`, ensuring all necessary components were available for the testing process.
-      - Then to run the tests, I simply added the relevant files to the .env, referencing .env.example.
-   
-   b. **Execution of Tests:**
-      - Tests were run using `forge test COVERAGE="yes" NETWORK="sep" forge test -vv --rpc-url http://x.x.x.x:yyy`, executing a suite of predefined test cases that covered various functionalities and scenarios.
-   
-   c. **Test Coverage and Documentation:**
-      - The overview of the testing suite, as referred to in the provided documentation, likely details the scope, scenarios, and objectives of each test, ensuring a comprehensive assessment of the contracts.
-   
+1. Install [Scarb](https://docs.swmansion.com/scarb/download.html) v2.4.0 by running:
+```
+curl --proto '=https' --tlsv1.2 -sSf https://docs.swmansion.com/scarb/install.sh | sh -s -- -v 2.4.0
+```
+2. Install [Starknet Foundry](https://github.com/foundry-rs/starknet-foundry) v0.13.1 by running:
+```
+curl -L https://raw.githubusercontent.com/foundry-rs/starknet-foundry/master/scripts/install.sh | sh
+
+snfoundryup -v 0.13.1
+```
+3. Run `scarb test`.
 
 ### What did the project do differently? ;
 -   1) It can be said that the developers of the project did a quality job, there is a test structure consisting of tests with quality content. In particular, tests have been written successfully.
 
--   2) Overall line coverage percentage provided by your tests : 99
+-   2) Overall line coverage percentage provided by your tests : 90
 
 ### What could they have done better?
 
@@ -218,12 +173,18 @@ Ref:https://xin-xia.github.io/publication/icse194.pdf
 
 [![nabeel-1.jpg](https://i.postimg.cc/6qtBdLQW/nabeel-1.jpg)](https://postimg.cc/bDVXPnbW)
 
+-  2): It is recommended to increase the test coverage to 100% so make sure that each and every line is battle tested
 
 ## f) Security Approach of the Project
 
 ### Successful current security understanding of the project;
 
-1- The project hasn't underwent any audits(nothing stated in the docs), this innovative assessments on Code4rena is the first, where multiple auditors are scrutinizing the code.
+1- The project has already underwent an audits(stated in the docs), this innovative assessments on Code4rena is the second audit, where multiple auditors are scrutinizing the code.
+
+According to the Docs, which can be found [here](https://demo-35.gitbook.io/untitled/security/external)
+
+ `The core contracts found in opus_contracts directory have been audited by:`
+- Trail of Bits
 
 ### What the project should add in the understanding of Security;
 
