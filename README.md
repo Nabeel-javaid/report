@@ -95,19 +95,19 @@ Total : 13 files,  3990 codes, 1489 comments, 1115 blanks, all 6594 lines
 ## Files
 | filename | filename | code | comment | blank | total |
 | :--- | :--- | ---: | ---: | ---: | ---: |
-| [src/core/abbot.cairo](https://github.com/code-423n4/2024-01-opus/src/core/abbot.cairo) | Cairo | 160 | 57 | 47 | 264 |
-| [src/core/absorber.cairo](https://github.com/code-423n4/2024-01-opus/src/core/absorber.cairo) | Cairo | 645 | 266 | 199 | 1,110 |
-| [src/core/allocator.cairo](https://github.com/code-423n4/2024-01-opus/src/core/allocator.cairo) | Cairo | 88 | 48 | 34 | 170 |
-| [src/core/caretaker.cairo](https://github.com/code-423n4/2024-01-opus/src/core/caretaker.cairo) | Cairo | 208 | 102 | 62 | 372 |
-| [src/core/controller.cairo](https://github.com/code-423n4/2024-01-opus/src/core/controller.cairo) | Cairo | 207 | 28 | 58 | 293 |
-| [src/core/equalizer.cairo](https://github.com/code-423n4/2024-01-opus/src/core/equalizer.cairo) | Cairo | 133 | 48 | 42 | 223 |
-| [src/core/flash_mint.cairo](https://github.com/code-423n4/2024-01-opus/src/core/flash_mint.cairo) | Cairo | 88 | 35 | 32 | 155 |
-| [src/core/gate.cairo](https://github.com/code-423n4/2024-01-opus/src/core/gate.cairo) | Cairo | 136 | 58 | 40 | 234 |
-| [src/core/purger.cairo](https://github.com/code-423n4/2024-01-opus/src/core/purger.cairo) | Cairo | 379 | 150 | 96 | 625 |
-| [src/core/roles.cairo](https://github.com/code-423n4/2024-01-opus/src/core/roles.cairo) | Cairo | 221 | 0 | 41 | 262 |
-| [src/core/seer.cairo](https://github.com/code-423n4/2024-01-opus/src/core/seer.cairo) | Cairo | 168 | 42 | 32 | 242 |
-| [src/core/sentinel.cairo](https://github.com/code-423n4/2024-01-opus/src/core/sentinel.cairo) | Cairo | 189 | 50 | 53 | 292 |
-| [src/core/shrine.cairo](https://github.com/code-423n4/2024-01-opus/src/core/shrine.cairo) | Cairo | 1,368 | 605 | 379 | 2,352 |
+| [src/core/abbot.cairo](https://github.com/code-423n4/2024-01-opus/tree/main/src/core/abbot.cairo) | Cairo | 160 | 57 | 47 | 264 |
+| [src/core/absorber.cairo](https://github.com/code-423n4/2024-01-opus/tree/main/src/core/absorber.cairo) | Cairo | 645 | 266 | 199 | 1,110 |
+| [src/core/allocator.cairo](https://github.com/code-423n4/2024-01-opus/tree/main/src/core/allocator.cairo) | Cairo | 88 | 48 | 34 | 170 |
+| [src/core/caretaker.cairo](https://github.com/code-423n4/2024-01-opus/tree/main/src/core/caretaker.cairo) | Cairo | 208 | 102 | 62 | 372 |
+| [src/core/controller.cairo](https://github.com/code-423n4/2024-01-opus/tree/main/src/core/controller.cairo) | Cairo | 207 | 28 | 58 | 293 |
+| [src/core/equalizer.cairo](https://github.com/code-423n4/2024-01-opus/tree/main/src/core/equalizer.cairo) | Cairo | 133 | 48 | 42 | 223 |
+| [src/core/flash_mint.cairo](https://github.com/code-423n4/2024-01-opus/tree/main/src/core/flash_mint.cairo) | Cairo | 88 | 35 | 32 | 155 |
+| [src/core/gate.cairo](https://github.com/code-423n4/2024-01-opus/tree/main/src/core/gate.cairo) | Cairo | 136 | 58 | 40 | 234 |
+| [src/core/purger.cairo](https://github.com/code-423n4/2024-01-opus/tree/main/src/core/purger.cairo) | Cairo | 379 | 150 | 96 | 625 |
+| [src/core/roles.cairo](https://github.com/code-423n4/2024-01-opus/tree/main/src/core/roles.cairo) | Cairo | 221 | 0 | 41 | 262 |
+| [src/core/seer.cairo](https://github.com/code-423n4/2024-01-opus/tree/main/src/core/seer.cairo) | Cairo | 168 | 42 | 32 | 242 |
+| [src/core/sentinel.cairo](https://github.com/code-423n4/2024-01-opus/tree/main/src/core/sentinel.cairo) | Cairo | 189 | 50 | 53 | 292 |
+| [src/core/shrine.cairo](https://github.com/code-423n4/2024-01-opus/tree/main/src/core/shrine.cairo) | Cairo | 1,368 | 605 | 379 | 2,352 |
 
 ## Comment-to-Source Ratio:
 
