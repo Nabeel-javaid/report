@@ -239,8 +239,8 @@ Although the security Report of previous Audit isn't public but we can see it th
 
 ##  j) Packages and Dependencies Analysis 📦
 
-| Package | Version | Usage | 
-| --- | --- | --- | 
+| Package | Usage | 
+| --- |  --- | 
 | [`starknet`](https://docs.swmansion.com/scarb/download.html#stable-version)  |  Project uses version `2.4.0` while the recommended version is latest stable version i.e: `2.5.3` 
 | [`snforge_std`](https://github.com/foundry-rs/starknet-foundry)  |  Project uses version `0.13.1` while the recommended version is latest stable version i.e: `0.16.0` 
 
