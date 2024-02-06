@@ -1,10 +1,10 @@
-# 🛠️ Analysis - Salty.IO
-***An Ethereum-based DEX with zero swap fees, yield-generating Automatic Arbitrage, and a native WBTC/WETH backed stablecoin.***
+# 🛠️ Analysis - Opus
+***A cross margin credit protocol with autonomous monetary policy and dynamic risk parameters.***
 
 ### Summary
 | List |Head |Details|
 |:--|:----------------|:------|
-|a) |Overview of the Decent Project| Summary of the whole Protocol |
+|a) |Overview of the Opus Project| Summary of the whole Protocol |
 |b) |Technical Architecture| Architecture of the smart contracts |
 |c) |The approach I would follow when reviewing the code | Stages in my code review and analysis |
 |d) |Analysis of the code base | What is unique? How are the existing patterns used? "Solidity-metrics" was used  |
@@ -20,15 +20,15 @@
 
 ## a) Overview of the Decent Project
 
-Decent Project is an innovative blockchain initiative designed to address the challenges of interoperability and fluidity in transactions across multiple blockchain networks. At its core, Decent aims to simplify and streamline the process of executing transactions on various blockchains, enhancing the user experience in the decentralized finance (DeFi) and blockchain space. Here's an overview of its key aspects:
+The Opus project is a decentralized finance (DeFi) platform designed to offer users various financial services on the blockchain. It leverages smart contracts to enable activities such as collateralized lending, liquidity provision, and rewards distribution. Users can interact with the platform by depositing specific cryptocurrencies as collateral to participate in liquidity pools, earn rewards, or take out loans. The project focuses on security, scalability, and user experience, aiming to provide a comprehensive ecosystem for decentralized financial services.
 
 ### Key Features and Functionalities:
 
-1. **Cross-Chain Transactions**: Decent facilitates seamless transactions across different blockchain networks. This capability is pivotal in a landscape where assets and liquidity are spread across various chains.
-
-2. **Swapping and Bridging Mechanisms**: The platform integrates sophisticated swapping and bridging functionalities, allowing users to convert and transfer assets between different tokens and blockchains efficiently. This feature is crucial for users who engage in activities across multiple chains.
-
-3. **Fee Management**: The platform incorporates an effective fee management system, ensuring that transactions are economically viable for users and sustainable for the platform's longevity.
+1. **Collateral Management**: Users can deposit various tokens (e.g., WBTC, ETH, wstETH) as collateral to participate in the platform's offerings.
+2. **Liquidity Provision and Earning Rewards**: It facilitates liquidity provision to various pools, allowing users to earn rewards based on their contributions.
+3. **Loan and Credit Facilities**: Offers mechanisms for users to take loans against their deposited collateral under certain conditions.
+4. **Risk Management and Liquidation Protocols**: Implements safeguards and protocols for managing the health of assets and positions, including liquidation mechanisms for undercollateralized positions.
+6. **PID Controller for Dynamic Adjustments**: Incorporates a PID controller for adaptive and dynamic adjustments within the system, enhancing stability and responsiveness.
 
 ## b) Technical Architecture:
 
