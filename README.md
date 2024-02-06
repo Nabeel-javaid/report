@@ -19,7 +19,7 @@
 
 
 
-## a) Overview of the Decent Project
+## a) Overview of the Opus Project
 
 The Opus project is a decentralized finance (DeFi) platform designed to offer users various financial services on the blockchain. It leverages smart contracts to enable activities such as collateralized lending, liquidity provision, and rewards distribution. Users can interact with the platform by depositing specific cryptocurrencies as collateral to participate in liquidity pools, earn rewards, or take out loans. The project focuses on security, scalability, and user experience, aiming to provide a comprehensive ecosystem for decentralized financial services.
 
@@ -32,6 +32,8 @@ The Opus project is a decentralized finance (DeFi) platform designed to offer us
 6. **PID Controller for Dynamic Adjustments**: Incorporates a PID controller for adaptive and dynamic adjustments within the system, enhancing stability and responsiveness.
 
 ## b) Technical Architecture:
+
+<br/>
 
 [![Screenshot-from-2024-02-06-23-43-07.png](https://i.postimg.cc/1XCGcctL/Screenshot-from-2024-02-06-23-43-07.png)](https://postimg.cc/QK7Kj7cb)
 
@@ -59,6 +61,7 @@ Opus architecture is built around a set of smart contracts, each serving specifi
 ### Domain Model of the Protocol
 
 <br/>
+
 [![Screenshot-from-2024-02-06-23-27-58.png](https://i.postimg.cc/fRL9f9QN/Screenshot-from-2024-02-06-23-27-58.png)](https://postimg.cc/2Vsyz35c)
 
 ## c) The approach I would follow when reviewing the code
@@ -275,7 +278,7 @@ In summary, the OPUS protocol's architecture is a testament to the power of comb
 
 
 
-## g) Codebase Quality
+## h) Codebase Quality
 
 Overall, I consider the quality of the Opus protocol codebase to be Good. The code appears to be mature and well-developed. We have noticed the implementation of various standards adhere to appropriately. Details are explained below:
 
@@ -295,7 +298,7 @@ Overall, I consider the quality of the Opus protocol codebase to be Good. The co
 | **Compliance with Best Practices**         | The codebase aligns with blockchain best practices, including ERC-20 standards, role-based access control, and timelock mechanisms. It adheres to well-established coding patterns.                                                               |
 
 
-## h) Other Audit Reports and Automated Findings 
+## i) Other Audit Reports and Automated Findings 
 
 **Previous Audits**
 Although the security Report of previous Audit isn't public but we can see it the docs that the `opus_contracts` already went an audit
@@ -309,7 +312,7 @@ Although the security Report of previous Audit isn't public but we can see it th
 - Interest that have not been accrued at the time of shutdown will result in a permanent loss of debt surplus i.e. income. This is intended as the alternative to charge interest on all troves would be too expensive.
 
 
-## i) Full representation of the project’s risk model
+## j) Full representation of the project’s risk model
 
 The OPUS protocol, like any decentralized finance (DeFi) platform, faces several categories of risk, including administrative, systemic, technical, and integration risks. Understanding and mitigating these risks are crucial for the security and efficiency of the protocol.
 
@@ -330,7 +333,7 @@ The OPUS protocol, like any decentralized finance (DeFi) platform, faces several
 
 
 
-##  j) Packages and Dependencies Analysis 📦
+##  k) Packages and Dependencies Analysis 📦
 
 | Package | Usage | 
 | --- |  --- | 
@@ -339,7 +342,7 @@ The OPUS protocol, like any decentralized finance (DeFi) platform, faces several
 
 
 
-## k) New insights and learning of project from this audit:
+## l) New insights and learning of project from this audit:
 
 As an auditor having reviewed the OPUS protocol, the audit process has yielded several insights and learning experiences, emphasizing the complexity and sophistication of decentralized finance (DeFi) ecosystems. Here are the key takeaways:
 
