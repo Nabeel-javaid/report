@@ -69,7 +69,7 @@ Opus architecture is built around a set of smart contracts, each serving specifi
 ## c) The approach I would follow when reviewing the code
 
 First, by examining the scope of the code, I determined my code review and analysis strategy.
-https://code4rena.com/audits/2024-01-saltyio
+https://code4rena.com/audits/2024-01-opus#top
 
 Accordingly, I would analyze and audit the subject in the following steps;
 
