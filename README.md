@@ -1,6 +1,10 @@
 # 🛠️ Analysis - Opus
 ***A cross margin credit protocol with autonomous monetary policy and dynamic risk parameters.***
 
+<br/>
+
+[![Screenshot-from-2024-02-06-23-43-07.png](https://i.postimg.cc/1XCGcctL/Screenshot-from-2024-02-06-23-43-07.png)](https://postimg.cc/QK7Kj7cb)
+
 ### Summary
 | List |Head |Details|
 |:--|:----------------|:------|
@@ -52,6 +56,10 @@ Opus architecture is built around a set of smart contracts, each serving specifi
 | sentinel.cairo        | Monitors system health and triggers responses to operational anomalies.    | Watches over system operations, triggering automated responses or alerts for anomalies or operational issues.              | Essential for proactive system monitoring and response to ensure continuous stability.          |
 
 
+### Domain Model of the Protocol
+
+<br/>
+[![Screenshot-from-2024-02-06-23-27-58.png](https://i.postimg.cc/fRL9f9QN/Screenshot-from-2024-02-06-23-27-58.png)](https://postimg.cc/2Vsyz35c)
 
 ## c) The approach I would follow when reviewing the code
 
