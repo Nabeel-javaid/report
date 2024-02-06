@@ -87,7 +87,6 @@ In this way, many predictions can be made, including the difficulty levels of th
 Uses Consensys Solidity Metrics
 
 
--  **filename:** This field contains the name or path of the source file being analyzed.
 
 -  **filename:** This field indicates the language in which smart contracts are written
 
@@ -236,19 +235,24 @@ Although the security Report of previous Audit isn't public but we can see it th
 
 ## i) Full representation of the project’s risk model
 
-### Systemic Risks
-**Interoperability Issues:** As a cross-chain solution, Decent relies heavily on the stability and security of other blockchains. Issues in connected networks can cascade into the Decent ecosystem.
+The OPUS protocol, like any decentralized finance (DeFi) platform, faces several categories of risk, including administrative, systemic, technical, and integration risks. Understanding and mitigating these risks are crucial for the security and efficiency of the protocol.
 
-###  Technical Risks
-**Smart Contract Vulnerabilities:** Bugs or flaws in smart contracts can lead to loss of funds or malfunctioning of the platform.
+### Admin Abuse Risks
+
+**Centralization of Control:** Even with decentralized governance structures like DAOs, the risk of admin abuse exists if a small number of participants control a majority of governance tokens. This could lead to unilateral decision-making, including unfavorable changes to protocol parameters or misallocation of funds.
+
+**Governance Manipulation:** The potential for governance proposals to be manipulated by actors with large stakes or through social engineering attacks poses a risk to the protocol's integrity and direction.
+
+
+### Technical Risks
+
+**Smart Contract Vulnerabilities:** Bugs or logical errors in the smart contracts can lead to loss of funds, unauthorized access, or unintended behavior. Given the complexity of contracts like the Shrine, interest rate models, and oracle interactions, the attack surface is significant.
 
 **Scalability Concerns:** As transaction volumes grow, the platform must scale without compromising performance or security.
 
-### Integration Risks
 
-**Compatibility with Different Blockchains:**  Ensuring that Decent works seamlessly across multiple chains requires constant updates and monitoring of changes in those ecosystems.
 
-**Cross-Chain Security:** Security inconsistencies across different blockchains can expose vulnerabilities in cross-chain transactions.
+
 
 ##  j) Packages and Dependencies Analysis 📦
 
