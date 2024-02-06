@@ -77,13 +77,11 @@ Accordingly, I would analyze and audit the subject in the following steps;
 |:--|:----------------|:------|:------|
 |1|Compile and Run Test|[Installation](https://github.com/code-423n4/2024-01-opus?tab=readme-ov-file#tests)|Test and installation structure is simple, cleanly designed|
 |2|Architecture Review| [Opus](https://github.com/code-423n4/2024-01-opus/tree/main/src) |Provides a basic architectural teaching for General Architecture|
-|3|Graphical Analysis  |Graphical Analysis with [Solidity-metrics](https://github.com/ConsenSys/solidity-metrics)|A visual view has been made to dominate the general structure of the codes of the project.|
-|4|Slither Analysis  | [Slither Report](https://github.com/crytic/slither)| Slither report of the project for some basic analysis|
-|5|Test Suits|[Tests](https://github.com/code-423n4/2024-01-opus?tab=readme-ov-file#tests)|In this section, the scope and content of the tests of the project are analyzed.|
-|6|Manuel Code Review|[Scope](https://github.com/code-423n4/2024-01-opus?tab=readme-ov-file#scope)||
-|7|Using Solodit for common vulnerabilities|[Solodit](https://solodit.xyz/)|Using solodit to find common vulnerabilites related to NFT protocol|
-|8|Infographic|[Figma](https://www.figma.com/)|Tried to make Visual drawings to understand the hard-to-understand mechanisms|
-|9|Special focus on Areas of  Concern|[Areas of Concern](https://github.com/code-423n4/2024-01-opus/tree/main/src/core)|Code where I should focus more|
+|3|Test Suits|[Tests](https://github.com/code-423n4/2024-01-opus?tab=readme-ov-file#tests)|In this section, the scope and content of the tests of the project are analyzed.|
+|4|Manuel Code Review|[Scope](https://github.com/code-423n4/2024-01-opus?tab=readme-ov-file#scope)||
+|5|Using Solodit for common vulnerabilities|[Solodit](https://solodit.xyz/)|Using solodit to find common vulnerabilites related to NFT protocol|
+|6|Infographic|[Figma](https://www.figma.com/)|Tried to make Visual drawings to understand the hard-to-understand mechanisms|
+|7|Special focus on Areas of  Concern|[Areas of Concern](https://github.com/code-423n4/2024-01-opus/tree/main/src/core)|Code where I should focus more|
 
 ## d) Analysis of the code base
 
