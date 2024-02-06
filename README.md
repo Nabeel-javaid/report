@@ -3,7 +3,7 @@
 
 <br/>
 
-[![Screenshot-from-2024-02-06-23-48-19.png](https://i.postimg.cc/MH6Hr4Hv/Screenshot-from-2024-02-06-23-48-19.png)](https://postimg.cc/8JYT7ZhS)
+[![Screenshot-from-2024-02-06-23-43-07.png](https://i.postimg.cc/1XCGcctL/Screenshot-from-2024-02-06-23-43-07.png)](https://postimg.cc/QK7Kj7cb)
 
 ### Summary
 | List |Head |Details|
