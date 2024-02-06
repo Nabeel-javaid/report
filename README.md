@@ -11,11 +11,13 @@
 |d) |Analysis of the code base | What is unique? How are the existing patterns used? "Solidity-metrics" was used  |
 |e) |Test analysis | Test scope of the project and quality of tests |
 |f) |Security Approach of the Project | Audit approach of the Project |
-|g) |Codebase Quality | Overall Code Quality of the Project |
-|h) |Other Audit Reports and Automated Findings | What are the previous Audit reports and their analysis |
-|h) |Full representation of the project’s risk model| What are the risks associated with the project |
-|i) |Packages and Dependencies Analysis | Details about the project Packages |
-|j) |New insights and learning of project from this audit | Things learned from the project |
+|g) |In-depth architecture assessment of business logic | Architecture of the Protocol|
+|h) |Codebase Quality | Overall Code Quality of the Project |
+|i) |Other Audit Reports and Automated Findings | What are the previous Audit reports and their analysis |
+|j) |Contract Functionalities| Functionality of different Contracts involved |
+|k) |Full representation of the project’s risk model| What are the risks associated with the project |
+|l) |Packages and Dependencies Analysis | Details about the project Packages |
+|m) |New insights and learning of project from this audit | Things learned from the project |
 
 
 
@@ -312,7 +314,59 @@ Although the security Report of previous Audit isn't public but we can see it th
 - Interest that have not been accrued at the time of shutdown will result in a permanent loss of debt surplus i.e. income. This is intended as the alternative to charge interest on all troves would be too expensive.
 
 
-## j) Full representation of the project’s risk model
+## j) Contract Functionalities
+
+The OPUS protocol encompasses a suite of smart contracts, each designed to fulfill specific roles within the ecosystem, focusing on synthetic asset management, governance, collateralization, and rewards distribution. Below, we delve into the key contracts, outlining their primary functionalities and technical characteristics:
+
+### Shrine Contract
+**Functionalities:**
+- **Minting and Burning of Synthetic Assets:** Enables users to create or destroy synthetic assets by depositing or withdrawing collateral, respectively.
+- **Interest Rate Management:** Dynamically adjusts interest rates based on the protocol's economic conditions to maintain stability and incentivize certain behaviors.
+- **Collateral Management:** Supports multiple types of collateral, managing their valuation and liquidation thresholds to ensure the protocol remains overcollateralized.
+- **Liquidation Mechanism:** Initiates liquidation processes for undercollateralized positions to protect the protocol's integrity and user assets.
+
+**Technical Characteristics:**
+- **Modular Design:** Allows for easy updates and integration of new features or collateral types without disrupting the core functionalities.
+- **Security Mechanisms:** Implements checks and balances, such as reentrancy guards and oracle validation, to mitigate risks associated with smart contract vulnerabilities and price manipulation.
+
+<br/>
+
+[![Screenshot-from-2024-02-07-00-39-26.png](https://i.postimg.cc/MHhVsF9k/Screenshot-from-2024-02-07-00-39-26.png)](https://postimg.cc/0K0zjcgZ)
+
+<br/>
+
+### DAO Governance Contract
+**Functionalities:**
+- **Proposal Submission and Voting:** Facilitates the decentralized governance process, allowing token holders to submit proposals and vote on them.
+- **Protocol Parameter Adjustment:** Authorizes changes to critical protocol parameters, such as interest rates, collateral types, and liquidation thresholds.
+- **Contract Upgrades:** Manages the upgrade process for the protocol's smart contracts, ensuring that changes are made transparently and with community consensus.
+
+**Technical Characteristics:**
+- **Flexible Voting System:** Supports various voting mechanisms, including simple majority and weighted voting, to accommodate different types of decisions.
+- **Timelock Mechanism:** Enforces a delay between proposal approval and execution, providing a window for community review and potential vetoing of contentious decisions.
+
+### Price Oracle Contract
+**Functionalities:**
+- **Price Feeding:** Provides real-time price data for various assets, enabling accurate valuation of collateral and synthetic assets.
+
+
+### Staking and Rewards Contract
+**Functionalities:**
+- **Staking Collateral Tokens:** Allows users to stake collateral tokens to participate in governance and earn rewards.
+- **Rewards Distribution:** Manages the distribution of protocol-generated rewards to stakers based on their contribution and stake size.
+
+**Technical Characteristics:**
+- **Flexible Reward Mechanisms:** Adopts dynamic reward formulas that can adjust based on the performance and staking participation rates.
+- **Governance Integration:** Tightly integrates with the DAO governance contract to allow stakers to exercise their governance rights directly.
+
+### Liquidation Manager Contract
+**Functionalities:**
+- **Automated Liquidation Processes:** Automatically triggers the liquidation of undercollateralized positions to safeguard the protocol's solvency.
+- **Liquidation Auctions:** Facilitates liquidation auctions, allowing participants to bid on collateral from liquidated positions.
+
+
+
+## k) Full representation of the project’s risk model
 
 The OPUS protocol, like any decentralized finance (DeFi) platform, faces several categories of risk, including administrative, systemic, technical, and integration risks. Understanding and mitigating these risks are crucial for the security and efficiency of the protocol.
 
@@ -333,7 +387,7 @@ The OPUS protocol, like any decentralized finance (DeFi) platform, faces several
 
 
 
-##  k) Packages and Dependencies Analysis 📦
+##  l) Packages and Dependencies Analysis 📦
 
 | Package | Usage | 
 | --- |  --- | 
@@ -342,7 +396,7 @@ The OPUS protocol, like any decentralized finance (DeFi) platform, faces several
 
 
 
-## l) New insights and learning of project from this audit:
+## m) New insights and learning of project from this audit:
 
 As an auditor having reviewed the OPUS protocol, the audit process has yielded several insights and learning experiences, emphasizing the complexity and sophistication of decentralized finance (DeFi) ecosystems. Here are the key takeaways:
 
