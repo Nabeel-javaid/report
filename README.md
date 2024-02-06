@@ -261,15 +261,25 @@ Although the security Report of previous Audit isn't public but we can see it th
 
 ## k) New insights and learning of project from this audit:
 
-After thoroughly reviewing the Decent project's codebase and documentation, several new insights and learnings have emerged.
+As an auditor having reviewed the OPUS protocol, the audit process has yielded several insights and learning experiences, emphasizing the complexity and sophistication of decentralized finance (DeFi) ecosystems. Here are the key takeaways:
 
-1. **Innovative Approach to Cross-Chain Interactions**: Decent's utilization of a combination of bridging and swapping mechanisms to facilitate cross-chain transactions is a notable innovation. This approach addresses one of the most significant challenges in the blockchain ecosystem - the seamless transfer of value and interactions across different networks.
+### 1. **Interconnectedness of Contracts**
+The OPUS protocol showcases an intricate web of smart contracts interacting with each other, where the behavior of one contract can significantly impact others. For instance, the Shrine contract's role as the core for synthetic asset management is closely tied to the Interest Rate Model, Price Oracle, and Liquidation Manager, among others. Understanding these interactions is crucial for assessing the protocol's resilience, security, and efficiency.
 
-2. **Fee Management and Optimization**: The way Decent handles transaction fees, particularly in cross-chain contexts, provides valuable insights into cost optimization in blockchain applications.
+### 2. **Importance of Governance**
+The audit process highlighted the critical role of governance in the OPUS protocol, managed through the DAO. It showed how decentralized decision-making processes are embedded into the protocol's operations, from proposing adjustments to executing protocol updates. This underlines the necessity for auditors to examine governance mechanisms thoroughly, ensuring they are secure, fair, and resistant to manipulation.
 
-3. **Scalability and Extensibility**: Decent's architecture, especially the use of adapter patterns for bridging and swapping, demonstrates a scalable approach to blockchain development. The ability to add new swappers and bridge adapters without overhauling the core system architecture allows for future extensibility.
+### 3. **Complexity of Risk Management**
+The protocol's approach to managing risk, particularly through the Liquidation Manager and the Interest Rate Model, demonstrated the nuanced balance required to maintain system stability. Auditing these components provided insights into the challenges of designing DeFi systems that are resilient to market volatility and systemic risks.
+
+### 4. **Oracles as Critical Infrastructure**
+Price Oracles serve as a backbone for the OPUS protocol, feeding necessary market data for various operations, including asset minting/burning and liquidation processes. The audit reinforced the importance of oracles in DeFi protocols and the need to ensure their reliability, security, and resistance to price manipulation or oracle failure.
+
+### 5. **Innovative Use of Staking and Rewards**
+The Staking Rewards contract and the subsequent distribution of incentives illustrate innovative approaches to encourage protocol participation and secure network operations. It was insightful to see how these mechanisms are designed to balance protocol liquidity, user engagement, and governance participation.
 
 
+In conclusion, auditing the OPUS protocol was a comprehensive learning experience, showcasing the depth of innovation in DeFi while also highlighting the critical areas of focus for ensuring the security, stability, and sustainability of such protocols.
 
 Note: I didn't tracked the time, the time I mentioned is just an estimate
 
