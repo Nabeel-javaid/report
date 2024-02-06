@@ -113,6 +113,24 @@ Total : 13 files,  3990 codes, 1489 comments, 1115 blanks, all 6594 lines
 
 **`Core` contracts:** On average there are **4.69** code lines per comment (lower=better).
 
+
+
+
+| File Name               | Core Functionality                                                          | Technical Characteristics                                                                                                  | Importance and Management                                                                       |
+|-------------------------|-----------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------|
+| shrine.cairo          | Manages financial interactions, asset collateral, and debt within the Shrine ecosystem. | Defines complex financial operations, role-based access control, event emissions, and manages deposits, withdrawals, asset rates, and trove management. | Central to the ecosystem's operation, managing core financial mechanisms and user interactions. |
+| pragma.cairo          | Integrates with the Pragma oracle for price data.                          | Implements oracle interaction for price fetching, validity checks, and manages yang-to-pair ID mappings.                   | Critical for ensuring accurate and up-to-date pricing information is used within the ecosystem. |
+| types.cairo           | Defines data types and structures used across the contract system.         | Includes enums, structs, and utility functions for data representation and manipulation.                                   | Fundamental for the system's structure, ensuring consistent and efficient data handling.        |
+| roles.cairo           | Outlines roles and permissions for access control across different modules.| Specifies permissions for actions within the system, facilitating governance and operational security.                     | Key for managing access and actions within the contract, ensuring secure and authorized operations. |
+| absorber.cairo        | Handles absorption of synthetic assets and distribution of rewards.        | Manages the mechanics of absorbing excess assets, distributing rewards, and interaction with blessers for rewards allocation. | Important for maintaining the stability of the synthetic asset and incentivizing participants. |
+| allocator.cairo       | Allocates resources within the ecosystem based on predefined rules.        | Manages the distribution and allocation of resources among various components and users within the system.                 | Ensures efficient resource management and supports the ecosystem's economic balance.            |
+| caretaker.cairo       | Oversees the maintenance and administrative operations.                    | Manages administrative tasks such as system shutdowns, emergency interventions, and operational adjustments.               | Essential for system oversight and managing critical operational aspects in emergency scenarios.|
+| controller.cairo      | Controls operational parameters within the ecosystem.                      | Adjusts key operational parameters such as interest rates, thresholds, and system settings based on governance decisions.  | Central to dynamic system management and adaptation to changing conditions.                     |
+| equalizer.cairo       | Balances resource distribution and access within the ecosystem.            | Manages equitable access to resources, adjusting allocations to ensure a balanced and fair ecosystem.                      | Supports fairness and equity in resource distribution, enhancing system sustainability.         |
+| purger.cairo          | Manages the purging of underperforming or risky assets.                    | Implements mechanisms for identifying and removing risky assets from the system to maintain stability.                      | Critical for risk management and protecting the ecosystem from volatility and failures.         |
+| seer.cairo            | Provides insights and analytics for system performance and metrics.        | Gathers and analyzes data on system operations, offering insights for decision-making and strategic adjustments.            | Supports informed decision-making and strategic planning through data analysis.                 |
+| sentinel.cairo        | Monitors system health and triggers responses to operational anomalies.    | Watches over system operations, triggering automated responses or alerts for anomalies or operational issues.              | Essential for proactive system monitoring and response to ensure continuous stability.          |
+
 ## e) Test analysis
 
 1. Install [Scarb](https://docs.swmansion.com/scarb/download.html) v2.4.0 by running:
