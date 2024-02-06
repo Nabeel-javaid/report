@@ -1,9 +1,6 @@
 # 🛠️ Analysis - Opus
 ***A cross margin credit protocol with autonomous monetary policy and dynamic risk parameters.***
 
-<br/>
-
-[![Screenshot-from-2024-02-06-23-43-07.png](https://i.postimg.cc/1XCGcctL/Screenshot-from-2024-02-06-23-43-07.png)](https://postimg.cc/QK7Kj7cb)
 
 ### Summary
 | List |Head |Details|
@@ -35,6 +32,9 @@ The Opus project is a decentralized finance (DeFi) platform designed to offer us
 6. **PID Controller for Dynamic Adjustments**: Incorporates a PID controller for adaptive and dynamic adjustments within the system, enhancing stability and responsiveness.
 
 ## b) Technical Architecture:
+
+[![Screenshot-from-2024-02-06-23-43-07.png](https://i.postimg.cc/1XCGcctL/Screenshot-from-2024-02-06-23-43-07.png)](https://postimg.cc/QK7Kj7cb)
+
 
 Opus architecture is built around a set of smart contracts, each serving specific roles:
 
