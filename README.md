@@ -416,9 +416,11 @@ The Staking Rewards contract and the subsequent distribution of incentives illus
 
 In conclusion, auditing the OPUS protocol was a comprehensive learning experience, showcasing the depth of innovation in DeFi while also highlighting the critical areas of focus for ensuring the security, stability, and sustainability of such protocols.
 
-Note: I didn't tracked the time, the time I mentioned is just an estimate
+Note: I didn't tracked the time, the time I mentioned is just a number.
+
+
+
 
 
 ### Time spent:
-5 hours
-
+25 hours
