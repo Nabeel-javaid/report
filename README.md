@@ -93,7 +93,7 @@ Accordingly, I would analyze and audit the subject in the following steps;
 |1|Compile and Run Test|[Installation](https://github.com/code-423n4/2024-02-althea-liquid-infrastructure/blob/main/liquid-infrastructure/README.md)|Test and installation structure is simple, cleanly designed|
 |2|Architecture Review| [Althea](https://github.com/code-423n4/2024-02-althea-liquid-infrastructure/tree/main/liquid-infrastructure/contracts) |Provides a basic architectural teaching for General Architecture|
 |3|Test Suits|[Tests](https://github.com/code-423n4/2024-02-althea-liquid-infrastructure/blob/main/liquid-infrastructure/README.md)|In this section, the scope and content of the tests of the project are analyzed.|
-|4|Manuel Code Review|[Scope](https://github.com/code-423n4/2024-02-althea-liquid-infrastructure?tab=readme-ov-file#scope)||
+|4|Manual Code Review|[Scope](https://github.com/code-423n4/2024-02-althea-liquid-infrastructure?tab=readme-ov-file#scope)|| Manually Looking at the code for Bugs
 |5|Using Solodit for common vulnerabilities|[Solodit](https://solodit.xyz/)|Using solodit to find common vulnerabilites related to NFT protocol|
 |6|Infographic|[Figma](https://www.figma.com/)|Tried to make Visual drawings to understand the hard-to-understand mechanisms|
 |7|Special focus on Areas of  Concern|[Areas of Concern](https://github.com/code-423n4/2024-02-althea-liquid-infrastructure?tab=readme-ov-file#attack-ideas-where-to-look-for-bugs)|Code where I should focus more|
