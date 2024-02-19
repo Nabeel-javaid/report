@@ -258,10 +258,7 @@ Overall, I consider the quality of the Althea protocol codebase to be Good. The 
 | **Security Practices**                     | Security is a strong focus, with the use of allowlists for compliance, checks-effects-interactions patterns to prevent reentrancy attacks, and visibility specifiers to control access to functions. However, a formal security audit report would further validate these practices.        |
 | **Testing and Coverage**                   | The project exhibits an impressive commitment to quality and reliability, with test coverage around 95%. This high level of testing, encompassing unit and integration tests, signifies a robust approach to ensuring the functionality and security of the smart contracts against a wide array of potential issues. Such comprehensive testing is indicative of a mature development process and significantly contributes to the project's overall codebase quality.                               |
 | **Upgradeability and Maintenance**         | The project does not explicitly implement upgradeability patterns (e.g., proxy contracts), which might impact long-term maintainability. Considering an upgrade path or versioning strategy could enhance the project's flexibility in addressing future requirements.                  |
-| **Performance and Gas Optimization**       | The code demonstrates an awareness of gas optimization in some areas, such as using mappings for efficient data storage. However, the iterative nature of functions like `distribute` could be optimized for gas efficiency and scalability.                                      |
-| **Compliance and Regulatory Considerations** | The inclusion of an allowlist mechanism demonstrates a proactive approach to regulatory compliance, particularly for KYC and AML standards. Ongoing updates to comply with regulations as they evolve will be essential for the project's sustainability.                            |
-| **Community and Ecosystem Integration**    | The project is designed to integrate well within the broader Ethereum and Cosmos ecosystems, leveraging ERC20 and ERC721 standards. Further community engagement and partnerships could enhance its ecosystem presence and adoption.                                            |
-
+| **Performance and Gas Optimization**       | The code demonstrates an awareness of gas optimization in some areas, such as using mappings for efficient data storage. However, the iterative nature of functions like `distribute` could be optimized for gas efficiency and scalability. 
 ## i) Other Audit Reports and Automated Findings 
 
 **Previous Audits**
@@ -296,7 +293,6 @@ If a distribution has not happened in at least `MinDistributionPeriod` blocks th
   - Supports minting and burning of tokens, particularly in relation to managing the supply in response to investment and revenue distribution activities.
  
  ### High level UML diagram
- <br/>
  [![Screenshot-from-2024-02-19-19-28-42.png](https://i.postimg.cc/523qnLTj/Screenshot-from-2024-02-19-19-28-42.png)](https://postimg.cc/SnnMK2yp)
 
 ### `LiquidInfrastructureNFT.sol`
@@ -314,7 +310,6 @@ If a distribution has not happened in at least `MinDistributionPeriod` blocks th
   - Provides functionalities for managing the lifecycle of the tokenized asset, including updates and recovery actions.
  
   ### High Level UML diagram
-  <br/>
   [![Screenshot-from-2024-02-19-19-25-00.png](https://i.postimg.cc/85yLm4rb/Screenshot-from-2024-02-19-19-25-00.png)](https://postimg.cc/DJXW2q6W)
 
 ### `OwnableApprovableERC721.sol`
@@ -323,7 +318,6 @@ If a distribution has not happened in at least `MinDistributionPeriod` blocks th
   - Extends the ERC721 standard to include enhanced ownership and approval checks, facilitating more granular access control over NFT actions.
 
   ### High Level UML diagram
-  <br/>
   [![Screenshot-from-2024-02-19-19-36-33.png](https://i.postimg.cc/mr6b3pSj/Screenshot-from-2024-02-19-19-36-33.png)](https://postimg.cc/rdxXMJ3R)
 
 This summary captures the core functionalities of the contracts involved in the Althea Liquid Infrastructure project, highlighting how they work together to facilitate the tokenization of assets, manage investment, and distribute revenue within a secure and compliant framework. The emphasis on regulatory compliance, security, and operational flexibility underscores the project's innovative approach to integrating real-world assets with blockchain technology.
