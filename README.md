@@ -73,11 +73,9 @@ Given the detailed examination of the Althea Liquid Infrastructure project's sma
 <br/>
 
 
-### Domain Model of the Protocol
+### State Model of the Protocol
 
-
-
-[![Screenshot-from-2024-02-06-23-27-58.png](https://i.postimg.cc/fRL9f9QN/Screenshot-from-2024-02-06-23-27-58.png)](https://postimg.cc/2Vsyz35c)
+[![Screenshot-from-2024-02-19-22-31-52.png](https://i.postimg.cc/T32L2vD0/Screenshot-from-2024-02-19-22-31-52.png)](https://postimg.cc/WhKbSKSq)
 
 <br/>
 
@@ -357,7 +355,7 @@ Admin Abuse Risks within the Althea project pertain to potential vulnerabilities
 
 | Package | Usage | 
 | --- |  --- | 
-| [`openzeppelin`](https://www.npmjs.com/package/@openzeppelin/contracts)  |  Project uses version `4.3.1 while the recommended version is latest stable version i.e: `5.0.1` 
+| [`openzeppelin`](https://www.npmjs.com/package/@openzeppelin/contracts)  |  Project uses version `4.3.1` while the recommended version is latest stable version i.e: `5.0.1` 
 
 
 ## m) New insights and learning of project from this audit:
