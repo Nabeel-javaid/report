@@ -42,17 +42,25 @@ The Althea Liquid Infrastructure project represents a groundbreaking initiative 
 
 [![Screenshot-from-2024-02-19-13-31-22.png](https://i.postimg.cc/LsHyBbZw/Screenshot-from-2024-02-19-13-31-22.png)](https://postimg.cc/4YSbXwPQ)
 
+<br/>
+
+
 Althea Liquid Infrastructure architecture is built around a set of smart contracts, each serving specific roles:
+
+
+Given the detailed examination of the Althea Liquid Infrastructure project's smart contracts, here is a summary in the requested MDN format that outlines the core functionalities, technical characteristics, and their importance and management within the protocol:
 
 <br/>
 
-Given the detailed examination of the Althea Liquid Infrastructure project's smart contracts, here is a summary in the requested MDN format that outlines the core functionalities, technical characteristics, and their importance and management within the protocol:
 
 | File Name                       | Core Functionality                                                      | Technical Characteristics                                                                                           | Importance and Management                                                                                       |
 |---------------------------------|-------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------|
 | `LiquidInfrastructureERC20.sol` | Manages the ERC20 token for investment and revenue distribution.        | - Implements ERC20 standard<br>- Automated revenue distribution<br>- Allowlist for regulatory compliance           | Central to the project's investment mechanism and ensures regulatory compliance and equitable revenue sharing.  |
 | `LiquidInfrastructureNFT.sol`   | Represents real-world assets as NFTs and manages revenue generation.    | - ERC721-based NFTs<br>- Revenue threshold management<br>- Revenue withdrawal to ERC20 contract                     | Facilitates the tokenization of assets and is key to generating and managing revenue from these assets.         |
 | `OwnableApprovableERC721.sol`   | Provides extended ownership and approval functionalities for ERC721 NFTs. | - Enhanced access controls<br>- Ownership and approval checks beyond standard ERC721                                | Ensures secure and flexible management of NFT assets, particularly for operations requiring specific permissions.|
+
+<br/>
+
 
 ### Explanation
 
@@ -62,11 +70,17 @@ Given the detailed examination of the Althea Liquid Infrastructure project's sma
 
 - **`OwnableApprovableERC721.sol`**: This contract extends the standard ERC721 functionality with more granular ownership and approval controls. It is instrumental for scenarios where multiple parties interact with a single NFT, such as asset management or revenue collection processes. By providing a robust framework for permissions and approvals, it enhances the security and flexibility of NFT operations within the project, ensuring that only authorized actions are taken on critical assets.
 
+<br/>
+
+
 ### Domain Model of the Protocol
 
 <br/>
 
 [![Screenshot-from-2024-02-06-23-27-58.png](https://i.postimg.cc/fRL9f9QN/Screenshot-from-2024-02-06-23-27-58.png)](https://postimg.cc/2Vsyz35c)
+
+<br/>
+
 
 ## c) The approach I would follow when reviewing the code
 
@@ -110,14 +124,19 @@ Total : 3 files,  377 codes, 283 comments, 69 blanks, all 729 lines
 ## Files
 | filename | language | code | comment | blank | total |
 | :--- | :--- | ---: | ---: | ---: | ---: |
-| [liquid-infrastructure/contracts/LiquidInfrastructureERC20.sol](/liquid-infrastructure/contracts/LiquidInfrastructureERC20.sol) | Solidity | 270 | 157 | 51 | 478 |
-| [liquid-infrastructure/contracts/LiquidInfrastructureNFT.sol](/liquid-infrastructure/contracts/LiquidInfrastructureNFT.sol) | Solidity | 88 | 105 | 14 | 207 |
-| [liquid-infrastructure/contracts/OwnableApprovableERC721.sol](/liquid-infrastructure/contracts/OwnableApprovableERC721.sol) | Solidity | 19 | 21 | 4 | 44 |
+| [LiquidInfrastructureERC20.sol](https://github.com/code-423n4/2024-02-althea-liquid-infrastructure/blob/main/liquid-infrastructure/contracts/LiquidInfrastructureERC20.sol) | Solidity | 270 | 157 | 51 | 478 |
+| [LiquidInfrastructureNFT.sol](https://github.com/code-423n4/2024-02-althea-liquid-infrastructure/blob/main/liquid-infrastructure/contracts/LiquidInfrastructureNFT.sol) | Solidity | 88 | 105 | 14 | 207 |
+| [OwnableApprovableERC721.sol](https://github.com/code-423n4/2024-02-althea-liquid-infrastructure/blob/main/liquid-infrastructure/contracts/OwnableApprovableERC721.sol) | Solidity | 19 | 21 | 4 | 44 |
 
+<br/>
+
+[![Screenshot-from-2024-02-19-14-56-43.png](https://i.postimg.cc/hjnNT0Cw/Screenshot-from-2024-02-19-14-56-43.png)](https://postimg.cc/GBMM1vnJ)
+
+<br/>
 
 ## Comment-to-Source Ratio:
 
-**`Core` contracts:** On average there are **4.69** code lines per comment (lower=better).
+**`Core` contracts:** On average there are **1.31** code lines per comment (lower=better).
 
 
 
