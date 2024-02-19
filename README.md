@@ -384,23 +384,23 @@ The audit of the Althea Liquid Infrastructure project has yielded several critic
 
 The audit of the Althea Liquid Infrastructure project has identified several points of improvement that could enhance the project's functionality, security, and user experience. Addressing these areas can contribute significantly to the project's success and sustainability in the rapidly evolving blockchain ecosystem.
 
-### 1. **Upgradeability and Future-proofing**
+#### 1. **Upgradeability and Future-proofing**
 
 - **Implement Upgradeable Smart Contracts**: Utilizing proxy contracts or other upgradeability patterns can allow for future improvements and bug fixes without disrupting the existing ecosystem. This approach would enhance the project's flexibility and longevity.
 
-### 2. **Gas Efficiency and Optimization**
+#### 2. **Gas Efficiency and Optimization**
 
 - **Optimize Contract Functions for Gas Usage**: Analyzing and optimizing functions, especially those involving loops or large-scale data manipulation, can reduce transaction costs. optimizing storage variables, and minimizing state changes can contribute to efficiency.
 
-### 3. **Decentralized Governance**
+#### 3. **Decentralized Governance**
 
 - **Introduce Decentralized Governance Mechanisms**: Developing a DAO (Decentralized Autonomous Organization) for governance decisions, particularly around key parameters like revenue distribution ratios, allowlist criteria, and asset management policies, can further decentralize the project and align with blockchain principles.
 
-### 4. **Security and Auditing**
+#### 4. **Security and Auditing**
 
 - **Expand Bug Bounty Programs**: Establishing or expanding bug bounty programs can incentivize the community and security researchers to identify and report vulnerabilities, enhancing the project's overall security posture.
 
-### 5. **Market Adaptation and Integration**
+#### 5. **Market Adaptation and Integration**
 
 - **Cross-chain Functionality**: Investigating and implementing cross-chain interoperability solutions can open up wider markets and enhance the project's attractiveness by connecting with other blockchain ecosystems.
 
