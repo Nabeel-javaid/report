@@ -5,7 +5,7 @@
 ### Summary
 | List |Head |Details|
 |:--|:----------------|:------|
-|a) |Overview of the Opus Project| Summary of the whole Protocol |
+|a) |Overview of the Althea Project| Summary of the whole Protocol |
 |b) |Technical Architecture| Architecture of the smart contracts |
 |c) |The approach I would follow when reviewing the code | Stages in my code review and analysis |
 |d) |Analysis of the code base | What is unique? How are the existing patterns used? "Solidity-metrics" was used  |
@@ -22,7 +22,7 @@
 
 
 
-## a) Overview of the Opus Project
+## a) Overview of the Althea Project
 
 The Althea Liquid Infrastructure project represents a groundbreaking initiative within the blockchain space, aiming to bridge the gap between real-world infrastructure assets and digital finance. By leveraging the power of blockchain technology, specifically through the use of Non-Fungible Tokens (NFTs) and a bespoke ERC20 token, the project introduces a novel approach to tokenizing, managing, and monetizing infrastructure assets in a decentralized manner.
 
@@ -85,7 +85,7 @@ Given the detailed examination of the Althea Liquid Infrastructure project's sma
 ## c) The approach I would follow when reviewing the code
 
 First, by examining the scope of the code, I determined my code review and analysis strategy.
-https://code4rena.com/audits/2024-01-opus#top
+https://code4rena.com/audits/2024-02-althea-liquid-infrastructure#top
 
 Accordingly, I would analyze and audit the subject in the following steps;
 
@@ -262,7 +262,7 @@ Overall, I consider the quality of the Althea protocol codebase to be Good. The 
 ## i) Other Audit Reports and Automated Findings 
 
 **Previous Audits**
-Although the security Report of previous Audit isn't public but we can see it the docs that the `opus_contracts` already went an audit
+I've searched the docs and overview on code4rena but couldn't find any previous audit
 
 **[Known issues and risks](https://github.com/code-423n4/2024-02-althea-liquid-infrastructure/blob/main/bot-report.md)**
 **[4naly3er Report](https://github.com/code-423n4/2024-02-althea-liquid-infrastructure/blob/main/4naly3er-report.md)**
@@ -323,8 +323,6 @@ If a distribution has not happened in at least `MinDistributionPeriod` blocks th
 This summary captures the core functionalities of the contracts involved in the Althea Liquid Infrastructure project, highlighting how they work together to facilitate the tokenization of assets, manage investment, and distribute revenue within a secure and compliant framework. The emphasis on regulatory compliance, security, and operational flexibility underscores the project's innovative approach to integrating real-world assets with blockchain technology.
 
 ## k) Full representation of the project’s risk model
-
-The OPUS protocol, like any decentralized finance (DeFi) platform, faces several categories of risk, including administrative, systemic, technical, and integration risks. Understanding and mitigating these risks are crucial for the security and efficiency of the protocol.
 
 ### Admin Abuse Risks
 
