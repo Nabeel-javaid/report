@@ -18,6 +18,7 @@
 |k) |Full representation of the project’s risk model| What are the risks associated with the project |
 |l) |Packages and Dependencies Analysis | Details about the project Packages |
 |m) |New insights and learning of project from this audit | Things learned from the project |
+|n) |Point of improvements | Things that could be improved |
 
 
 
@@ -127,7 +128,7 @@ Total : 3 files,  377 codes, 283 comments, 69 blanks, all 729 lines
 | [LiquidInfrastructureNFT.sol](https://github.com/code-423n4/2024-02-althea-liquid-infrastructure/blob/main/liquid-infrastructure/contracts/LiquidInfrastructureNFT.sol) | Solidity | 88 | 105 | 14 | 207 |
 | [OwnableApprovableERC721.sol](https://github.com/code-423n4/2024-02-althea-liquid-infrastructure/blob/main/liquid-infrastructure/contracts/OwnableApprovableERC721.sol) | Solidity | 19 | 21 | 4 | 44 |
 
-<br/>
+
 
 ## Comment-to-Source Ratio:
 
@@ -137,22 +138,20 @@ Total : 3 files,  377 codes, 283 comments, 69 blanks, all 729 lines
 
 ## e) Test analysis
 
-1. Install [Scarb](https://docs.swmansion.com/scarb/download.html) v2.4.0 by running:
+1. Installing node modules by running:
 ```
-curl --proto '=https' --tlsv1.2 -sSf https://docs.swmansion.com/scarb/install.sh | sh -s -- -v 2.4.0
+npm install
 ```
-2. Install [Starknet Foundry](https://github.com/foundry-rs/starknet-foundry) v0.13.1 by running:
+2. Compiling the code:
 ```
-curl -L https://raw.githubusercontent.com/foundry-rs/starknet-foundry/master/scripts/install.sh | sh
-
-snfoundryup -v 0.13.1
+npm run compile
 ```
-3. Run `scarb test`.
+3. Run `npm run test`.
 
 ### What did the project do differently? ;
 -   1) It can be said that the developers of the project did a quality job, there is a test structure consisting of tests with quality content. In particular, tests have been written successfully.
 
--   2) Overall line coverage percentage provided by your tests : 90
+-   2) Overall line coverage percentage provided by your tests : 95.09%
 
 ### What could they have done better?
 
@@ -171,12 +170,7 @@ Ref:https://xin-xia.github.io/publication/icse194.pdf
 
 ### Successful current security understanding of the project;
 
-1- The project has already underwent an audits(stated in the docs), this innovative assessments on Code4rena is the second audit, where multiple auditors are scrutinizing the code.
-
-According to the Docs, which can be found [here](https://demo-35.gitbook.io/untitled/security/external)
-
- `The core contracts found in opus_contracts directory have been audited by:`
-- Trail of Bits
+1- The project hasn't underwent any audit(nothing stated in the docs), this innovative assessments on Code4rena is the first one, where multiple auditors are scrutinizing the code.
 
 ### What the project should add in the understanding of Security;
 
@@ -215,54 +209,21 @@ https://twitter.com/Ledger/status/1735326240658100414?t=UAuzoir9uliXplerqP-Ing&s
 ## g) In-depth architecture assessment of business logic
 
 
-The OPUS protocol's architecture is meticulously designed to serve as an advanced framework for synthetic asset management within the DeFi ecosystem, emphasizing modularity, security, and scalability. This architecture facilitates the creation, trading, and management of synthetic assets by leveraging blockchain technology to offer a decentralized, transparent, and efficient alternative to traditional financial instruments.
+The Althea Liquid Infrastructure project leverages blockchain technology to create a novel ecosystem for tokenizing real-world infrastructure assets, managing these assets, and distributing generated revenue. The project's architecture is meticulously designed to encapsulate the business logic central to its value proposition. This in-depth assessment focuses on the architecture's components, interactions, and the rationale behind the design choices, strictly within the domain of the project.
 
-### Shrine Contract: The Heart of OPUS
+### Core Components
 
-At the core of the OPUS protocol is the Shrine Contract, a sophisticated smart contract that manages the lifecycle of synthetic assets. It is responsible for:
+**1. Tokenization of Assets (NFTs):** The project uses Non-Fungible Tokens (NFTs) to represent ownership and the unique characteristics of each real-world asset. This choice allows for the precise tracking of individual assets' performance and revenue generation. The `LiquidInfrastructureNFT.sol` contract is responsible for this, embedding the business logic for asset management, including revenue thresholds and withdrawals. This design choice enables a clear delineation between the asset and its financial operations, facilitating easier management and valuation.
 
-- **Minting and Burning:** Users can mint new synthetic assets by locking collateral in the Shrine Contract. Similarly, assets can be burned to release the underlying collateral, maintaining a stable and secure backing for each synthetic asset issued.
-- **Interest Rate Adjustment:** Employing an algorithmic approach, the Shrine Contract dynamically adjusts interest rates based on the total supply and demand within the protocol, optimizing economic incentives and ensuring system stability.
-- **Collateral Management:** The contract manages a diverse range of collateral types, adjusting collateralization ratios in real-time to reflect market conditions and mitigate risks associated with price volatility.
-- **Liquidation Protocol:** Incorporates a robust liquidation mechanism to safeguard against undercollateralized positions, ensuring the protocol's solvency and protecting users' interests.
+**2. Revenue Distribution (ERC20 Tokens):** At the heart of the ecosystem is the `LiquidInfrastructureERC20.sol` contract, which embodies the business logic for aggregating revenue from assets (NFTs) and distributing it among token holders. This ERC20 token serves as a collective investment vehicle, allowing investors to buy into the infrastructure portfolio and receive dividends. The decision to implement an ERC20 token for this purpose stems from its suitability for creating a divisible, tradeable asset that can represent a stake in the revenue generated by the underlying assets.
 
-### Decentralized Autonomous Organization (DAO)
+**3. Regulatory Compliance and Security (Allowlist):** The project incorporates an allowlist mechanism within the ERC20 contract to ensure compliance with regulatory standards, such as KYC and AML. This feature is critical for maintaining the legitimacy and security of the investment platform, allowing only verified users to participate. This layer of business logic is crucial for operating within legal frameworks and protecting the integrity of the investment process.
 
-Governance within the OPUS protocol is decentralized and democratized through the DAO, which allows token holders to propose, vote on, and implement changes to the protocol. This includes:
+### Architectural Interactions
 
-- **Parameter Adjustments:** The DAO has the authority to modify critical protocol parameters, such as collateralization ratios, interest rates, and supported collateral types, in response to evolving market dynamics.
-- **Protocol Upgrades:** Through collective decision-making, the community can introduce new features, optimize existing ones, and make strategic decisions to steer the protocol's development direction.
-- **Reward Distribution:** The DAO also oversees the distribution of rewards within the protocol, ensuring that incentives are aligned with the protocol's long-term health and sustainability.
+The interaction between the NFT and ERC20 contracts forms the backbone of the project's business logic. Assets are tokenized into NFTs, each with its revenue-generation capabilities. The revenue is then pooled and distributed through the ERC20 tokens, linking the asset management component directly with investor returns. This architecture facilitates a direct correlation between the performance of individual assets and the dividends received by investors, embedding transparency and fairness into the business model.
 
-### Price Oracle Integration
-
-The OPUS protocol relies on accurate and timely price data to manage synthetic assets effectively. It integrates with trusted price oracles to:
-
-- **Provide Real-time Pricing:** Ensures that all synthetic assets are minted, traded, and liquidated at fair market values.
-- **Mitigate Oracle Risks:** Implements multiple oracle sources and fallback mechanisms to protect against single points of failure and ensure data integrity.
-
-### Staking and Rewards Mechanism
-
-To incentivize participation and secure the protocol, OPUS implements a staking and rewards mechanism:
-
-- **Staking for Security:** Users can stake tokens to participate in governance, secure the network, and contribute to the protocol's stability.
-- **Dynamic Rewards Distribution:** The protocol dynamically adjusts reward distributions based on participation levels and system needs, encouraging behaviors that enhance protocol health.
-
-In summary, the OPUS protocol's architecture is a testament to the power of combining DeFi innovations with traditional finance principles, offering a comprehensive platform for synthetic asset management. Its emphasis on decentralization, security, and user-centricity positions it as a significant player in the DeFi space, poised to address the challenges of modern finance with blockchain solutions.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+The allowlist mechanism further interacts with the ERC20 token distribution process, ensuring that only eligible participants receive revenue. This interaction underscores the project's commitment to regulatory compliance and security, integrating these considerations seamlessly into the business logic.
 
 
 
@@ -287,89 +248,85 @@ In summary, the OPUS protocol's architecture is a testament to the power of comb
 
 ## h) Codebase Quality
 
-Overall, I consider the quality of the Opus protocol codebase to be Good. The code appears to be mature and well-developed. We have noticed the implementation of various standards adhere to appropriately. Details are explained below:
+Overall, I consider the quality of the Althea protocol codebase to be Good. The code appears to be mature and well-developed. We have noticed the implementation of various standards adhere to appropriately. Details are explained below:
 
 
 | Codebase Quality Categories                | Comments                                                                                                                                                                                                                                                |
 | ------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Code Clarity and Readability**           | The codebase demonstrates good clarity and readability. It follows consistent naming conventions, making it easier for developers to understand and maintain. Documentation is present, but additional comments could enhance understanding in complex areas.            |
-| **Code Structure and Formatting**          | The codebase is well-structured and follows consistent formatting practices. Code is organized logically, which aids in readability and maintainability.                                                                                        |
-| **Modularity and Organization**            | The codebase is well-organized, with clear separation of concerns into different contracts and modules. Each contract/module has a distinct purpose, which aids in maintainability and upgrades.                                                      |
-| **Security Considerations**                | Security considerations are a top priority in the codebase. The use of time-lock mechanisms, role-based access control, and carefully designed functions mitigates risks and vulnerabilities. Extensive testing and auditing further enhance security.                   |
-| **Gas Efficiency and Optimization**        | Gas efficiency is a key focus, with gas optimization techniques applied where possible. For instance, flash minting is implemented efficiently to minimize gas costs.                                                                            |
-| **Testing and Test Coverage**              | Comprehensive testing is evident with a high test coverage percentage (90%). Test cases encompass various scenarios, ensuring robustness and reliability.                                                                                           |                                         |
-| **External Dependencies and Imports**       | The codebase does not rely on external dependencies or imports, reducing complexity and ensuring self-sufficiency.                                                                   |
-| **Code Comments**       | While the codebase contains some comments, additional detailed comments should be added, especially in complex sections. These comments will significantly enhance code comprehension and serve as valuable documentation.                                                                   |
-| **Documentation and Comments**             | Documentation is present but could benefit from additional explanatory comments in certain complex sections. Overall, the codebase is adequately documented, making it accessible to developers and auditors.                                      |
-| **Error Handling and Recovery**            | The codebase handles errors gracefully, with well-structured error messages and recovery mechanisms.                                                                                   |
-| **Compliance with Best Practices**         | The codebase aligns with blockchain best practices, including ERC-20 standards, role-based access control, and timelock mechanisms. It adheres to well-established coding patterns.                                                               |
-
+| **Readability and Documentation**          | The codebase is well-documented with clear comments explaining the functionality of major components and functions. Naming conventions are consistent and descriptive, enhancing readability and making the codebase accessible to developers and auditors. |
+| **Architecture and Design Patterns**       | The project employs a solid architectural design, separating concerns between asset tokenization (NFTs) and revenue distribution (ERC20 tokens). It effectively uses design patterns like Ownable for access control and ReentrancyGuard for security.    |
+| **Security Practices**                     | Security is a strong focus, with the use of allowlists for compliance, checks-effects-interactions patterns to prevent reentrancy attacks, and visibility specifiers to control access to functions. However, a formal security audit report would further validate these practices.        |
+| **Testing and Coverage**                   | The project exhibits an impressive commitment to quality and reliability, with test coverage around 95%. This high level of testing, encompassing unit and integration tests, signifies a robust approach to ensuring the functionality and security of the smart contracts against a wide array of potential issues. Such comprehensive testing is indicative of a mature development process and significantly contributes to the project's overall codebase quality.                               |
+| **Upgradeability and Maintenance**         | The project does not explicitly implement upgradeability patterns (e.g., proxy contracts), which might impact long-term maintainability. Considering an upgrade path or versioning strategy could enhance the project's flexibility in addressing future requirements.                  |
+| **Performance and Gas Optimization**       | The code demonstrates an awareness of gas optimization in some areas, such as using mappings for efficient data storage. However, the iterative nature of functions like `distribute` could be optimized for gas efficiency and scalability.                                      |
+| **Compliance and Regulatory Considerations** | The inclusion of an allowlist mechanism demonstrates a proactive approach to regulatory compliance, particularly for KYC and AML standards. Ongoing updates to comply with regulations as they evolve will be essential for the project's sustainability.                            |
+| **Community and Ecosystem Integration**    | The project is designed to integrate well within the broader Ethereum and Cosmos ecosystems, leveraging ERC20 and ERC721 standards. Further community engagement and partnerships could enhance its ecosystem presence and adoption.                                            |
 
 ## i) Other Audit Reports and Automated Findings 
 
 **Previous Audits**
 Although the security Report of previous Audit isn't public but we can see it the docs that the `opus_contracts` already went an audit
-[Trail of Bits](https://demo-35.gitbook.io/untitled/security/external)
 
-**[Known issues and risks](https://github.com/code-423n4/2024-01-opus?tab=readme-ov-file#automated-findings--publicly-known-issues)**
+**[Known issues and risks](https://github.com/code-423n4/2024-02-althea-liquid-infrastructure/blob/main/bot-report.md)**
+**[4naly3er Report](https://github.com/code-423n4/2024-02-althea-liquid-infrastructure/blob/main/4naly3er-report.md)**
 
-- The protocol relies on a trusted and honest admin with superuser privileges for all modules with access control at launch.
-- There is currently no fallback oracle. This is planned once more oracles are live on Starknet.
-- Interest is not accrued on redistributed debt until they have been attributed to a trove. This is intended as the alternative would be too computationally intensive.
-- Interest that have not been accrued at the time of shutdown will result in a permanent loss of debt surplus i.e. income. This is intended as the alternative to charge interest on all troves would be too expensive.
+
+* Some of the variables in LiquidInfrastructureNFT.sol will have no effect on most EVM chains (in particular: `thresholdErc20s`, `thresholdAmounts`, `getThresholds()`, `setThresholds()`, and `recoverAccount()`).
+These values and functions are all specific to deployment on Althea-L1 and will interact with Althea-L1's Cosmos module functionality. These contract elements are not out of scope, but the interaction between these elements and any Cosmos modules should not be considered.
+* In order to simplify the distribution logic and accounting of LiquidInfrastructureERC20.sol, many contract functions periodically become blocked.
+During a revenue distribution all token transfers should be blocked (including mints and burns).
+If a distribution has not happened in at least `MinDistributionPeriod` blocks then all mints and burns should be blocked.
+
 
 
 ## j) Contract Functionalities
 
-The OPUS protocol encompasses a suite of smart contracts, each designed to fulfill specific roles within the ecosystem, focusing on synthetic asset management, governance, collateralization, and rewards distribution. Below, we delve into the key contracts, outlining their primary functionalities and technical characteristics:
+### `LiquidInfrastructureERC20.sol`
 
-### Shrine Contract
-**Functionalities:**
-- **Minting and Burning of Synthetic Assets:** Enables users to create or destroy synthetic assets by depositing or withdrawing collateral, respectively.
-- **Interest Rate Management:** Dynamically adjusts interest rates based on the protocol's economic conditions to maintain stability and incentivize certain behaviors.
-- **Collateral Management:** Supports multiple types of collateral, managing their valuation and liquidation thresholds to ensure the protocol remains overcollateralized.
-- **Liquidation Mechanism:** Initiates liquidation processes for undercollateralized positions to protect the protocol's integrity and user assets.
+- **Investment and Token Holding**:
+  - Allows users to invest in and hold ERC20 tokens representing a share of the project's revenue pool.
 
-**Technical Characteristics:**
-- **Modular Design:** Allows for easy updates and integration of new features or collateral types without disrupting the core functionalities.
-- **Security Mechanisms:** Implements checks and balances, such as reentrancy guards and oracle validation, to mitigate risks associated with smart contract vulnerabilities and price manipulation.
+- **Revenue Distribution**:
+  - Automates the distribution of revenue generated by the underlying assets to token holders.
+  
+- **Allowlist Management**:
+  - Implements an allowlist to ensure only verified and approved users can hold tokens, supporting regulatory compliance (KYC/AML).
 
-<br/>
+- **Token Minting and Burning**:
+  - Supports minting and burning of tokens, particularly in relation to managing the supply in response to investment and revenue distribution activities.
+ 
+ ### High level UML diagram
+ <br/>
+ [![Screenshot-from-2024-02-19-19-28-42.png](https://i.postimg.cc/523qnLTj/Screenshot-from-2024-02-19-19-28-42.png)](https://postimg.cc/SnnMK2yp)
 
-[![Screenshot-from-2024-02-07-00-39-26.png](https://i.postimg.cc/MHhVsF9k/Screenshot-from-2024-02-07-00-39-26.png)](https://postimg.cc/0K0zjcgZ)
+### `LiquidInfrastructureNFT.sol`
 
-<br/>
+- **Asset Tokenization**:
+  - Facilitates the tokenization of assets into NFTs, providing a digital representation on the blockchain.
 
-### DAO Governance Contract
-**Functionalities:**
-- **Proposal Submission and Voting:** Facilitates the decentralized governance process, allowing token holders to submit proposals and vote on them.
-- **Protocol Parameter Adjustment:** Authorizes changes to critical protocol parameters, such as interest rates, collateral types, and liquidation thresholds.
-- **Contract Upgrades:** Manages the upgrade process for the protocol's smart contracts, ensuring that changes are made transparently and with community consensus.
+- **Revenue Generation and Withdrawal**:
+  - Manages the generation of revenue by the assets and enables the withdrawal of accumulated revenue to the ERC20 contract for distribution.
 
-**Technical Characteristics:**
-- **Flexible Voting System:** Supports various voting mechanisms, including simple majority and weighted voting, to accommodate different types of decisions.
-- **Timelock Mechanism:** Enforces a delay between proposal approval and execution, providing a window for community review and potential vetoing of contentious decisions.
+- **Operational Threshold Management**:
+  - Allows for setting and adjusting revenue thresholds for each asset, ensuring operational liquidity is maintained.
 
-### Price Oracle Contract
-**Functionalities:**
-- **Price Feeding:** Provides real-time price data for various assets, enabling accurate valuation of collateral and synthetic assets.
+- **Asset Management Functions**:
+  - Provides functionalities for managing the lifecycle of the tokenized asset, including updates and recovery actions.
+ 
+  ### High Level UML diagram
+  <br/>
+  [![Screenshot-from-2024-02-19-19-25-00.png](https://i.postimg.cc/85yLm4rb/Screenshot-from-2024-02-19-19-25-00.png)](https://postimg.cc/DJXW2q6W)
 
+### `OwnableApprovableERC721.sol`
 
-### Staking and Rewards Contract
-**Functionalities:**
-- **Staking Collateral Tokens:** Allows users to stake collateral tokens to participate in governance and earn rewards.
-- **Rewards Distribution:** Manages the distribution of protocol-generated rewards to stakers based on their contribution and stake size.
+- **Ownership and Approval Enhancements**:
+  - Extends the ERC721 standard to include enhanced ownership and approval checks, facilitating more granular access control over NFT actions.
 
-**Technical Characteristics:**
-- **Flexible Reward Mechanisms:** Adopts dynamic reward formulas that can adjust based on the performance and staking participation rates.
-- **Governance Integration:** Tightly integrates with the DAO governance contract to allow stakers to exercise their governance rights directly.
+  ### High Level UML diagram
+  <br/>
+  [![Screenshot-from-2024-02-19-19-36-33.png](https://i.postimg.cc/mr6b3pSj/Screenshot-from-2024-02-19-19-36-33.png)](https://postimg.cc/rdxXMJ3R)
 
-### Liquidation Manager Contract
-**Functionalities:**
-- **Automated Liquidation Processes:** Automatically triggers the liquidation of undercollateralized positions to safeguard the protocol's solvency.
-- **Liquidation Auctions:** Facilitates liquidation auctions, allowing participants to bid on collateral from liquidated positions.
-
-
+This summary captures the core functionalities of the contracts involved in the Althea Liquid Infrastructure project, highlighting how they work together to facilitate the tokenization of assets, manage investment, and distribute revenue within a secure and compliant framework. The emphasis on regulatory compliance, security, and operational flexibility underscores the project's innovative approach to integrating real-world assets with blockchain technology.
 
 ## k) Full representation of the project’s risk model
 
@@ -377,9 +334,23 @@ The OPUS protocol, like any decentralized finance (DeFi) platform, faces several
 
 ### Admin Abuse Risks
 
-**Centralization of Control:** Even with decentralized governance structures like DAOs, the risk of admin abuse exists if a small number of participants control a majority of governance tokens. This could lead to unilateral decision-making, including unfavorable changes to protocol parameters or misallocation of funds.
+Admin Abuse Risks within the Althea project pertain to potential vulnerabilities and threats that stem from centralized control or misuse of administrative privileges within the smart contract ecosystem. These risks can compromise the integrity, security, and trust in the project.
 
-**Governance Manipulation:** The potential for governance proposals to be manipulated by actors with large stakes or through social engineering attacks poses a risk to the protocol's integrity and direction.
+
+1. **Centralized Control Over Allowlist Management**:
+   The functionality for managing the allowlist, which controls who can buy, sell, or hold the ERC20 tokens, resides with the contract owner or admin. Misuse of this privilege can lead to unfair exclusion or inclusion, manipulation of token distribution, or preferential treatment.
+
+   ```solidity
+   function approveHolder(address holder) public onlyOwner {
+       require(!isApprovedHolder(holder), "holder already approved");
+       HolderAllowlist[holder] = true;
+   }
+
+   function disapproveHolder(address holder) public onlyOwner {
+       require(isApprovedHolder(holder), "holder not approved");
+       HolderAllowlist[holder] = false;
+   }
+   ```
 
 
 ### Technical Risks
@@ -390,44 +361,66 @@ The OPUS protocol, like any decentralized finance (DeFi) platform, faces several
 
 
 
-
-
 ##  l) Packages and Dependencies Analysis 📦
 
 | Package | Usage | 
 | --- |  --- | 
-| [`starknet`](https://docs.swmansion.com/scarb/download.html#stable-version)  |  Project uses version `2.4.0` while the recommended version is latest stable version i.e: `2.5.3` 
-| [`snforge_std`](https://github.com/foundry-rs/starknet-foundry)  |  Project uses version `0.13.1` while the recommended version is latest stable version i.e: `0.16.0` 
-
+| [`openzeppelin`](https://www.npmjs.com/package/@openzeppelin/contracts)  |  Project uses version `4.3.1 while the recommended version is latest stable version i.e: `5.0.1` 
 
 
 ## m) New insights and learning of project from this audit:
 
-As an auditor having reviewed the OPUS protocol, the audit process has yielded several insights and learning experiences, emphasizing the complexity and sophistication of decentralized finance (DeFi) ecosystems. Here are the key takeaways:
+The audit of the Althea Liquid Infrastructure project has yielded several critical insights and learnings that are pivotal not only for the project's refinement but also offer broader implications for blockchain-based real-world asset management systems. These insights are rooted in the project's unique approach, its implementation details, and the potential pathways for its evolution.
 
-### 1. **Interconnectedness of Contracts**
-The OPUS protocol showcases an intricate web of smart contracts interacting with each other, where the behavior of one contract can significantly impact others. For instance, the Shrine contract's role as the core for synthetic asset management is closely tied to the Interest Rate Model, Price Oracle, and Liquidation Manager, among others. Understanding these interactions is crucial for assessing the protocol's resilience, security, and efficiency.
+### Innovations in Asset Tokenization and Revenue Distribution
 
-### 2. **Importance of Governance**
-The audit process highlighted the critical role of governance in the OPUS protocol, managed through the DAO. It showed how decentralized decision-making processes are embedded into the protocol's operations, from proposing adjustments to executing protocol updates. This underlines the necessity for auditors to examine governance mechanisms thoroughly, ensuring they are secure, fair, and resistant to manipulation.
+- **Hybrid Token Model**: The project's innovative use of NFTs to represent real-world assets and ERC20 tokens to distribute revenue derived from these assets provides a novel framework. This dual-token approach facilitates direct ownership and financial benefits from infrastructure projects, bridging traditional investment methods with blockchain technology's efficiency and transparency.
 
-### 3. **Complexity of Risk Management**
-The protocol's approach to managing risk, particularly through the Liquidation Manager and the Interest Rate Model, demonstrated the nuanced balance required to maintain system stability. Auditing these components provided insights into the challenges of designing DeFi systems that are resilient to market volatility and systemic risks.
+- **Automated Revenue Management**: The mechanism for accumulating revenue generated by NFT-represented assets and distributing it through the ERC20 token showcases a sophisticated use of smart contracts for automated financial operations. This model not only simplifies the investment and returns process but also ensures a fair and transparent distribution of profits.
 
-### 4. **Oracles as Critical Infrastructure**
-Price Oracles serve as a backbone for the OPUS protocol, feeding necessary market data for various operations, including asset minting/burning and liquidation processes. The audit reinforced the importance of oracles in DeFi protocols and the need to ensure their reliability, security, and resistance to price manipulation or oracle failure.
+### Security and Regulatory Compliance
 
-### 5. **Innovative Use of Staking and Rewards**
-The Staking Rewards contract and the subsequent distribution of incentives illustrate innovative approaches to encourage protocol participation and secure network operations. It was insightful to see how these mechanisms are designed to balance protocol liquidity, user engagement, and governance participation.
-
-
-In conclusion, auditing the OPUS protocol was a comprehensive learning experience, showcasing the depth of innovation in DeFi while also highlighting the critical areas of focus for ensuring the security, stability, and sustainability of such protocols.
-
-Note: I didn't tracked the time, the time I mentioned is just a number.
+- **Advanced Compliance Mechanism**: Implementing an allowlist through smart contracts for KYC and AML compliance is a significant step towards aligning blockchain projects with regulatory standards. This proactive approach to compliance underscores the project's commitment to operating within legal frameworks and safeguarding investor interests.
 
 
 
 
 
-### Time spent:
-25 hours
+## n) Point of improvements:
+
+The audit of the Althea Liquid Infrastructure project has identified several points of improvement that could enhance the project's functionality, security, and user experience. Addressing these areas can contribute significantly to the project's success and sustainability in the rapidly evolving blockchain ecosystem.
+
+### 1. **Upgradeability and Future-proofing**
+
+- **Implement Upgradeable Smart Contracts**: Utilizing proxy contracts or other upgradeability patterns can allow for future improvements and bug fixes without disrupting the existing ecosystem. This approach would enhance the project's flexibility and longevity.
+
+### 2. **Gas Efficiency and Optimization**
+
+- **Optimize Contract Functions for Gas Usage**: Analyzing and optimizing functions, especially those involving loops or large-scale data manipulation, can reduce transaction costs. optimizing storage variables, and minimizing state changes can contribute to efficiency.
+
+### 3. **Decentralized Governance**
+
+- **Introduce Decentralized Governance Mechanisms**: Developing a DAO (Decentralized Autonomous Organization) for governance decisions, particularly around key parameters like revenue distribution ratios, allowlist criteria, and asset management policies, can further decentralize the project and align with blockchain principles.
+
+### 4. **Security and Auditing**
+
+- **Expand Bug Bounty Programs**: Establishing or expanding bug bounty programs can incentivize the community and security researchers to identify and report vulnerabilities, enhancing the project's overall security posture.
+
+### 5. **Market Adaptation and Integration**
+
+- **Cross-chain Functionality**: Investigating and implementing cross-chain interoperability solutions can open up wider markets and enhance the project's attractiveness by connecting with other blockchain ecosystems.
+
+### Conclusion
+
+By addressing these points of improvement, the Althea Liquid Infrastructure project can not only solidify its foundation but also expand its reach and impact in the DeFi and real-world asset tokenization space. Continuous improvement, driven by community feedback, security practices, and technological advancements, will be key to navigating the challenges and opportunities that lie ahead.
+
+
+
+
+
+
+
+
+
+
+NOTE: I didn't tracked time when auditing so the timeframe I selected is just a number
