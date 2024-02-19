@@ -129,10 +129,6 @@ Total : 3 files,  377 codes, 283 comments, 69 blanks, all 729 lines
 
 <br/>
 
-[![Screenshot-from-2024-02-19-14-56-43.png](https://i.postimg.cc/hjnNT0Cw/Screenshot-from-2024-02-19-14-56-43.png)](https://postimg.cc/GBMM1vnJ)
-
-<br/>
-
 ## Comment-to-Source Ratio:
 
 **`Core` contracts:** On average there are **1.31** code lines per comment (lower=better).
