@@ -38,7 +38,7 @@ The Althea Liquid Infrastructure project represents a groundbreaking initiative 
 
 ## b) Technical Architecture:
 
-<br/>
+
 
 [![Screenshot-from-2024-02-19-13-31-22.png](https://i.postimg.cc/LsHyBbZw/Screenshot-from-2024-02-19-13-31-22.png)](https://postimg.cc/4YSbXwPQ)
 
@@ -47,8 +47,7 @@ The Althea Liquid Infrastructure project represents a groundbreaking initiative 
 
 Althea Liquid Infrastructure architecture is built around a set of smart contracts, each serving specific roles:
 
-
-Given the detailed examination of the Althea Liquid Infrastructure project's smart contracts, here is a summary in the requested MDN format that outlines the core functionalities, technical characteristics, and their importance and management within the protocol:
+Given the detailed examination of the Althea Liquid Infrastructure project's smart contracts, here is a summary that outlines the core functionalities, technical characteristics, and their importance and management within the protocol:
 
 <br/>
 
@@ -75,7 +74,7 @@ Given the detailed examination of the Althea Liquid Infrastructure project's sma
 
 ### Domain Model of the Protocol
 
-<br/>
+
 
 [![Screenshot-from-2024-02-06-23-27-58.png](https://i.postimg.cc/fRL9f9QN/Screenshot-from-2024-02-06-23-27-58.png)](https://postimg.cc/2Vsyz35c)
 
