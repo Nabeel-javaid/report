@@ -335,7 +335,7 @@ The AI Arena protocol's smart contracts collectively enable a comprehensive gami
 
 ## High Level UML of FighterFarm.sol
 
-[![Screenshot-from-2024-02-22-00-15-22.png](https://i.postimg.cc/fb1pcXqM/Screenshot-from-2024-02-22-00-15-22.png)](https://postimg.cc/Z9FwZ9hQ)
+[![Screenshot-from-2024-02-22-00-39-58.png](https://i.postimg.cc/yd1n2C6p/Screenshot-from-2024-02-22-00-39-58.png)](https://postimg.cc/7CRgTc2S)
 
 2. **Gaming Competitions (RankedBattle.sol)**: Facilitates the AI Arena's competitive gameplay, enabling NFT owners to enter their fighters into ranked battles. It manages match-making, records battle outcomes, updates fighter rankings, and distributes rewards based on performance.
 
