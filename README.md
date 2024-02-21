@@ -99,7 +99,7 @@ VoltageManager oversees the voltage system, a key resource required for initiati
 
 ### State Model of the Protocol
 
-[![Screenshot-from-2024-02-19-22-31-52.png](https://i.postimg.cc/T32L2vD0/Screenshot-from-2024-02-19-22-31-52.png)](https://postimg.cc/WhKbSKSq)
+[![Screenshot-from-2024-02-22-00-55-07.png](https://i.postimg.cc/zDLBmdt0/Screenshot-from-2024-02-22-00-55-07.png)](https://postimg.cc/fkNZmvh9)
 
 <br/>
 
