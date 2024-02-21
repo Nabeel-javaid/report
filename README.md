@@ -341,7 +341,7 @@ The AI Arena protocol's smart contracts collectively enable a comprehensive gami
 
 ## High Level UML of RankedBattle.sol
 
-[![Screenshot-from-2024-02-22-00-16-38.png](https://i.postimg.cc/Sx6nF78v/Screenshot-from-2024-02-22-00-16-38.png)](https://postimg.cc/5Xt48zsB)
+[![Screenshot-from-2024-02-22-00-37-01.png](https://i.postimg.cc/R09BYhk7/Screenshot-from-2024-02-22-00-37-01.png)](https://postimg.cc/rDh30VFs)
 
 3. **Economic System (Neuron.sol, MergingPool.sol)**: Underpins the protocol's economy through the Neuron (NRN) token and the Merging Pool. NRN tokens are used for various in-game transactions and staking, while the Merging Pool offers a mechanism for players to earn new NFTs by contributing to the pool.
 
