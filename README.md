@@ -5,7 +5,7 @@
 ### Summary
 | List |Head |Details|
 |:--|:----------------|:------|
-|a) |Overview of the Althea Project| Summary of the whole Protocol |
+|a) |Overview of the AI Arena Project| Summary of the whole Protocol |
 |b) |Technical Architecture| Architecture of the smart contracts |
 |c) |The approach I would follow when reviewing the code | Stages in my code review and analysis |
 |d) |Analysis of the code base | What is unique? How are the existing patterns used? "Solidity-metrics" was used  |
@@ -22,7 +22,7 @@
 
 
 
-## a) Overview of the Althea Project
+## a) Overview of the AI Arena Project
 The AI Arena is a comprehensive blockchain-based ecosystem that integrates NFT (Non-Fungible Token) technology with competitive gaming and an innovative economic model. This ecosystem allows users to own, train, and compete with unique digital fighters represented as NFTs, engaging in ranked battles within a global competitive landscape. Central to its economy is the Neuron ($NRN) token, which facilitates transactions, staking, and rewards within the AI Arena.
 
 **Key Components of the AI Arena:**
@@ -46,7 +46,7 @@ The AI Arena is a comprehensive blockchain-based ecosystem that integrates NFT (
 
 AI Arena architecture is built around a set of smart contracts, each serving specific roles:
 
-Given the detailed examination of the Althea Liquid Infrastructure project's smart contracts, here is a summary that outlines the core functionalities, technical characteristics, and their importance and management within the protocol:
+Given the detailed examination of the AI Arena project's smart contracts, here is a summary that outlines the core functionalities, technical characteristics, and their importance and management within the protocol:
 
 <br/>
 
@@ -107,8 +107,8 @@ VoltageManager oversees the voltage system, a key resource required for initiati
 ## c) The approach I would follow when reviewing the code
 
 First, by examining the scope of the code, I determined my code review and analysis strategy.
-[https://code4rena.com/audits/2024-02-althea-liquid-infrastructure#top
-](https://code4rena.com/audits/2024-02-ai-arena#top)
+https://code4rena.com/audits/2024-02-ai-arena#top
+
 Accordingly, I would analyze and audit the subject in the following steps;
 
 | Number |Stage |Details|Information|
@@ -130,6 +130,8 @@ Uses Consensys Solidity Metrics
 
 
 -  **filename:** This field indicates the language in which smart contracts are written
+
+-  **Language:** Language in which the codebase is written.
 
 -  **Code:** This field indicates the number of actual lines of code in the smart contract.
 
@@ -168,24 +170,18 @@ Total : 9 files,  1283 codes, 766 comments, 328 blanks, all 2377 lines
 
 ## Comment-to-Source Ratio:
 
-**`Core` contracts:** On average there are **1.66** code lines per comment (lower=better).
+On average there are **1.66** code lines per comment (lower=better).
 
 
 
 ## e) Test analysis
 
-## Setup
+**Setup**
 
 Clone with recurse:
 
 ```bash
 git clone --recurse https://github.com/code-423n4/2024-02-ai-arena.git
-```
-
-Alternatively, if you have already cloned without recurse, do:
-
-```bash
-git submodule update --init --recursive
 ```
 
 Install libraries using forge and compile contracts.
@@ -196,19 +192,19 @@ forge install
 forge build
 ```
 
-After installing and building contracts you can run this command to execute all the test scripts:
+After installing and building contracts I ran this command to execute all the test scripts:
 
 ```bash
 forge test
 ```
 
-If you would like to execute an individual test script you could do so like this:
+To execute an indivial test I did it using
 
 ```bash
 forge test --match-path test/AiArenaHelper.t.sol -vvvv
 ```
 
-To print the gas report of contracts simply run:
+To print the gas report of contracts I simply ran:
 
 ```bash
 forge test --gas-report
@@ -224,7 +220,7 @@ forge coverage --ir-minimum
 ### What did the project do differently? ;
 -   1) It can be said that the developers of the project did a quality job, there is a test structure consisting of tests with quality content. In particular, tests have been written successfully.
 
--   2) Overall line coverage percentage provided by your tests : 95.09%
+-   2) Overall line coverage percentage provided by your tests : 90%
 
 ### What could they have done better?
 
@@ -281,16 +277,18 @@ https://twitter.com/Ledger/status/1735326240658100414?t=UAuzoir9uliXplerqP-Ing&s
 
 ## g) In-depth architecture assessment of business logic
 
+The AI Arena's architecture is designed around a core principle of integrating blockchain technology with competitive AI gaming. This results in a multi-faceted ecosystem that leverages NFTs, a proprietary utility token (NRN), and smart contracts to create a dynamic and engaging user experience. The protocol's business logic is embedded within its smart contracts, ensuring transparency, security, and fairness for all participants. Here's an in-depth assessment of its architecture and business logic:
 
-The Althea Liquid Infrastructure project leverages blockchain technology to create a novel ecosystem for tokenizing real-world infrastructure assets, managing these assets, and distributing generated revenue. The project's architecture is meticulously designed to encapsulate the business logic central to its value proposition. This in-depth assessment focuses on the architecture's components, interactions, and the rationale behind the design choices, strictly within the domain of the project.
+1. **NFT Fighters and Ownership**: Central to AI Arena are NFT Fighters, each uniquely represented on the blockchain, providing verifiable ownership and scarcity. These NFTs are not just collectibles but are integral to the gameplay, acting as the avatars through which players interact with the AI Arena ecosystem. The Fighters' attributes and training progress are stored immutably, ensuring that each NFT evolves in a way that is transparent and tamper-proof.
 
-### Core Components
+2. **Neuron (NRN) Token Economy**: The NRN token is the lifeblood of the AI Arena, facilitating transactions, staking, and governance within the ecosystem. It's used for purchasing NFT Fighters, entering competitions, staking on outcomes, and claiming rewards. This creates a circular economy where tokens are recycled through various aspects of the game, driving engagement and incentivizing participation.
 
-**1. Tokenization of Assets (NFTs):** The project uses Non-Fungible Tokens (NFTs) to represent ownership and the unique characteristics of each real-world asset. This choice allows for the precise tracking of individual assets' performance and revenue generation. The `LiquidInfrastructureNFT.sol` contract is responsible for this, embedding the business logic for asset management, including revenue thresholds and withdrawals. This design choice enables a clear delineation between the asset and its financial operations, facilitating easier management and valuation.
+3. **Gaming Competitions and Leaderboard**: The protocol hosts AI-driven competitions where NFT Fighters battle based on their training and attributes. Success in these competitions is rewarded with NRN tokens and higher leaderboard rankings, fostering a competitive environment. The leaderboard is a smart contract that dynamically updates based on competition outcomes, ensuring real-time tracking of players' standings.
 
-**2. Revenue Distribution (ERC20 Tokens):** At the heart of the ecosystem is the `LiquidInfrastructureERC20.sol` contract, which embodies the business logic for aggregating revenue from assets (NFTs) and distributing it among token holders. This ERC20 token serves as a collective investment vehicle, allowing investors to buy into the infrastructure portfolio and receive dividends. The decision to implement an ERC20 token for this purpose stems from its suitability for creating a divisible, tradeable asset that can represent a stake in the revenue generated by the underlying assets.
+4. **Staking and Rewards Mechanism**: Players can stake NRN tokens on their Fighters or competition outcomes, integrating a DeFi element into the gaming experience. The staking mechanism is designed to reward players for active participation and successful predictions, distributing rewards from a pool accumulated through entry fees and other in-game activities. This mechanism is carefully balanced to ensure sustainability and to incentivize long-term engagement.
 
-**3. Regulatory Compliance and Security (Allowlist):** The project incorporates an allowlist mechanism within the ERC20 contract to ensure compliance with regulatory standards, such as KYC and AML. This feature is critical for maintaining the legitimacy and security of the investment platform, allowing only verified users to participate. This layer of business logic is crucial for operating within legal frameworks and protecting the integrity of the investment process.
+5. **Merging Pool and Fighter Evolution**: The merging pool offers a unique feature where players can stake their NFT Fighters to gain access to upgrades or new Fighters, enhancing their capabilities. This introduces an element of strategy and resource management, as players must decide the best way to allocate their assets for optimal growth and performance.
+
 
 ### Architectural Interactions
 
@@ -300,122 +298,63 @@ The allowlist mechanism further interacts with the ERC20 token distribution proc
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ## h) Codebase Quality
 
-Overall, I consider the quality of the Althea protocol codebase to be Good. The code appears to be mature and well-developed. We have noticed the implementation of various standards adhere to appropriately. Details are explained below:
+Overall, I consider the quality of the AI Arena protocol codebase to be Good. The code appears to be mature and well-developed. We have noticed the implementation of various standards adhere to appropriately. Details are explained below:
 
 
 | Codebase Quality Categories                | Comments                                                                                                                                                                                                                                                |
 | ------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Readability and Documentation**          | The codebase is well-documented with clear comments explaining the functionality of major components and functions. Naming conventions are consistent and descriptive, enhancing readability and making the codebase accessible to developers and auditors. |
-| **Architecture and Design Patterns**       | The project employs a solid architectural design, separating concerns between asset tokenization (NFTs) and revenue distribution (ERC20 tokens). It effectively uses design patterns like Ownable for access control and ReentrancyGuard for security.    |
-| **Security Practices**                     | Security is a strong focus, with the use of allowlists for compliance, checks-effects-interactions patterns to prevent reentrancy attacks, and visibility specifiers to control access to functions. However, a formal security audit report would further validate these practices.        |
-| **Testing and Coverage**                   | The project exhibits an impressive commitment to quality and reliability, with test coverage around 95%. This high level of testing, encompassing unit and integration tests, signifies a robust approach to ensuring the functionality and security of the smart contracts against a wide array of potential issues. Such comprehensive testing is indicative of a mature development process and significantly contributes to the project's overall codebase quality.                               |
-| **Upgradeability and Maintenance**         | The project does not explicitly implement upgradeability patterns (e.g., proxy contracts), which might impact long-term maintainability. Considering an upgrade path or versioning strategy could enhance the project's flexibility in addressing future requirements.                  |
-| **Performance and Gas Optimization**       | The code demonstrates an awareness of gas optimization in some areas, such as using mappings for efficient data storage. However, the iterative nature of functions like `distribute` could be optimized for gas efficiency and scalability. 
+| **Architecture & Design**                  | The protocol features a modular design, segregating functionality into distinct contracts (e.g., FighterFarm, RankedBattle, MergingPool) for clarity and ease of maintenance. The use of libraries like FixedPointMathLib for mathematical operations also indicates thoughtful design choices aimed at optimizing contract performance and gas efficiency. |
+| **Security Practices**                     | The contracts demonstrate awareness of common security pitfalls in Solidity development. Functions are guarded with appropriate access control modifiers (e.g., `onlyOwner`, `isAdmin` checks), and state-changing functions are protected against reentrancy attacks. However, a comprehensive external security audit would be necessary to validate the absence of deeper vulnerabilities.                          |
+| **Upgradeability & Flexibility**           | The project does not explicitly implement upgradeability patterns (e.g., proxy contracts), which might impact long-term maintainability. Considering an upgrade path or versioning strategy could enhance the project's flexibility in addressing future requirements..                                                                                                                             |
+| **Efficiency & Gas Optimization**          | The code demonstrates an awareness of gas optimization in some areas, such as using mappings for efficient data storage. However, the iterative nature of functions could be optimized for gas efficiency and scalability.                                                                               |
+| **Community Governance & Participation**   | The protocol incorporates mechanisms for community governance, enabling token holders to influence decisions. This fosters a decentralized and participatory ecosystem, aligning with the broader ethos of blockchain development.                                                                                                             |
+| **Error Handling & Input Validation**      | Functions check for conditions and validate inputs to prevent invalid operations, though the depth of validation (e.g., for edge cases in gameplay or token transactions) would benefit from closer examination.                                                                                                                               |
+
+
+
+
 ## i) Other Audit Reports and Automated Findings 
 
 **Previous Audits**
-I've searched the docs and overview on code4rena but couldn't find any previous audit
+There isn't any previous audit (mentioned on C4 overview)
 
-**[Known issues and risks](https://github.com/code-423n4/2024-02-althea-liquid-infrastructure/blob/main/bot-report.md)**
-**[4naly3er Report](https://github.com/code-423n4/2024-02-althea-liquid-infrastructure/blob/main/4naly3er-report.md)**
+**[Known issues and risks](https://github.com/code-423n4/2024-02-ai-arena/blob/main/bot-report.md)**
+**[4naly3er Report](https://github.com/code-423n4/2024-02-ai-arena/blob/main/4naly3er-report.md)**
 
 
-* Some of the variables in LiquidInfrastructureNFT.sol will have no effect on most EVM chains (in particular: `thresholdErc20s`, `thresholdAmounts`, `getThresholds()`, `setThresholds()`, and `recoverAccount()`).
-These values and functions are all specific to deployment on Althea-L1 and will interact with Althea-L1's Cosmos module functionality. These contract elements are not out of scope, but the interaction between these elements and any Cosmos modules should not be considered.
-* In order to simplify the distribution logic and accounting of LiquidInfrastructureERC20.sol, many contract functions periodically become blocked.
-During a revenue distribution all token transfers should be blocked (including mints and burns).
-If a distribution has not happened in at least `MinDistributionPeriod` blocks then all mints and burns should be blocked.
 
 
 
 ## j) Contract Functionalities
 
-### `LiquidInfrastructureERC20.sol`
+The AI Arena protocol's smart contracts collectively enable a comprehensive gaming ecosystem that integrates NFTs (Non-Fungible Tokens), competitive AI battles, and a unique economic model. Here's a brief overview of the core functionalities provided by these contracts:
 
-- **Investment and Token Holding**:
-  - Allows users to invest in and hold ERC20 tokens representing a share of the project's revenue pool.
+1. **NFT Management (FighterFarm.sol)**: Handles the creation, ownership, and attributes of AI-powered NFTs, allowing users to mint, train, and manage their fighters. This contract serves as the foundation for the game's competitive elements, with NFTs representing the virtual fighters in the AI Arena.
 
-- **Revenue Distribution**:
-  - Automates the distribution of revenue generated by the underlying assets to token holders.
-  
-- **Allowlist Management**:
-  - Implements an allowlist to ensure only verified and approved users can hold tokens, supporting regulatory compliance (KYC/AML).
+## High Level UML of FighterFarm.sol
 
-- **Token Minting and Burning**:
-  - Supports minting and burning of tokens, particularly in relation to managing the supply in response to investment and revenue distribution activities.
- 
- ### High level UML diagram
- [![Screenshot-from-2024-02-19-19-28-42.png](https://i.postimg.cc/523qnLTj/Screenshot-from-2024-02-19-19-28-42.png)](https://postimg.cc/SnnMK2yp)
+[![Screenshot-from-2024-02-22-00-15-22.png](https://i.postimg.cc/fb1pcXqM/Screenshot-from-2024-02-22-00-15-22.png)](https://postimg.cc/Z9FwZ9hQ)
 
-### `LiquidInfrastructureNFT.sol`
+2. **Gaming Competitions (RankedBattle.sol)**: Facilitates the AI Arena's competitive gameplay, enabling NFT owners to enter their fighters into ranked battles. It manages match-making, records battle outcomes, updates fighter rankings, and distributes rewards based on performance.
 
-- **Asset Tokenization**:
-  - Facilitates the tokenization of assets into NFTs, providing a digital representation on the blockchain.
+## High Level UML of RankedBattle.sol
 
-- **Revenue Generation and Withdrawal**:
-  - Manages the generation of revenue by the assets and enables the withdrawal of accumulated revenue to the ERC20 contract for distribution.
+[![Screenshot-from-2024-02-22-00-16-38.png](https://i.postimg.cc/Sx6nF78v/Screenshot-from-2024-02-22-00-16-38.png)](https://postimg.cc/5Xt48zsB)
 
-- **Operational Threshold Management**:
-  - Allows for setting and adjusting revenue thresholds for each asset, ensuring operational liquidity is maintained.
+3. **Economic System (Neuron.sol, MergingPool.sol)**: Underpins the protocol's economy through the Neuron (NRN) token and the Merging Pool. NRN tokens are used for various in-game transactions and staking, while the Merging Pool offers a mechanism for players to earn new NFTs by contributing to the pool.
 
-- **Asset Management Functions**:
-  - Provides functionalities for managing the lifecycle of the tokenized asset, including updates and recovery actions.
- 
-  ### High Level UML diagram
-  [![Screenshot-from-2024-02-19-19-25-00.png](https://i.postimg.cc/85yLm4rb/Screenshot-from-2024-02-19-19-25-00.png)](https://postimg.cc/DJXW2q6W)
+## High Level State diagram
 
-### `OwnableApprovableERC721.sol`
+[![Screenshot-from-2024-02-22-00-18-01.png](https://i.postimg.cc/PJ57h4Pz/Screenshot-from-2024-02-22-00-18-01.png)](https://postimg.cc/bD4g910s)
 
-- **Ownership and Approval Enhancements**:
-  - Extends the ERC721 standard to include enhanced ownership and approval checks, facilitating more granular access control over NFT actions.
+6. **Staking and Rewards (StakeAtRisk.sol)**: Allows players to stake NRN tokens on their fighters, influencing their potential rewards from participating in battles. The contract also manages the risks associated with staking, including the possibility of losing staked tokens based on battle outcomes.
 
-  ### High Level UML diagram
-  [![Screenshot-from-2024-02-19-19-36-33.png](https://i.postimg.cc/mr6b3pSj/Screenshot-from-2024-02-19-19-36-33.png)](https://postimg.cc/rdxXMJ3R)
+7. **Voltage Management (VoltageManager.sol)**: Controls a unique resource called "Voltage," which is required for fighters to participate in battles. It includes functionality for replenishing and spending Voltage, adding another layer of strategy to the game.
 
-This summary captures the core functionalities of the contracts involved in the Althea Liquid Infrastructure project, highlighting how they work together to facilitate the tokenization of assets, manage investment, and distribute revenue within a secure and compliant framework. The emphasis on regulatory compliance, security, and operational flexibility underscores the project's innovative approach to integrating real-world assets with blockchain technology.
 
 ## k) Full representation of the project’s risk model
-
-### Admin Abuse Risks
-
-Admin Abuse Risks within the Althea project pertain to potential vulnerabilities and threats that stem from centralized control or misuse of administrative privileges within the smart contract ecosystem. These risks can compromise the integrity, security, and trust in the project.
-
-
-1. **Centralized Control Over Allowlist Management**:
-   The functionality for managing the allowlist, which controls who can buy, sell, or hold the ERC20 tokens, resides with the contract owner or admin. Misuse of this privilege can lead to unfair exclusion or inclusion, manipulation of token distribution, or preferential treatment.
-
-   ```solidity
-   function approveHolder(address holder) public onlyOwner {
-       require(!isApprovedHolder(holder), "holder already approved");
-       HolderAllowlist[holder] = true;
-   }
-
-   function disapproveHolder(address holder) public onlyOwner {
-       require(isApprovedHolder(holder), "holder not approved");
-       HolderAllowlist[holder] = false;
-   }
-   ```
 
 
 ### Technical Risks
@@ -430,30 +369,27 @@ Admin Abuse Risks within the Althea project pertain to potential vulnerabilities
 
 | Package | Usage | 
 | --- |  --- | 
-| [`openzeppelin`](https://www.npmjs.com/package/@openzeppelin/contracts)  |  Project uses version `4.3.1` while the recommended version is latest stable version i.e: `5.0.1` 
+| [`openzeppelin`](https://www.npmjs.com/package/@openzeppelin/contracts)  |  Project uses version `4.7.3` while the recommended version is latest stable version i.e: `5.0.1` 
 
 
 ## m) New insights and learning of project from this audit:
 
-The audit of the Althea Liquid Infrastructure project has yielded several critical insights and learnings that are pivotal not only for the project's refinement but also offer broader implications for blockchain-based real-world asset management systems. These insights are rooted in the project's unique approach, its implementation details, and the potential pathways for its evolution.
+Auditing the AI Arena project has provided several key insights and learnings, highlighting the complexity and innovation within blockchain gaming and smart contract development. Here are some notable takeaways from the audit:
 
-### Innovations in Asset Tokenization and Revenue Distribution
+1. **Complex Ecosystem Interaction**: The AI Arena project showcases a multifaceted ecosystem involving NFTs (Fighters), a utility token (NRN), and various gameplay mechanisms (battles, staking, merging pool, etc.). Auditing such a system emphasizes the importance of understanding the interplay between different smart contracts and ensuring that their interactions are secure and perform as intended.
 
-- **Hybrid Token Model**: The project's innovative use of NFTs to represent real-world assets and ERC20 tokens to distribute revenue derived from these assets provides a novel framework. This dual-token approach facilitates direct ownership and financial benefits from infrastructure projects, bridging traditional investment methods with blockchain technology's efficiency and transparency.
+3. **Tokenomics and Incentive Structures**: The AI Arena's use of NRN tokens and NFTs within its economy highlights the critical role of well-designed tokenomics and incentive structures in driving user engagement and ensuring the long-term viability of blockchain projects. It's fascinating to see how token staking, reward distributions, and the merging pool contribute to an engaging and balanced ecosystem.
 
-- **Automated Revenue Management**: The mechanism for accumulating revenue generated by NFT-represented assets and distributing it through the ERC20 token showcases a sophisticated use of smart contracts for automated financial operations. This model not only simplifies the investment and returns process but also ensures a fair and transparent distribution of profits.
+5. **Technical and Architectural Complexity**: The AI Arena project demonstrates a high level of technical and architectural complexity, from managing fighter attributes and battle outcomes to handling token staking and rewards. Auditing such a project provides valuable experience in analyzing and understanding complex smart contract systems, emphasizing the importance of modular design, comprehensive testing, and clear documentation.
 
-### Security and Regulatory Compliance
+7. **Innovative Use of Blockchain in Gaming**: Lastly, auditing the AI Arena project has been a learning opportunity in seeing the innovative application of blockchain technology in gaming. It showcases the potential for NFTs and cryptocurrencies to revolutionize how games are played, owned, and operated, highlighting a future where players have more control and ownership over their gaming experiences.
 
-- **Advanced Compliance Mechanism**: Implementing an allowlist through smart contracts for KYC and AML compliance is a significant step towards aligning blockchain projects with regulatory standards. This proactive approach to compliance underscores the project's commitment to operating within legal frameworks and safeguarding investor interests.
-
-
-
+In conclusion, auditing the AI Arena project has been a comprehensive learning experience, offering insights into the complexities of developing a blockchain-based gaming ecosystem, the importance of security and governance, and the innovative potential of integrating NFTs and utility tokens into interactive and engaging gameplay.
 
 
 ## n) Point of improvements:
 
-The audit of the Althea Liquid Infrastructure project has identified several points of improvement that could enhance the project's functionality, security, and user experience. Addressing these areas can contribute significantly to the project's success and sustainability in the rapidly evolving blockchain ecosystem.
+The audit of the AI Arena Liquid Infrastructure project has identified several points of improvement that could enhance the project's functionality, security, and user experience. Addressing these areas can contribute significantly to the project's success and sustainability in the rapidly evolving blockchain ecosystem.
 
 #### 1. **Upgradeability and Future-proofing**
 
@@ -462,10 +398,6 @@ The audit of the Althea Liquid Infrastructure project has identified several poi
 #### 2. **Gas Efficiency and Optimization**
 
 - **Optimize Contract Functions for Gas Usage**: Analyzing and optimizing functions, especially those involving loops or large-scale data manipulation, can reduce transaction costs. optimizing storage variables, and minimizing state changes can contribute to efficiency.
-
-#### 3. **Decentralized Governance**
-
-- **Introduce Decentralized Governance Mechanisms**: Developing a DAO (Decentralized Autonomous Organization) for governance decisions, particularly around key parameters like revenue distribution ratios, allowlist criteria, and asset management policies, can further decentralize the project and align with blockchain principles.
 
 #### 4. **Security and Auditing**
 
@@ -477,15 +409,7 @@ The audit of the Althea Liquid Infrastructure project has identified several poi
 
 ### Conclusion
 
-By addressing these points of improvement, the Althea Liquid Infrastructure project can not only solidify its foundation but also expand its reach and impact in the DeFi and real-world asset tokenization space. Continuous improvement, driven by community feedback, security practices, and technological advancements, will be key to navigating the challenges and opportunities that lie ahead.
-
-
-
-
-
-
-
-
+By addressing these points of improvement, the AI Arena project can not only solidify its foundation but also expand its reach and impact in the DeFi and real-world asset tokenization space. Continuous improvement, driven by community feedback, security practices, and technological advancements, will be key to navigating the challenges and opportunities that lie ahead.
 
 
 NOTE: I didn't tracked time when auditing so the timeframe I selected is just a number
