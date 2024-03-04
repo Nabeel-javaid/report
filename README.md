@@ -56,6 +56,7 @@ The system utilizes several interfaces to interact with external contracts and p
 
 ### WorkFlow diagram
 <br/>
+
 [![Screenshot-from-2024-03-04-22-54-12.png](https://i.postimg.cc/7LMNGx95/Screenshot-from-2024-03-04-22-54-12.png)](https://postimg.cc/kVGSLPkC)
 
 Here's a structured overview of the files involved in the UniStaker Infrastructure project, detailing their core functionality, technical characteristics, and their importance within the system:
@@ -173,6 +174,7 @@ The UniStaker Infrastructure project is designed to enhance the functionality of
 **How It Works**: When UNI tokens are staked, the contract tracks the amount staked by each participant and their proportional share of the total staked amount. The rewards are distributed based on these shares, with the mechanism allowing for continuous reward accrual and claimability. Stakers can also designate a beneficiary address different from their own to receive the rewards, adding flexibility to the rewards distribution.
 
 <br/>
+
 [![Screenshot-from-2024-03-05-00-28-58.png](https://i.postimg.cc/Vvty7pLt/Screenshot-from-2024-03-05-00-28-58.png)](https://postimg.cc/T5TH1kb2)
 
 
