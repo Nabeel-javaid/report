@@ -8,12 +8,13 @@
 |b) |Technical Architecture| Architecture of the smart contracts |
 |c) |The approach I would follow when reviewing the code | Stages in my code review and analysis |
 |d) |Analysis of the code base | What is unique? How are the existing patterns used? "Solidity-metrics" was used  |
-|e) |Test analysis | Test scope of the project and quality of tests |
-|f) |Security Approach of the Project | Audit approach of the Project |
-|g) |Codebase Quality | Overall Code Quality of the Project |
-|h) |Other Audit Reports and Automated Findings | What are the previous Audit reports and their analysis |
-|i) |Full representation of the project’s risk model| What are the risks associated with the project |
-|j) |New insights and learning of project from this audit | Things learned from the project |
+|e) |Mechanical Overview | How the project works |
+|f) |Test analysis | Test scope of the project and quality of tests |
+|g) |Security Approach of the Project | Audit approach of the Project |
+|h) |Codebase Quality | Overall Code Quality of the Project |
+|i) |Other Audit Reports and Automated Findings | What are the previous Audit reports and their analysis |
+|j) |Full representation of the project’s risk model| What are the risks associated with the project |
+|k) |New insights and learning of project from this audit | Things learned from the project |
 
 
 
@@ -132,15 +133,6 @@ Total : 7 files,  563 codes, 450 comments, 142 blanks, all 1155 lines
 | [src/interfaces/IUniswapV3FactoryOwnerActions.sol](/src/interfaces/IUniswapV3FactoryOwnerActions.sol) | Solidity | 7 | 23 | 5 | 35 |
 | [src/interfaces/IUniswapV3PoolOwnerActions.sol](/src/interfaces/IUniswapV3PoolOwnerActions.sol) | Solidity | 7 | 16 | 3 | 26 |
 
-
-### Contract Functionality and Logic
-
-- **UniStaker.sol**: This contract is central to the project, managing UNI staking, reward distribution, and voting power delegation. It effectively implements the staking mechanics inspired by Synthetix, with modifications to suit the Uniswap V3 ecosystem. The contract's logic for staking, withdrawing, and reward distribution is clear and aligns with the documented functionalities. The delegation of governance rights through the `DelegationSurrogate` contracts is a clever solution to retain voting power for stakers, ensuring their governance participation is not diluted.
-
-- **V3FactoryOwner.sol**: Serving as the owner of the Uniswap V3 Factory, this contract manages protocol fee settings and collection. The design choice to allow public fee collection in exchange for a payout token introduces an innovative mechanism for protocol fee monetization. However, this open approach necessitates rigorous security measures to prevent potential manipulation or denial of service by flooding the system with fee collections.
-
-- **DelegationSurrogate.sol**: The simplicity of this contract is its strength, providing a straightforward solution to delegate governance rights without unnecessary complexity. It serves its purpose effectively, though its security hinges on the careful management and accounting of the parent `UniStaker` contract.
-
 ### Comment-to-Source Ratio: On average there are `1.25 code` lines per comment (lower=better).
 
 # State diagram
@@ -152,7 +144,78 @@ This State diagram provides an overview of the key components  and how they are 
 <br/>
 <br/>
 
-## e) Test analysis
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## e) Mechanical Overview
+
+
+The UniStaker Infrastructure project is designed to enhance the functionality of Uniswap V3 by introducing a novel mechanism for staking UNI tokens, collecting protocol fees, and distributing rewards. This system allows UNI holders to stake their tokens, participate in governance through delegated voting, and earn rewards generated from Uniswap V3's trading fees. The project is built around three core smart contracts: `UniStaker`, `V3FactoryOwner`, and `DelegationSurrogate`, each serving distinct roles within the ecosystem.
+
+### UniStaker
+
+**Functionality and Mechanism**: The `UniStaker` contract is the heart of the project, managing the staking of UNI tokens and the distribution of rewards. UNI holders can stake their tokens in this contract and delegate their governance rights. The contract also defines how staked tokens can earn rewards, which are not paid out in the native fee tokens collected from Uniswap V3 but rather in a designated rewards token specified at the contract's deployment.
+
+**How It Works**: When UNI tokens are staked, the contract tracks the amount staked by each participant and their proportional share of the total staked amount. The rewards are distributed based on these shares, with the mechanism allowing for continuous reward accrual and claimability. Stakers can also designate a beneficiary address different from their own to receive the rewards, adding flexibility to the rewards distribution.
+
+<br/>
+[![Screenshot-from-2024-03-05-00-28-58.png](https://i.postimg.cc/Vvty7pLt/Screenshot-from-2024-03-05-00-28-58.png)](https://postimg.cc/T5TH1kb2)
+
+
+### V3FactoryOwner
+
+**Functionality and Mechanism**: The `V3FactoryOwner` contract acts as an owner of the Uniswap V3 Factory, with specific rights to enable fee amounts on Uniswap V3 pools and set protocol fees. Importantly, this contract has a public function allowing anyone to claim protocol fees from any Uniswap V3 pool by paying a specified amount of a designated token. The collected fees are then sent to the `UniStaker` contract as rewards for stakers.
+
+**How It Works**: To incentivize the collection of fees (and thus the distribution of rewards to stakers), the `V3FactoryOwner` introduces a "payout race" mechanism. External actors (like MEV searchers) can pay the payout token to claim accumulated fees from Uniswap pools. This mechanism ensures that the protocol fees contribute directly to the staking rewards, aligning the incentives of various ecosystem participants.
+
+<br/>
+
+[![Screenshot-from-2024-03-05-00-35-48.png](https://i.postimg.cc/Ghr8FCpv/Screenshot-from-2024-03-05-00-35-48.png)](https://postimg.cc/NLJjtZm0)
+
+### DelegationSurrogate
+
+**Functionality and Mechanism**: The `DelegationSurrogate` contract is a simple yet crucial component that enables governance rights to be maintained by stakers. It acts as a holding entity for staked tokens, delegating the governance voting power of these tokens to a specified delegatee. This allows stakers to participate in Uniswap governance without sacrificing their staking rewards.
+
+**How It Works**: Upon staking in the `UniStaker` contract, if a user wishes to delegate their governance rights to another address, the `UniStaker` interacts with `DelegationSurrogate` to ensure that the staked tokens' voting power is delegated accordingly. This preserves the decentralized governance model of Uniswap while still allowing users to earn staking rewards.
+
+<br/>
+
+[![Screenshot-from-2024-03-05-00-37-10.png](https://i.postimg.cc/FHyTPmbm/Screenshot-from-2024-03-05-00-37-10.png)](https://postimg.cc/RW01Fkbb)
+
+### Conceptual Overview
+
+The UniStaker Infrastructure project innovatively bridges the gap between participating in Uniswap's governance and earning rewards from protocol fees. By staking UNI tokens, users can contribute to the security and governance of the Uniswap protocol while earning a share of the trading fees generated by the platform. The `V3FactoryOwner`'s unique fee collection mechanism incentivizes active participation in the ecosystem, ensuring a continuous flow of rewards to stakers. Meanwhile, the `DelegationSurrogate` ensures that staking does not come at the cost of disenfranchising users from governance participation, thereby supporting Uniswap's decentralized ethos.
+
+This architecture not only enhances the utility of UNI tokens by providing staking rewards but also strengthens the Uniswap V3 ecosystem by encouraging long-term holding and active governance participation. The project represents a thoughtful integration of staking, rewards, and governance functionalities within the DeFi space, showcasing a model that could inspire similar mechanisms across other platforms.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## f) Test analysis
 
  **Foundry Testing:**
    
@@ -191,7 +254,7 @@ Ref:https://xin-xia.github.io/publication/icse194.pdf
 
 
 
-## f) Security Approach of the Project
+## g) Security Approach of the Project
 
 ### Successful current security understanding of the project;
 
@@ -228,7 +291,7 @@ All authorizations, including NPM passwords and authorizations, should be reserv
 https://twitter.com/Ledger/status/1735326240658100414?t=UAuzoir9uliXplerqP-Ing&s=19
 
 
-## g) Codebase Quality
+## h) Codebase Quality
 
 Overall, I consider the quality of the unistaker protocol codebase to be Good. The code appears to be mature and well-developed, though there are areas for improvement, particularly in code commenting. We have noticed the implementation of various standards adhere to appropriately. Details are explained below:
 
@@ -262,7 +325,7 @@ Overall, I consider the quality of the unistaker protocol codebase to be Good. T
 
 - **Upgradability and Future-proofing**: While the current implementation serves its purpose well, the rapidly evolving nature of DeFi and Uniswap might necessitate future upgrades or enhancements. The project could benefit from incorporating more flexible upgrade mechanisms or considering the long-term governance structure for managing such changes, ensuring that it can adapt to future Uniswap upgrades or shifts in DeFi trends.
 
-## h) Other Audit Reports and Automated Findings 
+## i) Other Audit Reports and Automated Findings 
 
 **Bot findings:**
 https://github.com/code-423n4/2024-02-uniswap-foundation/blob/main/bot-report.md
@@ -273,7 +336,7 @@ https://github.com/code-423n4/2024-02-uniswap-foundation/blob/main/4naly3er-repo
 **Previous Audits**
 Not Public Yet
 
-## i) Full representation of the project’s risk model
+## j) Full representation of the project’s risk model
 
 ### 1. Admin Abuse Risks:
 In the context of the UniStaker Infrastructure project, the concept of "Admin Abuse Risks" encompasses potential vulnerabilities or scenarios where the administrative roles associated with the smart contracts could be misused, leading to adverse effects on the protocol's integrity, user assets, or governance processes. Given the project's integration with Uniswap V3 and its unique functionalities around staking, fee collection, and governance rights delegation, let's critically analyze the specific admin roles and their associated risks.
