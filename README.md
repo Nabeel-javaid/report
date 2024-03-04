@@ -1,5 +1,5 @@
-# 🛠️ Analysis - Salty.IO
-***An Ethereum-based DEX with zero swap fees, yield-generating Automatic Arbitrage, and a native WBTC/WETH backed stablecoin.***
+# 🛠️ Analysis - SUniStaker Infrastructure
+***Staking infrastructure to empower Uniswap Governance..***
 
 ### Summary
 | List |Head |Details|
@@ -13,58 +13,61 @@
 |g) |Codebase Quality | Overall Code Quality of the Project |
 |h) |Other Audit Reports and Automated Findings | What are the previous Audit reports and their analysis |
 |i) |Full representation of the project’s risk model| What are the risks associated with the project |
-|j) |Packages and Dependencies Analysis | Details about the project Packages |
-|k) |New insights and learning of project from this audit | Things learned from the project |
+|j) |New insights and learning of project from this audit | Things learned from the project |
 
 
 
 ## a) Overview of the Salty Project
 
-The Salty.IO project is a comprehensive ecosystem, focusing on token staking, liquidity provision, and efficient management of digital assets. The project is designed to incentivize users to participate actively in the ecosystem through staking and liquidity provision, while also ensuring secure and efficient management of crucial wallet addresses.
-
-### Key Features and Functionalities:
-
-1. **Staking Rewards Management:**
-   - Manages the distribution of rewards for users staking SALT tokens or liquidity shares.
-   - Provides mechanisms for users to claim accumulated rewards based on their share in the staking pool.
-
-2. **Token Staking System:**
-   - Allows users to stake SALT tokens and receive xSALT, representing their staked amount.
-   - Implements a flexible unstaking process with varying durations, influencing the amount of SALT reclaimed.
-   - Includes a feature for expedited unstaking with reduced returns, offering users a choice between speed and efficiency.
-
-3. **Secure Wallet Management:**
-   - Manages critical wallet addresses using a dual-wallet system (main and confirmation wallets).
-   - Enables secure and controlled changes to wallet addresses through a proposal and confirmation process.
-   - Incorporates a 30-day timelock for implementing confirmed changes, adding an extra layer of security.
-
+The UniStaker Infrastructure project is an innovative blockchain initiative designed to leverage the Uniswap V3 protocol, enabling UNI token holders to participate in protocol fee collection and distribution through a staking mechanism. The project introduces a seamless way to earn rewards by staking UNI tokens, while simultaneously engaging in the governance of the Uniswap ecosystem. Upon depositing UNI tokens into the UniStaker contract, users can delegate their governance voting power, ensuring they remain active participants in decision-making processes without sacrificing potential earnings from protocol fees. The system automatically auctions accumulated fees from various Uniswap V3 Pools in exchange for a designated reward token, distributing these rewards proportionally among stakers. Additionally, the DelegationSurrogate contract ensures that users' governance rights are retained, allowing for the delegation of voting power to a chosen representative. 
 
 
 ## b) Technical Architecture
-[![Screenshot-from-2024-01-30-23-20-24.png](https://i.postimg.cc/B6FHcCmy/Screenshot-from-2024-01-30-23-20-24.png)](https://postimg.cc/CBFRwbTH)
-<br/>
-<br/>
-<br/>
+The UniStaker Infrastructure project is designed to weave together Uniswap V3's liquidity provision and fee generation capabilities with UNI token staking and governance participation. Here's an overview of its technical architecture and workflow:
 
-| File Name               | Core Functionality                                      | Technical Characteristics                                                                                               | Importance and Management                                                 |
-|-------------------------|---------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------|
-| `PoolMath.sol`          | Mathematical operations for liquidity pools             | Implements core math for pool operations, ensuring precise and efficient calculations for liquidity management         | Critical for accurate pool operations and ensuring financial stability    |
-| `CoreChainlinkFeed.sol` | Price feed using Chainlink                              | Integrates Chainlink oracles for accurate BTC and ETH prices, crucial for asset valuation in various operations        | Essential for market-relevant pricing and reducing risks in valuations    |
-| `CoreUniswapFeed.sol`   | TWAPs (Time-Weighted Average Prices) from Uniswap       | Provides TWAPs for WBTC and WETH, aiding in accurate and time-relevant pricing for these assets                        | Vital for maintaining up-to-date and fair asset pricing in the ecosystem  |
-| `PriceAggregator.sol`   | Price aggregation and validation                        | Compares different price feeds for reliability, crucial for maintaining robust and accurate pricing in the ecosystem   | Ensures price integrity by filtering out anomalies and errors in feeds    |
-| `CoreSaltyFeed.sol`     | Price retrieval using Salty.IO pools                    | Uses internal Salty.IO pools for asset pricing, adding an additional layer of pricing data                              | Adds a layer of internal validation for asset prices                      |
-| `RewardsConfig.sol`     | Management of rewards configurations                    | Sets parameters for reward distribution, including daily percentages and allocation strategies                         | Key in managing how rewards are distributed, impacting user incentives    |
-| `SaltRewards.sol`       | Handling of SALT rewards                                | Manages the distribution of SALT rewards from emissions and profits, crucial for incentivizing participation           | Central to the reward system, directly impacting user engagement          |
-| `USDS.sol`              | USDS stablecoin management                              | Manages minting and burning of USDS, pivotal for maintaining its stablecoin properties                                  | Critical for the stablecoin's integrity and trustworthiness               |
-| `StableConfig.sol`      | Configuration of stablecoin-related parameters          | Sets crucial parameters like collateral ratios and liquidation rewards, affecting the stablecoin's financial health    | Ensures the stablecoin system remains balanced and sustainable            |
-| `CollateralAndLiquidity.sol` | Collateral and liquidity management              | Manages user collateral and liquidity provisions, fundamental for the platform's lending and borrowing features        | A cornerstone for the platform's financial activities and user trust      |
-| `Liquidizer.sol`        | Token conversion and burning                            | Handles conversion of assets to USDS and burning excess tokens, important for maintaining token supply balance         | Plays a critical role in tokenomics and maintaining market equilibrium   |
-| `StakingConfig.sol`     | Configuration of staking parameters                     | Sets key staking parameters like unstake periods and percentages, affecting how users interact with staking features  | Directly influences user staking behavior and platform liquidity          |
-| `Liquidity.sol`         | Liquidity provision and management                      | Facilitates adding and withdrawing liquidity, crucial for the platform's liquidity pool operations                     | Key to ensuring sufficient liquidity in the platform's pools             |
-| `StakingRewards.sol`    | Management of staking rewards                           | Oversees the distribution of rewards for staking, a major incentive for user participation                              | Central to the platform's staking mechanism and user retention           |
-| `Staking.sol`           | SALT token staking functionalities                      | Handles the staking of SALT tokens, a fundamental aspect of the platform's tokenomics                                   | Critical for user engagement and maintaining the token's value stability |
-| `ManagedWallet.sol`     | Secure management of crucial wallet addresses           | Ensures safe and controlled management of key wallets, a crucial aspect of platform security                            | Vital for maintaining trust and security in managing significant assets  |
+### Core Components
 
+1. **UniStaker Contract**: At the heart of the infrastructure lies the UniStaker contract, which orchestrates the staking of UNI tokens, delegation of governance rights, and distribution of rewards. This contract allows UNI token holders to stake their tokens, choose a delegate for their governance rights, and earn rewards based on the fees collected from Uniswap V3 pools.
+
+2. **V3FactoryOwner Contract**: This contract acts as the owner of the Uniswap V3 Factory, possessing the authority to enable fee levels on Uniswap V3 pools and collect fees. It features a unique mechanism allowing anyone to claim collected fees from specific pools by paying a predetermined amount of a designated token (PAYOUT_TOKEN), which is then distributed as rewards to stakers.
+
+3. **DelegationSurrogate Contract**: Designed to maintain governance participation for pooled token holders, this contract holds staked tokens and delegates voting power to a specified address. It ensures that despite the tokens being staked or pooled, the governance rights of individual token holders are preserved and exercised according to their delegation preferences.
+
+### Interfaces
+
+The system utilizes several interfaces to interact with external contracts and protocols:
+
+- **IERC20Delegates**: Facilitates interaction with governance tokens, supporting standard ERC20 operations and delegation functionalities.
+  
+- **INotifiableRewardReceiver**: Defines the method for notifying about rewards, used by the V3FactoryOwner to alert the UniStaker contract about the rewards from fee collection.
+
+- **IUniswapV3FactoryOwnerActions & IUniswapV3PoolOwnerActions**: Allow the V3FactoryOwner contract to interact with the Uniswap V3 Factory and individual pools, enabling fee settings and collections.
+
+### Workflow
+
+1. **Staking and Delegation**: Users stake their UNI tokens through the UniStaker contract, which records the staked amount and delegates the users' governance voting power to the chosen delegatees via DelegationSurrogate contracts. This process ensures users' participation in governance without direct involvement.
+
+2. **Fee Collection and Reward Distribution**: The V3FactoryOwner contract collects fees from Uniswap V3 pools by selling the accrued fees to parties interested in paying the payout token. The collected payout tokens are then forwarded to the UniStaker contract.
+
+3. **Reward Notification and Distribution**: Upon receiving the payout tokens, the UniStaker contract is notified about the reward amount through the INotifiableRewardReceiver interface. It then distributes these rewards to stakers proportionally, based on their staked amounts and the duration of the stake.
+
+4. **Governance Participation**: Throughout this process, the governance rights of staked UNI tokens are exercised by the designated delegatees, ensuring that the stakers' voices are heard in Uniswap governance decisions without compromising their ability to earn rewards.
+
+### WorkFlow diagram
+<br/>
+[![Screenshot-from-2024-03-04-22-54-12.png](https://i.postimg.cc/7LMNGx95/Screenshot-from-2024-03-04-22-54-12.png)](https://postimg.cc/kVGSLPkC)
+
+Here's a structured overview of the files involved in the UniStaker Infrastructure project, detailing their core functionality, technical characteristics, and their importance within the system:
+
+| File Name                        | Core Functionality                                  | Technical Characteristics                                                                                             | Importance and Management |
+|----------------------------------|----------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------|---------------------------|
+| **UniStaker.sol**                | Manages UNI staking, reward distribution, and governance delegation | - Implements staking mechanics inspired by Synthetix<br>- Allows for governance delegation and reward collection<br>- Interacts with DelegationSurrogate for governance rights preservation | Central to the project as it handles the primary interaction with users, facilitating staking, rewards, and governance participation. It must be robust and secure due to its critical role in asset management and governance. |
+| **V3FactoryOwner.sol**           | Acts as the owner of Uniswap V3 Factory, enabling fee management and collection | - Enables and adjusts fee levels on Uniswap V3 pools<br>- Publicly exposes fee collection in exchange for a payout token<br>- Notifies the UniStaker contract about collected fees for reward distribution | Essential for the project's integration with Uniswap V3, enabling the collection of protocol fees that fund staker rewards. Its management of fee settings directly impacts the project's revenue and reward mechanisms. |
+| **DelegationSurrogate.sol**      | Holds governance tokens and delegates voting power on behalf of stakers | - Simple contract for delegating voting rights while holding tokens<br>- Max-approves the deployer for token reclamation | Supports the governance aspect of staked tokens, ensuring users retain their voting rights. Its simplicity and single-purpose design minimize risks and complexity. |
+| **IERC20Delegates.sol**          | Interface for governance token interactions, including delegation and standard ERC20 functions | - Specifies functions for token delegation and standard ERC20 operations<br>- Used by other contracts to interact with the governance token | Facilitates interaction with governance tokens, enabling essential functionalities like staking, delegation, and reward distribution. It ensures compatibility and standardization across the system. |
+| **INotifiableRewardReceiver.sol**| Interface for notifying about received rewards | - Defines a method for reward notification<br>- Ensures contracts can respond to incoming rewards appropriately | Allows for flexible reward distribution mechanisms, enabling the UniStaker contract to react to received funds. This interface is crucial for integrating the reward mechanism with the fee collection process. |
+| **IUniswapV3FactoryOwnerActions.sol** | Interface for owner actions on the Uniswap V3 Factory | - Specifies methods for factory management, including fee enabling and owner setting | Enables the V3FactoryOwner contract to manage Uniswap V3 settings, directly affecting the project's ability to collect and manage fees. |
+| **IUniswapV3PoolOwnerActions.sol** | Interface for actions on individual Uniswap V3 pools | - Defines pool management functions, such as setting protocol fees | Allows the V3FactoryOwner to manage protocol fees on individual pools, influencing the project's revenue from fee collection. |
 
 <br/>
 <br/>
@@ -74,22 +77,25 @@ The Salty.IO project is a comprehensive ecosystem, focusing on token staking, li
 First, by examining the scope of the code, I determined my code review and analysis strategy.
 https://code4rena.com/audits/2024-01-saltyio
 
-Accordingly, I would analyze and audit the subject in the following steps;
+My approach to ensure a thorough and comprehensive audit would encompass several steps, combining theoretical understanding, practical testing, and security assessments. Here’s how I would proceed:
 
-| Number |Stage |Details|Information|
-|:--|:----------------|:------|:------|
-|1|Compile and Run Test|[Installation](https://github.com/code-423n4/2024-01-salty?tab=readme-ov-file#build--test-instructions)|Test and installation structure is simple, cleanly designed|
-|2|Architecture Review| [Salty](https://github.com/code-423n4/2024-01-salty/tree/main/src) |Provides a basic architectural teaching for General Architecture|
-|3|Graphical Analysis  |Graphical Analysis with [Solidity-metrics](https://github.com/ConsenSys/solidity-metrics)|A visual view has been made to dominate the general structure of the codes of the project.|
-|4|Slither Analysis  | [Slither Report](https://github.com/crytic/slither)| Slither report of the project for some basic analysis|
-|5|Test Suits|[Tests](https://github.com/code-423n4/2024-01-salty?tab=readme-ov-file#build--test-instructions)|In this section, the scope and content of the tests of the project are analyzed.|
-|6|Manuel Code Review|[Scope](https://github.com/code-423n4/2024-01-salty?tab=readme-ov-file#scope)||
-|7|Using Solodit for common vulnerabilities|[Solodit](https://solodit.xyz/)|Using solodit to find common vulnerabilites related to Lending Borrowing protocol|
-|8|Infographic|[Figma](https://www.figma.com/)|Tried to make Visual drawings to understand the hard-to-understand mechanisms|
-|9|Special focus on Areas of  Concern|[Areas of Concern](https://github.com/code-423n4/2024-01-salty?tab=readme-ov-file#attack-ideas-where-to-look-for-bugs)|Code where I should focus more|
+### 1. Documentation Review
+First, I started by reading the project documentation in detail. Understanding the project's goals, architecture, and functionalities as outlined in the docs helps me grasp the intended use cases and the design rationale behind the smart contracts. This initial step is crucial for aligning my understanding with the project's objectives and preparing for a more technical dive.
 
-<br/>
-<br/>
+### 2. Codebase Familiarization
+Next, I cloned the project repository and familiarize myself with the codebase structure. I take note of how the contracts are organized, the naming conventions, and how the interfaces are defined and implemented. This step helps me understand the project’s modularity and the relationships between different contracts.
+
+### 3. Dependency and Configuration Analysis
+Before diving into the contract logic, I reviewed the project’s dependencies, such as OpenZeppelin contracts, and configuration settings, including compiler versions. This is to ensure that the project uses secure and up-to-date libraries and follows best practices for deployment.
+
+### 4. Manual Code Review
+With a solid understanding of the project structure and goals, I would begin a line-by-line review of the smart contracts. My focus would be on identifying common smart contract vulnerabilities such as reentrancy, overflow/underflow, improper access control, and unchecked external calls. Additionally, I assessed the contracts for logic errors, inefficiencies, and deviations from the documented functionalities.
+
+### 5. Testing and Coverage Analysis
+After the manual review, I run the project’s test suite to ensure all tests pass and to identify any areas of the code not covered by tests. I would write additional tests if necessary to achieve comprehensive coverage, particularly focusing on edge cases and failure modes.
+
+### 9. Interaction with External Systems
+Since the project interacts with Uniswap V3, I review the integration points and external calls to ensure they are handled securely, respecting the trust boundaries and mitigating risks associated with external dependencies.
 
 ## d) Analysis of the code base
 
@@ -98,99 +104,50 @@ In this way, many predictions can be made, including the difficulty levels of th
 Uses Consensys Solidity Metrics
 
 
--  **File:** This field contains the name or path of the source file being analyzed.
 
--  **Logic Contracts:** This field indicates the number of Contracts involves
+-  **File name:** This field indicates the number of Contracts involves
 
--  **Interfaces:** This field indicated specify the number or details of interfaces defined in the source file.
 
 -  **Lines:** This field represents the total number of lines in the source file, including code lines, comments, and blank lines.
 
--  **nLines:** nLines typically stands for "normalized lines" and represents the total number of lines in the source file excluding blank lines. 
 
 -  **nSLOC:** nSLOC stands for "normalized source lines of code," and it further refines nLines by excluding both blank lines and comments. It gives a more accurate measure of the code's complexity.
 
 -  **Comment Lines:** This field specifies the number of lines in the source file that contain comments.
 
--  **Complex. Score:** This field may indicate a complexity score or metric for the source file. 
-
-## Analysis of sloc of `Dao` contracts
-
-[![Screenshot-from-2024-01-30-12-40-36.png](https://i.postimg.cc/gk1md16Z/Screenshot-from-2024-01-30-12-40-36.png)](https://postimg.cc/bs0K9Cgy)
-
-## Analysis of sloc of `Launch` contracts
-
-[![Screenshot-from-2024-01-30-12-41-44.png](https://i.postimg.cc/TwhF478X/Screenshot-from-2024-01-30-12-41-44.png)](https://postimg.cc/47kWK1N8)
-
-## Analysis of sloc of `Pools` contracts
-
-[![Screenshot-from-2024-01-30-12-42-23.png](https://i.postimg.cc/PxLV4CZX/Screenshot-from-2024-01-30-12-42-23.png)](https://postimg.cc/47g14NBq)
-
-## Analysis of sloc of `price_feed` contracts
-
-[![Screenshot-from-2024-01-30-12-43-47.png](https://i.postimg.cc/y6v0fy35/Screenshot-from-2024-01-30-12-43-47.png)](https://postimg.cc/s1GBxSc9)
-
-## Analysis of sloc of `Rewards` contracts
-
-[![Screenshot-from-2024-01-30-12-44-35.png](https://i.postimg.cc/2SK4x2xW/Screenshot-from-2024-01-30-12-44-35.png)](https://postimg.cc/5X8Y45T9)
-
-## Analysis of sloc of `Stable` contracts
-
-[![Screenshot-from-2024-01-30-12-45-10.png](https://i.postimg.cc/2yGWLw6V/Screenshot-from-2024-01-30-12-45-10.png)](https://postimg.cc/rRdsv55k)
-
-## Analysis of sloc of `Staking` contracts
-
-[![Screenshot-from-2024-01-30-12-45-46.png](https://i.postimg.cc/RZyHtqMQ/Screenshot-from-2024-01-30-12-45-46.png)](https://postimg.cc/bZ0rcySs)
-
-## Analysis of sloc of src contracts
-
-[![Screenshot-from-2024-01-30-12-47-00.png](https://i.postimg.cc/1tTVQJ05/Screenshot-from-2024-01-30-12-47-00.png)](https://postimg.cc/LYt8kk0r)
-
-## Comment-to-Source Ratio:
-
-**`DAO` contracts:** On average there are **4.69** code lines per comment (lower=better).
-
-**`Launch` contracts:** On average there are **4.39** code lines per comment (lower=better).
-
-**`Pools` contracts:** On average there are **1.82** code lines per comment (lower=better).
-
-**`price_feed` contracts:** On average there are **4.49** code lines per comment (lower=better).
-
-**`Rewards` contracts:** On average there are **3.54** code lines per comment (lower=better).
-
-**`Stable` contracts:** On average there are **3.26** code lines per comment (lower=better).
-
-**`Staking` contracts:** On average there are **2.98** code lines per comment (lower=better).
-
-**`src` contracts:** On average there are **3.22** code lines per comment (lower=better).
-
-# Call Graph of Important Contracts
-
-## Call graph of `Launch` contract
-[![Screenshot-from-2024-01-30-12-52-14.png](https://i.postimg.cc/RVRdrJp6/Screenshot-from-2024-01-30-12-52-14.png)](https://postimg.cc/w71LLMpg)
-
-## Call graph of `Pools` contracts
-
-[![Screenshot-from-2024-01-30-12-53-45.png](https://i.postimg.cc/R09vW8Qb/Screenshot-from-2024-01-30-12-53-45.png)](https://postimg.cc/G4MWNXfk)
-
-## Call graph of `Price_feed` contracts
-
-[![Screenshot-from-2024-01-30-15-46-04.png](https://i.postimg.cc/SKZfSKhb/Screenshot-from-2024-01-30-15-46-04.png)](https://postimg.cc/R3HHG4hg)
-
-## Call graph of `Staking` contracts
-
-[![Screenshot-from-2024-01-30-15-53-21.png](https://i.postimg.cc/nL5TKLwY/Screenshot-from-2024-01-30-15-53-21.png)](https://postimg.cc/QBQphjDH)
-
-## Contract Integration Graph
-
-[![Screenshot-from-2024-01-30-15-54-15.png](https://i.postimg.cc/5yfz8d1S/Screenshot-from-2024-01-30-15-54-15.png)](https://postimg.cc/cg56Nzvv)
+-  **nLines:** nLines typically stands for "normalized lines" and represents the total number of lines in the source file excluding blank lines. 
 
 
-# High Level Domain Model
 
-This domain model provides an overview of the key components  and how they are interconnected.
+Total : 7 files,  563 codes, 450 comments, 142 blanks, all 1155 lines
 
-[![Screenshot-from-2024-01-30-22-20-55.png](https://i.postimg.cc/P51HHnpR/Screenshot-from-2024-01-30-22-20-55.png)](https://postimg.cc/RWCy18T7)
+## Files
+| filename | language | code | comment | blank | total |
+| :--- | :--- | ---: | ---: | ---: | ---: |
+| [src/DelegationSurrogate.sol](/src/DelegationSurrogate.sol) | Solidity | 8 | 19 | 3 | 30 |
+| [src/UniStaker.sol](/src/UniStaker.sol) | Solidity | 428 | 282 | 101 | 811 |
+| [src/V3FactoryOwner.sol](/src/V3FactoryOwner.sol) | Solidity | 87 | 94 | 25 | 206 |
+| [src/interfaces/IERC20Delegates.sol](/src/interfaces/IERC20Delegates.sol) | Solidity | 22 | 7 | 3 | 32 |
+| [src/interfaces/INotifiableRewardReceiver.sol](/src/interfaces/INotifiableRewardReceiver.sol) | Solidity | 4 | 9 | 2 | 15 |
+| [src/interfaces/IUniswapV3FactoryOwnerActions.sol](/src/interfaces/IUniswapV3FactoryOwnerActions.sol) | Solidity | 7 | 23 | 5 | 35 |
+| [src/interfaces/IUniswapV3PoolOwnerActions.sol](/src/interfaces/IUniswapV3PoolOwnerActions.sol) | Solidity | 7 | 16 | 3 | 26 |
+
+
+### Contract Functionality and Logic
+
+- **UniStaker.sol**: This contract is central to the project, managing UNI staking, reward distribution, and voting power delegation. It effectively implements the staking mechanics inspired by Synthetix, with modifications to suit the Uniswap V3 ecosystem. The contract's logic for staking, withdrawing, and reward distribution is clear and aligns with the documented functionalities. The delegation of governance rights through the `DelegationSurrogate` contracts is a clever solution to retain voting power for stakers, ensuring their governance participation is not diluted.
+
+- **V3FactoryOwner.sol**: Serving as the owner of the Uniswap V3 Factory, this contract manages protocol fee settings and collection. The design choice to allow public fee collection in exchange for a payout token introduces an innovative mechanism for protocol fee monetization. However, this open approach necessitates rigorous security measures to prevent potential manipulation or denial of service by flooding the system with fee collections.
+
+- **DelegationSurrogate.sol**: The simplicity of this contract is its strength, providing a straightforward solution to delegate governance rights without unnecessary complexity. It serves its purpose effectively, though its security hinges on the careful management and accounting of the parent `UniStaker` contract.
+
+### Comment-to-Source Ratio: On average there are `1.25 code` lines per comment (lower=better).
+
+# State diagram
+
+This State diagram provides an overview of the key components  and how they are interconnected.
+
+[![Screenshot-from-2024-03-04-23-35-49.png](https://i.postimg.cc/B67zndxP/Screenshot-from-2024-03-04-23-35-49.png)](https://postimg.cc/8JW4yXXT)
 
 <br/>
 <br/>
@@ -207,7 +164,7 @@ This domain model provides an overview of the key components  and how they are i
       - Then to run the tests, I simply added the relevant files to the .env, referencing .env.example.
    
    b. **Execution of Tests:**
-      - Tests were run using `fCOVERAGE="yes" NETWORK="sep" forge test -vv --rpc-url  https://rpc.sepolia.org`, executing a suite of predefined test cases that covered various functionalities and scenarios.
+      - Tests were run using `forge install` followed by `forge build` and then `forge test`, executing a suite of predefined test cases that covered various functionalities and scenarios.
    
    c. **Test Coverage and Documentation:**
       - The overview of the testing suite, as referred to in the provided documentation, likely details the scope, scenarios, and objectives of each test, ensuring a comprehensive assessment of the contracts.
@@ -216,7 +173,7 @@ This domain model provides an overview of the key components  and how they are i
 ### What did the project do differently? ;
 -   1) It can be said that the developers of the project did a quality job, there is a test structure consisting of tests with quality content. In particular, tests have been written successfully.
 
--   2) Overall line coverage percentage provided by your tests : 99
+-   2) Overall line coverage percentage provided by your tests : 100
 
 ### What could they have done better?
 
@@ -233,289 +190,12 @@ Ref:https://xin-xia.github.io/publication/icse194.pdf
 <br/>
 
 
-## Imp Test cases coverage with gas report
-
-### ExchangeConfig.sol
-
-| Function Name          | min   | avg    | median | max    | # calls |
-|------------------------|-------|--------|--------|--------|---------|
-| accessManager          | 390   | 390    | 390    | 390    | 11      |
-| airdrop                | 370   | 592    | 370    | 2370   | 9       |
-| dai                    | 237   | 237    | 237    | 237    | 1536    |
-| dao                    | 370   | 378    | 370    | 2370   | 2548    |
-| daoVestingWallet       | 391   | 1191   | 391    | 2391   | 30      |
-| initialDistribution    | 370   | 397    | 370    | 2370   | 2515    |
-| managedTeamWallet      | 238   | 238    | 238    | 238    | 47      |
-| salt                   | 260   | 260    | 260    | 260    | 6304    |
-| setAccessManager       | 620   | 23705  | 23829  | 23829  | 513     |
-| setContracts           | 1104  | 133564 | 133824 | 133824 | 511     |
-| teamVestingWallet      | 368   | 747    | 368    | 2368   | 58      |
-| transferOwnership      | 2331  | 2331   | 2331   | 2331   | 509     |
-| upkeep                 | 348   | 731    | 348    | 2348   | 334     |
-| usds                   | 238   | 238    | 238    | 238    | 2580    |
-| walletHasAccess        | 551   | 3343   | 1886   | 14386  | 2054    |
-| wbtc                   | 283   | 283    | 283    | 283    | 2120    |
-| weth                   | 239   | 239    | 239    | 239    | 3136    |
-
-### ManagedWallet.sol
-
-| Function Name                | min  | avg   | median | max   | # calls |
-|------------------------------|------|-------|--------|-------|---------|
-| activeTimelock               | 340  | 340   | 340    | 340   | 7       |
-| changeWallets                | 373  | 1924  | 2373   | 2966  | 6       |
-| confirmationWallet           | 303  | 303   | 303    | 303   | 2       |
-| mainWallet                   | 325  | 805   | 325    | 2325  | 50      |
-| proposeWallets               | 693  | 27356 | 46368  | 46368 | 12      |
-| proposedConfirmationWallet   | 324  | 324   | 324    | 324   | 3       |
-| proposedMainWallet           | 346  | 346   | 346    | 346   | 3       |
-| receive                      | 0    | 324   | 381    | 381   | 8       |
-
-### Salt.sol
-
-| Function Name          | min   | avg   | median | max   | # calls |
-|------------------------|-------|-------|--------|-------|---------|
-| approve                | 2604  | 24431 | 24604  | 24604 | 3631    |
-| balanceOf              | 583   | 752   | 583    | 2583  | 1474    |
-| burnTokensInContract   | 3921  | 6131  | 6721   | 8721  | 38      |
-| decimals               | 266   | 266   | 266    | 266   | 18      |
-| name                   | 3198  | 3198  | 3198   | 3198  | 1       |
-| symbol                 | 3263  | 3263  | 3263   | 3263  | 1       |
-| totalBurned            | 562   | 673   | 562    | 2562  | 18      |
-| totalSupply            | 349   | 820   | 349    | 2349  | 174     |
-| transfer               | 3034  | 23949 | 24934  | 29734 | 3205    |
-| transferFrom           | 879   | 21241 | 25342  | 32142 | 1178    |
-
-### DAO.sol:
-
-| Function Name               | min   | avg    | median | max    | # calls |
-|-----------------------------|-------|--------|--------|--------|---------|
-| collateralAndLiquidity      | 251   | 251    | 251    | 251    | 1       |
-| countryIsExcluded           | 825   | 1396   | 825    | 2825   | 7       |
-| daoConfig                   | 293   | 293    | 293    | 293    | 1       |
-| exchangeConfig              | 274   | 274    | 274    | 274    | 1       |
-| finalizeBallot              | 7296  | 85003  | 50499  | 520797 | 137     |
-| formPOL                     | 5950  | 208196 | 208151 | 279651 | 50      |
-| liquidityRewardsEmitter     | 272   | 272    | 272    | 272    | 1       |
-| pools                       | 294   | 294    | 294    | 294    | 307     |
-| poolsConfig                 | 294   | 294    | 294    | 294    | 1       |
-| priceAggregator             | 251   | 251    | 251    | 251    | 1       |
-| processRewardsFromPOL       | 5674  | 62314  | 74013  | 114013 | 30      |
-| proposals                   | 251   | 251    | 251    | 251    | 1       |
-| rewardsConfig               | 250   | 250    | 250    | 250    | 1       |
-| stableConfig                | 250   | 250    | 250    | 250    | 1       |
-| stakingConfig               | 295   | 295    | 295    | 295    | 1       |
-| websiteURL                  | 1318  | 2489   | 3075   | 3075   | 3       |
-| withdrawArbitrageProfits    | 2402  | 44638  | 59649  | 64449  | 34      |
-| withdrawPOL                 | 661   | 74841  | 3930   | 179861 | 21      |
-
-### DAOConfig.sol
-
-| Function Name                           | min  | avg  | median | max  | # calls |
-|-----------------------------------------|------|------|--------|------|---------|
-| arbitrageProfitsPercentPOL              | 352  | 923  | 352    | 2352 | 42      |
-| ballotMinimumDuration                   | 352  | 961  | 352    | 2352 | 220     |
-| baseBallotQuorumPercentTimes1000        | 374  | 724  | 374    | 2374 | 194     |
-| bootstrappingRewards                    | 373  | 887  | 373    | 2373 | 35      |
-| changeArbitrageProfitsPercentPOL        | 1773 | 2866 | 2084   | 4884 | 17      |
-| changeBallotDuration                    | 1772 | 2713 | 2072   | 4883 | 21      |
-| changeBaseBallotQuorumPercent           | 1773 | 2509 | 2073   | 4884 | 31      |
-| changeBootstrappingRewards              | 1771 | 2999 | 2071   | 6882 | 21      |
-| changeMaxPendingTokensForWhitelisting   | 1772 | 2918 | 2077   | 8872 | 24      |
-| changePercentPolRewardsBurned           | 1794 | 2736 | 2094   | 4905 | 21      |
-| changeRequiredProposalPercentStake      | 1751 | 2390 | 2051   | 4862 | 40      |
-| changeUpkeepRewardPercent               | 1773 | 2747 | 2073   | 4884 | 20      |
-| maxPendingTokensForWhitelisting         | 351  | 1030 | 351    | 2351 | 53      |
-| percentPolRewardsBurned                 | 350  | 850  | 350    | 2350 | 44      |
-| requiredProposalPercentStakeTimes1000   | 329  | 919  | 329    | 2329 | 227     |
-| transferOwnership                       | 2323 | 2323 | 2323   | 2323 | 466     |
-| upkeepRewardPercent                     | 351  | 802  | 351    | 2351 | 62      |
-
-### Proposals.sol
-
-| Function Name                           | min   | avg    | median | max    | # calls |
-|-----------------------------------------|-------|--------|--------|--------|---------|
-| ballotForID                             | 4651  | 4703   | 4651   | 5180   | 515     |
-| ballotIsApproved                        | 744   | 783    | 744    | 2744   | 51      |
-| canFinalizeBallot                       | 3372  | 14390  | 14721  | 20728  | 145     |
-| castVote                                | 6488  | 63761  | 77263  | 77651  | 181     |
-| createConfirmationProposal              | 6595  | 255127 | 258680 | 314216 | 14      |
-| lastUserVoteForBallot                   | 1153  | 1153   | 1153   | 1153   | 8       |
-| markBallotAsFinalized                   | 4265  | 8326   | 8144   | 11332  | 141     |
-| nextBallotID                            | 364   | 1252   | 364    | 2364   | 9       |
-| openBallots                             | 833   | 1244   | 1256   | 1609   | 6       |
-| openBallotsByName                       | 861   | 1210   | 861    | 2873   | 23      |
-| openBallotsForTokenWhitelisting         | 1163  | 1269   | 1163   | 1398   | 11      |
-| proposeCallContract                     | 5829  | 301459 | 375867 | 375867 | 5       |
-| proposeCountryExclusion                 | 5925  | 245790 | 300803 | 300803 | 6       |
-| proposeCountryInclusion                 | 5936  | 234925 | 291125 | 300825 | 10      |
-| proposeParameterBallot                  | 6763  | 273206 | 281771 | 418283 | 107     |
-| proposeSendSALT                         | 5767  | 165956 | 167908 | 322904 | 6       |
-| proposeSetContractAddress               | 6046  | 254465 | 281400 | 326390 | 21      |
-| proposeTokenUnwhitelisting              | 10259 | 126914 | 13406  | 382471 | 12      |
-| proposeTokenWhitelisting                | 5649  | 334836 | 419569 | 459409 | 27      |
-| proposeWebsiteUpdate                    | 6211  | 240083 | 301120 | 345580 | 8       |
-| requiredQuorumForBallotType             | 1391  | 4323   | 3987   | 10399  | 11      |
-| tokenWhitelistingBallotWithTheMostVotes | 5230  | 5901   | 5279   | 9205   | 8       |
-| totalVotesCastForBallot                 | 4005  | 5795   | 6069   | 8069   | 7       |
-| userHasActiveProposal                   | 563   | 563    | 563    | 563    | 2       |
-| votesCastForBallot                      | 696   | 696    | 696    | 696    | 9       |
-| winningParameterVote                    | 1047  | 1103   | 1049   | 5047   | 85      |
-
-### Deployment.sol
-
-| Function Name      | min  | avg  | median | max  | # calls |
-|--------------------|------|------|--------|------|---------|
-| DEPLOYER           | 316  | 316  | 316    | 316  | 6       |
-| dai                | 459  | 459  | 459    | 459  | 6       |
-| dao                | 438  | 2188 | 2438   | 2438 | 8       |
-| exchangeConfig     | 440  | 440  | 440    | 440  | 14      |
-| managedTeamWallet  | 415  | 415  | 415    | 415  | 6       |
-| pools              | 459  | 977  | 459    | 2459 | 27      |
-| poolsConfig        | 395  | 736  | 395    | 2395 | 41      |
-| salt               | 415  | 415  | 415    | 415  | 6       |
-| upkeep             | 416  | 1616 | 2416   | 2416 | 5       |
-| usds               | 437  | 437  | 437    | 437  | 6       |
-| wbtc               | 416  | 416  | 416    | 416  | 18      |
-| weth               | 416  | 701  | 416    | 2416 | 7       |
-
-
-### InitialDistribution.sol
-
-| Function Name            | min  | avg    | median | max    | # calls |
-|--------------------------|------|--------|--------|--------|---------|
-| airdrop                  | 260  | 260    | 260    | 260    | 1       |
-| bootstrapBallot          | 215  | 215    | 215    | 215    | 1574    |
-| collateralAndLiquidity   | 217  | 217    | 217    | 217    | 1       |
-| dao                      | 216  | 216    | 216    | 216    | 1       |
-| daoVestingWallet         | 260  | 260    | 260    | 260    | 1       |
-| distributionApproved     | 366  | 507020 | 508709 | 588609 | 318     |
-| emissions                | 238  | 238    | 238    | 238    | 1       |
-| poolsConfig              | 238  | 238    | 238    | 238    | 1       |
-| salt                     | 237  | 237    | 237    | 237    | 1       |
-| saltRewards              | 239  | 239    | 239    | 239    | 1       |
-| teamVestingWallet        | 259  | 259    | 259    | 259    | 1       |
-
-### Pools.sol
-
-| Function Name              | min   | avg   | median | max    | # calls |
-|----------------------------|-------|-------|--------|--------|---------|
-| addLiquidity               | 1148  | 47913 | 44560  | 92398  | 1847    |
-| arbitrageIndicies          | 838   | 1474  | 838    | 2838   | 22      |
-| clearProfitsForPools       | 8086  | 12044 | 8086   | 63508  | 28      |
-| deposit                    | 5600  | 28509 | 29913  | 58801  | 995     |
-| depositDoubleSwapWithdraw  | 56379 | 85017 | 85017  | 113656 | 2       |
-| depositSwapWithdraw        | 5686  | 37728 | 29973  | 84156  | 546     |
-| depositedUserBalance       | 743   | 1014  | 743    | 2743   | 140     |
-| exchangeIsLive             | 410   | 1410  | 1410   | 2410   | 4       |
-| getPoolReserves            | 1178  | 1560  | 1197   | 3197   | 574     |
-| profitsForWhitelistedPools | 9285  | 37491 | 26180  | 224644 | 29      |
-| removeLiquidity            | 6070  | 24070 | 7874   | 57472  | 203     |
-| setContracts               | 670   | 46745 | 46836  | 46836  | 512     |
-| startExchangeApproved      | 13838 | 38664 | 37843  | 93465  | 307     |
-| swap                       | 3688  | 28232 | 29662  | 84559  | 35      |
-| updateArbitrageIndicies    | 8135  | 57382 | 37157  | 922812 | 5773    |
-| withdraw                   | 3865  | 20890 | 27721  | 32521  | 41      |
-
-### PoolsConfig.sol
-
-| Function Name                             | min  | avg   | median | max    | # calls |
-|-------------------------------------------|------|-------|--------|--------|---------|
-| changeMaximumInternalSwapPercentTimes1000 | 1816 | 2908  | 2116   | 4927   | 17      |
-| changeMaximumWhitelistedPools             | 1793 | 3390  | 2104   | 8904   | 30      |
-| isWhitelisted                             | 333  | 657   | 510    | 2510   | 6266    |
-| maximumInternalSwapPercentTimes1000       | 317  | 1182  | 317    | 2317   | 67      |
-| maximumWhitelistedPools                   | 362  | 1028  | 362    | 2362   | 57      |
-| numberOfWhitelistedPools                  | 393  | 1133  | 393    | 2393   | 100     |
-| tokenHasBeenWhitelisted                   | 1084 | 3454  | 3616   | 5617   | 51      |
-| transferOwnership                         | 2352 | 2352  | 2352   | 2352   | 509     |
-| underlyingTokenPair                       | 780  | 963   | 840    | 4840   | 47666   |
-| unwhitelistPool                           | 743  | 67735 | 54909  | 155188 | 12      |
-| whitelistPool                             | 1056 | 151797| 132033 | 1015267| 5765    |
-| whitelistedPools                          | 1118 | 3317  | 2528   | 45822  | 6533    |
-
-
-### CoreSaltyFeed.sol
-
-| Function Name | min   | avg  | median | max  | # calls |
-|---------------|-------|------|--------|------|---------|
-| getPriceBTC   | 2047  | 4215 | 4215   | 6384 | 10      |
-| getPriceETH   | 1863  | 2898 | 2026   | 6363 | 9       |
-| pools         | 248   | 248  | 248    | 248  | 1       |
-| usds          | 204   | 204  | 204    | 204  | 1       |
-| wbtc          | 227   | 227  | 227    | 227  | 1       |
-| weth          | 249   | 249  | 249    | 249  | 1       |
-
-### PriceAggregator.sol
-
-| Function Name                                | min   | avg   | median | max    | # calls |
-|----------------------------------------------|-------|-------|--------|--------|---------|
-| changeMaximumPriceFeedPercentDifferenceTimes1000 | 1771 | 2821  | 2071   | 6882   | 26      |
-| changePriceFeedModificationCooldown          | 1773  | 3296  | 2084   | 4884   | 11      |
-| getPriceBTC                                  | 3430  | 7078  | 4293   | 32333  | 264     |
-| getPriceETH                                  | 3304  | 4587  | 4107   | 10743  | 246     |
-| maximumPriceFeedPercentDifferenceTimes1000   | 352   | 610   | 352    | 2352   | 31      |
-| setInitialFeeds                              | 871   | 67035 | 67163  | 67163  | 521     |
-| setPriceFeed                                 | 638   | 13023 | 7538   | 33415  | 20      |
-| transferOwnership                            | 2352  | 2352  | 2352   | 2352   | 509     |
-
-### ForcedPriceFeed.sol
-
-| Function Name | min  | avg  | median | max  | # calls |
-|---------------|------|------|--------|------|---------|
-| getPriceBTC   | 453  | 740  | 506    | 4506 | 66      |
-| getPriceETH   | 398  | 840  | 462    | 2462 | 15      |
-| setBTCPrice   | 522  | 2525 | 522    | 7422 | 31      |
-| setRevertNext | 3198 | 4698 | 5198   | 5198 | 8       |
-
-### TestChainlinkAggregator.sol
-
-| Function Name    | min   | avg   | median | max   | # calls |
-|------------------|-------|-------|--------|-------|---------|
-| latestRoundData  | 362   | 2162  | 2886   | 2896  | 9       |
-| setPrice         | 543   | 5471  | 7443   | 7443  | 7       |
-| setShouldFail    | 24462 | 24462 | 24462  | 24462 | 1       |
-| setShouldTimeout | 24441 | 24441 | 24441  | 24441 | 1       |
-
-### RewardsConfig.sol:RewardsConfig contract
-
-| Function Name                         | min   | avg  | median | max  | # calls |
-|---------------------------------------|-------|------|--------|------|---------|
-| changeEmissionsWeeklyPercent          | 1794  | 2952 | 2078   | 4886 | 9       |
-| changePercentRewardsSaltUSDS          | 1750  | 2749 | 2034   | 4842 | 11      |
-| changeRewardsEmitterDailyPercent      | 1771  | 2576 | 2055   | 6863 | 19      |
-| changeStakingRewardsPercent           | 1751  | 2450 | 2035   | 4843 | 19      |
-| emissionsWeeklyPercentTimes1000       | 351   | 551  | 351    | 2351 | 10      |
-| percentRewardsSaltUSDS                | 306   | 472  | 306    | 2306 | 12      |
-| rewardsEmitterDailyPercentTimes1000   | 329   | 429  | 329    | 2329 | 20      |
-| stakingRewardsPercent                 | 330   | 430  | 330    | 2330 | 20      |
-
-### SaltRewards.sol:SaltRewards contract
-
-| Function Name              | min   | avg    | median | max     | # calls |
-|----------------------------|-------|--------|--------|---------|---------|
-| liquidityRewardsEmitter    | 237   | 237    | 237    | 237     | 28      |
-| performUpkeep              | 4193  | 134574 | 44767  | 2330225 | 28      |
-| sendInitialSaltRewards     | 299526| 301139 | 299526 | 336126  | 315     |
-| stakingRewardsEmitter      | 215   | 215    | 215    | 215     | 28      |
-
-### TestSaltRewards.sol
-
-| Function Name                  | min    | avg   | median | max   | # calls |
-|--------------------------------|--------|-------|--------|-------|---------|
-| performUpkeep                  | 3645   | 42520 | 4518   | 157401| 4       |
-| sendInitialLiquidityRewards    | 115396 | 128460| 128460 | 141525| 2       |
-| sendInitialSaltRewards         | 3414   | 65756 | 65756  | 128098| 2       |
-| sendInitialStakingRewards      | 60174  | 60174 | 60174  | 60174 | 2       |
-| sendLiquidityRewards           | 10121  | 69770 | 84078  | 88328 | 6       |
-| sendStakingRewards             | 12968  | 44424 | 60152  | 60152 | 3       |
-
-
 
 ## f) Security Approach of the Project
 
 ### Successful current security understanding of the project;
 
-1- The project hasn't underwent any audits(nothing stated in the docs), this innovative assessments on Code4rena is the first, where multiple auditors are scrutinizing the code.
+1- The project has already underwent an audits (Trail of Bits ), this innovative assessments on Code4rena is the second, where multiple auditors are scrutinizing the code.
 
 ### What the project should add in the understanding of Security;
 
@@ -560,42 +240,72 @@ Overall, I consider the quality of the Salty.io protocol codebase to be Good. Th
 | **Testing**                              | The protocol demonstrates a strong emphasis on testing, which is evident from the extensive test cases covering various scenarios. Regular and thorough testing enhances the code's stability and reduces the likelihood of unforeseen issues in a live environment. |
 | **Code Structure and Formatting**        | The code is well-structured and consistently formatted. It follows a logical structure that makes it easy to navigate and understand. Consistent formatting across the codebase not only improves readability but also indicates a professional development approach. |
 
-While the codebase is robust and well-structured, the lack of detailed comments in the code is a notable area for improvement. Enhancing the code commenting would further elevate the overall quality and accessibility of the project.
 
+### Solidity and Clarity
+
+- **Smart Contract Structure**: The project's smart contracts are well-structured and logically organized. The separation of concerns is evident in the delineation between staking logic (UniStaker.sol), Uniswap V3 Factory ownership (V3FactoryOwner.sol), and governance token delegation (DelegationSurrogate.sol). This modular approach facilitates easier understanding and maintenance.
+
+- **Code Readability and Documentation**: The contracts are accompanied by comprehensive comments and documentation, following the NatSpec format. This not only aids in understanding the contract functionalities but also ensures that future developers or auditors can quickly grasp the intended behavior of the code.
+
+### Security Practices
+
+- **Use of Established Patterns and Libraries**: The project leverages OpenZeppelin contracts for standard functionalities such as ERC20 interactions and access control, which is a positive indicator of codebase quality. Employing these tested and audited libraries helps prevent common vulnerabilities.
+
+- **Security Measures and Considerations**: The mechanisms for staking, rewards distribution, and governance delegation are designed with security in mind. For instance, the use of `DelegationSurrogate` to maintain governance rights while staking UNI tokens is an innovative approach that also considers the security implications of delegation.
+
+- **Potential Areas for Enhancement**: While the project demonstrates a strong understanding of security principles, continuous review and testing are necessary, especially considering the dynamic and evolving landscape of DeFi and smart contract vulnerabilities. Integration with Uniswap V3 introduces complexities that require ongoing vigilance to ensure compatibility and security, particularly concerning protocol fee collection and token delegation.
+
+
+### Adherence to DeFi and Uniswap Best Practices
+
+- **Integration with Uniswap V3**: The project's design thoughtfully considers its role within the broader Uniswap V3 ecosystem, offering functionalities that complement the existing features of Uniswap, such as liquidity provision and fee generation. The choice to enable public claiming of protocol fees through the `V3FactoryOwner` contract is particularly noteworthy, as it aligns with the permissionless and decentralized ethos of DeFi.
+
+- **Upgradability and Future-proofing**: While the current implementation serves its purpose well, the rapidly evolving nature of DeFi and Uniswap might necessitate future upgrades or enhancements. The project could benefit from incorporating more flexible upgrade mechanisms or considering the long-term governance structure for managing such changes, ensuring that it can adapt to future Uniswap upgrades or shifts in DeFi trends.
 
 ## h) Other Audit Reports and Automated Findings 
 
-**Automated Findings:**
-https://github.com/code-423n4/2024-01-salty/blob/main/bot-report.md
+**Bot findings:**
+https://github.com/code-423n4/2024-02-uniswap-foundation/blob/main/bot-report.md
+
+**4naly3er Report:**
+https://github.com/code-423n4/2024-02-uniswap-foundation/blob/main/4naly3er-report.md
 
 **Previous Audits**
-[ABDK Audit](https://github.com/abdk-consulting/audits/blob/main/othernet_global_pte_ltd/ABDK_OthernetGlobalPTELTD_SaltyIO_v_2_0.pdf)
-[Trail of Bits](https://github.com/trailofbits/publications/blob/master/reviews/2023-10-saltyio-securityreview.pdf)
-
-**4naly3er report**
-https://github.com/code-423n4/2024-01-salty/blob/main/4naly3er-report.md
+Not Public Yet
 
 ## i) Full representation of the project’s risk model
 
 ### 1. Admin Abuse Risks:
-- **Centralized Control Points**: The project's governance is heavily reliant on smart contracts like `ManagedWallet.sol`, `ExchangeConfig.sol`, and the `DAO`. While these contracts ostensibly distribute control, there's a risk of centralization if few actors hold significant control.
-- **Upgrade and Proposal Approval**: The `DAO` and `ManagedWallet.sol` contracts have functionalities to approve upgrades and changes. If these mechanisms are compromised or controlled by a small group, they could be used maliciously.
+In the context of the UniStaker Infrastructure project, the concept of "Admin Abuse Risks" encompasses potential vulnerabilities or scenarios where the administrative roles associated with the smart contracts could be misused, leading to adverse effects on the protocol's integrity, user assets, or governance processes. Given the project's integration with Uniswap V3 and its unique functionalities around staking, fee collection, and governance rights delegation, let's critically analyze the specific admin roles and their associated risks.
+
+### V3FactoryOwner Contract
+
+The `V3FactoryOwner` contract holds the authority over the Uniswap V3 Factory settings, including enabling fee amounts and setting protocol fees on pools. While this centralization of control is necessary for certain administrative functions, it introduces several risks:
+
+- **Protocol Fee Adjustments**: The admin can adjust protocol fees on Uniswap V3 pools. If done maliciously or carelessly, it could disrupt the economic balance, affecting liquidity providers' earnings and potentially the overall liquidity of the Uniswap V3 platform.
+
+- **Fee Collection Mechanism**: The admin's ability to change the payout amount required for collecting protocol fees introduces a risk. An unreasonably high payout amount could deter the collection of fees, while too low a payout amount might lead to exploitation where fees are collected too frequently, potentially draining value from the protocol.
+
+### UniStaker Contract
+
+The `UniStaker` contract admin has control over crucial functionalities such as updating reward distribution parameters and adding or removing sources of revenue. Potential abuses could include:
+
+- **Reward Distribution Manipulation**: By altering reward distribution logic or parameters, an admin could unfairly benefit certain stakers over others or divert rewards to unintended recipients.
 
 ### 2. Systemic Risks:
-- **Interconnected Contract Dependencies**: The project's DeFi ecosystem comprises various interdependent contracts (like `Liquidity.sol`, `Staking.sol`, `Emissions.sol`). A malfunction or exploitation in one contract could ripple through the entire system.\
-- **Liquidity Risks**: The liquidity pools (`Pools.sol`) are central to the ecosystem. Any liquidity crunch or imbalance can pose systemic risks.
+- **Interconnected Contract Dependencies**: The project's DeFi ecosystem comprises various interdependent contracts. A malfunction or exploitation in one contract could ripple through the entire system.
+  
+- **Protocol Dependency:** The UniStaker Infrastructure's functionality is tightly coupled with Uniswap V3. Any significant changes or disruptions in Uniswap V3, such as upgrades or downtime, could directly impact the project's operations and user experience.
+
+- **Market Volatility and Economic Shocks:** The project's reliance on certain tokens for rewards and fee payments exposes it to market volatility. Sharp price movements could affect the economic viability of staking and claiming rewards, introducing systemic risks related to user engagement and protocol sustainability.
+
+
 
 ### 3. Technical Risks:
 - **Smart Contract Vulnerabilities**: Given the complexity of contracts like `Upkeep.sol`, `Staking.sol`, and others, there's a risk of bugs or vulnerabilities that could be exploited, despite thorough auditing.
-- **Oracle Failures**: The system relies on `PriceAggregator.sol` for market data. Any failure or manipulation in the price feeds can lead to incorrect valuations and system responses.
 
 By continuously monitoring these risk factors and implementing robust mitigation strategies, Salty.IO can aim to ensure a secure and resilient DeFi ecosystem for its users.
 
-##  j) Packages and Dependencies Analysis 📦
-
-| Package | Version | Usage | 
-| --- | --- | --- | 
-| [`openzeppelin`](https://www.npmjs.com/package/@openzeppelin/contracts) | [![npm]([![images.png](https://i.postimg.cc/MK89GbgX/images.png)](https://postimg.cc/pyqfG8Wt))](https://www.npmjs.com/package/@openzeppelin/contracts) |  Project uses version `4.9.3` while the recommended version is latest i.e: `5.0.1` 
 
 ## k) New insights and learning of project from this audit:
 
