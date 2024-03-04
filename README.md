@@ -4,7 +4,7 @@
 ### Summary
 | List |Head |Details|
 |:--|:----------------|:------|
-|a) |Overview of the Salty.IO Project| Summary of the whole Protocol |
+|a) |Overview of the UniStaker Infrastructure Project| Summary of the whole Protocol |
 |b) |Technical Architecture| Architecture of the smart contracts |
 |c) |The approach I would follow when reviewing the code | Stages in my code review and analysis |
 |d) |Analysis of the code base | What is unique? How are the existing patterns used? "Solidity-metrics" was used  |
@@ -17,7 +17,7 @@
 
 
 
-## a) Overview of the Salty Project
+## a) Overview of the UniStaker Infrastructure Project
 
 The UniStaker Infrastructure project is an innovative blockchain initiative designed to leverage the Uniswap V3 protocol, enabling UNI token holders to participate in protocol fee collection and distribution through a staking mechanism. The project introduces a seamless way to earn rewards by staking UNI tokens, while simultaneously engaging in the governance of the Uniswap ecosystem. Upon depositing UNI tokens into the UniStaker contract, users can delegate their governance voting power, ensuring they remain active participants in decision-making processes without sacrificing potential earnings from protocol fees. The system automatically auctions accumulated fees from various Uniswap V3 Pools in exchange for a designated reward token, distributing these rewards proportionally among stakers. Additionally, the DelegationSurrogate contract ensures that users' governance rights are retained, allowing for the delegation of voting power to a chosen representative. 
 
@@ -75,7 +75,7 @@ Here's a structured overview of the files involved in the UniStaker Infrastructu
 ## c) The approach I would follow when reviewing the code
 
 First, by examining the scope of the code, I determined my code review and analysis strategy.
-https://code4rena.com/audits/2024-01-saltyio
+https://code4rena.com/audits/2024-02-unistaker-infrastructure#top
 
 My approach to ensure a thorough and comprehensive audit would encompass several steps, combining theoretical understanding, practical testing, and security assessments. Here’s how I would proceed:
 
@@ -156,7 +156,7 @@ This State diagram provides an overview of the key components  and how they are 
 
  **Foundry Testing:**
    
-   Foundry, a modern smart contract testing framework, was utilized to test the Salty contracts. This involved several key steps:
+   Foundry, a modern smart contract testing framework, was utilized to test the unistaker contracts. This involved several key steps:
    
    a. **Installation and Setup:**
       - Foundry was installed using the command `curl -L https://foundry.paradigm.xyz | bash`, followed by `foundryup` to ensure the latest version was in use.
@@ -230,7 +230,7 @@ https://twitter.com/Ledger/status/1735326240658100414?t=UAuzoir9uliXplerqP-Ing&s
 
 ## g) Codebase Quality
 
-Overall, I consider the quality of the Salty.io protocol codebase to be Good. The code appears to be mature and well-developed, though there are areas for improvement, particularly in code commenting. We have noticed the implementation of various standards adhere to appropriately. Details are explained below:
+Overall, I consider the quality of the unistaker protocol codebase to be Good. The code appears to be mature and well-developed, though there are areas for improvement, particularly in code commenting. We have noticed the implementation of various standards adhere to appropriately. Details are explained below:
 
 | Codebase Quality Categories              | Comments                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | ---------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -304,12 +304,12 @@ The `UniStaker` contract admin has control over crucial functionalities such as 
 ### 3. Technical Risks:
 - **Smart Contract Vulnerabilities**: Given the complexity of contracts like `Upkeep.sol`, `Staking.sol`, and others, there's a risk of bugs or vulnerabilities that could be exploited, despite thorough auditing.
 
-By continuously monitoring these risk factors and implementing robust mitigation strategies, Salty.IO can aim to ensure a secure and resilient DeFi ecosystem for its users.
+By continuously monitoring these risk factors and implementing robust mitigation strategies, Unistaker can aim to ensure a secure and resilient DeFi ecosystem for its users.
 
 
 ## k) New insights and learning of project from this audit:
 
-After thoroughly reviewing the Salty.io project's codebase and documentation, several new insights and learnings have emerged.
+After thoroughly reviewing the Unistaker project's codebase and documentation, several new insights and learnings have emerged.
 
 1. **Use of Uniswap and Chainlink**: The project utilizes Uniswap for decentralized trading and Chainlink for secure and reliable external data. This combination indicates an emphasis on robustness and security in obtaining market data and executing trades.
 
