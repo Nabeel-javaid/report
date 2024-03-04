@@ -1,1958 +1,619 @@
-# Report
-
-
-## Medium Issues
-
-
-| |Issue|Instances|
-|-|:-|:-:|
-| [M-1](#M-1) | Code will not work properly on L2 due to block.number | 1 |
-| [M-2](#M-2) | Centralization Risk for trusted owners | 9 |
-| [M-3](#M-3) | Unsafe use of ERC20 transferFrom() | 2 |
-| [M-4](#M-4) | Unsafe use of ERC20 transfer() | 2 |
-
-## Low Issues
-
-
-| |Issue|Instances|
-|-|:-|:-:|
-| [L-1](#L-1) | Division by zero not prevented | 1 |
-| [L-2](#L-2) | Empty function body | 1 |
-| [L-3](#L-3) | Use Ownable2Step instead of Ownable | 4 |
-| [L-4](#L-4) | Owner can renounce Ownership   | 4 |
-| [L-5](#L-5) | Loss of precision | 1 |
-| [L-6](#L-6) | State variables not capped at reasonable values | 10 |
-| [L-7](#L-7) | Some tokens may revert when zero value transfers are made | 2 |
-| [L-8](#L-8) |  Functions calling contracts/addresses with transfer hooks should be protected by reentrancy guard   | 2 |
-| [L-9](#L-9) | Some tokens may revert when large transfers are made | 5 |
-
-## Non Critical Issues
-
-
-| |Issue|Instances|
-|-|:-|:-:|
-| [NC-1](#NC-1) | Contracts should have full test coverage | 1 |
-| [NC-2](#NC-2) | Consider adding formal verification proofs | 1 |
-| [NC-3](#NC-3) | Large or complicated code bases should implement invariant tests | 1 |
-| [NC-4](#NC-4) | NatSpec: Interface declarations should have NatSpec descriptions | 3 |
-| [NC-5](#NC-5) | Variables without visibility specifier | 1 |
-| [NC-6](#NC-6) | Constants in comparisons should appear on the left side | 7 |
-| [NC-7](#NC-7) | constants should be defined rather than using magic numbers | 2 |
-| [NC-8](#NC-8) | Contract declarations should have NatSpec @author annotations | 3 |
-| [NC-9](#NC-9) | Contract declarations should have NatSpec @Title annotations | 3 |
-| [NC-10](#NC-10) | NatSpec: Contract declarations should have @dev tags | 3 |
-| [NC-11](#NC-11) | NatSpec: Contract declarations should have NatSpec descriptions | 3 |
-| [NC-12](#NC-12) | NatSpec: Contract declarations should have @notice tags | 3 |
-| [NC-13](#NC-13) | Consider using delete rather than assigning zero to clear value | 3 |
-| [NC-14](#NC-14) | Consider using delete rather than assigning false to clear value | 1 |
-| [NC-15](#NC-15) | Consider adding a block/deny-list" | 3 |
-| [NC-16](#NC-16) | Consider adding emergency-stop functionality | 3 |
-| [NC-17](#NC-17) | Events are missing sender information | 5 |
-| [NC-18](#NC-18) | NatSpec: Event declarations should have NatSpec descriptions | 3 |
-| [NC-19](#NC-19) | NatSpec: function declarations should have NatSpec descriptions | 31 |
-| [NC-20](#NC-20) | NatSpec: function declarations should have @Notice tags | 31 |
-| [NC-21](#NC-21) | NatSpec: function declarations should have NatSpec descriptions | 31 |
-| [NC-22](#NC-22) | If-statement can be converted to a ternary | 7 |
-| [NC-23](#NC-23) | Variable names for immutables should use CONSTANT_CASE | 4 |
-| [NC-24](#NC-24) | Consider using named mappings | 4 |
-| [NC-25](#NC-25) | Consider combining multiple address/ID mappings into a single mapping of an address/ID to a struct | 4 |
-| [NC-26](#NC-26) | Use of override is unnecessary | 6 |
-| [NC-27](#NC-27) | Consider using descriptive constants when using 0 in the code | 4 |
-| [NC-28](#NC-28) | Non-external/public variable names should begin with an underscore | 6 |
-| [NC-29](#NC-29) | Return values of `approve()` not checked | 2 |
-| [NC-30](#NC-30) | Setters should prevent re-setting of the same value | 1 |
-| [NC-31](#NC-31) | Use the latest solidity version for deployment   | 1 |
-| [NC-32](#NC-32) | Empty receive()/fallback() function | 1 |
-| [NC-33](#NC-33) | Consider moving msg.sender checks to modifiers | 4 |
-| [NC-34](#NC-34) | Dont use _msgSender() if not supporting EIP-2771 | 8 |
-| [NC-35](#NC-35) | Array indices should be referenced via enums rather than numeric literals | 2 |
-| [NC-36](#NC-36) | Use assembly to emit events, in order to save gas | 9 |
-| [NC-37](#NC-37) | Long revert strings | 4 |
+# 🛠️ Analysis - Salty.IO
+***An Ethereum-based DEX with zero swap fees, yield-generating Automatic Arbitrage, and a native WBTC/WETH backed stablecoin.***
+
+### Summary
+| List |Head |Details|
+|:--|:----------------|:------|
+|a) |Overview of the Salty.IO Project| Summary of the whole Protocol |
+|b) |Technical Architecture| Architecture of the smart contracts |
+|c) |The approach I would follow when reviewing the code | Stages in my code review and analysis |
+|d) |Analysis of the code base | What is unique? How are the existing patterns used? "Solidity-metrics" was used  |
+|e) |Test analysis | Test scope of the project and quality of tests |
+|f) |Security Approach of the Project | Audit approach of the Project |
+|g) |Codebase Quality | Overall Code Quality of the Project |
+|h) |Other Audit Reports and Automated Findings | What are the previous Audit reports and their analysis |
+|i) |Full representation of the project’s risk model| What are the risks associated with the project |
+|j) |Packages and Dependencies Analysis | Details about the project Packages |
+|k) |New insights and learning of project from this audit | Things learned from the project |
 
-## Gas Optimizations
 
 
-| |Issue|Instances|
-|-|:-|:-:|
-| [GAS-1](#GAS-1) | Enable IR-based code generation | 1 |
-| [GAS-2](#GAS-2) | Nesting if-statements is cheaper than using && | 2 |
-| [GAS-3](#GAS-3) | Use >= instead of > for gas efficiency | 3 |
-| [GAS-4](#GAS-4) | Using bools for storage incurs overhead | 1 |
-| [GAS-5](#GAS-5) | Expressions for constant values should use immutable rather than constant | 8 |
-| [GAS-6](#GAS-6) | Constructors can be marked payable | 2 |
-| [GAS-7](#GAS-7) | Use Custom Errors | 8 |
-| [GAS-8](#GAS-8) | Reduce gas usage by moving to Solidity 0.8.19 or later | 1 |
-| [GAS-9](#GAS-9) | Functions guaranteed to revert when called by normal users can be marked `payable` | 7 |
-| [GAS-10](#GAS-10) | require()/revert() strings longer than 32 bytes cost extra gas | 2 |
-| [GAS-11](#GAS-11) | Consider using uint256(1)/uint256(2) instead of true/false for gas efficiency | 9 |
-| [GAS-12](#GAS-12) | Usage of uints/ints smaller than 32 bytes (256 bits) incurs overhead | 4 |
-| [GAS-13](#GAS-13) | Use != 0 instead of > for unsigned integer comparison | 3 |
-| [GAS-14](#GAS-14) | Optimize names to save gas | 27 |
+## a) Overview of the Salty Project
 
-##################################################################### 
- 
- DETAILED REPORT:: 
+The Salty.IO project is a comprehensive ecosystem, focusing on token staking, liquidity provision, and efficient management of digital assets. The project is designed to incentivize users to participate actively in the ecosystem through staking and liquidity provision, while also ensuring secure and efficient management of crucial wallet addresses.
 
+### Key Features and Functionalities:
 
-##################################################################### 
+1. **Staking Rewards Management:**
+   - Manages the distribution of rewards for users staking SALT tokens or liquidity shares.
+   - Provides mechanisms for users to claim accumulated rewards based on their share in the staking pool.
 
+2. **Token Staking System:**
+   - Allows users to stake SALT tokens and receive xSALT, representing their staked amount.
+   - Implements a flexible unstaking process with varying durations, influencing the amount of SALT reclaimed.
+   - Includes a feature for expedited unstaking with reduced returns, offering users a choice between speed and efficiency.
 
-## Medium Issues
+3. **Secure Wallet Management:**
+   - Manages critical wallet addresses using a dual-wallet system (main and confirmation wallets).
+   - Enables secure and controlled changes to wallet addresses through a proposal and confirmation process.
+   - Incorporates a 30-day timelock for implementing confirmed changes, adding an extra layer of security.
 
 
- ### <a name="M-1"></a>[M-1]
- ### Code will not work properly on L2 due to block.number
-On L2, the block.number is not a reliable source of timing information and the time between each block is also different from Ethereum. This is because each transaction on L2 is placed in a separate block and blocks are not produce at a constant rate.
 
-*Instances (1)*:
- 
- <details>
- <summary>Click to expand!</summary>
+## b) Technical Architecture
+[![Screenshot-from-2024-01-30-23-20-24.png](https://i.postimg.cc/B6FHcCmy/Screenshot-from-2024-01-30-23-20-24.png)](https://postimg.cc/CBFRwbTH)
+<br/>
+<br/>
+<br/>
 
-```solidity
-File: example/ddf.sol
+| File Name               | Core Functionality                                      | Technical Characteristics                                                                                               | Importance and Management                                                 |
+|-------------------------|---------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------|
+| `PoolMath.sol`          | Mathematical operations for liquidity pools             | Implements core math for pool operations, ensuring precise and efficient calculations for liquidity management         | Critical for accurate pool operations and ensuring financial stability    |
+| `CoreChainlinkFeed.sol` | Price feed using Chainlink                              | Integrates Chainlink oracles for accurate BTC and ETH prices, crucial for asset valuation in various operations        | Essential for market-relevant pricing and reducing risks in valuations    |
+| `CoreUniswapFeed.sol`   | TWAPs (Time-Weighted Average Prices) from Uniswap       | Provides TWAPs for WBTC and WETH, aiding in accurate and time-relevant pricing for these assets                        | Vital for maintaining up-to-date and fair asset pricing in the ecosystem  |
+| `PriceAggregator.sol`   | Price aggregation and validation                        | Compares different price feeds for reliability, crucial for maintaining robust and accurate pricing in the ecosystem   | Ensures price integrity by filtering out anomalies and errors in feeds    |
+| `CoreSaltyFeed.sol`     | Price retrieval using Salty.IO pools                    | Uses internal Salty.IO pools for asset pricing, adding an additional layer of pricing data                              | Adds a layer of internal validation for asset prices                      |
+| `RewardsConfig.sol`     | Management of rewards configurations                    | Sets parameters for reward distribution, including daily percentages and allocation strategies                         | Key in managing how rewards are distributed, impacting user incentives    |
+| `SaltRewards.sol`       | Handling of SALT rewards                                | Manages the distribution of SALT rewards from emissions and profits, crucial for incentivizing participation           | Central to the reward system, directly impacting user engagement          |
+| `USDS.sol`              | USDS stablecoin management                              | Manages minting and burning of USDS, pivotal for maintaining its stablecoin properties                                  | Critical for the stablecoin's integrity and trustworthiness               |
+| `StableConfig.sol`      | Configuration of stablecoin-related parameters          | Sets crucial parameters like collateral ratios and liquidation rewards, affecting the stablecoin's financial health    | Ensures the stablecoin system remains balanced and sustainable            |
+| `CollateralAndLiquidity.sol` | Collateral and liquidity management              | Manages user collateral and liquidity provisions, fundamental for the platform's lending and borrowing features        | A cornerstone for the platform's financial activities and user trust      |
+| `Liquidizer.sol`        | Token conversion and burning                            | Handles conversion of assets to USDS and burning excess tokens, important for maintaining token supply balance         | Plays a critical role in tokenomics and maintaining market equilibrium   |
+| `StakingConfig.sol`     | Configuration of staking parameters                     | Sets key staking parameters like unstake periods and percentages, affecting how users interact with staking features  | Directly influences user staking behavior and platform liquidity          |
+| `Liquidity.sol`         | Liquidity provision and management                      | Facilitates adding and withdrawing liquidity, crucial for the platform's liquidity pool operations                     | Key to ensuring sufficient liquidity in the platform's pools             |
+| `StakingRewards.sol`    | Management of staking rewards                           | Oversees the distribution of rewards for staking, a major incentive for user participation                              | Central to the platform's staking mechanism and user retention           |
+| `Staking.sol`           | SALT token staking functionalities                      | Handles the staking of SALT tokens, a fundamental aspect of the platform's tokenomics                                   | Critical for user engagement and maintaining the token's value stability |
+| `ManagedWallet.sol`     | Secure management of crucial wallet addresses           | Ensures safe and controlled management of key wallets, a crucial aspect of platform security                            | Vital for maintaining trust and security in managing significant assets  |
 
-242:         launchBlock = block.number;
 
-```
+<br/>
+<br/>
 
-</details> 
- 
+## c) The approach I would follow when reviewing the code
 
+First, by examining the scope of the code, I determined my code review and analysis strategy.
+https://code4rena.com/audits/2024-01-saltyio
 
- ### <a name="M-2"></a>[M-2]
- ### Centralization Risk for trusted owners
+Accordingly, I would analyze and audit the subject in the following steps;
 
-#### Impact:
-Contracts have owners with privileged rights to perform admin tasks and need to be trusted to not perform malicious updates or drain funds.
+| Number |Stage |Details|Information|
+|:--|:----------------|:------|:------|
+|1|Compile and Run Test|[Installation](https://github.com/code-423n4/2024-01-salty?tab=readme-ov-file#build--test-instructions)|Test and installation structure is simple, cleanly designed|
+|2|Architecture Review| [Salty](https://github.com/code-423n4/2024-01-salty/tree/main/src) |Provides a basic architectural teaching for General Architecture|
+|3|Graphical Analysis  |Graphical Analysis with [Solidity-metrics](https://github.com/ConsenSys/solidity-metrics)|A visual view has been made to dominate the general structure of the codes of the project.|
+|4|Slither Analysis  | [Slither Report](https://github.com/crytic/slither)| Slither report of the project for some basic analysis|
+|5|Test Suits|[Tests](https://github.com/code-423n4/2024-01-salty?tab=readme-ov-file#build--test-instructions)|In this section, the scope and content of the tests of the project are analyzed.|
+|6|Manuel Code Review|[Scope](https://github.com/code-423n4/2024-01-salty?tab=readme-ov-file#scope)||
+|7|Using Solodit for common vulnerabilities|[Solodit](https://solodit.xyz/)|Using solodit to find common vulnerabilites related to Lending Borrowing protocol|
+|8|Infographic|[Figma](https://www.figma.com/)|Tried to make Visual drawings to understand the hard-to-understand mechanisms|
+|9|Special focus on Areas of  Concern|[Areas of Concern](https://github.com/code-423n4/2024-01-salty?tab=readme-ov-file#attack-ideas-where-to-look-for-bugs)|Code where I should focus more|
 
-*Instances (9)*:
- 
- <details>
- <summary>Click to expand!</summary>
+<br/>
+<br/>
 
-```solidity
-File: example/ddf.sol
+## d) Analysis of the code base
 
-40: contract Ownable is Context {
+The most important summary in analyzing the code base is the stacking of codes to be analyzed.
+In this way, many predictions can be made, including the difficulty levels of the contracts, which one is more important for the auditor, the features they contain that are important for security (payable functions, uses assembly, etc.), the audit cost of the project, and the time to be allocated to the audit;
+Uses Consensys Solidity Metrics
 
-63:     function transferOwnership(address newOwner) public onlyOwner {
 
-76:     function renounceOwnership() public virtual onlyOwner {
+-  **File:** This field contains the name or path of the source file being analyzed.
 
-102: contract SpectreAI is Context, IERC20, Ownable {
+-  **Logic Contracts:** This field indicates the number of Contracts involves
 
-235:     function addExcludedWallet(address wallet) external onlyOwner {
+-  **Interfaces:** This field indicated specify the number or details of interfaces defined in the source file.
 
-239:     function openTrading() external onlyOwner {
+-  **Lines:** This field represents the total number of lines in the source file, including code lines, comments, and blank lines.
 
-245:     function setLimit(uint256 amountLimit) external onlyOwner {
+-  **nLines:** nLines typically stands for "normalized lines" and represents the total number of lines in the source file excluding blank lines. 
 
-250:     function removeAllLimits() external onlyOwner {
+-  **nSLOC:** nSLOC stands for "normalized source lines of code," and it further refines nLines by excluding both blank lines and comments. It gives a more accurate measure of the code's complexity.
 
-255:     function changeTax(uint256 newBuyTax, uint256 newSellTax) external onlyOwner {
+-  **Comment Lines:** This field specifies the number of lines in the source file that contain comments.
 
-```
+-  **Complex. Score:** This field may indicate a complexity score or metric for the source file. 
 
-</details> 
- 
+## Analysis of sloc of `Dao` contracts
 
+[![Screenshot-from-2024-01-30-12-40-36.png](https://i.postimg.cc/gk1md16Z/Screenshot-from-2024-01-30-12-40-36.png)](https://postimg.cc/bs0K9Cgy)
 
- ### <a name="M-3"></a>[M-3]
- ### Unsafe use of ERC20 transferFrom()
-Some tokens do not implement the ERC20 standard properly. For example Tether (USDT)'s transferFrom() function does not return a boolean as the ERC20 specification requires, and instead has no return value. When these sorts of tokens are cast to IERC20/ERC20, their function signatures do not match and therefore the calls made will revert. It is recommended to use the SafeERC20's safeTransferFrom() from OpenZeppelin instead.
+## Analysis of sloc of `Launch` contracts
 
-*Instances (2)*:
- 
- <details>
- <summary>Click to expand!</summary>
+[![Screenshot-from-2024-01-30-12-41-44.png](https://i.postimg.cc/TwhF478X/Screenshot-from-2024-01-30-12-41-44.png)](https://postimg.cc/47kWK1N8)
 
-```solidity
-File: example/ddf.sol
+## Analysis of sloc of `Pools` contracts
 
-26:     function transferFrom(
+[![Screenshot-from-2024-01-30-12-42-23.png](https://i.postimg.cc/PxLV4CZX/Screenshot-from-2024-01-30-12-42-23.png)](https://postimg.cc/47g14NBq)
 
-210:     function transferFrom(
+## Analysis of sloc of `price_feed` contracts
 
-```
+[![Screenshot-from-2024-01-30-12-43-47.png](https://i.postimg.cc/y6v0fy35/Screenshot-from-2024-01-30-12-43-47.png)](https://postimg.cc/s1GBxSc9)
 
-</details> 
- 
+## Analysis of sloc of `Rewards` contracts
 
+[![Screenshot-from-2024-01-30-12-44-35.png](https://i.postimg.cc/2SK4x2xW/Screenshot-from-2024-01-30-12-44-35.png)](https://postimg.cc/5X8Y45T9)
 
- ### <a name="M-4"></a>[M-4]
- ### Unsafe use of ERC20 transfer()
-Some tokens do not implement the ERC20 standard properly. For example Tether (USDT)'s transfer() function does not return a boolean as the ERC20 specification requires, and instead has no return value. When these sorts of tokens are cast to IERC20/ERC20, their function signatures do not match and therefore the calls made will revert. It is recommended to use the SafeERC20's safeTransfer() from OpenZeppelin instead.
+## Analysis of sloc of `Stable` contracts
 
-*Instances (2)*:
- 
- <details>
- <summary>Click to expand!</summary>
+[![Screenshot-from-2024-01-30-12-45-10.png](https://i.postimg.cc/2yGWLw6V/Screenshot-from-2024-01-30-12-45-10.png)](https://postimg.cc/rRdsv55k)
 
-```solidity
-File: example/ddf.sol
+## Analysis of sloc of `Staking` contracts
 
-15:     function transfer(address recipient, uint256 amount)
+[![Screenshot-from-2024-01-30-12-45-46.png](https://i.postimg.cc/RZyHtqMQ/Screenshot-from-2024-01-30-12-45-46.png)](https://postimg.cc/bZ0rcySs)
 
-183:     function transfer(address recipient, uint256 amount)
+## Analysis of sloc of src contracts
 
-```
+[![Screenshot-from-2024-01-30-12-47-00.png](https://i.postimg.cc/1tTVQJ05/Screenshot-from-2024-01-30-12-47-00.png)](https://postimg.cc/LYt8kk0r)
 
-</details> 
- 
+## Comment-to-Source Ratio:
 
+**`DAO` contracts:** On average there are **4.69** code lines per comment (lower=better).
 
-## Low Issues
+**`Launch` contracts:** On average there are **4.39** code lines per comment (lower=better).
 
+**`Pools` contracts:** On average there are **1.82** code lines per comment (lower=better).
 
- ### <a name="L-1"></a>[L-1]
- ### Division by zero not prevented
-The divisions below take an input parameter that has no zero-value checks, which can cause the functions reverting if zero is passed.  
+**`price_feed` contracts:** On average there are **4.49** code lines per comment (lower=better).
 
-*Instances (1)*:
- 
- <details>
- <summary>Click to expand!</summary>
+**`Rewards` contracts:** On average there are **3.54** code lines per comment (lower=better).
 
-```solidity
-File: example/ddf.sol
+**`Stable` contracts:** On average there are **3.26** code lines per comment (lower=better).
 
-331:             uint256 taxTokens = (amount * _tax) / 100;
+**`Staking` contracts:** On average there are **2.98** code lines per comment (lower=better).
 
-```
+**`src` contracts:** On average there are **3.22** code lines per comment (lower=better).
 
-</details> 
- 
+# Call Graph of Important Contracts
 
+## Call graph of `Launch` contract
+[![Screenshot-from-2024-01-30-12-52-14.png](https://i.postimg.cc/RVRdrJp6/Screenshot-from-2024-01-30-12-52-14.png)](https://postimg.cc/w71LLMpg)
 
- ### <a name="L-2"></a>[L-2]
- ### Empty function body
-Consider adding a comment about why the function body is empty
+## Call graph of `Pools` contracts
 
-*Instances (1)*:
- 
- <details>
- <summary>Click to expand!</summary>
+[![Screenshot-from-2024-01-30-12-53-45.png](https://i.postimg.cc/R09vW8Qb/Screenshot-from-2024-01-30-12-53-45.png)](https://postimg.cc/G4MWNXfk)
 
-```solidity
-File: example/ddf.sol
+## Call graph of `Price_feed` contracts
 
-346:     receive() external payable {}
+[![Screenshot-from-2024-01-30-15-46-04.png](https://i.postimg.cc/SKZfSKhb/Screenshot-from-2024-01-30-15-46-04.png)](https://postimg.cc/R3HHG4hg)
 
-```
+## Call graph of `Staking` contracts
 
-</details> 
- 
+[![Screenshot-from-2024-01-30-15-53-21.png](https://i.postimg.cc/nL5TKLwY/Screenshot-from-2024-01-30-15-53-21.png)](https://postimg.cc/QBQphjDH)
 
+## Contract Integration Graph
 
- ### <a name="L-3"></a>[L-3]
- ### Use Ownable2Step instead of Ownable
-Add a description of why Ownable2Step is recommended.
+[![Screenshot-from-2024-01-30-15-54-15.png](https://i.postimg.cc/5yfz8d1S/Screenshot-from-2024-01-30-15-54-15.png)](https://postimg.cc/cg56Nzvv)
 
-*Instances (4)*:
- 
- <details>
- <summary>Click to expand!</summary>
 
-```solidity
-File: example/ddf.sol
+# High Level Domain Model
 
-40: contract Ownable is Context {
+This domain model provides an overview of the key components  and how they are interconnected.
 
-59:         require(_owner == _msgSender(), "Ownable: caller is not the owner");
+[![Screenshot-from-2024-01-30-22-20-55.png](https://i.postimg.cc/P51HHnpR/Screenshot-from-2024-01-30-22-20-55.png)](https://postimg.cc/RWCy18T7)
 
-70:             "Ownable: new owner is the zero address"
+<br/>
+<br/>
 
-102: contract SpectreAI is Context, IERC20, Ownable {
+## e) Test analysis
 
-```
+ **Foundry Testing:**
+   
+   Foundry, a modern smart contract testing framework, was utilized to test the Salty contracts. This involved several key steps:
+   
+   a. **Installation and Setup:**
+      - Foundry was installed using the command `curl -L https://foundry.paradigm.xyz | bash`, followed by `foundryup` to ensure the latest version was in use.
+      - Dependencies were installed using `forge install`, ensuring all necessary components were available for the testing process.
+      - Then to run the tests, I simply added the relevant files to the .env, referencing .env.example.
+   
+   b. **Execution of Tests:**
+      - Tests were run using `fCOVERAGE="yes" NETWORK="sep" forge test -vv --rpc-url  https://rpc.sepolia.org`, executing a suite of predefined test cases that covered various functionalities and scenarios.
+   
+   c. **Test Coverage and Documentation:**
+      - The overview of the testing suite, as referred to in the provided documentation, likely details the scope, scenarios, and objectives of each test, ensuring a comprehensive assessment of the contracts.
+   
 
-</details> 
- 
+### What did the project do differently? ;
+-   1) It can be said that the developers of the project did a quality job, there is a test structure consisting of tests with quality content. In particular, tests have been written successfully.
 
+-   2) Overall line coverage percentage provided by your tests : 99
 
- ### <a name="L-4"></a>[L-4]
- ### Owner can renounce Ownership  
-Each of the following contracts implements or inherits the renounceOwnership() function. This can represent a certain risk if the ownership is renounced for any other reason than by design. Renouncing ownership will leave the contract without an owner, thereby removing any functionality that is only available to the owner.
+### What could they have done better?
 
-*Instances (4)*:
- 
- <details>
- <summary>Click to expand!</summary>
+-  1) If we look at the test scope and content of the project with a systematic checklist, we can see which parts are good and which areas have room for improvement As a result of my analysis, those marked in green are the ones that the project has fully achieved. The remaining areas are the development areas of the project in terms of testing ;
 
-```solidity
-File: example/ddf.sol
 
-40: contract Ownable is Context {
+[![test-cases.jpg](https://i.postimg.cc/1zgD5wCt/test-cases.jpg)](https://postimg.cc/v1s40gdF)
 
-59:         require(_owner == _msgSender(), "Ownable: caller is not the owner");
+Ref:https://xin-xia.github.io/publication/icse194.pdf
 
-70:             "Ownable: new owner is the zero address"
+[![nabeel-1.jpg](https://i.postimg.cc/6qtBdLQW/nabeel-1.jpg)](https://postimg.cc/bDVXPnbW)
 
-102: contract SpectreAI is Context, IERC20, Ownable {
+<br/>
+<br/>
 
-```
 
-</details> 
- 
+## Imp Test cases coverage with gas report
 
+### ExchangeConfig.sol
 
- ### <a name="L-5"></a>[L-5]
- ### Loss of precision
-Division by large numbers or variables may result in the result being zero, due to Solidity not supporting fractions.
+| Function Name          | min   | avg    | median | max    | # calls |
+|------------------------|-------|--------|--------|--------|---------|
+| accessManager          | 390   | 390    | 390    | 390    | 11      |
+| airdrop                | 370   | 592    | 370    | 2370   | 9       |
+| dai                    | 237   | 237    | 237    | 237    | 1536    |
+| dao                    | 370   | 378    | 370    | 2370   | 2548    |
+| daoVestingWallet       | 391   | 1191   | 391    | 2391   | 30      |
+| initialDistribution    | 370   | 397    | 370    | 2370   | 2515    |
+| managedTeamWallet      | 238   | 238    | 238    | 238    | 47      |
+| salt                   | 260   | 260    | 260    | 260    | 6304    |
+| setAccessManager       | 620   | 23705  | 23829  | 23829  | 513     |
+| setContracts           | 1104  | 133564 | 133824 | 133824 | 511     |
+| teamVestingWallet      | 368   | 747    | 368    | 2368   | 58      |
+| transferOwnership      | 2331  | 2331   | 2331   | 2331   | 509     |
+| upkeep                 | 348   | 731    | 348    | 2348   | 334     |
+| usds                   | 238   | 238    | 238    | 238    | 2580    |
+| walletHasAccess        | 551   | 3343   | 1886   | 14386  | 2054    |
+| wbtc                   | 283   | 283    | 283    | 283    | 2120    |
+| weth                   | 239   | 239    | 239    | 239    | 3136    |
 
-*Instances (1)*:
- 
- <details>
- <summary>Click to expand!</summary>
+### ManagedWallet.sol
 
-```solidity
-File: example/ddf.sol
+| Function Name                | min  | avg   | median | max   | # calls |
+|------------------------------|------|-------|--------|-------|---------|
+| activeTimelock               | 340  | 340   | 340    | 340   | 7       |
+| changeWallets                | 373  | 1924  | 2373   | 2966  | 6       |
+| confirmationWallet           | 303  | 303   | 303    | 303   | 2       |
+| mainWallet                   | 325  | 805   | 325    | 2325  | 50      |
+| proposeWallets               | 693  | 27356 | 46368  | 46368 | 12      |
+| proposedConfirmationWallet   | 324  | 324   | 324    | 324   | 3       |
+| proposedMainWallet           | 346  | 346   | 346    | 346   | 3       |
+| receive                      | 0    | 324   | 381    | 381   | 8       |
 
-331:             uint256 taxTokens = (amount * _tax) / 100;
+### Salt.sol
 
-```
+| Function Name          | min   | avg   | median | max   | # calls |
+|------------------------|-------|-------|--------|-------|---------|
+| approve                | 2604  | 24431 | 24604  | 24604 | 3631    |
+| balanceOf              | 583   | 752   | 583    | 2583  | 1474    |
+| burnTokensInContract   | 3921  | 6131  | 6721   | 8721  | 38      |
+| decimals               | 266   | 266   | 266    | 266   | 18      |
+| name                   | 3198  | 3198  | 3198   | 3198  | 1       |
+| symbol                 | 3263  | 3263  | 3263   | 3263  | 1       |
+| totalBurned            | 562   | 673   | 562    | 2562  | 18      |
+| totalSupply            | 349   | 820   | 349    | 2349  | 174     |
+| transfer               | 3034  | 23949 | 24934  | 29734 | 3205    |
+| transferFrom           | 879   | 21241 | 25342  | 32142 | 1178    |
 
-</details> 
- 
+### DAO.sol:
 
+| Function Name               | min   | avg    | median | max    | # calls |
+|-----------------------------|-------|--------|--------|--------|---------|
+| collateralAndLiquidity      | 251   | 251    | 251    | 251    | 1       |
+| countryIsExcluded           | 825   | 1396   | 825    | 2825   | 7       |
+| daoConfig                   | 293   | 293    | 293    | 293    | 1       |
+| exchangeConfig              | 274   | 274    | 274    | 274    | 1       |
+| finalizeBallot              | 7296  | 85003  | 50499  | 520797 | 137     |
+| formPOL                     | 5950  | 208196 | 208151 | 279651 | 50      |
+| liquidityRewardsEmitter     | 272   | 272    | 272    | 272    | 1       |
+| pools                       | 294   | 294    | 294    | 294    | 307     |
+| poolsConfig                 | 294   | 294    | 294    | 294    | 1       |
+| priceAggregator             | 251   | 251    | 251    | 251    | 1       |
+| processRewardsFromPOL       | 5674  | 62314  | 74013  | 114013 | 30      |
+| proposals                   | 251   | 251    | 251    | 251    | 1       |
+| rewardsConfig               | 250   | 250    | 250    | 250    | 1       |
+| stableConfig                | 250   | 250    | 250    | 250    | 1       |
+| stakingConfig               | 295   | 295    | 295    | 295    | 1       |
+| websiteURL                  | 1318  | 2489   | 3075   | 3075   | 3       |
+| withdrawArbitrageProfits    | 2402  | 44638  | 59649  | 64449  | 34      |
+| withdrawPOL                 | 661   | 74841  | 3930   | 179861 | 21      |
 
- ### <a name="L-6"></a>[L-6]
- ### State variables not capped at reasonable values
-Consider adding minimum/maximum value checks to ensure that the state variables below can never be used to excessively harm users, including via griefing
+### DAOConfig.sol
 
-*Instances (10)*:
- 
- <details>
- <summary>Click to expand!</summary>
+| Function Name                           | min  | avg  | median | max  | # calls |
+|-----------------------------------------|------|------|--------|------|---------|
+| arbitrageProfitsPercentPOL              | 352  | 923  | 352    | 2352 | 42      |
+| ballotMinimumDuration                   | 352  | 961  | 352    | 2352 | 220     |
+| baseBallotQuorumPercentTimes1000        | 374  | 724  | 374    | 2374 | 194     |
+| bootstrappingRewards                    | 373  | 887  | 373    | 2373 | 35      |
+| changeArbitrageProfitsPercentPOL        | 1773 | 2866 | 2084   | 4884 | 17      |
+| changeBallotDuration                    | 1772 | 2713 | 2072   | 4883 | 21      |
+| changeBaseBallotQuorumPercent           | 1773 | 2509 | 2073   | 4884 | 31      |
+| changeBootstrappingRewards              | 1771 | 2999 | 2071   | 6882 | 21      |
+| changeMaxPendingTokensForWhitelisting   | 1772 | 2918 | 2077   | 8872 | 24      |
+| changePercentPolRewardsBurned           | 1794 | 2736 | 2094   | 4905 | 21      |
+| changeRequiredProposalPercentStake      | 1751 | 2390 | 2051   | 4862 | 40      |
+| changeUpkeepRewardPercent               | 1773 | 2747 | 2073   | 4884 | 20      |
+| maxPendingTokensForWhitelisting         | 351  | 1030 | 351    | 2351 | 53      |
+| percentPolRewardsBurned                 | 350  | 850  | 350    | 2350 | 44      |
+| requiredProposalPercentStakeTimes1000   | 329  | 919  | 329    | 2329 | 227     |
+| transferOwnership                       | 2323 | 2323 | 2323   | 2323 | 466     |
+| upkeepRewardPercent                     | 351  | 802  | 351    | 2351 | 62      |
+
+### Proposals.sol
+
+| Function Name                           | min   | avg    | median | max    | # calls |
+|-----------------------------------------|-------|--------|--------|--------|---------|
+| ballotForID                             | 4651  | 4703   | 4651   | 5180   | 515     |
+| ballotIsApproved                        | 744   | 783    | 744    | 2744   | 51      |
+| canFinalizeBallot                       | 3372  | 14390  | 14721  | 20728  | 145     |
+| castVote                                | 6488  | 63761  | 77263  | 77651  | 181     |
+| createConfirmationProposal              | 6595  | 255127 | 258680 | 314216 | 14      |
+| lastUserVoteForBallot                   | 1153  | 1153   | 1153   | 1153   | 8       |
+| markBallotAsFinalized                   | 4265  | 8326   | 8144   | 11332  | 141     |
+| nextBallotID                            | 364   | 1252   | 364    | 2364   | 9       |
+| openBallots                             | 833   | 1244   | 1256   | 1609   | 6       |
+| openBallotsByName                       | 861   | 1210   | 861    | 2873   | 23      |
+| openBallotsForTokenWhitelisting         | 1163  | 1269   | 1163   | 1398   | 11      |
+| proposeCallContract                     | 5829  | 301459 | 375867 | 375867 | 5       |
+| proposeCountryExclusion                 | 5925  | 245790 | 300803 | 300803 | 6       |
+| proposeCountryInclusion                 | 5936  | 234925 | 291125 | 300825 | 10      |
+| proposeParameterBallot                  | 6763  | 273206 | 281771 | 418283 | 107     |
+| proposeSendSALT                         | 5767  | 165956 | 167908 | 322904 | 6       |
+| proposeSetContractAddress               | 6046  | 254465 | 281400 | 326390 | 21      |
+| proposeTokenUnwhitelisting              | 10259 | 126914 | 13406  | 382471 | 12      |
+| proposeTokenWhitelisting                | 5649  | 334836 | 419569 | 459409 | 27      |
+| proposeWebsiteUpdate                    | 6211  | 240083 | 301120 | 345580 | 8       |
+| requiredQuorumForBallotType             | 1391  | 4323   | 3987   | 10399  | 11      |
+| tokenWhitelistingBallotWithTheMostVotes | 5230  | 5901   | 5279   | 9205   | 8       |
+| totalVotesCastForBallot                 | 4005  | 5795   | 6069   | 8069   | 7       |
+| userHasActiveProposal                   | 563   | 563    | 563    | 563    | 2       |
+| votesCastForBallot                      | 696   | 696    | 696    | 696    | 9       |
+| winningParameterVote                    | 1047  | 1103   | 1049   | 5047   | 85      |
+
+### Deployment.sol
+
+| Function Name      | min  | avg  | median | max  | # calls |
+|--------------------|------|------|--------|------|---------|
+| DEPLOYER           | 316  | 316  | 316    | 316  | 6       |
+| dai                | 459  | 459  | 459    | 459  | 6       |
+| dao                | 438  | 2188 | 2438   | 2438 | 8       |
+| exchangeConfig     | 440  | 440  | 440    | 440  | 14      |
+| managedTeamWallet  | 415  | 415  | 415    | 415  | 6       |
+| pools              | 459  | 977  | 459    | 2459 | 27      |
+| poolsConfig        | 395  | 736  | 395    | 2395 | 41      |
+| salt               | 415  | 415  | 415    | 415  | 6       |
+| upkeep             | 416  | 1616 | 2416   | 2416 | 5       |
+| usds               | 437  | 437  | 437    | 437  | 6       |
+| wbtc               | 416  | 416  | 416    | 416  | 18      |
+| weth               | 416  | 701  | 416    | 2416 | 7       |
+
+
+### InitialDistribution.sol
+
+| Function Name            | min  | avg    | median | max    | # calls |
+|--------------------------|------|--------|--------|--------|---------|
+| airdrop                  | 260  | 260    | 260    | 260    | 1       |
+| bootstrapBallot          | 215  | 215    | 215    | 215    | 1574    |
+| collateralAndLiquidity   | 217  | 217    | 217    | 217    | 1       |
+| dao                      | 216  | 216    | 216    | 216    | 1       |
+| daoVestingWallet         | 260  | 260    | 260    | 260    | 1       |
+| distributionApproved     | 366  | 507020 | 508709 | 588609 | 318     |
+| emissions                | 238  | 238    | 238    | 238    | 1       |
+| poolsConfig              | 238  | 238    | 238    | 238    | 1       |
+| salt                     | 237  | 237    | 237    | 237    | 1       |
+| saltRewards              | 239  | 239    | 239    | 239    | 1       |
+| teamVestingWallet        | 259  | 259    | 259    | 259    | 1       |
+
+### Pools.sol
+
+| Function Name              | min   | avg   | median | max    | # calls |
+|----------------------------|-------|-------|--------|--------|---------|
+| addLiquidity               | 1148  | 47913 | 44560  | 92398  | 1847    |
+| arbitrageIndicies          | 838   | 1474  | 838    | 2838   | 22      |
+| clearProfitsForPools       | 8086  | 12044 | 8086   | 63508  | 28      |
+| deposit                    | 5600  | 28509 | 29913  | 58801  | 995     |
+| depositDoubleSwapWithdraw  | 56379 | 85017 | 85017  | 113656 | 2       |
+| depositSwapWithdraw        | 5686  | 37728 | 29973  | 84156  | 546     |
+| depositedUserBalance       | 743   | 1014  | 743    | 2743   | 140     |
+| exchangeIsLive             | 410   | 1410  | 1410   | 2410   | 4       |
+| getPoolReserves            | 1178  | 1560  | 1197   | 3197   | 574     |
+| profitsForWhitelistedPools | 9285  | 37491 | 26180  | 224644 | 29      |
+| removeLiquidity            | 6070  | 24070 | 7874   | 57472  | 203     |
+| setContracts               | 670   | 46745 | 46836  | 46836  | 512     |
+| startExchangeApproved      | 13838 | 38664 | 37843  | 93465  | 307     |
+| swap                       | 3688  | 28232 | 29662  | 84559  | 35      |
+| updateArbitrageIndicies    | 8135  | 57382 | 37157  | 922812 | 5773    |
+| withdraw                   | 3865  | 20890 | 27721  | 32521  | 41      |
+
+### PoolsConfig.sol
+
+| Function Name                             | min  | avg   | median | max    | # calls |
+|-------------------------------------------|------|-------|--------|--------|---------|
+| changeMaximumInternalSwapPercentTimes1000 | 1816 | 2908  | 2116   | 4927   | 17      |
+| changeMaximumWhitelistedPools             | 1793 | 3390  | 2104   | 8904   | 30      |
+| isWhitelisted                             | 333  | 657   | 510    | 2510   | 6266    |
+| maximumInternalSwapPercentTimes1000       | 317  | 1182  | 317    | 2317   | 67      |
+| maximumWhitelistedPools                   | 362  | 1028  | 362    | 2362   | 57      |
+| numberOfWhitelistedPools                  | 393  | 1133  | 393    | 2393   | 100     |
+| tokenHasBeenWhitelisted                   | 1084 | 3454  | 3616   | 5617   | 51      |
+| transferOwnership                         | 2352 | 2352  | 2352   | 2352   | 509     |
+| underlyingTokenPair                       | 780  | 963   | 840    | 4840   | 47666   |
+| unwhitelistPool                           | 743  | 67735 | 54909  | 155188 | 12      |
+| whitelistPool                             | 1056 | 151797| 132033 | 1015267| 5765    |
+| whitelistedPools                          | 1118 | 3317  | 2528   | 45822  | 6533    |
+
+
+### CoreSaltyFeed.sol
+
+| Function Name | min   | avg  | median | max  | # calls |
+|---------------|-------|------|--------|------|---------|
+| getPriceBTC   | 2047  | 4215 | 4215   | 6384 | 10      |
+| getPriceETH   | 1863  | 2898 | 2026   | 6363 | 9       |
+| pools         | 248   | 248  | 248    | 248  | 1       |
+| usds          | 204   | 204  | 204    | 204  | 1       |
+| wbtc          | 227   | 227  | 227    | 227  | 1       |
+| weth          | 249   | 249  | 249    | 249  | 1       |
 
-```solidity
-File: example/ddf.sol
+### PriceAggregator.sol
 
-55:         return _owner;
+| Function Name                                | min   | avg   | median | max    | # calls |
+|----------------------------------------------|-------|-------|--------|--------|---------|
+| changeMaximumPriceFeedPercentDifferenceTimes1000 | 1771 | 2821  | 2071   | 6882   | 26      |
+| changePriceFeedModificationCooldown          | 1773  | 3296  | 2084   | 4884   | 11      |
+| getPriceBTC                                  | 3430  | 7078  | 4293   | 32333  | 264     |
+| getPriceETH                                  | 3304  | 4587  | 4107   | 10743  | 246     |
+| maximumPriceFeedPercentDifferenceTimes1000   | 352   | 610   | 352    | 2352   | 31      |
+| setInitialFeeds                              | 871   | 67035 | 67163  | 67163  | 521     |
+| setPriceFeed                                 | 638   | 13023 | 7538   | 33415  | 20      |
+| transferOwnership                            | 2352  | 2352  | 2352   | 2352   | 509     |
 
-131: 
+### ForcedPriceFeed.sol
 
-164:         return _name;
+| Function Name | min  | avg  | median | max  | # calls |
+|---------------|------|------|--------|------|---------|
+| getPriceBTC   | 453  | 740  | 506    | 4506 | 66      |
+| getPriceETH   | 398  | 840  | 462    | 2462 | 15      |
+| setBTCPrice   | 522  | 2525 | 522    | 7422 | 31      |
+| setRevertNext | 3198 | 4698 | 5198   | 5198 | 8       |
 
-168:         return _symbol;
+### TestChainlinkAggregator.sol
 
-172:         return _decimals;
+| Function Name    | min   | avg   | median | max   | # calls |
+|------------------|-------|-------|--------|-------|---------|
+| latestRoundData  | 362   | 2162  | 2886   | 2896  | 9       |
+| setPrice         | 543   | 5471  | 7443   | 7443  | 7       |
+| setShouldFail    | 24462 | 24462 | 24462  | 24462 | 1       |
+| setShouldTimeout | 24441 | 24441 | 24441  | 24441 | 1       |
 
-176:         return _totalSupply;
+### RewardsConfig.sol:RewardsConfig contract
 
-189:         return true;
+| Function Name                         | min   | avg  | median | max  | # calls |
+|---------------------------------------|-------|------|--------|------|---------|
+| changeEmissionsWeeklyPercent          | 1794  | 2952 | 2078   | 4886 | 9       |
+| changePercentRewardsSaltUSDS          | 1750  | 2749 | 2034   | 4842 | 11      |
+| changeRewardsEmitterDailyPercent      | 1771  | 2576 | 2055   | 6863 | 19      |
+| changeStakingRewardsPercent           | 1751  | 2450 | 2035   | 4843 | 19      |
+| emissionsWeeklyPercentTimes1000       | 351   | 551  | 351    | 2351 | 10      |
+| percentRewardsSaltUSDS                | 306   | 472  | 306    | 2306 | 12      |
+| rewardsEmitterDailyPercentTimes1000   | 329   | 429  | 329    | 2329 | 20      |
+| stakingRewardsPercent                 | 330   | 430  | 330    | 2330 | 20      |
 
-207:         return true;
+### SaltRewards.sol:SaltRewards contract
 
-221:         return true;
+| Function Name              | min   | avg    | median | max     | # calls |
+|----------------------------|-------|--------|--------|---------|---------|
+| liquidityRewardsEmitter    | 237   | 237    | 237    | 237     | 28      |
+| performUpkeep              | 4193  | 134574 | 44767  | 2330225 | 28      |
+| sendInitialSaltRewards     | 299526| 301139 | 299526 | 336126  | 315     |
+| stakingRewardsEmitter      | 215   | 215    | 215    | 215     | 28      |
 
-267: 
+### TestSaltRewards.sol
 
-```
+| Function Name                  | min    | avg   | median | max   | # calls |
+|--------------------------------|--------|-------|--------|-------|---------|
+| performUpkeep                  | 3645   | 42520 | 4518   | 157401| 4       |
+| sendInitialLiquidityRewards    | 115396 | 128460| 128460 | 141525| 2       |
+| sendInitialSaltRewards         | 3414   | 65756 | 65756  | 128098| 2       |
+| sendInitialStakingRewards      | 60174  | 60174 | 60174  | 60174 | 2       |
+| sendLiquidityRewards           | 10121  | 69770 | 84078  | 88328 | 6       |
+| sendStakingRewards             | 12968  | 44424 | 60152  | 60152 | 3       |
 
-</details> 
- 
 
 
- ### <a name="L-7"></a>[L-7]
- ### Some tokens may revert when zero value transfers are made
-Despite the fact that [EIP-20](https://github.com/ethereum/EIPs/blob/7500ac4fc1bbdfaf684e7ef851f798f6b667b2fe/EIPS/eip-20.md?plain=1#L116) states that zero-value transfers must be accepted, some tokens, such as LEND, will revert if this is attempted, which may cause transactions that involve other tokens (such as batch operations) to fully revert. Consider skipping the transfer if the amount is zero, which will also save gas.
+## f) Security Approach of the Project
 
-*Instances (2)*:
- 
- <details>
- <summary>Click to expand!</summary>
+### Successful current security understanding of the project;
 
-```solidity
-File: example/ddf.sol
+1- The project hasn't underwent any audits(nothing stated in the docs), this innovative assessments on Code4rena is the first, where multiple auditors are scrutinizing the code.
 
-15:     function transfer(address recipient, uint256 amount)
+### What the project should add in the understanding of Security;
 
-183:     function transfer(address recipient, uint256 amount)
+1- By distributing the project to testnets, ensuring that the audits are carried out in onchain audit. (This will increase coverage)
 
-```
+2- Add On-Chain Monitoring System; If On-Chain Monitoring systems such as Forta are added to the project, its security will increase.
 
-</details> 
- 
+For example ; This bot tracks any DEFI transactions in which wrapping, unwrapping, swapping, depositing, or withdrawals occur over a threshold amount. If transactions occur with unusually high token amounts, the bot sends out an alert. https://app.forta.network/bot/0x7f9afc392329ed5a473bcf304565adf9c2588ba4bc060f7d215519005b8303e3
 
+3- After the Code4rena audit is completed and the project is live, I recommend the audit process to continue, projects like immunefi do this. 
+https://immunefi.com/
 
- ### <a name="L-8"></a>[L-8]
- ###  Functions calling contracts/addresses with transfer hooks should be protected by reentrancy guard  
-Even if the function follows the best practice of check-effects-interaction, not using a reentrancy guard when there may be transfer hooks opens the users of this protocol up to [read-only reentrancy](https://chainsecurity.com/curve-lp-oracle-manipulation-post-mortem/) vulnerability with no way to protect them except by block-listing the entire protocol.
+4- Emergency Action Plan
+In a high-level security approach, there should be a crisis handbook like the one below and the strategic members of the project should be trained on this subject and drills should be carried out. Naturally, this information and road plan will not be available to the public.
+https://docs.google.com/document/u/0/d/1DaAiuGFkMEMMiIuvqhePL5aDFGHJ9Ya6D04rdaldqC0/mobilebasic#h.27dmpkyp2k1z
 
-*Instances (2)*:
- 
- <details>
- <summary>Click to expand!</summary>
+5- I also recommend that you have an "Economic Audit" for projects based on such complex mathematics and economic models. An example Economic Audit is provided in the link below;
+Economic Audit with [Three Sigma](https://panoptic.xyz/blog/panoptic-three-sigma-partnership)
 
-```solidity
-File: example/ddf.sol
+6 - As the project team, you can consider applying the multi-stage audit model.
 
-15:     function transfer(address recipient, uint256 amount)
+[![sla.png](https://i.postimg.cc/nhR0kN3w/sla.png)](https://postimg.cc/Sn96Q1FW)
 
-183:     function transfer(address recipient, uint256 amount)
+Read more about the MPA model;
+https://mpa.solodit.xyz/
 
-```
+7 - I recommend having a masterplan applied to project team members (This information is not included in the documents).
+All authorizations, including NPM passwords and authorizations, should be reserved only for current employees. I also recommend that a definitive security constitution project be found for employees to protect these passwords with rules such as 2FA. The LEDGER hack, which has made a big impact recently, is the best example in this regard;
 
-</details> 
- 
+https://twitter.com/Ledger/status/1735326240658100414?t=UAuzoir9uliXplerqP-Ing&s=19
 
 
- ### <a name="L-9"></a>[L-9]
- ### Some tokens may revert when large transfers are made
-Tokens such as COMP or UNI will revert when an address balance reaches type(uint96).max. Ensure that the calls below can be broken up into smaller batches if necessary.  
+## g) Codebase Quality
 
-*Instances (5)*:
- 
- <details>
- <summary>Click to expand!</summary>
+Overall, I consider the quality of the Salty.io protocol codebase to be Good. The code appears to be mature and well-developed, though there are areas for improvement, particularly in code commenting. We have noticed the implementation of various standards adhere to appropriately. Details are explained below:
 
-```solidity
-File: example/ddf.sol
+| Codebase Quality Categories              | Comments                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| ---------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Code Maintainability and Reliability** | The codebase demonstrates a high level of maintainability and reliability. It is clear that the developers have focused on creating a robust and scalable architecture. The use of established Ethereum development patterns and adherence to Solidity best practices contributes significantly to the code's overall reliability. |
+| **Code Comments**                        | The codebase shows a lack of comprehensive comments, particularly in complex logic areas. This can make it challenging to understand the purpose and functionality of certain sections, which might hinder the onboarding of new developers and code audits. Improving the comments would significantly enhance the codebase's clarity and maintainability. |
+| **Documentation**                        | The project includes comprehensive documentation. It covers the overall architecture, functionality, and specific details about key components like staking mechanisms and wallet management. This level of documentation is essential for both developers and end-users to understand and interact with the protocol effectively. |
+| **Testing**                              | The protocol demonstrates a strong emphasis on testing, which is evident from the extensive test cases covering various scenarios. Regular and thorough testing enhances the code's stability and reduces the likelihood of unforeseen issues in a live environment. |
+| **Code Structure and Formatting**        | The code is well-structured and consistently formatted. It follows a logical structure that makes it easy to navigate and understand. Consistent formatting across the codebase not only improves readability but also indicates a professional development approach. |
 
-15:     function transfer(address recipient, uint256 amount)
+While the codebase is robust and well-structured, the lack of detailed comments in the code is a notable area for improvement. Enhancing the code commenting would further elevate the overall quality and accessibility of the project.
 
-183:     function transfer(address recipient, uint256 amount)
 
-188:         _transfer(_msgSender(), recipient, amount);
+## h) Other Audit Reports and Automated Findings 
 
-215:         _transfer(sender, recipient, amount);
+**Automated Findings:**
+https://github.com/code-423n4/2024-01-salty/blob/main/bot-report.md
 
-260:     function _transfer(
+**Previous Audits**
+[ABDK Audit](https://github.com/abdk-consulting/audits/blob/main/othernet_global_pte_ltd/ABDK_OthernetGlobalPTELTD_SaltyIO_v_2_0.pdf)
+[Trail of Bits](https://github.com/trailofbits/publications/blob/master/reviews/2023-10-saltyio-securityreview.pdf)
 
-```
+**4naly3er report**
+https://github.com/code-423n4/2024-01-salty/blob/main/4naly3er-report.md
 
-</details> 
- 
+## i) Full representation of the project’s risk model
 
+### 1. Admin Abuse Risks:
+- **Centralized Control Points**: The project's governance is heavily reliant on smart contracts like `ManagedWallet.sol`, `ExchangeConfig.sol`, and the `DAO`. While these contracts ostensibly distribute control, there's a risk of centralization if few actors hold significant control.
+- **Upgrade and Proposal Approval**: The `DAO` and `ManagedWallet.sol` contracts have functionalities to approve upgrades and changes. If these mechanisms are compromised or controlled by a small group, they could be used maliciously.
 
-## Non Critical Issues
+### 2. Systemic Risks:
+- **Interconnected Contract Dependencies**: The project's DeFi ecosystem comprises various interdependent contracts (like `Liquidity.sol`, `Staking.sol`, `Emissions.sol`). A malfunction or exploitation in one contract could ripple through the entire system.\
+- **Liquidity Risks**: The liquidity pools (`Pools.sol`) are central to the ecosystem. Any liquidity crunch or imbalance can pose systemic risks.
 
+### 3. Technical Risks:
+- **Smart Contract Vulnerabilities**: Given the complexity of contracts like `Upkeep.sol`, `Staking.sol`, and others, there's a risk of bugs or vulnerabilities that could be exploited, despite thorough auditing.
+- **Oracle Failures**: The system relies on `PriceAggregator.sol` for market data. Any failure or manipulation in the price feeds can lead to incorrect valuations and system responses.
 
- ### <a name="NC-1"></a>[NC-1]
- ### Contracts should have full test coverage
-While 100% code coverage does not guarantee that there are no bugs, it often will catch easy-to-find bugs, and will ensure that there are fewer regressions when the code invariably has to be modified. Furthermore, in order to get full coverage, code authors will often have to re-organize their code so that it is more modular, so that each component can be tested separately, which reduces interdependencies between modules and layers, and makes for code that is easier to reason about and audit.
+By continuously monitoring these risk factors and implementing robust mitigation strategies, Salty.IO can aim to ensure a secure and resilient DeFi ecosystem for its users.
 
-*Instances (1)*:
- 
- <details>
- <summary>Click to expand!</summary>
+##  j) Packages and Dependencies Analysis 📦
 
-```solidity
-File: example/ddf.sol
+| Package | Version | Usage | 
+| --- | --- | --- | 
+| [`openzeppelin`](https://www.npmjs.com/package/@openzeppelin/contracts) | [![npm]([![images.png](https://i.postimg.cc/MK89GbgX/images.png)](https://postimg.cc/pyqfG8Wt))](https://www.npmjs.com/package/@openzeppelin/contracts) |  Project uses version `4.9.3` while the recommended version is latest i.e: `5.0.1` 
 
-2: pragma solidity 0.8.18;
+## k) New insights and learning of project from this audit:
 
-```
+After thoroughly reviewing the Salty.io project's codebase and documentation, several new insights and learnings have emerged.
 
-</details> 
- 
+1. **Use of Uniswap and Chainlink**: The project utilizes Uniswap for decentralized trading and Chainlink for secure and reliable external data. This combination indicates an emphasis on robustness and security in obtaining market data and executing trades.
 
+2. **Stablecoin Implementation**: The `USDS.sol` contract and related `StableConfig.sol` suggest the implementation of a stablecoin (`USDS`), backed by crypto assets like WBTC and WETH. This approach is critical for maintaining stability in a volatile crypto market.
 
- ### <a name="NC-2"></a>[NC-2]
- ### Consider adding formal verification proofs
-Consider using formal verification to mathematically prove that your code does what is intended, and does not have any edge cases with unexpected behavior. The solidity compiler itself has this functionality [built in](https://docs.soliditylang.org/en/latest/smtchecker.html#smtchecker-and-formal-verification)  
+3. **Rewards and Incentivization**: Contracts like `SaltRewards.sol` and `StakingRewards.sol` indicate a mechanism to reward users for participating in the ecosystem, such as through liquidity provision or staking. This is a common practice in DeFi to encourage user participation and liquidity.
 
-*Instances (1)*:
- 
- <details>
- <summary>Click to expand!</summary>
+4. **Governance and DAO**: The use of a DAO (Decentralized Autonomous Organization) structure for governance, as seen in `DAO.sol` and `ExchangeConfig.sol`, indicates a decentralized governance model. This aligns with the broader ethos of the DeFi sector promoting community-driven decision-making.
 
-```solidity
-File: example/ddf.sol
+5. **Risk Management**: Contracts like `CollateralAndLiquidity.sol` and `Liquidizer.sol` show mechanisms for managing risks associated with collateralized debt positions and liquidity provision. This is essential for maintaining the system's health and user trust.
 
-2: pragma solidity 0.8.18;
+Overall, your project presents a sophisticated and multifaceted DeFi ecosystem, incorporating key elements like liquidity provision, stablecoin implementation, rewards, governance, and compliance. It shows a strong alignment with DeFi's principles of open finance and community governance, while also considering critical aspects like security and risk management.
 
-```
+Note: I didn't tracked the time, the time I mentioned is just an estimate
 
-</details> 
- 
-
-
- ### <a name="NC-3"></a>[NC-3]
- ### Large or complicated code bases should implement invariant tests
-Large code bases, or code with lots of inline-assembly, complicated math, or complicated interactions between multiple contracts, should implement [invariant fuzzing tests](https://medium.com/coinmonks/smart-contract-fuzzing-d9b88e0b0a05). Invariant fuzzers such as Echidna require the test writer to come up with invariants which should not be violated under any circumstances, and the fuzzer tests various inputs and function calls to ensure that the invariants always hold. Even code with 100% code coverage can still have bugs due to the order of the operations a user performs, and invariant fuzzers, with properly and extensively-written invariants, can close this testing gap significantly.  
-
-*Instances (1)*:
- 
- <details>
- <summary>Click to expand!</summary>
-
-```solidity
-File: example/ddf.sol
-
-2: pragma solidity 0.8.18;
-
-```
-
-</details> 
- 
-
-
- ### <a name="NC-4"></a>[NC-4]
- ### NatSpec: Interface declarations should have NatSpec descriptions
-e.g. @dev or @notice, and it must appear above the contract definition braces in order to be identified by the compiler as NatSpec
-
-*Instances (3)*:
- 
- <details>
- <summary>Click to expand!</summary>
-
-```solidity
-File: example/ddf.sol
-
-9: 
-
-81: 
-
-87: 
-
-```
-
-</details> 
- 
-
-
- ### <a name="NC-5"></a>[NC-5]
- ### Variables without visibility specifier
-
-#### Impact:
-Specifying visibility for variables can improve code readability and maintainability.
-
-*Instances (1)*:
- 
- <details>
- <summary>Click to expand!</summary>
-
-```solidity
-File: example/ddf.sol
-
-268:         uint256 _tax;
-
-```
-
-</details> 
- 
-
-
- ### <a name="NC-6"></a>[NC-6]
- ### Constants in comparisons should appear on the left side
-
-#### Impact:
-Placing constants on the left side of comparisons can improve code readability and prevent accidental assignment. Doing so will prevent typo [bugs](https://www.moserware.com/2008/01/constants-on-left-are-better-but-this.html)
-
-*Instances (7)*:
- 
- <details>
- <summary>Click to expand!</summary>
-
-```solidity
-File: example/ddf.sol
-
-280:                 if (from == uniswapV2Pair) {
-
-292:             if (inSwapAndLiquify == 1) {
-
-301:             if (from == uniswapV2Pair) {
-
-303:             } else if (to == uniswapV2Pair) {
-
-305:                 if (tokensToSwap > minSwap && inSwapAndLiquify == 0) {
-
-306:                     if (tokensToSwap > onePercent) {
-
-329:         if (_tax != 0) {
-
-```
-
-</details> 
- 
-
-
- ### <a name="NC-7"></a>[NC-7]
- ### constants should be defined rather than using magic numbers
-Even [assembly](https://github.com/code-423n4/2022-05-opensea-seaport/blob/9d7ce4d08bf3c3010304a0476a785c70c0e90ae7/contracts/lib/TokenTransferrer.sol#L35-L39) can benefit from using readable constants instead of hex/numeric literals
-
-*Instances (2)*:
- 
- <details>
- <summary>Click to expand!</summary>
-
-```solidity
-File: example/ddf.sol
-
-140:             0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D
-
-151:         marketingWallet = payable(0x01c972546e1a24AB0f9614D9aDD4f935c227263F);
-
-```
-
-</details> 
- 
-
-
- ### <a name="NC-8"></a>[NC-8]
- ### Contract declarations should have NatSpec @author annotations
-
-#### Impact:
-Adding a NatSpec @author annotation to contract declarations can improve code documentation.
-
-*Instances (3)*:
- 
- <details>
- <summary>Click to expand!</summary>
-
-```solidity
-File: example/ddf.sol
-
-4: abstract contract Context {
-
-40: contract Ownable is Context {
-
-102: contract SpectreAI is Context, IERC20, Ownable {
-
-```
-
-</details> 
- 
-
-
- ### <a name="NC-9"></a>[NC-9]
- ### Contract declarations should have NatSpec @Title annotations
-
-#### Impact:
-Adding a NatSpec @Title annotation to contract declarations can improve code documentation.
-
-*Instances (3)*:
- 
- <details>
- <summary>Click to expand!</summary>
-
-```solidity
-File: example/ddf.sol
-
-4: abstract contract Context {
-
-40: contract Ownable is Context {
-
-102: contract SpectreAI is Context, IERC20, Ownable {
-
-```
-
-</details> 
- 
-
-
- ### <a name="NC-10"></a>[NC-10]
- ### NatSpec: Contract declarations should have @dev tags
-
-#### Impact:
-@dev is used to explain extra details to developers
-
-*Instances (3)*:
- 
- <details>
- <summary>Click to expand!</summary>
-
-```solidity
-File: example/ddf.sol
-
-4: abstract contract Context {
-
-40: contract Ownable is Context {
-
-102: contract SpectreAI is Context, IERC20, Ownable {
-
-```
-
-</details> 
- 
-
-
- ### <a name="NC-11"></a>[NC-11]
- ### NatSpec: Contract declarations should have NatSpec descriptions
-e.g. @dev or @notice, and it must appear above the contract definition braces in order to be identified by the compiler as NatSpec
-
-*Instances (3)*:
- 
- <details>
- <summary>Click to expand!</summary>
-
-```solidity
-File: example/ddf.sol
-
-4: abstract contract Context {
-
-40: contract Ownable is Context {
-
-102: contract SpectreAI is Context, IERC20, Ownable {
-
-```
-
-</details> 
- 
-
-
- ### <a name="NC-12"></a>[NC-12]
- ### NatSpec: Contract declarations should have @notice tags
-@notice is used to explain to end users what the contract does, and the compiler interprets /// or /** comments as this tag if one wasnt explicitly provided
-
-*Instances (3)*:
- 
- <details>
- <summary>Click to expand!</summary>
-
-```solidity
-File: example/ddf.sol
-
-4: abstract contract Context {
-
-40: contract Ownable is Context {
-
-102: contract SpectreAI is Context, IERC20, Ownable {
-
-```
-
-</details> 
- 
-
-
- ### <a name="NC-13"></a>[NC-13]
- ### Consider using delete rather than assigning zero to clear value
-
-#### Impact:
-Consider using delete rather than assigning zero to clear values. The delete keyword more closely matches the semantics of what is being done, and draws more attention to the changing of state, which may lead to a more thorough audit of its associated logic.
-
-*Instances (3)*:
- 
- <details>
- <summary>Click to expand!</summary>
-
-```solidity
-File: example/ddf.sol
-
-270:             _tax = 0;
-
-321:                     inSwapAndLiquify = 0;
-
-325:                 _tax = 0;
-
-```
-
-</details> 
- 
-
-
- ### <a name="NC-14"></a>[NC-14]
- ### Consider using delete rather than assigning false to clear value
-
-#### Impact:
-Consider using delete rather than assigning alse to clear values. The delete keyword more closely matches the semantics of what is being done, and draws more attention to the changing of state, which may lead to a more thorough audit of its associated logic.
-
-*Instances (1)*:
- 
- <details>
- <summary>Click to expand!</summary>
-
-```solidity
-File: example/ddf.sol
-
-251:         limitsInEffect = false;
-
-```
-
-</details> 
- 
-
-
- ### <a name="NC-15"></a>[NC-15]
- ### Consider adding a block/deny-list"
-Doing so will significantly increase centralization, but will help to prevent hackers from using stolen tokens  
-
-*Instances (3)*:
- 
- <details>
- <summary>Click to expand!</summary>
-
-```solidity
-File: example/ddf.sol
-
-4: abstract contract Context {
-
-40: contract Ownable is Context {
-
-102: contract SpectreAI is Context, IERC20, Ownable {
-
-```
-
-</details> 
- 
-
-
- ### <a name="NC-16"></a>[NC-16]
- ### Consider adding emergency-stop functionality
-
-#### Impact:
-Adding a way to quickly halt protocol functionality in an emergency, rather than having to pause individual contracts one-by-one, will make in-progress hack mitigation faster and much less stressful.
-
-*Instances (3)*:
- 
- <details>
- <summary>Click to expand!</summary>
-
-```solidity
-File: example/ddf.sol
-
-4: abstract contract Context {
-
-40: contract Ownable is Context {
-
-102: contract SpectreAI is Context, IERC20, Ownable {
-
-```
-
-</details> 
- 
-
-
- ### <a name="NC-17"></a>[NC-17]
- ### Events are missing sender information
-
-#### Impact:
-Including msg.sender in events triggered by user actions can make events more useful for end users.
-
-*Instances (5)*:
- 
- <details>
- <summary>Click to expand!</summary>
-
-```solidity
-File: example/ddf.sol
-
-72:         emit OwnershipTransferred(_owner, newOwner);
-
-232:         emit Approval(owner, spender, amount);
-
-297:                 emit Transfer(from, to, amount);
-
-337:             emit Transfer(from, to, transferAmount);
-
-342:             emit Transfer(from, to, amount);
-
-```
-
-</details> 
- 
-
-
- ### <a name="NC-18"></a>[NC-18]
- ### NatSpec: Event declarations should have NatSpec descriptions
-
-*Instances (3)*:
- 
- <details>
- <summary>Click to expand!</summary>
-
-```solidity
-File: example/ddf.sol
-
-32:     event Transfer(address indexed from, address indexed to, uint256 value);
-
-33:     event Approval(
-
-43:     event OwnershipTransferred(
-
-```
-
-</details> 
- 
-
-
- ### <a name="NC-19"></a>[NC-19]
- ### NatSpec: function declarations should have NatSpec descriptions
-
-*Instances (31)*:
- 
- <details>
- <summary>Click to expand!</summary>
-
-```solidity
-File: example/ddf.sol
-
-5:     function _msgSender() internal view virtual returns (address) {
-
-11:     function totalSupply() external view returns (uint256);
-
-13:     function balanceOf(address account) external view returns (uint256);
-
-15:     function transfer(address recipient, uint256 amount)
-
-19:     function allowance(address owner, address spender)
-
-24:     function approve(address spender, uint256 amount) external returns (bool);
-
-26:     function transferFrom(
-
-54:     function owner() public view returns (address) {
-
-63:     function transferOwnership(address newOwner) public onlyOwner {
-
-67:     function _transferOwnership(address newOwner) internal {
-
-76:     function renounceOwnership() public virtual onlyOwner {
-
-83:     function createPair(address tokenA, address tokenB)
-
-89:     function swapExactTokensForETHSupportingFeeOnTransferTokens(
-
-97:     function factory() external pure returns (address);
-
-99:     function WETH() external pure returns (address);
-
-163:     function name() public pure returns (string memory) {
-
-167:     function symbol() public pure returns (string memory) {
-
-171:     function decimals() public pure returns (uint8) {
-
-175:     function totalSupply() public pure override returns (uint256) {
-
-179:     function balanceOf(address account) public view override returns (uint256) {
-
-183:     function transfer(address recipient, uint256 amount)
-
-192:     function allowance(address owner, address spender)
-
-201:     function approve(address spender, uint256 amount)
-
-210:     function transferFrom(
-
-224:     function _approve(
-
-235:     function addExcludedWallet(address wallet) external onlyOwner {
-
-239:     function openTrading() external onlyOwner {
-
-245:     function setLimit(uint256 amountLimit) external onlyOwner {
-
-250:     function removeAllLimits() external onlyOwner {
-
-255:     function changeTax(uint256 newBuyTax, uint256 newSellTax) external onlyOwner {
-
-260:     function _transfer(
-
-```
-
-</details> 
- 
-
-
- ### <a name="NC-20"></a>[NC-20]
- ### NatSpec: function declarations should have @Notice tags
-@notice is used to explain to end users what the function does, and the compiler interprets /// or /** comments as this tag if one wasn't explicitly provided.  
-
-*Instances (31)*:
- 
- <details>
- <summary>Click to expand!</summary>
-
-```solidity
-File: example/ddf.sol
-
-5:     function _msgSender() internal view virtual returns (address) {
-
-11:     function totalSupply() external view returns (uint256);
-
-13:     function balanceOf(address account) external view returns (uint256);
-
-15:     function transfer(address recipient, uint256 amount)
-
-19:     function allowance(address owner, address spender)
-
-24:     function approve(address spender, uint256 amount) external returns (bool);
-
-26:     function transferFrom(
-
-54:     function owner() public view returns (address) {
-
-63:     function transferOwnership(address newOwner) public onlyOwner {
-
-67:     function _transferOwnership(address newOwner) internal {
-
-76:     function renounceOwnership() public virtual onlyOwner {
-
-83:     function createPair(address tokenA, address tokenB)
-
-89:     function swapExactTokensForETHSupportingFeeOnTransferTokens(
-
-97:     function factory() external pure returns (address);
-
-99:     function WETH() external pure returns (address);
-
-163:     function name() public pure returns (string memory) {
-
-167:     function symbol() public pure returns (string memory) {
-
-171:     function decimals() public pure returns (uint8) {
-
-175:     function totalSupply() public pure override returns (uint256) {
-
-179:     function balanceOf(address account) public view override returns (uint256) {
-
-183:     function transfer(address recipient, uint256 amount)
-
-192:     function allowance(address owner, address spender)
-
-201:     function approve(address spender, uint256 amount)
-
-210:     function transferFrom(
-
-224:     function _approve(
-
-235:     function addExcludedWallet(address wallet) external onlyOwner {
-
-239:     function openTrading() external onlyOwner {
-
-245:     function setLimit(uint256 amountLimit) external onlyOwner {
-
-250:     function removeAllLimits() external onlyOwner {
-
-255:     function changeTax(uint256 newBuyTax, uint256 newSellTax) external onlyOwner {
-
-260:     function _transfer(
-
-```
-
-</details> 
- 
-
-
- ### <a name="NC-21"></a>[NC-21]
- ### NatSpec: function declarations should have NatSpec descriptions
-
-*Instances (31)*:
- 
- <details>
- <summary>Click to expand!</summary>
-
-```solidity
-File: example/ddf.sol
-
-5:     function _msgSender() internal view virtual returns (address) {
-
-11:     function totalSupply() external view returns (uint256);
-
-13:     function balanceOf(address account) external view returns (uint256);
-
-15:     function transfer(address recipient, uint256 amount)
-
-19:     function allowance(address owner, address spender)
-
-24:     function approve(address spender, uint256 amount) external returns (bool);
-
-26:     function transferFrom(
-
-54:     function owner() public view returns (address) {
-
-63:     function transferOwnership(address newOwner) public onlyOwner {
-
-67:     function _transferOwnership(address newOwner) internal {
-
-76:     function renounceOwnership() public virtual onlyOwner {
-
-83:     function createPair(address tokenA, address tokenB)
-
-89:     function swapExactTokensForETHSupportingFeeOnTransferTokens(
-
-97:     function factory() external pure returns (address);
-
-99:     function WETH() external pure returns (address);
-
-163:     function name() public pure returns (string memory) {
-
-167:     function symbol() public pure returns (string memory) {
-
-171:     function decimals() public pure returns (uint8) {
-
-175:     function totalSupply() public pure override returns (uint256) {
-
-179:     function balanceOf(address account) public view override returns (uint256) {
-
-183:     function transfer(address recipient, uint256 amount)
-
-192:     function allowance(address owner, address spender)
-
-201:     function approve(address spender, uint256 amount)
-
-210:     function transferFrom(
-
-224:     function _approve(
-
-235:     function addExcludedWallet(address wallet) external onlyOwner {
-
-239:     function openTrading() external onlyOwner {
-
-245:     function setLimit(uint256 amountLimit) external onlyOwner {
-
-250:     function removeAllLimits() external onlyOwner {
-
-255:     function changeTax(uint256 newBuyTax, uint256 newSellTax) external onlyOwner {
-
-260:     function _transfer(
-
-```
-
-</details> 
- 
-
-
- ### <a name="NC-22"></a>[NC-22]
- ### If-statement can be converted to a ternary
-
-#### Impact:
-The code can be made more compact while also increasing readability by converting the following `if`-statements to ternaries (e.g. `foo += (x > y) ? a : b`)
-
-*Instances (7)*:
- 
- <details>
- <summary>Click to expand!</summary>
-
-```solidity
-File: example/ddf.sol
-
-269:         if (_isExcludedFromFeeWallet[from] || _isExcludedFromFeeWallet[to]) {
-
-286:                 else {
-
-292:             if (inSwapAndLiquify == 1) {
-
-301:             if (from == uniswapV2Pair) {
-
-303:             } else if (to == uniswapV2Pair) {
-
-324:             } else {
-
-329:         if (_tax != 0) {
-
-```
-
-</details> 
- 
-
-
- ### <a name="NC-23"></a>[NC-23]
- ### Variable names for immutables should use CONSTANT_CASE
-
-#### Impact:
-Using CONSTANT_CASE for immutables improves code readability and maintainability.
-
-*Instances (4)*:
- 
- <details>
- <summary>Click to expand!</summary>
-
-```solidity
-File: example/ddf.sol
-
-113:     IUniswapV2Router02 immutable uniswapV2Router;
-
-115:     address immutable uniswapV2Pair;
-
-116:     address immutable WETH;
-
-118:     address payable immutable marketingWallet;
-
-```
-
-</details> 
- 
-
-
- ### <a name="NC-24"></a>[NC-24]
- ### Consider using named mappings
-
-#### Impact:
-Using named mappings can improve code readability and maintainability.
-
-*Instances (4)*:
- 
- <details>
- <summary>Click to expand!</summary>
-
-```solidity
-File: example/ddf.sol
-
-109:     mapping(address => uint256) private _previousTx;
-
-134:     mapping(address => uint256) private _balance;
-
-135:     mapping(address => mapping(address => uint256)) private _allowances;
-
-136:     mapping(address => bool) private _isExcludedFromFeeWallet;
-
-```
-
-</details> 
- 
-
-
- ### <a name="NC-25"></a>[NC-25]
- ### Consider combining multiple address/ID mappings into a single mapping of an address/ID to a struct
-
-#### Impact:
-Combining multiple mappings into a single mapping with a struct can improve readability and maintainability of the code.
-
-*Instances (4)*:
- 
- <details>
- <summary>Click to expand!</summary>
-
-```solidity
-File: example/ddf.sol
-
-109:     mapping(address => uint256) private _previousTx;
-
-134:     mapping(address => uint256) private _balance;
-
-135:     mapping(address => mapping(address => uint256)) private _allowances;
-
-136:     mapping(address => bool) private _isExcludedFromFeeWallet;
-
-```
-
-</details> 
- 
-
-
- ### <a name="NC-26"></a>[NC-26]
- ### Use of override is unnecessary
-
-#### Impact:
-Starting with Solidity version [0.8.8](https://docs.soliditylang.org/en/v0.8.20/contracts.html#function-overriding), using the override keyword when the function solely overrides an interface function, and the function doesnt exist in multiple base contracts, is unnecessary.
-
-*Instances (6)*:
- 
- <details>
- <summary>Click to expand!</summary>
-
-```solidity
-File: example/ddf.sol
-
-175:     function totalSupply() public pure override returns (uint256) {
-
-179:     function balanceOf(address account) public view override returns (uint256) {
-
-185:         override
-
-195:         override
-
-203:         override
-
-214:     ) public override returns (bool) {
-
-```
-
-</details> 
- 
-
-
- ### <a name="NC-27"></a>[NC-27]
- ### Consider using descriptive constants when using 0 in the code
-
-#### Impact:
-Passing zero as a function argument/Event emission can sometimes result in a security issue (e.g. passing zero as the slippage parameter). Consider using a constant variable with a descriptive name, so its clear that the 0 is intentionally being used, and for the right reasons.
-
-*Instances (4)*:
- 
- <details>
- <summary>Click to expand!</summary>
-
-```solidity
-File: example/ddf.sol
-
-78:         _owner = address(0);
-
-266:         require(amount > 0, "Min transfer amount");
-
-273:             require(
-
-314:                         .swapExactTokensForETHSupportingFeeOnTransferTokens(
-
-```
-
-</details> 
- 
-
-
- ### <a name="NC-28"></a>[NC-28]
- ### Non-external/public variable names should begin with an underscore
-
-#### Impact:
-Using an underscore at the beginning of non-external/public variable names can improve code clarity and maintainability. According to the Solidity Style Guide, non-external/public variable names should begin with an [underscore](https://docs.soliditylang.org/en/latest/style-guide.html#underscore-prefix-for-non-external-functions-and-variables)
-
-*Instances (6)*:
- 
- <details>
- <summary>Click to expand!</summary>
-
-```solidity
-File: example/ddf.sol
-
-120:     uint256 public buyTax;
-
-121:     uint256 public sellTax;
-
-123:     uint8 private launch;
-
-124:     uint8 private inSwapAndLiquify;
-
-126:     uint256 private launchBlock;
-
-132:     public limitsInEffect;
-
-```
-
-</details> 
- 
-
-
- ### <a name="NC-29"></a>[NC-29]
- ### Return values of `approve()` not checked
-Not all IERC20 implementations `revert()` when there's a failure in `approve()`. The function signature has a boolean return value and they indicate errors that way instead. By not checking the return value, operations that should have marked as failed, may potentially go through without actually approving anything
-
-*Instances (2)*:
- 
- <details>
- <summary>Click to expand!</summary>
-
-```solidity
-File: example/ddf.sol
-
-206:         _approve(_msgSender(), spender, amount);
-
-216:         _approve(
-
-```
-
-</details> 
- 
-
-
- ### <a name="NC-30"></a>[NC-30]
- ### Setters should prevent re-setting of the same value
-This especially problematic when the setter also emits the same value, which may be confusing to offline parsers  
-
-*Instances (1)*:
- 
- <details>
- <summary>Click to expand!</summary>
-
-```solidity
-File: example/ddf.sol
-
-245:     function setLimit(uint256 amountLimit) external onlyOwner {
-
-```
-
-</details> 
- 
-
-
- ### <a name="NC-31"></a>[NC-31]
- ### Use the latest solidity version for deployment  
-Upgrading to a newer Solidity release can optimize gas usage, take advantage of new features and improve overall contract efficiency. Where possible, based on compatibility requirements, it is recommended to use newer/latest solidity version to take advantage of the latest optimizations and features. You can see the latest version [here](https://soliditylang.org/blog/category/releases/)
-
-*Instances (1)*:
- 
- <details>
- <summary>Click to expand!</summary>
-
-```solidity
-File: example/ddf.sol
-
-2: pragma solidity 0.8.18;
-
-```
-
-</details> 
- 
-
-
- ### <a name="NC-32"></a>[NC-32]
- ### Empty receive()/fallback() function
-If the intention is for Ether sent by a caller to be used for an actual purpose (i.e. the function is not just a WETH withdraw() handler), the function should call another function (e.g. call weth.deposit() and use the token on the caller's behalf) or at least emit an event to track that funds were sent directly to it.
-
-*Instances (1)*:
- 
- <details>
- <summary>Click to expand!</summary>
-
-```solidity
-File: example/ddf.sol
-
-345: 
-
-```
-
-</details> 
- 
-
-
- ### <a name="NC-33"></a>[NC-33]
- ### Consider moving msg.sender checks to modifiers
-If some functions are only allowed to be called by some specific users, consider using a modifier instead of checking with a require statement, especially if this check is done in multiple functions.  
-
-*Instances (4)*:
- 
- <details>
- <summary>Click to expand!</summary>
-
-```solidity
-File: example/ddf.sol
-
-6:         return msg.sender;
-
-152:         _balance[msg.sender] = _totalSupply;
-
-154:         _isExcludedFromFeeWallet[msg.sender] = true;
-
-157:         _allowances[msg.sender][address(uniswapV2Router)] = type(uint256).max;
-
-```
-
-</details> 
- 
-
-
- ### <a name="NC-34"></a>[NC-34]
- ### Dont use _msgSender() if not supporting EIP-2771
-Use msg.sender if the code does not implement EIP-2771 trusted forwarder support
-
-*Instances (8)*:
- 
- <details>
- <summary>Click to expand!</summary>
-
-```solidity
-File: example/ddf.sol
-
-5:     function _msgSender() internal view virtual returns (address) {
-
-49:         address msgSender = _msgSender();
-
-59:         require(_owner == _msgSender(), "Ownable: caller is not the owner");
-
-160:         emit Transfer(address(0), _msgSender(), _totalSupply);
-
-188:         _transfer(_msgSender(), recipient, amount);
-
-206:         _approve(_msgSender(), spender, amount);
-
-218:             _msgSender(),
-
-219:             _allowances[sender][_msgSender()] - amount
-
-```
-
-</details> 
- 
-
-
- ### <a name="NC-35"></a>[NC-35]
- ### Array indices should be referenced via enums rather than numeric literals
-
-#### Impact:
-Referencing array indices via enums can improve code readability and maintainability.
-
-*Instances (2)*:
- 
- <details>
- <summary>Click to expand!</summary>
-
-```solidity
-File: example/ddf.sol
-
-311:                     path[0] = address(this);
-
-312:                     path[1] = WETH;
-
-```
-
-</details> 
- 
-
-
- ### <a name="NC-36"></a>[NC-36]
- ### Use assembly to emit events, in order to save gas
-Using the [scratch space](https://github.com/Vectorized/solady/blob/30558f5402f02351b96eeb6eaf32bcea29773841/src/tokens/ERC1155.sol#L501-L504) for event arguments (two words or fewer) will save gas over needing Soliditys full abi memory expansion used for emitting normally.
-
-*Instances (9)*:
- 
- <details>
- <summary>Click to expand!</summary>
-
-```solidity
-File: example/ddf.sol
-
-51:         emit OwnershipTransferred(address(0), msgSender);
-
-72:         emit OwnershipTransferred(_owner, newOwner);
-
-77:         emit OwnershipTransferred(_owner, address(0));
-
-160:         emit Transfer(address(0), _msgSender(), _totalSupply);
-
-232:         emit Approval(owner, spender, amount);
-
-297:                 emit Transfer(from, to, amount);
-
-336:             emit Transfer(from, address(this), taxTokens);
-
-337:             emit Transfer(from, to, transferAmount);
-
-342:             emit Transfer(from, to, amount);
-
-```
-
-</details> 
- 
-
-
- ### <a name="NC-37"></a>[NC-37]
- ### Long revert strings
-
-*Instances (4)*:
- 
- <details>
- <summary>Click to expand!</summary>
-
-```solidity
-File: example/ddf.sol
-
-229:         require(owner != address(0), "ERC20: approve from the zero address");
-
-230:         require(spender != address(0), "ERC20: approve to the zero address");
-
-265:         require(from != address(0), "ERC20: transfer from the zero address");
-
-283:                     require(amount + _balance[to] <= maxWalletAmount, "ERC20: maxWalletAmount is exceeded!");
-
-```
-
-</details> 
- 
-
-
-## Gas Optimizations
-
-
- ### <a name="GAS-1"></a>[GAS-1]
- ### Enable IR-based code generation
-By using `--via-ir` or `{"viaIR": true}`, the compiler is able to use more advanced [multi-function optimizations](https://docs.soliditylang.org/en/v0.8.17/ir-breaking-changes.html#solidity-ir-based-codegen-changes), for extra gas savings.
-
-*Instances (1)*:
- 
- <details>
- <summary>Click to expand!</summary>
-
-```solidity
-File: example/ddf.sol
-
-2: pragma solidity 0.8.18;
-
-```
-
-</details> 
- 
-
-
- ### <a name="GAS-2"></a>[GAS-2]
- ### Nesting if-statements is cheaper than using &&
-Nesting if-statements avoids the stack operations of setting up and using an extra jumpdest, and saves 6 [gas](https://gist.github.com/IllIllI000/7f3b818abecfadbef93b894481ae7d19)
-
-*Instances (2)*:
- 
- <details>
- <summary>Click to expand!</summary>
-
-```solidity
-File: example/ddf.sol
-
-274:                 launch != 0 && amount <= maxTxAmount,
-
-305:                 if (tokensToSwap > minSwap && inSwapAndLiquify == 0) {
-
-```
-
-</details> 
- 
-
-
- ### <a name="GAS-3"></a>[GAS-3]
- ### Use >= instead of > for gas efficiency
-Using >= costs less gas than >. Consider using >= when appropriate.
-
-*Instances (3)*:
- 
- <details>
- <summary>Click to expand!</summary>
-
-```solidity
-File: example/ddf.sol
-
-266:         require(amount > 0, "Min transfer amount");
-
-305:                 if (tokensToSwap > minSwap && inSwapAndLiquify == 0) {
-
-306:                     if (tokensToSwap > onePercent) {
-
-```
-
-</details> 
- 
-
-
- ### <a name="GAS-4"></a>[GAS-4]
- ### Using bools for storage incurs overhead
-Use uint256(1) and uint256(2) for true/false to avoid a Gwarmaccess (100 gas), and to avoid Gsset (20000 gas) when changing from ‘false’ to ‘true’, after having been ‘true’ in the past. See [source](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/58f635312aa21f947cae5f8578638a85aa2519f5/contracts/security/ReentrancyGuard.sol#L23-L27).
-
-*Instances (1)*:
- 
- <details>
- <summary>Click to expand!</summary>
-
-```solidity
-File: example/ddf.sol
-
-136:     mapping(address => bool) private _isExcludedFromFeeWallet;
-
-```
-
-</details> 
- 
-
-
- ### <a name="GAS-5"></a>[GAS-5]
- ### Expressions for constant values should use immutable rather than constant
-
-#### Impact:
-While it doesnt save any gas because the compiler knows that developers often make this mistake, its still best to use the right tool for the task at hand. There is a difference between constant variables and immutable variables, and they should each be used in their appropriate contexts. constants should be used for literal values written into the code, and immutable variables should be used for expressions, or values calculated in, or passed into the constructor.  
-
-*Instances (8)*:
- 
- <details>
- <summary>Click to expand!</summary>
-
-```solidity
-File: example/ddf.sol
-
-103:     uint256 private constant _totalSupply = 10_000_000e18;
-
-104:     uint256 private constant onePercent = 100_000e18;
-
-105:     uint256 private constant minSwap = 2000e18;
-
-106:     uint256 private constant maxWalletAmount = 300_000e18;
-
-108:     uint256 private constant _delayBetweenTx = 120;
-
-111:     uint8 private constant _decimals = 18;
-
-129:     string private constant _name = "SPECTRE AI";
-
-130:     string private constant _symbol = "SPECTRE";
-
-```
-
-</details> 
- 
-
-
- ### <a name="GAS-6"></a>[GAS-6]
- ### Constructors can be marked payable
-Payable functions cost less gas to execute, since the compiler does not have to add extra checks to ensure that a payment wasn  t provided. A constructor can safely be marked as payable, since only the deployer would be able to pass funds, and the project itself would not pass any funds.
-
-*Instances (2)*:
- 
- <details>
- <summary>Click to expand!</summary>
-
-```solidity
-File: example/ddf.sol
-
-48:     constructor() {
-
-138:     constructor() {
-
-```
-
-</details> 
- 
-
-
- ### <a name="GAS-7"></a>[GAS-7]
- ### Use Custom Errors
-[Source](https://blog.soliditylang.org/2021/04/21/custom-errors/)
-Instead of using error strings, to reduce deployment and runtime cost, you should use Custom Errors. This would save both deployment and runtime cost.
-
-*Instances (8)*:
- 
- <details>
- <summary>Click to expand!</summary>
-
-```solidity
-File: example/ddf.sol
-
-59:         require(_owner == _msgSender(), "Ownable: caller is not the owner");
-
-229:         require(owner != address(0), "ERC20: approve from the zero address");
-
-230:         require(spender != address(0), "ERC20: approve to the zero address");
-
-265:         require(from != address(0), "ERC20: transfer from the zero address");
-
-266:         require(amount > 0, "Min transfer amount");
-
-281:                     require(_previousTx[to] + _delayBetweenTx <= block.timestamp, "Protection: 120 sec/tx allowed");
-
-283:                     require(amount + _balance[to] <= maxWalletAmount, "ERC20: maxWalletAmount is exceeded!");
-
-287:                     require(_previousTx[from] + _delayBetweenTx <= block.timestamp, "Protection: 120 sec/tx allowed");
-
-```
-
-</details> 
- 
-
-
- ### <a name="GAS-8"></a>[GAS-8]
- ### Reduce gas usage by moving to Solidity 0.8.19 or later
-Solidity version 0.8.19 introduced a number of gas optimizations, refer to the [Solidity 0.8.19 Release Announcement](https://soliditylang.org/blog/2023/02/22/solidity-0.8.19-release-announcement) for details.
-
-*Instances (1)*:
- 
- <details>
- <summary>Click to expand!</summary>
-
-```solidity
-File: example/ddf.sol
-
-2: pragma solidity 0.8.18;
-
-```
-
-</details> 
- 
-
-
- ### <a name="GAS-9"></a>[GAS-9]
- ### Functions guaranteed to revert when called by normal users can be marked `payable`
-If a function modifier such as `onlyOwner` is used, the function will revert if a normal user tries to pay the function. Marking the function as `payable` will lower the gas cost for legitimate callers because the compiler will not include checks for whether a payment was provided.
-
-*Instances (7)*:
- 
- <details>
- <summary>Click to expand!</summary>
-
-```solidity
-File: example/ddf.sol
-
-63:     function transferOwnership(address newOwner) public onlyOwner {
-
-76:     function renounceOwnership() public virtual onlyOwner {
-
-235:     function addExcludedWallet(address wallet) external onlyOwner {
-
-239:     function openTrading() external onlyOwner {
-
-245:     function setLimit(uint256 amountLimit) external onlyOwner {
-
-250:     function removeAllLimits() external onlyOwner {
-
-255:     function changeTax(uint256 newBuyTax, uint256 newSellTax) external onlyOwner {
-
-```
-
-</details> 
- 
-
-
- ### <a name="GAS-10"></a>[GAS-10]
- ### require()/revert() strings longer than 32 bytes cost extra gas
-Each extra memory word of bytes past the original 32 [incurs an MSTORE](https://gist.github.com/hrkrshnn/ee8fabd532058307229d65dcd5836ddc#consider-having-short-revert-strings) which costs 3 gas.
-
-*Instances (2)*:
- 
- <details>
- <summary>Click to expand!</summary>
-
-```solidity
-File: example/ddf.sol
-
-266:         require(amount > 0, "Min transfer amount");
-
-281:                     require(_previousTx[to] + _delayBetweenTx <= block.timestamp, "Protection: 120 sec/tx allowed");
-
-```
-
-</details> 
- 
-
-
- ### <a name="GAS-11"></a>[GAS-11]
- ### Consider using uint256(1)/uint256(2) instead of true/false for gas efficiency
-Using uint256(1) and uint256(2) instead of true and false can save gas for certain changes. Consider using uint256(1)/uint256(2) when appropriate.
-
-*Instances (9)*:
- 
- <details>
- <summary>Click to expand!</summary>
-
-```solidity
-File: example/ddf.sol
-
-153:         _isExcludedFromFeeWallet[marketingWallet] = true;
-
-154:         _isExcludedFromFeeWallet[msg.sender] = true;
-
-155:         _isExcludedFromFeeWallet[address(this)] = true;
-
-189:         return true;
-
-207:         return true;
-
-221:         return true;
-
-236:         _isExcludedFromFeeWallet[wallet] = true;
-
-241:         limitsInEffect = true;
-
-251:         limitsInEffect = false;
-
-```
-
-</details> 
- 
-
-
- ### <a name="GAS-12"></a>[GAS-12]
- ### Usage of uints/ints smaller than 32 bytes (256 bits) incurs overhead
-Using uints or ints smaller than 32 bytes (256 bits) can incur overhead. Consider using uint256 or int256 to avoid potential issues.
-
-*Instances (4)*:
- 
- <details>
- <summary>Click to expand!</summary>
-
-```solidity
-File: example/ddf.sol
-
-111:     uint8 private constant _decimals = 18;
-
-123:     uint8 private launch;
-
-124:     uint8 private inSwapAndLiquify;
-
-171:     function decimals() public pure returns (uint8) {
-
-```
-
-</details> 
- 
-
-
- ### <a name="GAS-13"></a>[GAS-13]
- ### Use != 0 instead of > for unsigned integer comparison
-
-*Instances (3)*:
- 
- <details>
- <summary>Click to expand!</summary>
-
-```solidity
-File: example/ddf.sol
-
-266:         require(amount > 0, "Min transfer amount");
-
-305:                 if (tokensToSwap > minSwap && inSwapAndLiquify == 0) {
-
-306:                     if (tokensToSwap > onePercent) {
-
-```
-
-</details> 
- 
-
-
- ### <a name="GAS-14"></a>[GAS-14]
- ### Optimize names to save gas
-public/external function names and public member variable names can be optimized to save gas. See [this](https://gist.github.com/IllIllI000/a5d8b486a8259f9f77891a919febd1a9) link for an example of how it works. Below are the interfaces/abstract contracts that can be optimized so that the most frequently-called functions use the least amount of gas possible during method lookup. Method IDs that have two leading zero bytes can save 128 gas each during deployment, and renaming functions to have lower method IDs will save 22 gas per call, [per sorted position shifted](https://medium.com/joyso/solidity-how-does-function-name-affect-gas-consumption-in-smart-contract-47d270d8ac92)
-
-*Instances (27)*:
- 
- <details>
- <summary>Click to expand!</summary>
-
-```solidity
-File: example/ddf.sol
-
-11:     function totalSupply() external view returns (uint256);
-
-13:     function balanceOf(address account) external view returns (uint256);
-
-20:         external
-
-54:     function owner() public view returns (address) {
-
-63:     function transferOwnership(address newOwner) public onlyOwner {
-
-76:     function renounceOwnership() public virtual onlyOwner {
-
-97:     function factory() external pure returns (address);
-
-99:     function WETH() external pure returns (address);
-
-120:     uint256 public buyTax;
-
-121:     uint256 public sellTax;
-
-127:     uint256 public maxTxAmount = 30_000e18;
-
-132:     public limitsInEffect;
-
-163:     function name() public pure returns (string memory) {
-
-167:     function symbol() public pure returns (string memory) {
-
-171:     function decimals() public pure returns (uint8) {
-
-175:     function totalSupply() public pure override returns (uint256) {
-
-179:     function balanceOf(address account) public view override returns (uint256) {
-
-184:         public
-
-193:         public
-
-202:         public
-
-214:     ) public override returns (bool) {
-
-235:     function addExcludedWallet(address wallet) external onlyOwner {
-
-239:     function openTrading() external onlyOwner {
-
-245:     function setLimit(uint256 amountLimit) external onlyOwner {
-
-250:     function removeAllLimits() external onlyOwner {
-
-255:     function changeTax(uint256 newBuyTax, uint256 newSellTax) external onlyOwner {
-
-346:     receive() external payable {}
-
-```
-
-</details> 
- 
-
+### Time spent:
+5 hours
