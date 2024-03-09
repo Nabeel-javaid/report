@@ -1,392 +1,3068 @@
-# 🛠️ Analysis - SUniStaker Infrastructure
-***Staking infrastructure to empower Uniswap Governance..***
+# Report
+
+
+## Medium Issues
+
+
+| |Issue|Instances|
+|-|:-|:-:|
+| [M-1](#M-1) | Centralization Risk for trusted owners | 5 |
+| [M-2](#M-2) | Unsafe use of ERC20 transferFrom() | 1 |
+| [M-3](#M-3) | Unsafe use of ERC20 transfer() | 3 |
+
+## Low Issues
+
+
+| |Issue|Instances|
+|-|:-|:-:|
+| [L-1](#L-1) | complex casting | 2 |
+| [L-2](#L-2) | Functions calling contracts/addresses with transfer hooks are missing reentrancy guards | 1 |
+| [L-3](#L-3) | Tokens may be minted to address(0x0) | 2 |
+| [L-4](#L-4) | Division by zero not prevented | 1 |
+| [L-5](#L-5) | Empty function body | 2 |
+| [L-6](#L-6) | Use Ownable2Step instead of Ownable | 3 |
+| [L-7](#L-7) | Owner can renounce Ownership   | 3 |
+| [L-8](#L-8) | Loss of precision | 1 |
+| [L-9](#L-9) | State variables not capped at reasonable values | 30 |
+| [L-10](#L-10) | Some tokens may revert when zero value transfers are made | 3 |
+| [L-11](#L-11) |  Functions calling contracts/addresses with transfer hooks should be protected by reentrancy guard   | 3 |
+| [L-12](#L-12) | Some tokens may revert when large transfers are made | 3 |
+| [L-13](#L-13) | Unsafe casting | 2 |
+| [L-14](#L-14) | Unsafe ERC20 operation(s) | 4 |
+
+## Non Critical Issues
+
+
+| |Issue|Instances|
+|-|:-|:-:|
+| [NC-1](#NC-1) | Contracts should have full test coverage | 7 |
+| [NC-2](#NC-2) | Consider adding formal verification proofs | 7 |
+| [NC-3](#NC-3) | Large or complicated code bases should implement invariant tests | 7 |
+| [NC-4](#NC-4) | Variables without visibility specifier | 28 |
+| [NC-5](#NC-5) | Constants in comparisons should appear on the left side | 3 |
+| [NC-6](#NC-6) | Contract declarations should have NatSpec @author annotations | 7 |
+| [NC-7](#NC-7) | Contract declarations should have NatSpec @Title annotations | 7 |
+| [NC-8](#NC-8) | NatSpec: Contract declarations should have @dev tags | 7 |
+| [NC-9](#NC-9) | NatSpec: Contract declarations should have NatSpec descriptions | 7 |
+| [NC-10](#NC-10) | NatSpec: Contract declarations should have @notice tags | 7 |
+| [NC-11](#NC-11) | Consider using delete rather than assigning zero to clear value | 1 |
+| [NC-12](#NC-12) | Consider using delete rather than assigning false to clear value | 3 |
+| [NC-13](#NC-13) | Consider adding a block/deny-list" | 7 |
+| [NC-14](#NC-14) | Consider adding emergency-stop functionality | 7 |
+| [NC-15](#NC-15) | Events are missing sender information | 17 |
+| [NC-16](#NC-16) | NatSpec: Event declarations should have NatSpec descriptions | 17 |
+| [NC-17](#NC-17) | Events should use parameters to convey information | 2 |
+| [NC-18](#NC-18) | contracts should use fixed compiler versions | 7 |
+| [NC-19](#NC-19) | NatSpec: function declarations should have NatSpec descriptions | 18 |
+| [NC-20](#NC-20) | NatSpec: function declarations should have @Notice tags | 18 |
+| [NC-21](#NC-21) | NatSpec: function declarations should have NatSpec descriptions | 18 |
+| [NC-22](#NC-22) | If-statement can be converted to a ternary | 3 |
+| [NC-23](#NC-23) | Consider combining multiple address/ID mappings into a single mapping of an address/ID to a struct | 2 |
+| [NC-24](#NC-24) | Consider using descriptive constants when using 0 in the code | 2 |
+| [NC-25](#NC-25) | Non-external/public variable names should begin with an underscore | 12 |
+| [NC-26](#NC-26) | Use the latest solidity version for deployment   | 7 |
+| [NC-27](#NC-27) | Constants should be defined rather than using magic numbers | 1 |
+| [NC-28](#NC-28) | Import Whole Files Instead of Specific Identifiers | 5 |
+| [NC-29](#NC-29) | Consider moving msg.sender checks to modifiers | 23 |
+| [NC-30](#NC-30) | Owner can renounce while system is paused | 1 |
+| [NC-31](#NC-31) | Use assembly to emit events, in order to save gas | 17 |
+| [NC-32](#NC-32) | Long revert strings | 6 |
 
-### Summary
-| List |Head |Details|
-|:--|:----------------|:------|
-|a) |Overview of the UniStaker Infrastructure Project| Summary of the whole Protocol |
-|b) |Technical Architecture| Architecture of the smart contracts |
-|c) |The approach I would follow when reviewing the code | Stages in my code review and analysis |
-|d) |Analysis of the code base | What is unique? How are the existing patterns used? "Solidity-metrics" was used  |
-|e) |Mechanical Overview | How the project works |
-|f) |Test analysis | Test scope of the project and quality of tests |
-|g) |Security Approach of the Project | Audit approach of the Project |
-|h) |Codebase Quality | Overall Code Quality of the Project |
-|i) |Other Audit Reports and Automated Findings | What are the previous Audit reports and their analysis |
-|j) |Full representation of the project’s risk model| What are the risks associated with the project |
-|k) |New insights and learning of project from this audit | Things learned from the project |
+## Gas Optimizations
 
 
+| |Issue|Instances|
+|-|:-|:-:|
+| [GAS-1](#GAS-1) | Enable IR-based code generation | 7 |
+| [GAS-2](#GAS-2) | Consider using = instead of += and -= for gas efficiency | 4 |
+| [GAS-3](#GAS-3) | Use >= instead of > for gas efficiency | 2 |
+| [GAS-4](#GAS-4) | Constructors can be marked payable | 4 |
+| [GAS-5](#GAS-5) | Use Custom Errors | 12 |
+| [GAS-6](#GAS-6) | Reduce gas usage by moving to Solidity 0.8.19 or later | 7 |
+| [GAS-7](#GAS-7) | Functions guaranteed to revert when called by normal users can be marked `payable` | 2 |
+| [GAS-8](#GAS-8) | `++i` costs less gas than `i++`, especially when it's used in `for`-loops (`--i`/`i--` too) | 4 |
+| [GAS-9](#GAS-9) | require()/revert() strings longer than 32 bytes cost extra gas | 4 |
+| [GAS-10](#GAS-10) | Structs can be packed into fewer storage slots | 7 |
+| [GAS-11](#GAS-11) | Consider using uint256(1)/uint256(2) instead of true/false for gas efficiency | 9 |
+| [GAS-12](#GAS-12) | Use != 0 instead of > for unsigned integer comparison | 2 |
+| [GAS-13](#GAS-13) | Optimize names to save gas | 14 |
 
-## a) Overview of the UniStaker Infrastructure Project
+##################################################################### 
+ 
+ DETAILED REPORT:: 
 
-The UniStaker Infrastructure project is an innovative blockchain initiative designed to leverage the Uniswap V3 protocol, enabling UNI token holders to participate in protocol fee collection and distribution through a staking mechanism. The project introduces a seamless way to earn rewards by staking UNI tokens, while simultaneously engaging in the governance of the Uniswap ecosystem. Upon depositing UNI tokens into the UniStaker contract, users can delegate their governance voting power, ensuring they remain active participants in decision-making processes without sacrificing potential earnings from protocol fees. The system automatically auctions accumulated fees from various Uniswap V3 Pools in exchange for a designated reward token, distributing these rewards proportionally among stakers. Additionally, the DelegationSurrogate contract ensures that users' governance rights are retained, allowing for the delegation of voting power to a chosen representative. 
 
+##################################################################### 
 
-## b) Technical Architecture
-The UniStaker Infrastructure project is designed to weave together Uniswap V3's liquidity provision and fee generation capabilities with UNI token staking and governance participation. Here's an overview of its technical architecture and workflow:
 
-### Core Components
+## Medium Issues
 
-1. **UniStaker Contract**: At the heart of the infrastructure lies the UniStaker contract, which orchestrates the staking of UNI tokens, delegation of governance rights, and distribution of rewards. This contract allows UNI token holders to stake their tokens, choose a delegate for their governance rights, and earn rewards based on the fees collected from Uniswap V3 pools.
 
-2. **V3FactoryOwner Contract**: This contract acts as the owner of the Uniswap V3 Factory, possessing the authority to enable fee levels on Uniswap V3 pools and collect fees. It features a unique mechanism allowing anyone to claim collected fees from specific pools by paying a predetermined amount of a designated token (PAYOUT_TOKEN), which is then distributed as rewards to stakers.
+ ### <a name="M-1"></a>[M-1]
+ ### Centralization Risk for trusted owners
 
-3. **DelegationSurrogate Contract**: Designed to maintain governance participation for pooled token holders, this contract holds staked tokens and delegates voting power to a specified address. It ensures that despite the tokens being staked or pooled, the governance rights of individual token holders are preserved and exercised according to their delegation preferences.
+#### Impact:
+Contracts have owners with privileged rights to perform admin tasks and need to be trusted to not perform malicious updates or drain funds.
 
-### Interfaces
+*Instances (5)*:
+ 
+ <details>
+ <summary>Click to expand!</summary>
 
-The system utilizes several interfaces to interact with external contracts and protocols:
+```solidity
+File: Admin.sol
 
-- **IERC20Delegates**: Facilitates interaction with governance tokens, supporting standard ERC20 operations and delegation functionalities.
-  
-- **INotifiableRewardReceiver**: Defines the method for notifying about rewards, used by the V3FactoryOwner to alert the UniStaker contract about the rewards from fee collection.
+7: contract Admin is Ownable, Pausable {
 
-- **IUniswapV3FactoryOwnerActions & IUniswapV3PoolOwnerActions**: Allow the V3FactoryOwner contract to interact with the Uniswap V3 Factory and individual pools, enabling fee settings and collections.
+24:     ) Ownable(initialOwner) {
 
-### Workflow
+32:     ) external onlyOwner {
 
-1. **Staking and Delegation**: Users stake their UNI tokens through the UniStaker contract, which records the staked amount and delegates the users' governance voting power to the chosen delegatees via DelegationSurrogate contracts. This process ensures users' participation in governance without direct involvement.
+38:     function pause() external onlyOwner {
 
-2. **Fee Collection and Reward Distribution**: The V3FactoryOwner contract collects fees from Uniswap V3 pools by selling the accrued fees to parties interested in paying the payout token. The collected payout tokens are then forwarded to the UniStaker contract.
+44:     function unpause() external onlyOwner {
 
-3. **Reward Notification and Distribution**: Upon receiving the payout tokens, the UniStaker contract is notified about the reward amount through the INotifiableRewardReceiver interface. It then distributes these rewards to stakers proportionally, based on their staked amounts and the duration of the stake.
+```
 
-4. **Governance Participation**: Throughout this process, the governance rights of staked UNI tokens are exercised by the designated delegatees, ensuring that the stakers' voices are heard in Uniswap governance decisions without compromising their ability to earn rewards.
+</details> 
+ 
 
-### WorkFlow diagram
-<br/>
 
-[![Screenshot-from-2024-03-04-22-54-12.png](https://i.postimg.cc/7LMNGx95/Screenshot-from-2024-03-04-22-54-12.png)](https://postimg.cc/kVGSLPkC)
+ ### <a name="M-2"></a>[M-2]
+ ### Unsafe use of ERC20 transferFrom()
+Some tokens do not implement the ERC20 standard properly. For example Tether (USDT)'s transferFrom() function does not return a boolean as the ERC20 specification requires, and instead has no return value. When these sorts of tokens are cast to IERC20/ERC20, their function signatures do not match and therefore the calls made will revert. It is recommended to use the SafeERC20's safeTransferFrom() from OpenZeppelin instead.
 
-Here's a structured overview of the files involved in the UniStaker Infrastructure project, detailing their core functionality, technical characteristics, and their importance within the system:
+*Instances (1)*:
+ 
+ <details>
+ <summary>Click to expand!</summary>
 
-| File Name                        | Core Functionality                                  | Technical Characteristics                                                                                             | Importance and Management |
-|----------------------------------|----------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------|---------------------------|
-| **UniStaker.sol**                | Manages UNI staking, reward distribution, and governance delegation | - Implements staking mechanics inspired by Synthetix<br>- Allows for governance delegation and reward collection<br>- Interacts with DelegationSurrogate for governance rights preservation | Central to the project as it handles the primary interaction with users, facilitating staking, rewards, and governance participation. It must be robust and secure due to its critical role in asset management and governance. |
-| **V3FactoryOwner.sol**           | Acts as the owner of Uniswap V3 Factory, enabling fee management and collection | - Enables and adjusts fee levels on Uniswap V3 pools<br>- Publicly exposes fee collection in exchange for a payout token<br>- Notifies the UniStaker contract about collected fees for reward distribution | Essential for the project's integration with Uniswap V3, enabling the collection of protocol fees that fund staker rewards. Its management of fee settings directly impacts the project's revenue and reward mechanisms. |
-| **DelegationSurrogate.sol**      | Holds governance tokens and delegates voting power on behalf of stakers | - Simple contract for delegating voting rights while holding tokens<br>- Max-approves the deployer for token reclamation | Supports the governance aspect of staked tokens, ensuring users retain their voting rights. Its simplicity and single-purpose design minimize risks and complexity. |
-| **IERC20Delegates.sol**          | Interface for governance token interactions, including delegation and standard ERC20 functions | - Specifies functions for token delegation and standard ERC20 operations<br>- Used by other contracts to interact with the governance token | Facilitates interaction with governance tokens, enabling essential functionalities like staking, delegation, and reward distribution. It ensures compatibility and standardization across the system. |
-| **INotifiableRewardReceiver.sol**| Interface for notifying about received rewards | - Defines a method for reward notification<br>- Ensures contracts can respond to incoming rewards appropriately | Allows for flexible reward distribution mechanisms, enabling the UniStaker contract to react to received funds. This interface is crucial for integrating the reward mechanism with the fee collection process. |
-| **IUniswapV3FactoryOwnerActions.sol** | Interface for owner actions on the Uniswap V3 Factory | - Specifies methods for factory management, including fee enabling and owner setting | Enables the V3FactoryOwner contract to manage Uniswap V3 settings, directly affecting the project's ability to collect and manage fees. |
-| **IUniswapV3PoolOwnerActions.sol** | Interface for actions on individual Uniswap V3 pools | - Defines pool management functions, such as setting protocol fees | Allows the V3FactoryOwner to manage protocol fees on individual pools, influencing the project's revenue from fee collection. |
+```solidity
+File: CollateralMarket.sol
 
-<br/>
-<br/>
+62:             collateralContract.transferFrom(auction.seller, auction.highestBidder, auction.collateralId);
 
-## c) The approach I would follow when reviewing the code
+```
 
-First, by examining the scope of the code, I determined my code review and analysis strategy.
-https://code4rena.com/audits/2024-02-unistaker-infrastructure#top
+</details> 
+ 
 
-My approach to ensure a thorough and comprehensive audit would encompass several steps, combining theoretical understanding, practical testing, and security assessments. Here’s how I would proceed:
 
-### 1. Documentation Review
-First, I started by reading the project documentation in detail. Understanding the project's goals, architecture, and functionalities as outlined in the docs helps me grasp the intended use cases and the design rationale behind the smart contracts. This initial step is crucial for aligning my understanding with the project's objectives and preparing for a more technical dive.
+ ### <a name="M-3"></a>[M-3]
+ ### Unsafe use of ERC20 transfer()
+Some tokens do not implement the ERC20 standard properly. For example Tether (USDT)'s transfer() function does not return a boolean as the ERC20 specification requires, and instead has no return value. When these sorts of tokens are cast to IERC20/ERC20, their function signatures do not match and therefore the calls made will revert. It is recommended to use the SafeERC20's safeTransfer() from OpenZeppelin instead.
 
-### 2. Codebase Familiarization
-Next, I cloned the project repository and familiarize myself with the codebase structure. I take note of how the contracts are organized, the naming conventions, and how the interfaces are defined and implemented. This step helps me understand the project’s modularity and the relationships between different contracts.
+*Instances (3)*:
+ 
+ <details>
+ <summary>Click to expand!</summary>
 
-### 3. Dependency and Configuration Analysis
-Before diving into the contract logic, I reviewed the project’s dependencies, such as OpenZeppelin contracts, and configuration settings, including compiler versions. This is to ensure that the project uses secure and up-to-date libraries and follows best practices for deployment.
+```solidity
+File: CollateralMarket.sol
 
-### 4. Manual Code Review
-With a solid understanding of the project structure and goals, I would begin a line-by-line review of the smart contracts. My focus would be on identifying common smart contract vulnerabilities such as reentrancy, overflow/underflow, improper access control, and unchecked external calls. Additionally, I assessed the contracts for logic errors, inefficiencies, and deviations from the documented functionalities.
+46:             payable(auction.highestBidder).transfer(auction.highestBid);
 
-### 5. Testing and Coverage Analysis
-After the manual review, I run the project’s test suite to ensure all tests pass and to identify any areas of the code not covered by tests. I would write additional tests if necessary to achieve comprehensive coverage, particularly focusing on edge cases and failure modes.
+61:             payable(auction.seller).transfer(auction.highestBid);
 
-### 9. Interaction with External Systems
-Since the project interacts with Uniswap V3, I review the integration points and external calls to ensure they are handled securely, respecting the trust boundaries and mitigating risks associated with external dependencies.
+```
 
-## d) Analysis of the code base
+```solidity
+File: Staking.sol
 
-The most important summary in analyzing the code base is the stacking of codes to be analyzed.
-In this way, many predictions can be made, including the difficulty levels of the contracts, which one is more important for the auditor, the features they contain that are important for security (payable functions, uses assembly, etc.), the audit cost of the project, and the time to be allocated to the audit;
-Uses Consensys Solidity Metrics
+43:         payable(msg.sender).transfer(totalAmount);
 
+```
 
+</details> 
+ 
 
--  **File name:** This field indicates the number of Contracts involves
 
+## Low Issues
 
--  **Lines:** This field represents the total number of lines in the source file, including code lines, comments, and blank lines.
 
+ ### <a name="L-1"></a>[L-1]
+ ### complex casting
+Consider whether the number of casts is really necessary, or whether using a different type would be more appropriate. Alternatively, add comments to explain in detail why the casts are necessary, and any implicit reasons why the cast does not introduce an overflow.
 
--  **nSLOC:** nSLOC stands for "normalized source lines of code," and it further refines nLines by excluding both blank lines and comments. It gives a more accurate measure of the code's complexity.
+*Instances (2)*:
+ 
+ <details>
+ <summary>Click to expand!</summary>
 
--  **Comment Lines:** This field specifies the number of lines in the source file that contain comments.
+```solidity
+File: Collateral.sol
 
--  **nLines:** nLines typically stands for "normalized lines" and represents the total number of lines in the source file excluding blank lines. 
+25:         _mint(msg.sender, collateralId); //@audit use safeMint with re-entrancy guard
 
+```
 
+```solidity
+File: LoanAgreement.sol
 
-Total : 7 files,  563 codes, 450 comments, 142 blanks, all 1155 lines
+28:         _mint(borrower, loanId);
 
-## Files
-| filename | language | code | comment | blank | total |
-| :--- | :--- | ---: | ---: | ---: | ---: |
-| [src/DelegationSurrogate.sol](/src/DelegationSurrogate.sol) | Solidity | 8 | 19 | 3 | 30 |
-| [src/UniStaker.sol](/src/UniStaker.sol) | Solidity | 428 | 282 | 101 | 811 |
-| [src/V3FactoryOwner.sol](/src/V3FactoryOwner.sol) | Solidity | 87 | 94 | 25 | 206 |
-| [src/interfaces/IERC20Delegates.sol](/src/interfaces/IERC20Delegates.sol) | Solidity | 22 | 7 | 3 | 32 |
-| [src/interfaces/INotifiableRewardReceiver.sol](/src/interfaces/INotifiableRewardReceiver.sol) | Solidity | 4 | 9 | 2 | 15 |
-| [src/interfaces/IUniswapV3FactoryOwnerActions.sol](/src/interfaces/IUniswapV3FactoryOwnerActions.sol) | Solidity | 7 | 23 | 5 | 35 |
-| [src/interfaces/IUniswapV3PoolOwnerActions.sol](/src/interfaces/IUniswapV3PoolOwnerActions.sol) | Solidity | 7 | 16 | 3 | 26 |
+```
 
-### Comment-to-Source Ratio: On average there are `1.25 code` lines per comment (lower=better).
+</details> 
+ 
 
-# State diagram
 
-This State diagram provides an overview of the key components  and how they are interconnected.
+ ### <a name="L-2"></a>[L-2]
+ ### Functions calling contracts/addresses with transfer hooks are missing reentrancy guards
+Even if the function follows the best practice of check-effects-interaction, not using a reentrancy guard when there may be transfer hooks will open the users of this protocol up to [read-only reentrancies](https://chainsecurity.com/curve-lp-oracle-manipulation-post-mortem/) with no way to protect against it, except by block-listing the whole protocol.
 
-[![Screenshot-from-2024-03-04-23-35-49.png](https://i.postimg.cc/B67zndxP/Screenshot-from-2024-03-04-23-35-49.png)](https://postimg.cc/8JW4yXXT)
+*Instances (1)*:
+ 
+ <details>
+ <summary>Click to expand!</summary>
 
-<br/>
-<br/>
+```solidity
+File: CollateralMarket.sol
 
+62:             collateralContract.transferFrom(auction.seller, auction.highestBidder, auction.collateralId);
 
+```
 
+</details> 
+ 
 
 
+ ### <a name="L-3"></a>[L-3]
+ ### Tokens may be minted to address(0x0)
+Neither the  functions, nor _mint() prevent minting to address(0x0)  
 
+*Instances (2)*:
+ 
+ <details>
+ <summary>Click to expand!</summary>
 
+```solidity
+File: Collateral.sol
 
+25:         _mint(msg.sender, collateralId); //@audit use safeMint with re-entrancy guard
 
+```
 
+```solidity
+File: LoanAgreement.sol
 
+28:         _mint(borrower, loanId);
 
+```
 
+</details> 
+ 
 
 
+ ### <a name="L-4"></a>[L-4]
+ ### Division by zero not prevented
+The divisions below take an input parameter that has no zero-value checks, which can cause the functions reverting if zero is passed.  
 
+*Instances (1)*:
+ 
+ <details>
+ <summary>Click to expand!</summary>
 
+```solidity
+File: Staking.sol
 
-## e) Mechanical Overview
+53:         return (amount * interestRate * numYears) / 100;
 
+```
 
-The UniStaker Infrastructure project is designed to enhance the functionality of Uniswap V3 by introducing a novel mechanism for staking UNI tokens, collecting protocol fees, and distributing rewards. This system allows UNI holders to stake their tokens, participate in governance through delegated voting, and earn rewards generated from Uniswap V3's trading fees. The project is built around three core smart contracts: `UniStaker`, `V3FactoryOwner`, and `DelegationSurrogate`, each serving distinct roles within the ecosystem.
+</details> 
+ 
 
-### UniStaker
 
-**Functionality and Mechanism**: The `UniStaker` contract is the heart of the project, managing the staking of UNI tokens and the distribution of rewards. UNI holders can stake their tokens in this contract and delegate their governance rights. The contract also defines how staked tokens can earn rewards, which are not paid out in the native fee tokens collected from Uniswap V3 but rather in a designated rewards token specified at the contract's deployment.
+ ### <a name="L-5"></a>[L-5]
+ ### Empty function body
+Consider adding a comment about why the function body is empty
 
-**How It Works**: When UNI tokens are staked, the contract tracks the amount staked by each participant and their proportional share of the total staked amount. The rewards are distributed based on these shares, with the mechanism allowing for continuous reward accrual and claimability. Stakers can also designate a beneficiary address different from their own to receive the rewards, adding flexibility to the rewards distribution.
+*Instances (2)*:
+ 
+ <details>
+ <summary>Click to expand!</summary>
 
-<br/>
+```solidity
+File: Collateral.sol
 
-[![Screenshot-from-2024-03-05-00-28-58.png](https://i.postimg.cc/Vvty7pLt/Screenshot-from-2024-03-05-00-28-58.png)](https://postimg.cc/T5TH1kb2)
+16:     constructor() ERC721("Collateral", "COLL") {}
 
+```
 
-### V3FactoryOwner
+```solidity
+File: LoanAgreement.sol
 
-**Functionality and Mechanism**: The `V3FactoryOwner` contract acts as an owner of the Uniswap V3 Factory, with specific rights to enable fee amounts on Uniswap V3 pools and set protocol fees. Importantly, this contract has a public function allowing anyone to claim protocol fees from any Uniswap V3 pool by paying a specified amount of a designated token. The collected fees are then sent to the `UniStaker` contract as rewards for stakers.
+20:     constructor() ERC721("LoanAgreement", "LNAG") {}
 
-**How It Works**: To incentivize the collection of fees (and thus the distribution of rewards to stakers), the `V3FactoryOwner` introduces a "payout race" mechanism. External actors (like MEV searchers) can pay the payout token to claim accumulated fees from Uniswap pools. This mechanism ensures that the protocol fees contribute directly to the staking rewards, aligning the incentives of various ecosystem participants.
+```
 
-<br/>
+</details> 
+ 
 
-[![Screenshot-from-2024-03-05-00-35-48.png](https://i.postimg.cc/Ghr8FCpv/Screenshot-from-2024-03-05-00-35-48.png)](https://postimg.cc/NLJjtZm0)
 
-### DelegationSurrogate
+ ### <a name="L-6"></a>[L-6]
+ ### Use Ownable2Step instead of Ownable
+Add a description of why Ownable2Step is recommended.
 
-**Functionality and Mechanism**: The `DelegationSurrogate` contract is a simple yet crucial component that enables governance rights to be maintained by stakers. It acts as a holding entity for staked tokens, delegating the governance voting power of these tokens to a specified delegatee. This allows stakers to participate in Uniswap governance without sacrificing their staking rewards.
+*Instances (3)*:
+ 
+ <details>
+ <summary>Click to expand!</summary>
 
-**How It Works**: Upon staking in the `UniStaker` contract, if a user wishes to delegate their governance rights to another address, the `UniStaker` interacts with `DelegationSurrogate` to ensure that the staked tokens' voting power is delegated accordingly. This preserves the decentralized governance model of Uniswap while still allowing users to earn staking rewards.
+```solidity
+File: Admin.sol
 
-<br/>
+4: import "@openzeppelin/contracts/access/Ownable.sol";
 
-[![Screenshot-from-2024-03-05-00-37-10.png](https://i.postimg.cc/FHyTPmbm/Screenshot-from-2024-03-05-00-37-10.png)](https://postimg.cc/RW01Fkbb)
+7: contract Admin is Ownable, Pausable {
 
-### Conceptual Overview
+24:     ) Ownable(initialOwner) {
 
-The UniStaker Infrastructure project innovatively bridges the gap between participating in Uniswap's governance and earning rewards from protocol fees. By staking UNI tokens, users can contribute to the security and governance of the Uniswap protocol while earning a share of the trading fees generated by the platform. The `V3FactoryOwner`'s unique fee collection mechanism incentivizes active participation in the ecosystem, ensuring a continuous flow of rewards to stakers. Meanwhile, the `DelegationSurrogate` ensures that staking does not come at the cost of disenfranchising users from governance participation, thereby supporting Uniswap's decentralized ethos.
+```
 
-This architecture not only enhances the utility of UNI tokens by providing staking rewards but also strengthens the Uniswap V3 ecosystem by encouraging long-term holding and active governance participation. The project represents a thoughtful integration of staking, rewards, and governance functionalities within the DeFi space, showcasing a model that could inspire similar mechanisms across other platforms.
+</details> 
+ 
 
 
+ ### <a name="L-7"></a>[L-7]
+ ### Owner can renounce Ownership  
+Each of the following contracts implements or inherits the renounceOwnership() function. This can represent a certain risk if the ownership is renounced for any other reason than by design. Renouncing ownership will leave the contract without an owner, thereby removing any functionality that is only available to the owner.
 
+*Instances (3)*:
+ 
+ <details>
+ <summary>Click to expand!</summary>
 
+```solidity
+File: Admin.sol
 
+4: import "@openzeppelin/contracts/access/Ownable.sol";
 
+7: contract Admin is Ownable, Pausable {
 
+24:     ) Ownable(initialOwner) {
 
+```
 
+</details> 
+ 
 
 
+ ### <a name="L-8"></a>[L-8]
+ ### Loss of precision
+Division by large numbers or variables may result in the result being zero, due to Solidity not supporting fractions.
 
+*Instances (1)*:
+ 
+ <details>
+ <summary>Click to expand!</summary>
 
+```solidity
+File: Staking.sol
 
-## f) Test analysis
+53:         return (amount * interestRate * numYears) / 100;
 
- **Foundry Testing:**
-   
-   Foundry, a modern smart contract testing framework, was utilized to test the unistaker contracts. This involved several key steps:
-   
-   a. **Installation and Setup:**
-      - Foundry was installed using the command `curl -L https://foundry.paradigm.xyz | bash`, followed by `foundryup` to ensure the latest version was in use.
-      - Dependencies were installed using `forge install`, ensuring all necessary components were available for the testing process.
-      - Then to run the tests, I simply added the relevant files to the .env, referencing .env.example.
-   
-   b. **Execution of Tests:**
-      - Tests were run using `forge install` followed by `forge build` and then `forge test`, executing a suite of predefined test cases that covered various functionalities and scenarios.
-   
-   c. **Test Coverage and Documentation:**
-      - The overview of the testing suite, as referred to in the provided documentation, likely details the scope, scenarios, and objectives of each test, ensuring a comprehensive assessment of the contracts.
-   
+```
 
-### What did the project do differently? ;
--   1) It can be said that the developers of the project did a quality job, there is a test structure consisting of tests with quality content. In particular, tests have been written successfully.
+</details> 
+ 
 
--   2) Overall line coverage percentage provided by your tests : 100
 
-### What could they have done better?
+ ### <a name="L-9"></a>[L-9]
+ ### State variables not capped at reasonable values
+Consider adding minimum/maximum value checks to ensure that the state variables below can never be used to excessively harm users, including via griefing
 
--  1) If we look at the test scope and content of the project with a systematic checklist, we can see which parts are good and which areas have room for improvement As a result of my analysis, those marked in green are the ones that the project has fully achieved. The remaining areas are the development areas of the project in terms of testing ;
+*Instances (30)*:
+ 
+ <details>
+ <summary>Click to expand!</summary>
 
+```solidity
+File: Admin.sol
 
-[![test-cases.jpg](https://i.postimg.cc/1zgD5wCt/test-cases.jpg)](https://postimg.cc/v1s40gdF)
+10:         uint256 lendingFeeRate; // Fee rate for lending operations
 
-Ref:https://xin-xia.github.io/publication/icse194.pdf
+11:         uint256 borrowingFeeRate; // Fee rate for borrowing operations
 
-[![nabeel-1.jpg](https://i.postimg.cc/6qtBdLQW/nabeel-1.jpg)](https://postimg.cc/bDVXPnbW)
+```
 
-<br/>
-<br/>
+```solidity
+File: Collateral.sol
 
+8:         uint256 loanId;
 
+9:         string description;
 
-## g) Security Approach of the Project
+10:         bool isLinked;
 
-### Successful current security understanding of the project;
+```
 
-1- The project has already underwent an audits (Trail of Bits ), this innovative assessments on Code4rena is the second, where multiple auditors are scrutinizing the code.
+```solidity
+File: CollateralMarket.sol
 
-### What the project should add in the understanding of Security;
+7:     Collateral collateralContract;
 
-1- By distributing the project to testnets, ensuring that the audits are carried out in onchain audit. (This will increase coverage)
+10:         uint256 collateralId;
 
-2- Add On-Chain Monitoring System; If On-Chain Monitoring systems such as Forta are added to the project, its security will increase.
+11:         address seller;
 
-For example ; This bot tracks any DEFI transactions in which wrapping, unwrapping, swapping, depositing, or withdrawals occur over a threshold amount. If transactions occur with unusually high token amounts, the bot sends out an alert. https://app.forta.network/bot/0x7f9afc392329ed5a473bcf304565adf9c2588ba4bc060f7d215519005b8303e3
+12:         uint256 minBid;
 
-3- After the Code4rena audit is completed and the project is live, I recommend the audit process to continue, projects like immunefi do this. 
-https://immunefi.com/
+13:         uint256 highestBid;
 
-4- Emergency Action Plan
-In a high-level security approach, there should be a crisis handbook like the one below and the strategic members of the project should be trained on this subject and drills should be carried out. Naturally, this information and road plan will not be available to the public.
-https://docs.google.com/document/u/0/d/1DaAiuGFkMEMMiIuvqhePL5aDFGHJ9Ya6D04rdaldqC0/mobilebasic#h.27dmpkyp2k1z
+14:         address highestBidder;
 
-5- I also recommend that you have an "Economic Audit" for projects based on such complex mathematics and economic models. An example Economic Audit is provided in the link below;
-Economic Audit with [Three Sigma](https://panoptic.xyz/blog/panoptic-three-sigma-partnership)
+15:         uint256 auctionEndTime;
 
-6 - As the project team, you can consider applying the multi-stage audit model.
+16:         bool isActive;
 
-[![sla.png](https://i.postimg.cc/nhR0kN3w/sla.png)](https://postimg.cc/Sn96Q1FW)
+```
 
-Read more about the MPA model;
-https://mpa.solodit.xyz/
+```solidity
+File: LoanAgreement.sol
 
-7 - I recommend having a masterplan applied to project team members (This information is not included in the documents).
-All authorizations, including NPM passwords and authorizations, should be reserved only for current employees. I also recommend that a definitive security constitution project be found for employees to protect these passwords with rules such as 2FA. The LEDGER hack, which has made a big impact recently, is the best example in this regard;
+8:         address lender;
 
-https://twitter.com/Ledger/status/1735326240658100414?t=UAuzoir9uliXplerqP-Ing&s=19
+9:         address borrower;
 
+10:         uint256 amount;
 
-## h) Codebase Quality
+11:         uint256 interestRate;
 
-Overall, I consider the quality of the unistaker protocol codebase to be Good. The code appears to be mature and well-developed, though there are areas for improvement, particularly in code commenting. We have noticed the implementation of various standards adhere to appropriately. Details are explained below:
+12:         uint256 duration;
 
-| Codebase Quality Categories              | Comments                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
-| ---------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Code Maintainability and Reliability** | The codebase demonstrates a high level of maintainability and reliability. It is clear that the developers have focused on creating a robust and scalable architecture. The use of established Ethereum development patterns and adherence to Solidity best practices contributes significantly to the code's overall reliability. |
-| **Code Comments**                        | The codebase shows a lack of comprehensive comments, particularly in complex logic areas. This can make it challenging to understand the purpose and functionality of certain sections, which might hinder the onboarding of new developers and code audits. Improving the comments would significantly enhance the codebase's clarity and maintainability. |
-| **Documentation**                        | The project includes comprehensive documentation. It covers the overall architecture, functionality, and specific details about key components like staking mechanisms and wallet management. This level of documentation is essential for both developers and end-users to understand and interact with the protocol effectively. |
-| **Testing**                              | The protocol demonstrates a strong emphasis on testing, which is evident from the extensive test cases covering various scenarios. Regular and thorough testing enhances the code's stability and reduces the likelihood of unforeseen issues in a live environment. |
-| **Code Structure and Formatting**        | The code is well-structured and consistently formatted. It follows a logical structure that makes it easy to navigate and understand. Consistent formatting across the codebase not only improves readability but also indicates a professional development approach. |
+13:         uint256 balanceDue;
 
+14:         bool isPaidOff;
 
-### Solidity and Clarity
+```
 
-- **Smart Contract Structure**: The project's smart contracts are well-structured and logically organized. The separation of concerns is evident in the delineation between staking logic (UniStaker.sol), Uniswap V3 Factory ownership (V3FactoryOwner.sol), and governance token delegation (DelegationSurrogate.sol). This modular approach facilitates easier understanding and maintenance.
+```solidity
+File: LoanMarketplace.sol
 
-- **Code Readability and Documentation**: The contracts are accompanied by comprehensive comments and documentation, following the NatSpec format. This not only aids in understanding the contract functionalities but also ensures that future developers or auditors can quickly grasp the intended behavior of the code.
+6:         address lender;
 
-### Security Practices
+7:         uint256 amount;
 
-- **Use of Established Patterns and Libraries**: The project leverages OpenZeppelin contracts for standard functionalities such as ERC20 interactions and access control, which is a positive indicator of codebase quality. Employing these tested and audited libraries helps prevent common vulnerabilities.
+8:         uint256 interestRate;
 
-- **Security Measures and Considerations**: The mechanisms for staking, rewards distribution, and governance delegation are designed with security in mind. For instance, the use of `DelegationSurrogate` to maintain governance rights while staking UNI tokens is an innovative approach that also considers the security implications of delegation.
+9:         uint256 duration;
 
-- **Potential Areas for Enhancement**: While the project demonstrates a strong understanding of security principles, continuous review and testing are necessary, especially considering the dynamic and evolving landscape of DeFi and smart contract vulnerabilities. Integration with Uniswap V3 introduces complexities that require ongoing vigilance to ensure compatibility and security, particularly concerning protocol fee collection and token delegation.
+10:         bool isActive;
 
+```
 
-### Adherence to DeFi and Uniswap Best Practices
+```solidity
+File: Staking.sol
 
-- **Integration with Uniswap V3**: The project's design thoughtfully considers its role within the broader Uniswap V3 ecosystem, offering functionalities that complement the existing features of Uniswap, such as liquidity provision and fee generation. The choice to enable public claiming of protocol fees through the `V3FactoryOwner` contract is particularly noteworthy, as it aligns with the permissionless and decentralized ethos of DeFi.
+6:         uint256 amount;
 
-- **Upgradability and Future-proofing**: While the current implementation serves its purpose well, the rapidly evolving nature of DeFi and Uniswap might necessitate future upgrades or enhancements. The project could benefit from incorporating more flexible upgrade mechanisms or considering the long-term governance structure for managing such changes, ensuring that it can adapt to future Uniswap upgrades or shifts in DeFi trends.
+7:         uint256 depositTime;
 
-## i) Other Audit Reports and Automated Findings 
+8:         uint256 interestRate; // annual interest rate
 
-**Bot findings:**
-https://github.com/code-423n4/2024-02-uniswap-foundation/blob/main/bot-report.md
+```
 
-**4naly3er Report:**
-https://github.com/code-423n4/2024-02-uniswap-foundation/blob/main/4naly3er-report.md
+```solidity
+File: UserRegistry.sol
 
-**Previous Audits**
-Not Public Yet
+8:         UserType userType;
 
-## j) Full representation of the project’s risk model
+9:         uint256 reputation;
 
-### 1. Admin Abuse Risks:
-In the context of the UniStaker Infrastructure project, the concept of "Admin Abuse Risks" encompasses potential vulnerabilities or scenarios where the administrative roles associated with the smart contracts could be misused, leading to adverse effects on the protocol's integrity, user assets, or governance processes. Given the project's integration with Uniswap V3 and its unique functionalities around staking, fee collection, and governance rights delegation, let's critically analyze the specific admin roles and their associated risks.
+```
 
-### V3FactoryOwner Contract
+</details> 
+ 
 
-The `V3FactoryOwner` contract holds the authority over the Uniswap V3 Factory settings, including enabling fee amounts and setting protocol fees on pools. While this centralization of control is necessary for certain administrative functions, it introduces several risks:
 
-- **Protocol Fee Adjustments**: The admin can adjust protocol fees on Uniswap V3 pools. If done maliciously or carelessly, it could disrupt the economic balance, affecting liquidity providers' earnings and potentially the overall liquidity of the Uniswap V3 platform.
+ ### <a name="L-10"></a>[L-10]
+ ### Some tokens may revert when zero value transfers are made
+Despite the fact that [EIP-20](https://github.com/ethereum/EIPs/blob/7500ac4fc1bbdfaf684e7ef851f798f6b667b2fe/EIPS/eip-20.md?plain=1#L116) states that zero-value transfers must be accepted, some tokens, such as LEND, will revert if this is attempted, which may cause transactions that involve other tokens (such as batch operations) to fully revert. Consider skipping the transfer if the amount is zero, which will also save gas.
 
-- **Fee Collection Mechanism**: The admin's ability to change the payout amount required for collecting protocol fees introduces a risk. An unreasonably high payout amount could deter the collection of fees, while too low a payout amount might lead to exploitation where fees are collected too frequently, potentially draining value from the protocol.
+*Instances (3)*:
+ 
+ <details>
+ <summary>Click to expand!</summary>
 
-### UniStaker Contract
+```solidity
+File: CollateralMarket.sol
 
-The `UniStaker` contract admin has control over crucial functionalities such as updating reward distribution parameters and adding or removing sources of revenue. Potential abuses could include:
+46:             payable(auction.highestBidder).transfer(auction.highestBid);
 
-- **Reward Distribution Manipulation**: By altering reward distribution logic or parameters, an admin could unfairly benefit certain stakers over others or divert rewards to unintended recipients.
+61:             payable(auction.seller).transfer(auction.highestBid);
 
-### 2. Systemic Risks:
-- **Interconnected Contract Dependencies**: The project's DeFi ecosystem comprises various interdependent contracts. A malfunction or exploitation in one contract could ripple through the entire system.
-  
-- **Protocol Dependency:** The UniStaker Infrastructure's functionality is tightly coupled with Uniswap V3. Any significant changes or disruptions in Uniswap V3, such as upgrades or downtime, could directly impact the project's operations and user experience.
+```
 
-- **Market Volatility and Economic Shocks:** The project's reliance on certain tokens for rewards and fee payments exposes it to market volatility. Sharp price movements could affect the economic viability of staking and claiming rewards, introducing systemic risks related to user engagement and protocol sustainability.
+```solidity
+File: Staking.sol
 
+43:         payable(msg.sender).transfer(totalAmount);
 
+```
 
-### 3. Technical Risks:
-- **Smart Contract Vulnerabilities**: Given the complexity of contracts like `Upkeep.sol`, `Staking.sol`, and others, there's a risk of bugs or vulnerabilities that could be exploited, despite thorough auditing.
+</details> 
+ 
 
-By continuously monitoring these risk factors and implementing robust mitigation strategies, Unistaker can aim to ensure a secure and resilient DeFi ecosystem for its users.
 
+ ### <a name="L-11"></a>[L-11]
+ ###  Functions calling contracts/addresses with transfer hooks should be protected by reentrancy guard  
+Even if the function follows the best practice of check-effects-interaction, not using a reentrancy guard when there may be transfer hooks opens the users of this protocol up to [read-only reentrancy](https://chainsecurity.com/curve-lp-oracle-manipulation-post-mortem/) vulnerability with no way to protect them except by block-listing the entire protocol.
 
-## k) New insights and learning of project from this audit:
+*Instances (3)*:
+ 
+ <details>
+ <summary>Click to expand!</summary>
 
-From conducting this audit on the UniStaker Infrastructure project, several new insights and learnings have emerged, particularly highlighting the innovative approaches to staking, governance, and fee distribution within the Uniswap V3 ecosystem. These insights not only reflect on the technical architecture and solidity practices but also on broader DeFi governance and incentive mechanisms. Here are key takeaways:
+```solidity
+File: CollateralMarket.sol
 
-1. **Innovative Staking Mechanism**: The UniStaker contract introduces a nuanced staking model where UNI token holders can earn rewards not directly in fee tokens but in another designated token. This approach diverges from traditional staking rewards mechanisms, showcasing a flexible rewards distribution model that could be adapted to different DeFi protocols seeking to optimize their tokenomics.
+46:             payable(auction.highestBidder).transfer(auction.highestBid);
 
-2. **Governance Participation Preserved**: The introduction of the DelegationSurrogate contract is a clever solution to a common problem faced by token stakers - the potential loss of governance rights. By enabling stakers to delegate their voting power while their tokens are staked, the project ensures active governance participation, reinforcing the decentralized ethos of Uniswap.
+61:             payable(auction.seller).transfer(auction.highestBid);
 
-3. **Fee Distribution and Incentive Alignment**: The V3FactoryOwner contract's mechanism to allow any entity to claim protocol fees by paying a designated token amount introduces a competitive model for fee collection. This could potentially create a new dynamic within the Uniswap ecosystem, where third parties actively participate in the protocol's economy, aligning incentives across the board.
+```
 
-4. **Smart Contract Modularity and Interoperability**: The project showcases a modular approach to smart contract development, with distinct contracts handling specific functionalities (staking, governance delegation, fee collection). This design promotes reusability and interoperability within the DeFi space, where components of one protocol could be integrated into another with minimal friction.
+```solidity
+File: Staking.sol
 
+43:         payable(msg.sender).transfer(totalAmount);
 
-This audit has not only provided a deeper understanding of the UniStaker Infrastructure project's technical and economic designs but also inspired considerations for future DeFi projects in terms of governance participation, incentive alignment, and the balance between decentralization and administrative control.
+```
 
+</details> 
+ 
 
 
-Note: I didn't tracked the time, the time I mentioned is just an estimate
+ ### <a name="L-12"></a>[L-12]
+ ### Some tokens may revert when large transfers are made
+Tokens such as COMP or UNI will revert when an address balance reaches type(uint96).max. Ensure that the calls below can be broken up into smaller batches if necessary.  
+
+*Instances (3)*:
+ 
+ <details>
+ <summary>Click to expand!</summary>
+
+```solidity
+File: CollateralMarket.sol
+
+46:             payable(auction.highestBidder).transfer(auction.highestBid);
+
+61:             payable(auction.seller).transfer(auction.highestBid);
+
+```
+
+```solidity
+File: Staking.sol
+
+43:         payable(msg.sender).transfer(totalAmount);
+
+```
+
+</details> 
+ 
+
+
+ ### <a name="L-13"></a>[L-13]
+ ### Unsafe casting
+Unsafe casting can cause alot of issues especially when a type is downcast to a smaller type, the higher order bits are truncated, effectively applying a modulo to the original value. Without any other checks, this wrapping will lead to unexpected behavior and bugs
+
+*Instances (2)*:
+ 
+ <details>
+ <summary>Click to expand!</summary>
+
+```solidity
+File: Collateral.sol
+
+25:         _mint(msg.sender, collateralId); //@audit use safeMint with re-entrancy guard
+
+```
+
+```solidity
+File: LoanAgreement.sol
+
+28:         _mint(borrower, loanId);
+
+```
+
+</details> 
+ 
+
+
+ ### <a name="L-14"></a>[L-14]
+ ### Unsafe ERC20 operation(s)
+
+*Instances (4)*:
+ 
+ <details>
+ <summary>Click to expand!</summary>
+
+```solidity
+File: CollateralMarket.sol
+
+46:             payable(auction.highestBidder).transfer(auction.highestBid);
+
+61:             payable(auction.seller).transfer(auction.highestBid);
+
+62:             collateralContract.transferFrom(auction.seller, auction.highestBidder, auction.collateralId);
+
+```
+
+```solidity
+File: Staking.sol
+
+43:         payable(msg.sender).transfer(totalAmount);
+
+```
+
+</details> 
+ 
+
+
+## Non Critical Issues
+
+
+ ### <a name="NC-1"></a>[NC-1]
+ ### Contracts should have full test coverage
+While 100% code coverage does not guarantee that there are no bugs, it often will catch easy-to-find bugs, and will ensure that there are fewer regressions when the code invariably has to be modified. Furthermore, in order to get full coverage, code authors will often have to re-organize their code so that it is more modular, so that each component can be tested separately, which reduces interdependencies between modules and layers, and makes for code that is easier to reason about and audit.
+
+*Instances (7)*:
+ 
+ <details>
+ <summary>Click to expand!</summary>
+
+```solidity
+File: Admin.sol
+
+2: pragma solidity ^0.8.0;
+
+```
+
+```solidity
+File: Collateral.sol
+
+2: pragma solidity ^0.8.0;
+
+```
+
+```solidity
+File: CollateralMarket.sol
+
+2: pragma solidity ^0.8.0;
+
+```
+
+```solidity
+File: LoanAgreement.sol
+
+2: pragma solidity ^0.8.0;
+
+```
+
+```solidity
+File: LoanMarketplace.sol
+
+2: pragma solidity ^0.8.0;
+
+```
+
+```solidity
+File: Staking.sol
+
+2: pragma solidity ^0.8.0;
+
+```
+
+```solidity
+File: UserRegistry.sol
+
+2: pragma solidity ^0.8.0;
+
+```
+
+</details> 
+ 
+
+
+ ### <a name="NC-2"></a>[NC-2]
+ ### Consider adding formal verification proofs
+Consider using formal verification to mathematically prove that your code does what is intended, and does not have any edge cases with unexpected behavior. The solidity compiler itself has this functionality [built in](https://docs.soliditylang.org/en/latest/smtchecker.html#smtchecker-and-formal-verification)  
+
+*Instances (7)*:
+ 
+ <details>
+ <summary>Click to expand!</summary>
+
+```solidity
+File: Admin.sol
+
+2: pragma solidity ^0.8.0;
+
+```
+
+```solidity
+File: Collateral.sol
+
+2: pragma solidity ^0.8.0;
+
+```
+
+```solidity
+File: CollateralMarket.sol
+
+2: pragma solidity ^0.8.0;
+
+```
+
+```solidity
+File: LoanAgreement.sol
+
+2: pragma solidity ^0.8.0;
+
+```
+
+```solidity
+File: LoanMarketplace.sol
+
+2: pragma solidity ^0.8.0;
+
+```
+
+```solidity
+File: Staking.sol
+
+2: pragma solidity ^0.8.0;
+
+```
+
+```solidity
+File: UserRegistry.sol
+
+2: pragma solidity ^0.8.0;
+
+```
+
+</details> 
+ 
+
+
+ ### <a name="NC-3"></a>[NC-3]
+ ### Large or complicated code bases should implement invariant tests
+Large code bases, or code with lots of inline-assembly, complicated math, or complicated interactions between multiple contracts, should implement [invariant fuzzing tests](https://medium.com/coinmonks/smart-contract-fuzzing-d9b88e0b0a05). Invariant fuzzers such as Echidna require the test writer to come up with invariants which should not be violated under any circumstances, and the fuzzer tests various inputs and function calls to ensure that the invariants always hold. Even code with 100% code coverage can still have bugs due to the order of the operations a user performs, and invariant fuzzers, with properly and extensively-written invariants, can close this testing gap significantly.  
+
+*Instances (7)*:
+ 
+ <details>
+ <summary>Click to expand!</summary>
+
+```solidity
+File: Admin.sol
+
+2: pragma solidity ^0.8.0;
+
+```
+
+```solidity
+File: Collateral.sol
+
+2: pragma solidity ^0.8.0;
+
+```
+
+```solidity
+File: CollateralMarket.sol
+
+2: pragma solidity ^0.8.0;
+
+```
+
+```solidity
+File: LoanAgreement.sol
+
+2: pragma solidity ^0.8.0;
+
+```
+
+```solidity
+File: LoanMarketplace.sol
+
+2: pragma solidity ^0.8.0;
+
+```
+
+```solidity
+File: Staking.sol
+
+2: pragma solidity ^0.8.0;
+
+```
+
+```solidity
+File: UserRegistry.sol
+
+2: pragma solidity ^0.8.0;
+
+```
+
+</details> 
+ 
+
+
+ ### <a name="NC-4"></a>[NC-4]
+ ### Variables without visibility specifier
+
+#### Impact:
+Specifying visibility for variables can improve code readability and maintainability.
+
+*Instances (28)*:
+ 
+ <details>
+ <summary>Click to expand!</summary>
+
+```solidity
+File: Admin.sol
+
+10:         uint256 lendingFeeRate; // Fee rate for lending operations
+
+11:         uint256 borrowingFeeRate; // Fee rate for borrowing operations
+
+```
+
+```solidity
+File: Collateral.sol
+
+8:         uint256 loanId;
+
+9:         string description;
+
+10:         bool isLinked;
+
+```
+
+```solidity
+File: CollateralMarket.sol
+
+10:         uint256 collateralId;
+
+11:         address seller;
+
+12:         uint256 minBid;
+
+13:         uint256 highestBid;
+
+14:         address highestBidder;
+
+15:         uint256 auctionEndTime;
+
+16:         bool isActive;
+
+```
+
+```solidity
+File: LoanAgreement.sol
+
+8:         address lender;
+
+9:         address borrower;
+
+10:         uint256 amount;
+
+11:         uint256 interestRate;
+
+12:         uint256 duration;
+
+13:         uint256 balanceDue;
+
+14:         bool isPaidOff;
+
+```
+
+```solidity
+File: LoanMarketplace.sol
+
+6:         address lender;
+
+7:         uint256 amount;
+
+8:         uint256 interestRate;
+
+9:         uint256 duration;
+
+10:         bool isActive;
+
+```
+
+```solidity
+File: Staking.sol
+
+6:         uint256 amount;
+
+7:         uint256 depositTime;
+
+8:         uint256 interestRate; // annual interest rate
+
+```
+
+```solidity
+File: UserRegistry.sol
+
+9:         uint256 reputation;
+
+```
+
+</details> 
+ 
+
+
+ ### <a name="NC-5"></a>[NC-5]
+ ### Constants in comparisons should appear on the left side
+
+#### Impact:
+Placing constants on the left side of comparisons can improve code readability and prevent accidental assignment. Doing so will prevent typo [bugs](https://www.moserware.com/2008/01/constants-on-left-are-better-but-this.html)
+
+*Instances (3)*:
+ 
+ <details>
+ <summary>Click to expand!</summary>
+
+```solidity
+File: CollateralMarket.sol
+
+45:         if (auction.highestBidder != address(0)) {
+
+60:         if (auction.highestBidder != address(0)) {
+
+```
+
+```solidity
+File: LoanAgreement.sol
+
+37:         if (loan.balanceDue == 0) {
+
+```
+
+</details> 
+ 
+
+
+ ### <a name="NC-6"></a>[NC-6]
+ ### Contract declarations should have NatSpec @author annotations
+
+#### Impact:
+Adding a NatSpec @author annotation to contract declarations can improve code documentation.
+
+*Instances (7)*:
+ 
+ <details>
+ <summary>Click to expand!</summary>
+
+```solidity
+File: Admin.sol
+
+7: contract Admin is Ownable, Pausable {
+
+```
+
+```solidity
+File: Collateral.sol
+
+6: contract Collateral is ERC721 {
+
+```
+
+```solidity
+File: CollateralMarket.sol
+
+6: contract CollateralMarket {
+
+```
+
+```solidity
+File: LoanAgreement.sol
+
+6: contract LoanAgreement is ERC721 {
+
+```
+
+```solidity
+File: LoanMarketplace.sol
+
+4: contract LoanMarketplace {
+
+```
+
+```solidity
+File: Staking.sol
+
+4: contract Staking {
+
+```
+
+```solidity
+File: UserRegistry.sol
+
+4: contract UserRegistry {
+
+```
+
+</details> 
+ 
+
+
+ ### <a name="NC-7"></a>[NC-7]
+ ### Contract declarations should have NatSpec @Title annotations
+
+#### Impact:
+Adding a NatSpec @Title annotation to contract declarations can improve code documentation.
+
+*Instances (7)*:
+ 
+ <details>
+ <summary>Click to expand!</summary>
+
+```solidity
+File: Admin.sol
+
+7: contract Admin is Ownable, Pausable {
+
+```
+
+```solidity
+File: Collateral.sol
+
+6: contract Collateral is ERC721 {
+
+```
+
+```solidity
+File: CollateralMarket.sol
+
+6: contract CollateralMarket {
+
+```
+
+```solidity
+File: LoanAgreement.sol
+
+6: contract LoanAgreement is ERC721 {
+
+```
+
+```solidity
+File: LoanMarketplace.sol
+
+4: contract LoanMarketplace {
+
+```
+
+```solidity
+File: Staking.sol
+
+4: contract Staking {
+
+```
+
+```solidity
+File: UserRegistry.sol
+
+4: contract UserRegistry {
+
+```
+
+</details> 
+ 
+
+
+ ### <a name="NC-8"></a>[NC-8]
+ ### NatSpec: Contract declarations should have @dev tags
+
+#### Impact:
+@dev is used to explain extra details to developers
+
+*Instances (7)*:
+ 
+ <details>
+ <summary>Click to expand!</summary>
+
+```solidity
+File: Admin.sol
+
+7: contract Admin is Ownable, Pausable {
+
+```
+
+```solidity
+File: Collateral.sol
+
+6: contract Collateral is ERC721 {
+
+```
+
+```solidity
+File: CollateralMarket.sol
+
+6: contract CollateralMarket {
+
+```
+
+```solidity
+File: LoanAgreement.sol
+
+6: contract LoanAgreement is ERC721 {
+
+```
+
+```solidity
+File: LoanMarketplace.sol
+
+4: contract LoanMarketplace {
+
+```
+
+```solidity
+File: Staking.sol
+
+4: contract Staking {
+
+```
+
+```solidity
+File: UserRegistry.sol
+
+4: contract UserRegistry {
+
+```
+
+</details> 
+ 
+
+
+ ### <a name="NC-9"></a>[NC-9]
+ ### NatSpec: Contract declarations should have NatSpec descriptions
+e.g. @dev or @notice, and it must appear above the contract definition braces in order to be identified by the compiler as NatSpec
+
+*Instances (7)*:
+ 
+ <details>
+ <summary>Click to expand!</summary>
+
+```solidity
+File: Admin.sol
+
+7: contract Admin is Ownable, Pausable {
+
+```
+
+```solidity
+File: Collateral.sol
+
+6: contract Collateral is ERC721 {
+
+```
+
+```solidity
+File: CollateralMarket.sol
+
+6: contract CollateralMarket {
+
+```
+
+```solidity
+File: LoanAgreement.sol
+
+6: contract LoanAgreement is ERC721 {
+
+```
+
+```solidity
+File: LoanMarketplace.sol
+
+4: contract LoanMarketplace {
+
+```
+
+```solidity
+File: Staking.sol
+
+4: contract Staking {
+
+```
+
+```solidity
+File: UserRegistry.sol
+
+4: contract UserRegistry {
+
+```
+
+</details> 
+ 
+
+
+ ### <a name="NC-10"></a>[NC-10]
+ ### NatSpec: Contract declarations should have @notice tags
+@notice is used to explain to end users what the contract does, and the compiler interprets /// or /** comments as this tag if one wasnt explicitly provided
+
+*Instances (7)*:
+ 
+ <details>
+ <summary>Click to expand!</summary>
+
+```solidity
+File: Admin.sol
+
+7: contract Admin is Ownable, Pausable {
+
+```
+
+```solidity
+File: Collateral.sol
+
+6: contract Collateral is ERC721 {
+
+```
+
+```solidity
+File: CollateralMarket.sol
+
+6: contract CollateralMarket {
+
+```
+
+```solidity
+File: LoanAgreement.sol
+
+6: contract LoanAgreement is ERC721 {
+
+```
+
+```solidity
+File: LoanMarketplace.sol
+
+4: contract LoanMarketplace {
+
+```
+
+```solidity
+File: Staking.sol
+
+4: contract Staking {
+
+```
+
+```solidity
+File: UserRegistry.sol
+
+4: contract UserRegistry {
+
+```
+
+</details> 
+ 
+
+
+ ### <a name="NC-11"></a>[NC-11]
+ ### Consider using delete rather than assigning zero to clear value
+
+#### Impact:
+Consider using delete rather than assigning zero to clear values. The delete keyword more closely matches the semantics of what is being done, and draws more attention to the changing of state, which may lead to a more thorough audit of its associated logic.
+
+*Instances (1)*:
+ 
+ <details>
+ <summary>Click to expand!</summary>
+
+```solidity
+File: Staking.sol
+
+42:         userStake.amount = 0;
+
+```
+
+</details> 
+ 
+
+
+ ### <a name="NC-12"></a>[NC-12]
+ ### Consider using delete rather than assigning false to clear value
+
+#### Impact:
+Consider using delete rather than assigning alse to clear values. The delete keyword more closely matches the semantics of what is being done, and draws more attention to the changing of state, which may lead to a more thorough audit of its associated logic.
+
+*Instances (3)*:
+ 
+ <details>
+ <summary>Click to expand!</summary>
+
+```solidity
+File: Collateral.sol
+
+40:         collateral.isLinked = false;
+
+```
+
+```solidity
+File: CollateralMarket.sol
+
+59:         auction.isActive = false;
+
+```
+
+```solidity
+File: LoanMarketplace.sol
+
+28:         offer.isActive = false;
+
+```
+
+</details> 
+ 
+
+
+ ### <a name="NC-13"></a>[NC-13]
+ ### Consider adding a block/deny-list"
+Doing so will significantly increase centralization, but will help to prevent hackers from using stolen tokens  
+
+*Instances (7)*:
+ 
+ <details>
+ <summary>Click to expand!</summary>
+
+```solidity
+File: Admin.sol
+
+7: contract Admin is Ownable, Pausable {
+
+```
+
+```solidity
+File: Collateral.sol
+
+6: contract Collateral is ERC721 {
+
+```
+
+```solidity
+File: CollateralMarket.sol
+
+6: contract CollateralMarket {
+
+```
+
+```solidity
+File: LoanAgreement.sol
+
+6: contract LoanAgreement is ERC721 {
+
+```
+
+```solidity
+File: LoanMarketplace.sol
+
+4: contract LoanMarketplace {
+
+```
+
+```solidity
+File: Staking.sol
+
+4: contract Staking {
+
+```
+
+```solidity
+File: UserRegistry.sol
+
+4: contract UserRegistry {
+
+```
+
+</details> 
+ 
+
+
+ ### <a name="NC-14"></a>[NC-14]
+ ### Consider adding emergency-stop functionality
+
+#### Impact:
+Adding a way to quickly halt protocol functionality in an emergency, rather than having to pause individual contracts one-by-one, will make in-progress hack mitigation faster and much less stressful.
+
+*Instances (7)*:
+ 
+ <details>
+ <summary>Click to expand!</summary>
+
+```solidity
+File: Admin.sol
+
+7: contract Admin is Ownable, Pausable {
+
+```
+
+```solidity
+File: Collateral.sol
+
+6: contract Collateral is ERC721 {
+
+```
+
+```solidity
+File: CollateralMarket.sol
+
+6: contract CollateralMarket {
+
+```
+
+```solidity
+File: LoanAgreement.sol
+
+6: contract LoanAgreement is ERC721 {
+
+```
+
+```solidity
+File: LoanMarketplace.sol
+
+4: contract LoanMarketplace {
+
+```
+
+```solidity
+File: Staking.sol
+
+4: contract Staking {
+
+```
+
+```solidity
+File: UserRegistry.sol
+
+4: contract UserRegistry {
+
+```
+
+</details> 
+ 
+
+
+ ### <a name="NC-15"></a>[NC-15]
+ ### Events are missing sender information
+
+#### Impact:
+Including msg.sender in events triggered by user actions can make events more useful for end users.
+
+*Instances (17)*:
+ 
+ <details>
+ <summary>Click to expand!</summary>
+
+```solidity
+File: Admin.sol
+
+34:         emit FeePolicyUpdated(_lendingFeeRate, _borrowingFeeRate);
+
+40:         emit EmergencyStopActivated();
+
+46:         emit EmergencyStopDeactivated();
+
+```
+
+```solidity
+File: Collateral.sol
+
+26:         emit CollateralCreated(collateralId, loanId, description);
+
+34:         emit CollateralLinked(collateralId, loanId);
+
+41:         emit CollateralUnlinked(collateralId);
+
+```
+
+```solidity
+File: CollateralMarket.sol
+
+34:         emit AuctionCreated(nextAuctionId, collateralId, minBid, auctionEndTime);
+
+51:         emit BidPlaced(auctionId, msg.sender, bidAmount);
+
+64:         emit AuctionConcluded(auctionId, auction.highestBidder, auction.highestBid);
+
+```
+
+```solidity
+File: LoanAgreement.sol
+
+29:         emit LoanCreated(loanId, msg.sender, borrower, amount, interestRate, duration);
+
+40:         emit PaymentMade(loanId, amountPaid, loan.balanceDue);
+
+```
+
+```solidity
+File: LoanMarketplace.sol
+
+21:         emit LoanOfferCreated(nextLoanOfferId, msg.sender, amount, interestRate, duration);
+
+29:         emit LoanOfferTaken(offerId, msg.sender);
+
+```
+
+```solidity
+File: Staking.sol
+
+25:         emit Staked(msg.sender, amount, block.timestamp);
+
+44:         emit Unstaked(msg.sender, totalAmount);
+
+```
+
+```solidity
+File: UserRegistry.sol
+
+19:         emit UserProfileCreated(msg.sender, userType);
+
+25:         emit UserProfileUpdated(msg.sender, profile.userType, reputation);
+
+```
+
+</details> 
+ 
+
+
+ ### <a name="NC-16"></a>[NC-16]
+ ### NatSpec: Event declarations should have NatSpec descriptions
+
+*Instances (17)*:
+ 
+ <details>
+ <summary>Click to expand!</summary>
+
+```solidity
+File: Admin.sol
+
+16:     event FeePolicyUpdated(uint256 lendingFeeRate, uint256 borrowingFeeRate);
+
+17:     event EmergencyStopActivated();
+
+18:     event EmergencyStopDeactivated();
+
+```
+
+```solidity
+File: Collateral.sol
+
+18:     event CollateralCreated(uint256 collateralId, uint256 indexed loanId, string description);
+
+19:     event CollateralLinked(uint256 collateralId, uint256 loanId);
+
+20:     event CollateralUnlinked(uint256 collateralId);
+
+```
+
+```solidity
+File: CollateralMarket.sol
+
+22:     event AuctionCreated(uint256 auctionId, uint256 collateralId, uint256 minBid, uint256 auctionEndTime);
+
+23:     event BidPlaced(uint256 auctionId, address bidder, uint256 bidAmount);
+
+24:     event AuctionConcluded(uint256 auctionId, address winner, uint256 winningBid);
+
+```
+
+```solidity
+File: LoanAgreement.sol
+
+22:     event LoanCreated(uint256 loanId, address indexed lender, address indexed borrower, uint256 amount, uint256 interestRate, uint256 duration);
+
+23:     event PaymentMade(uint256 loanId, uint256 amountPaid, uint256 balanceDue);
+
+```
+
+```solidity
+File: LoanMarketplace.sol
+
+16:     event LoanOfferCreated(uint256 offerId, address indexed lender, uint256 amount, uint256 interestRate, uint256 duration);
+
+17:     event LoanOfferTaken(uint256 offerId, address indexed borrower);
+
+```
+
+```solidity
+File: Staking.sol
+
+14:     event Staked(address indexed user, uint256 amount, uint256 depositTime);
+
+15:     event Unstaked(address indexed user, uint256 amount);
+
+```
+
+```solidity
+File: UserRegistry.sol
+
+14:     event UserProfileCreated(address indexed user, UserType userType);
+
+15:     event UserProfileUpdated(address indexed user, UserType userType, uint256 reputation);
+
+```
+
+</details> 
+ 
+
+
+ ### <a name="NC-17"></a>[NC-17]
+ ### Events should use parameters to convey information
+
+#### Impact:
+Using parameters in events can provide additional information to subscribers about the event occurrence.
+
+*Instances (2)*:
+ 
+ <details>
+ <summary>Click to expand!</summary>
+
+```solidity
+File: Admin.sol
+
+40:         emit EmergencyStopActivated();
+
+46:         emit EmergencyStopDeactivated();
+
+```
+
+</details> 
+ 
+
+
+ ### <a name="NC-18"></a>[NC-18]
+ ### contracts should use fixed compiler versions
+To prevent the contracts being deployed and behaving differently depending on the compiler version, it is recommended to use fixed solidity versions for contracts and libraries. Although we can configure a specific version through config (like hardhat, forge config files), it is recommended to set the fixed version in the solidity pragma directly before deploying to the mainnet.
+
+*Instances (7)*:
+ 
+ <details>
+ <summary>Click to expand!</summary>
+
+```solidity
+File: Admin.sol
+
+2: pragma solidity ^0.8.0;
+
+```
+
+```solidity
+File: Collateral.sol
+
+2: pragma solidity ^0.8.0;
+
+```
+
+```solidity
+File: CollateralMarket.sol
+
+2: pragma solidity ^0.8.0;
+
+```
+
+```solidity
+File: LoanAgreement.sol
+
+2: pragma solidity ^0.8.0;
+
+```
+
+```solidity
+File: LoanMarketplace.sol
+
+2: pragma solidity ^0.8.0;
+
+```
+
+```solidity
+File: Staking.sol
+
+2: pragma solidity ^0.8.0;
+
+```
+
+```solidity
+File: UserRegistry.sol
+
+2: pragma solidity ^0.8.0;
+
+```
+
+</details> 
+ 
+
+
+ ### <a name="NC-19"></a>[NC-19]
+ ### NatSpec: function declarations should have NatSpec descriptions
+
+*Instances (18)*:
+ 
+ <details>
+ <summary>Click to expand!</summary>
+
+```solidity
+File: Admin.sol
+
+29:     function updateFeePolicy(
+
+38:     function pause() external onlyOwner {
+
+44:     function unpause() external onlyOwner {
+
+```
+
+```solidity
+File: Collateral.sol
+
+22:     function createCollateral(uint256 loanId, string memory description) external returns (uint256 collateralId) {
+
+29:     function linkCollateralToLoan(uint256 collateralId, uint256 loanId) external {
+
+37:     function unlinkCollateral(uint256 collateralId) external {
+
+```
+
+```solidity
+File: CollateralMarket.sol
+
+30:     function createAuction(uint256 collateralId, uint256 minBid, uint256 duration) external {
+
+38:     function placeBid(uint256 auctionId, uint256 bidAmount) external payable {
+
+54:     function concludeAuction(uint256 auctionId) external {
+
+```
+
+```solidity
+File: LoanAgreement.sol
+
+25:     function createLoan(address borrower, uint256 amount, uint256 interestRate, uint256 duration) external returns (uint256 loanId) {
+
+32:     function makePayment(uint256 loanId, uint256 amountPaid) external {
+
+```
+
+```solidity
+File: LoanMarketplace.sol
+
+19:     function createLoanOffer(uint256 amount, uint256 interestRate, uint256 duration) external {
+
+25:     function takeLoanOffer(uint256 offerId) external {
+
+```
+
+```solidity
+File: Staking.sol
+
+17:     function stake(uint256 amount) external payable {
+
+28:     function unstake() external {
+
+47:     function calculateInterest(
+
+```
+
+```solidity
+File: UserRegistry.sol
+
+17:     function createUserProfile(UserType userType) external {
+
+22:     function updateUserProfile(uint256 reputation) external {
+
+```
+
+</details> 
+ 
+
+
+ ### <a name="NC-20"></a>[NC-20]
+ ### NatSpec: function declarations should have @Notice tags
+@notice is used to explain to end users what the function does, and the compiler interprets /// or /** comments as this tag if one wasn't explicitly provided.  
+
+*Instances (18)*:
+ 
+ <details>
+ <summary>Click to expand!</summary>
+
+```solidity
+File: Admin.sol
+
+29:     function updateFeePolicy(
+
+38:     function pause() external onlyOwner {
+
+44:     function unpause() external onlyOwner {
+
+```
+
+```solidity
+File: Collateral.sol
+
+22:     function createCollateral(uint256 loanId, string memory description) external returns (uint256 collateralId) {
+
+29:     function linkCollateralToLoan(uint256 collateralId, uint256 loanId) external {
+
+37:     function unlinkCollateral(uint256 collateralId) external {
+
+```
+
+```solidity
+File: CollateralMarket.sol
+
+30:     function createAuction(uint256 collateralId, uint256 minBid, uint256 duration) external {
+
+38:     function placeBid(uint256 auctionId, uint256 bidAmount) external payable {
+
+54:     function concludeAuction(uint256 auctionId) external {
+
+```
+
+```solidity
+File: LoanAgreement.sol
+
+25:     function createLoan(address borrower, uint256 amount, uint256 interestRate, uint256 duration) external returns (uint256 loanId) {
+
+32:     function makePayment(uint256 loanId, uint256 amountPaid) external {
+
+```
+
+```solidity
+File: LoanMarketplace.sol
+
+19:     function createLoanOffer(uint256 amount, uint256 interestRate, uint256 duration) external {
+
+25:     function takeLoanOffer(uint256 offerId) external {
+
+```
+
+```solidity
+File: Staking.sol
+
+17:     function stake(uint256 amount) external payable {
+
+28:     function unstake() external {
+
+47:     function calculateInterest(
+
+```
+
+```solidity
+File: UserRegistry.sol
+
+17:     function createUserProfile(UserType userType) external {
+
+22:     function updateUserProfile(uint256 reputation) external {
+
+```
+
+</details> 
+ 
+
+
+ ### <a name="NC-21"></a>[NC-21]
+ ### NatSpec: function declarations should have NatSpec descriptions
+
+*Instances (18)*:
+ 
+ <details>
+ <summary>Click to expand!</summary>
+
+```solidity
+File: Admin.sol
+
+29:     function updateFeePolicy(
+
+38:     function pause() external onlyOwner {
+
+44:     function unpause() external onlyOwner {
+
+```
+
+```solidity
+File: Collateral.sol
+
+22:     function createCollateral(uint256 loanId, string memory description) external returns (uint256 collateralId) {
+
+29:     function linkCollateralToLoan(uint256 collateralId, uint256 loanId) external {
+
+37:     function unlinkCollateral(uint256 collateralId) external {
+
+```
+
+```solidity
+File: CollateralMarket.sol
+
+30:     function createAuction(uint256 collateralId, uint256 minBid, uint256 duration) external {
+
+38:     function placeBid(uint256 auctionId, uint256 bidAmount) external payable {
+
+54:     function concludeAuction(uint256 auctionId) external {
+
+```
+
+```solidity
+File: LoanAgreement.sol
+
+25:     function createLoan(address borrower, uint256 amount, uint256 interestRate, uint256 duration) external returns (uint256 loanId) {
+
+32:     function makePayment(uint256 loanId, uint256 amountPaid) external {
+
+```
+
+```solidity
+File: LoanMarketplace.sol
+
+19:     function createLoanOffer(uint256 amount, uint256 interestRate, uint256 duration) external {
+
+25:     function takeLoanOffer(uint256 offerId) external {
+
+```
+
+```solidity
+File: Staking.sol
+
+17:     function stake(uint256 amount) external payable {
+
+28:     function unstake() external {
+
+47:     function calculateInterest(
+
+```
+
+```solidity
+File: UserRegistry.sol
+
+17:     function createUserProfile(UserType userType) external {
+
+22:     function updateUserProfile(uint256 reputation) external {
+
+```
+
+</details> 
+ 
+
+
+ ### <a name="NC-22"></a>[NC-22]
+ ### If-statement can be converted to a ternary
+
+#### Impact:
+The code can be made more compact while also increasing readability by converting the following `if`-statements to ternaries (e.g. `foo += (x > y) ? a : b`)
+
+*Instances (3)*:
+ 
+ <details>
+ <summary>Click to expand!</summary>
+
+```solidity
+File: CollateralMarket.sol
+
+45:         if (auction.highestBidder != address(0)) {
+
+60:         if (auction.highestBidder != address(0)) {
+
+```
+
+```solidity
+File: LoanAgreement.sol
+
+37:         if (loan.balanceDue == 0) {
+
+```
+
+</details> 
+ 
+
+
+ ### <a name="NC-23"></a>[NC-23]
+ ### Consider combining multiple address/ID mappings into a single mapping of an address/ID to a struct
+
+#### Impact:
+Combining multiple mappings into a single mapping with a struct can improve readability and maintainability of the code.
+
+*Instances (2)*:
+ 
+ <details>
+ <summary>Click to expand!</summary>
+
+```solidity
+File: Staking.sol
+
+11:     mapping(address => Stake) public stakes;
+
+```
+
+```solidity
+File: UserRegistry.sol
+
+12:     mapping(address => UserProfile) public userProfiles;
+
+```
+
+</details> 
+ 
+
+
+ ### <a name="NC-24"></a>[NC-24]
+ ### Consider using descriptive constants when using 0 in the code
+
+#### Impact:
+Passing zero as a function argument/Event emission can sometimes result in a security issue (e.g. passing zero as the slippage parameter). Consider using a constant variable with a descriptive name, so its clear that the 0 is intentionally being used, and for the right reasons.
+
+*Instances (2)*:
+ 
+ <details>
+ <summary>Click to expand!</summary>
+
+```solidity
+File: Staking.sol
+
+31:         require(stakedAmount > 0, "No funds staked");
+
+```
+
+```solidity
+File: UserRegistry.sol
+
+18:         userProfiles[msg.sender] = UserProfile(userType, 0);
+
+```
+
+</details> 
+ 
+
+
+ ### <a name="NC-25"></a>[NC-25]
+ ### Non-external/public variable names should begin with an underscore
+
+#### Impact:
+Using an underscore at the beginning of non-external/public variable names can improve code clarity and maintainability. According to the Solidity Style Guide, non-external/public variable names should begin with an [underscore](https://docs.soliditylang.org/en/latest/style-guide.html#underscore-prefix-for-non-external-functions-and-variables)
+
+*Instances (12)*:
+ 
+ <details>
+ <summary>Click to expand!</summary>
+
+```solidity
+File: Admin.sol
+
+14:     FeePolicy public feePolicy;
+
+```
+
+```solidity
+File: Collateral.sol
+
+13:     uint256 private nextCollateralId;
+
+14:     mapping(uint256 => CollateralDetails) public collaterals;
+
+```
+
+```solidity
+File: CollateralMarket.sol
+
+19:     uint256 private nextAuctionId;
+
+20:     mapping(uint256 => Auction) public auctions;
+
+```
+
+```solidity
+File: LoanAgreement.sol
+
+17:     uint256 private nextLoanId;
+
+18:     mapping(uint256 => LoanDetails) public loanDetails;
+
+```
+
+```solidity
+File: LoanMarketplace.sol
+
+13:     uint256 private nextLoanOfferId;
+
+14:     mapping(uint256 => LoanOffer) public loanOffers;
+
+```
+
+```solidity
+File: Staking.sol
+
+11:     mapping(address => Stake) public stakes;
+
+12:     uint256 public totalStaked;
+
+```
+
+```solidity
+File: UserRegistry.sol
+
+12:     mapping(address => UserProfile) public userProfiles;
+
+```
+
+</details> 
+ 
+
+
+ ### <a name="NC-26"></a>[NC-26]
+ ### Use the latest solidity version for deployment  
+Upgrading to a newer Solidity release can optimize gas usage, take advantage of new features and improve overall contract efficiency. Where possible, based on compatibility requirements, it is recommended to use newer/latest solidity version to take advantage of the latest optimizations and features. You can see the latest version [here](https://soliditylang.org/blog/category/releases/)
+
+*Instances (7)*:
+ 
+ <details>
+ <summary>Click to expand!</summary>
+
+```solidity
+File: Admin.sol
+
+2: pragma solidity ^0.8.0;
+
+```
+
+```solidity
+File: Collateral.sol
+
+2: pragma solidity ^0.8.0;
+
+```
+
+```solidity
+File: CollateralMarket.sol
+
+2: pragma solidity ^0.8.0;
+
+```
+
+```solidity
+File: LoanAgreement.sol
+
+2: pragma solidity ^0.8.0;
+
+```
+
+```solidity
+File: LoanMarketplace.sol
+
+2: pragma solidity ^0.8.0;
+
+```
+
+```solidity
+File: Staking.sol
+
+2: pragma solidity ^0.8.0;
+
+```
+
+```solidity
+File: UserRegistry.sol
+
+2: pragma solidity ^0.8.0;
+
+```
+
+</details> 
+ 
+
+
+ ### <a name="NC-27"></a>[NC-27]
+ ### Constants should be defined rather than using magic numbers
+
+*Instances (1)*:
+ 
+ <details>
+ <summary>Click to expand!</summary>
+
+```solidity
+File: Staking.sol
+
+52:         uint256 numYears = duration / (365 days);
+
+```
+
+</details> 
+ 
+
+
+ ### <a name="NC-28"></a>[NC-28]
+ ### Import Whole Files Instead of Specific Identifiers
+Import declarations should import specific identifiers, rather than the whole file.
+
+*Instances (5)*:
+ 
+ <details>
+ <summary>Click to expand!</summary>
+
+```solidity
+File: Admin.sol
+
+4: import "@openzeppelin/contracts/access/Ownable.sol";
+
+5: import "@openzeppelin/contracts/utils/Pausable.sol";
+
+```
+
+```solidity
+File: Collateral.sol
+
+4: import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
+
+```
+
+```solidity
+File: CollateralMarket.sol
+
+4: import "./Collateral.sol";
+
+```
+
+```solidity
+File: LoanAgreement.sol
+
+4: import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
+
+```
+
+</details> 
+ 
+
+
+ ### <a name="NC-29"></a>[NC-29]
+ ### Consider moving msg.sender checks to modifiers
+If some functions are only allowed to be called by some specific users, consider using a modifier instead of checking with a require statement, especially if this check is done in multiple functions.  
+
+*Instances (23)*:
+ 
+ <details>
+ <summary>Click to expand!</summary>
+
+```solidity
+File: Collateral.sol
+
+25:         _mint(msg.sender, collateralId); //@audit use safeMint with re-entrancy guard
+
+30:         require(ownerOf(collateralId) == msg.sender, "Only the owner can link collateral");
+
+38:         require(ownerOf(collateralId) == msg.sender, "Only the owner can unlink collateral");
+
+```
+
+```solidity
+File: CollateralMarket.sol
+
+31:         require(collateralContract.ownerOf(collateralId) == msg.sender, "Only the owner can create an auction");
+
+33:         auctions[nextAuctionId] = Auction(collateralId, msg.sender, minBid, 0, address(0), auctionEndTime, true);
+
+50:         auction.highestBidder = msg.sender;
+
+51:         emit BidPlaced(auctionId, msg.sender, bidAmount);
+
+```
+
+```solidity
+File: LoanAgreement.sol
+
+27:         loanDetails[loanId] = LoanDetails(msg.sender, borrower, amount, interestRate, duration, amount, false);
+
+29:         emit LoanCreated(loanId, msg.sender, borrower, amount, interestRate, duration);
+
+34:         require(msg.sender == loan.borrower, "Only the borrower can make payments");
+
+```
+
+```solidity
+File: LoanMarketplace.sol
+
+20:         loanOffers[nextLoanOfferId] = LoanOffer(msg.sender, amount, interestRate, duration, true);
+
+21:         emit LoanOfferCreated(nextLoanOfferId, msg.sender, amount, interestRate, duration);
+
+29:         emit LoanOfferTaken(offerId, msg.sender);
+
+```
+
+```solidity
+File: Staking.sol
+
+22:         stakes[msg.sender].amount += amount;
+
+23:         stakes[msg.sender].depositTime = block.timestamp;
+
+25:         emit Staked(msg.sender, amount, block.timestamp);
+
+29:         Stake storage userStake = stakes[msg.sender];
+
+43:         payable(msg.sender).transfer(totalAmount);
+
+44:         emit Unstaked(msg.sender, totalAmount);
+
+```
+
+```solidity
+File: UserRegistry.sol
+
+18:         userProfiles[msg.sender] = UserProfile(userType, 0);
+
+19:         emit UserProfileCreated(msg.sender, userType);
+
+23:         UserProfile storage profile = userProfiles[msg.sender];
+
+25:         emit UserProfileUpdated(msg.sender, profile.userType, reputation);
+
+```
+
+</details> 
+ 
+
+
+ ### <a name="NC-30"></a>[NC-30]
+ ### Owner can renounce while system is paused
+The contract owner or single user with a role is not prevented from renouncing the role/ownership while the contract is paused, which would cause any user assets stored in the protocol, to be locked indefinitely.
+
+*Instances (1)*:
+ 
+ <details>
+ <summary>Click to expand!</summary>
+
+```solidity
+File: Admin.sol
+
+38:     function pause() external onlyOwner {
+
+```
+
+</details> 
+ 
+
+
+ ### <a name="NC-31"></a>[NC-31]
+ ### Use assembly to emit events, in order to save gas
+Using the [scratch space](https://github.com/Vectorized/solady/blob/30558f5402f02351b96eeb6eaf32bcea29773841/src/tokens/ERC1155.sol#L501-L504) for event arguments (two words or fewer) will save gas over needing Soliditys full abi memory expansion used for emitting normally.
+
+*Instances (17)*:
+ 
+ <details>
+ <summary>Click to expand!</summary>
+
+```solidity
+File: Admin.sol
+
+34:         emit FeePolicyUpdated(_lendingFeeRate, _borrowingFeeRate);
+
+40:         emit EmergencyStopActivated();
+
+46:         emit EmergencyStopDeactivated();
+
+```
+
+```solidity
+File: Collateral.sol
+
+26:         emit CollateralCreated(collateralId, loanId, description);
+
+34:         emit CollateralLinked(collateralId, loanId);
+
+41:         emit CollateralUnlinked(collateralId);
+
+```
+
+```solidity
+File: CollateralMarket.sol
+
+34:         emit AuctionCreated(nextAuctionId, collateralId, minBid, auctionEndTime);
+
+51:         emit BidPlaced(auctionId, msg.sender, bidAmount);
+
+64:         emit AuctionConcluded(auctionId, auction.highestBidder, auction.highestBid);
+
+```
+
+```solidity
+File: LoanAgreement.sol
+
+29:         emit LoanCreated(loanId, msg.sender, borrower, amount, interestRate, duration);
+
+40:         emit PaymentMade(loanId, amountPaid, loan.balanceDue);
+
+```
+
+```solidity
+File: LoanMarketplace.sol
+
+21:         emit LoanOfferCreated(nextLoanOfferId, msg.sender, amount, interestRate, duration);
+
+29:         emit LoanOfferTaken(offerId, msg.sender);
+
+```
+
+```solidity
+File: Staking.sol
+
+25:         emit Staked(msg.sender, amount, block.timestamp);
+
+44:         emit Unstaked(msg.sender, totalAmount);
+
+```
+
+```solidity
+File: UserRegistry.sol
+
+19:         emit UserProfileCreated(msg.sender, userType);
+
+25:         emit UserProfileUpdated(msg.sender, profile.userType, reputation);
+
+```
+
+</details> 
+ 
+
+
+ ### <a name="NC-32"></a>[NC-32]
+ ### Long revert strings
+
+*Instances (6)*:
+ 
+ <details>
+ <summary>Click to expand!</summary>
+
+```solidity
+File: Collateral.sol
+
+30:         require(ownerOf(collateralId) == msg.sender, "Only the owner can link collateral");
+
+38:         require(ownerOf(collateralId) == msg.sender, "Only the owner can unlink collateral");
+
+```
+
+```solidity
+File: CollateralMarket.sol
+
+31:         require(collateralContract.ownerOf(collateralId) == msg.sender, "Only the owner can create an auction");
+
+41:         require(bidAmount > auction.highestBid, "Bid must be higher than current highest bid");
+
+42:         require(msg.value == bidAmount, "Bid amount and sent value must match");
+
+```
+
+```solidity
+File: LoanAgreement.sol
+
+34:         require(msg.sender == loan.borrower, "Only the borrower can make payments");
+
+```
+
+</details> 
+ 
+
+
+## Gas Optimizations
+
+
+ ### <a name="GAS-1"></a>[GAS-1]
+ ### Enable IR-based code generation
+By using `--via-ir` or `{"viaIR": true}`, the compiler is able to use more advanced [multi-function optimizations](https://docs.soliditylang.org/en/v0.8.17/ir-breaking-changes.html#solidity-ir-based-codegen-changes), for extra gas savings.
+
+*Instances (7)*:
+ 
+ <details>
+ <summary>Click to expand!</summary>
+
+```solidity
+File: Admin.sol
+
+2: pragma solidity ^0.8.0;
+
+```
+
+```solidity
+File: Collateral.sol
+
+2: pragma solidity ^0.8.0;
+
+```
+
+```solidity
+File: CollateralMarket.sol
+
+2: pragma solidity ^0.8.0;
+
+```
+
+```solidity
+File: LoanAgreement.sol
+
+2: pragma solidity ^0.8.0;
+
+```
+
+```solidity
+File: LoanMarketplace.sol
+
+2: pragma solidity ^0.8.0;
+
+```
+
+```solidity
+File: Staking.sol
+
+2: pragma solidity ^0.8.0;
+
+```
+
+```solidity
+File: UserRegistry.sol
+
+2: pragma solidity ^0.8.0;
+
+```
+
+</details> 
+ 
+
+
+ ### <a name="GAS-2"></a>[GAS-2]
+ ### Consider using = instead of += and -= for gas efficiency
+Using = instead of += and -= can save gas in certain scenarios. Consider using = when appropriate.
+
+*Instances (4)*:
+ 
+ <details>
+ <summary>Click to expand!</summary>
+
+```solidity
+File: LoanAgreement.sol
+
+36:         loan.balanceDue -= amountPaid;
+
+```
+
+```solidity
+File: Staking.sol
+
+22:         stakes[msg.sender].amount += amount;
+
+24:         totalStaked += amount;
+
+41:         totalStaked -= stakedAmount;
+
+```
+
+</details> 
+ 
+
+
+ ### <a name="GAS-3"></a>[GAS-3]
+ ### Use >= instead of > for gas efficiency
+Using >= costs less gas than >. Consider using >= when appropriate.
+
+*Instances (2)*:
+ 
+ <details>
+ <summary>Click to expand!</summary>
+
+```solidity
+File: CollateralMarket.sol
+
+41:         require(bidAmount > auction.highestBid, "Bid must be higher than current highest bid");
+
+```
+
+```solidity
+File: Staking.sol
+
+31:         require(stakedAmount > 0, "No funds staked");
+
+```
+
+</details> 
+ 
+
+
+ ### <a name="GAS-4"></a>[GAS-4]
+ ### Constructors can be marked payable
+Payable functions cost less gas to execute, since the compiler does not have to add extra checks to ensure that a payment wasn  t provided. A constructor can safely be marked as payable, since only the deployer would be able to pass funds, and the project itself would not pass any funds.
+
+*Instances (4)*:
+ 
+ <details>
+ <summary>Click to expand!</summary>
+
+```solidity
+File: Admin.sol
+
+20:     constructor(
+
+```
+
+```solidity
+File: Collateral.sol
+
+16:     constructor() ERC721("Collateral", "COLL") {}
+
+```
+
+```solidity
+File: CollateralMarket.sol
+
+26:     constructor(address _collateralAddress) {
+
+```
+
+```solidity
+File: LoanAgreement.sol
+
+20:     constructor() ERC721("LoanAgreement", "LNAG") {}
+
+```
+
+</details> 
+ 
+
+
+ ### <a name="GAS-5"></a>[GAS-5]
+ ### Use Custom Errors
+[Source](https://blog.soliditylang.org/2021/04/21/custom-errors/)
+Instead of using error strings, to reduce deployment and runtime cost, you should use Custom Errors. This would save both deployment and runtime cost.
+
+*Instances (12)*:
+ 
+ <details>
+ <summary>Click to expand!</summary>
+
+```solidity
+File: Collateral.sol
+
+30:         require(ownerOf(collateralId) == msg.sender, "Only the owner can link collateral");
+
+38:         require(ownerOf(collateralId) == msg.sender, "Only the owner can unlink collateral");
+
+```
+
+```solidity
+File: CollateralMarket.sol
+
+31:         require(collateralContract.ownerOf(collateralId) == msg.sender, "Only the owner can create an auction");
+
+40:         require(block.timestamp < auction.auctionEndTime, "Auction has ended");
+
+41:         require(bidAmount > auction.highestBid, "Bid must be higher than current highest bid");
+
+42:         require(msg.value == bidAmount, "Bid amount and sent value must match");
+
+56:         require(block.timestamp >= auction.auctionEndTime, "Auction is not yet over");
+
+57:         require(auction.isActive, "Auction is not active");
+
+```
+
+```solidity
+File: LoanAgreement.sol
+
+34:         require(msg.sender == loan.borrower, "Only the borrower can make payments");
+
+35:         require(amountPaid <= loan.balanceDue, "Payment exceeds balance due");
+
+```
+
+```solidity
+File: LoanMarketplace.sol
+
+27:         require(offer.isActive, "Loan offer is not active");
+
+```
+
+```solidity
+File: Staking.sol
+
+31:         require(stakedAmount > 0, "No funds staked");
+
+```
+
+</details> 
+ 
+
+
+ ### <a name="GAS-6"></a>[GAS-6]
+ ### Reduce gas usage by moving to Solidity 0.8.19 or later
+Solidity version 0.8.19 introduced a number of gas optimizations, refer to the [Solidity 0.8.19 Release Announcement](https://soliditylang.org/blog/2023/02/22/solidity-0.8.19-release-announcement) for details.
+
+*Instances (7)*:
+ 
+ <details>
+ <summary>Click to expand!</summary>
+
+```solidity
+File: Admin.sol
+
+2: pragma solidity ^0.8.0;
+
+```
+
+```solidity
+File: Collateral.sol
+
+2: pragma solidity ^0.8.0;
+
+```
+
+```solidity
+File: CollateralMarket.sol
+
+2: pragma solidity ^0.8.0;
+
+```
+
+```solidity
+File: LoanAgreement.sol
+
+2: pragma solidity ^0.8.0;
+
+```
+
+```solidity
+File: LoanMarketplace.sol
+
+2: pragma solidity ^0.8.0;
+
+```
+
+```solidity
+File: Staking.sol
+
+2: pragma solidity ^0.8.0;
+
+```
+
+```solidity
+File: UserRegistry.sol
+
+2: pragma solidity ^0.8.0;
+
+```
+
+</details> 
+ 
+
+
+ ### <a name="GAS-7"></a>[GAS-7]
+ ### Functions guaranteed to revert when called by normal users can be marked `payable`
+If a function modifier such as `onlyOwner` is used, the function will revert if a normal user tries to pay the function. Marking the function as `payable` will lower the gas cost for legitimate callers because the compiler will not include checks for whether a payment was provided.
+
+*Instances (2)*:
+ 
+ <details>
+ <summary>Click to expand!</summary>
+
+```solidity
+File: Admin.sol
+
+38:     function pause() external onlyOwner {
+
+44:     function unpause() external onlyOwner {
+
+```
+
+</details> 
+ 
+
+
+ ### <a name="GAS-8"></a>[GAS-8]
+ ### `++i` costs less gas than `i++`, especially when it's used in `for`-loops (`--i`/`i--` too)
+*Saves 5 gas per loop*
+
+*Instances (4)*:
+ 
+ <details>
+ <summary>Click to expand!</summary>
+
+```solidity
+File: Collateral.sol
+
+23:         collateralId = nextCollateralId++;
+
+```
+
+```solidity
+File: CollateralMarket.sol
+
+35:         nextAuctionId++;
+
+```
+
+```solidity
+File: LoanAgreement.sol
+
+26:         loanId = nextLoanId++;
+
+```
+
+```solidity
+File: LoanMarketplace.sol
+
+22:         nextLoanOfferId++;
+
+```
+
+</details> 
+ 
+
+
+ ### <a name="GAS-9"></a>[GAS-9]
+ ### require()/revert() strings longer than 32 bytes cost extra gas
+Each extra memory word of bytes past the original 32 [incurs an MSTORE](https://gist.github.com/hrkrshnn/ee8fabd532058307229d65dcd5836ddc#consider-having-short-revert-strings) which costs 3 gas.
+
+*Instances (4)*:
+ 
+ <details>
+ <summary>Click to expand!</summary>
+
+```solidity
+File: CollateralMarket.sol
+
+40:         require(block.timestamp < auction.auctionEndTime, "Auction has ended");
+
+42:         require(msg.value == bidAmount, "Bid amount and sent value must match");
+
+```
+
+```solidity
+File: LoanAgreement.sol
+
+34:         require(msg.sender == loan.borrower, "Only the borrower can make payments");
+
+```
+
+```solidity
+File: Staking.sol
+
+18:         require(
+
+```
+
+</details> 
+ 
+
+
+ ### <a name="GAS-10"></a>[GAS-10]
+ ### Structs can be packed into fewer storage slots
+Each slot saved can avoid an extra Gsset (20000 gas) for the first setting of the struct. Subsequent reads as well as writes have smaller gas savings
+
+*Instances (7)*:
+ 
+ <details>
+ <summary>Click to expand!</summary>
+
+```solidity
+File: Admin.sol
+
+9:     struct FeePolicy {
+
+```
+
+```solidity
+File: Collateral.sol
+
+7:     struct CollateralDetails {
+
+```
+
+```solidity
+File: CollateralMarket.sol
+
+9:     struct Auction {
+
+```
+
+```solidity
+File: LoanAgreement.sol
+
+7:     struct LoanDetails {
+
+```
+
+```solidity
+File: LoanMarketplace.sol
+
+5:     struct LoanOffer {
+
+```
+
+```solidity
+File: Staking.sol
+
+5:     struct Stake {
+
+```
+
+```solidity
+File: UserRegistry.sol
+
+7:     struct UserProfile {
+
+```
+
+</details> 
+ 
+
+
+ ### <a name="GAS-11"></a>[GAS-11]
+ ### Consider using uint256(1)/uint256(2) instead of true/false for gas efficiency
+Using uint256(1) and uint256(2) instead of true and false can save gas for certain changes. Consider using uint256(1)/uint256(2) when appropriate.
+
+*Instances (9)*:
+ 
+ <details>
+ <summary>Click to expand!</summary>
+
+```solidity
+File: Collateral.sol
+
+24:         collaterals[collateralId] = CollateralDetails(loanId, description, false);
+
+33:         collateral.isLinked = true;
+
+40:         collateral.isLinked = false;
+
+```
+
+```solidity
+File: CollateralMarket.sol
+
+33:         auctions[nextAuctionId] = Auction(collateralId, msg.sender, minBid, 0, address(0), auctionEndTime, true);
+
+59:         auction.isActive = false;
+
+```
+
+```solidity
+File: LoanAgreement.sol
+
+27:         loanDetails[loanId] = LoanDetails(msg.sender, borrower, amount, interestRate, duration, amount, false);
+
+38:             loan.isPaidOff = true;
+
+```
+
+```solidity
+File: LoanMarketplace.sol
+
+20:         loanOffers[nextLoanOfferId] = LoanOffer(msg.sender, amount, interestRate, duration, true);
+
+28:         offer.isActive = false;
+
+```
+
+</details> 
+ 
+
+
+ ### <a name="GAS-12"></a>[GAS-12]
+ ### Use != 0 instead of > for unsigned integer comparison
+
+*Instances (2)*:
+ 
+ <details>
+ <summary>Click to expand!</summary>
+
+```solidity
+File: CollateralMarket.sol
+
+41:         require(bidAmount > auction.highestBid, "Bid must be higher than current highest bid");
+
+```
+
+```solidity
+File: Staking.sol
+
+31:         require(stakedAmount > 0, "No funds staked");
+
+```
+
+</details> 
+ 
+
+
+ ### <a name="GAS-13"></a>[GAS-13]
+ ### Optimize names to save gas
+public/external function names and public member variable names can be optimized to save gas. See [this](https://gist.github.com/IllIllI000/a5d8b486a8259f9f77891a919febd1a9) link for an example of how it works. Below are the interfaces/abstract contracts that can be optimized so that the most frequently-called functions use the least amount of gas possible during method lookup. Method IDs that have two leading zero bytes can save 128 gas each during deployment, and renaming functions to have lower method IDs will save 22 gas per call, [per sorted position shifted](https://medium.com/joyso/solidity-how-does-function-name-affect-gas-consumption-in-smart-contract-47d270d8ac92)
+
+*Instances (14)*:
+ 
+ <details>
+ <summary>Click to expand!</summary>
+
+```solidity
+File: Admin.sol
+
+14:     FeePolicy public feePolicy;
+
+32:     ) external onlyOwner {
+
+38:     function pause() external onlyOwner {
+
+44:     function unpause() external onlyOwner {
+
+```
+
+```solidity
+File: Collateral.sol
+
+14:     mapping(uint256 => CollateralDetails) public collaterals;
+
+```
+
+```solidity
+File: CollateralMarket.sol
+
+20:     mapping(uint256 => Auction) public auctions;
+
+38:     function placeBid(uint256 auctionId, uint256 bidAmount) external payable {
+
+```
+
+```solidity
+File: LoanAgreement.sol
+
+18:     mapping(uint256 => LoanDetails) public loanDetails;
+
+```
+
+```solidity
+File: LoanMarketplace.sol
+
+14:     mapping(uint256 => LoanOffer) public loanOffers;
+
+```
+
+```solidity
+File: Staking.sol
+
+11:     mapping(address => Stake) public stakes;
+
+12:     uint256 public totalStaked;
+
+17:     function stake(uint256 amount) external payable {
+
+51:     ) public pure returns (uint256) {
+
+```
+
+```solidity
+File: UserRegistry.sol
+
+12:     mapping(address => UserProfile) public userProfiles;
+
+```
+
+</details> 
+ 
