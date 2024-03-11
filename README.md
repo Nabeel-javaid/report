@@ -46,31 +46,47 @@ Overall, I consider the quality of the wise lending protocol codebase to be Good
 
 
 ### Core Contracts and Functions:
-The lending and borrowing mechanism within the wise lending protocol operates at the heart of the system, facilitated through a sophisticated mathematical model and its subsequent implementation in the smart contract codebase. This mechanism is designed to balance the liquidity needs of borrowers with the return expectations of lenders, dynamically adjusting interest rates based on supply and demand within the protocol.
 
-### Mathematical Model
 
-At its core, the protocol employs an algorithmic interest rate model that determines borrowing costs and lending yields based on the utilization ratio of the pooled assets. This model typically follows a function where interest rates increase as the utilization ratio approaches its maximum, ensuring liquidity is maintained for withdrawals. The formulae consider factors such as total liquidity, total borrows, collateral factors, and price volatility of the assets.
+In the wiseLending protocol, the liquidation and interest rate mechanisms are integral to maintaining the protocol's health and ensuring a stable equilibrium between lenders and borrowers. These mechanisms are meticulously designed, governed by a set of mathematical models to dynamically adjust interest rates and execute liquidations based on predefined conditions.
 
-An essential aspect of the model is the calculation of the health factor for borrowing positions, ensuring the loan remains over-collateralized. This factor is calculated using the formula:
+### Liquidation Mechanism
 
-\[
-\text{Health Factor} = \frac{\text{Total Collateral Value in ETH} \times \text{Collateral Factor}}{\text{Total Borrow Value in ETH}}
-\]
+The liquidation process is initiated when a borrower's position becomes under-collateralized, defined by the Health Factor formula:
 
-A health factor below a certain threshold triggers liquidation mechanisms to protect the system and its participants from defaults.
+\[ \text{Health Factor} = \frac{\text{Total Collateral Value} \times \text{Collateral Factor}}{\text{Total Borrow Value}} \]
 
-### Implementation in the Codebase
+This calculation is pivotal, ensuring that borrowed positions are sufficiently over-collateralized to cover potential losses. The `LiquidationManager.sol` contract encapsulates the logic for triggering liquidations. It assesses positions against the health factor threshold; positions falling below this threshold are marked for liquidation. The contract’s `executeLiquidation` function is then called, facilitating the transfer of collateral from the borrower to the liquidator, often at a discount to incentivize liquidation and quickly secure the protocol's assets.
 
-The smart contract implementation effectively translates these mathematical models into solidity code, adhering to the protocol's security and efficiency requirements. The `BorrowRateModel.sol` and `LendingPool.sol` contracts are central to this functionality, where the former defines the interest rate model and the latter manages the state of pooled assets, user deposits, and loans.
+### Interest Rate Model
 
-Interest rates are dynamically adjusted within the `BorrowRateModel.sol` contract based on the current utilization ratio, calculated as the ratio of total borrows to total liquidity. The contract includes functions to calculate borrowing costs and lending yields, incorporating the model's formulae directly within the smart contract code.
+The interest rate model is critical for balancing supply and demand within the lending pool. It adjusts borrowing costs and lending yields in response to the utilization rate of the pool, defined as the ratio of total borrows to total liquidity. The formula used to calculate interest rates based on utilization is:
 
-Liquidation logic, implemented in the `LiquidationManager.sol` contract, leverages the health factor calculations to monitor and execute liquidations as necessary. This contract contains mechanisms to assess the collateralization of borrowing positions and to sell collateral through decentralized exchange mechanisms if the health factor falls below the required threshold.
+\[ \text{Interest Rate} = \text{Base Rate} + \left(\frac{\text{Utilization Rate}}{\text{Optimal Utilization Rate}}\right) \times \text{Slope Rate} \]
 
-### Analysis
+The `BorrowRateModel.sol` contract implements this model, specifically through the `getInterestRate` function, which calculates the current interest rate based on the pool's state. As utilization increases, borrowing costs rise to discourage further borrowing and encourage repayment, thereby replenishing liquidity. Conversely, lower utilization leads to lower borrowing costs, incentivizing borrowing activities.
 
-The wise lending protocol's lending and borrowing mechanism showcases a well-thought-out blend of financial theory and blockchain technology. The mathematical model behind it is sound, drawing from established financial principles to manage risk and ensure the system's equilibrium. The smart contract implementation is a testament to the development team's ability to translate complex financial models into secure, efficient, and functional code.
+This dynamic interest rate adjustment is essential for maintaining liquidity within the protocol and ensuring that lenders receive competitive yields on their deposits. The mathematical model behind this mechanism allows the protocol to respond to market conditions efficiently, ensuring stability and encouraging healthy lending and borrowing activities.
 
-However, it's crucial to thoroughly audit the implementation of these financial formulae in the codebase, especially given the complexities involved in calculating interest rates, loan health factors, and handling liquidations. Any inaccuracies or vulnerabilities in these areas could significantly impact the protocol's security and financial integrity.
+
+
+
+### Lending Mechanism
+
+The lending process allows users to deposit assets into the protocol's liquidity pools, receiving pool tokens in return. These tokens represent the lender's share of the pool and entitle the holder to a portion of the interest payments collected from borrowers. The interest rate model adjusts the yield on deposited assets based on pool utilization, governed by the formula:
+
+\[ \text{Yield} = \text{f(Interest Rate, Pool Utilization)} \]
+
+This formula ensures that lenders are compensated according to the current demand for borrowing. The `deposit` function in `WiseLending.sol` handles the asset transfer, minting of pool tokens, and recording of the deposit in the lender's account. Interest accrual is dynamically calculated based on the changing state of the pool, ensuring fair and transparent compensation for lenders.
+
+### Borrowing Mechanism
+
+Borrowing entails users locking collateral in exchange for liquidity from the pool. The amount one can borrow is determined by the collateral value and the pool's collateral factor, a safeguard to prevent under-collateralization. The borrowable amount and interest rates are recalculated using:
+
+\[ \text{Borrowable Amount} = \text{Collateral Value} \times \text{Collateral Factor} \]
+
+\[ \text{Interest Payment} = \text{Borrowed Amount} \times \text{Interest Rate} \]
+
+The `borrow` function within `WiseLending.sol` manages these calculations, ensuring that borrowers receive liquidity according to their collateral's value while maintaining a buffer against market volatility. Interest rates are adjusted in real-time to reflect the pool's utilization rate, balancing supply and demand dynamics.
+
 
