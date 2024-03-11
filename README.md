@@ -54,7 +54,9 @@ At its core, the protocol employs an algorithmic interest rate model that determ
 
 An essential aspect of the model is the calculation of the health factor for borrowing positions, ensuring the loan remains over-collateralized. This factor is calculated using the formula:
 
+\[
 \text{Health Factor} = \frac{\text{Total Collateral Value in ETH} \times \text{Collateral Factor}}{\text{Total Borrow Value in ETH}}
+\]
 
 A health factor below a certain threshold triggers liquidation mechanisms to protect the system and its participants from defaults.
 
