@@ -41,7 +41,7 @@ After the manual review, I run the project’s test suite to ensure all tests pa
 ### 9. Interaction with External Systems
 Since the project interacts with aave, I review the integration points and external calls to ensure they are handled securely, respecting the trust boundaries and mitigating risks associated with external dependencies.
 
-## d) Analysis of the code base
+## Analysis of the code base
 
 The most important summary in analyzing the code base is the stacking of codes to be analyzed.
 In this way, many predictions can be made, including the difficulty levels of the contracts, which one is more important for the auditor, the features they contain that are important for security (payable functions, uses assembly, etc.), the audit cost of the project, and the time to be allocated to the audit;
