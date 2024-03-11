@@ -108,7 +108,7 @@ This calculation is pivotal, ensuring that borrowed positions are sufficiently o
 
 The interest rate model is critical for balancing supply and demand within the lending pool. It adjusts borrowing costs and lending yields in response to the utilization rate of the pool, defined as the ratio of total borrows to total liquidity. The formula used to calculate interest rates based on utilization is:
 
-$$\text{Interest Rate} = \text{Base Rate} + \left(\frac{\text{Utilization Rate}}{\text{Optimal Utilization Rate}}\right) \times \text{Slope Rate}
+\text{Interest Rate} = \text{Base Rate} + \left(\frac{\text{Utilization Rate}}{\text{Optimal Utilization Rate}}\right) \times \text{Slope Rate}
 
 The `BorrowRateModel.sol` contract implements this model, specifically through the `getInterestRate` function, which calculates the current interest rate based on the pool's state. As utilization increases, borrowing costs rise to discourage further borrowing and encourage repayment, thereby replenishing liquidity. Conversely, lower utilization leads to lower borrowing costs, incentivizing borrowing activities.
 
