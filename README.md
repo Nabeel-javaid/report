@@ -90,3 +90,129 @@ Borrowing entails users locking collateral in exchange for liquidity from the po
 The `borrow` function within `WiseLending.sol` manages these calculations, ensuring that borrowers receive liquidity according to their collateral's value while maintaining a buffer against market volatility. Interest rates are adjusted in real-time to reflect the pool's utilization rate, balancing supply and demand dynamics.
 
 
+
+### Collateral Management and Tokenization of Positions
+
+At the core of wiseLending's collateral management lies the intricate process of tokenizing user positions. This is achieved through the interaction of several smart contracts, notably the `PositionNFTs` contract, which mints non-fungible tokens (NFTs) representing the user's deposited collateral and borrowing positions. This NFT acts as a bearer token, encapsulating the rights and obligations of the underlying position, including the collateral value, borrow amount, and associated interest rates.
+
+The tokenization of positions into NFTs introduces a novel layer of liquidity and transferability to otherwise static collateral. Users can transfer, sell, or use their NFTs in other decentralized finance (DeFi) protocols, unlocking new strategies for yield optimization and risk management. The `PositionNFTs` contract interacts closely with the main `WiseLending` contract, ensuring that all operations related to lending, borrowing, and collateral adjustment are accurately reflected in the tokenized positions.
+
+### Aave Integration and Flash Loan Functionality
+
+WiseLending's integration with Aave brings enhanced liquidity options and strategic financial tools to its users. The protocol leverages Aave's flash loans to facilitate certain operations like collateral swaps and debt restructuring without requiring upfront capital. This is meticulously handled through the `AaveHelper` contract, which serves as an intermediary to access Aave's flash loan service.
+
+The flash loan process begins when a user or a smart contract requests liquidity for a specific operation, such as liquidating an undercollateralized position or rebalancing a portfolio. The `AaveHelper` contract initiates the flash loan, receives the requested assets, executes the predetermined operations (e.g., paying off debt, swapping collateral types), and returns the loan amount plus fees within a single transaction block. This sequence of actions requires precise coordination between the `WiseLending`, `AaveHelper`, and `PositionNFTs` contracts, ensuring that all changes are atomically executed and accurately reflected in the user's tokenized position.
+
+
+
+
+## A Comprehensive Flowchart of the wiseLending Protocol Architecture
+<br/>
+
+[![Screenshot-from-2024-03-11-23-40-28.png](https://i.postimg.cc/cH8B8K7g/Screenshot-from-2024-03-11-23-40-28.png)](https://postimg.cc/R64HkZD4)
+
+
+
+## Systemic Risks, Centralization Risks, Technical Risks & Integration Risks"
+
+### Systemic Risks
+Systemic risks in wiseLending mainly revolve around the complex interactions between multiple smart contracts, such as `WiseSecurityDeclarations`, `PendlePowerFarm`, and various `FeeManager` contracts. The interdependency on external protocols like AAVE for lending and borrowing functionalities adds to systemic complexities. Should any of these integrated protocols experience issues, it could potentially affect wiseLending’s operations. Additionally, the reliance on accurate price feeds from `IWiseOracleHub` for collateral valuation and liquidation thresholds introduces systemic exposure to oracle failure or manipulation.
+
+### Centralization Risks
+Centralization risks stem from the roles of `OwnableMaster` and administrative functions within contracts like `FeeManagerHelper` and `PendlePowerFarmControllerHelper`, which have the power to adjust critical parameters such as fee rates, incentive mechanisms, and contract integrations. While these functions are essential for protocol maintenance and upgrades, they also pose centralization risks if not decentralized or governed by a broad community or DAO structure.
+
+### Technical Risks
+The technical risks are primarily associated with the smart contract code's complexity and the potential for undiscovered vulnerabilities despite thorough audits. Contracts like `PendlePowerFarmMathLogic` and `WiseSecurityDeclarations` incorporate intricate mathematical models and financial algorithms to manage interest rates, leverage, and liquidations. Any inaccuracies in these algorithms could lead to unintended financial outcomes. Furthermore, the protocol's reliance on flash loans for leveraging positions introduces technical risk if the flash loan mechanisms are exploited.
+Smart Contract Vulnerabilities: Bugs or logical errors in the smart contracts can lead to loss of funds, unauthorized access, or unintended behavior. Given the complexity of contracts like the Shrine, interest rate models, and oracle interactions, the attack surface is significant.
+
+Smart Contract Vulnerabilities: Bugs or logical errors in the smart contracts can lead to loss of funds, unauthorized access, or unintended behavior. Given the complexity of contracts like the Shrine, interest rate models, and oracle interactions, the attack surface is significant.
+
+Scalability Concerns: As transaction volumes grow, the platform must scale without compromising performance or security.
+
+
+
+
+### Integration Risks
+Integration risks are evident in the protocol’s heavy reliance on external DeFi platforms and standards, including AAVE for lending services and ERC-721 for NFT representations of positions. The `PowerFarmNFTs` contract, which tokenizes farming positions, and integration with AAVE through contracts like `PendlePowerFarmLeverageLogic` highlight these risks. Should there be any disruptions or changes in the integrated platforms' operations or APIs, wiseLending’s functionality could be directly impacted. Moreover, the protocol's functionality around flash loans and its integration with DEXs for liquidation processes are critical points of integration risk.
+
+
+
+## Analysis of test cases
+
+ **Foundry Testing:**
+   
+   Foundry, a modern smart contract testing framework, was utilized to test the unistaker contracts. This involved several key steps:
+   
+   a. **Installation and Setup:**
+      - Foundry was installed using the command `curl -L https://foundry.paradigm.xyz | bash`, followed by `foundryup` to ensure the latest version was in use.
+      - Dependencies were installed using `forge install`, ensuring all necessary components were available for the testing process.
+      - Then to run the tests, I simply added the relevant files to the .env, referencing .env.example.
+   
+   b. **Execution of Tests:**
+      - Tests were run using `forge install` followed by `forge build` and then `forge test`, executing a suite of predefined test cases that covered various functionalities and scenarios.
+   
+   c. **Test Coverage and Documentation:**
+      - The overview of the testing suite, as referred to in the provided documentation, likely details the scope, scenarios, and objectives of each test, ensuring a comprehensive assessment of the contracts.
+   
+
+### What did the project do differently? ;
+-   1) It can be said that the developers of the project did a quality job, there is a test structure consisting of tests with quality content. In particular, tests have been written successfully.
+
+-   2) Overall line coverage percentage provided by your tests : 87
+
+### What could they have done better?
+
+-  1) If we look at the test scope and content of the project with a systematic checklist, we can see which parts are good and which areas have room for improvement As a result of my analysis, those marked in green are the ones that the project has fully achieved. The remaining areas are the development areas of the project in terms of testing ;
+
+-  2) The coverage of test cases are good (i.e: 87%) but still near to 100 is required for best results to make sure that all the edge cases are tested
+ 
+  **Test cases coverage wasn't mentioned on audit page so other resources were used**
+
+[![test-cases.jpg](https://i.postimg.cc/1zgD5wCt/test-cases.jpg)](https://postimg.cc/v1s40gdF)
+
+Ref:https://xin-xia.github.io/publication/icse194.pdf
+
+[![nabeel-1.jpg](https://i.postimg.cc/6qtBdLQW/nabeel-1.jpg)](https://postimg.cc/bDVXPnbW)
+
+<br/>
+<br/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## New insights and learning of project from this audit:
+
+
+Throughout the audit of the wiseLending protocol, several insights and learnings emerged, shedding light on the intricacies of DeFi lending and borrowing platforms and the innovative approaches undertaken by this project. Here are some notable observations:
+
+1. **Complexity of DeFi Integrations:** The project adeptly navigates the complexity of integrating with existing DeFi protocols such as Aave, showcasing a sophisticated understanding of external contracts and their interactions. This highlights the importance of deep domain knowledge in DeFi for creating interoperable and efficient systems.
+
+2. **Innovative Use of NFTs:** The protocol's use of NFTs to represent positions is a novel approach, extending the utility of NFTs beyond the art and collectibles market into financial instruments. This could pave the way for more widespread tokenization of financial positions in DeFi.
+
+3. **Advanced Financial Mechanisms:** The protocol employs complex financial mechanisms, including liquidation processes and interest rate models. This demonstrates an advanced level of financial engineering within the blockchain space, contributing to more sophisticated financial products available on-chain.
+
+4. **Mathematical Rigor:** The project employs intricate mathematical formulas to calculate interest rates, liquidation thresholds, and rewards. This underscores the necessity of mathematical rigor and precision in the design of financial protocols, ensuring they operate predictably and fairly.
+
+5. **Collateral Management:** The handling of collateral within the protocol, especially the tokenization of positions and integration with flash loans for liquidation, showcases the complexity of managing risk and liquidity in DeFi. It highlights the need for innovative solutions to these perennial financial challenges.
+
+
+This audit not only provided a deep dive into the wiseLending protocol's workings but also offered broader insights into the state of DeFi development, security practices, and the potential for NFTs in financial contexts.
