@@ -44,4 +44,28 @@ Overall, I consider the quality of the wise lending protocol codebase to be Good
 | **Dependency Management**                | Dependencies on external contracts and libraries are carefully managed, with explicit versioning for solidity and imported libraries. This reduces the risk of breaking changes and vulnerabilities introduced through dependencies. The protocol's reliance on external oracles and protocols like AAVE is a necessary aspect of its functionality, but it also introduces dependencies that need to be monitored for updates and potential security issues.                                                                                                                                                                                                                                                                                                                               |
 | **Community and Ecosystem Integration**  | The protocol integrates well with the broader DeFi ecosystem, leveraging established protocols for lending, borrowing, and price feeds. This not only enriches the protocol's offerings but also encourages interoperability within the DeFi space. Active engagement with the community through documentation, open-source code, and channels for feedback contributes positively to the protocol's development and adoption.                                                                                                                                                                                                                                                                                                                             |
 
-In summary, the wise lending protocol's codebase demonstrates good quality with thorough documentation, consistent coding practices, and a focus on security. While there are areas for improvement, particularly in testing coverage and optimization, the overall structure and development practices provide a solid foundation for a secure and reliable DeFi protocol.
+
+### Core Contracts and Functions:
+
+- **LendingPool**: This contract acts as the central hub where assets are deposited by lenders to earn interest and from where borrowers obtain loans by over-collateralizing their positions. Functions like `deposit()` allow lenders to supply assets to the pool, earning interest tokens in return, representing their share of the pool.
+
+- **InterestRateModel**: Critical to determining the cost of borrowing, this contract encapsulates the logic for dynamically adjusting interest rates based on the current utilization rate of the pool (i.e., the ratio of total borrowed funds to total deposited funds). The model typically follows a curve that increases as the utilization rate grows, incentivizing early repayments and additional deposits when liquidity is low. The mathematical foundation here often involves a piecewise linear or exponential function designed to balance supply and demand within the protocol efficiently.
+
+- **CollateralManager**: This contract oversees the valuation and management of collateral posted by borrowers. It utilizes price oracles (e.g., from the `IWiseOracleHub` contract) to ascertain real-time asset values and enforces a collateral factor (a safety margin above the loan value, often expressed as a percentage exceeding 100%). The collateral-to-loan ratio must always exceed this factor to prevent liquidation. Mathematically, if the collateral's market value, fetched from the oracle and adjusted for the collateral factor, falls below the value of the borrowed amount plus accrued interest, the position becomes vulnerable to liquidation.
+
+- **LiquidationManager**: In scenarios where borrowers fail to maintain adequate collateral levels, this contract facilitates the liquidation process, allowing other participants to repay part or all of the under-collateralized loan at a discount, in exchange for receiving a portion of the collateral. The logic here often involves calculating the exact discount rate and the amount of collateral that can be liquidated in a single transaction, taking into account the protocol's liquidation threshold and incentive mechanisms to ensure rapid response from liquidators.
+
+### Financial Formulas and Logic:
+
+At the heart of the lending and borrowing mechanism are the formulas used to calculate interest rates, loan health, and liquidation parameters. The interest rate model might adopt an equation like:
+
+\[ InterestRate = BaseRate + UtilizationRate * Multiplier \]
+
+where `BaseRate` offers minimal returns to lenders at low utilization levels, and `Multiplier` scales the interest rate with utilization to ensure the pool's stability. For collateral valuation and liquidation thresholds, formulas ensure that:
+
+\[ CollateralValue = AssetPrice * Quantity * CollateralFactor \]
+
+\[ LiquidationTrigger = LoanValue * (1 + LiquidationThreshold) \]
+
+Here, `CollateralFactor` adjusts the market value of the collateral to incorporate a safety margin, and `LiquidationThreshold` dictates when a loan is eligible for liquidation, based on its current health, defined as the ratio of collateral value to loan value.
+
