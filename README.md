@@ -16,18 +16,61 @@ The intricate web of functionalities, from asset deposits to strategy optimizati
 
 [![Screenshot-from-2024-03-11-19-04-35.png](https://i.postimg.cc/9FSnCMKk/Screenshot-from-2024-03-11-19-04-35.png)](https://postimg.cc/GHFQjccP)
 
-## Approach taken while auditing the codebase
-When I began the audit of the wiseLending protocol, my first step was to dive into the documentation provided. This crucial step helped me understand the protocol's intended functionality, architecture, and key components. I also reviewed any previous audit reports available. These reports offered insights into past vulnerabilities, how they were addressed, and areas that might require extra scrutiny.
+## The approach I would follow when reviewing the code
 
-Next, I systematically went through each smart contract provided, starting with the core contracts like `AaveHelper.sol`, `PositionNFTs.sol`, and `Declarations.sol`. I looked at the contracts' structure, inheritance patterns, and how they interact with external contracts and protocols. Understanding the flow between contracts was essential, so I paid close attention to function calls that crossed contract boundaries, ensuring they were properly authenticated and validated.
+First, by examining the scope of the code, I determined my code review and analysis strategy.
+https://code4rena.com/audits/2024-02-wise-lending#top
 
-I then focused on the contracts managing user interactions, such as those related to lending, borrowing, and yield farming strategies. Here, I was particularly vigilant about identifying any functions that could be exploited due to reentrancy attacks, improper access controls, or mishandling of user funds.
+My approach to ensure a thorough and comprehensive audit would encompass several steps, combining theoretical understanding, practical testing, and security assessments. Here’s how I would proceed:
 
-The contracts related to oracles and price feeds, like `PendleLpOracle.sol` and `PtOracleDerivative.sol`, were also a critical area of my audit. I checked for any issues that could arise from oracle manipulation or stale data, which could lead to incorrect price reporting and, consequently, impact the protocol's operations.
+### 1. Documentation Review
+First, I started by reading the project documentation in detail. Understanding the project's goals, architecture, and functionalities as outlined in the docs helps me grasp the intended use cases and the design rationale behind the smart contracts. This initial step is crucial for aligning my understanding with the project's objectives and preparing for a more technical dive.
 
-After the initial review, I moved on to testing the contracts for common vulnerabilities using both static analysis(my own bot) and manual testing. This involved looking for issues such as integer overflows/underflows, reentrancy, gas limit vulnerabilities, and more. I also performed behavioral testing to observe how the contracts interact under various scenarios, including edge cases.
+### 2. Codebase Familiarization
+Next, I cloned the project repository and familiarize myself with the codebase structure. I take note of how the contracts are organized, the naming conventions, and how the interfaces are defined and implemented. This step helps me understand the project’s modularity and the relationships between different contracts.
 
-In summary, my approach was methodical, starting from a comprehensive review of the documentation and previous audits, moving through a detailed examination of each contract, and conducting thorough testing for vulnerabilities. This structured approach ensured that I covered all aspects of the protocol, understanding its intended functionality, and identifying any areas of concern.
+### 3. Dependency and Configuration Analysis
+Before diving into the contract logic, I reviewed the project’s dependencies, such as OpenZeppelin contracts, and configuration settings, including compiler versions. This is to ensure that the project uses secure and up-to-date libraries and follows best practices for deployment.
+
+### 4. Manual Code Review
+With a solid understanding of the project structure and goals, I would begin a line-by-line review of the smart contracts. My focus would be on identifying common smart contract vulnerabilities such as reentrancy, overflow/underflow, improper access control, and unchecked external calls. Additionally, I assessed the contracts for logic errors, inefficiencies, and deviations from the documented functionalities.
+
+### 5. Testing and Coverage Analysis
+After the manual review, I run the project’s test suite to ensure all tests pass and to identify any areas of the code not covered by tests. I would write additional tests if necessary to achieve comprehensive coverage, particularly focusing on edge cases and failure modes.
+
+### 9. Interaction with External Systems
+Since the project interacts with aave, I review the integration points and external calls to ensure they are handled securely, respecting the trust boundaries and mitigating risks associated with external dependencies.
+
+## d) Analysis of the code base
+
+The most important summary in analyzing the code base is the stacking of codes to be analyzed.
+In this way, many predictions can be made, including the difficulty levels of the contracts, which one is more important for the auditor, the features they contain that are important for security (payable functions, uses assembly, etc.), the audit cost of the project, and the time to be allocated to the audit;
+
+
+
+-  **File name:** This field indicates the number of Contracts involves
+
+
+-  **Lines:** This field represents the total number of lines in the source file, including code lines, comments, and blank lines.
+
+
+-  **nSLOC:** nSLOC stands for "normalized source lines of code," and it further refines nLines by excluding both blank lines and comments. It gives a more accurate measure of the code's complexity.
+
+-  **Comment Lines:** This field specifies the number of lines in the source file that contain comments.
+
+-  **nLines:** nLines typically stands for "normalized lines" and represents the total number of lines in the source file excluding blank lines. 
+
+
+
+
+
+## Languages
+| language | files | code | comment | blank | total |
+| :--- | ---: | ---: | ---: | ---: | ---: |
+| Solidity | 44 | 6326 | 644 | 2,167 | 9137 |
+
+### Comment-to-Source Ratio: On average there are `4.25 code` lines per comment (lower=better).
+
 
 ## Codebase Quality
 
