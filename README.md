@@ -69,7 +69,7 @@ In this way, many predictions can be made, including the difficulty levels of th
 | :--- | ---: | ---: | ---: | ---: | ---: |
 | Solidity | 44 | 6326 | 644 | 2,167 | 9137 |
 
-### Comment-to-Source Ratio: On average there are `4.25 code` lines per comment (lower=better).
+#### Comment-to-Source Ratio: On average there are `4.25 code` lines per comment (lower=better).
 
 
 
@@ -100,7 +100,7 @@ In the wiseLending protocol, the liquidation and interest rate mechanisms are in
 
 The liquidation process is initiated when a borrower's position becomes under-collateralized, defined by the Health Factor formula:
 
-\[ \text{Health Factor} = \frac{\text{Total Collateral Value} \times \text{Collateral Factor}}{\text{Total Borrow Value}} \]
+$$\text{Health Factor} = \frac{\text{Total Collateral Value} \times \text{Collateral Factor}}{\text{Total Borrow Value}}$$
 
 This calculation is pivotal, ensuring that borrowed positions are sufficiently over-collateralized to cover potential losses. The `LiquidationManager.sol` contract encapsulates the logic for triggering liquidations. It assesses positions against the health factor threshold; positions falling below this threshold are marked for liquidation. The contract’s `executeLiquidation` function is then called, facilitating the transfer of collateral from the borrower to the liquidator, often at a discount to incentivize liquidation and quickly secure the protocol's assets.
 
@@ -108,7 +108,7 @@ This calculation is pivotal, ensuring that borrowed positions are sufficiently o
 
 The interest rate model is critical for balancing supply and demand within the lending pool. It adjusts borrowing costs and lending yields in response to the utilization rate of the pool, defined as the ratio of total borrows to total liquidity. The formula used to calculate interest rates based on utilization is:
 
-\[ \text{Interest Rate} = \text{Base Rate} + \left(\frac{\text{Utilization Rate}}{\text{Optimal Utilization Rate}}\right) \times \text{Slope Rate} \]
+$$\text{Interest Rate} = \text{Base Rate} + \left(\frac{\text{Utilization Rate}}{\text{Optimal Utilization Rate}}\right) \times \text{Slope Rate}
 
 The `BorrowRateModel.sol` contract implements this model, specifically through the `getInterestRate` function, which calculates the current interest rate based on the pool's state. As utilization increases, borrowing costs rise to discourage further borrowing and encourage repayment, thereby replenishing liquidity. Conversely, lower utilization leads to lower borrowing costs, incentivizing borrowing activities.
 
@@ -121,7 +121,7 @@ This dynamic interest rate adjustment is essential for maintaining liquidity wit
 
 The lending process allows users to deposit assets into the protocol's liquidity pools, receiving pool tokens in return. These tokens represent the lender's share of the pool and entitle the holder to a portion of the interest payments collected from borrowers. The interest rate model adjusts the yield on deposited assets based on pool utilization, governed by the formula:
 
-\[ \text{Yield} = \text{f(Interest Rate, Pool Utilization)} \]
+$$\text{Yield} = \text{f(Interest Rate, Pool Utilization)}$$
 
 This formula ensures that lenders are compensated according to the current demand for borrowing. The `deposit` function in `WiseLending.sol` handles the asset transfer, minting of pool tokens, and recording of the deposit in the lender's account. Interest accrual is dynamically calculated based on the changing state of the pool, ensuring fair and transparent compensation for lenders.
 
@@ -129,9 +129,9 @@ This formula ensures that lenders are compensated according to the current deman
 
 Borrowing entails users locking collateral in exchange for liquidity from the pool. The amount one can borrow is determined by the collateral value and the pool's collateral factor, a safeguard to prevent under-collateralization. The borrowable amount and interest rates are recalculated using:
 
-\[ \text{Borrowable Amount} = \text{Collateral Value} \times \text{Collateral Factor} \]
+$$\text{Borrowable Amount} = \text{Collateral Value} \times \text{Collateral Factor}$$
 
-\[ \text{Interest Payment} = \text{Borrowed Amount} \times \text{Interest Rate} \]
+$$\text{Interest Payment} = \text{Borrowed Amount} \times \text{Interest Rate}$$
 
 The `borrow` function within `WiseLending.sol` manages these calculations, ensuring that borrowers receive liquidity according to their collateral's value while maintaining a buffer against market volatility. Interest rates are adjusted in real-time to reflect the pool's utilization rate, balancing supply and demand dynamics.
 
