@@ -156,7 +156,7 @@ The flash loan process begins when a user or a smart contract requests liquidity
 
 
 
-## Systemic Risks, Centralization Risks, Technical Risks & Integration Risks"
+## Systemic Risks, Centralization Risks, Technical Risks & Integration Risks
 
 ### Systemic Risks
 Systemic risks in wiseLending mainly revolve around the complex interactions between multiple smart contracts, such as `WiseSecurityDeclarations`, `PendlePowerFarm`, and various `FeeManager` contracts. The interdependency on external protocols like AAVE for lending and borrowing functionalities adds to systemic complexities. Should any of these integrated protocols experience issues, it could potentially affect wiseLending’s operations. Additionally, the reliance on accurate price feeds from `IWiseOracleHub` for collateral valuation and liquidation thresholds introduces systemic exposure to oracle failure or manipulation.
