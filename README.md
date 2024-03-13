@@ -15,25 +15,9 @@ This document outlines the requirements for a cutting-edge security audit dashbo
 
 3. **Report Generation:**
    - Input field for smart contract address.
-   - Three tiers of reports (e.g., Basic, Advanced, Premium) with varying degrees of detail and pricing.
    - Automated report generation using Bot.
    - An interactive dashboard for each report, allowing users to explore findings in detail.
    - Conversion of reports into downloadable PDF format.
-
-#### Non-functional Requirements
-
-1. **Security:**
-   - State-of-the-art security measures for user data protection and transaction security.
-
-2. **Scalability:**
-   - Design to support a scalable architecture that can handle increasing loads and functionalities over time.
-
-3. **Usability:**
-   - User-friendly interface with intuitive navigation and dashboard interaction.
-
-4. **Performance:**
-   - High-performance backend to ensure rapid report generation and processing.
-   - Optimized for low latency and high throughput.
 
 #### Stakeholder Analysis
 
