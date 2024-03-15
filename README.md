@@ -108,9 +108,9 @@ $$
 ### Mathematical Model:
 For the interest rates, the model typically employs piecewise linear functions defined as follows:
 - **Below Kink**:
-  \[ \text{Borrow Rate} = \text{Base Rate} + (\text{Utilization Rate} \times \text{Multiplier}) \]
+[![Code-Cogs-Eqn.png](https://i.postimg.cc/VLHSmQzC/Code-Cogs-Eqn.png)](https://postimg.cc/dLrQjfks)
 - **Above Kink**:
-  \[ \text{Borrow Rate} = \text{Base Rate} + (\text{Kink Utilization Rate} \times \text{Multiplier}) + ((\text{Utilization Rate} - \text{Kink Utilization Rate}) \times \text{Jump Multiplier}) \]
+  [![Code-Cogs-Eqn-1.png](https://i.postimg.cc/L4Q4ZtGd/Code-Cogs-Eqn-1.png)](https://postimg.cc/s1SCkhVK)
 
 Here, the Base Rate, Multiplier, and Jump Multiplier are parameters that can be adjusted to tune the model's responsiveness to changes in liquidity conditions.
 
