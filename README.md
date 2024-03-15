@@ -96,7 +96,7 @@ The Dynamic Interest Rate Model within this protocol is structured to automatica
 
 ### Workflow:
 1. **Utilization Rate Calculation**: The model begins by calculating the utilization rate, which is the fraction of the total borrowed funds to the total available liquidity. This is a critical metric, guiding the adjustments in interest rates. The formula used is:
-   \[ U = \frac{\text{Total Borrowed}}{\text{Total Borrowed} + \text{Total Available}} \]
+\[ U = \frac{\text{Total Borrowed}}{\text{Total Borrowed} + \text{Total Available}} \]
 
 2. **Interest Rate Adjustment**: Based on the utilization rate, the model adjusts the borrow and supply interest rates. There are two segments in this model:
    - **Below Kink (Normal Operation)**: When the utilization rate is below a predefined threshold (the kink), the interest rates are determined by a base rate plus a variable rate that increases linearly with the utilization rate. This encourages borrowing by keeping rates lower when liquidity is ample.
