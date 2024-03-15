@@ -63,13 +63,6 @@ The architecture further innovates with the **LeverageTransformer** and **Flashl
 
 The system's underlying liquidity and swap operations are powered by the **Swapper** contract, which abstracts the complexity of interacting with various decentralized exchanges. It supports a wide array of trading strategies, from simple token swaps to complex arbitrage operations, underpinned by an intelligent routing mechanism that optimizes for slippage and trading fees.
 
-### Security and Upgradeability
-
-From a security standpoint, the architecture embeds several defensive coding practices, including reentrancy guards, permission checks, and extensive use of the OpenZeppelin contracts library for standardized security patterns. The system's upgradeability is managed through a proxy pattern, allowing for the iterative improvement of the platform's features and capabilities without endangering user assets or disrupting service continuity.
-
-
-
-
 
 ## Core functionalities of the project
 
@@ -92,6 +85,8 @@ The AutoRange contract employs a dynamic strategy to adjust position ranges base
 **Code Implementation:**
 In `AutoRange.sol`, the adjustment logic is implemented through the `execute` function, which evaluates the current position and decides on a new optimal range. This involves calculations for the `tickLower` and `tickUpper` parameters of the Uniswap V3 position, which are adjusted to align with the new target range. The contract utilizes the `nonfungiblePositionManager` for minting new positions and winding down old ones, effectively moving liquidity to where it's most productive.
 
+### Relationships of the Automated Liquidity Management
+[![Screenshot-from-2024-03-16-00-38-21.png](https://i.postimg.cc/rpbPcH7F/Screenshot-from-2024-03-16-00-38-21.png)](https://postimg.cc/qtsLx1k9)
 
 
 
@@ -146,6 +141,9 @@ The `Swapper.sol` contract is responsible for handling swap logic, including cal
 
 
 
+<br/>
+
+[![Screenshot-from-2024-03-16-00-35-07.png](https://i.postimg.cc/rp2nz4Q5/Screenshot-from-2024-03-16-00-35-07.png)](https://postimg.cc/qNQX5Nf7)
 
 
 
@@ -174,6 +172,7 @@ The `Vault.sol` contract typically encapsulates the core logic for vault managem
 The mathematical calculations for interest rates, LTV ratios, and liquidation thresholds are precisely implemented, often using fixed-point arithmetic to accommodate the Solidity environment's limitations on floating-point operations. This ensures accuracy in the computation of interest and the assessment of collateral value relative to outstanding debts.
 
 <br/>
+
 [![Screenshot-from-2024-03-16-00-01-00.png](https://i.postimg.cc/fbr8Yxrk/Screenshot-from-2024-03-16-00-01-00.png)](https://postimg.cc/HJb0g7HC)
 
 
