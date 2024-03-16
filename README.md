@@ -20,3 +20,5 @@
 19. `ERC721Vault.sol`
 20. `TimelockTokenPool.sol`
 21. `SgxVerifier.sol`
+22. `TaikoData.sol`
+23. `TaikoL1.sol`
