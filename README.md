@@ -185,6 +185,11 @@ Overall, I consider the quality of the **Smart wallet** codebase to be of high c
 
 
 
+## Comprehensive Flow Diagram of the PoolTogether Protocol
+
+<br/>
+
+[![Screenshot-from-2024-03-21-23-41-28.png](https://i.postimg.cc/jSy6QPTz/Screenshot-from-2024-03-21-23-41-28.png)](https://postimg.cc/CRLfwZz1)
 
 
 
@@ -205,11 +210,6 @@ Overall, I consider the quality of the **Smart wallet** codebase to be of high c
 
 
 
-## Comprehensive Flow Diagram of the PoolTogether Protocol
-
-<br/>
-
-[![Screenshot-from-2024-03-21-23-41-28.png](https://i.postimg.cc/jSy6QPTz/Screenshot-from-2024-03-21-23-41-28.png)](https://postimg.cc/CRLfwZz1)
 
 ## Approach Taken while auditing the codebase
 When auditing the Smart Wallet protocol, I initiated the process with a comprehensive review of the project's documentation, focusing on the protocol's objectives, design patterns, and security mechanisms. This foundational understanding was crucial for appreciating the context and complexities of the protocol, particularly its integration with ERC-4337 standards and the innovative use of multi-ownership and WebAuthn technologies for enhanced security.
