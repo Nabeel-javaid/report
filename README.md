@@ -59,6 +59,13 @@ Each function plays a vital role in ensuring that contracts deployed on the Pink
 
 
 
+## Decentralized Execution Environment
+The Decentralized Execution Environment (DEE) within the Phat Contract framework stands as a pivotal innovation, fundamentally rearchitecting the landscape of blockchain computation. Central to this environment is the integration of off-chain workers (OCWs) operating within Trusted Execution Environments (TEEs), specifically instantiated by the runtime logic encapsulated within the `runtime.rs` and further augmented by the chain extension mechanism detailed in `extension.rs`.
+
+At the heart of the DEE, the `runtime.rs` file orchestrates the core blockchain runtime environment, facilitating seamless interaction between on-chain and off-chain computation realms. It configures the substrate runtime, incorporating pallets like `pallet_contracts` for smart contract functionality and custom pallets such as `pallet_pink`, which are pivotal for custom chain extensions and the execution of off-chain computations within a secure enclave.
+
+The chain extension functionality, meticulously crafted in `extension.rs`, serves as the bridge between smart contracts and the external logic or data required for complex computations. Through meticulously designed chain extension points, smart contracts can invoke off-chain computations executed within OCWs. These OCWs, running in a TEE (such as Intel SGX), ensure the integrity and confidentiality of the code and data being processed. The logic here is underpinned by the security guarantees of the TEE, where the correctness of computation can be verified without revealing the underlying data or logic to external parties.
+
 
 
 
@@ -136,71 +143,13 @@ Throughout the audit, I kept a detailed record of my findings, categorizing them
 
 
 ### Systemic Risks
+The Phat Contract project, while innovative, presents several systemic risks that stem from its unique features and the interdependencies within its ecosystem. These risks are specifically tailored to its architecture and functionalities, as outlined below:
 
-The Smart Wallet protocol introduces several advanced features and integrations to provide security, flexibility, and user convenience. However, like any complex system, it is not immune to systemic risks. Here are some identified risks specific to the protocol's architecture and functionalities:
+1. **Complexity and Interdependency**: The project's architecture is characterized by a high degree of complexity and interdependency between different components, such as the Pink Runtime, chain extensions, and smart contracts. This complexity increases the risk of systemic failures, where a bug or vulnerability in one part of the system could have cascading effects on the entire ecosystem.
 
-1. **Upgradeability Mechanism**: While the use of UUPS (Universal Upgradeable Proxy Standard) in `CoinbaseSmartWallet.sol` allows for future improvements and bug fixes, it also introduces risks associated with centralized control over the upgrade process. If the upgrade function or the process is compromised, it could lead to the introduction of malicious code or vulnerabilities across all wallet instances.
+2. **Chain Extension Execution Risk**: The reliance on chain extensions for executing off-chain computations introduces a risk of inconsistent execution environments or failures in the external infrastructure. This dependency not only increases the attack surface but also adds a layer of uncertainty regarding the execution of critical contract logic.
 
-2. **WebAuthn Integration Risks**: The integration of WebAuthn for authentication purposes (`WebAuthn.sol`) enhances security but also adds a layer of complexity that depends on external devices and services. This dependency could introduce risks related to device security, compatibility issues, or the failure of third-party services, impacting user access or transaction verification.
-
-3. **Smart Contract Interactions and External Calls**: The protocol's interaction with external contracts, including ERC-4337 EntryPoint and other integrated services (e.g., for signature verification or fund management), could be vulnerable to exploitation if those external contracts are compromised. 
-
-4. **Signature and Authentication Bypass**: Despite the robust implementation of signature verification (`ERC1271.sol`) and cryptographic operations (`FCL.sol`), any flaws in these critical components could allow attackers to bypass authentication checks, leading to unauthorized transactions or changes to wallet settings.
-
-
-
-### Centralization Risks
-
-Centralization risks stem from the roles and permissions granted to certain addresses within the protocol. 
-
-**Upgradeability Centralization in `CoinbaseSmartWallet.sol`**
-
-### Risk:
-The protocol's reliance on upgradeability, allowing for future improvements and fixes, places significant power in the hands of those who can execute upgrades, potentially centralizing control.
-
-```solidity
-function _authorizeUpgrade(address newImplementation) internal view override onlyOwner {
-}
-```
-
-**Single Point of Failure in Multi-Ownership Management (`MultiOwnable.sol`)**
-
-### Risk:
-The mechanism designed to distribute control among multiple owners can be compromised if the primary owner's credentials are compromised, leading to a centralized point of failure.
-
-```solidity
-function addOwnerAddress(address owner) public onlyOwner {
-}
-
-function removeOwnerAtIndex(uint256 index) public onlyOwner {
-}
-```
-
-**Centralized Withdrawal Approval in `MagicSpend.sol`**
-
-### Risk:
-The `MagicSpend.sol` contract centralizes the withdrawal approval process, potentially enabling censorship or manipulation of fund access.
-
-```solidity
-function withdraw(WithdrawRequest memory withdrawRequest) external {
-}
-```
-
-**Centralized Control over EntryPoint Deposits and Withdrawals (`MagicSpend.sol`)**
-
-### Risk:
-Exclusive control over interactions with the EntryPoint contract for deposits, withdrawals, and stake management introduces centralization, granting the owner undue influence over financial operations.
-
-```solidity
-function entryPointDeposit(uint256 amount) external payable onlyOwner {
-}
-
-function entryPointWithdraw(address payable to, uint256 amount) external onlyOwner {
-}
-```
-
-
-
+3. **Smart Contract Interaction Risks**: The system involves complex interactions between various smart contracts, where contracts call each other or interact in a composable manner. This interconnectivity increases the risk of unforeseen vulnerabilities emerging from contract interactions, potentially leading to exploits that can affect multiple components of the system.
 
 ### Technical Risks
 
@@ -211,20 +160,17 @@ function entryPointWithdraw(address payable to, uint256 amount) external onlyOwn
 
 ## New insights and learning of project from this audit:
 
-The audit of the Smart Wallet protocol offered several valuable insights and learnings, emphasizing the protocol's innovative approach to wallet management, security, and interoperability within the Ethereum ecosystem. Here are key takeaways:
+Auditing the Phat Contract provided several new insights and learnings that are invaluable not only for this project but also for future blockchain development and security practices. Here are the key takeaways from the audit:
 
-**Embracing ERC-4337 Standards**
+1. **Interplay Between On-chain and Off-chain Computation**: The architecture of Phat Contract, leveraging both on-chain smart contracts and off-chain computation, showcased the potential and challenges of hybrid decentralized applications. This dual approach can optimize performance and cost but also introduces complexity in ensuring data integrity and security across the boundary.
 
-The protocol's integration with the ERC-4337 standard for smart contract wallets marks a significant step towards achieving user-friendly and secure wallet solutions. This approach not only simplifies user interactions by removing the necessity for gas management but also opens avenues for advanced wallet functionalities like batch transactions and improved security mechanisms. 
+2. **Substrate Framework Utilization**: The project's use of the Substrate framework for off-chain computation highlighted the versatility of Substrate in supporting complex decentralized applications. It was insightful to see how Substrate's extensibility could be harnessed to build sophisticated off-chain logic that complements the on-chain smart contracts.
 
-**Advanced Security Through WebAuthn**
+3. **Chain Extension Mechanism**: The audit provided a deep dive into the use of chain extensions for extending the functionalities of smart contracts. This mechanism is a powerful tool for bridging smart contracts with off-chain features, yet it requires careful design to maintain security and data consistency.
 
-The utilization of WebAuthn for authentication purposes in `WebAuthn.sol` introduces a level of security typically reserved for traditional web applications into the blockchain domain. This fusion of web standards with blockchain technology not only enhances security but also demonstrates the protocol's commitment to adopting best practices from outside the blockchain world to mitigate common threats such as phishing and key theft.
+4. **Smart Contract Upgradeability**: The project's approach to smart contract upgradeability, ensuring that contracts can evolve over time without compromising on decentralization or security, was an important learning aspect. It emphasized the need for a robust governance mechanism to manage upgrades responsibly.
 
-**Upgradeability with User Sovereignty**
-
-The careful implementation of upgradeability in `CoinbaseSmartWallet.sol` through UUPS showcases a thoughtful approach to maintaining and improving smart contract code while preserving user sovereignty. It serves as a learning point on balancing the need for future-proofing contracts with ensuring that upgrades do not compromise decentralized principles or user trust.
-
+5. **Storage Optimization Techniques**: The strategies employed by Phat Contract for optimizing on-chain storage, including the use of efficient data structures and minimizing unnecessary state changes, were enlightening. These practices are crucial for managing gas costs and ensuring scalability.
 
 
 NOTE: I don't track time while auditing or writing report, so what the time I specified is just a number
