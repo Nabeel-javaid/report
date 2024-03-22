@@ -209,17 +209,16 @@ See code coverage by running this command:
 
 
 ## Approach Taken while auditing the codebase
-When auditing the Phat Contract, I initiated the process with a comprehensive review of the project's documentation to thoroughly understand its architectural design, intended functionalities, and the overall goal. This foundational knowledge set the stage for a more focused and effective code review, allowing me to critically evaluate the implementation against the project's objectives.
+When auditing the Phat Contract, I initiated the process with review of the project's documentation to thoroughly understand its architectural design, intended functionalities, and the overall goal. This foundational knowledge set the stage for a more focused and effective code review, allowing me to evaluate the implementation against the project's objectives.
 
-My approach to the audit was methodical, starting with a deep dive into the smart contracts due to their critical role in defining the project's core functionalities. I meticulously examined the code, focusing on the logic and flow of each function, the security measures in place, and how each piece contributes to the overall system's integrity and performance. Emphasis was placed on identifying areas where the code deviated from best practices or could potentially lead to vulnerabilities.
+My approach to the audit was methodical, starting with a diving into the smart contracts due to their critical role in defining the project's core functionalities. I meticulously examined the code, focusing on the logic and flow of each function, the security measures in place, and how each piece contributes to the overall system's integrity and performance. Looked at placed to identify areas where the code deviated from best practices or could potentially lead to vulnerabilities.
 
 Understanding the importance of the user interactions and data flows within the system, I scrutinized the mechanisms for handling user inputs, data storage, and contract interactions. This included reviewing function modifiers, access controls, and the handling of external calls to ensure robust defense mechanisms against common attack vectors such as reentrancy and overflow/underflow issues.
 
-Given the project's reliance on off-chain computations and interactions with the Substrate runtime, I paid special attention to the integration points and data exchange protocols. Assessing the security and efficiency of these interactions was paramount to ensure the system's resilience against manipulation and unauthorized access.
+Given the project's reliance on off-chain computations and interactions with the Substrate runtime, I paid attention to the integration points and data exchange protocols. Assessing the security and efficiency of these interactions was paramount to ensure the system's resilience against manipulation and unauthorized access.
 
 For each component of the system, from the smart contracts to the off-chain runtime logic, I evaluated the coding standards and documentation quality. Well-documented code and adherence to established coding conventions are crucial for maintaining code quality, facilitating future updates, and ensuring that new developers can easily understand and contribute to the project.
 
-Throughout the audit, I kept a detailed record of my findings, categorizing them by their potential impact on the system's security, efficiency, and functionality. This culminated in a comprehensive report that not only highlighted areas of concern but also offered recommendations for improvement. The report aimed to provide the Phat Contract team with actionable insights to enhance the system's security posture, optimize performance, and align the implementation more closely with the project's goals.
 
 
 ## Other Audit Reports and Automated Findings 
