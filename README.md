@@ -35,7 +35,7 @@ Another key functionality introduced by Phat Contracts is the capability to inte
 
 **Storage Management:**
 - **Storage Access:**
-  - **`storage_get`: Abstracted functionalities for accessing and modifying contract storage, realized through Substrate's storage APIs.
+  - **`storage_get`**: Abstracted functionalities for accessing and modifying contract storage, realized through Substrate's storage APIs.
 
 **Chain Extensions:**
 - **`ChainExtension` Implementation:**
@@ -111,8 +111,6 @@ Overall, I consider the quality of the **Phat Contract Runtime** codebase to be 
 | `runtime/pallet_pink.rs`           | The pallet used to store some custom configuration of the runtime, integrating the Pink Runtime with Substrate's pallet architecture to manage smart contract behaviors and settings.                                                                                                                                        | Incorporates Substrate's pallet system to extend blockchain functionality with custom configurations and behaviors tailored to the needs of the Pink Runtime.                                                                                                                                                                               | Key to customizing and fine-tuning the blockchain's operation to suit the specific requirements of smart contracts running on the Phala Network. Maintenance involves updating configurations and ensuring compatibility with broader runtime updates.                                         |
 | `chain-extension/src/lib.rs` & `chain-extension/src/local_cache.rs` | Defines the chain extension feature implementation, including worker local cache management, facilitating advanced interactions between smart contracts and the blockchain.                                                                                                                                                    | Highlights Rust's capability to extend smart contract functionalities through chain extensions, providing a richer development environment and enabling more complex contract logic.                                                                                                                                                        | Crucial for enriching the smart contract ecosystem with enhanced capabilities and ensuring developers have access to the tools needed for complex applications. Management involves regular enhancements, security checks, and ensuring seamless integration with existing functionalities.    |
 
-This overview reflects a system designed for flexibility, performance, and security, with each component playing a vital role in the ecosystem. The management of these contracts involves a nuanced understanding of blockchain technology, a commitment to security, and a forward-looking approach to feature development and optimization.
-
 
 
 
@@ -120,19 +118,17 @@ This overview reflects a system designed for flexibility, performance, and secur
 
 
 ## Approach Taken while auditing the codebase
-When auditing the Smart Wallet protocol, I initiated the process with a comprehensive review of the project's documentation, focusing on the protocol's objectives, design patterns, and security mechanisms. This foundational understanding was crucial for appreciating the context and complexities of the protocol, particularly its integration with ERC-4337 standards and the innovative use of multi-ownership and WebAuthn technologies for enhanced security.
+When auditing the Phat Contract, I initiated the process with a comprehensive review of the project's documentation to thoroughly understand its architectural design, intended functionalities, and the overall goal. This foundational knowledge set the stage for a more focused and effective code review, allowing me to critically evaluate the implementation against the project's objectives.
 
-After this, I proceeded to analyze the smart contract codebase. Key contracts such as `CoinbaseSmartWallet.sol`, `MultiOwnable.sol`, `ERC1271.sol`, `MagicSpend.sol`, and others were scrutinized in detail. My aim was to understand the flow of transactions, the management of ownership rights, the execution of upgradeability patterns, and the verification processes for signatures and authentication.
+My approach to the audit was methodical, starting with a deep dive into the smart contracts due to their critical role in defining the project's core functionalities. I meticulously examined the code, focusing on the logic and flow of each function, the security measures in place, and how each piece contributes to the overall system's integrity and performance. Emphasis was placed on identifying areas where the code deviated from best practices or could potentially lead to vulnerabilities.
 
-Critical to my audit was the identification of security risks across various components. This included assessing vulnerability to common threats like reentrancy, improper handling of external calls, and potential flaws in signature verification processes. The unique aspects of the protocol, such as the cross-chain functionality and the handling of cryptographic operations in `FCL.sol`, required careful evaluation to ensure they did not introduce unintended security weaknesses.
+Understanding the importance of the user interactions and data flows within the system, I scrutinized the mechanisms for handling user inputs, data storage, and contract interactions. This included reviewing function modifiers, access controls, and the handling of external calls to ensure robust defense mechanisms against common attack vectors such as reentrancy and overflow/underflow issues.
 
-Particular attention was given to the protocol’s upgradeability mechanism and its interaction with the `MagicSpend.sol` contract for gas management and fund withdrawals. I assessed how these features could be exploited or could lead to loss of funds if not properly secured. Additionally, I evaluated the robustness of multi-ownership management, ensuring that the protocol adequately protected against unauthorized changes in ownership or contract logic.
+Given the project's reliance on off-chain computations and interactions with the Substrate runtime, I paid special attention to the integration points and data exchange protocols. Assessing the security and efficiency of these interactions was paramount to ensure the system's resilience against manipulation and unauthorized access.
 
-The audit also involved a thorough review of the protocol’s test suite. I looked for test coverage completeness, focusing on how well the tests addressed edge cases, potential race conditions, and the integrity of key functionalities like wallet creation, transaction execution, and owner management. Recommendations for additional tests or modifications were made to cover any identified gaps.
+For each component of the system, from the smart contracts to the off-chain runtime logic, I evaluated the coding standards and documentation quality. Well-documented code and adherence to established coding conventions are crucial for maintaining code quality, facilitating future updates, and ensuring that new developers can easily understand and contribute to the project.
 
-In conclusion, the approach taken while auditing the Smart Wallet protocol was thorough and multi-faceted, blending theoretical analysis with practical security assessments. The goal was to ensure the protocol's resilience against attacks, its compliance with Ethereum standards, and its reliability as a secure and user-friendly smart wallet.
-
-
+Throughout the audit, I kept a detailed record of my findings, categorizing them by their potential impact on the system's security, efficiency, and functionality. This culminated in a comprehensive report that not only highlighted areas of concern but also offered recommendations for improvement. The report aimed to provide the Phat Contract team with actionable insights to enhance the system's security posture, optimize performance, and align the implementation more closely with the project's goals.
 
 
 
