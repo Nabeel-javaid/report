@@ -260,7 +260,7 @@ Centralization could undermine the network's security, privacy, and decentralize
 
 ### Technical Risks
 
-**Smart Contract Vulnerabilities:** Bugs or logical errors in the smart contracts can lead to loss of funds, unauthorized access, or unintended behavior. Given the complexity of contracts like the Shrine, interest rate models, and oracle interactions, the attack surface is significant.
+**Smart Contract Vulnerabilities:** Bugs or logical errors in the smart contracts can lead to loss of funds, unauthorized access, or unintended behavior.
 
 **Scalability Concerns:** As transaction volumes grow, the platform must scale without compromising performance or security.
 
