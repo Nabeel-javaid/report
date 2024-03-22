@@ -90,8 +90,8 @@ Overall, I consider the quality of the **Phat Contract Runtime** codebase to be 
 
 The most important summary in analyzing the code base is the stacking of codes to be analyzed.
 In this way, many predictions can be made, including the difficulty levels of the contracts, which one is more important for the auditor, the features they contain that are important for security (payable functions, uses assembly, etc.), the audit cost of the project, and the time to be allocated to the audit;
-Uses Consensys Solidity Metrics
 
+using [vscode-counter](https://github.com/uctakeoff/vscode-counter)
 
 
 -  **filename:** This field indicates the language in which smart contracts are written
@@ -106,7 +106,6 @@ Uses Consensys Solidity Metrics
 
 -  **Total:** This field indicates the number of Total lines (code + comment + blank) in the smart contract.
 
-## Analysis of sloc of `core` contracts
 
 ### Languages
 | language | files | code | comment | blank | total |
@@ -116,16 +115,11 @@ Uses Consensys Solidity Metrics
 ### Directories
 | path | files | code | comment | blank | total |
 | :--- | ---: | ---: | ---: | ---: | ---: |
-| . | 13 | 2,745 | 259 | 406 | 3,410 |
 | capi | 2 | 310 | 94 | 68 | 472 |
-| capi/src | 2 | 310 | 94 | 68 | 472 |
 | capi/src (Files) | 1 | 86 | 17 | 13 | 116 |
 | capi/src/v1 | 1 | 224 | 77 | 55 | 356 |
 | chain-extension | 2 | 829 | 19 | 123 | 971 |
-| chain-extension/src | 2 | 829 | 19 | 123 | 971 |
-| runtime | 9 | 1,606 | 146 | 215 | 1,967 |
 | runtime/src | 9 | 1,606 | 146 | 215 | 1,967 |
-| runtime/src (Files) | 2 | 408 | 52 | 41 | 501 |
 | runtime/src/capi | 3 | 418 | 43 | 50 | 511 |
 | runtime/src/runtime | 2 | 608 | 15 | 100 | 723 |
 | runtime/src/storage | 2 | 172 | 36 | 24 | 232 |
@@ -138,7 +132,7 @@ On average there are **3.66** code lines per comment (lower=better).
 
 
 
-## e) Test analysis
+## Test analysis
 
 **Setup**
 
@@ -178,6 +172,10 @@ See code coverage by running this command:
 -   1) It can be said that the developers of the project did a quality job, there is a test structure consisting of tests with quality content. In particular, tests have been written successfully.
 
 -   2) Overall line coverage percentage provided by your tests : 90%
+ 
+### What can be done better:
+-  1): It is recommended to increase the test coverage to 100% so make sure that each and every line is battle tested.
+
 
 
 
@@ -230,8 +228,18 @@ For each component of the system, from the smart contracts to the off-chain runt
 Throughout the audit, I kept a detailed record of my findings, categorizing them by their potential impact on the system's security, efficiency, and functionality. This culminated in a comprehensive report that not only highlighted areas of concern but also offered recommendations for improvement. The report aimed to provide the Phat Contract team with actionable insights to enhance the system's security posture, optimize performance, and align the implementation more closely with the project's goals.
 
 
+## Other Audit Reports and Automated Findings 
+
+**Previous Audits**
+There isn't any previous audit (mentioned on C4 overview)
+
+**Known issues and risks**: Since it was a rust audt there wasn't any Bot race.
 
 
+
+
+
+## Full representation of the project’s risk model
 
 
 ### Systemic Risks
@@ -242,6 +250,20 @@ The Phat Contract project, while innovative, presents several systemic risks tha
 2. **Chain Extension Execution Risk**: The reliance on chain extensions for executing off-chain computations introduces a risk of inconsistent execution environments or failures in the external infrastructure. This dependency not only increases the attack surface but also adds a layer of uncertainty regarding the execution of critical contract logic.
 
 3. **Smart Contract Interaction Risks**: The system involves complex interactions between various smart contracts, where contracts call each other or interact in a composable manner. This interconnectivity increases the risk of unforeseen vulnerabilities emerging from contract interactions, potentially leading to exploits that can affect multiple components of the system.
+
+### Centalization Risks:
+Centralization could undermine the network's security, privacy, and decentralized ethos. Here are some centralization risks identified within the Phala protocol:
+
+1. **Validator Concentration**: A small number of validators controlling a significant portion of the network poses a risk to the security and integrity of the blockchain. It could lead to censorship issues or collusion in governance decisions.
+
+2. **Off-chain Worker (OCW) Centralization**: The reliance on off-chain workers for processing confidential smart contracts introduces a risk if a few entities operate a majority of these workers. It could compromise the confidentiality and integrity of the computation.
+
+3. **TEE Hardware Manufacturer Dependence**: The reliance on Trusted Execution Environment (TEE) technology means that hardware manufacturers could potentially become central points of failure or influence. Any vulnerabilities in TEEs or monopolistic control by manufacturers could impact network security.
+
+4. **Governance Dominance**: If a small group of stakeholders or entities gains disproportionate control over the governance process, they could steer the network in ways that serve their interests over the wider community. This includes decisions on protocol upgrades, treasury allocations, and feature implementations.
+
+
+
 
 ### Technical Risks
 
