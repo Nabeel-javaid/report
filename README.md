@@ -86,7 +86,7 @@ Overall, I consider the quality of the **Phat Contract Runtime** codebase to be 
 
 
 
-## d) Analysis of the code base
+## Analysis of the code base
 
 The most important summary in analyzing the code base is the stacking of codes to be analyzed.
 In this way, many predictions can be made, including the difficulty levels of the contracts, which one is more important for the auditor, the features they contain that are important for security (payable functions, uses assembly, etc.), the audit cost of the project, and the time to be allocated to the audit;
@@ -154,12 +154,6 @@ cargo test
 ```
 
 
-
-To print the gas report of contracts I simply ran:
-
-```bash
-forge test --gas-report
-```
 
 See code coverage by running this command:
 
