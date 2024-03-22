@@ -86,6 +86,98 @@ Overall, I consider the quality of the **Phat Contract Runtime** codebase to be 
 
 
 
+## d) Analysis of the code base
+
+The most important summary in analyzing the code base is the stacking of codes to be analyzed.
+In this way, many predictions can be made, including the difficulty levels of the contracts, which one is more important for the auditor, the features they contain that are important for security (payable functions, uses assembly, etc.), the audit cost of the project, and the time to be allocated to the audit;
+Uses Consensys Solidity Metrics
+
+
+
+-  **filename:** This field indicates the language in which smart contracts are written
+
+-  **Language:** Language in which the codebase is written.
+
+-  **Code:** This field indicates the number of actual lines of code in the smart contract.
+
+-  **Comment:** This field indicates the number of lines in the smart contract.
+
+-  **Blank:** This field indicates the number of Blank lines in the smart contract.
+
+-  **Total:** This field indicates the number of Total lines (code + comment + blank) in the smart contract.
+
+## Analysis of sloc of `core` contracts
+
+### Languages
+| language | files | code | comment | blank | total |
+| :--- | ---: | ---: | ---: | ---: | ---: |
+| Rust | 13 | 2,745 | 259 | 406 | 3,410 |
+
+### Directories
+| path | files | code | comment | blank | total |
+| :--- | ---: | ---: | ---: | ---: | ---: |
+| . | 13 | 2,745 | 259 | 406 | 3,410 |
+| capi | 2 | 310 | 94 | 68 | 472 |
+| capi/src | 2 | 310 | 94 | 68 | 472 |
+| capi/src (Files) | 1 | 86 | 17 | 13 | 116 |
+| capi/src/v1 | 1 | 224 | 77 | 55 | 356 |
+| chain-extension | 2 | 829 | 19 | 123 | 971 |
+| chain-extension/src | 2 | 829 | 19 | 123 | 971 |
+| runtime | 9 | 1,606 | 146 | 215 | 1,967 |
+| runtime/src | 9 | 1,606 | 146 | 215 | 1,967 |
+| runtime/src (Files) | 2 | 408 | 52 | 41 | 501 |
+| runtime/src/capi | 3 | 418 | 43 | 50 | 511 |
+| runtime/src/runtime | 2 | 608 | 15 | 100 | 723 |
+| runtime/src/storage | 2 | 172 | 36 | 24 | 232 |
+
+
+
+## Comment-to-Source Ratio:
+
+On average there are **3.66** code lines per comment (lower=better).
+
+
+
+## e) Test analysis
+
+**Setup**
+
+Clone with recurse:
+
+```bash
+https://github.com/code-423n4/2024-03-phala-network
+```
+
+Getting into the directory
+```bash
+cd 2024-03-phala-network/phala-blockchain/crates/pink/runtime
+```
+
+I ran this command to execute all the test scripts:
+
+```bash
+cargo test
+```
+
+
+
+To print the gas report of contracts I simply ran:
+
+```bash
+forge test --gas-report
+```
+
+See code coverage by running this command:
+
+```bash
+./cov.sh
+```
+
+
+### What did the project do differently? ;
+-   1) It can be said that the developers of the project did a quality job, there is a test structure consisting of tests with quality content. In particular, tests have been written successfully.
+
+-   2) Overall line coverage percentage provided by your tests : 90%
 
 
 
