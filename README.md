@@ -25,42 +25,70 @@ Central to Taiko's design is the Based Contestable Rollup (BCR) architecture, wh
 
 ## System Overview 
 
-**Breakdown of the Functions**
+### Lib1559Math.sol
+- **Purpose**: Implements mathematical operations for EIP-1559 gas fee calculations.
+- **Breakdown of Functions**:
+  - **Calculation**: `basefee` (Calculates the base fee per gas), `_ethQty` (Private function for internal calculations).
 
-**Key Functions:**
-- **Initialization & Configuration:**
-  - **`__pink_runtime_init`**: Initializes the Pink Runtime with configuration parameters.
-  - **`on_genesis`**: Sets up initial state at the genesis block.
-  - **`on_runtime_upgrade`**: Handles state migration and updates during runtime upgrades.
+### TaikoL2.sol
+- **Purpose**: Handles Layer 2 operations, including EIP-1559 gas pricing and cross-layer message verification.
+- **Breakdown of Functions**:
+  - **Initialization & Configuration**: `init` (Initializes contract settings), `getConfig` (Retrieves EIP-1559 configurations).
+  - **L1 Block Anchoring**: `anchor` (Anchors the latest L1 block details to L2).
+  - **Withdrawal**: `withdraw` (Withdraws token or Ether from the contract).
 
-**Execution & Interaction:**
-- **`instantiate`**: Deploys a new ink! smart contract instance.
-- **`bare_call`**: Calls a method on a deployed contract.
-- **`execute_with` & `execute_mut`**: Executes provided closures with access to the runtime's state, mutable and immutable versions respectively.
+### SignalService.sol
+- **Purpose**: Manages signals for cross-chain communication.
+- **Breakdown of Functions**:
+  - **Signal Sending and Syncing**: `sendSignal`, `syncChainData` (Sends and syncs chain data across chains).
+  - **Proof Verification**: `proveSignalReceived` (Verifies signal receipt with Merkle proof).
 
-**Storage Management:**
-- **Storage Access:**
-  - **`storage_get`**: Abstracted functionalities for accessing and modifying contract storage, realized through Substrate's storage APIs.
+### Bridge.sol
+- **Purpose**: Manages the bridging of assets and messages across chains.
+- **Breakdown of Functions**:
+  - **Message Handling**: `sendMessage` (Sends a cross-chain message), `processMessage` (Processes an incoming message), `recallMessage` (Recalls a sent message), `retryMessage` (Retries sending a message).
 
-**Chain Extensions:**
-- **`ChainExtension` Implementation:**
-  - **`call` & `call_mut`**: Methods for executing chain extension calls, allowing contracts to interact with runtime-specific functionalities.
-  - **`PinkExtension`**: A specific implementation of the `ChainExtension` interface providing extended functionalities to contracts.
+### BridgedERC20.sol
+- **Purpose**: Represents bridged ERC20 tokens.
+- **Breakdown of Functions**:
+  - **Token Operations**: Inherits ERC20 functions with added cross-chain bridging capabilities like `mint` and `burn`.
 
-**Utility & Helper Functions:**
-- **`dispatch`**: A general dispatcher for routing calls to the appropriate functions based on identifiers.
-- **`mask_low_bits`**: Utilized within the runtime for privacy or security related data processing.
-- **`sanitize_args` & `handle_deposit`**: Functions to ensure the validity and security of transaction arguments and handle token deposits within contract calls.
+### BridgedERC721.sol
+- **Purpose**: Represents bridged ERC721 tokens.
+- **Breakdown of Functions**:
+  - **NFT Operations**: Inherits ERC721 functions with added bridging capabilities like `mint` and `burn`.
 
-**Cross-Contract Communication:**
-- **`cross_call` & `cross_call_mut`**: Facilitate direct interactions between different contracts within the Pink Runtime environment.
+### BridgedERC1155.sol
+- **Purpose**: Represents bridged ERC1155 tokens.
+- **Breakdown of Functions**:
+  - **Batch Operations**: Inherits ERC1155 functions with added bridging capabilities like `mintBatch` and `burn`.
 
+### ERC1155Vault.sol
+- **Purpose**: Vaults for ERC1155 tokens enabling cross-chain operations.
+- **Breakdown of Functions**:
+  - **Token Sending**: `sendToken` (Prepares and sends tokens across chains).
+  - **Message Handling**: `onMessageInvocation` (Handles incoming bridge messages).
 
-**OCalls and ECalls:**
-- **`__pink_runtime_init`** initializes runtime with given ocall pointers, setting up the environment for external calls.
-- **`ecall` & `ocall` Functions**: Facilitate the execution of external calls out of the wasm environment, enabling interactions with the blockchain node or external data sources.
+### ERC20Vault.sol
+- **Purpose**: Vaults for ERC20 tokens enabling cross-chain operations.
+- **Breakdown of Functions**:
+  - **Token Sending and Handling**: Similar to ERC1155Vault but tailored for ERC20 tokens.
 
-Each function plays a vital role in ensuring that contracts deployed on the Pink Runtime can operate securely, interact with external data.
+### ERC721Vault.sol
+- **Purpose**: Vaults for ERC721 tokens enabling cross-chain operations.
+- **Breakdown of Functions**:
+  - **Token Sending and Handling**: Similar to ERC1155Vault but tailored for ERC721 tokens.
+
+### SgxVerifier.sol
+- **Purpose**: Verifies SGX attestations and proofs on-chain.
+- **Breakdown of Functions**:
+  - **Instance Management**: `addInstances` (Adds new SGX instances), `deleteInstances` (Deletes SGX instances), `registerInstance` (Registers a new SGX instance with attestation).
+  - **Proof Verification**: `verifyProof` (Verifies a proof against registered SGX instances).
+
+### TimelockTokenPool.sol
+- **Purpose**: Manages timelocked tokens for different roles and individuals.
+- **Breakdown of Functions**:
+  - **Grant Management**: `grant` (Allocates tokens with a timelock), `void` (Cancels allocations), `withdraw` (Withdraws unlocked tokens).
 
 
 
@@ -255,36 +283,38 @@ On average there are **2.59** code lines per comment (lower=better).
 
 **Setup**
 
-Clone with recurse:
+Clone using:
 
 ```bash
-https://github.com/code-423n4/2024-03-phala-network
+git clone https://github.com/code-423n4/2024-03-taiko
 ```
 
 Getting into the directory
 ```bash
-cd 2024-03-phala-network/phala-blockchain/crates/pink/runtime
+cd 2024-03-taiko/packages/protocol
 ```
 
-I ran this command to execute all the test scripts:
+I ran this command to install dependencies:
 
 ```bash
-cargo test
+pnpm install
 ```
-
-
-
-See code coverage by running this command:
-
+Then to compile the testcases I ran this:
 ```bash
-./cov.sh
+pnpm compile
 ```
+
+Then for testcases I ran this:
+```bash
+pnpm test
+```
+
 
 
 ### What did the project do differently? ;
 -   1) It can be said that the developers of the project did a quality job, there is a test structure consisting of tests with quality content. In particular, tests have been written successfully.
 
--   2) Overall line coverage percentage provided by your tests : 90%
+-   2) Overall line coverage percentage provided by your tests : 79%
  
 ### What can be done better:
 -  1): It is recommended to increase the test coverage to 100% so make sure that each and every line is battle tested.
