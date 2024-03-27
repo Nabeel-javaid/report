@@ -124,88 +124,84 @@ Total : 85 files,  7611 codes, 2757 comments, 1534 blanks, all 11902 lines
 | [L1/ITaikoL1.sol](/ L1/ITaikoL1.sol) | Solidity | 14 | 17 | 6 | 37 |
 | [L1/TaikoData.sol](/ L1/TaikoData.sol) | Solidity | 124 | 60 | 14 | 198 |
 | [L1/TaikoErrors.sol](/ L1/TaikoErrors.sol) | Solidity | 34 | 8 | 2 | 44 |
-| [ L1/TaikoEvents.sol](/ L1/TaikoEvents.sol) | Solidity | 37 | 43 | 8 | 88 |
-| [ L1/TaikoL1.sol](/ L1/TaikoL1.sol) | Solidity | 149 | 52 | 27 | 228 |
-| [ L1/TaikoToken.sol](/ L1/TaikoToken.sol) | Solidity | 85 | 26 | 14 | 125 |
-| [ L1/gov/TaikoGovernor.sol](/ L1/gov/TaikoGovernor.sol) | Solidity | 121 | 25 | 16 | 162 |
-| [ L1/gov/TaikoTimelockController.sol](/ L1/gov/TaikoTimelockController.sol) | Solidity | 14 | 9 | 5 | 28 |
-| [ L1/hooks/AssignmentHook.sol](/ L1/hooks/AssignmentHook.sol) | Solidity | 119 | 36 | 23 | 178 |
-| [ L1/hooks/IHook.sol](/ L1/hooks/IHook.sol) | Solidity | 11 | 7 | 3 | 21 |
-| [ L1/libs/LibDepositing.sol](/ L1/libs/LibDepositing.sol) | Solidity | 97 | 40 | 17 | 154 |
-| [ L1/libs/LibProposing.sol](/ L1/libs/LibProposing.sol) | Solidity | 188 | 91 | 40 | 319 |
-| [ L1/libs/LibProving.sol](/ L1/libs/LibProving.sol) | Solidity | 243 | 134 | 51 | 428 |
-| [ L1/libs/LibUtils.sol](/ L1/libs/LibUtils.sol) | Solidity | 61 | 18 | 10 | 89 |
-| [ L1/libs/LibVerifying.sol](/ L1/libs/LibVerifying.sol) | Solidity | 162 | 67 | 39 | 268 |
-| [ L1/provers/GuardianProver.sol](/ L1/provers/GuardianProver.sol) | Solidity | 32 | 17 | 8 | 57 |
-| [ L1/provers/Guardians.sol](/ L1/provers/Guardians.sol) | Solidity | 79 | 38 | 25 | 142 |
-| [ L1/tiers/DevnetTierProvider.sol](/ L1/tiers/DevnetTierProvider.sol) | Solidity | 40 | 9 | 9 | 58 |
-| [ L1/tiers/ITierProvider.sol](/ L1/tiers/ITierProvider.sol) | Solidity | 21 | 19 | 10 | 50 |
-| [ L1/tiers/MainnetTierProvider.sol](/ L1/tiers/MainnetTierProvider.sol) | Solidity | 52 | 10 | 10 | 72 |
-| [ L1/tiers/TestnetTierProvider.sol](/ L1/tiers/TestnetTierProvider.sol) | Solidity | 52 | 11 | 10 | 73 |
-| [ L2/CrossChainOwned.sol](/ L2/CrossChainOwned.sol) | Solidity | 45 | 19 | 12 | 76 |
-| [ L2/Lib1559Math.sol](/ L2/Lib1559Math.sol) | Solidity | 33 | 9 | 6 | 48 |
-| [ L2/TaikoL2.sol](/ L2/TaikoL2.sol) | Solidity | 180 | 77 | 42 | 299 |
-| [ L2/TaikoL2EIP1559Configurable.sol](/ L2/TaikoL2EIP1559Configurable.sol) | Solidity | 25 | 12 | 10 | 47 |
-| [ SOLIDITY_STYLE_GUIDE.md](/ SOLIDITY_STYLE_GUIDE.md) | Markdown | 20 | 0 | 17 | 37 |
-| [ automata-attestation/AutomataDcapV3Attestation.sol](/ automata-attestation/AutomataDcapV3Attestation.sol) | Solidity | 360 | 70 | 57 | 487 |
-| [ automata-attestation/README.md](/ automata-attestation/README.md) | Markdown | 3 | 0 | 2 | 5 |
-| [ automata-attestation/interfaces/IAttestation.sol](/ automata-attestation/interfaces/IAttestation.sol) | Solidity | 8 | 3 | 3 | 14 |
-| [ automata-attestation/interfaces/ISigVerifyLib.sol](/ automata-attestation/interfaces/ISigVerifyLib.sol) | Solidity | 68 | 6 | 11 | 85 |
-| [ automata-attestation/lib/EnclaveIdStruct.sol](/ automata-attestation/lib/EnclaveIdStruct.sol) | Solidity | 23 | 3 | 5 | 31 |
-| [ automata-attestation/lib/PEMCertChainLib.sol](/ automata-attestation/lib/PEMCertChainLib.sol) | Solidity | 279 | 38 | 59 | 376 |
-| [ automata-attestation/lib/QuoteV3Auth/V3Parser.sol](/ automata-attestation/lib/QuoteV3Auth/V3Parser.sol) | Solidity | 246 | 10 | 32 | 288 |
-| [ automata-attestation/lib/QuoteV3Auth/V3Struct.sol](/ automata-attestation/lib/QuoteV3Auth/V3Struct.sol) | Solidity | 48 | 7 | 7 | 62 |
-| [ automata-attestation/lib/TCBInfoStruct.sol](/ automata-attestation/lib/TCBInfoStruct.sol) | Solidity | 23 | 3 | 4 | 30 |
-| [ automata-attestation/lib/interfaces/IPEMCertChainLib.sol](/ automata-attestation/lib/interfaces/IPEMCertChainLib.sol) | Solidity | 42 | 3 | 7 | 52 |
-| [ automata-attestation/utils/Asn1Decode.sol](/ automata-attestation/utils/Asn1Decode.sol) | Solidity | 107 | 82 | 23 | 212 |
-| [ automata-attestation/utils/BytesUtils.sol](/ automata-attestation/utils/BytesUtils.sol) | Solidity | 225 | 122 | 28 | 375 |
-| [ automata-attestation/utils/RsaVerify.sol](/ automata-attestation/utils/RsaVerify.sol) | Solidity | 208 | 80 | 32 | 320 |
-| [ automata-attestation/utils/SHA1.sol](/ automata-attestation/utils/SHA1.sol) | Solidity | 166 | 16 | 14 | 196 |
-| [ automata-attestation/utils/SigVerifyLib.sol](/ automata-attestation/utils/SigVerifyLib.sol) | Solidity | 114 | 15 | 14 | 143 |
-| [ automata-attestation/utils/X509DateUtils.sol](/ automata-attestation/utils/X509DateUtils.sol) | Solidity | 63 | 3 | 12 | 78 |
-| [ bridge/Bridge.sol](/ bridge/Bridge.sol) | Solidity | 404 | 115 | 75 | 594 |
-| [ bridge/IBridge.sol](/ bridge/IBridge.sol) | Solidity | 63 | 95 | 22 | 180 |
-| [ bridge/README.md](/ bridge/README.md) | Markdown | 79 | 0 | 27 | 106 |
-| [ common/AddressManager.sol](/ common/AddressManager.sol) | Solidity | 35 | 17 | 10 | 62 |
-| [ common/AddressResolver.sol](/ common/AddressResolver.sol) | Solidity | 60 | 19 | 11 | 90 |
-| [ common/EssentialContract.sol](/ common/EssentialContract.sol) | Solidity | 91 | 26 | 27 | 144 |
-| [ common/IAddressManager.sol](/ common/IAddressManager.sol) | Solidity | 4 | 10 | 2 | 16 |
-| [ common/IAddressResolver.sol](/ common/IAddressResolver.sol) | Solidity | 18 | 22 | 3 | 43 |
-| [ libs/Lib4844.sol](/ libs/Lib4844.sol) | Solidity | 38 | 14 | 10 | 62 |
-| [ libs/LibAddress.sol](/ libs/LibAddress.sol) | Solidity | 55 | 14 | 12 | 81 |
-| [ libs/LibMath.sol](/ libs/LibMath.sol) | Solidity | 9 | 12 | 3 | 24 |
-| [ libs/LibTrieProof.sol](/ libs/LibTrieProof.sol) | Solidity | 36 | 20 | 11 | 67 |
-| [ signal/ISignalService.sol](/ signal/ISignalService.sol) | Solidity | 68 | 65 | 13 | 146 |
-| [ signal/LibSignals.sol](/ signal/LibSignals.sol) | Solidity | 5 | 5 | 3 | 13 |
-| [ signal/SignalService.sol](/ signal/SignalService.sol) | Solidity | 246 | 31 | 37 | 314 |
-| [ team/TimelockTokenPool.sol](/ team/TimelockTokenPool.sol) | Solidity | 159 | 72 | 51 | 282 |
-| [ team/airdrop/ERC20Airdrop.sol](/ team/airdrop/ERC20Airdrop.sol) | Solidity | 40 | 24 | 10 | 74 |
-| [ team/airdrop/ERC20Airdrop2.sol](/ team/airdrop/ERC20Airdrop2.sol) | Solidity | 61 | 41 | 21 | 123 |
-| [ team/airdrop/ERC721Airdrop.sol](/ team/airdrop/ERC721Airdrop.sol) | Solidity | 37 | 18 | 9 | 64 |
-| [ team/airdrop/MerkleClaimable.sol](/ team/airdrop/MerkleClaimable.sol) | Solidity | 65 | 14 | 17 | 96 |
-| [ thirdparty/README.md](/ thirdparty/README.md) | Markdown | 4 | 0 | 3 | 7 |
-| [ thirdparty/nomad-xyz/ExcessivelySafeCall.sol](/ thirdparty/nomad-xyz/ExcessivelySafeCall.sol) | Solidity | 36 | 26 | 3 | 65 |
-| [ thirdparty/optimism/Bytes.sol](/ thirdparty/optimism/Bytes.sol) | Solidity | 70 | 60 | 23 | 153 |
-| [ thirdparty/optimism/rlp/RLPReader.sol](/ thirdparty/optimism/rlp/RLPReader.sol) | Solidity | 191 | 63 | 50 | 304 |
-| [ thirdparty/optimism/rlp/RLPWriter.sol](/ thirdparty/optimism/rlp/RLPWriter.sol) | Solidity | 44 | 19 | 8 | 71 |
-| [ thirdparty/optimism/trie/MerkleTrie.sol](/ thirdparty/optimism/trie/MerkleTrie.sol) | Solidity | 148 | 74 | 29 | 251 |
-| [ thirdparty/optimism/trie/SecureMerkleTrie.sol](/ thirdparty/optimism/trie/SecureMerkleTrie.sol) | Solidity | 32 | 21 | 5 | 58 |
-| [ thirdparty/solmate/LibFixedPointMath.sol](/ thirdparty/solmate/LibFixedPointMath.sol) | Solidity | 35 | 37 | 11 | 83 |
-| [ tokenvault/BaseNFTVault.sol](/ tokenvault/BaseNFTVault.sol) | Solidity | 79 | 56 | 18 | 153 |
-| [ tokenvault/BaseVault.sol](/ tokenvault/BaseVault.sol) | Solidity | 46 | 12 | 10 | 68 |
-| [ tokenvault/BridgedERC1155.sol](/ tokenvault/BridgedERC1155.sol) | Solidity | 91 | 34 | 16 | 141 |
-| [ tokenvault/BridgedERC20.sol](/ tokenvault/BridgedERC20.sol) | Solidity | 128 | 32 | 23 | 183 |
-| [ tokenvault/BridgedERC20Base.sol](/ tokenvault/BridgedERC20Base.sol) | Solidity | 56 | 30 | 19 | 105 |
-| [ tokenvault/BridgedERC721.sol](/ tokenvault/BridgedERC721.sol) | Solidity | 83 | 31 | 15 | 129 |
-| [ tokenvault/ERC1155Vault.sol](/ tokenvault/ERC1155Vault.sol) | Solidity | 230 | 62 | 31 | 323 |
-| [ tokenvault/ERC20Vault.sol](/ tokenvault/ERC20Vault.sol) | Solidity | 291 | 95 | 49 | 435 |
-| [ tokenvault/ERC721Vault.sol](/ tokenvault/ERC721Vault.sol) | Solidity | 193 | 35 | 31 | 259 |
-| [ tokenvault/IBridgedERC20.sol](/ tokenvault/IBridgedERC20.sol) | Solidity | 7 | 18 | 5 | 30 |
-| [ tokenvault/LibBridgedToken.sol](/ tokenvault/LibBridgedToken.sol) | Solidity | 52 | 5 | 7 | 64 |
-| [ tokenvault/adapters/USDCAdapter.sol](/ tokenvault/adapters/USDCAdapter.sol) | Solidity | 22 | 21 | 9 | 52 |
-| [ verifiers/GuardianVerifier.sol](/ verifiers/GuardianVerifier.sol) | Solidity | 23 | 7 | 6 | 36 |
-| [ verifiers/IVerifier.sol](/ verifiers/IVerifier.sol) | Solidity | 19 | 8 | 4 | 31 |
-| [ verifiers/SgxVerifier.sol](/ verifiers/SgxVerifier.sol) | Solidity | 137 | 62 | 41 | 240 |
+| [L1/TaikoEvents.sol](/ L1/TaikoEvents.sol) | Solidity | 37 | 43 | 8 | 88 |
+| [L1/TaikoL1.sol](/ L1/TaikoL1.sol) | Solidity | 149 | 52 | 27 | 228 |
+| [L1/TaikoToken.sol](/ L1/TaikoToken.sol) | Solidity | 85 | 26 | 14 | 125 |
+| [L1/gov/TaikoGovernor.sol](/ L1/gov/TaikoGovernor.sol) | Solidity | 121 | 25 | 16 | 162 |
+| [L1/gov/TaikoTimelockController.sol](/ L1/gov/TaikoTimelockController.sol) | Solidity | 14 | 9 | 5 | 28 |
+| [L1/hooks/AssignmentHook.sol](/ L1/hooks/AssignmentHook.sol) | Solidity | 119 | 36 | 23 | 178 |
+| [L1/hooks/IHook.sol](/ L1/hooks/IHook.sol) | Solidity | 11 | 7 | 3 | 21 |
+| [L1/libs/LibDepositing.sol](/ L1/libs/LibDepositing.sol) | Solidity | 97 | 40 | 17 | 154 |
+| [L1/libs/LibProposing.sol](/ L1/libs/LibProposing.sol) | Solidity | 188 | 91 | 40 | 319 |
+| [L1/libs/LibProving.sol](/ L1/libs/LibProving.sol) | Solidity | 243 | 134 | 51 | 428 |
+| [L1/libs/LibUtils.sol](/ L1/libs/LibUtils.sol) | Solidity | 61 | 18 | 10 | 89 |
+| [L1/libs/LibVerifying.sol](/ L1/libs/LibVerifying.sol) | Solidity | 162 | 67 | 39 | 268 |
+| [L1/provers/GuardianProver.sol](/ L1/provers/GuardianProver.sol) | Solidity | 32 | 17 | 8 | 57 |
+| [L1/provers/Guardians.sol](/ L1/provers/Guardians.sol) | Solidity | 79 | 38 | 25 | 142 |
+| [L1/tiers/DevnetTierProvider.sol](/ L1/tiers/DevnetTierProvider.sol) | Solidity | 40 | 9 | 9 | 58 |
+| [L1/tiers/ITierProvider.sol](/ L1/tiers/ITierProvider.sol) | Solidity | 21 | 19 | 10 | 50 |
+| [L1/tiers/MainnetTierProvider.sol](/ L1/tiers/MainnetTierProvider.sol) | Solidity | 52 | 10 | 10 | 72 |
+| [L1/tiers/TestnetTierProvider.sol](/ L1/tiers/TestnetTierProvider.sol) | Solidity | 52 | 11 | 10 | 73 |
+| [L2/CrossChainOwned.sol](/ L2/CrossChainOwned.sol) | Solidity | 45 | 19 | 12 | 76 |
+| [L2/Lib1559Math.sol](/ L2/Lib1559Math.sol) | Solidity | 33 | 9 | 6 | 48 |
+| [L2/TaikoL2.sol](/ L2/TaikoL2.sol) | Solidity | 180 | 77 | 42 | 299 |
+| [L2/TaikoL2EIP1559Configurable.sol](/ L2/TaikoL2EIP1559Configurable.sol) | Solidity | 25 | 12 | 10 | 47 |
+| [automata-attestation/AutomataDcapV3Attestation.sol](/ automata-attestation/AutomataDcapV3Attestation.sol) | Solidity | 360 | 70 | 57 | 487 |
+| [automata-attestation/interfaces/IAttestation.sol](/ automata-attestation/interfaces/IAttestation.sol) | Solidity | 8 | 3 | 3 | 14 |
+| [automata-attestation/interfaces/ISigVerifyLib.sol](/ automata-attestation/interfaces/ISigVerifyLib.sol) | Solidity | 68 | 6 | 11 | 85 |
+| [automata-attestation/lib/EnclaveIdStruct.sol](/ automata-attestation/lib/EnclaveIdStruct.sol) | Solidity | 23 | 3 | 5 | 31 |
+| [automata-attestation/lib/PEMCertChainLib.sol](/ automata-attestation/lib/PEMCertChainLib.sol) | Solidity | 279 | 38 | 59 | 376 |
+| [automata-attestation/lib/QuoteV3Auth/V3Parser.sol](/ automata-attestation/lib/QuoteV3Auth/V3Parser.sol) | Solidity | 246 | 10 | 32 | 288 |
+| [automata-attestation/lib/QuoteV3Auth/V3Struct.sol](/ automata-attestation/lib/QuoteV3Auth/V3Struct.sol) | Solidity | 48 | 7 | 7 | 62 |
+| [automata-attestation/lib/TCBInfoStruct.sol](/ automata-attestation/lib/TCBInfoStruct.sol) | Solidity | 23 | 3 | 4 | 30 |
+| [automata-attestation/lib/interfaces/IPEMCertChainLib.sol](/ automata-attestation/lib/interfaces/IPEMCertChainLib.sol) | Solidity | 42 | 3 | 7 | 52 |
+| [automata-attestation/utils/Asn1Decode.sol](/ automata-attestation/utils/Asn1Decode.sol) | Solidity | 107 | 82 | 23 | 212 |
+| [automata-attestation/utils/BytesUtils.sol](/ automata-attestation/utils/BytesUtils.sol) | Solidity | 225 | 122 | 28 | 375 |
+| [automata-attestation/utils/RsaVerify.sol](/ automata-attestation/utils/RsaVerify.sol) | Solidity | 208 | 80 | 32 | 320 |
+| [automata-attestation/utils/SHA1.sol](/ automata-attestation/utils/SHA1.sol) | Solidity | 166 | 16 | 14 | 196 |
+| [automata-attestation/utils/SigVerifyLib.sol](/ automata-attestation/utils/SigVerifyLib.sol) | Solidity | 114 | 15 | 14 | 143 |
+| [automata-attestation/utils/X509DateUtils.sol](/ automata-attestation/utils/X509DateUtils.sol) | Solidity | 63 | 3 | 12 | 78 |
+| [bridge/Bridge.sol](/ bridge/Bridge.sol) | Solidity | 404 | 115 | 75 | 594 |
+| [bridge/IBridge.sol](/ bridge/IBridge.sol) | Solidity | 63 | 95 | 22 | 180 |
+| [common/AddressManager.sol](/ common/AddressManager.sol) | Solidity | 35 | 17 | 10 | 62 |
+| [common/AddressResolver.sol](/ common/AddressResolver.sol) | Solidity | 60 | 19 | 11 | 90 |
+| [common/EssentialContract.sol](/ common/EssentialContract.sol) | Solidity | 91 | 26 | 27 | 144 |
+| [common/IAddressManager.sol](/ common/IAddressManager.sol) | Solidity | 4 | 10 | 2 | 16 |
+| [common/IAddressResolver.sol](/ common/IAddressResolver.sol) | Solidity | 18 | 22 | 3 | 43 |
+| [libs/Lib4844.sol](/ libs/Lib4844.sol) | Solidity | 38 | 14 | 10 | 62 |
+| [libs/LibAddress.sol](/ libs/LibAddress.sol) | Solidity | 55 | 14 | 12 | 81 |
+| [libs/LibMath.sol](/ libs/LibMath.sol) | Solidity | 9 | 12 | 3 | 24 |
+| [libs/LibTrieProof.sol](/ libs/LibTrieProof.sol) | Solidity | 36 | 20 | 11 | 67 |
+| [signal/ISignalService.sol](/ signal/ISignalService.sol) | Solidity | 68 | 65 | 13 | 146 |
+| [signal/LibSignals.sol](/ signal/LibSignals.sol) | Solidity | 5 | 5 | 3 | 13 |
+| [signal/SignalService.sol](/ signal/SignalService.sol) | Solidity | 246 | 31 | 37 | 314 |
+| [team/TimelockTokenPool.sol](/ team/TimelockTokenPool.sol) | Solidity | 159 | 72 | 51 | 282 |
+| [team/airdrop/ERC20Airdrop.sol](/ team/airdrop/ERC20Airdrop.sol) | Solidity | 40 | 24 | 10 | 74 |
+| [team/airdrop/ERC20Airdrop2.sol](/ team/airdrop/ERC20Airdrop2.sol) | Solidity | 61 | 41 | 21 | 123 |
+| [team/airdrop/ERC721Airdrop.sol](/ team/airdrop/ERC721Airdrop.sol) | Solidity | 37 | 18 | 9 | 64 |
+| [team/airdrop/MerkleClaimable.sol](/ team/airdrop/MerkleClaimable.sol) | Solidity | 65 | 14 | 17 | 96 |
+| [thirdparty/nomad-xyz/ExcessivelySafeCall.sol](/ thirdparty/nomad-xyz/ExcessivelySafeCall.sol) | Solidity | 36 | 26 | 3 | 65 |
+| [thirdparty/optimism/Bytes.sol](/ thirdparty/optimism/Bytes.sol) | Solidity | 70 | 60 | 23 | 153 |
+| [thirdparty/optimism/rlp/RLPReader.sol](/ thirdparty/optimism/rlp/RLPReader.sol) | Solidity | 191 | 63 | 50 | 304 |
+| [thirdparty/optimism/rlp/RLPWriter.sol](/ thirdparty/optimism/rlp/RLPWriter.sol) | Solidity | 44 | 19 | 8 | 71 |
+| [thirdparty/optimism/trie/MerkleTrie.sol](/ thirdparty/optimism/trie/MerkleTrie.sol) | Solidity | 148 | 74 | 29 | 251 |
+| [thirdparty/optimism/trie/SecureMerkleTrie.sol](/ thirdparty/optimism/trie/SecureMerkleTrie.sol) | Solidity | 32 | 21 | 5 | 58 |
+| [thirdparty/solmate/LibFixedPointMath.sol](/ thirdparty/solmate/LibFixedPointMath.sol) | Solidity | 35 | 37 | 11 | 83 |
+| [tokenvault/BaseNFTVault.sol](/ tokenvault/BaseNFTVault.sol) | Solidity | 79 | 56 | 18 | 153 |
+| [tokenvault/BaseVault.sol](/ tokenvault/BaseVault.sol) | Solidity | 46 | 12 | 10 | 68 |
+| [tokenvault/BridgedERC1155.sol](/ tokenvault/BridgedERC1155.sol) | Solidity | 91 | 34 | 16 | 141 |
+| [tokenvault/BridgedERC20.sol](/ tokenvault/BridgedERC20.sol) | Solidity | 128 | 32 | 23 | 183 |
+| [tokenvault/BridgedERC20Base.sol](/ tokenvault/BridgedERC20Base.sol) | Solidity | 56 | 30 | 19 | 105 |
+| [tokenvault/BridgedERC721.sol](/ tokenvault/BridgedERC721.sol) | Solidity | 83 | 31 | 15 | 129 |
+| [tokenvault/ERC1155Vault.sol](/ tokenvault/ERC1155Vault.sol) | Solidity | 230 | 62 | 31 | 323 |
+| [tokenvault/ERC20Vault.sol](/ tokenvault/ERC20Vault.sol) | Solidity | 291 | 95 | 49 | 435 |
+| [tokenvault/ERC721Vault.sol](/ tokenvault/ERC721Vault.sol) | Solidity | 193 | 35 | 31 | 259 |
+| [tokenvault/IBridgedERC20.sol](/ tokenvault/IBridgedERC20.sol) | Solidity | 7 | 18 | 5 | 30 |
+| [tokenvault/LibBridgedToken.sol](/ tokenvault/LibBridgedToken.sol) | Solidity | 52 | 5 | 7 | 64 |
+| [tokenvault/adapters/USDCAdapter.sol](/ tokenvault/adapters/USDCAdapter.sol) | Solidity | 22 | 21 | 9 | 52 |
+| [verifiers/GuardianVerifier.sol](/ verifiers/GuardianVerifier.sol) | Solidity | 23 | 7 | 6 | 36 |
+| [verifiers/IVerifier.sol](/ verifiers/IVerifier.sol) | Solidity | 19 | 8 | 4 | 31 |
+| [verifiers/SgxVerifier.sol](/ verifiers/SgxVerifier.sol) | Solidity | 137 | 62 | 41 | 240 |
 
 
 
