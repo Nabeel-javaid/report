@@ -146,9 +146,7 @@ Total : 85 files,  7611 codes, 2757 comments, 1534 blanks, all 11902 lines
 | [L2/Lib1559Math.sol](/L2/Lib1559Math.sol) | Solidity | 33 | 9 | 6 | 48 |
 | [L2/TaikoL2.sol](/L2/TaikoL2.sol) | Solidity | 180 | 77 | 42 | 299 |
 | [L2/TaikoL2EIP1559Configurable.sol](/L2/TaikoL2EIP1559Configurable.sol) | Solidity | 25 | 12 | 10 | 47 |
-| [SOLIDITY_STYLE_GUIDE.md](/SOLIDITY_STYLE_GUIDE.md) | Markdown | 20 | 0 | 17 | 37 |
 | [automata-attestation/AutomataDcapV3Attestation.sol](/automata-attestation/AutomataDcapV3Attestation.sol) | Solidity | 360 | 70 | 57 | 487 |
-| [automata-attestation/README.md](/automata-attestation/README.md) | Markdown | 3 | 0 | 2 | 5 |
 | [automata-attestation/interfaces/IAttestation.sol](/automata-attestation/interfaces/IAttestation.sol) | Solidity | 8 | 3 | 3 | 14 |
 | [automata-attestation/interfaces/ISigVerifyLib.sol](/automata-attestation/interfaces/ISigVerifyLib.sol) | Solidity | 68 | 6 | 11 | 85 |
 | [automata-attestation/lib/EnclaveIdStruct.sol](/automata-attestation/lib/EnclaveIdStruct.sol) | Solidity | 23 | 3 | 5 | 31 |
@@ -165,7 +163,6 @@ Total : 85 files,  7611 codes, 2757 comments, 1534 blanks, all 11902 lines
 | [automata-attestation/utils/X509DateUtils.sol](/automata-attestation/utils/X509DateUtils.sol) | Solidity | 63 | 3 | 12 | 78 |
 | [bridge/Bridge.sol](/bridge/Bridge.sol) | Solidity | 404 | 115 | 75 | 594 |
 | [bridge/IBridge.sol](/bridge/IBridge.sol) | Solidity | 63 | 95 | 22 | 180 |
-| [bridge/README.md](/bridge/README.md) | Markdown | 79 | 0 | 27 | 106 |
 | [common/AddressManager.sol](/common/AddressManager.sol) | Solidity | 35 | 17 | 10 | 62 |
 | [common/AddressResolver.sol](/common/AddressResolver.sol) | Solidity | 60 | 19 | 11 | 90 |
 | [common/EssentialContract.sol](/common/EssentialContract.sol) | Solidity | 91 | 26 | 27 | 144 |
@@ -183,7 +180,6 @@ Total : 85 files,  7611 codes, 2757 comments, 1534 blanks, all 11902 lines
 | [team/airdrop/ERC20Airdrop2.sol](/team/airdrop/ERC20Airdrop2.sol) | Solidity | 61 | 41 | 21 | 123 |
 | [team/airdrop/ERC721Airdrop.sol](/team/airdrop/ERC721Airdrop.sol) | Solidity | 37 | 18 | 9 | 64 |
 | [team/airdrop/MerkleClaimable.sol](/team/airdrop/MerkleClaimable.sol) | Solidity | 65 | 14 | 17 | 96 |
-| [thirdparty/README.md](/thirdparty/README.md) | Markdown | 4 | 0 | 3 | 7 |
 | [thirdparty/nomad-xyz/ExcessivelySafeCall.sol](/thirdparty/nomad-xyz/ExcessivelySafeCall.sol) | Solidity | 36 | 26 | 3 | 65 |
 | [thirdparty/optimism/Bytes.sol](/thirdparty/optimism/Bytes.sol) | Solidity | 70 | 60 | 23 | 153 |
 | [thirdparty/optimism/rlp/RLPReader.sol](/thirdparty/optimism/rlp/RLPReader.sol) | Solidity | 191 | 63 | 50 | 304 |
