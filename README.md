@@ -212,8 +212,119 @@ The Taiko protocol introduces a novel concept called Based Contestable Rollup (B
 6. **Finalization:**
    - Once a block successfully passes the contestation period without challenges or after a challenge has been resolved, the block is finalized. The state transitions within are considered valid, and the block is added to the blockchain.
 
+<br/>
+
+[![download-2.png](https://i.postimg.cc/kGvs8kHg/download-2.png)](https://postimg.cc/QKVcZns2)
 
 
+Token Bridging and Asset Management within Taiko is a fundamental aspect that facilitates the seamless transfer and management of assets across different layers (L1, L2, L3) and potentially across different blockchains. This process ensures that users can interact with a unified ecosystem without being restricted by the underlying complexity of cross-chain operations.
+
+### Implementation Overview:
+The core implementation of Token Bridging and Asset Management within Taiko revolves around a set of smart contracts, including **Bridge**, **BridgedERC20**, **BridgedERC721**, **BridgedERC1155**, and vault contracts like **ERC20Vault**, **ERC721Vault**, and **ERC1155Vault**.
+
+### Main Components and Logic:
+
+1. **Bridge Contract:**
+   - Responsible for initiating the bridging process. It keeps track of cross-chain messages, ensuring that assets sent from one chain can be claimed on another.
+   - Utilizes **SignalService** for secure message transmission across chains. Messages are encapsulated with relevant asset and transfer information.
+
+2. **Bridged Token Contracts (BridgedERC20, BridgedERC721, BridgedERC1155):**
+   - These contracts represent the bridged version of the original assets on the target chain. They are minted or burned based on the cross-chain transfer actions.
+   - Implement the logic for minting and burning tokens in response to bridge operations. They ensure that the total supply across all chains remains consistent with the original asset's supply.
+
+3. **Vault Contracts (ERC20Vault, ERC721Vault, and ERC1155Vault):**
+   - Act as the custodian of assets during the bridging process. They hold the original assets when they are locked on the source chain and manage the minting and burning of bridged assets on the target chain.
+   - Ensure that assets are only released to the correct recipients based on verified bridge messages.
+
+4. **SignalService and Merkle Proofs:**
+   - A critical component for verifying the integrity and authenticity of cross-chain messages. It allows the system to verify that a message was indeed sent from the source chain without requiring the entire block data.
+   - Utilizes Merkle proofs to prove the inclusion of a specific message in a block, ensuring the message's validity and the asset transfer's legitimacy.
+
+### Code Implementation:
+
+The bridging process starts with the **Bridge** contract, where a user initiates a token transfer to another chain. The contract records this operation and emits a cross-chain message containing the asset information and destination details.
+
+```solidity
+function sendMessage(Message calldata _message)
+        external
+        payable
+        override
+        nonReentrant
+        whenNotPaused
+        returns (bytes32 msgHash_, Message memory message_)
+    {
+        // Ensure the message owner is not null.
+        if (_message.srcOwner == address(0) || _message.destOwner == address(0)) {
+            revert B_INVALID_USER();
+        }
+
+        // Check if the destination chain is enabled.
+        (bool destChainEnabled,) = isDestChainEnabled(_message.destChainId);
+
+        // Verify destination chain and to address.
+        if (!destChainEnabled) revert B_INVALID_CHAINID();
+        if (_message.destChainId == block.chainid) {
+            revert B_INVALID_CHAINID();
+        }
+
+        // Ensure the sent value matches the expected amount.
+        uint256 expectedAmount = _message.value + _message.fee;
+        if (expectedAmount != msg.value) revert B_INVALID_VALUE();
+
+        message_ = _message;
+
+        // Configure message details and send signal to indicate message sending.
+        message_.id = nextMessageId++;
+        message_.from = msg.sender;
+        message_.srcChainId = uint64(block.chainid);
+
+        msgHash_ = hashMessage(message_);
+
+        ISignalService(resolve("signal_service", false)).sendSignal(msgHash_);
+        emit MessageSent(msgHash_, message_);
+    }
+```
+
+Upon receiving the message on the target chain, the **SignalService** verifies its authenticity using Merkle proofs. Once verified, the corresponding **Vault** contract interacts with the **BridgedToken** contract to mint or release the asset to the recipient.
+
+```solidity
+function onMessageInvocation(bytes calldata _data)
+        external
+        payable
+        nonReentrant
+        whenNotPaused
+    {
+        (CanonicalERC20 memory ctoken, address from, address to, uint256 amount) =
+            abi.decode(_data, (CanonicalERC20, address, address, uint256));
+
+        // `onlyFromBridge` checked in checkProcessMessageContext
+        IBridge.Context memory ctx = checkProcessMessageContext();
+
+        // Don't allow sending to disallowed addresses.
+        // Don't send the tokens back to `from` because `from` is on the source chain.
+        if (to == address(0) || to == address(this)) revert VAULT_INVALID_TO();
+
+        // Transfer the ETH and the tokens to the `to` address
+        address token = _transferTokens(ctoken, to, amount);
+        to.sendEther(msg.value);
+
+        emit TokenReceived({
+            msgHash: ctx.msgHash,
+            from: from,
+            to: to,
+            srcChainId: ctx.srcChainId,
+            ctoken: ctoken.addr,
+            token: token,
+            amount: amount
+        });
+    }
+```
+
+These interactions ensure that tokens can be securely transferred across chains, with the system automatically handling asset locking, minting of bridged tokens, and unlocking of assets to the rightful owners. The use of Merkle proofs for message verification adds an additional layer of security, making the process reliable and tamper-proof.
+
+<br/>
+
+[![download-3.png](https://i.postimg.cc/5t19btYr/download-3.png)](https://postimg.cc/21cNxrxd)
 
 ## Codebase Quality
 
@@ -439,6 +550,23 @@ pnpm test
 
 
 
+## Approach Taken while auditing
+When conducting an audit for a complex blockchain project like Taiko, my approach combines rigorous technical analysis with strategic insights gleaned from the project's documentation and any previous audits. This multifaceted strategy ensures a comprehensive understanding and thorough examination of the project's codebase and operational mechanisms.
+
+**Understanding the Theoretical Framework:**
+Firstly, I immerse myself in the project's whitepaper and any available technical documentation. This deep dive is critical for understanding the theoretical underpinnings of the project, including its unique features and the specific challenges it aims to address. For Taiko, which introduces novel concepts such as Cross-Chain Communication and Based Contestable Rollup (BCR), gaining a clear understanding of these mechanisms at a theoretical level is crucial for effectively auditing their implementation.
+
+**Reviewing Previous Audits:**
+Next, I review any previous audit reports available for the project. This step is invaluable for several reasons. It allows me to identify any recurring issues or vulnerabilities that have been previously highlighted, assess how the development team has addressed these past concerns, and understand the evolution of the project's security practices over time. This historical context helps in focusing the audit efforts on newly developed features or areas that have posed challenges in the past.
+
+**In-depth Code Analysis:**
+With a solid understanding of Taiko's theoretical framework and historical security context, I proceed to a detailed analysis of the codebase. My focus is on the critical components that are essential to the protocol's core functionality and security. This includes, but is not limited to, smart contracts responsible for Merkle proof-based state transition verification, cross-chain signal service mechanisms, and the intricacies of the BCR model. During this stage, I meticulously examine the code for common vulnerabilities, such as reentrancy, overflow/underflow, and improper access controls. I also assess the project's unique features for potential security risks specific to its architecture.
+
+**Testing and Validation:**
+An important part of the audit involves simulating various operational scenarios to test the system's resilience and behavior under different conditions. I ran the test cases to see how they are performing.
+
+For each component of the system, I evaluated the coding standards and documentation quality. Well-documented code and adherence to established coding conventions are crucial for maintaining code quality, facilitating future updates, and ensuring that new developers can easily understand and contribute to the project.
+
 
 
 
@@ -451,70 +579,71 @@ pnpm test
 
 
 
-## Architecture and Workflow
-
-| File Name                          | Core Functionality                                                                                                                                                                                                                                                                                                         | Technical Characteristics                                                                                                                                                                                                                                                                                                                  | Importance and Management                                                                                                                                                                                                                                                                                                   |
-|------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `runtime.rs`                       | Constructs and configures the substrate runtime for Pink, integrating various pallets and configurations necessary for the execution of smart contracts within the Phala Network.                                                                                                                                             | Utilizes Rust's powerful type system and macros to declaratively construct a blockchain runtime. Highlights include parameter configuration and the inclusion of custom pallets like `pallet_pink`.                                                                                                                                         | Critical for the foundation of the Pink Runtime. Maintenance involves updating configurations, dependencies, and ensuring compatibility with Substrate updates.                                                                                                                                                             |
-| `contract.rs`                      | Defines the API for instantiating and interacting with smart contracts, including logic for contract creation, execution, and querying.                                                                                                                                                                                     | Demonstrates Rust's capabilities for abstracting complex blockchain operations into a more accessible API. Leverages pallet_contracts to handle the intricacies of Wasm-based contract execution.                                                                                                                                            | Essential for the functionality of deploying and managing smart contracts on the network. Requires regular updates for new features or optimizations and thorough testing for security and functionality.                                                                                                                  |
-| `storage/mod.rs` & `storage/external_backend.rs`  | Abstracts the storage interface, offering a clean API for runtime interactions with blockchain storage, enabling integration of custom storage solutions and optimized data manipulation.                                                                                                                                    | Showcases Rust's modularity and encapsulation features, enabling separation of concerns that enhances code maintainability. Facilitates the integration of custom storage solutions.                                                                                                                                                       | High importance for performance and data integrity. Regular updates may be required to optimize storage operations or introduce new mechanisms. Rigorous testing is crucial to prevent data loss or inconsistencies.                                                                                                          |
-| `capi/mod.rs` & `capi/ecall_impl.rs` & `capi/ocall_impl.rs` | Serves as the bridge between the runtime and external calls, allowing communication with the host environment and external services through a defined C API, managing entry points for external calls.                                                                                                                       | Utilizes Rust's FFI capabilities for cross-language interoperability, ensuring type safety and efficient data exchange between the runtime and other components or services.                                                                                                                                                                 | Core to the extensibility and interoperability of the Pink Runtime with external systems. Maintenance involves ensuring API's backward compatibility, extending functionality, and safeguarding against potential security vulnerabilities in cross-language interactions.                         |
-| `runtime/extension.rs`             | Implements custom chain extensions to provide additional functionalities to smart contracts, like access to off-chain data and custom cryptographic operations.                                                                                                                                                             | Demonstrates advanced Rust features like traits and generics to extend blockchain functionalities in a modular and reusable manner. Highlights the flexibility of Substrate and Pink Runtime's approach to enhance smart contract capabilities.                                                                                              | Vital for offering advanced features to smart contracts and expanding the Phala Network's use cases. Managing this component requires keeping up with the evolving needs of developers and ensuring that new extensions are secure, efficient, and well-integrated into the existing runtime architecture. |
-| `runtime/pallet_pink.rs`           | The pallet used to store some custom configuration of the runtime, integrating the Pink Runtime with Substrate's pallet architecture to manage smart contract behaviors and settings.                                                                                                                                        | Incorporates Substrate's pallet system to extend blockchain functionality with custom configurations and behaviors tailored to the needs of the Pink Runtime.                                                                                                                                                                               | Key to customizing and fine-tuning the blockchain's operation to suit the specific requirements of smart contracts running on the Phala Network. Maintenance involves updating configurations and ensuring compatibility with broader runtime updates.                                         |
-| `chain-extension/src/lib.rs` & `chain-extension/src/local_cache.rs` | Defines the chain extension feature implementation, including worker local cache management, facilitating advanced interactions between smart contracts and the blockchain.                                                                                                                                                    | Highlights Rust's capability to extend smart contract functionalities through chain extensions, providing a richer development environment and enabling more complex contract logic.                                                                                                                                                        | Crucial for enriching the smart contract ecosystem with enhanced capabilities and ensuring developers have access to the tools needed for complex applications. Management involves regular enhancements, security checks, and ensuring seamless integration with existing functionalities.    |
 
 
-
-
-
-
-
-## Approach Taken while auditing the codebase
-When auditing the Phat Contract, I initiated the process with review of the project's documentation to thoroughly understand its architectural design, intended functionalities, and the overall goal. This foundational knowledge set the stage for a more focused and effective code review, allowing me to evaluate the implementation against the project's objectives.
-
-My approach to the audit was methodical, starting with a diving into the smart contracts due to their critical role in defining the project's core functionalities. I meticulously examined the code, focusing on the logic and flow of each function, the security measures in place, and how each piece contributes to the overall system's integrity and performance. Looked at placed to identify areas where the code deviated from best practices or could potentially lead to vulnerabilities.
-
-Understanding the importance of the user interactions and data flows within the system, I scrutinized the mechanisms for handling user inputs, data storage, and contract interactions. This included reviewing function modifiers, access controls, and the handling of external calls to ensure robust defense mechanisms against common attack vectors such as reentrancy and overflow/underflow issues.
-
-Given the project's reliance on off-chain computations and interactions with the Substrate runtime, I paid attention to the integration points and data exchange protocols. Assessing the security and efficiency of these interactions was paramount to ensure the system's resilience against manipulation and unauthorized access.
-
-For each component of the system, from the smart contracts to the off-chain runtime logic, I evaluated the coding standards and documentation quality. Well-documented code and adherence to established coding conventions are crucial for maintaining code quality, facilitating future updates, and ensuring that new developers can easily understand and contribute to the project.
 
 
 
 ## Other Audit Reports and Automated Findings 
 
 **Previous Audits**
-There isn't any previous audit (mentioned on C4 overview)
+There are 2 previous audits(mentioned on c4 website)
+[Sigma Prime](https://github.com/code-423n4/2024-03-taiko/blob/main/packages/protocol/audit/sigma_prime_taiko_smart_contract_security_assessment_report_v2_0.pdf)
+[Quill Audits](https://github.com/code-423n4/2024-03-taiko/blob/main/packages/protocol/audit/quill_audits_taiko_smart_contract_audit_report.pdf)
 
-**Known issues and risks**: Since it was a rust audt there wasn't any Bot race.
-
-
-
+**Known issues and risks**: 
+[3naly3er Report](https://github.com/code-423n4/2024-03-taiko/blob/main/4naly3er-report.md)
 
 
 ## Full representation of the project’s risk model
 
 
 ### Systemic Risks
-The Phat Contract project, while innovative, presents several systemic risks that stem from its unique features and the interdependencies within its ecosystem. These risks are specifically tailored to its architecture and functionalities, as outlined below:
+Systemic risks within the Taiko project include:
 
-1. **Complexity and Interdependency**: The project's architecture is characterized by a high degree of complexity and interdependency between different components, such as the Pink Runtime, chain extensions, and smart contracts. This complexity increases the risk of systemic failures, where a bug or vulnerability in one part of the system could have cascading effects on the entire ecosystem.
+1. **Cross-Chain Communication Security**: The Signal Service, pivotal for secure cross-chain message passing, could be compromised if vulnerabilities in the verification process or external dependencies are exploited, leading to potential breaches in data integrity or asset misappropriation.
 
-2. **Chain Extension Execution Risk**: The reliance on chain extensions for executing off-chain computations introduces a risk of inconsistent execution environments or failures in the external infrastructure. This dependency not only increases the attack surface but also adds a layer of uncertainty regarding the execution of critical contract logic.
+3. **Economic Attack Vectors on BCR**: The Based Contestable Rollup relies on economic incentives for its security model. Sophisticated attackers could potentially manipulate or exploit these economic models, leading to issues like false contestation or block verification delays.
 
-3. **Smart Contract Interaction Risks**: The system involves complex interactions between various smart contracts, where contracts call each other or interact in a composable manner. This interconnectivity increases the risk of unforeseen vulnerabilities emerging from contract interactions, potentially leading to exploits that can affect multiple components of the system.
+4. **Dependency on External Systems**: Taiko's functionality and security rely on external systems, such as Ethereum L1 and trusted execution environments (TEEs) like Intel SGX. Vulnerabilities or failures in these systems could cascade into Taiko, impacting its operational integrity.
+
+5. **Governance Manipulation**: While decentralized governance aims to democratize decision-making, there's a risk of governance attacks where entities acquire disproportionate control or influence, leading to decisions that could compromise the system's security or deviate from its intended path.
+
+Understanding and mitigating these systemic risks are crucial for ensuring the long-term resilience and success of the Taiko project.
 
 ### Centalization Risks:
-Centralization could undermine the network's security, privacy, and decentralized ethos. Here are some centralization risks identified within the Phala protocol:
+Centralization risks in the Taiko project primarily stem from points of control that could potentially be exploited or mismanaged, leading to centralized decision-making or vulnerabilities. Here are a few examples:
 
-1. **Validator Concentration**: A small number of validators controlling a significant portion of the network poses a risk to the security and integrity of the blockchain. It could lead to censorship issues or collusion in governance decisions.
+1. **Ownership Control in Smart Contracts**: Contracts like `SignalService` and `Bridge` have functions that are only callable by the owner or designated addresses, which could centralize control over critical functionalities.
 
-2. **Off-chain Worker (OCW) Centralization**: The reliance on off-chain workers for processing confidential smart contracts introduces a risk if a few entities operate a majority of these workers. It could compromise the confidentiality and integrity of the computation.
+    ```solidity
+    function authorize(address _addr, bool _authorize) external onlyOwner {
+        isAuthorized[_addr] = _authorize;
+        emit Authorized(_addr, _authorize);
+    }
+    ```
 
-3. **TEE Hardware Manufacturer Dependence**: The reliance on Trusted Execution Environment (TEE) technology means that hardware manufacturers could potentially become central points of failure or influence. Any vulnerabilities in TEEs or monopolistic control by manufacturers could impact network security.
+    The `authorize` function allows the contract owner to control which addresses are authorized to perform certain actions, like syncing chain data. This centralizes control over an aspect of cross-chain communication.
 
-4. **Governance Dominance**: If a small group of stakeholders or entities gains disproportionate control over the governance process, they could steer the network in ways that serve their interests over the wider community. This includes decisions on protocol upgrades, treasury allocations, and feature implementations.
+
+3. **Guardian Roles in Emergency Decisions**: Certain contracts include roles or mechanisms for emergency intervention, which, while designed for protection, concentrate power in the hands of a few.
+
+    ```solidity
+    function pauseProving(bool _pause) external {
+        _authorizePause(msg.sender);
+        LibProving.pauseProving(state, _pause);
+    }
+    ```
+
+4. **Token Management and Economic Incentives**: Contracts managing tokens or economic incentives have functions that could be exploited if not properly decentralized.
+
+    ```solidity
+    function grant(address _recipient, Grant memory _grant) external onlyOwner { ... }
+    ```
+
+    The `grant` function allows only the contract owner to allocate tokens, centralizing the decision-making process regarding token distribution.
+
+Addressing centralization risks involves ensuring a transparent and distributed control mechanism, improving smart contract security practices, and incorporating community governance where feasible to mitigate the potential for misuse or targeted attacks.
 
 
 
@@ -528,18 +657,19 @@ Centralization could undermine the network's security, privacy, and decentralize
 
 ## New insights and learning of project from this audit:
 
-Auditing the Phat Contract provided several new insights and learnings that are invaluable not only for this project but also for future blockchain development and security practices. Here are the key takeaways from the audit:
+Reflecting on the Taiko project audit, my insights and learnings are encapsulated as follows:
 
-1. **Interplay Between On-chain and Off-chain Computation**: The architecture of Phat Contract, leveraging both on-chain smart contracts and off-chain computation, showcased the potential and challenges of hybrid decentralized applications. This dual approach can optimize performance and cost but also introduces complexity in ensuring data integrity and security across the boundary.
+1. **Modular and Layered Architecture**: The architecture demonstrated a scalable solution for blockchain scalability challenges, showcasing how modular design can facilitate scalability without compromising on security or decentralization.
 
-2. **Substrate Framework Utilization**: The project's use of the Substrate framework for off-chain computation highlighted the versatility of Substrate in supporting complex decentralized applications. It was insightful to see how Substrate's extensibility could be harnessed to build sophisticated off-chain logic that complements the on-chain smart contracts.
+2. **Advanced State Transition Verification**: The application of Merkle proofs for secure and efficient state verification across chains has deepened my understanding of cryptographic proofs in ensuring data integrity within decentralized systems.
 
-3. **Chain Extension Mechanism**: The audit provided a deep dive into the use of chain extensions for extending the functionalities of smart contracts. This mechanism is a powerful tool for bridging smart contracts with off-chain features, yet it requires careful design to maintain security and data consistency.
+3. **Economic Incentives in Rollup Operations**: The Based Contestable Rollup (BCR) approach provided a novel perspective on maintaining network integrity through economic incentives and contestation mechanisms, emphasizing the role of game theory in blockchain security.
 
-4. **Smart Contract Upgradeability**: The project's approach to smart contract upgradeability, ensuring that contracts can evolve over time without compromising on decentralization or security, was an important learning aspect. It emphasized the need for a robust governance mechanism to manage upgrades responsibly.
+4. **Cross-Chain Communication**: The Signal Service mechanism underscored the complexity of secure message passing between chains, offering valuable insights into the design of robust cross-chain protocols.
 
-5. **Storage Optimization Techniques**: The strategies employed by Phat Contract for optimizing on-chain storage, including the use of efficient data structures and minimizing unnecessary state changes, were enlightening. These practices are crucial for managing gas costs and ensuring scalability.
+5. **Token Bridging and Asset Management**: The mechanisms for token bridging and asset management, including the mathematical logic behind token locking, minting, and burning, illustrated the intricacies of managing digital assets in a multi-chain environment.
 
+These insights not only enhance my understanding of blockchain technology's evolving landscape but also equip me with valuable perspectives for future audits and blockchain development projects.
 
 NOTE: I don't track time while auditing or writing report, so what the time I specified is just a number
 
