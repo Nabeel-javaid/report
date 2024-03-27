@@ -18,8 +18,7 @@ Central to Taiko's design is the Based Contestable Rollup (BCR) architecture, wh
 
 <br/>
 
-[![Screenshot-from-2024-03-22-16-10-38.png](https://i.postimg.cc/FKSNc6Cm/Screenshot-from-2024-03-22-16-10-38.png)](https://postimg.cc/zLqsYx1P)
-
+[![Screenshot-from-2024-03-27-14-19-25.png](https://i.postimg.cc/yWqZXSnP/Screenshot-from-2024-03-27-14-19-25.png)](https://postimg.cc/N24FQF39)
 
 
 
@@ -91,14 +90,13 @@ Overall, I consider the quality of the **Phat Contract Runtime** codebase to be 
 | **Upgradability and Maintenance**               | The project is designed with upgradability in mind, using proxy patterns and carefully managing state to ensure future improvements can be made with minimal disruption. |
 | **Performance and Gas Optimization**            | The code shows considerations for gas optimization, crucial for scalability and user experience on Ethereum. Continuous profiling and optimization can further enhance performance. |
 | **Error Handling and Data Validation**          | Solid error handling and data validation are present throughout, using require statements and custom error messages to ensure contract integrity and inform users of issues. |
-| **Developer Tooling and Infrastructure**        | The project benefits from a robust set of developer tools for testing, deployment, and interaction, such as Hardhat, which enhances the development workflow. |
 
 
 
 ## Analysis of the code base
 
 The most important summary in analyzing the code base is the stacking of codes to be analyzed.
-In this way, many predictions can be made, including the difficulty levels of the contracts, which one is more important for the auditor, the features they contain that are important for security (payable functions, uses assembly, etc.), the audit cost of the project, and the time to be allocated to the audit;
+In this way, many predictions can be made, including the difficulty levels of the contracts, which one is more important for the auditor, the features they contain that are important for security (payable functions, uses assembly, etc.).
 
 using [vscode-counter](https://github.com/uctakeoff/vscode-counter)
 
@@ -116,28 +114,143 @@ using [vscode-counter](https://github.com/uctakeoff/vscode-counter)
 -  **Total:** This field indicates the number of Total lines (code + comment + blank) in the smart contract.
 
 
-### Languages
-| language | files | code | comment | blank | total |
-| :--- | ---: | ---: | ---: | ---: | ---: |
-| Rust | 13 | 2,745 | 259 | 406 | 3,410 |
 
-### Directories
-| path | files | code | comment | blank | total |
-| :--- | ---: | ---: | ---: | ---: | ---: |
-| capi | 2 | 310 | 94 | 68 | 472 |
-| capi/src (Files) | 1 | 86 | 17 | 13 | 116 |
-| capi/src/v1 | 1 | 224 | 77 | 55 | 356 |
-| chain-extension | 2 | 829 | 19 | 123 | 971 |
-| runtime/src | 9 | 1,606 | 146 | 215 | 1,967 |
-| runtime/src/capi | 3 | 418 | 43 | 50 | 511 |
-| runtime/src/runtime | 2 | 608 | 15 | 100 | 723 |
-| runtime/src/storage | 2 | 172 | 36 | 24 | 232 |
+Total : 85 files,  7611 codes, 2757 comments, 1534 blanks, all 11902 lines
 
+
+## Files
+| filename | language | code | comment | blank | total |
+| :--- | :--- | ---: | ---: | ---: | ---: |
+| [packages/protocol/contracts/L1/ITaikoL1.sol](/packages/protocol/contracts/L1/ITaikoL1.sol) | Solidity | 14 | 17 | 6 | 37 |
+| [packages/protocol/contracts/L1/TaikoData.sol](/packages/protocol/contracts/L1/TaikoData.sol) | Solidity | 124 | 60 | 14 | 198 |
+| [packages/protocol/contracts/L1/TaikoErrors.sol](/packages/protocol/contracts/L1/TaikoErrors.sol) | Solidity | 34 | 8 | 2 | 44 |
+| [packages/protocol/contracts/L1/TaikoEvents.sol](/packages/protocol/contracts/L1/TaikoEvents.sol) | Solidity | 37 | 43 | 8 | 88 |
+| [packages/protocol/contracts/L1/TaikoL1.sol](/packages/protocol/contracts/L1/TaikoL1.sol) | Solidity | 149 | 52 | 27 | 228 |
+| [packages/protocol/contracts/L1/TaikoToken.sol](/packages/protocol/contracts/L1/TaikoToken.sol) | Solidity | 85 | 26 | 14 | 125 |
+| [packages/protocol/contracts/L1/gov/TaikoGovernor.sol](/packages/protocol/contracts/L1/gov/TaikoGovernor.sol) | Solidity | 121 | 25 | 16 | 162 |
+| [packages/protocol/contracts/L1/gov/TaikoTimelockController.sol](/packages/protocol/contracts/L1/gov/TaikoTimelockController.sol) | Solidity | 14 | 9 | 5 | 28 |
+| [packages/protocol/contracts/L1/hooks/AssignmentHook.sol](/packages/protocol/contracts/L1/hooks/AssignmentHook.sol) | Solidity | 119 | 36 | 23 | 178 |
+| [packages/protocol/contracts/L1/hooks/IHook.sol](/packages/protocol/contracts/L1/hooks/IHook.sol) | Solidity | 11 | 7 | 3 | 21 |
+| [packages/protocol/contracts/L1/libs/LibDepositing.sol](/packages/protocol/contracts/L1/libs/LibDepositing.sol) | Solidity | 97 | 40 | 17 | 154 |
+| [packages/protocol/contracts/L1/libs/LibProposing.sol](/packages/protocol/contracts/L1/libs/LibProposing.sol) | Solidity | 188 | 91 | 40 | 319 |
+| [packages/protocol/contracts/L1/libs/LibProving.sol](/packages/protocol/contracts/L1/libs/LibProving.sol) | Solidity | 243 | 134 | 51 | 428 |
+| [packages/protocol/contracts/L1/libs/LibUtils.sol](/packages/protocol/contracts/L1/libs/LibUtils.sol) | Solidity | 61 | 18 | 10 | 89 |
+| [packages/protocol/contracts/L1/libs/LibVerifying.sol](/packages/protocol/contracts/L1/libs/LibVerifying.sol) | Solidity | 162 | 67 | 39 | 268 |
+| [packages/protocol/contracts/L1/provers/GuardianProver.sol](/packages/protocol/contracts/L1/provers/GuardianProver.sol) | Solidity | 32 | 17 | 8 | 57 |
+| [packages/protocol/contracts/L1/provers/Guardians.sol](/packages/protocol/contracts/L1/provers/Guardians.sol) | Solidity | 79 | 38 | 25 | 142 |
+| [packages/protocol/contracts/L1/tiers/DevnetTierProvider.sol](/packages/protocol/contracts/L1/tiers/DevnetTierProvider.sol) | Solidity | 40 | 9 | 9 | 58 |
+| [packages/protocol/contracts/L1/tiers/ITierProvider.sol](/packages/protocol/contracts/L1/tiers/ITierProvider.sol) | Solidity | 21 | 19 | 10 | 50 |
+| [packages/protocol/contracts/L1/tiers/MainnetTierProvider.sol](/packages/protocol/contracts/L1/tiers/MainnetTierProvider.sol) | Solidity | 52 | 10 | 10 | 72 |
+| [packages/protocol/contracts/L1/tiers/TestnetTierProvider.sol](/packages/protocol/contracts/L1/tiers/TestnetTierProvider.sol) | Solidity | 52 | 11 | 10 | 73 |
+| [packages/protocol/contracts/L2/CrossChainOwned.sol](/packages/protocol/contracts/L2/CrossChainOwned.sol) | Solidity | 45 | 19 | 12 | 76 |
+| [packages/protocol/contracts/L2/Lib1559Math.sol](/packages/protocol/contracts/L2/Lib1559Math.sol) | Solidity | 33 | 9 | 6 | 48 |
+| [packages/protocol/contracts/L2/TaikoL2.sol](/packages/protocol/contracts/L2/TaikoL2.sol) | Solidity | 180 | 77 | 42 | 299 |
+| [packages/protocol/contracts/L2/TaikoL2EIP1559Configurable.sol](/packages/protocol/contracts/L2/TaikoL2EIP1559Configurable.sol) | Solidity | 25 | 12 | 10 | 47 |
+| [packages/protocol/contracts/SOLIDITY_STYLE_GUIDE.md](/packages/protocol/contracts/SOLIDITY_STYLE_GUIDE.md) | Markdown | 20 | 0 | 17 | 37 |
+| [packages/protocol/contracts/automata-attestation/AutomataDcapV3Attestation.sol](/packages/protocol/contracts/automata-attestation/AutomataDcapV3Attestation.sol) | Solidity | 360 | 70 | 57 | 487 |
+| [packages/protocol/contracts/automata-attestation/README.md](/packages/protocol/contracts/automata-attestation/README.md) | Markdown | 3 | 0 | 2 | 5 |
+| [packages/protocol/contracts/automata-attestation/interfaces/IAttestation.sol](/packages/protocol/contracts/automata-attestation/interfaces/IAttestation.sol) | Solidity | 8 | 3 | 3 | 14 |
+| [packages/protocol/contracts/automata-attestation/interfaces/ISigVerifyLib.sol](/packages/protocol/contracts/automata-attestation/interfaces/ISigVerifyLib.sol) | Solidity | 68 | 6 | 11 | 85 |
+| [packages/protocol/contracts/automata-attestation/lib/EnclaveIdStruct.sol](/packages/protocol/contracts/automata-attestation/lib/EnclaveIdStruct.sol) | Solidity | 23 | 3 | 5 | 31 |
+| [packages/protocol/contracts/automata-attestation/lib/PEMCertChainLib.sol](/packages/protocol/contracts/automata-attestation/lib/PEMCertChainLib.sol) | Solidity | 279 | 38 | 59 | 376 |
+| [packages/protocol/contracts/automata-attestation/lib/QuoteV3Auth/V3Parser.sol](/packages/protocol/contracts/automata-attestation/lib/QuoteV3Auth/V3Parser.sol) | Solidity | 246 | 10 | 32 | 288 |
+| [packages/protocol/contracts/automata-attestation/lib/QuoteV3Auth/V3Struct.sol](/packages/protocol/contracts/automata-attestation/lib/QuoteV3Auth/V3Struct.sol) | Solidity | 48 | 7 | 7 | 62 |
+| [packages/protocol/contracts/automata-attestation/lib/TCBInfoStruct.sol](/packages/protocol/contracts/automata-attestation/lib/TCBInfoStruct.sol) | Solidity | 23 | 3 | 4 | 30 |
+| [packages/protocol/contracts/automata-attestation/lib/interfaces/IPEMCertChainLib.sol](/packages/protocol/contracts/automata-attestation/lib/interfaces/IPEMCertChainLib.sol) | Solidity | 42 | 3 | 7 | 52 |
+| [packages/protocol/contracts/automata-attestation/utils/Asn1Decode.sol](/packages/protocol/contracts/automata-attestation/utils/Asn1Decode.sol) | Solidity | 107 | 82 | 23 | 212 |
+| [packages/protocol/contracts/automata-attestation/utils/BytesUtils.sol](/packages/protocol/contracts/automata-attestation/utils/BytesUtils.sol) | Solidity | 225 | 122 | 28 | 375 |
+| [packages/protocol/contracts/automata-attestation/utils/RsaVerify.sol](/packages/protocol/contracts/automata-attestation/utils/RsaVerify.sol) | Solidity | 208 | 80 | 32 | 320 |
+| [packages/protocol/contracts/automata-attestation/utils/SHA1.sol](/packages/protocol/contracts/automata-attestation/utils/SHA1.sol) | Solidity | 166 | 16 | 14 | 196 |
+| [packages/protocol/contracts/automata-attestation/utils/SigVerifyLib.sol](/packages/protocol/contracts/automata-attestation/utils/SigVerifyLib.sol) | Solidity | 114 | 15 | 14 | 143 |
+| [packages/protocol/contracts/automata-attestation/utils/X509DateUtils.sol](/packages/protocol/contracts/automata-attestation/utils/X509DateUtils.sol) | Solidity | 63 | 3 | 12 | 78 |
+| [packages/protocol/contracts/bridge/Bridge.sol](/packages/protocol/contracts/bridge/Bridge.sol) | Solidity | 404 | 115 | 75 | 594 |
+| [packages/protocol/contracts/bridge/IBridge.sol](/packages/protocol/contracts/bridge/IBridge.sol) | Solidity | 63 | 95 | 22 | 180 |
+| [packages/protocol/contracts/bridge/README.md](/packages/protocol/contracts/bridge/README.md) | Markdown | 79 | 0 | 27 | 106 |
+| [packages/protocol/contracts/common/AddressManager.sol](/packages/protocol/contracts/common/AddressManager.sol) | Solidity | 35 | 17 | 10 | 62 |
+| [packages/protocol/contracts/common/AddressResolver.sol](/packages/protocol/contracts/common/AddressResolver.sol) | Solidity | 60 | 19 | 11 | 90 |
+| [packages/protocol/contracts/common/EssentialContract.sol](/packages/protocol/contracts/common/EssentialContract.sol) | Solidity | 91 | 26 | 27 | 144 |
+| [packages/protocol/contracts/common/IAddressManager.sol](/packages/protocol/contracts/common/IAddressManager.sol) | Solidity | 4 | 10 | 2 | 16 |
+| [packages/protocol/contracts/common/IAddressResolver.sol](/packages/protocol/contracts/common/IAddressResolver.sol) | Solidity | 18 | 22 | 3 | 43 |
+| [packages/protocol/contracts/libs/Lib4844.sol](/packages/protocol/contracts/libs/Lib4844.sol) | Solidity | 38 | 14 | 10 | 62 |
+| [packages/protocol/contracts/libs/LibAddress.sol](/packages/protocol/contracts/libs/LibAddress.sol) | Solidity | 55 | 14 | 12 | 81 |
+| [packages/protocol/contracts/libs/LibMath.sol](/packages/protocol/contracts/libs/LibMath.sol) | Solidity | 9 | 12 | 3 | 24 |
+| [packages/protocol/contracts/libs/LibTrieProof.sol](/packages/protocol/contracts/libs/LibTrieProof.sol) | Solidity | 36 | 20 | 11 | 67 |
+| [packages/protocol/contracts/signal/ISignalService.sol](/packages/protocol/contracts/signal/ISignalService.sol) | Solidity | 68 | 65 | 13 | 146 |
+| [packages/protocol/contracts/signal/LibSignals.sol](/packages/protocol/contracts/signal/LibSignals.sol) | Solidity | 5 | 5 | 3 | 13 |
+| [packages/protocol/contracts/signal/SignalService.sol](/packages/protocol/contracts/signal/SignalService.sol) | Solidity | 246 | 31 | 37 | 314 |
+| [packages/protocol/contracts/team/TimelockTokenPool.sol](/packages/protocol/contracts/team/TimelockTokenPool.sol) | Solidity | 159 | 72 | 51 | 282 |
+| [packages/protocol/contracts/team/airdrop/ERC20Airdrop.sol](/packages/protocol/contracts/team/airdrop/ERC20Airdrop.sol) | Solidity | 40 | 24 | 10 | 74 |
+| [packages/protocol/contracts/team/airdrop/ERC20Airdrop2.sol](/packages/protocol/contracts/team/airdrop/ERC20Airdrop2.sol) | Solidity | 61 | 41 | 21 | 123 |
+| [packages/protocol/contracts/team/airdrop/ERC721Airdrop.sol](/packages/protocol/contracts/team/airdrop/ERC721Airdrop.sol) | Solidity | 37 | 18 | 9 | 64 |
+| [packages/protocol/contracts/team/airdrop/MerkleClaimable.sol](/packages/protocol/contracts/team/airdrop/MerkleClaimable.sol) | Solidity | 65 | 14 | 17 | 96 |
+| [packages/protocol/contracts/thirdparty/README.md](/packages/protocol/contracts/thirdparty/README.md) | Markdown | 4 | 0 | 3 | 7 |
+| [packages/protocol/contracts/thirdparty/nomad-xyz/ExcessivelySafeCall.sol](/packages/protocol/contracts/thirdparty/nomad-xyz/ExcessivelySafeCall.sol) | Solidity | 36 | 26 | 3 | 65 |
+| [packages/protocol/contracts/thirdparty/optimism/Bytes.sol](/packages/protocol/contracts/thirdparty/optimism/Bytes.sol) | Solidity | 70 | 60 | 23 | 153 |
+| [packages/protocol/contracts/thirdparty/optimism/rlp/RLPReader.sol](/packages/protocol/contracts/thirdparty/optimism/rlp/RLPReader.sol) | Solidity | 191 | 63 | 50 | 304 |
+| [packages/protocol/contracts/thirdparty/optimism/rlp/RLPWriter.sol](/packages/protocol/contracts/thirdparty/optimism/rlp/RLPWriter.sol) | Solidity | 44 | 19 | 8 | 71 |
+| [packages/protocol/contracts/thirdparty/optimism/trie/MerkleTrie.sol](/packages/protocol/contracts/thirdparty/optimism/trie/MerkleTrie.sol) | Solidity | 148 | 74 | 29 | 251 |
+| [packages/protocol/contracts/thirdparty/optimism/trie/SecureMerkleTrie.sol](/packages/protocol/contracts/thirdparty/optimism/trie/SecureMerkleTrie.sol) | Solidity | 32 | 21 | 5 | 58 |
+| [packages/protocol/contracts/thirdparty/solmate/LibFixedPointMath.sol](/packages/protocol/contracts/thirdparty/solmate/LibFixedPointMath.sol) | Solidity | 35 | 37 | 11 | 83 |
+| [packages/protocol/contracts/tokenvault/BaseNFTVault.sol](/packages/protocol/contracts/tokenvault/BaseNFTVault.sol) | Solidity | 79 | 56 | 18 | 153 |
+| [packages/protocol/contracts/tokenvault/BaseVault.sol](/packages/protocol/contracts/tokenvault/BaseVault.sol) | Solidity | 46 | 12 | 10 | 68 |
+| [packages/protocol/contracts/tokenvault/BridgedERC1155.sol](/packages/protocol/contracts/tokenvault/BridgedERC1155.sol) | Solidity | 91 | 34 | 16 | 141 |
+| [packages/protocol/contracts/tokenvault/BridgedERC20.sol](/packages/protocol/contracts/tokenvault/BridgedERC20.sol) | Solidity | 128 | 32 | 23 | 183 |
+| [packages/protocol/contracts/tokenvault/BridgedERC20Base.sol](/packages/protocol/contracts/tokenvault/BridgedERC20Base.sol) | Solidity | 56 | 30 | 19 | 105 |
+| [packages/protocol/contracts/tokenvault/BridgedERC721.sol](/packages/protocol/contracts/tokenvault/BridgedERC721.sol) | Solidity | 83 | 31 | 15 | 129 |
+| [packages/protocol/contracts/tokenvault/ERC1155Vault.sol](/packages/protocol/contracts/tokenvault/ERC1155Vault.sol) | Solidity | 230 | 62 | 31 | 323 |
+| [packages/protocol/contracts/tokenvault/ERC20Vault.sol](/packages/protocol/contracts/tokenvault/ERC20Vault.sol) | Solidity | 291 | 95 | 49 | 435 |
+| [packages/protocol/contracts/tokenvault/ERC721Vault.sol](/packages/protocol/contracts/tokenvault/ERC721Vault.sol) | Solidity | 193 | 35 | 31 | 259 |
+| [packages/protocol/contracts/tokenvault/IBridgedERC20.sol](/packages/protocol/contracts/tokenvault/IBridgedERC20.sol) | Solidity | 7 | 18 | 5 | 30 |
+| [packages/protocol/contracts/tokenvault/LibBridgedToken.sol](/packages/protocol/contracts/tokenvault/LibBridgedToken.sol) | Solidity | 52 | 5 | 7 | 64 |
+| [packages/protocol/contracts/tokenvault/adapters/USDCAdapter.sol](/packages/protocol/contracts/tokenvault/adapters/USDCAdapter.sol) | Solidity | 22 | 21 | 9 | 52 |
+| [packages/protocol/contracts/verifiers/GuardianVerifier.sol](/packages/protocol/contracts/verifiers/GuardianVerifier.sol) | Solidity | 23 | 7 | 6 | 36 |
+| [packages/protocol/contracts/verifiers/IVerifier.sol](/packages/protocol/contracts/verifiers/IVerifier.sol) | Solidity | 19 | 8 | 4 | 31 |
+| [packages/protocol/contracts/verifiers/SgxVerifier.sol](/packages/protocol/contracts/verifiers/SgxVerifier.sol) | Solidity | 137 | 62 | 41 | 240 |
+
+
+
+### Dependencies / External Imports
+
+- `@openzeppelin/contracts-upgradeable/access/Ownable2StepUpgradeable.sol` - 1
+- `@openzeppelin/contracts-upgradeable/governance/GovernorUpgradeable.sol` - 1
+- `@openzeppelin/contracts-upgradeable/governance/TimelockControllerUpgradeable.sol` - 1
+- `@openzeppelin/contracts-upgradeable/governance/compatibility/GovernorCompatibilityBravoUpgradeable.sol` - 1
+- `@openzeppelin/contracts-upgradeable/governance/extensions/GovernorTimelockControlUpgradeable.sol` - 1
+- `@openzeppelin/contracts-upgradeable/governance/extensions/GovernorVotesQuorumFractionUpgradeable.sol` - 1
+- `@openzeppelin/contracts-upgradeable/governance/extensions/GovernorVotesUpgradeable.sol` - 1
+- `@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol` - 1
+- `@openzeppelin/contracts-upgradeable/token/ERC1155/ERC1155Upgradeable.sol` - 1
+- `@openzeppelin/contracts-upgradeable/token/ERC1155/extensions/IERC1155MetadataURIUpgradeable.sol` - 1
+- `@openzeppelin/contracts-upgradeable/token/ERC1155/utils/ERC1155ReceiverUpgradeable.sol` - 1
+- `@openzeppelin/contracts-upgradeable/token/ERC20/ERC20Upgradeable.sol` - 1
+- `@openzeppelin/contracts-upgradeable/token/ERC20/extensions/ERC20SnapshotUpgradeable.sol` - 2
+- `@openzeppelin/contracts-upgradeable/token/ERC20/extensions/ERC20VotesUpgradeable.sol` - 2
+- `@openzeppelin/contracts-upgradeable/token/ERC20/extensions/IERC20MetadataUpgradeable.sol` - 1
+- `@openzeppelin/contracts-upgradeable/token/ERC721/ERC721Upgradeable.sol` - 1
+- `@openzeppelin/contracts-upgradeable/utils/introspection/IERC165Upgradeable.sol` - 1
+- `@openzeppelin/contracts/governance/utils/IVotes.sol` - 1
+- `@openzeppelin/contracts/interfaces/IERC1271.sol` - 1
+- `@openzeppelin/contracts/proxy/ERC1967/ERC1967Proxy.sol` - 1
+- `@openzeppelin/contracts/proxy/utils/UUPSUpgradeable.sol` - 1
+- `@openzeppelin/contracts/token/ERC1155/IERC1155.sol` - 1
+- `@openzeppelin/contracts/token/ERC20/IERC20.sol` - 10
+- `@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol` - 1
+- `@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol` - 4
+- `@openzeppelin/contracts/token/ERC721/IERC721.sol` - 2
+- `@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol` - 1
+- `@openzeppelin/contracts/utils/Address.sol` - 2
+- `@openzeppelin/contracts/utils/Strings.sol` - 4
+- `@openzeppelin/contracts/utils/cryptography/ECDSA.sol` - 3
+- `@openzeppelin/contracts/utils/cryptography/MerkleProof.sol` - 1
+- `@openzeppelin/contracts/utils/introspection/IERC165.sol` - 1
+- `@openzeppelin/contracts/utils/math/SafeCast.sol` - 1
+- `solady/src/utils/Base64.sol` - 2
+- `solady/src/utils/LibString.sol` - 2
 
 
 ## Comment-to-Source Ratio:
 
-On average there are **3.66** code lines per comment (lower=better).
+On average there are **2.59** code lines per comment (lower=better).
 
 
 
