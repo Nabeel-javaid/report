@@ -21,87 +21,177 @@ Central to Taiko's design is the Based Contestable Rollup (BCR) architecture, wh
 [![Screenshot-from-2024-03-27-14-19-25.png](https://i.postimg.cc/yWqZXSnP/Screenshot-from-2024-03-27-14-19-25.png)](https://postimg.cc/N24FQF39)
 
 
+## Main Functionality of Protocol
+Following is the main functioclity of the protocol ordered by significance and impact.
+
+1. **State Transition Verification with Merkle Proofs**: At the heart of Taiko's operational integrity is the state transition verification mechanism. Leveraging Merkle proofs, it ensures that state changes across its layered architecture are accurately and securely validated. This functionality underpins the trust and security model of Taiko, allowing for decentralized verification of state changes without compromising scalability.
+
+2. **Cross-Chain Communication and Signal Service**: Essential for interoperability within Taiko's ecosystem, the Signal Service facilitates secure and efficient communication between different layers (L1, L2, L3) and instances of Taiko. This service manages the emission, recording, and verification of signals across chains, crucial for asset bridging and maintaining coherence across the network.
+
+3. **Decentralized Rollup Operation (Based Contestable Rollup - BCR)**: Taiko introduces a novel rollup mechanism where state transitions can be contested, ensuring the network's integrity through community-driven checks and balances. This approach not only enhances security but also aligns with the decentralized ethos of blockchain technology by allowing participants to challenge and verify state changes.
+
+4. **Token Bridging and Asset Management**: Facilitating the seamless transfer and management of assets across Taiko's multi-layered ecosystem, this functionality includes smart contracts and mechanisms for locking, minting, and burning tokens as they move between layers. It's critical for enabling a fluid user experience and asset interoperability within Taiko and with external chains.
+
+5. **Ethereum-Equivalence and EVM Compatibility**: By maintaining compatibility with Ethereum's Virtual Machine (EVM), Taiko ensures that developers can easily migrate existing Ethereum dApps to Taiko's network without significant modifications. This feature is pivotal for fostering adoption and facilitating a rich ecosystem of applications on Taiko.
+
+6. **Governance through Decentralization**: Implementing a token-based governance model, Taiko empowers TKO token holders to participate in crucial decision-making processes, such as protocol upgrades and parameter adjustments. This functionality is key to ensuring that Taiko remains adaptive, community-driven, and aligned with the interests of its stakeholders.
+
+## 1): State Transition Verification with Merkle Proofs:
+State Transition Verification within Taiko leverages Merkle Proofs to ensure the integrity and security of transitions between states across its network. This mechanism is a cornerstone of Taiko's architecture, providing a decentralized and efficient method for validating state changes without requiring the full transaction data. By utilizing cryptographic proofs, Taiko can verify the inclusion or absence of a particular transaction in a block, thus ensuring the authenticity and finality of cross-chain communications and state transitions.
+
+### Logic and Implementation:
+
+1. **Merkle Tree Construction**: At the core of the Merkle Proof mechanism is the construction of a Merkle Tree for each block of transactions. Each leaf node of the tree represents a hash of individual transaction data, and each non-leaf node represents a hash of its child nodes. This recursive hashing continues until there is a single hash, the Merkle Root, which represents the entire block.
+
+2. **Merkle Proof Verification**: To verify the inclusion of a transaction within a block, Taiko uses a Merkle Proof, which is a sequence of hashes that, when combined with the transaction hash, can recreate the Merkle Root stored in the block header. If the calculated root matches the stored root, the transaction's inclusion is proven.
+
+    ```solidity
+     function verifyMerkleProof(
+        bytes32 _rootHash,
+        address _addr,
+        bytes32 _slot,
+        bytes32 _value,
+        bytes[] memory _accountProof,
+        bytes[] memory _storageProof
+    )
+        internal
+        pure
+        returns (bytes32 storageRoot_)
+    {
+        if (_accountProof.length != 0) {
+            bytes memory rlpAccount =
+                SecureMerkleTrie.get(abi.encodePacked(_addr), _accountProof, _rootHash);
+
+            if (rlpAccount.length == 0) revert LTP_INVALID_ACCOUNT_PROOF();
+
+            RLPReader.RLPItem[] memory accountState = RLPReader.readList(rlpAccount);
+
+            storageRoot_ =
+                bytes32(RLPReader.readBytes(accountState[_ACCOUNT_FIELD_INDEX_STORAGE_HASH]));
+        } else {
+            storageRoot_ = _rootHash;
+        }
+
+        bool verified = SecureMerkleTrie.verifyInclusionProof(
+            bytes.concat(_slot), RLPWriter.writeUint(uint256(_value)), _storageProof, storageRoot_
+        );
+
+        if (!verified) revert LTP_INVALID_INCLUSION_PROOF();
+    }
+    ```
+
+3. **Block Header and Merkle Root Storage**: Taiko stores the Merkle Root of each block within its smart contracts, enabling the verification of Merkle Proofs without requiring access to the full block data. This approach significantly reduces the data and computational requirements for verification.
 
 
-## System Overview 
+4. **Cross-Chain Verification**: For cross-chain communication and state transitions, Taiko employs Merkle Proofs to verify the state or transaction on one chain within another chain's smart contracts. This ensures that actions taken on one layer or instance are accurately reflected across the network.
 
-### Lib1559Math.sol
-- **Purpose**: Implements mathematical operations for EIP-1559 gas fee calculations.
-- **Breakdown of Functions**:
-  - **Calculation**: `basefee` (Calculates the base fee per gas), `_ethQty` (Private function for internal calculations).
+    
 
-### TaikoL2.sol
-- **Purpose**: Handles Layer 2 operations, including EIP-1559 gas pricing and cross-layer message verification.
-- **Breakdown of Functions**:
-  - **Initialization & Configuration**: `init` (Initializes contract settings), `getConfig` (Retrieves EIP-1559 configurations).
-  - **L1 Block Anchoring**: `anchor` (Anchors the latest L1 block details to L2).
-  - **Withdrawal**: `withdraw` (Withdraws token or Ether from the contract).
+<br/>
 
-### SignalService.sol
-- **Purpose**: Manages signals for cross-chain communication.
-- **Breakdown of Functions**:
-  - **Signal Sending and Syncing**: `sendSignal`, `syncChainData` (Sends and syncs chain data across chains).
-  - **Proof Verification**: `proveSignalReceived` (Verifies signal receipt with Merkle proof).
-
-### Bridge.sol
-- **Purpose**: Manages the bridging of assets and messages across chains.
-- **Breakdown of Functions**:
-  - **Message Handling**: `sendMessage` (Sends a cross-chain message), `processMessage` (Processes an incoming message), `recallMessage` (Recalls a sent message), `retryMessage` (Retries sending a message).
-
-### BridgedERC20.sol
-- **Purpose**: Represents bridged ERC20 tokens.
-- **Breakdown of Functions**:
-  - **Token Operations**: Inherits ERC20 functions with added cross-chain bridging capabilities like `mint` and `burn`.
-
-### BridgedERC721.sol
-- **Purpose**: Represents bridged ERC721 tokens.
-- **Breakdown of Functions**:
-  - **NFT Operations**: Inherits ERC721 functions with added bridging capabilities like `mint` and `burn`.
-
-### BridgedERC1155.sol
-- **Purpose**: Represents bridged ERC1155 tokens.
-- **Breakdown of Functions**:
-  - **Batch Operations**: Inherits ERC1155 functions with added bridging capabilities like `mintBatch` and `burn`.
-
-### ERC1155Vault.sol
-- **Purpose**: Vaults for ERC1155 tokens enabling cross-chain operations.
-- **Breakdown of Functions**:
-  - **Token Sending**: `sendToken` (Prepares and sends tokens across chains).
-  - **Message Handling**: `onMessageInvocation` (Handles incoming bridge messages).
-
-### ERC20Vault.sol
-- **Purpose**: Vaults for ERC20 tokens enabling cross-chain operations.
-- **Breakdown of Functions**:
-  - **Token Sending and Handling**: Similar to ERC1155Vault but tailored for ERC20 tokens.
-
-### ERC721Vault.sol
-- **Purpose**: Vaults for ERC721 tokens enabling cross-chain operations.
-- **Breakdown of Functions**:
-  - **Token Sending and Handling**: Similar to ERC1155Vault but tailored for ERC721 tokens.
-
-### SgxVerifier.sol
-- **Purpose**: Verifies SGX attestations and proofs on-chain.
-- **Breakdown of Functions**:
-  - **Instance Management**: `addInstances` (Adds new SGX instances), `deleteInstances` (Deletes SGX instances), `registerInstance` (Registers a new SGX instance with attestation).
-  - **Proof Verification**: `verifyProof` (Verifies a proof against registered SGX instances).
-
-### TimelockTokenPool.sol
-- **Purpose**: Manages timelocked tokens for different roles and individuals.
-- **Breakdown of Functions**:
-  - **Grant Management**: `grant` (Allocates tokens with a timelock), `void` (Cancels allocations), `withdraw` (Withdraws unlocked tokens).
-
-
-
-## Decentralized Execution Environment
-The Decentralized Execution Environment (DEE) within the Phat Contract framework stands as a pivotal innovation, fundamentally rearchitecting the landscape of blockchain computation. Central to this environment is the integration of off-chain workers (OCWs) operating within Trusted Execution Environments (TEEs), specifically instantiated by the runtime logic encapsulated within the `runtime.rs` and further augmented by the chain extension mechanism detailed in `extension.rs`.
-
-At the heart of the DEE, the `runtime.rs` file orchestrates the core blockchain runtime environment, facilitating seamless interaction between on-chain and off-chain computation realms. It configures the substrate runtime, incorporating pallets like `pallet_contracts` for smart contract functionality and custom pallets such as `pallet_pink`, which are pivotal for custom chain extensions and the execution of off-chain computations within a secure enclave.
-
-The chain extension functionality, meticulously crafted in `extension.rs`, serves as the bridge between smart contracts and the external logic or data required for complex computations. Through meticulously designed chain extension points, smart contracts can invoke off-chain computations executed within OCWs. These OCWs, running in a TEE (such as Intel SGX), ensure the integrity and confidentiality of the code and data being processed. The logic here is underpinned by the security guarantees of the TEE, where the correctness of computation can be verified without revealing the underlying data or logic to external parties.
+[![download-1.png](https://i.postimg.cc/GtTtPHvz/download-1.png)](https://postimg.cc/T5GTf27W)
 
 
 
 
+## 2): Cross-Chain Communication and the Signal Service:
+Cross-Chain Communication and the Signal Service in Taiko represent core components designed to enable secure and verified interactions between different blockchain layers or entirely separate blockchain networks. This mechanism is pivotal for maintaining the integrity and security of state transitions and data exchange across Taiko's layered architecture and external blockchains.
+
+### Technical Overview and Implementation:
+
+#### Signal Service:
+At its core, the Signal Service facilitates the broadcasting and verification of signals (or messages) across chains. Signals could encompass state changes, token transfers, or generic messages that need to be communicated securely between chains.
+
+1. **Signal Generation and Storage:**
+   - **Contract Role:** `SignalService.sol` plays a pivotal role here. It defines the structure for storing signal-related data and the functionality to emit signals.
+   - **Logic:** When a particular action is performed on one chain that needs to be communicated to another, a signal is generated within this service. This could be triggered by user actions, smart contract calls, or automated processes within the Taiko ecosystem.
+   - **Data Storage:** Signals are stored with their respective metadata, including the source chain ID, the type of signal, and a unique identifier. This data structure ensures that each signal can be efficiently identified and processed.
+
+2. **Cross-Chain Signal Transmission:**
+   - **Contract Role:** Integrations with `Bridge.sol` facilitate the secure transmission of signals across chains. The bridge utilizes the signal data from `SignalService.sol` to initiate cross-chain messages.
+   - **Logic:** The bridge contract captures the signal, encapsulates it into a cross-chain message, and transmits it to the target chain. This process involves cryptographic operations to ensure the integrity and authenticity of the signal.
+
+```solidity
+function _sendSignal(
+        address _app,
+        bytes32 _signal,
+        bytes32 _value
+    )
+        private
+        validSender(_app)
+        nonZeroValue(_signal)
+        nonZeroValue(_value)
+        returns (bytes32 slot_)
+    {
+        slot_ = getSignalSlot(uint64(block.chainid), _app, _signal);
+        assembly {
+            sstore(slot_, _value)
+        }
+        emit SignalSent(_app, _signal, slot_, _value);
+    }
+```
+
+3. **Signal Verification:**
+   - **Contract Role:** Upon receiving a signal on the target chain, contracts `SignalService.sol` on the destination chain are responsible for verifying the signal's authenticity and integrity.
+   - **Logic:** Verification involves checking the signal's metadata against expected parameters and cryptographic proofs (such as Merkle proofs) to ensure the signal was indeed emitted by the source chain and has not been tampered with during transmission.
+
+```solidity
+ function proveSignalReceived(
+        uint64 _chainId,
+        address _app,
+        bytes32 _signal,
+        bytes calldata _proof
+    )
+        public
+        virtual
+        validSender(_app)
+        nonZeroValue(_signal)
+    {
+        HopProof[] memory hopProofs = abi.decode(_proof, (HopProof[]));
+        if (hopProofs.length == 0) revert SS_EMPTY_PROOF();
+
+        uint64 chainId = _chainId;
+        address app = _app;
+        bytes32 signal = _signal;
+        bytes32 value = _signal;
+        address signalService = resolve(chainId, "signal_service", false);
+
+        HopProof memory hop;
+        for (uint256 i; i < hopProofs.length; ++i) {
+            hop = hopProofs[i];
+
+            bytes32 signalRoot = _verifyHopProof(chainId, app, signal, value, hop, signalService);
+            bool isLastHop = i == hopProofs.length - 1;
+
+            if (isLastHop) {
+                if (hop.chainId != block.chainid) revert SS_INVALID_LAST_HOP_CHAINID();
+                signalService = address(this);
+            } else {
+                if (hop.chainId == 0 || hop.chainId == block.chainid) {
+                    revert SS_INVALID_MID_HOP_CHAINID();
+                }
+                signalService = resolve(hop.chainId, "signal_service", false);
+            }
+
+            bool isFullProof = hop.accountProof.length > 0;
+
+            _cacheChainData(hop, chainId, hop.blockId, signalRoot, isFullProof, isLastHop);
+
+            bytes32 kind = isFullProof ? LibSignals.STATE_ROOT : LibSignals.SIGNAL_ROOT;
+            signal = signalForChainData(chainId, kind, hop.blockId);
+            value = hop.rootHash;
+            chainId = hop.chainId;
+            app = signalService;
+        }
+
+        if (value == 0 || value != _loadSignalValue(address(this), signal)) {
+            revert SS_SIGNAL_NOT_FOUND();
+        }
+    }
+```  
+
+<br/>
+[![Screenshot-from-2024-03-27-16-33-54.png](https://i.postimg.cc/qB3f289y/Screenshot-from-2024-03-27-16-33-54.png)](https://postimg.cc/t7pmjVR4)
 
 ## Codebase Quality
 
