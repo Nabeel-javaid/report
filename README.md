@@ -285,3 +285,18 @@ Conversely, the `ERC721Vault.sol` contract handles non-fungible tokens (NFTs), p
 - **Cross-Chain NFT Management:** Both contracts integrate with Taiko's broader ecosystem to enable cross-chain NFT management, leveraging Taiko's secure messaging layer for verification and coordination between layers. This includes handling state transitions, ownership proofs, and ensuring that NFT attributes are consistent across chains.
 
 In essence, both `ERC20Vault.sol` and `ERC721Vault.sol` embody the technical ingenuity of Taiko's protocol, offering robust solutions for token and asset management across a decentralized multi-layered blockchain infrastructure. They represent key components in realizing Taiko's vision for scalable, secure, and interoperable blockchain ecosystems, ensuring that both fungible and non-fungible assets can be managed with the utmost integrity and flexibility.
+
+## Systemic Risks:
+Systemic risks within the Taiko project include various concerns that need addressing for its longevity and success:
+
+- **Security of Cross-Chain Communications:** The Signal Service, crucial for securely transmitting messages across chains, faces risks if its verification procedures or external dependencies are exploited. Such breaches could compromise data integrity or lead to unauthorized asset transfers.
+
+- **Economic Threats to BCR:** The security of the Based Contestable Rollup, which relies on economic incentives, could be undermined by attackers. They might manipulate these incentives, causing issues like erroneous contestations or delays in block confirmations.
+
+- **Reliance on External Entities:** The operation and security of Taiko depend on external sources like Ethereum L1 and Trusted Execution Environments (TEEs), including Intel SGX. Any vulnerabilities or failures in these systems could adversely affect Taiko's functionality and security.
+
+- **Risks of Governance Takeover:** Although decentralized governance is designed to equalize decision-making, there's a potential for governance attacks. Such attacks could lead to a few entities gaining undue influence, possibly making decisions that endanger the system's security or divert it from its original purpose.
+
+Addressing these systemic risks is vital for the sustained resilience and achievement of the Taiko project.
+
+
