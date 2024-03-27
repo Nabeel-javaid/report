@@ -328,7 +328,7 @@ These interactions ensure that tokens can be securely transferred across chains,
 
 ## Codebase Quality
 
-Overall, I consider the quality of the **Phat Contract Runtime** codebase to be of high caliber. The codebase exhibits mature software engineering practices with a strong emphasis on security, modularity, and clear documentation. The smart contracts leverage established standards, which demonstrates adherence to best practices within the Ethereum development community. Details are explained below:
+Overall, I consider the quality of the **Taiko** codebase to be of high caliber. The codebase exhibits mature software engineering practices with a strong emphasis on security, modularity, and clear documentation. The smart contracts leverage established standards, which demonstrates adherence to best practices within the Ethereum development community. Details are explained below:
 
 | Codebase Quality Categories                     | Comments |
 | ----------------------------------------------- | -------- |
@@ -566,19 +566,6 @@ With a solid understanding of Taiko's theoretical framework and historical secur
 An important part of the audit involves simulating various operational scenarios to test the system's resilience and behavior under different conditions. I ran the test cases to see how they are performing.
 
 For each component of the system, I evaluated the coding standards and documentation quality. Well-documented code and adherence to established coding conventions are crucial for maintaining code quality, facilitating future updates, and ensuring that new developers can easily understand and contribute to the project.
-
-
-
-
-## Comprehensive Flow Diagram of the Phat Contract Runtime
-
-<br/>
-
-[![download.png](https://i.postimg.cc/1z2V8SNH/download.png)](https://postimg.cc/67VpPDc2)
-
-
-
-
 
 
 
