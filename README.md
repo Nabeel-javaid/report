@@ -9,13 +9,6 @@ Taiko introduces a multi-tiered rollup strategy, operating directly atop Ethereu
 
 Central to Taiko's design is the Based Contestable Rollup (BCR) architecture, which employs a unique contestation mechanism to ensure the integrity of state transitions. This is achieved through a process where proposed blocks can be contested by the community, with economic incentives designed to encourage honest participation and penalize incorrect submissions. This process relies heavily on cryptographic proofs and the use of Merkle proofs for efficient and secure cross-chain communication.
 
-### Core Mechanisms:
-1. **Secure Cross-Chain Messaging:** Taiko implements a secure communication protocol between chains using a Signal Service and Merkle proofs. This allows for the verification of message integrity and transaction states across layers without compromising security.
-2. **Token Bridging and Asset Management:** The protocol manages the bridging of assets across Ethereum and Taiko layers through specialized vault contracts. These contracts handle the locking, minting, and burning of tokens as they move between layers, ensuring secure and consistent asset management.
-3. **Decentralized Rollup Operation (BCR):** Taiko's rollup operation is based on contestability, where blocks proposed by validators can be contested by others through the submission of proofs. This mechanism ensures that only valid state transitions are accepted, maintaining the network's integrity.
-4. **Governance and Protocol Upgrades:** Governance in Taiko is decentralized and open to all token holders, facilitating collective decision-making on protocol upgrades and parameter adjustments. This approach ensures that the protocol evolves in a way that reflects the community's needs and priorities.
-5. **Ethereum-Equivalence:** Taiko maintains Ethereum-equivalence, ensuring that developers can seamlessly port applications to the Taiko network. This compatibility extends to the execution environment, allowing for the deployment of smart contracts with minimal modifications.
-
 <br/>
 
 [![Screenshot-from-2024-03-27-14-19-25.png](https://i.postimg.cc/yWqZXSnP/Screenshot-from-2024-03-27-14-19-25.png)](https://postimg.cc/N24FQF39)
