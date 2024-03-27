@@ -206,41 +206,43 @@ Total : 85 files,  7611 codes, 2757 comments, 1534 blanks, all 11902 lines
 
 ### Dependencies / External Imports
 
-- `@openzeppelin/contracts-upgradeable/access/Ownable2StepUpgradeable.sol` - 1
-- `@openzeppelin/contracts-upgradeable/governance/GovernorUpgradeable.sol` - 1
-- `@openzeppelin/contracts-upgradeable/governance/TimelockControllerUpgradeable.sol` - 1
-- `@openzeppelin/contracts-upgradeable/governance/compatibility/GovernorCompatibilityBravoUpgradeable.sol` - 1
-- `@openzeppelin/contracts-upgradeable/governance/extensions/GovernorTimelockControlUpgradeable.sol` - 1
-- `@openzeppelin/contracts-upgradeable/governance/extensions/GovernorVotesQuorumFractionUpgradeable.sol` - 1
-- `@openzeppelin/contracts-upgradeable/governance/extensions/GovernorVotesUpgradeable.sol` - 1
-- `@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol` - 1
-- `@openzeppelin/contracts-upgradeable/token/ERC1155/ERC1155Upgradeable.sol` - 1
-- `@openzeppelin/contracts-upgradeable/token/ERC1155/extensions/IERC1155MetadataURIUpgradeable.sol` - 1
-- `@openzeppelin/contracts-upgradeable/token/ERC1155/utils/ERC1155ReceiverUpgradeable.sol` - 1
-- `@openzeppelin/contracts-upgradeable/token/ERC20/ERC20Upgradeable.sol` - 1
-- `@openzeppelin/contracts-upgradeable/token/ERC20/extensions/ERC20SnapshotUpgradeable.sol` - 2
-- `@openzeppelin/contracts-upgradeable/token/ERC20/extensions/ERC20VotesUpgradeable.sol` - 2
-- `@openzeppelin/contracts-upgradeable/token/ERC20/extensions/IERC20MetadataUpgradeable.sol` - 1
-- `@openzeppelin/contracts-upgradeable/token/ERC721/ERC721Upgradeable.sol` - 1
-- `@openzeppelin/contracts-upgradeable/utils/introspection/IERC165Upgradeable.sol` - 1
-- `@openzeppelin/contracts/governance/utils/IVotes.sol` - 1
-- `@openzeppelin/contracts/interfaces/IERC1271.sol` - 1
-- `@openzeppelin/contracts/proxy/ERC1967/ERC1967Proxy.sol` - 1
-- `@openzeppelin/contracts/proxy/utils/UUPSUpgradeable.sol` - 1
-- `@openzeppelin/contracts/token/ERC1155/IERC1155.sol` - 1
-- `@openzeppelin/contracts/token/ERC20/IERC20.sol` - 10
-- `@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol` - 1
-- `@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol` - 4
-- `@openzeppelin/contracts/token/ERC721/IERC721.sol` - 2
-- `@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol` - 1
-- `@openzeppelin/contracts/utils/Address.sol` - 2
-- `@openzeppelin/contracts/utils/Strings.sol` - 4
-- `@openzeppelin/contracts/utils/cryptography/ECDSA.sol` - 3
-- `@openzeppelin/contracts/utils/cryptography/MerkleProof.sol` - 1
-- `@openzeppelin/contracts/utils/introspection/IERC165.sol` - 1
-- `@openzeppelin/contracts/utils/math/SafeCast.sol` - 1
-- `solady/src/utils/Base64.sol` - 2
-- `solady/src/utils/LibString.sol` - 2
+| Dependency / Import Path | Count |
+| ------------------------ | ----- |
+| `access/Ownable2StepUpgradeable.sol` | 1 |
+| `governance/GovernorUpgradeable.sol` | 1 |
+| `governance/TimelockControllerUpgradeable.sol` | 1 |
+| `governance/compatibility/GovernorCompatibilityBravoUpgradeable.sol` | 1 |
+| `governance/extensions/GovernorTimelockControlUpgradeable.sol` | 1 |
+| `governance/extensions/GovernorVotesQuorumFractionUpgradeable.sol` | 1 |
+| `governance/extensions/GovernorVotesUpgradeable.sol` | 1 |
+| `proxy/utils/Initializable.sol` | 1 |
+| `token/ERC1155/ERC1155Upgradeable.sol` | 1 |
+| `token/ERC1155/extensions/IERC1155MetadataURIUpgradeable.sol` | 1 |
+| `token/ERC1155/utils/ERC1155ReceiverUpgradeable.sol` | 1 |
+| `token/ERC20/ERC20Upgradeable.sol` | 1 |
+| `token/ERC20/extensions/ERC20SnapshotUpgradeable.sol` | 2 |
+| `token/ERC20/extensions/ERC20VotesUpgradeable.sol` | 2 |
+| `token/ERC20/extensions/IERC20MetadataUpgradeable.sol` | 1 |
+| `token/ERC721/ERC721Upgradeable.sol` | 1 |
+| `utils/introspection/IERC165Upgradeable.sol` | 1 |
+| `utils/IVotes.sol` | 1 |
+| `interfaces/IERC1271.sol` | 1 |
+| `ERC1967/ERC1967Proxy.sol` | 1 |
+| `utils/UUPSUpgradeable.sol` | 1 |
+| `ERC1155/IERC1155.sol` | 1 |
+| `ERC20/IERC20.sol` | 10 |
+| `ERC20/extensions/IERC20Metadata.sol` | 1 |
+| `ERC20/utils/SafeERC20.sol` | 4 |
+| `ERC721/IERC721.sol` | 2 |
+| `ERC721/IERC721Receiver.sol` | 1 |
+| `utils/Address.sol` | 2 |
+| `utils/Strings.sol` | 4 |
+| `utils/cryptography/ECDSA.sol` | 3 |
+| `utils/cryptography/MerkleProof.sol` | 1 |
+| `utils/introspection/IERC165.sol` | 1 |
+| `utils/math/SafeCast.sol` | 1 |
+| `solady/src/utils/Base64.sol` | 2 |
+| `solady/src/utils/LibString.sol` | 2 |
 
 
 ## Comment-to-Source Ratio:
