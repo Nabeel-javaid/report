@@ -592,18 +592,6 @@ Systemic risks within the Taiko project include various concerns that need addre
 Addressing these systemic risks is vital for the sustained resilience and achievement of the Taiko project.
 
 
-## Technical Risks
-**Smart Contract Vulnerabilities:** Bugs or logical errors in the smart contracts can lead to loss of funds, unauthorized access, or unintended behavior.
-
-**Scalability Concerns:** As transaction volumes grow, the platform must scale without compromising performance or security.
-- **Economic Threats to BCR:** The security of the Based Contestable Rollup, which relies on economic incentives, could be undermined by attackers. They might manipulate these incentives, causing issues like erroneous contestations or delays in block confirmations.
-
-- **Reliance on External Entities:** The operation and security of Taiko depend on external sources like Ethereum L1 and Trusted Execution Environments (TEEs), including Intel SGX. Any vulnerabilities or failures in these systems could adversely affect Taiko's functionality and security.
-
-- **Risks of Governance Takeover:** Although decentralized governance is designed to equalize decision-making, there's a potential for governance attacks. Such attacks could lead to a few entities gaining undue influence, possibly making decisions that endanger the system's security or divert it from its original purpose.
-
-Addressing these systemic risks is vital for the sustained resilience and achievement of the Taiko project.
-
 
 ## Technical Risks
 **Smart Contract Vulnerabilities:** Bugs or logical errors in the smart contracts can lead to loss of funds, unauthorized access, or unintended behavior.
