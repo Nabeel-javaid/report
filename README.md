@@ -121,8 +121,8 @@ Total : 85 files,  7611 codes, 2757 comments, 1534 blanks, all 11902 lines
 ## Files
 | filename | language | code | comment | blank | total |
 | :--- | :--- | ---: | ---: | ---: | ---: |
-| [packages/protocol/contracts/L1/ITaikoL1.sol](/packages/protocol/contracts/L1/ITaikoL1.sol) | Solidity | 14 | 17 | 6 | 37 |
-| [packages/protocol/contracts/L1/TaikoData.sol](/packages/protocol/contracts/L1/TaikoData.sol) | Solidity | 124 | 60 | 14 | 198 |
+| [L1/ITaikoL1.sol](/packages/protocol/contracts/L1/ITaikoL1.sol) | Solidity | 14 | 17 | 6 | 37 |
+| [L1/TaikoData.sol](/packages/protocol/contracts/L1/TaikoData.sol) | Solidity | 124 | 60 | 14 | 198 |
 | [packages/protocol/contracts/L1/TaikoErrors.sol](/packages/protocol/contracts/L1/TaikoErrors.sol) | Solidity | 34 | 8 | 2 | 44 |
 | [packages/protocol/contracts/L1/TaikoEvents.sol](/packages/protocol/contracts/L1/TaikoEvents.sol) | Solidity | 37 | 43 | 8 | 88 |
 | [packages/protocol/contracts/L1/TaikoL1.sol](/packages/protocol/contracts/L1/TaikoL1.sol) | Solidity | 149 | 52 | 27 | 228 |
