@@ -1,14 +1,20 @@
-# 🛠️ Phat Contract Runtime
-**Coprocessor for blockchains.**
+# 🛠️ Taiko
+**A based rollup -- inspired, secured, and sequenced by Ethereum.**
 
 ## Conceptual overview of the project:
-The Phat Contract Runtime project is an innovative framework designed for the Phala Network, aiming to extend the capabilities of decentralized applications (dApps) by providing robust off-chain computation resources. At its core, it seeks to address the inherent limitations and high costs associated with on-chain computations, which often bottleneck blockchain technologies' scalability and practical utility. By moving complex or resource-intensive processes off-chain, while still ensuring the trustlessness and security blockchain technology is known for, Phat Contracts represent a significant step forward in decentralized computing.
+The Taiko protocol is designed as an advanced Layer 2 (L2) solution for Ethereum, aiming to extend Ethereum's scalability, security, and decentralization. Its unique architecture is built upon the principles of Based Contestable Rollup (BCR), providing a novel approach to handling transactions, state transitions, and inter-layer communications. The protocol leverages several core mechanisms to ensure efficient operation, seamless user interaction, and robust security.
 
-The project introduces a seamless integration between on-chain smart contracts and off-chain computing tasks. Initially, users or dApps interact with smart contracts on the blockchain, which are inherently limited in their computational capabilities and suffer from high transaction fees. This is where the Phat Contract steps in; it acts as a bridge to off-chain computation, allowing for more complex, intensive operations without overburdening the blockchain or incurring prohibitive costs.
+### Architecture and Functionalities:
+Taiko introduces a multi-tiered rollup strategy, operating directly atop Ethereum's Layer 1 (L1) and capable of deploying further Taiko instances as Layer 3 (L3), essentially enabling horizontal scalability. This structure allows each layer to maintain its own state while synchronizing with the L1 state, thus ensuring data integrity and security without compromising scalability.
 
-One of the most unique features of this framework is its ability to perform off-chain tasks while maintaining a trustless environment. This is achieved through a distributed network of off-chain workers operating within Trusted Execution Environments (TEEs), ensuring the integrity and confidentiality of the computation process. Users can, for example, initiate a task on-chain by calling a smart contract, which then delegates the task to off-chain workers. These workers perform the necessary computations and return the results to the blockchain, ensuring that the final output is verifiable and tamper-proof.
+Central to Taiko's design is the Based Contestable Rollup (BCR) architecture, which employs a unique contestation mechanism to ensure the integrity of state transitions. This is achieved through a process where proposed blocks can be contested by the community, with economic incentives designed to encourage honest participation and penalize incorrect submissions. This process relies heavily on cryptographic proofs and the use of Merkle proofs for efficient and secure cross-chain communication.
 
-Another key functionality introduced by Phat Contracts is the capability to interact with external data sources directly. Traditional smart contracts cannot natively access off-chain data, which limits their utility in real-world applications. Phat Contracts overcome this by enabling off-chain workers to send HTTP requests, fetch data from external APIs, and incorporate this data into the blockchain ecosystem in a secure and decentralized manner. This opens up a myriad of possibilities for dApps, from fetching real-time market data for financial applications to integrating with web services for a broader range of functionalities.
+### Core Mechanisms:
+1. **Secure Cross-Chain Messaging:** Taiko implements a secure communication protocol between chains using a Signal Service and Merkle proofs. This allows for the verification of message integrity and transaction states across layers without compromising security.
+2. **Token Bridging and Asset Management:** The protocol manages the bridging of assets across Ethereum and Taiko layers through specialized vault contracts. These contracts handle the locking, minting, and burning of tokens as they move between layers, ensuring secure and consistent asset management.
+3. **Decentralized Rollup Operation (BCR):** Taiko's rollup operation is based on contestability, where blocks proposed by validators can be contested by others through the submission of proofs. This mechanism ensures that only valid state transitions are accepted, maintaining the network's integrity.
+4. **Governance and Protocol Upgrades:** Governance in Taiko is decentralized and open to all token holders, facilitating collective decision-making on protocol upgrades and parameter adjustments. This approach ensures that the protocol evolves in a way that reflects the community's needs and priorities.
+5. **Ethereum-Equivalence:** Taiko maintains Ethereum-equivalence, ensuring that developers can seamlessly port applications to the Taiko network. This compatibility extends to the execution environment, allowing for the deployment of smart contracts with minimal modifications.
 
 <br/>
 
@@ -76,13 +82,16 @@ Overall, I consider the quality of the **Phat Contract Runtime** codebase to be 
 
 | Codebase Quality Categories                     | Comments |
 | ----------------------------------------------- | -------- |
-| **Architecture and Design**                     | The Pink Runtime's architecture is modular and well-designed, allowing for easy extensibility and maintenance. Chain extensions and the layered approach for interacting with the Phala Network and off-chain systems are particularly noteworthy. |
-| **Code Consistency**                            | The codebase maintains a high level of consistency in coding practices, including naming conventions, file organization, and commenting. This consistency facilitates readability and collaboration. |
-| **Testing and Testability**                     | With a test coverage of 90%, the Pink Runtime demonstrates a strong commitment to ensuring code reliability and functionality. Unit and integration tests are thorough, covering critical paths and edge cases. |
-| **Documentation**                               | Comprehensive documentation is provided, including detailed inline comments and high-level system overviews. This thorough documentation supports developers and users of the system effectively. |
-| **Error Handling**                              | Error handling is robust, with clear and meaningful error messages. The use of Result types and explicit error handling patterns contributes to the system's resilience and debuggability. |
-| **Dependencies Management**                     | Dependencies are well-managed, with a clear policy for dependency updates and minimal reliance on external libraries. This minimizes potential security risks and version conflicts. |
-| **Innovation and Advanced Features**            | The Pink Runtime introduces innovative features not commonly found in traditional smart contract platforms, such as off-chain workers and chain extensions, pushing the boundaries of blockchain technology. |
+| **Documentation and Comments**                  | The codebase is well-documented with comprehensive comments that explain the functionality and purpose of each contract and function, facilitating understandability and maintainability. |
+| **Code Structure and Organization**             | Code is logically organized into directories and files based on functionality, making navigation and understanding of the project's architecture straightforward. |
+| **Consistency and Coding Standards**            | The project adheres to common Solidity coding standards and naming conventions, ensuring consistency and readability across the codebase. |
+| **Test Coverage and Quality**                   | With a test coverage of 79%, the project demonstrates a strong commitment to testing, though there's room for improvement to cover edge cases and potential security vulnerabilities more comprehensively. |
+| **Security Practices and Considerations**       | The use of libraries like OpenZeppelin and custom security mechanisms indicates a focus on security. However, continuous security audits and reviews are essential to maintain high security standards. |
+| **Use of Libraries and Dependencies**            | The project effectively uses reputable libraries (e.g., OpenZeppelin) to leverage pre-built functionalities, reducing the likelihood of bugs in foundational components. |
+| **Upgradability and Maintenance**               | The project is designed with upgradability in mind, using proxy patterns and carefully managing state to ensure future improvements can be made with minimal disruption. |
+| **Performance and Gas Optimization**            | The code shows considerations for gas optimization, crucial for scalability and user experience on Ethereum. Continuous profiling and optimization can further enhance performance. |
+| **Error Handling and Data Validation**          | Solid error handling and data validation are present throughout, using require statements and custom error messages to ensure contract integrity and inform users of issues. |
+| **Developer Tooling and Infrastructure**        | The project benefits from a robust set of developer tools for testing, deployment, and interaction, such as Hardhat, which enhances the development workflow. |
 
 
 
