@@ -191,7 +191,36 @@ function _sendSignal(
 ```  
 
 <br/>
+
 [![Screenshot-from-2024-03-27-16-33-54.png](https://i.postimg.cc/qB3f289y/Screenshot-from-2024-03-27-16-33-54.png)](https://postimg.cc/t7pmjVR4)
+
+
+## 3): Decentralized Rollup Operation (Based Contestable Rollup - BCR):
+
+The Taiko protocol introduces a novel concept called Based Contestable Rollup (BCR), designed to enhance the scalability of Ethereum while ensuring the security and decentralization of the network. The BCR mechanism is pivotal to the protocol's architecture, offering a scalable solution that maintains the integrity of state transitions through a process of proposal, contestation, and verification.
+
+### Working Mechanism of BCR:
+
+1. **Proposal Submission:**
+   - In the BCR framework, a prover, submits a new block to the network. This block contains a series of state transitions, encapsulating the changes from the previous block.
+
+2. **Contestation Period:**
+   - Upon submission, the block enters a contestation period. During this time frame, other network participants, including validators and full nodes, have the opportunity to review the proposed block and its contained state transitions.
+
+3. **Challenge Process:**
+   - If any participant believes that a block contains incorrect or fraudulent state transitions, they can challenge the block by submitting a contestation. This challenge must be backed by a security deposit or stake.
+
+4. **Adjudication:**
+   - The challenge triggers an adjudication process, where the contested state transitions are scrutinized. This may involve executing the transactions on a trusted execution environment or through a deterministic verification process by the network's validators.
+
+5. **Resolution:**
+   - If the challenge is deemed valid, the contested block is rejected, and the proposer's stake is slashed. The challenger is often rewarded for identifying the fraudulent block. If the challenge is unfounded, the block is accepted, and the challenger's stake may be slashed as a deterrent against frivolous or malicious challenges.
+
+6. **Finalization:**
+   - Once a block successfully passes the contestation period without challenges or after a challenge has been resolved, the block is finalized. The state transitions within are considered valid, and the block is added to the blockchain.
+
+
+
 
 ## Codebase Quality
 
