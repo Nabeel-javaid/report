@@ -7,7 +7,7 @@
 | Enhanced Detail in Graph                        |   ✗   |    ✓    |      ✓      |
 | Detailed Explanation with Examples              |   ✗   |    ✓    |      ✓      |
 | *Detailed Issue Analysis*                     |   ✓   |    ✓    |      ✓      |
-| Top 5 Issues Only                               |   ✓   |    ✗    |      ✗      |
+| Top 5 Issues                                |   ✓   |    ✓    |      ✓      |
 | Top 10 Issues with Recommendations              |   ✗   |    ✓    |      ✓      |
 | All Issues with In-depth Analysis               |   ✗   |    ✗    |      ✓      |
 
