@@ -1,10 +1,10 @@
 Phase 1
-Launch $SOAI on Erc-20 
-Estabilish $SOAI community 
-Whitepaper Release 
-First Phase of KoL Partnerships 
-Launch Windows & Mac Application V1 
-CG & CMC Listing 
+- Launch $SOAI on Erc-20 
+- Estabilish $SOAI community 
+- Whitepaper Release 
+- First Phase of KoL Partnerships 
+- Launch Windows & Mac Application V1 
+- CG & CMC Listing 
 
 Phase 2
 Website V2 Release 
@@ -23,7 +23,7 @@ Estabilish Forum for community recommendations
 Launch Desktop Application V2
 
 
-
+Phase 4
 Launch Android Mobile Application V1
 Tier System and Revenue Share
 Fourth Phase Of KoLs Partnerships
