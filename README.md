@@ -245,6 +245,70 @@ During the manual review phase, I paid particular attention to function calls, d
 
 
 
+## Test analysis
+
+**Setup**
+
+Installed Substrate:
+
+```bash
+sudo apt install build-essential
+```
+
+Navigate to `/src`
+
+```bash
+cargo build
+```
+After installing and building contracts using this command to execute all the test scripts:
+
+```bash
+cargo test
+```
+
+
+
+### What did the project do differently? ;
+-   1) It can be said that the developers of the project did a quality job, there is a test structure consisting of tests with quality content. In particular, tests have been written successfully.
+
+-   2) Overall line coverage percentage provided by your tests : 85%
+
+### What could they have done better?
+
+-  1): It is recommended to increase the test coverage to 100% so make sure that each and every line is battle tested
+
+## Security Approach of the Project
+
+### Successful current security understanding of the project;
+
+1- The project has already underwent several [Audits](https://github.com/AcalaNetwork/Acala/tree/master/audit)
+
+### What the project should add in the understanding of Security;
+
+1- After the Code4rena audit is completed and the project is live, I recommend the audit process to continue, projects like immunefi do this. 
+https://immunefi.com/
+
+2- Emergency Action Plan
+In a high-level security approach, there should be a crisis handbook like the one below and the strategic members of the project should be trained on this subject and drills should be carried out. Naturally, this information and road plan will not be available to the public.
+https://docs.google.com/document/u/0/d/1DaAiuGFkMEMMiIuvqhePL5aDFGHJ9Ya6D04rdaldqC0/mobilebasic#h.27dmpkyp2k1z
+
+3- I also recommend that you have an "Economic Audit" for projects based on such complex mathematics and economic models. An example Economic Audit is provided in the link below;
+Economic Audit with [Three Sigma](https://panoptic.xyz/blog/panoptic-three-sigma-partnership)
+
+4 - As the project team, you can consider applying the multi-stage audit model.
+
+[![sla.png](https://i.postimg.cc/nhR0kN3w/sla.png)](https://postimg.cc/Sn96Q1FW)
+
+Read more about the MPA model;
+https://mpa.solodit.xyz/
+
+5 - I recommend having a masterplan applied to project team members (This information is not included in the documents).
+All authorizations, including NPM passwords and authorizations, should be reserved only for current employees. I also recommend that a definitive security constitution project be found for employees to protect these passwords with rules such as 2FA. The LEDGER hack, which has made a big impact recently, is the best example in this regard;
+
+https://twitter.com/Ledger/status/1735326240658100414?t=UAuzoir9uliXplerqP-Ing&s=19
+
+
+
 
 
 
