@@ -226,24 +226,22 @@ The Earning Module's architecture is critical for incentivizing participation in
 
 
 
-## Comprehensive Flow Diagram of the PoolTogether Protocol
-
-<br/>
-
-[![Screenshot-from-2024-03-11-22-58-22.png](https://i.postimg.cc/9MjdRkvj/Screenshot-from-2024-03-11-22-58-22.png)](https://postimg.cc/94JRsLmx)
 
 ## Approach Taken while auditing the codebase
-When auditing the PoolTogether protocol, I began by thoroughly reviewing the project documentation and existing audit reports. This initial step helped me understand the protocol's intended functionality, architecture, and security considerations from both a theoretical and a practical perspective.
+I began the audit by immersing myself in the comprehensive documentation provided for the Acala protocol. This initial deep dive was critical to grasp the overarching architecture, functionalities, and the specific intricacies of the system. The documentation served as a foundational layer, enabling me to align my auditing efforts with the protocol's intended security and functional benchmarks.
 
-Next, I delved into the smart contract codebase, starting with the core contracts such as `PrizeVault.sol`, `PrizeVaultFactory.sol`, and `TwabERC20.sol`, among others. My focus was to map out the interactions between these contracts and identify critical functionalities like asset deposits, yield generation, prize distribution, and the unique mathematical models used, including TWAB and random number generation.
+Following this preparatory phase, I organized my audit strategy around a sequence that mirrored the logical and dependency flow of the protocol as outlined in the documentation. The sequence in which I approached the files for audit was as follows:
 
-To ensure a comprehensive audit, I analyzed the smart contracts for common vulnerabilities, such as reentrancy attacks, overflow/underflow issues, and improper access control. Special attention was given to the contracts' integration with external components like the Chainlink VRF and ERC4626 vaults, assessing how these interactions could impact the protocol's security.
+1. **Earning Module (`lib.rs`)**: As a core part of the protocol that directly interacts with user stakes and rewards, this was my starting point. Understanding the earning mechanics was crucial since it laid the groundwork for how rewards and penalties are computed and distributed.
 
-I also scrutinized the protocol's handling of rounding errors and yield buffer management. Understanding these aspects was crucial, given their potential impact on prize distribution fairness and the overall "no loss" principle.
+2. **Incentives Module (`lib.rs`)**: Building upon the understanding of the earning mechanisms, I moved on to audit the incentives module. This module's significance stems from its role in managing and distributing incentives, which are vital for ensuring network participation and security.
 
-Moreover, I reviewed the tests accompanying the smart contracts to assess their coverage and effectiveness in catching edge cases and potential bugs. Wherever possible, I suggested improvements or additional test scenarios to enhance the protocol's robustness.
+3. **Rewards Module (`lib.rs`)**: The final piece of the puzzle, the rewards module, was audited last. This module is integral to the protocol as it oversees the actual distribution of rewards, an area ripe for vulnerabilities if not handled correctly.
 
-In summary, my auditing approach was methodical and thorough, combining a deep dive into the smart contracts, rigorous vulnerability assessment. My goal was to ensure the PoolTogether protocol's security, efficiency, and adherence to its innovative savings and prize distribution mechanisms.
+With each file, my approach was methodical and twofold: Catch common pitfalls and vulnerabilities, followed by a detailed manual review focusing on business logic, security controls, and potential edge cases. This blend of automated and manual examination ensured no stone was left unturned.
+
+During the manual review phase, I paid particular attention to function calls, data handling, and state management operations. By tracing how data flowed across these modules, I aimed to uncover any potential security risks such as unauthorized access, improper state changes, or issues that could lead to funds being locked or lost.
+
 
 
 
@@ -258,46 +256,35 @@ In summary, my auditing approach was methodical and thorough, combining a deep d
 
 ### Systemic Risks
 
-Systemic risks in PoolTogether primarily revolve around the dependencies on external protocols and services for yield generation and randomness. The protocol's reliance on external ERC4626 yield vaults and RNG services introduces potential systemic vulnerabilities, including smart contract failures or manipulations in the integrated protocols.
+In auditing the Acala project, several systemic risks became apparent, reflecting both the complex interplay of its components and the broader context in which it operates within the DeFi ecosystem. These systemic risks are critical not only due to their potential impact on the Acala network but also due to the cascading effects they might have on connected systems and users.
 
+1. **Cross-Chain Interactions (XCM)**: Acala's integration with the Polkadot ecosystem through Cross-Chain Message Passing (XCM) introduces a layer of risk associated with the cross-chain transfer of assets. Vulnerabilities or design flaws in the handling of cross-chain messages could lead to loss or theft of assets as they are transferred across chains.
 
-The `yieldVault` from `PrizeVault.sol` represents an external dependency on ERC4626 yield sources. A systemic failure in the yield source could impact the prize vault's ability to generate yield and thereby prizes for users.
+2. **Governance Attacks**: Given the governance mechanisms in place for managing aspects of the Acala network, there is a risk of governance attacks where malicious actors could potentially gain control or unduly influence governance decisions. This could lead to unfavorable changes in protocol parameters, diversion of funds, or other actions that could harm the network.
+
 
 ### Centralization Risks
 
-Centralization risks stem from the roles and permissions granted to certain addresses within the protocol. For instance, the ability of the admin or owner to adjust yield strategies and fee parameters introduces a central point of control.
+Centralization risks stem from the roles and permissions granted to certain addresses within the protocol.
 
-**Example Code**:
-```solidity
-function setYieldFeePercentage(uint32 _yieldFeePercentage) external onlyOwner {...}
-function setYieldFeeRecipient(address _yieldFeeRecipient) external onlyOwner {...}
-function setLiquidationPair(address _liquidationPair) external onlyOwner {...}
-```
-These functions in `PrizeVault.sol` allow the owner to modify critical financial parameters, presenting a centralization risk if the owner's address is compromised or if the owner acts maliciously.
+**Governance Centralization:** Acala's governance mechanism allows token holders to vote on proposals that can alter the protocol's behavior, parameters, and upgrades. If a small number of holders or a single entity accumulates a significant portion of the governance tokens, they could exert undue influence over the protocol's direction and decisions.
+
+**Parameter Management Centralization:** The ability to adjust critical protocol parameters, such as reward distribution rates, staking requirements, or fee structures, might be restricted to a small group of administrators or governed through a process where participation is limited.
 
 ### Technical Risks
 
-**Smart Contract Vulnerabilities:** Bugs or logical errors in the smart contracts can lead to loss of funds, unauthorized access, or unintended behavior. Given the complexity of contracts like the Shrine, interest rate models, and oracle interactions, the attack surface is significant.
+**Smart Contract Vulnerabilities:** Bugs or logical errors in the smart contracts can lead to loss of funds, unauthorized access, or unintended behavior. Given the complexity of contracts like the rewards, earnings and incentive the attack surface is significant.
 
 **Scalability Concerns:** As transaction volumes grow, the platform must scale without compromising performance or security.
 
 ### Integration Risks
 
-Integration risks are primarily associated with the protocol's interactions with external DeFi platforms for yield generation and RNG services for random number generation. The protocol's security and functionality are contingent upon the reliability and integrity of these external services. Any changes or failures in the integrated platforms, such as smart contract upgrades, API modifications, or service discontinuations, could disrupt the protocol's operations. Moreover, the evolving landscape of DeFi presents a risk of compatibility issues, where updates in connected protocols could necessitate adjustments in PoolTogether's contracts to maintain seamless functionality and security.
+Integration risks are primarily associated with the protocol's interactions with external DeFi platforms.
 
-## New insights and learning of project from this audit:
-During the audit of the PoolTogether project, several key insights and learning opportunities emerged, highlighting the project's innovative approach to decentralized finance and its integration within the Ethereum ecosystem. The audit provided a deep dive into the mechanics of no-loss prize games, the use of yield-generating strategies, and the complexities of smart contract development and security. Below are some of the primary insights and learnings derived from this audit:
+**Cross-Chain Communication Failures:** Acala's functionality relies heavily on cross-chain messaging and interoperability, particularly with Polkadot and other parachains through XCM (Cross-Consensus Message format). Misalignments, incompatibilities, or failures in these cross-chain communication protocols can disrupt Acala's services, affecting liquidity, staking, and other decentralized finance (DeFi) functionalities.
 
-1. **No-Loss Prize Game Mechanics**: The concept of no-loss prize games, where users deposit funds that generate yield in DeFi protocols, with the yield being distributed as prizes, is both innovative and complex. Understanding how PoolTogether manages user deposits, generates yield, and allocates prizes required a comprehensive analysis of the interactions between different smart contracts and external DeFi protocols.
+**Smart Contract Interactions:** Acala's ecosystem includes various precompiled contracts. Flaws, vulnerabilities, or unexpected behaviors in these external contracts could lead to losses or adverse effects on Acala's operations and its users' assets.
 
-2. **Time-Weighted Average Balance (TWAB)**: The use of TWAB for fair and transparent prize distribution is a sophisticated approach to addressing the randomness and fairness in prize allocation. The audit process offered a deeper understanding of how TWAB works, including the mathematical principles underlying its implementation, and its significance in ensuring that the prize allocation process is both random and weighted towards users with longer deposit durations.
-
-3. **Security Implications of External Integrations**: PoolTogether's reliance on external protocols for yield generation and random number generation (RNG) introduces various security considerations. The audit process emphasized the importance of evaluating the security and reliability of these external services, as well as the mechanisms through which PoolTogether interacts with them. This included an assessment of fallback procedures and contingency plans in case of external service failures.
-
-4. **Yield Strategies and Financial Risks**: Analyzing the yield strategies employed by PoolTogether, including the integration with various DeFi yield sources, provided valuable insights into the financial risks and rewards associated with such strategies. The audit examined the mechanisms for optimizing yield generation, managing risks, and the potential impact of market volatility on the protocol's financial health.
-
-
-The audit of PoolTogether not only highlighted the project's innovative contribution to the DeFi space but also provided a comprehensive learning experience on the technical, security, and financial aspects of building and maintaining a decentralized protocol. These insights are valuable for the ongoing development of PoolTogether, as well as for the broader DeFi community and future projects in the space.
 
 
 
@@ -305,6 +292,3 @@ NOTE: I don't track time while auditing or writing report, so what the time I sp
 
 
 
-
-### Time spent:
-4 hours
