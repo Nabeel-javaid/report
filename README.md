@@ -69,18 +69,18 @@ From a user perspective, Acala presents a comprehensive DeFi platform that not o
 - **Rewards**: Manages distribution and calculation of rewards for different activities within the protocol.
 
 ### Breakdown of the Functions:
-#### Reward Accumulation:
+##### Reward Accumulation:
 - **accumulate_reward**: Adds rewards to a specific pool, increasing the total rewards available for distribution.
 
-#### Share Management:
+##### Share Management:
 - **add_share**: Allocates shares to a participant, allowing them to earn rewards based on their share.
 - **remove_share**: Removes a participant's shares, adjusting their potential rewards.
 
-#### Reward Claiming:
+##### Reward Claiming:
 - **claim_rewards**: Allows participants to claim their earned rewards from a specific pool.
 - **claim_reward**: Enables claiming of rewards for a specific currency from a pool.
 
-#### Share Adjustment:
+##### Share Adjustment:
 - **set_share**: Sets the exact share amount for a participant, adjusting their reward potential directly.
 - **transfer_share_and_rewards**: Transfers share (and potentially rewards) from one account to another, maintaining reward continuity.
 
