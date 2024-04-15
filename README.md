@@ -6,95 +6,103 @@
 
 | |Issue|Instances|
 |-|:-|:-:|
-| [M-1](#M-1) | Centralization Risk for trusted owners | 50 |
-| [M-2](#M-2) | Unsafe use of ERC20 transferFrom() | 3 |
+| [M-1](#M-1) | Code will not work properly on L2 due to block.number | 5 |
+| [M-2](#M-2) | Centralization Risk for trusted owners | 11 |
+| [M-3](#M-3) | Unsafe use of ERC20 transferFrom() | 2 |
+| [M-4](#M-4) | Unsafe use of ERC20 transfer() | 1 |
 
 ## Low Issues
 
 
 | |Issue|Instances|
 |-|:-|:-:|
-| [L-1](#L-1) | complex casting | 17 |
-| [L-2](#L-2) | Functions calling contracts/addresses with transfer hooks are missing reentrancy guards | 1 |
-| [L-3](#L-3) | decimals() is not a part of the ERC-20 standard | 3 |
-| [L-4](#L-4) | Tokens may be minted to address(0x0) | 3 |
-| [L-5](#L-5) | constructor/initialize function lacks parameter validation | 7 |
-| [L-6](#L-6) | Do not use deprecated library functions | 1 |
-| [L-7](#L-7) | Empty function body | 6 |
-| [L-8](#L-8) | Initializers could be front-run | 7 |
-| [L-9](#L-9) | safeApprove() is deprecated | 1 |
-| [L-10](#L-10) | State variables not capped at reasonable values | 25 |
-| [L-11](#L-11) | Some tokens may revert when large transfers are made | 2 |
-| [L-12](#L-12) | Unsafe casting | 17 |
-| [L-13](#L-13) | Unsafe ERC20 operation(s) | 7 |
+| [L-1](#L-1) | complex casting | 2 |
+| [L-2](#L-2) | The remaining ETH may be locked in the contract after call | 2 |
+| [L-3](#L-3) | External call recipient may consume all transaction gas | 2 |
+| [L-4](#L-4) |  `abi.encodePacked()` should not be used with dynamic types when passing the result to a hash function such as `keccak256()` | 1 |
+| [L-5](#L-5) | Division by zero not prevented | 3 |
+| [L-6](#L-6) | Empty function body | 1 |
+| [L-7](#L-7) | Unsafe solidity low-level call can cause gas grief attack | 2 |
+| [L-8](#L-8) | Missing contract existence checks before low-level calls | 2 |
+| [L-9](#L-9) | Use Ownable2Step instead of Ownable | 3 |
+| [L-10](#L-10) | Owner can renounce Ownership   | 3 |
+| [L-11](#L-11) | Loss of precision | 3 |
+| [L-12](#L-12) | State variables not capped at reasonable values | 14 |
+| [L-13](#L-13) | Some tokens may revert when zero value transfers are made | 1 |
+| [L-14](#L-14) |  Functions calling contracts/addresses with transfer hooks should be protected by reentrancy guard   | 1 |
+| [L-15](#L-15) | Some tokens may revert when large transfers are made | 1 |
 
 ## Non Critical Issues
 
 
 | |Issue|Instances|
 |-|:-|:-:|
-| [NC-1](#NC-1) | Contracts should have full test coverage | 12 |
-| [NC-2](#NC-2) | Consider adding formal verification proofs | 12 |
-| [NC-3](#NC-3) | Large or complicated code bases should implement invariant tests | 12 |
-| [NC-4](#NC-4) | Custom error has no error details | 1 |
-| [NC-5](#NC-5) | Contract uses both require()/revert() as well as custom errors   | 1 |
-| [NC-6](#NC-6) | Variables without visibility specifier | 20 |
-| [NC-7](#NC-7) | Constants in comparisons should appear on the left side | 21 |
-| [NC-8](#NC-8) | Contract declarations should have NatSpec @author annotations | 8 |
-| [NC-9](#NC-9) | Contract declarations should have NatSpec @Title annotations | 8 |
-| [NC-10](#NC-10) | NatSpec: Contract declarations should have @dev tags | 8 |
-| [NC-11](#NC-11) | NatSpec: Contract declarations should have NatSpec descriptions | 8 |
-| [NC-12](#NC-12) | NatSpec: Contract declarations should have @notice tags | 8 |
-| [NC-13](#NC-13) | Consider adding a block/deny-list" | 10 |
-| [NC-14](#NC-14) | Consider adding emergency-stop functionality | 8 |
-| [NC-15](#NC-15) | Error declarations should have NatSpec descriptions | 2 |
-| [NC-16](#NC-16) | Custom error has no error details | 2 |
-| [NC-17](#NC-17) | Events are missing sender information | 3 |
-| [NC-18](#NC-18) | NatSpec: Event declarations should have NatSpec descriptions | 23 |
-| [NC-19](#NC-19) | NatSpec: function declarations should have NatSpec descriptions | 169 |
-| [NC-20](#NC-20) | NatSpec: function declarations should have @Notice tags | 169 |
-| [NC-21](#NC-21) | NatSpec: function declarations should have NatSpec descriptions | 169 |
-| [NC-22](#NC-22) | If-statement can be converted to a ternary | 20 |
-| [NC-23](#NC-23) | Consider combining multiple address/ID mappings into a single mapping of an address/ID to a struct | 2 |
-| [NC-24](#NC-24) | Use of override is unnecessary | 57 |
-| [NC-25](#NC-25) | Consider using descriptive constants when using 0 in the code | 29 |
-| [NC-26](#NC-26) | Non-external/public variable names should begin with an underscore | 25 |
-| [NC-27](#NC-27) | Return values of `approve()` not checked | 6 |
-| [NC-28](#NC-28) | Setters should prevent re-setting of the same value | 18 |
-| [NC-29](#NC-29) | Use the latest solidity version for deployment   | 12 |
-| [NC-30](#NC-30) | Strings should use double quotes rather than single quotes | 2 |
-| [NC-31](#NC-31) | Owner can renounce while system is paused | 6 |
-| [NC-32](#NC-32) | Dont use _msgSender() if not supporting EIP-2771 | 63 |
-| [NC-33](#NC-33) | Array indices should be referenced via enums rather than numeric literals | 1 |
-| [NC-34](#NC-34) | Use assembly to emit events, in order to save gas | 28 |
-| [NC-35](#NC-35) | Long revert strings | 14 |
+| [NC-1](#NC-1) | Contracts should have full test coverage | 1 |
+| [NC-2](#NC-2) | Consider adding formal verification proofs | 1 |
+| [NC-3](#NC-3) | Large or complicated code bases should implement invariant tests | 1 |
+| [NC-4](#NC-4) | Custom error has no error details | 2 |
+| [NC-5](#NC-5) | NatSpec: Interface declarations should have NatSpec descriptions | 4 |
+| [NC-6](#NC-6) | NatSpec: Library declarations should have NatSpec descriptions | 1 |
+| [NC-7](#NC-7) | Contract uses both require()/revert() as well as custom errors   | 1 |
+| [NC-8](#NC-8) | Variables without visibility specifier | 8 |
+| [NC-9](#NC-9) | Assembly blocks should have extensive comments | 1 |
+| [NC-10](#NC-10) | Constants in comparisons should appear on the left side | 10 |
+| [NC-11](#NC-11) | Contract declarations should have NatSpec @author annotations | 5 |
+| [NC-12](#NC-12) | Contract declarations should have NatSpec @Title annotations | 5 |
+| [NC-13](#NC-13) | NatSpec: Contract declarations should have @dev tags | 5 |
+| [NC-14](#NC-14) | NatSpec: Contract declarations should have NatSpec descriptions | 5 |
+| [NC-15](#NC-15) | NatSpec: Contract declarations should have @notice tags | 5 |
+| [NC-16](#NC-16) | Consider using delete rather than assigning zero to clear value | 2 |
+| [NC-17](#NC-17) | Consider adding a block/deny-list" | 5 |
+| [NC-18](#NC-18) | Use bytes.concat() on bytes instead of abi.encodePacked() for clearer semantic meaning | 2 |
+| [NC-19](#NC-19) | Consider adding emergency-stop functionality | 5 |
+| [NC-20](#NC-20) | Error declarations should have NatSpec descriptions | 6 |
+| [NC-21](#NC-21) | Custom error has no error details | 6 |
+| [NC-22](#NC-22) | Events are missing sender information | 4 |
+| [NC-23](#NC-23) | NatSpec: Event declarations should have NatSpec descriptions | 9 |
+| [NC-24](#NC-24) | NatSpec: function declarations should have NatSpec descriptions | 52 |
+| [NC-25](#NC-25) | NatSpec: function declarations should have @Notice tags | 52 |
+| [NC-26](#NC-26) | NatSpec: function declarations should have NatSpec descriptions | 52 |
+| [NC-27](#NC-27) | If-statement can be converted to a ternary | 15 |
+| [NC-28](#NC-28) | Consider combining multiple address/ID mappings into a single mapping of an address/ID to a struct | 1 |
+| [NC-29](#NC-29) | Consider using descriptive constants when using 0 in the code | 4 |
+| [NC-30](#NC-30) | Non-external/public variable names should begin with an underscore | 7 |
+| [NC-31](#NC-31) | Setters should prevent re-setting of the same value | 3 |
+| [NC-32](#NC-32) | Use the latest solidity version for deployment   | 1 |
+| [NC-33](#NC-33) | Consider bounding input array length | 2 |
+| [NC-34](#NC-34) | Consider using `SafeTransferLib.safeTransferETH()` or `Address.sendValue()` for clearer semantic meaning | 2 |
+| [NC-35](#NC-35) | Variables need not be initialized to zero | 2 |
+| [NC-36](#NC-36) | Empty receive()/fallback() function | 1 |
+| [NC-37](#NC-37) | Consider moving msg.sender checks to modifiers | 11 |
+| [NC-38](#NC-38) | Dont use _msgSender() if not supporting EIP-2771 | 3 |
+| [NC-39](#NC-39) | Array indices should be referenced via enums rather than numeric literals | 1 |
+| [NC-40](#NC-40) | Use assembly to emit events, in order to save gas | 4 |
+| [NC-41](#NC-41) | Don't initialize variables with default value | 2 |
 
 ## Gas Optimizations
 
 
 | |Issue|Instances|
 |-|:-|:-:|
-| [GAS-1](#GAS-1) | Enable IR-based code generation | 12 |
-| [GAS-2](#GAS-2) | Use scientific notation (e.g. 1e18) rather than exponentiation (e.g. 10**18) | 4 |
-| [GAS-3](#GAS-3) | Nesting if-statements is cheaper than using && | 23 |
-| [GAS-4](#GAS-4) | Consider using = instead of += and -= for gas efficiency | 1 |
-| [GAS-5](#GAS-5) | Use >= instead of > for gas efficiency | 1 |
-| [GAS-6](#GAS-6) | Using bools for storage incurs overhead | 1 |
-| [GAS-7](#GAS-7) | Consider using assembly for simple zero checks to save gas | 2 |
-| [GAS-8](#GAS-8) | Expressions for constant values should use immutable rather than constant | 25 |
-| [GAS-9](#GAS-9) | Constructors can be marked payable | 7 |
-| [GAS-10](#GAS-10) | Use Custom Errors | 94 |
-| [GAS-11](#GAS-11) | Initializers can be marked as payable to save deployment gas | 7 |
-| [GAS-12](#GAS-12) | Use assembly for small keccak256 hashes, in order to save gas | 3 |
-| [GAS-13](#GAS-13) | Reduce gas usage by moving to Solidity 0.8.19 or later | 12 |
-| [GAS-14](#GAS-14) | Functions guaranteed to revert when called by normal users can be marked `payable` | 31 |
-| [GAS-15](#GAS-15) | Using `private` rather than `public` for constants, saves gas | 25 |
-| [GAS-16](#GAS-16) | require()/revert() strings longer than 32 bytes cost extra gas | 31 |
-| [GAS-17](#GAS-17) | Splitting require() statements that use && saves gas | 1 |
-| [GAS-18](#GAS-18) | Structs can be packed into fewer storage slots | 4 |
-| [GAS-19](#GAS-19) | Consider using uint256(1)/uint256(2) instead of true/false for gas efficiency | 9 |
-| [GAS-20](#GAS-20) | Use != 0 instead of > for unsigned integer comparison | 1 |
-| [GAS-21](#GAS-21) | Optimize names to save gas | 171 |
+| [GAS-1](#GAS-1) | Enable IR-based code generation | 1 |
+| [GAS-2](#GAS-2) | Use scientific notation (e.g. 1e18) rather than exponentiation (e.g. 10**18) | 2 |
+| [GAS-3](#GAS-3) | Nesting if-statements is cheaper than using && | 3 |
+| [GAS-4](#GAS-4) | Consider using = instead of += and -= for gas efficiency | 2 |
+| [GAS-5](#GAS-5) | Use >= instead of > for gas efficiency | 6 |
+| [GAS-6](#GAS-6) | Cache array length outside of loop | 2 |
+| [GAS-7](#GAS-7) | Expressions for constant values should use immutable rather than constant | 3 |
+| [GAS-8](#GAS-8) | Constructors can be marked payable | 3 |
+| [GAS-9](#GAS-9) | Use Custom Errors | 3 |
+| [GAS-10](#GAS-10) | Use assembly for small keccak256 hashes, in order to save gas | 2 |
+| [GAS-11](#GAS-11) | Avoid fetching a low-level calls return data by using assembly | 2 |
+| [GAS-12](#GAS-12) | Reduce gas usage by moving to Solidity 0.8.19 or later | 1 |
+| [GAS-13](#GAS-13) | Functions guaranteed to revert when called by normal users can be marked `payable` | 5 |
+| [GAS-14](#GAS-14) | `++i` costs less gas than `i++`, especially when it's used in `for`-loops (`--i`/`i--` too) | 3 |
+| [GAS-15](#GAS-15) | Using `private` rather than `public` for constants, saves gas | 1 |
+| [GAS-16](#GAS-16) | require()/revert() strings longer than 32 bytes cost extra gas | 3 |
+| [GAS-17](#GAS-17) | Structs can be packed into fewer storage slots | 1 |
+| [GAS-18](#GAS-18) | Use != 0 instead of > for unsigned integer comparison | 6 |
+| [GAS-19](#GAS-19) | Optimize names to save gas | 32 |
 
 ##################################################################### 
  
@@ -108,148 +116,26 @@
 
 
  ### <a name="M-1"></a>[M-1]
- ### Centralization Risk for trusted owners
+ ### Code will not work properly on L2 due to block.number
+On L2, the block.number is not a reliable source of timing information and the time between each block is also different from Ethereum. This is because each transaction on L2 is placed in a separate block and blocks are not produce at a constant rate.
 
-#### Impact:
-Contracts have owners with privileged rights to perform admin tasks and need to be trusted to not perform malicious updates or drain funds.
-
-*Instances (50)*:
+*Instances (5)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: Asset.sol
+File: example/ddf.sol
 
-171:     ) external virtual onlyRole(MINTER_ROLE) {
+677:             Bet(block.number, msg.value, _boxNumber, salt, msg.sender)
 
-191:     function pause() external virtual whenNotPaused onlyRole(PAUSER_ROLE) {
+679:         emit BetPlaced(msg.sender, block.number, msg.value, _boxNumber, salt);
 
-206:     function unpause() external virtual whenPaused onlyRole(PAUSER_ROLE) {
+698:             bets[_player][0].blockNumber == block.number
 
-401:     function _authorizeUpgrade(address newImplementation) internal virtual override onlyRole(UPGRADER_ROLE) {}
+782:         require(block.number > _blockNumber, "Block number is out of range");
 
-```
-
-```solidity
-File: AssetFlowController.sol
-
-508:     ) external virtual whenNotPaused onlyRole(OFFERER_ROLE) {
-
-549:     function verifyOffer(uint256 offerId, string memory uri) external virtual whenNotPaused onlyRole(VERIFIER_ROLE) {
-
-627:     function settle(uint256 offerId) external virtual whenNotPaused onlyRole(INVESTMENT_MANAGER_ROLE) {
-
-714:     function rejectSettlement(uint256 offerId) external virtual whenNotPaused onlyRole(INVESTMENT_MANAGER_ROLE) {
-
-746:     ) external virtual whenNotPaused onlyRole(INVESTMENT_MANAGER_ROLE) {
-
-808:     ) external virtual whenNotPaused onlyRole(OFFERER_ROLE) {
-
-839:     function acceptBuyOut(uint256 offerId) external virtual whenNotPaused onlyRole(INVESTMENT_MANAGER_ROLE) {
-
-874:     function rejectBuyout(uint256 offerId) external virtual whenNotPaused onlyRole(INVESTMENT_MANAGER_ROLE) {
-
-895:     function pause() external virtual whenNotPaused onlyRole(PAUSER_ROLE) {
-
-913:     function unpause() external virtual whenPaused onlyRole(PAUSER_ROLE) {
-
-1077:     function _authorizeUpgrade(address newImplementation) internal virtual override onlyRole(UPGRADER_ROLE) {}
-
-```
-
-```solidity
-File: AssetValuer.sol
-
-142:     ) external virtual whenNotPaused onlyRole(VALUER_ROLE) {
-
-157:     function pause() external onlyRole(PAUSER_ROLE) {
-
-172:     function unpause() external onlyRole(PAUSER_ROLE) {
-
-311:     function _authorizeUpgrade(address newImplementation) internal override onlyRole(UPGRADER_ROLE) {}
-
-```
-
-```solidity
-File: Offer.sol
-
-172:     function safeMint(address to, string calldata uri) external virtual onlyRole(MINTER_ROLE) returns (uint256) {
-
-194:     function pause() external virtual whenNotPaused onlyRole(PAUSER_ROLE) {
-
-209:     function unpause() external virtual whenPaused onlyRole(PAUSER_ROLE) {
-
-454:     function _authorizeUpgrade(address newImplementation) internal virtual override onlyRole(UPGRADER_ROLE) {}
-
-```
-
-```solidity
-File: Vault.sol
-
-472:     ) external virtual whenNotPaused onlyRole(CONTRACT_ADMIN_ROLE) {
-
-499:     function deregisterInvestor(address investor) external virtual whenNotPaused onlyRole(CONTRACT_ADMIN_ROLE) { //@audit check if investor is already registered
-
-525:     ) external virtual whenNotPaused onlyRole(INVESTOR_ROLE) returns (uint256) {
-
-556:     ) external virtual whenNotPaused onlyRole(ASSET_CONTROLLER_ROLE) returns (uint256) {
-
-628:     ) external virtual whenNotPaused onlyRole(ASSET_CONTROLLER_ROLE) {
-
-663:     ) external virtual whenNotPaused onlyRole(ASSET_CONTROLLER_ROLE) {
-
-696:     ) external virtual whenNotPaused onlyRole(ASSET_CONTROLLER_ROLE) {
-
-733:     ) external virtual whenNotPaused onlyRole(ASSET_CONTROLLER_ROLE) {
-
-758:     ) external virtual whenNotPaused onlyRole(ASSET_CONTROLLER_ROLE) {
-
-772:     function setMinDeposit(uint256 _minDeposit) external virtual whenNotPaused onlyRole(CONTRACT_ADMIN_ROLE) {
-
-792:     function setAssetValuer(address _assetValuer) external virtual whenNotPaused onlyRole(CONTRACT_ADMIN_ROLE) {
-
-809:     function requestWithdraw(uint256 amountAssets) external virtual whenNotPaused onlyRole(INVESTOR_ROLE) {
-
-827:     function cancelRequest() external virtual whenNotPaused onlyRole(INVESTOR_ROLE) {
-
-853:     ) external virtual whenNotPaused onlyRole(CONTRACT_ADMIN_ROLE) {
-
-867:     function cleanHoldings(bytes32[] memory holdingIds) external virtual whenNotPaused onlyRole(CONTRACT_ADMIN_ROLE) {
-
-889:     ) external virtual whenNotPaused onlyRole(CONTRACT_ADMIN_ROLE) {
-
-904:     function pause() external virtual whenNotPaused onlyRole(PAUSER_ROLE) {
-
-919:     function unpause() external virtual whenPaused onlyRole(PAUSER_ROLE) {
-
-1057:         onlyRole(CONTRACT_ADMIN_ROLE)
-
-1152:     ) public virtual override whenNotPaused onlyRole(INVESTOR_ROLE) returns (uint256) {
-
-1401:     function _authorizeUpgrade(address newImplementation) internal virtual override onlyRole(UPGRADER_ROLE) {}
-
-```
-
-```solidity
-File: VaultOfVault.sol
-
-101:     ) external virtual whenNotPaused onlyRole(PARENT_ASSET_CONTROLLER) {
-
-126:     ) external virtual whenNotPaused onlyRole(PARENT_ASSET_CONTROLLER) {
-
-```
-
-```solidity
-File: Verifier.sol
-
-153:     function safeMint(uint256 tokenId, address to, string calldata uri) external virtual onlyRole(MINTER_ROLE) {
-
-170:     function pause() external virtual whenNotPaused onlyRole(PAUSER_ROLE) {
-
-185:     function unpause() external virtual whenPaused onlyRole(PAUSER_ROLE) {
-
-372:     function _authorizeUpgrade(address newImplementation) internal virtual override onlyRole(UPGRADER_ROLE) {}
+783:         if (_blockNumber + 250 < block.number) {
 
 ```
 
@@ -258,27 +144,82 @@ File: Verifier.sol
 
 
  ### <a name="M-2"></a>[M-2]
- ### Unsafe use of ERC20 transferFrom()
-Some tokens do not implement the ERC20 standard properly. For example Tether (USDT)'s transferFrom() function does not return a boolean as the ERC20 specification requires, and instead has no return value. When these sorts of tokens are cast to IERC20/ERC20, their function signatures do not match and therefore the calls made will revert. It is recommended to use the SafeERC20's safeTransferFrom() from OpenZeppelin instead.
+ ### Centralization Risk for trusted owners
 
-*Instances (3)*:
+#### Impact:
+Contracts have owners with privileged rights to perform admin tasks and need to be trusted to not perform malicious updates or drain funds.
+
+*Instances (11)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: Offer.sol
+File: example/ddf.sol
 
-288:     function transferFrom(
+14: abstract contract Ownable is Context {
 
-293:         super.transferFrom(from, to, tokenId);
+70:     function renounceOwnership() public virtual onlyOwner {
+
+78:     function transferOwnership(address newOwner) public virtual onlyOwner {
+
+535: contract SuperFirst is Ownable, ReentrancyGuard {
+
+584:     constructor(IBankroll _bankrollContract) Ownable(msg.sender) {
+
+598:     function withdrawFTN(uint256 _amount) external onlyOwner {
+
+610:     ) external onlyOwner {
+
+622:     function setMinBet(uint256 _minBet) external onlyOwner notZero(_minBet) {
+
+630:     function setMaxBet(uint256 _maxBet) external onlyOwner notZero(_maxBet) {
+
+640:     ) external onlyOwner notZero(_winCoefficient) {
+
+650:     ) external onlyOwner notZero(_numberOfBoxes) {
 
 ```
 
-```solidity
-File: interfaces/IOffer.sol
+</details> 
+ 
 
-53:     function transferFrom(address from, address to, uint256 tokenId) external;
+
+ ### <a name="M-3"></a>[M-3]
+ ### Unsafe use of ERC20 transferFrom()
+Some tokens do not implement the ERC20 standard properly. For example Tether (USDT)'s transferFrom() function does not return a boolean as the ERC20 specification requires, and instead has no return value. When these sorts of tokens are cast to IERC20/ERC20, their function signatures do not match and therefore the calls made will revert. It is recommended to use the SafeERC20's safeTransferFrom() from OpenZeppelin instead.
+
+*Instances (2)*:
+ 
+ <details>
+ <summary>Click to expand!</summary>
+
+```solidity
+File: example/ddf.sol
+
+381:     function transferFrom(address from, address to, uint256 value) external returns (bool);
+
+476:     function transferFrom(address from, address to, uint256 tokenId) external;
+
+```
+
+</details> 
+ 
+
+
+ ### <a name="M-4"></a>[M-4]
+ ### Unsafe use of ERC20 transfer()
+Some tokens do not implement the ERC20 standard properly. For example Tether (USDT)'s transfer() function does not return a boolean as the ERC20 specification requires, and instead has no return value. When these sorts of tokens are cast to IERC20/ERC20, their function signatures do not match and therefore the calls made will revert. It is recommended to use the SafeERC20's safeTransfer() from OpenZeppelin instead.
+
+*Instances (1)*:
+ 
+ <details>
+ <summary>Click to expand!</summary>
+
+```solidity
+File: example/ddf.sol
+
+344:     function transfer(address to, uint256 value) external returns (bool);
 
 ```
 
@@ -293,82 +234,17 @@ File: interfaces/IOffer.sol
  ### complex casting
 Consider whether the number of casts is really necessary, or whether using a different type would be more appropriate. Alternatively, add comments to explain in detail why the casts are necessary, and any implicit reasons why the cast does not introduce an overflow.
 
-*Instances (17)*:
+*Instances (2)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: Asset.sol
+File: example/ddf.sol
 
-165:     function safeMint(
+787:             (uint256(
 
-177:         _mint(to, id, numTokens, data); //@audit if to is a smart contract it must implement IERC1155Receiver
-
-```
-
-```solidity
-File: AssetFlowController.sol
-
-520:         uint256 offerId = offerCollection.safeMint(_msgSender(), uri); 
-
-554:         verifiedOfferCollection.safeMint(offerId, address(vault), uri);
-
-670:                 assetCollection.safeMint(offerId, address(this), details.numTokens, details.uri, "");
-
-697:                 assetCollection.safeMint(offerId, address(vault), details.numTokens, details.uri, "");
-
-1065:         assetCollection.safeMint(offerId, address(vault), buyOut.numTokens, "", "");
-
-```
-
-```solidity
-File: Offer.sol
-
-172:     function safeMint(address to, string calldata uri) external virtual onlyRole(MINTER_ROLE) returns (uint256) {
-
-175:         _safeMint(to, tokenId);
-
-```
-
-```solidity
-File: Vault.sol
-
-578:         _mint(receiver, shares);
-
-1160:     function mint(uint256, address) public virtual override returns (uint256) {
-
-1288:         _mint(receiver, shares);
-
-```
-
-```solidity
-File: Verifier.sol
-
-153:     function safeMint(uint256 tokenId, address to, string calldata uri) external virtual onlyRole(MINTER_ROLE) {
-
-155:         _safeMint(to, tokenId); // re-entrancy attack
-
-```
-
-```solidity
-File: interfaces/IAsset.sol
-
-50:     function safeMint(uint256 id, address to, uint256 numTokens, string memory uri_, bytes memory data) external;
-
-```
-
-```solidity
-File: interfaces/IOffer.sol
-
-40:     function safeMint(address to, string memory uri) external returns (uint256);
-
-```
-
-```solidity
-File: interfaces/IVerifier.sol
-
-33:     function safeMint(uint256 tokenId, address to, string memory uri) external;
+810:         uint256 winNum = (uint256(
 
 ```
 
@@ -377,18 +253,20 @@ File: interfaces/IVerifier.sol
 
 
  ### <a name="L-2"></a>[L-2]
- ### Functions calling contracts/addresses with transfer hooks are missing reentrancy guards
-Even if the function follows the best practice of check-effects-interaction, not using a reentrancy guard when there may be transfer hooks will open the users of this protocol up to [read-only reentrancies](https://chainsecurity.com/curve-lp-oracle-manipulation-post-mortem/) with no way to protect against it, except by block-listing the whole protocol.
+ ### The remaining ETH may be locked in the contract after call
+After calling an external contract and forwards some ETH value, the contract balance should be checked. If there is excess eth left over due to a failed call, or more eth being delivered than needed, or any other reason, this eth must be refunded to the user or handled appropriately, otherwise the eth may be frozen in the contract forever.
 
-*Instances (1)*:
+*Instances (2)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: Offer.sol
+File: example/ddf.sol
 
-293:         super.transferFrom(from, to, tokenId);
+133:         (bool success, ) = recipient.call{value: amount}("");
+
+174:         (bool success, bytes memory returndata) = target.call{value: value}(data);
 
 ```
 
@@ -397,32 +275,20 @@ File: Offer.sol
 
 
  ### <a name="L-3"></a>[L-3]
- ### decimals() is not a part of the ERC-20 standard
-The name() function is not a part of the ERC-20 standard, and was added later as an optional extension. As such, some valid ERC20 tokens do not support this interface, so it is unsafe to blindly cast all tokens to this interface, and then call this function.
+ ### External call recipient may consume all transaction gas
+There is no limit specified on the amount of gas used, so the recipient can use up all of the transactions gas, causing it to revert. Use addr.call{gas: <amount>}("") or this https://github.com/nomad-xyz/ExcessivelySafeCall library instead.  
 
-*Instances (3)*:
+*Instances (2)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: AssetFlowController.sol
+File: example/ddf.sol
 
-1019:                         10 ** IERC20MetadataUpgradeable(assetAddress).decimals(),
+133:         (bool success, ) = recipient.call{value: amount}("");
 
-```
-
-```solidity
-File: AssetValuer.sol
-
-339:                         10 ** IERC20MetadataUpgradeable(holding.collection).decimals()
-
-```
-
-```solidity
-File: Vault.sol
-
-565:                 10 ** IERC20MetadataUpgradeable(assetAddress).decimals()
+174:         (bool success, bytes memory returndata) = target.call{value: value}(data);
 
 ```
 
@@ -431,27 +297,19 @@ File: Vault.sol
 
 
  ### <a name="L-4"></a>[L-4]
- ### Tokens may be minted to address(0x0)
-Neither the  functions, nor _mint() prevent minting to address(0x0)  
+ ###  `abi.encodePacked()` should not be used with dynamic types when passing the result to a hash function such as `keccak256()`
+Use `abi.encode()` instead which will pad items to 32 bytes, which will [prevent hash collisions](https://docs.soliditylang.org/en/v0.8.13/abi-spec.html#non-standard-packed-mode) (e.g. `abi.encodePacked(0x123,0x456)` => `0x123456` => `abi.encodePacked(0x1,0x23456)`, but `abi.encode(0x123,0x456)` => `0x0...1230...456`). "Unless there is a compelling reason, `abi.encode` should be preferred". If there is only one argument to `abi.encodePacked()` it can often be cast to `bytes()` or `bytes32()` [instead](https://ethereum.stackexchange.com/questions/30912/how-to-compare-strings-in-solidity#answer-82739).
+If all arguments are strings and or bytes, `bytes.concat()` should be used instead
 
-*Instances (3)*:
+*Instances (1)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: Asset.sol
+File: example/ddf.sol
 
-177:         _mint(to, id, numTokens, data); //@audit if to is a smart contract it must implement IERC1155Receiver
-
-```
-
-```solidity
-File: Vault.sol
-
-578:         _mint(receiver, shares);
-
-1288:         _mint(receiver, shares);
+811:             keccak256(abi.encodePacked(_blockHash, _salt, _player))
 
 ```
 
@@ -460,60 +318,22 @@ File: Vault.sol
 
 
  ### <a name="L-5"></a>[L-5]
- ### constructor/initialize function lacks parameter validation
-Constructors and initialization functions play a critical role in contracts by setting important initial states when the contract is first deployed before the system starts. The parameters passed to the constructor and initialization functions directly affect the behavior of the contract / protocol. If incorrect parameters are provided, the system may fail to run, behave abnormally, be unstable, or lack security. Therefore, it's crucial to carefully check each parameter in the constructor and initialization functions. If an exception is found, the transaction should be rolled back.
+ ### Division by zero not prevented
+The divisions below take an input parameter that has no zero-value checks, which can cause the functions reverting if zero is passed.  
 
-*Instances (7)*:
+*Instances (3)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: Asset.sol
+File: example/ddf.sol
 
-110:     function initialize(
+750:             return (_bet.amount * winCoefficient) / COEFFICIENT_DENOMINATOR;
 
-```
+769:         return (_amount * winCoefficient) / COEFFICIENT_DENOMINATOR;
 
-```solidity
-File: AssetFlowController.sol
-
-439:     function initialize(
-
-```
-
-```solidity
-File: AssetValuer.sol
-
-99:     function initialize(address pauserRole, address upgraderRole, address valuerRole) external initializer {
-
-```
-
-```solidity
-File: Offer.sol
-
-115:     function initialize(
-
-```
-
-```solidity
-File: Vault.sol
-
-363:     function initialize(
-
-```
-
-```solidity
-File: VaultOfVault.sol
-
-70:     function initialize(
-
-```
-
-```solidity
-File: Verifier.sol
-
-103:     function initialize(
+814:             return (_betAmount * winCoefficient) / COEFFICIENT_DENOMINATOR;
 
 ```
 
@@ -522,7 +342,8 @@ File: Verifier.sol
 
 
  ### <a name="L-6"></a>[L-6]
- ### Do not use deprecated library functions
+ ### Empty function body
+Consider adding a comment about why the function body is empty
 
 *Instances (1)*:
  
@@ -530,9 +351,9 @@ File: Verifier.sol
  <summary>Click to expand!</summary>
 
 ```solidity
-File: Vault.sol
+File: example/ddf.sol
 
-760:         IERC20Upgradeable(asset()).safeApprove(spender, amount);
+592:     receive() external payable {}
 
 ```
 
@@ -541,53 +362,20 @@ File: Vault.sol
 
 
  ### <a name="L-7"></a>[L-7]
- ### Empty function body
-Consider adding a comment about why the function body is empty
+ ### Unsafe solidity low-level call can cause gas grief attack
+Using the low-level calls of a solidity address can leave the contract open to gas grief attacks. These attacks occur when the called contract returns a large amount of data. So when calling an external contract, it is necessary to check the length of the return data before reading/copying it (using returndatasize()).
 
-*Instances (6)*:
+*Instances (2)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: Asset.sol
+File: example/ddf.sol
 
-401:     function _authorizeUpgrade(address newImplementation) internal virtual override onlyRole(UPGRADER_ROLE) {}
+133:         (bool success, ) = recipient.call{value: amount}("");
 
-```
-
-```solidity
-File: AssetFlowController.sol
-
-1077:     function _authorizeUpgrade(address newImplementation) internal virtual override onlyRole(UPGRADER_ROLE) {}
-
-```
-
-```solidity
-File: AssetValuer.sol
-
-311:     function _authorizeUpgrade(address newImplementation) internal override onlyRole(UPGRADER_ROLE) {}
-
-```
-
-```solidity
-File: Offer.sol
-
-454:     function _authorizeUpgrade(address newImplementation) internal virtual override onlyRole(UPGRADER_ROLE) {}
-
-```
-
-```solidity
-File: Vault.sol
-
-1401:     function _authorizeUpgrade(address newImplementation) internal virtual override onlyRole(UPGRADER_ROLE) {}
-
-```
-
-```solidity
-File: Verifier.sol
-
-372:     function _authorizeUpgrade(address newImplementation) internal virtual override onlyRole(UPGRADER_ROLE) {}
+174:         (bool success, bytes memory returndata) = target.call{value: value}(data);
 
 ```
 
@@ -596,60 +384,20 @@ File: Verifier.sol
 
 
  ### <a name="L-8"></a>[L-8]
- ### Initializers could be front-run
-Initializers could be front-run, allowing an attacker to either set their own values, take ownership of the contract, and in the best case forcing a re-deployment
+ ### Missing contract existence checks before low-level calls
+Low-level calls return success if there is no code present at the specified address. In addition to the zero-address checks, add a check to verify that `<address>.code.length > 0`.
 
-*Instances (7)*:
+*Instances (2)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: Asset.sol
+File: example/ddf.sol
 
-110:     function initialize(
+133:         (bool success, ) = recipient.call{value: amount}("");
 
-```
-
-```solidity
-File: AssetFlowController.sol
-
-439:     function initialize(
-
-```
-
-```solidity
-File: AssetValuer.sol
-
-99:     function initialize(address pauserRole, address upgraderRole, address valuerRole) external initializer {
-
-```
-
-```solidity
-File: Offer.sol
-
-115:     function initialize(
-
-```
-
-```solidity
-File: Vault.sol
-
-363:     function initialize(
-
-```
-
-```solidity
-File: VaultOfVault.sol
-
-70:     function initialize(
-
-```
-
-```solidity
-File: Verifier.sol
-
-103:     function initialize(
+174:         (bool success, bytes memory returndata) = target.call{value: value}(data);
 
 ```
 
@@ -658,18 +406,22 @@ File: Verifier.sol
 
 
  ### <a name="L-9"></a>[L-9]
- ### safeApprove() is deprecated
-Deprecated in favor of safeIncreaseAllowance() and safeDecreaseAllowance(). If only setting the initial allowance to the value that means infinite, safeIncreaseAllowance() can be used instead. The function may currently work, but if a bug is found in this version of OpenZeppelin, and the version that you are forced to upgrade to no longer has this function, you will encounter unnecessary delays in porting and testing replacement contracts.
+ ### Use Ownable2Step instead of Ownable
+Add a description of why Ownable2Step is recommended.
 
-*Instances (1)*:
+*Instances (3)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: Vault.sol
+File: example/ddf.sol
 
-760:         IERC20Upgradeable(asset()).safeApprove(spender, amount);
+14: abstract contract Ownable is Context {
+
+535: contract SuperFirst is Ownable, ReentrancyGuard {
+
+584:     constructor(IBankroll _bankrollContract) Ownable(msg.sender) {
 
 ```
 
@@ -678,91 +430,22 @@ File: Vault.sol
 
 
  ### <a name="L-10"></a>[L-10]
- ### State variables not capped at reasonable values
-Consider adding minimum/maximum value checks to ensure that the state variables below can never be used to excessively harm users, including via griefing
+ ### Owner can renounce Ownership  
+Each of the following contracts implements or inherits the renounceOwnership() function. This can represent a certain risk if the ownership is renounced for any other reason than by design. Renouncing ownership will leave the contract without an owner, thereby removing any functionality that is only available to the owner.
 
-*Instances (25)*:
+*Instances (3)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: AssetFlowController.sol
+File: example/ddf.sol
 
-76:         bool isExistingAsset;
+14: abstract contract Ownable is Context {
 
-77:         bool isSeeding;
+535: contract SuperFirst is Ownable, ReentrancyGuard {
 
-78:         address assetAddress; // if existing Asset
-
-79:         uint256 assetTokenId; // if existing Asset
-
-93:         uint256 settlementPrice;
-
-94:         uint256 numTokens;
-
-95:         string uri;
-
-96:         address recipient; // Functionally we don't need this but it has some security benefits. You can use ownerOf on
-
-110:         uint256 numTokens;
-
-111:         uint256 amount;
-
-112:         address broker;
-
-113:         BuyOutBy who;
-
-```
-
-```solidity
-File: AssetValuer.sol
-
-239:         uint256 vaultValuation;
-
-245:         return vaultValuation;
-
-322:         uint256 numTokensHeld;
-
-323:         uint256 valuation;
-
-354: 
-
-```
-
-```solidity
-File: Offer.sol
-
-180:         return tokenId;
-
-462:         return baseURI;
-
-```
-
-```solidity
-File: Vault.sol
-
-560:         uint256 assets;
-
-598: 
-
-```
-
-```solidity
-File: Verifier.sol
-
-380:         return baseURI;
-
-```
-
-```solidity
-File: interfaces/IVault.sol
-
-38:         uint256 id;
-
-39:         address collection;
-
-40:         AssetType assetType;
+584:     constructor(IBankroll _bankrollContract) Ownable(msg.sender) {
 
 ```
 
@@ -771,20 +454,22 @@ File: interfaces/IVault.sol
 
 
  ### <a name="L-11"></a>[L-11]
- ### Some tokens may revert when large transfers are made
-Tokens such as COMP or UNI will revert when an address balance reaches type(uint96).max. Ensure that the calls below can be broken up into smaller batches if necessary.  
+ ### Loss of precision
+Division by large numbers or variables may result in the result being zero, due to Solidity not supporting fractions.
 
-*Instances (2)*:
+*Instances (3)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: Vault.sol
+File: example/ddf.sol
 
-668:         IERC20Upgradeable(erc20Address).safeTransfer(to, amount);
+750:             return (_bet.amount * winCoefficient) / COEFFICIENT_DENOMINATOR;
 
-1266:         SafeERC20Upgradeable.safeTransfer(IERC20Upgradeable(asset()), receiver, assets);
+769:         return (_amount * winCoefficient) / COEFFICIENT_DENOMINATOR;
+
+814:             return (_betAmount * winCoefficient) / COEFFICIENT_DENOMINATOR;
 
 ```
 
@@ -793,85 +478,44 @@ File: Vault.sol
 
 
  ### <a name="L-12"></a>[L-12]
- ### Unsafe casting
-Unsafe casting can cause alot of issues especially when a type is downcast to a smaller type, the higher order bits are truncated, effectively applying a modulo to the original value. Without any other checks, this wrapping will lead to unexpected behavior and bugs
+ ### State variables not capped at reasonable values
+Consider adding minimum/maximum value checks to ensure that the state variables below can never be used to excessively harm users, including via griefing
 
-*Instances (17)*:
+*Instances (14)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: Asset.sol
+File: example/ddf.sol
 
-165:     function safeMint(
+51:         return _owner;
 
-177:         _mint(to, id, numTokens, data); //@audit if to is a smart contract it must implement IERC1155Receiver
+214:             return returndata;
 
-```
+226:             return returndata;
 
-```solidity
-File: AssetFlowController.sol
+547:         uint256 blockNumber;
 
-520:         uint256 offerId = offerCollection.safeMint(_msgSender(), uri); 
+548:         uint256 amount;
 
-554:         verifiedOfferCollection.safeMint(offerId, address(vault), uri);
+549:         uint256 boxNumber;
 
-670:                 assetCollection.safeMint(offerId, address(this), details.numTokens, details.uri, "");
+550:         uint256 salt;
 
-697:                 assetCollection.safeMint(offerId, address(vault), details.numTokens, details.uri, "");
+551:         address player;
 
-1065:         assetCollection.safeMint(offerId, address(vault), buyOut.numTokens, "", "");
+702:         uint256 totalWin;
 
-```
+730:         uint256 totalWin;
 
-```solidity
-File: Offer.sol
+734:         return totalWin;
 
-172:     function safeMint(address to, string calldata uri) external virtual onlyRole(MINTER_ROLE) returns (uint256) {
+752:             return 0;
 
-175:         _safeMint(to, tokenId);
+784:             return 0;
 
-```
-
-```solidity
-File: Vault.sol
-
-578:         _mint(receiver, shares);
-
-1160:     function mint(uint256, address) public virtual override returns (uint256) {
-
-1288:         _mint(receiver, shares);
-
-```
-
-```solidity
-File: Verifier.sol
-
-153:     function safeMint(uint256 tokenId, address to, string calldata uri) external virtual onlyRole(MINTER_ROLE) {
-
-155:         _safeMint(to, tokenId); // re-entrancy attack
-
-```
-
-```solidity
-File: interfaces/IAsset.sol
-
-50:     function safeMint(uint256 id, address to, uint256 numTokens, string memory uri_, bytes memory data) external;
-
-```
-
-```solidity
-File: interfaces/IOffer.sol
-
-40:     function safeMint(address to, string memory uri) external returns (uint256);
-
-```
-
-```solidity
-File: interfaces/IVerifier.sol
-
-33:     function safeMint(uint256 tokenId, address to, string memory uri) external;
+816:             return 0;
 
 ```
 
@@ -880,49 +524,58 @@ File: interfaces/IVerifier.sol
 
 
  ### <a name="L-13"></a>[L-13]
- ### Unsafe ERC20 operation(s)
+ ### Some tokens may revert when zero value transfers are made
+Despite the fact that [EIP-20](https://github.com/ethereum/EIPs/blob/7500ac4fc1bbdfaf684e7ef851f798f6b667b2fe/EIPS/eip-20.md?plain=1#L116) states that zero-value transfers must be accepted, some tokens, such as LEND, will revert if this is attempted, which may cause transactions that involve other tokens (such as batch operations) to fully revert. Consider skipping the transfer if the amount is zero, which will also save gas.
 
-*Instances (7)*:
+*Instances (1)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: AssetFlowController.sol
+File: example/ddf.sol
 
-1025:             if (isSeeding) token.approve(address(vault), amount);
-
-```
-
-```solidity
-File: Offer.sol
-
-244:         super.approve(to, tokenId);
-
-293:         super.transferFrom(from, to, tokenId);
+344:     function transfer(address to, uint256 value) external returns (bool);
 
 ```
 
-```solidity
-File: Vault.sol
+</details> 
+ 
 
-980:         return super.approve(spender, amount);
+
+ ### <a name="L-14"></a>[L-14]
+ ###  Functions calling contracts/addresses with transfer hooks should be protected by reentrancy guard  
+Even if the function follows the best practice of check-effects-interaction, not using a reentrancy guard when there may be transfer hooks opens the users of this protocol up to [read-only reentrancy](https://chainsecurity.com/curve-lp-oracle-manipulation-post-mortem/) vulnerability with no way to protect them except by block-listing the entire protocol.
+
+*Instances (1)*:
+ 
+ <details>
+ <summary>Click to expand!</summary>
+
+```solidity
+File: example/ddf.sol
+
+344:     function transfer(address to, uint256 value) external returns (bool);
 
 ```
 
+</details> 
+ 
+
+
+ ### <a name="L-15"></a>[L-15]
+ ### Some tokens may revert when large transfers are made
+Tokens such as COMP or UNI will revert when an address balance reaches type(uint96).max. Ensure that the calls below can be broken up into smaller batches if necessary.  
+
+*Instances (1)*:
+ 
+ <details>
+ <summary>Click to expand!</summary>
+
 ```solidity
-File: VaultOfVault.sol
+File: example/ddf.sol
 
-105:         IERC20Upgradeable(asset()).approve(vaultToDepositInto, assets);     
-
-130:         IVault(vaultToWithdrawFrom).approve(vaultToWithdrawFrom, assets);
-
-```
-
-```solidity
-File: Verifier.sol
-
-222:         super.approve(to, tokenId);
+344:     function transfer(address to, uint256 value) external returns (bool);
 
 ```
 
@@ -937,92 +590,15 @@ File: Verifier.sol
  ### Contracts should have full test coverage
 While 100% code coverage does not guarantee that there are no bugs, it often will catch easy-to-find bugs, and will ensure that there are fewer regressions when the code invariably has to be modified. Furthermore, in order to get full coverage, code authors will often have to re-organize their code so that it is more modular, so that each component can be tested separately, which reduces interdependencies between modules and layers, and makes for code that is easier to reason about and audit.
 
-*Instances (12)*:
+*Instances (1)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: Asset.sol
+File: example/ddf.sol
 
-2: pragma solidity 0.8.19;
-
-```
-
-```solidity
-File: AssetFlowController.sol
-
-2: pragma solidity 0.8.19;
-
-```
-
-```solidity
-File: AssetValuer.sol
-
-2: pragma solidity 0.8.19;
-
-```
-
-```solidity
-File: Offer.sol
-
-2: pragma solidity 0.8.19;
-
-```
-
-```solidity
-File: Vault.sol
-
-2: pragma solidity 0.8.19;
-
-```
-
-```solidity
-File: VaultOfVault.sol
-
-2: pragma solidity 0.8.19;
-
-```
-
-```solidity
-File: Verifier.sol
-
-2: pragma solidity 0.8.19;
-
-```
-
-```solidity
-File: interfaces/IAsset.sol
-
-2: pragma solidity 0.8.19;
-
-```
-
-```solidity
-File: interfaces/IAssetValuer.sol
-
-2: pragma solidity 0.8.19;
-
-```
-
-```solidity
-File: interfaces/IOffer.sol
-
-2: pragma solidity 0.8.19;
-
-```
-
-```solidity
-File: interfaces/IVault.sol
-
-2: pragma solidity 0.8.19;
-
-```
-
-```solidity
-File: interfaces/IVerifier.sol
-
-2: pragma solidity 0.8.19;
+1: pragma solidity 0.8.20;
 
 ```
 
@@ -1034,92 +610,15 @@ File: interfaces/IVerifier.sol
  ### Consider adding formal verification proofs
 Consider using formal verification to mathematically prove that your code does what is intended, and does not have any edge cases with unexpected behavior. The solidity compiler itself has this functionality [built in](https://docs.soliditylang.org/en/latest/smtchecker.html#smtchecker-and-formal-verification)  
 
-*Instances (12)*:
+*Instances (1)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: Asset.sol
+File: example/ddf.sol
 
-2: pragma solidity 0.8.19;
-
-```
-
-```solidity
-File: AssetFlowController.sol
-
-2: pragma solidity 0.8.19;
-
-```
-
-```solidity
-File: AssetValuer.sol
-
-2: pragma solidity 0.8.19;
-
-```
-
-```solidity
-File: Offer.sol
-
-2: pragma solidity 0.8.19;
-
-```
-
-```solidity
-File: Vault.sol
-
-2: pragma solidity 0.8.19;
-
-```
-
-```solidity
-File: VaultOfVault.sol
-
-2: pragma solidity 0.8.19;
-
-```
-
-```solidity
-File: Verifier.sol
-
-2: pragma solidity 0.8.19;
-
-```
-
-```solidity
-File: interfaces/IAsset.sol
-
-2: pragma solidity 0.8.19;
-
-```
-
-```solidity
-File: interfaces/IAssetValuer.sol
-
-2: pragma solidity 0.8.19;
-
-```
-
-```solidity
-File: interfaces/IOffer.sol
-
-2: pragma solidity 0.8.19;
-
-```
-
-```solidity
-File: interfaces/IVault.sol
-
-2: pragma solidity 0.8.19;
-
-```
-
-```solidity
-File: interfaces/IVerifier.sol
-
-2: pragma solidity 0.8.19;
+1: pragma solidity 0.8.20;
 
 ```
 
@@ -1131,92 +630,15 @@ File: interfaces/IVerifier.sol
  ### Large or complicated code bases should implement invariant tests
 Large code bases, or code with lots of inline-assembly, complicated math, or complicated interactions between multiple contracts, should implement [invariant fuzzing tests](https://medium.com/coinmonks/smart-contract-fuzzing-d9b88e0b0a05). Invariant fuzzers such as Echidna require the test writer to come up with invariants which should not be violated under any circumstances, and the fuzzer tests various inputs and function calls to ensure that the invariants always hold. Even code with 100% code coverage can still have bugs due to the order of the operations a user performs, and invariant fuzzers, with properly and extensively-written invariants, can close this testing gap significantly.  
 
-*Instances (12)*:
+*Instances (1)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: Asset.sol
+File: example/ddf.sol
 
-2: pragma solidity 0.8.19;
-
-```
-
-```solidity
-File: AssetFlowController.sol
-
-2: pragma solidity 0.8.19;
-
-```
-
-```solidity
-File: AssetValuer.sol
-
-2: pragma solidity 0.8.19;
-
-```
-
-```solidity
-File: Offer.sol
-
-2: pragma solidity 0.8.19;
-
-```
-
-```solidity
-File: Vault.sol
-
-2: pragma solidity 0.8.19;
-
-```
-
-```solidity
-File: VaultOfVault.sol
-
-2: pragma solidity 0.8.19;
-
-```
-
-```solidity
-File: Verifier.sol
-
-2: pragma solidity 0.8.19;
-
-```
-
-```solidity
-File: interfaces/IAsset.sol
-
-2: pragma solidity 0.8.19;
-
-```
-
-```solidity
-File: interfaces/IAssetValuer.sol
-
-2: pragma solidity 0.8.19;
-
-```
-
-```solidity
-File: interfaces/IOffer.sol
-
-2: pragma solidity 0.8.19;
-
-```
-
-```solidity
-File: interfaces/IVault.sol
-
-2: pragma solidity 0.8.19;
-
-```
-
-```solidity
-File: interfaces/IVerifier.sol
-
-2: pragma solidity 0.8.19;
+1: pragma solidity 0.8.20;
 
 ```
 
@@ -1230,15 +652,17 @@ File: interfaces/IVerifier.sol
 #### Impact:
 Defining custom errors without error details can make error messages less informative.
 
-*Instances (1)*:
+*Instances (2)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: Vault.sol
+File: example/ddf.sol
 
-182:     error FunctionNotSupported();
+110:     error FailedInnerCall();
+
+268:     error ReentrancyGuardReentrantCall();
 
 ```
 
@@ -1247,6 +671,52 @@ File: Vault.sol
 
 
  ### <a name="NC-5"></a>[NC-5]
+ ### NatSpec: Interface declarations should have NatSpec descriptions
+e.g. @dev or @notice, and it must appear above the contract definition braces in order to be identified by the compiler as NatSpec
+
+*Instances (4)*:
+ 
+ <details>
+ <summary>Click to expand!</summary>
+
+```solidity
+File: example/ddf.sol
+
+311: 
+
+383: 
+
+395: 
+
+521: 
+
+```
+
+</details> 
+ 
+
+
+ ### <a name="NC-6"></a>[NC-6]
+ ### NatSpec: Library declarations should have NatSpec descriptions
+e.g. @dev or @notice, and it must appear above the contract definition braces in order to be identified by the compiler as NatSpec
+
+*Instances (1)*:
+ 
+ <details>
+ <summary>Click to expand!</summary>
+
+```solidity
+File: example/ddf.sol
+
+96: library Address {
+
+```
+
+</details> 
+ 
+
+
+ ### <a name="NC-7"></a>[NC-7]
  ### Contract uses both require()/revert() as well as custom errors  
 
 #### Impact:
@@ -1258,161 +728,9 @@ Consider using just one method in a single file
  <summary>Click to expand!</summary>
 
 ```solidity
-File: Vault.sol
+File: example/ddf.sol
 
-182:     error FunctionNotSupported();
-
-```
-
-</details> 
- 
-
-
- ### <a name="NC-6"></a>[NC-6]
- ### Variables without visibility specifier
-
-#### Impact:
-Specifying visibility for variables can improve code readability and maintainability.
-
-*Instances (20)*:
- 
- <details>
- <summary>Click to expand!</summary>
-
-```solidity
-File: AssetFlowController.sol
-
-76:         bool isExistingAsset;
-
-77:         bool isSeeding;
-
-78:         address assetAddress; // if existing Asset
-
-79:         uint256 assetTokenId; // if existing Asset
-
-93:         uint256 settlementPrice;
-
-94:         uint256 numTokens;
-
-95:         string uri;
-
-96:         address recipient; // Functionally we don't need this but it has some security benefits. You can use ownerOf on
-
-110:         uint256 numTokens;
-
-111:         uint256 amount;
-
-112:         address broker;
-
-936:         for (uint256 i; i < numOffers; ++i) {
-
-```
-
-```solidity
-File: AssetValuer.sol
-
-239:         uint256 vaultValuation;
-
-242:         for (uint256 i; i < numHoldings; ++i) {
-
-322:         uint256 numTokensHeld;
-
-323:         uint256 valuation;
-
-```
-
-```solidity
-File: Vault.sol
-
-560:         uint256 assets;
-
-869:         for (uint256 i; i < numHoldings; ++i) {
-
-```
-
-```solidity
-File: interfaces/IVault.sol
-
-38:         uint256 id;
-
-39:         address collection;
-
-```
-
-</details> 
- 
-
-
- ### <a name="NC-7"></a>[NC-7]
- ### Constants in comparisons should appear on the left side
-
-#### Impact:
-Placing constants on the left side of comparisons can improve code readability and prevent accidental assignment. Doing so will prevent typo [bugs](https://www.moserware.com/2008/01/constants-on-left-are-better-but-this.html)
-
-*Instances (21)*:
- 
- <details>
- <summary>Click to expand!</summary>
-
-```solidity
-File: AssetFlowController.sol
-
-852:         if (buyOut.who == BuyOutBy.ASSET_OWNER) {
-
-1001:         if (assetType == IVault.AssetType.ERC721) {
-
-1006:         } else if (assetType == IVault.AssetType.ERC1155) {
-
-1013:             if (assetAddress != vault.asset()) {
-
-```
-
-```solidity
-File: AssetValuer.sol
-
-324:         if (holding.assetType == IVault.AssetType.ERC1155) {
-
-326:             if (numTokensHeld != 0) valuation = (valuations[key] * numTokensHeld);
-
-327:         } else if (holding.assetType == IVault.AssetType.ERC721) {
-
-329:             if (tokenOwner == address(vault)) valuation = valuations[key];
-
-330:         } else if (holding.assetType == IVault.AssetType.ERC20) {
-
-332:             if (numTokensHeld != 0) {
-
-333:                 if (holding.collection == vault.asset()) {
-
-343:         } else if (holding.assetType == IVault.AssetType.VaultToken) {
-
-348:             if (numTokensHeld != 0) {
-
-```
-
-```solidity
-File: Vault.sol
-
-561:         if (assetType == AssetType.ERC20) {
-
-580:         if (assetType == AssetType.ERC721) {
-
-583:         } else if (assetType == AssetType.ERC1155) {
-
-592:         } else if (assetType == AssetType.ERC20 || assetType == AssetType.VaultToken) {
-
-670:         if (balance == 0) _removeHolding(0, erc20Address);
-
-1261:         if (caller != owner) {
-
-1355:         if (holdingId == _genHoldingId(0, asset())) return; // Don't remove base asset
-
-```
-
-```solidity
-File: VaultOfVault.sol
-
-134:         if (balance == 0) _removeHolding(0, vaultToWithdrawFrom);
+20:     error OwnableUnauthorizedAccount(address account);
 
 ```
 
@@ -1421,10 +739,10 @@ File: VaultOfVault.sol
 
 
  ### <a name="NC-8"></a>[NC-8]
- ### Contract declarations should have NatSpec @author annotations
+ ### Variables without visibility specifier
 
 #### Impact:
-Adding a NatSpec @author annotation to contract declarations can improve code documentation.
+Specifying visibility for variables can improve code readability and maintainability.
 
 *Instances (8)*:
  
@@ -1432,53 +750,23 @@ Adding a NatSpec @author annotation to contract declarations can improve code do
  <summary>Click to expand!</summary>
 
 ```solidity
-File: Asset.sol
+File: example/ddf.sol
 
-20: contract Asset is
+536:     using Address for address payable;
 
-177:         _mint(to, id, numTokens, data); //@audit if to is a smart contract it must implement IERC1155Receiver
+547:         uint256 blockNumber;
 
-```
+548:         uint256 amount;
 
-```solidity
-File: AssetFlowController.sol
+549:         uint256 boxNumber;
 
-40: contract AssetFlowController is
+550:         uint256 salt;
 
-```
+551:         address player;
 
-```solidity
-File: AssetValuer.sol
+702:         uint256 totalWin;
 
-23: contract AssetValuer is Initializable, PausableUpgradeable, AccessControlUpgradeable, UUPSUpgradeable, IAssetValuer {
-
-```
-
-```solidity
-File: Offer.sol
-
-23: contract Offer is
-
-```
-
-```solidity
-File: Vault.sol
-
-36: contract Vault is
-
-```
-
-```solidity
-File: VaultOfVault.sol
-
-28: contract VaultOfVault is Vault {
-
-```
-
-```solidity
-File: Verifier.sol
-
-22: contract Verifier is
+730:         uint256 totalWin;
 
 ```
 
@@ -1487,64 +775,18 @@ File: Verifier.sol
 
 
  ### <a name="NC-9"></a>[NC-9]
- ### Contract declarations should have NatSpec @Title annotations
+ ### Assembly blocks should have extensive comments
+Assembly blocks take a lot more time to audit than normal Solidity code, and often have gotchas and side-effects that the Solidity versions of the same code do not. Consider adding more comments explaining what is being done in every step of the assembly code, and describe why assembly is being used instead of Solidity.  
 
-#### Impact:
-Adding a NatSpec @Title annotation to contract declarations can improve code documentation.
-
-*Instances (8)*:
+*Instances (1)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: Asset.sol
+File: example/ddf.sol
 
-20: contract Asset is
-
-177:         _mint(to, id, numTokens, data); //@audit if to is a smart contract it must implement IERC1155Receiver
-
-```
-
-```solidity
-File: AssetFlowController.sol
-
-40: contract AssetFlowController is
-
-```
-
-```solidity
-File: AssetValuer.sol
-
-23: contract AssetValuer is Initializable, PausableUpgradeable, AccessControlUpgradeable, UUPSUpgradeable, IAssetValuer {
-
-```
-
-```solidity
-File: Offer.sol
-
-23: contract Offer is
-
-```
-
-```solidity
-File: Vault.sol
-
-36: contract Vault is
-
-```
-
-```solidity
-File: VaultOfVault.sol
-
-28: contract VaultOfVault is Vault {
-
-```
-
-```solidity
-File: Verifier.sol
-
-22: contract Verifier is
+238:             assembly {
 
 ```
 
@@ -1553,64 +795,38 @@ File: Verifier.sol
 
 
  ### <a name="NC-10"></a>[NC-10]
- ### NatSpec: Contract declarations should have @dev tags
+ ### Constants in comparisons should appear on the left side
 
 #### Impact:
-@dev is used to explain extra details to developers
+Placing constants on the left side of comparisons can improve code readability and prevent accidental assignment. Doing so will prevent typo [bugs](https://www.moserware.com/2008/01/constants-on-left-are-better-but-this.html)
 
-*Instances (8)*:
+*Instances (10)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: Asset.sol
+File: example/ddf.sol
 
-20: contract Asset is
+33:         if (initialOwner == address(0)) {
 
-177:         _mint(to, id, numTokens, data); //@audit if to is a smart contract it must implement IERC1155Receiver
+79:         if (newOwner == address(0)) {
 
-```
+211:             if (returndata.length == 0 && target.code.length == 0) {
 
-```solidity
-File: AssetFlowController.sol
+235:         if (returndata.length > 0) {
 
-40: contract AssetFlowController is
+289:         if (_status == ENTERED) {
 
-```
+696:         if (
 
-```solidity
-File: AssetValuer.sol
+707:         if (totalWin > 0) {
 
-23: contract AssetValuer is Initializable, PausableUpgradeable, AccessControlUpgradeable, UUPSUpgradeable, IAssetValuer {
+749:         if (_bet.boxNumber == winNum) {
 
-```
+783:         if (_blockNumber + 250 < block.number) {
 
-```solidity
-File: Offer.sol
-
-23: contract Offer is
-
-```
-
-```solidity
-File: Vault.sol
-
-36: contract Vault is
-
-```
-
-```solidity
-File: VaultOfVault.sol
-
-28: contract VaultOfVault is Vault {
-
-```
-
-```solidity
-File: Verifier.sol
-
-22: contract Verifier is
+813:         if (winNum == _boxNumber) {
 
 ```
 
@@ -1619,62 +835,28 @@ File: Verifier.sol
 
 
  ### <a name="NC-11"></a>[NC-11]
- ### NatSpec: Contract declarations should have NatSpec descriptions
-e.g. @dev or @notice, and it must appear above the contract definition braces in order to be identified by the compiler as NatSpec
+ ### Contract declarations should have NatSpec @author annotations
 
-*Instances (8)*:
+#### Impact:
+Adding a NatSpec @author annotation to contract declarations can improve code documentation.
+
+*Instances (5)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: Asset.sol
+File: example/ddf.sol
 
-20: contract Asset is
+4: abstract contract Context {
 
-177:         _mint(to, id, numTokens, data); //@audit if to is a smart contract it must implement IERC1155Receiver
+14: abstract contract Ownable is Context {
 
-```
+248: abstract contract ReentrancyGuard {
 
-```solidity
-File: AssetFlowController.sol
+535: contract SuperFirst is Ownable, ReentrancyGuard {
 
-40: contract AssetFlowController is
-
-```
-
-```solidity
-File: AssetValuer.sol
-
-23: contract AssetValuer is Initializable, PausableUpgradeable, AccessControlUpgradeable, UUPSUpgradeable, IAssetValuer {
-
-```
-
-```solidity
-File: Offer.sol
-
-23: contract Offer is
-
-```
-
-```solidity
-File: Vault.sol
-
-36: contract Vault is
-
-```
-
-```solidity
-File: VaultOfVault.sol
-
-28: contract VaultOfVault is Vault {
-
-```
-
-```solidity
-File: Verifier.sol
-
-22: contract Verifier is
+613:             "Invalid bankroll contract address"
 
 ```
 
@@ -1683,62 +865,28 @@ File: Verifier.sol
 
 
  ### <a name="NC-12"></a>[NC-12]
- ### NatSpec: Contract declarations should have @notice tags
-@notice is used to explain to end users what the contract does, and the compiler interprets /// or /** comments as this tag if one wasnt explicitly provided
+ ### Contract declarations should have NatSpec @Title annotations
 
-*Instances (8)*:
+#### Impact:
+Adding a NatSpec @Title annotation to contract declarations can improve code documentation.
+
+*Instances (5)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: Asset.sol
+File: example/ddf.sol
 
-20: contract Asset is
+4: abstract contract Context {
 
-177:         _mint(to, id, numTokens, data); //@audit if to is a smart contract it must implement IERC1155Receiver
+14: abstract contract Ownable is Context {
 
-```
+248: abstract contract ReentrancyGuard {
 
-```solidity
-File: AssetFlowController.sol
+535: contract SuperFirst is Ownable, ReentrancyGuard {
 
-40: contract AssetFlowController is
-
-```
-
-```solidity
-File: AssetValuer.sol
-
-23: contract AssetValuer is Initializable, PausableUpgradeable, AccessControlUpgradeable, UUPSUpgradeable, IAssetValuer {
-
-```
-
-```solidity
-File: Offer.sol
-
-23: contract Offer is
-
-```
-
-```solidity
-File: Vault.sol
-
-36: contract Vault is
-
-```
-
-```solidity
-File: VaultOfVault.sol
-
-28: contract VaultOfVault is Vault {
-
-```
-
-```solidity
-File: Verifier.sol
-
-22: contract Verifier is
+613:             "Invalid bankroll contract address"
 
 ```
 
@@ -1747,66 +895,28 @@ File: Verifier.sol
 
 
  ### <a name="NC-13"></a>[NC-13]
- ### Consider adding a block/deny-list"
-Doing so will significantly increase centralization, but will help to prevent hackers from using stolen tokens  
+ ### NatSpec: Contract declarations should have @dev tags
 
-*Instances (10)*:
+#### Impact:
+@dev is used to explain extra details to developers
+
+*Instances (5)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: Asset.sol
+File: example/ddf.sol
 
-20: contract Asset is
+4: abstract contract Context {
 
-177:         _mint(to, id, numTokens, data); //@audit if to is a smart contract it must implement IERC1155Receiver
+14: abstract contract Ownable is Context {
 
-```
+248: abstract contract ReentrancyGuard {
 
-```solidity
-File: AssetFlowController.sol
+535: contract SuperFirst is Ownable, ReentrancyGuard {
 
-40: contract AssetFlowController is
-
-```
-
-```solidity
-File: AssetValuer.sol
-
-23: contract AssetValuer is Initializable, PausableUpgradeable, AccessControlUpgradeable, UUPSUpgradeable, IAssetValuer {
-
-```
-
-```solidity
-File: Offer.sol
-
-23: contract Offer is
-
-```
-
-```solidity
-File: Vault.sol
-
-36: contract Vault is
-
-1335:         require(hasRole(WHITELISTED_CONTRACT, collection), "V:Contract not whitelisted");
-
-```
-
-```solidity
-File: VaultOfVault.sol
-
-28: contract VaultOfVault is Vault {
-
-129:         require(hasRole(WHITELISTED_CONTRACT, vaultToWithdrawFrom), "VOV: Contract not whitelisted");
-
-```
-
-```solidity
-File: Verifier.sol
-
-22: contract Verifier is
+613:             "Invalid bankroll contract address"
 
 ```
 
@@ -1815,64 +925,26 @@ File: Verifier.sol
 
 
  ### <a name="NC-14"></a>[NC-14]
- ### Consider adding emergency-stop functionality
+ ### NatSpec: Contract declarations should have NatSpec descriptions
+e.g. @dev or @notice, and it must appear above the contract definition braces in order to be identified by the compiler as NatSpec
 
-#### Impact:
-Adding a way to quickly halt protocol functionality in an emergency, rather than having to pause individual contracts one-by-one, will make in-progress hack mitigation faster and much less stressful.
-
-*Instances (8)*:
+*Instances (5)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: Asset.sol
+File: example/ddf.sol
 
-20: contract Asset is
+4: abstract contract Context {
 
-177:         _mint(to, id, numTokens, data); //@audit if to is a smart contract it must implement IERC1155Receiver
+14: abstract contract Ownable is Context {
 
-```
+248: abstract contract ReentrancyGuard {
 
-```solidity
-File: AssetFlowController.sol
+535: contract SuperFirst is Ownable, ReentrancyGuard {
 
-40: contract AssetFlowController is
-
-```
-
-```solidity
-File: AssetValuer.sol
-
-23: contract AssetValuer is Initializable, PausableUpgradeable, AccessControlUpgradeable, UUPSUpgradeable, IAssetValuer {
-
-```
-
-```solidity
-File: Offer.sol
-
-23: contract Offer is
-
-```
-
-```solidity
-File: Vault.sol
-
-36: contract Vault is
-
-```
-
-```solidity
-File: VaultOfVault.sol
-
-28: contract VaultOfVault is Vault {
-
-```
-
-```solidity
-File: Verifier.sol
-
-22: contract Verifier is
+613:             "Invalid bankroll contract address"
 
 ```
 
@@ -1881,24 +953,26 @@ File: Verifier.sol
 
 
  ### <a name="NC-15"></a>[NC-15]
- ### Error declarations should have NatSpec descriptions
+ ### NatSpec: Contract declarations should have @notice tags
+@notice is used to explain to end users what the contract does, and the compiler interprets /// or /** comments as this tag if one wasnt explicitly provided
 
-*Instances (2)*:
+*Instances (5)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: AssetFlowController.sol
+File: example/ddf.sol
 
-847:             diff <= 10 ** 6, // Max acceptable rounding error $1
+4: abstract contract Context {
 
-```
+14: abstract contract Ownable is Context {
 
-```solidity
-File: Vault.sol
+248: abstract contract ReentrancyGuard {
 
-182:     error FunctionNotSupported();
+535: contract SuperFirst is Ownable, ReentrancyGuard {
+
+613:             "Invalid bankroll contract address"
 
 ```
 
@@ -1907,8 +981,10 @@ File: Vault.sol
 
 
  ### <a name="NC-16"></a>[NC-16]
- ### Custom error has no error details
-Custom errors should have a description of the error. This is used to explain to end users what the error means. 
+ ### Consider using delete rather than assigning zero to clear value
+
+#### Impact:
+Consider using delete rather than assigning zero to clear values. The delete keyword more closely matches the semantics of what is being done, and draws more attention to the changing of state, which may lead to a more thorough audit of its associated logic.
 
 *Instances (2)*:
  
@@ -1916,16 +992,11 @@ Custom errors should have a description of the error. This is used to explain to
  <summary>Click to expand!</summary>
 
 ```solidity
-File: AssetFlowController.sol
+File: example/ddf.sol
 
-847:             diff <= 10 ** 6, // Max acceptable rounding error $1
+703:         for (uint256 i = 0; i < bets[_player].length; i++) {
 
-```
-
-```solidity
-File: Vault.sol
-
-182:     error FunctionNotSupported();
+731:         for (uint256 i = 0; i < bets[_player].length; i++) {
 
 ```
 
@@ -1934,24 +1005,26 @@ File: Vault.sol
 
 
  ### <a name="NC-17"></a>[NC-17]
- ### Events are missing sender information
+ ### Consider adding a block/deny-list"
+Doing so will significantly increase centralization, but will help to prevent hackers from using stolen tokens  
 
-#### Impact:
-Including msg.sender in events triggered by user actions can make events more useful for end users.
-
-*Instances (3)*:
+*Instances (5)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: Vault.sol
+File: example/ddf.sol
 
-759:         emit FundAllocationApproved(spender, amount);
+4: abstract contract Context {
 
-1268:         emit Withdraw(caller, receiver, owner, assets, shares);
+14: abstract contract Ownable is Context {
 
-1287:         emit Deposit(caller, receiver, assets, shares);
+248: abstract contract ReentrancyGuard {
+
+535: contract SuperFirst is Ownable, ReentrancyGuard {
+
+613:             "Invalid bankroll contract address"
 
 ```
 
@@ -1960,71 +1033,20 @@ File: Vault.sol
 
 
  ### <a name="NC-18"></a>[NC-18]
- ### NatSpec: Event declarations should have NatSpec descriptions
+ ### Use bytes.concat() on bytes instead of abi.encodePacked() for clearer semantic meaning
+Starting with version 0.8.4, Solidity has the bytes.concat() function, which allows one to concatenate a list of bytes/strings, without extra padding. Using this function rather than abi.encodePacked() makes the intended operation more clear, leading to less reviewer confusion.  
 
-*Instances (23)*:
+*Instances (2)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: AssetFlowController.sol
+File: example/ddf.sol
 
-273:     event OfferSubmitted(address indexed caller, uint256 indexed offerId, string uri, OfferExtendedDetails details);
+789:                     abi.encodePacked((blockhash(_blockNumber)), _salt, _player)
 
-283:     event OfferVerified(address indexed caller, uint256 indexed offerId, string uri);
-
-295:     event SettlementSubmitted(
-
-314:     event AssetSettled(
-
-332:     event SettlementRejected(address indexed caller, uint256 indexed offerId, Settlement settlement);
-
-343:     event BuyOutSubmitted(
-
-363:     event BuyOutAccepted(
-
-380:     event BuyOutRejected(address indexed caller, uint256 indexed offerId);
-
-390:     event RentPriceSet(address indexed caller, bytes32 indexed assetKey, uint256 rentPrice);
-
-400:     event RentPaid(address indexed caller, bytes32 indexed assetKey, uint256 rentPrice, string tag);
-
-```
-
-```solidity
-File: Vault.sol
-
-196:     event AssetDeposited(
-
-210:     event AssetValuerSet(address indexed caller, address indexed assetValuer);
-
-219:     event InvestorRegistered(address indexed caller, address indexed investor, uint256 depositMax);
-
-227:     event InvestorDeregistered(address indexed caller, address indexed investor);
-
-236:     event FundAllocationApproved(address indexed spender, uint256 amountAsset);
-
-247:     event FundsTransferred(
-
-261:     event MinDepositSet(address indexed caller, uint256 minDeposit);
-
-271:     event MaxDepositSet(address indexed caller, address indexed investor, uint256 depositMax);
-
-279:     event WithdrawRequested(address indexed investor, uint256 amountAsset);
-
-287:     event RequestCancelled(address indexed investor, uint256 amountOfAssetBefore);
-
-299:     event TokenReceived(
-
-319:     event VaultHoldingsUpdated(
-
-```
-
-```solidity
-File: interfaces/IAssetValuer.sol
-
-22:     event AssetValued(address indexed sender, address indexed collection, uint256 indexed tokenId, uint256 amount);
+811:             keccak256(abi.encodePacked(_blockHash, _salt, _player))
 
 ```
 
@@ -2033,408 +1055,28 @@ File: interfaces/IAssetValuer.sol
 
 
  ### <a name="NC-19"></a>[NC-19]
- ### NatSpec: function declarations should have NatSpec descriptions
+ ### Consider adding emergency-stop functionality
 
-*Instances (169)*:
+#### Impact:
+Adding a way to quickly halt protocol functionality in an emergency, rather than having to pause individual contracts one-by-one, will make in-progress hack mitigation faster and much less stressful.
+
+*Instances (5)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: Asset.sol
+File: example/ddf.sol
 
-110:     function initialize(
+4: abstract contract Context {
 
-165:     function safeMint(
+14: abstract contract Ownable is Context {
 
-191:     function pause() external virtual whenNotPaused onlyRole(PAUSER_ROLE) {
+248: abstract contract ReentrancyGuard {
 
-206:     function unpause() external virtual whenPaused onlyRole(PAUSER_ROLE) {
+535: contract SuperFirst is Ownable, ReentrancyGuard {
 
-228:     function safeTransferFrom(
-
-252:     function burn(
-
-272:     function setApprovalForAll(address operator, bool approved) public virtual override whenNotPaused {
-
-283:     function renounceRole(bytes32, address) public virtual override {
-
-295:     function supportsInterface(
-
-311:     function exists(uint256 id) public view virtual override(ERC1155SupplyUpgradeable, IAsset) returns (bool) {
-
-326:     function balanceOf(
-
-342:     function uri(
-
-374:     function _beforeTokenTransfer(
-
-401:     function _authorizeUpgrade(address newImplementation) internal virtual override onlyRole(UPGRADER_ROLE) {}
-
-```
-
-```solidity
-File: AssetFlowController.sol
-
-439:     function initialize(
-
-505:     function submitOffer(
-
-549:     function verifyOffer(uint256 offerId, string memory uri) external virtual whenNotPaused onlyRole(VERIFIER_ROLE) {
-
-585:     function submitSettlement(
-
-627:     function settle(uint256 offerId) external virtual whenNotPaused onlyRole(INVESTMENT_MANAGER_ROLE) {
-
-714:     function rejectSettlement(uint256 offerId) external virtual whenNotPaused onlyRole(INVESTMENT_MANAGER_ROLE) {
-
-742:     function setRentPrice(
-
-773:     function payRent(uint256 id, address collection, string memory tag) external virtual whenNotPaused {
-
-803:     function submitBuyOut(
-
-839:     function acceptBuyOut(uint256 offerId) external virtual whenNotPaused onlyRole(INVESTMENT_MANAGER_ROLE) {
-
-874:     function rejectBuyout(uint256 offerId) external virtual whenNotPaused onlyRole(INVESTMENT_MANAGER_ROLE) {
-
-895:     function pause() external virtual whenNotPaused onlyRole(PAUSER_ROLE) {
-
-913:     function unpause() external virtual whenPaused onlyRole(PAUSER_ROLE) {
-
-923:     function getOfferOwner(uint256 offerId) external view virtual returns (address) {
-
-932:     function getOffers() external view virtual returns (uint256[] memory, address[] memory) {
-
-942:     function onERC1155Received(address, address, uint256, uint256, bytes memory) public virtual returns (bytes4) {
-
-953:     function renounceRole(bytes32, address) public virtual override {
-
-966:     function supportsInterface(bytes4 interfaceId) public view virtual override returns (bool) {
-
-991:     function _collectAsset(
-
-1046:     function _sellToAssetOwner(uint256 offerId, BuyOutDetails memory buyOut) internal virtual {
-
-1063:     function _buyFromAssetOwner(uint256 offerId, BuyOutDetails memory buyOut) internal virtual {
-
-1077:     function _authorizeUpgrade(address newImplementation) internal virtual override onlyRole(UPGRADER_ROLE) {}
-
-1086:     function _genHoldingId(uint256 id, address collection) internal pure virtual returns (bytes32) {
-
-```
-
-```solidity
-File: AssetValuer.sol
-
-99:     function initialize(address pauserRole, address upgraderRole, address valuerRole) external initializer {
-
-138:     function setValuation(
-
-157:     function pause() external onlyRole(PAUSER_ROLE) {
-
-172:     function unpause() external onlyRole(PAUSER_ROLE) {
-
-185:     function getValuation(address collection, uint256 tokenId) external view virtual returns (uint256) {
-
-197:     function getValuation(bytes32 key) external view virtual returns (uint256) {
-
-208:     function getAssetValuation(IVault vault, bytes32 key) external view virtual returns (uint256) {
-
-220:     function getAssetValuation(
-
-238:     function getVaultValuation(IVault vault) external view virtual returns (uint256) {
-
-255:     function renounceRole(bytes32, address) public virtual override {
-
-267:     function supportsInterface(bytes4 interfaceId) public view virtual override returns (bool) {
-
-289:     function _setValuation(address collection, uint256 tokenId, uint256 value) internal virtual {
-
-311:     function _authorizeUpgrade(address newImplementation) internal override onlyRole(UPGRADER_ROLE) {}
-
-320:     function _getAssetValuation(IVault vault, bytes32 key) internal view virtual returns (uint256) {
-
-365:     function _genHoldingId(uint256 id, address collection) internal pure virtual returns (bytes32) {
-
-```
-
-```solidity
-File: Offer.sol
-
-115:     function initialize(
-
-150:     function renounceRole(bytes32, address) public virtual override {
-
-172:     function safeMint(address to, string calldata uri) external virtual onlyRole(MINTER_ROLE) returns (uint256) {
-
-194:     function pause() external virtual whenNotPaused onlyRole(PAUSER_ROLE) {
-
-209:     function unpause() external virtual whenPaused onlyRole(PAUSER_ROLE) {
-
-219:     function exists(uint256 tokenId) external view virtual returns (bool) {
-
-240:     function approve(
-
-261:     function setApprovalForAll(
-
-288:     function transferFrom(
-
-312:     function safeTransferFrom(
-
-330:     function isApprovedForAll(
-
-346:     function ownerOf(
-
-360:     function tokenURI(
-
-374:     function supportsInterface(
-
-414:     function _beforeTokenTransfer(
-
-436:     function _burn(uint256 tokenId) internal virtual override(ERC721Upgradeable, ERC721URIStorageUpgradeable) {
-
-454:     function _authorizeUpgrade(address newImplementation) internal virtual override onlyRole(UPGRADER_ROLE) {}
-
-461:     function _baseURI() internal view virtual override returns (string memory) {
-
-```
-
-```solidity
-File: Vault.sol
-
-363:     function initialize(
-
-399:     function __Vault_init(
-
-445:     function renounceRole(bytes32, address) public virtual override {
-
-469:     function registerInvestor(
-
-499:     function deregisterInvestor(address investor) external virtual whenNotPaused onlyRole(CONTRACT_ADMIN_ROLE) { //@audit check if investor is already registered
-
-521:     function safeDeposit(
-
-550:     function depositAsset(
-
-624:     function transferFundsFrom(
-
-658:     function transferFundsTo(
-
-692:     function transferERC721(
-
-727:     function transferERC1155(
-
-755:     function approveFundAllocation(
-
-772:     function setMinDeposit(uint256 _minDeposit) external virtual whenNotPaused onlyRole(CONTRACT_ADMIN_ROLE) {
-
-792:     function setAssetValuer(address _assetValuer) external virtual whenNotPaused onlyRole(CONTRACT_ADMIN_ROLE) {
-
-809:     function requestWithdraw(uint256 amountAssets) external virtual whenNotPaused onlyRole(INVESTOR_ROLE) {
-
-827:     function cancelRequest() external virtual whenNotPaused onlyRole(INVESTOR_ROLE) {
-
-849:     function addHolding(
-
-867:     function cleanHoldings(bytes32[] memory holdingIds) external virtual whenNotPaused onlyRole(CONTRACT_ADMIN_ROLE) {
-
-886:     function setMaxDeposit(
-
-904:     function pause() external virtual whenNotPaused onlyRole(PAUSER_ROLE) {
-
-919:     function unpause() external virtual whenPaused onlyRole(PAUSER_ROLE) {
-
-929:     function getHoldings() external view virtual returns (bytes32[] memory) {
-
-939:     function getHoldingDetails(bytes32 holdingId) external view virtual returns (Holding memory) {
-
-951:     function getHoldingId(address collection, uint256 tokenId) external view virtual returns (bytes32) {
-
-976:     function approve(
-
-997:     function increaseAllowance(
-
-1019:     function decreaseAllowance(
-
-1048:     function withdraw(
-
-1071:     function redeem(uint256, address, address) public virtual override returns (uint256) {
-
-1097:     function onERC1155Received(
-
-1123:     function onERC721Received(
-
-1149:     function deposit(
-
-1160:     function mint(uint256, address) public virtual override returns (uint256) {
-
-1172:     function supportsInterface(
-
-1194:     function totalAssets() public view virtual override(ERC4626Upgradeable, IVault) returns (uint256) {
-
-1208:     function maxDeposit(address investor) public view virtual override returns (uint256) {
-
-1221:     function asset() public view virtual override(ERC4626Upgradeable, IVault) returns (address) {
-
-1232:     function hasRole(
-
-1254:     function _withdraw(
-
-1284:     function _deposit(address caller, address receiver, uint256 assets, uint256 shares) internal virtual override {
-
-1302:     function _setMinDeposit(uint256 _minDeposit) internal virtual {
-
-1315:     function _setMaxDeposit(address investor, uint256 depositMax) internal virtual {
-
-1334:     function _addHoldings(uint256 id, address collection, AssetType assetType) internal virtual {
-
-1354:     function _removeHolding(bytes32 holdingId) internal virtual {
-
-1371:     function _removeHolding(uint256 id, address collection) internal virtual {
-
-1390:     function _beforeTokenTransfer(address from, address to, uint256 amount) internal virtual override whenNotPaused {
-
-1401:     function _authorizeUpgrade(address newImplementation) internal virtual override onlyRole(UPGRADER_ROLE) {}
-
-1409:     function _genHoldingId(uint256 id, address collection) internal pure virtual returns (bytes32) {
-
-```
-
-```solidity
-File: VaultOfVault.sol
-
-70:     function initialize(
-
-97:     function safeDepositIntoChild(
-
-123:     function withdrawFromChild(
-
-```
-
-```solidity
-File: Verifier.sol
-
-103:     function initialize(
-
-153:     function safeMint(uint256 tokenId, address to, string calldata uri) external virtual onlyRole(MINTER_ROLE) {
-
-170:     function pause() external virtual whenNotPaused onlyRole(PAUSER_ROLE) {
-
-185:     function unpause() external virtual whenPaused onlyRole(PAUSER_ROLE) {
-
-198:     function exists(uint256 tokenId) external view virtual returns (bool) {
-
-218:     function approve(
-
-236:     function setApprovalForAll(
-
-251:     function renounceRole(bytes32, address) public virtual override {
-
-264:     function tokenURI(
-
-278:     function supportsInterface(
-
-300:     function ownerOf(
-
-330:     function _beforeTokenTransfer(
-
-352:     function _burn(uint256 tokenId) internal virtual override(ERC721Upgradeable, ERC721URIStorageUpgradeable) {
-
-372:     function _authorizeUpgrade(address newImplementation) internal virtual override onlyRole(UPGRADER_ROLE) {}
-
-379:     function _baseURI() internal view virtual override returns (string memory) {
-
-```
-
-```solidity
-File: interfaces/IAsset.sol
-
-20:     function balanceOf(address account, uint256 id) external view returns (uint256);
-
-29:     function burn(address account, uint256 id, uint256 value) external;
-
-37:     function exists(uint256 id) external view returns (bool);
-
-50:     function safeMint(uint256 id, address to, uint256 numTokens, string memory uri_, bytes memory data) external;
-
-70:     function safeTransferFrom(address from, address to, uint256 id, uint256 amount, bytes memory data) external;
-
-```
-
-```solidity
-File: interfaces/IAssetValuer.sol
-
-37:     function setValuation(address collection, uint256 tokenId, uint256 value) external;
-
-48:     function getVaultValuation(IVault vault) external view returns (uint256);
-
-57:     function getValuation(address collection, uint256 tokenId) external view returns (uint256);
-
-65:     function getValuation(bytes32 key) external view returns (uint256);
-
-67:     function getAssetValuation(IVault vault, bytes32 key) external view returns (uint256);
-
-```
-
-```solidity
-File: interfaces/IOffer.sol
-
-23:     function isApprovedForAll(address owner, address operator) external view returns (bool);
-
-31:     function ownerOf(uint256 tokenId) external view returns (address);
-
-40:     function safeMint(address to, string memory uri) external returns (uint256);
-
-53:     function transferFrom(address from, address to, uint256 tokenId) external;
-
-62:     function safeTransferFrom(address from, address to, uint256 tokenId) external;
-
-```
-
-```solidity
-File: interfaces/IVault.sol
-
-54:     function totalAssets() external view returns (uint256);
-
-62:     function asset() external view returns (address);
-
-69:     function isParent() external view returns (bool);
-
-76:     function assetValuer() external view returns (IAssetValuer);
-
-84:     function getHoldings() external view returns (bytes32[] memory);
-
-92:     function getHoldingDetails(bytes32 holdingId) external view returns (Holding memory);
-
-101:     function hasRole(bytes32 role, address account) external view returns (bool);
-
-112:     function transferFundsFrom(address erc20Address, address from, uint256 amount) external;
-
-123:     function transferFundsTo(address erc20Address, address to, uint256 amount, string memory tag) external;
-
-134:     function safeDeposit(uint256 assets, address receiver, uint256 expectedShares) external returns (uint256);
-
-141:     function requestWithdraw(uint256 amountAssets) external;
-
-152:     function withdraw(uint256 assets, address receiver, address owner) external returns (uint256);
-
-162:     function supportsInterface(bytes4 interfaceId) external view returns (bool);
-
-176:     function transferERC1155(
-
-193:     function depositAsset(
-
-```
-
-```solidity
-File: interfaces/IVerifier.sol
-
-16:     function exists(uint256 tokenId) external view returns (bool);
-
-24:     function ownerOf(uint256 tokenId) external view returns (address);
-
-33:     function safeMint(uint256 tokenId, address to, string memory uri) external;
+613:             "Invalid bankroll contract address"
 
 ```
 
@@ -2443,409 +1085,27 @@ File: interfaces/IVerifier.sol
 
 
  ### <a name="NC-20"></a>[NC-20]
- ### NatSpec: function declarations should have @Notice tags
-@notice is used to explain to end users what the function does, and the compiler interprets /// or /** comments as this tag if one wasn't explicitly provided.  
+ ### Error declarations should have NatSpec descriptions
 
-*Instances (169)*:
+*Instances (6)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: Asset.sol
+File: example/ddf.sol
 
-110:     function initialize(
+20:     error OwnableUnauthorizedAccount(address account);
 
-165:     function safeMint(
+25:     error OwnableInvalidOwner(address owner);
 
-191:     function pause() external virtual whenNotPaused onlyRole(PAUSER_ROLE) {
+100:     error AddressInsufficientBalance(address account);
 
-206:     function unpause() external virtual whenPaused onlyRole(PAUSER_ROLE) {
+105:     error AddressEmptyCode(address target);
 
-228:     function safeTransferFrom(
+110:     error FailedInnerCall();
 
-252:     function burn(
-
-272:     function setApprovalForAll(address operator, bool approved) public virtual override whenNotPaused {
-
-283:     function renounceRole(bytes32, address) public virtual override {
-
-295:     function supportsInterface(
-
-311:     function exists(uint256 id) public view virtual override(ERC1155SupplyUpgradeable, IAsset) returns (bool) {
-
-326:     function balanceOf(
-
-342:     function uri(
-
-374:     function _beforeTokenTransfer(
-
-401:     function _authorizeUpgrade(address newImplementation) internal virtual override onlyRole(UPGRADER_ROLE) {}
-
-```
-
-```solidity
-File: AssetFlowController.sol
-
-439:     function initialize(
-
-505:     function submitOffer(
-
-549:     function verifyOffer(uint256 offerId, string memory uri) external virtual whenNotPaused onlyRole(VERIFIER_ROLE) {
-
-585:     function submitSettlement(
-
-627:     function settle(uint256 offerId) external virtual whenNotPaused onlyRole(INVESTMENT_MANAGER_ROLE) {
-
-714:     function rejectSettlement(uint256 offerId) external virtual whenNotPaused onlyRole(INVESTMENT_MANAGER_ROLE) {
-
-742:     function setRentPrice(
-
-773:     function payRent(uint256 id, address collection, string memory tag) external virtual whenNotPaused {
-
-803:     function submitBuyOut(
-
-839:     function acceptBuyOut(uint256 offerId) external virtual whenNotPaused onlyRole(INVESTMENT_MANAGER_ROLE) {
-
-874:     function rejectBuyout(uint256 offerId) external virtual whenNotPaused onlyRole(INVESTMENT_MANAGER_ROLE) {
-
-895:     function pause() external virtual whenNotPaused onlyRole(PAUSER_ROLE) {
-
-913:     function unpause() external virtual whenPaused onlyRole(PAUSER_ROLE) {
-
-923:     function getOfferOwner(uint256 offerId) external view virtual returns (address) {
-
-932:     function getOffers() external view virtual returns (uint256[] memory, address[] memory) {
-
-942:     function onERC1155Received(address, address, uint256, uint256, bytes memory) public virtual returns (bytes4) {
-
-953:     function renounceRole(bytes32, address) public virtual override {
-
-966:     function supportsInterface(bytes4 interfaceId) public view virtual override returns (bool) {
-
-991:     function _collectAsset(
-
-1046:     function _sellToAssetOwner(uint256 offerId, BuyOutDetails memory buyOut) internal virtual {
-
-1063:     function _buyFromAssetOwner(uint256 offerId, BuyOutDetails memory buyOut) internal virtual {
-
-1077:     function _authorizeUpgrade(address newImplementation) internal virtual override onlyRole(UPGRADER_ROLE) {}
-
-1086:     function _genHoldingId(uint256 id, address collection) internal pure virtual returns (bytes32) {
-
-```
-
-```solidity
-File: AssetValuer.sol
-
-99:     function initialize(address pauserRole, address upgraderRole, address valuerRole) external initializer {
-
-138:     function setValuation(
-
-157:     function pause() external onlyRole(PAUSER_ROLE) {
-
-172:     function unpause() external onlyRole(PAUSER_ROLE) {
-
-185:     function getValuation(address collection, uint256 tokenId) external view virtual returns (uint256) {
-
-197:     function getValuation(bytes32 key) external view virtual returns (uint256) {
-
-208:     function getAssetValuation(IVault vault, bytes32 key) external view virtual returns (uint256) {
-
-220:     function getAssetValuation(
-
-238:     function getVaultValuation(IVault vault) external view virtual returns (uint256) {
-
-255:     function renounceRole(bytes32, address) public virtual override {
-
-267:     function supportsInterface(bytes4 interfaceId) public view virtual override returns (bool) {
-
-289:     function _setValuation(address collection, uint256 tokenId, uint256 value) internal virtual {
-
-311:     function _authorizeUpgrade(address newImplementation) internal override onlyRole(UPGRADER_ROLE) {}
-
-320:     function _getAssetValuation(IVault vault, bytes32 key) internal view virtual returns (uint256) {
-
-365:     function _genHoldingId(uint256 id, address collection) internal pure virtual returns (bytes32) {
-
-```
-
-```solidity
-File: Offer.sol
-
-115:     function initialize(
-
-150:     function renounceRole(bytes32, address) public virtual override {
-
-172:     function safeMint(address to, string calldata uri) external virtual onlyRole(MINTER_ROLE) returns (uint256) {
-
-194:     function pause() external virtual whenNotPaused onlyRole(PAUSER_ROLE) {
-
-209:     function unpause() external virtual whenPaused onlyRole(PAUSER_ROLE) {
-
-219:     function exists(uint256 tokenId) external view virtual returns (bool) {
-
-240:     function approve(
-
-261:     function setApprovalForAll(
-
-288:     function transferFrom(
-
-312:     function safeTransferFrom(
-
-330:     function isApprovedForAll(
-
-346:     function ownerOf(
-
-360:     function tokenURI(
-
-374:     function supportsInterface(
-
-414:     function _beforeTokenTransfer(
-
-436:     function _burn(uint256 tokenId) internal virtual override(ERC721Upgradeable, ERC721URIStorageUpgradeable) {
-
-454:     function _authorizeUpgrade(address newImplementation) internal virtual override onlyRole(UPGRADER_ROLE) {}
-
-461:     function _baseURI() internal view virtual override returns (string memory) {
-
-```
-
-```solidity
-File: Vault.sol
-
-363:     function initialize(
-
-399:     function __Vault_init(
-
-445:     function renounceRole(bytes32, address) public virtual override {
-
-469:     function registerInvestor(
-
-499:     function deregisterInvestor(address investor) external virtual whenNotPaused onlyRole(CONTRACT_ADMIN_ROLE) { //@audit check if investor is already registered
-
-521:     function safeDeposit(
-
-550:     function depositAsset(
-
-624:     function transferFundsFrom(
-
-658:     function transferFundsTo(
-
-692:     function transferERC721(
-
-727:     function transferERC1155(
-
-755:     function approveFundAllocation(
-
-772:     function setMinDeposit(uint256 _minDeposit) external virtual whenNotPaused onlyRole(CONTRACT_ADMIN_ROLE) {
-
-792:     function setAssetValuer(address _assetValuer) external virtual whenNotPaused onlyRole(CONTRACT_ADMIN_ROLE) {
-
-809:     function requestWithdraw(uint256 amountAssets) external virtual whenNotPaused onlyRole(INVESTOR_ROLE) {
-
-827:     function cancelRequest() external virtual whenNotPaused onlyRole(INVESTOR_ROLE) {
-
-849:     function addHolding(
-
-867:     function cleanHoldings(bytes32[] memory holdingIds) external virtual whenNotPaused onlyRole(CONTRACT_ADMIN_ROLE) {
-
-886:     function setMaxDeposit(
-
-904:     function pause() external virtual whenNotPaused onlyRole(PAUSER_ROLE) {
-
-919:     function unpause() external virtual whenPaused onlyRole(PAUSER_ROLE) {
-
-929:     function getHoldings() external view virtual returns (bytes32[] memory) {
-
-939:     function getHoldingDetails(bytes32 holdingId) external view virtual returns (Holding memory) {
-
-951:     function getHoldingId(address collection, uint256 tokenId) external view virtual returns (bytes32) {
-
-976:     function approve(
-
-997:     function increaseAllowance(
-
-1019:     function decreaseAllowance(
-
-1048:     function withdraw(
-
-1071:     function redeem(uint256, address, address) public virtual override returns (uint256) {
-
-1097:     function onERC1155Received(
-
-1123:     function onERC721Received(
-
-1149:     function deposit(
-
-1160:     function mint(uint256, address) public virtual override returns (uint256) {
-
-1172:     function supportsInterface(
-
-1194:     function totalAssets() public view virtual override(ERC4626Upgradeable, IVault) returns (uint256) {
-
-1208:     function maxDeposit(address investor) public view virtual override returns (uint256) {
-
-1221:     function asset() public view virtual override(ERC4626Upgradeable, IVault) returns (address) {
-
-1232:     function hasRole(
-
-1254:     function _withdraw(
-
-1284:     function _deposit(address caller, address receiver, uint256 assets, uint256 shares) internal virtual override {
-
-1302:     function _setMinDeposit(uint256 _minDeposit) internal virtual {
-
-1315:     function _setMaxDeposit(address investor, uint256 depositMax) internal virtual {
-
-1334:     function _addHoldings(uint256 id, address collection, AssetType assetType) internal virtual {
-
-1354:     function _removeHolding(bytes32 holdingId) internal virtual {
-
-1371:     function _removeHolding(uint256 id, address collection) internal virtual {
-
-1390:     function _beforeTokenTransfer(address from, address to, uint256 amount) internal virtual override whenNotPaused {
-
-1401:     function _authorizeUpgrade(address newImplementation) internal virtual override onlyRole(UPGRADER_ROLE) {}
-
-1409:     function _genHoldingId(uint256 id, address collection) internal pure virtual returns (bytes32) {
-
-```
-
-```solidity
-File: VaultOfVault.sol
-
-70:     function initialize(
-
-97:     function safeDepositIntoChild(
-
-123:     function withdrawFromChild(
-
-```
-
-```solidity
-File: Verifier.sol
-
-103:     function initialize(
-
-153:     function safeMint(uint256 tokenId, address to, string calldata uri) external virtual onlyRole(MINTER_ROLE) {
-
-170:     function pause() external virtual whenNotPaused onlyRole(PAUSER_ROLE) {
-
-185:     function unpause() external virtual whenPaused onlyRole(PAUSER_ROLE) {
-
-198:     function exists(uint256 tokenId) external view virtual returns (bool) {
-
-218:     function approve(
-
-236:     function setApprovalForAll(
-
-251:     function renounceRole(bytes32, address) public virtual override {
-
-264:     function tokenURI(
-
-278:     function supportsInterface(
-
-300:     function ownerOf(
-
-330:     function _beforeTokenTransfer(
-
-352:     function _burn(uint256 tokenId) internal virtual override(ERC721Upgradeable, ERC721URIStorageUpgradeable) {
-
-372:     function _authorizeUpgrade(address newImplementation) internal virtual override onlyRole(UPGRADER_ROLE) {}
-
-379:     function _baseURI() internal view virtual override returns (string memory) {
-
-```
-
-```solidity
-File: interfaces/IAsset.sol
-
-20:     function balanceOf(address account, uint256 id) external view returns (uint256);
-
-29:     function burn(address account, uint256 id, uint256 value) external;
-
-37:     function exists(uint256 id) external view returns (bool);
-
-50:     function safeMint(uint256 id, address to, uint256 numTokens, string memory uri_, bytes memory data) external;
-
-70:     function safeTransferFrom(address from, address to, uint256 id, uint256 amount, bytes memory data) external;
-
-```
-
-```solidity
-File: interfaces/IAssetValuer.sol
-
-37:     function setValuation(address collection, uint256 tokenId, uint256 value) external;
-
-48:     function getVaultValuation(IVault vault) external view returns (uint256);
-
-57:     function getValuation(address collection, uint256 tokenId) external view returns (uint256);
-
-65:     function getValuation(bytes32 key) external view returns (uint256);
-
-67:     function getAssetValuation(IVault vault, bytes32 key) external view returns (uint256);
-
-```
-
-```solidity
-File: interfaces/IOffer.sol
-
-23:     function isApprovedForAll(address owner, address operator) external view returns (bool);
-
-31:     function ownerOf(uint256 tokenId) external view returns (address);
-
-40:     function safeMint(address to, string memory uri) external returns (uint256);
-
-53:     function transferFrom(address from, address to, uint256 tokenId) external;
-
-62:     function safeTransferFrom(address from, address to, uint256 tokenId) external;
-
-```
-
-```solidity
-File: interfaces/IVault.sol
-
-54:     function totalAssets() external view returns (uint256);
-
-62:     function asset() external view returns (address);
-
-69:     function isParent() external view returns (bool);
-
-76:     function assetValuer() external view returns (IAssetValuer);
-
-84:     function getHoldings() external view returns (bytes32[] memory);
-
-92:     function getHoldingDetails(bytes32 holdingId) external view returns (Holding memory);
-
-101:     function hasRole(bytes32 role, address account) external view returns (bool);
-
-112:     function transferFundsFrom(address erc20Address, address from, uint256 amount) external;
-
-123:     function transferFundsTo(address erc20Address, address to, uint256 amount, string memory tag) external;
-
-134:     function safeDeposit(uint256 assets, address receiver, uint256 expectedShares) external returns (uint256);
-
-141:     function requestWithdraw(uint256 amountAssets) external;
-
-152:     function withdraw(uint256 assets, address receiver, address owner) external returns (uint256);
-
-162:     function supportsInterface(bytes4 interfaceId) external view returns (bool);
-
-176:     function transferERC1155(
-
-193:     function depositAsset(
-
-```
-
-```solidity
-File: interfaces/IVerifier.sol
-
-16:     function exists(uint256 tokenId) external view returns (bool);
-
-24:     function ownerOf(uint256 tokenId) external view returns (address);
-
-33:     function safeMint(uint256 tokenId, address to, string memory uri) external;
+268:     error ReentrancyGuardReentrantCall();
 
 ```
 
@@ -2854,408 +1114,28 @@ File: interfaces/IVerifier.sol
 
 
  ### <a name="NC-21"></a>[NC-21]
- ### NatSpec: function declarations should have NatSpec descriptions
+ ### Custom error has no error details
+Custom errors should have a description of the error. This is used to explain to end users what the error means. 
 
-*Instances (169)*:
+*Instances (6)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: Asset.sol
+File: example/ddf.sol
 
-110:     function initialize(
+20:     error OwnableUnauthorizedAccount(address account);
 
-165:     function safeMint(
+25:     error OwnableInvalidOwner(address owner);
 
-191:     function pause() external virtual whenNotPaused onlyRole(PAUSER_ROLE) {
+100:     error AddressInsufficientBalance(address account);
 
-206:     function unpause() external virtual whenPaused onlyRole(PAUSER_ROLE) {
+105:     error AddressEmptyCode(address target);
 
-228:     function safeTransferFrom(
+110:     error FailedInnerCall();
 
-252:     function burn(
-
-272:     function setApprovalForAll(address operator, bool approved) public virtual override whenNotPaused {
-
-283:     function renounceRole(bytes32, address) public virtual override {
-
-295:     function supportsInterface(
-
-311:     function exists(uint256 id) public view virtual override(ERC1155SupplyUpgradeable, IAsset) returns (bool) {
-
-326:     function balanceOf(
-
-342:     function uri(
-
-374:     function _beforeTokenTransfer(
-
-401:     function _authorizeUpgrade(address newImplementation) internal virtual override onlyRole(UPGRADER_ROLE) {}
-
-```
-
-```solidity
-File: AssetFlowController.sol
-
-439:     function initialize(
-
-505:     function submitOffer(
-
-549:     function verifyOffer(uint256 offerId, string memory uri) external virtual whenNotPaused onlyRole(VERIFIER_ROLE) {
-
-585:     function submitSettlement(
-
-627:     function settle(uint256 offerId) external virtual whenNotPaused onlyRole(INVESTMENT_MANAGER_ROLE) {
-
-714:     function rejectSettlement(uint256 offerId) external virtual whenNotPaused onlyRole(INVESTMENT_MANAGER_ROLE) {
-
-742:     function setRentPrice(
-
-773:     function payRent(uint256 id, address collection, string memory tag) external virtual whenNotPaused {
-
-803:     function submitBuyOut(
-
-839:     function acceptBuyOut(uint256 offerId) external virtual whenNotPaused onlyRole(INVESTMENT_MANAGER_ROLE) {
-
-874:     function rejectBuyout(uint256 offerId) external virtual whenNotPaused onlyRole(INVESTMENT_MANAGER_ROLE) {
-
-895:     function pause() external virtual whenNotPaused onlyRole(PAUSER_ROLE) {
-
-913:     function unpause() external virtual whenPaused onlyRole(PAUSER_ROLE) {
-
-923:     function getOfferOwner(uint256 offerId) external view virtual returns (address) {
-
-932:     function getOffers() external view virtual returns (uint256[] memory, address[] memory) {
-
-942:     function onERC1155Received(address, address, uint256, uint256, bytes memory) public virtual returns (bytes4) {
-
-953:     function renounceRole(bytes32, address) public virtual override {
-
-966:     function supportsInterface(bytes4 interfaceId) public view virtual override returns (bool) {
-
-991:     function _collectAsset(
-
-1046:     function _sellToAssetOwner(uint256 offerId, BuyOutDetails memory buyOut) internal virtual {
-
-1063:     function _buyFromAssetOwner(uint256 offerId, BuyOutDetails memory buyOut) internal virtual {
-
-1077:     function _authorizeUpgrade(address newImplementation) internal virtual override onlyRole(UPGRADER_ROLE) {}
-
-1086:     function _genHoldingId(uint256 id, address collection) internal pure virtual returns (bytes32) {
-
-```
-
-```solidity
-File: AssetValuer.sol
-
-99:     function initialize(address pauserRole, address upgraderRole, address valuerRole) external initializer {
-
-138:     function setValuation(
-
-157:     function pause() external onlyRole(PAUSER_ROLE) {
-
-172:     function unpause() external onlyRole(PAUSER_ROLE) {
-
-185:     function getValuation(address collection, uint256 tokenId) external view virtual returns (uint256) {
-
-197:     function getValuation(bytes32 key) external view virtual returns (uint256) {
-
-208:     function getAssetValuation(IVault vault, bytes32 key) external view virtual returns (uint256) {
-
-220:     function getAssetValuation(
-
-238:     function getVaultValuation(IVault vault) external view virtual returns (uint256) {
-
-255:     function renounceRole(bytes32, address) public virtual override {
-
-267:     function supportsInterface(bytes4 interfaceId) public view virtual override returns (bool) {
-
-289:     function _setValuation(address collection, uint256 tokenId, uint256 value) internal virtual {
-
-311:     function _authorizeUpgrade(address newImplementation) internal override onlyRole(UPGRADER_ROLE) {}
-
-320:     function _getAssetValuation(IVault vault, bytes32 key) internal view virtual returns (uint256) {
-
-365:     function _genHoldingId(uint256 id, address collection) internal pure virtual returns (bytes32) {
-
-```
-
-```solidity
-File: Offer.sol
-
-115:     function initialize(
-
-150:     function renounceRole(bytes32, address) public virtual override {
-
-172:     function safeMint(address to, string calldata uri) external virtual onlyRole(MINTER_ROLE) returns (uint256) {
-
-194:     function pause() external virtual whenNotPaused onlyRole(PAUSER_ROLE) {
-
-209:     function unpause() external virtual whenPaused onlyRole(PAUSER_ROLE) {
-
-219:     function exists(uint256 tokenId) external view virtual returns (bool) {
-
-240:     function approve(
-
-261:     function setApprovalForAll(
-
-288:     function transferFrom(
-
-312:     function safeTransferFrom(
-
-330:     function isApprovedForAll(
-
-346:     function ownerOf(
-
-360:     function tokenURI(
-
-374:     function supportsInterface(
-
-414:     function _beforeTokenTransfer(
-
-436:     function _burn(uint256 tokenId) internal virtual override(ERC721Upgradeable, ERC721URIStorageUpgradeable) {
-
-454:     function _authorizeUpgrade(address newImplementation) internal virtual override onlyRole(UPGRADER_ROLE) {}
-
-461:     function _baseURI() internal view virtual override returns (string memory) {
-
-```
-
-```solidity
-File: Vault.sol
-
-363:     function initialize(
-
-399:     function __Vault_init(
-
-445:     function renounceRole(bytes32, address) public virtual override {
-
-469:     function registerInvestor(
-
-499:     function deregisterInvestor(address investor) external virtual whenNotPaused onlyRole(CONTRACT_ADMIN_ROLE) { //@audit check if investor is already registered
-
-521:     function safeDeposit(
-
-550:     function depositAsset(
-
-624:     function transferFundsFrom(
-
-658:     function transferFundsTo(
-
-692:     function transferERC721(
-
-727:     function transferERC1155(
-
-755:     function approveFundAllocation(
-
-772:     function setMinDeposit(uint256 _minDeposit) external virtual whenNotPaused onlyRole(CONTRACT_ADMIN_ROLE) {
-
-792:     function setAssetValuer(address _assetValuer) external virtual whenNotPaused onlyRole(CONTRACT_ADMIN_ROLE) {
-
-809:     function requestWithdraw(uint256 amountAssets) external virtual whenNotPaused onlyRole(INVESTOR_ROLE) {
-
-827:     function cancelRequest() external virtual whenNotPaused onlyRole(INVESTOR_ROLE) {
-
-849:     function addHolding(
-
-867:     function cleanHoldings(bytes32[] memory holdingIds) external virtual whenNotPaused onlyRole(CONTRACT_ADMIN_ROLE) {
-
-886:     function setMaxDeposit(
-
-904:     function pause() external virtual whenNotPaused onlyRole(PAUSER_ROLE) {
-
-919:     function unpause() external virtual whenPaused onlyRole(PAUSER_ROLE) {
-
-929:     function getHoldings() external view virtual returns (bytes32[] memory) {
-
-939:     function getHoldingDetails(bytes32 holdingId) external view virtual returns (Holding memory) {
-
-951:     function getHoldingId(address collection, uint256 tokenId) external view virtual returns (bytes32) {
-
-976:     function approve(
-
-997:     function increaseAllowance(
-
-1019:     function decreaseAllowance(
-
-1048:     function withdraw(
-
-1071:     function redeem(uint256, address, address) public virtual override returns (uint256) {
-
-1097:     function onERC1155Received(
-
-1123:     function onERC721Received(
-
-1149:     function deposit(
-
-1160:     function mint(uint256, address) public virtual override returns (uint256) {
-
-1172:     function supportsInterface(
-
-1194:     function totalAssets() public view virtual override(ERC4626Upgradeable, IVault) returns (uint256) {
-
-1208:     function maxDeposit(address investor) public view virtual override returns (uint256) {
-
-1221:     function asset() public view virtual override(ERC4626Upgradeable, IVault) returns (address) {
-
-1232:     function hasRole(
-
-1254:     function _withdraw(
-
-1284:     function _deposit(address caller, address receiver, uint256 assets, uint256 shares) internal virtual override {
-
-1302:     function _setMinDeposit(uint256 _minDeposit) internal virtual {
-
-1315:     function _setMaxDeposit(address investor, uint256 depositMax) internal virtual {
-
-1334:     function _addHoldings(uint256 id, address collection, AssetType assetType) internal virtual {
-
-1354:     function _removeHolding(bytes32 holdingId) internal virtual {
-
-1371:     function _removeHolding(uint256 id, address collection) internal virtual {
-
-1390:     function _beforeTokenTransfer(address from, address to, uint256 amount) internal virtual override whenNotPaused {
-
-1401:     function _authorizeUpgrade(address newImplementation) internal virtual override onlyRole(UPGRADER_ROLE) {}
-
-1409:     function _genHoldingId(uint256 id, address collection) internal pure virtual returns (bytes32) {
-
-```
-
-```solidity
-File: VaultOfVault.sol
-
-70:     function initialize(
-
-97:     function safeDepositIntoChild(
-
-123:     function withdrawFromChild(
-
-```
-
-```solidity
-File: Verifier.sol
-
-103:     function initialize(
-
-153:     function safeMint(uint256 tokenId, address to, string calldata uri) external virtual onlyRole(MINTER_ROLE) {
-
-170:     function pause() external virtual whenNotPaused onlyRole(PAUSER_ROLE) {
-
-185:     function unpause() external virtual whenPaused onlyRole(PAUSER_ROLE) {
-
-198:     function exists(uint256 tokenId) external view virtual returns (bool) {
-
-218:     function approve(
-
-236:     function setApprovalForAll(
-
-251:     function renounceRole(bytes32, address) public virtual override {
-
-264:     function tokenURI(
-
-278:     function supportsInterface(
-
-300:     function ownerOf(
-
-330:     function _beforeTokenTransfer(
-
-352:     function _burn(uint256 tokenId) internal virtual override(ERC721Upgradeable, ERC721URIStorageUpgradeable) {
-
-372:     function _authorizeUpgrade(address newImplementation) internal virtual override onlyRole(UPGRADER_ROLE) {}
-
-379:     function _baseURI() internal view virtual override returns (string memory) {
-
-```
-
-```solidity
-File: interfaces/IAsset.sol
-
-20:     function balanceOf(address account, uint256 id) external view returns (uint256);
-
-29:     function burn(address account, uint256 id, uint256 value) external;
-
-37:     function exists(uint256 id) external view returns (bool);
-
-50:     function safeMint(uint256 id, address to, uint256 numTokens, string memory uri_, bytes memory data) external;
-
-70:     function safeTransferFrom(address from, address to, uint256 id, uint256 amount, bytes memory data) external;
-
-```
-
-```solidity
-File: interfaces/IAssetValuer.sol
-
-37:     function setValuation(address collection, uint256 tokenId, uint256 value) external;
-
-48:     function getVaultValuation(IVault vault) external view returns (uint256);
-
-57:     function getValuation(address collection, uint256 tokenId) external view returns (uint256);
-
-65:     function getValuation(bytes32 key) external view returns (uint256);
-
-67:     function getAssetValuation(IVault vault, bytes32 key) external view returns (uint256);
-
-```
-
-```solidity
-File: interfaces/IOffer.sol
-
-23:     function isApprovedForAll(address owner, address operator) external view returns (bool);
-
-31:     function ownerOf(uint256 tokenId) external view returns (address);
-
-40:     function safeMint(address to, string memory uri) external returns (uint256);
-
-53:     function transferFrom(address from, address to, uint256 tokenId) external;
-
-62:     function safeTransferFrom(address from, address to, uint256 tokenId) external;
-
-```
-
-```solidity
-File: interfaces/IVault.sol
-
-54:     function totalAssets() external view returns (uint256);
-
-62:     function asset() external view returns (address);
-
-69:     function isParent() external view returns (bool);
-
-76:     function assetValuer() external view returns (IAssetValuer);
-
-84:     function getHoldings() external view returns (bytes32[] memory);
-
-92:     function getHoldingDetails(bytes32 holdingId) external view returns (Holding memory);
-
-101:     function hasRole(bytes32 role, address account) external view returns (bool);
-
-112:     function transferFundsFrom(address erc20Address, address from, uint256 amount) external;
-
-123:     function transferFundsTo(address erc20Address, address to, uint256 amount, string memory tag) external;
-
-134:     function safeDeposit(uint256 assets, address receiver, uint256 expectedShares) external returns (uint256);
-
-141:     function requestWithdraw(uint256 amountAssets) external;
-
-152:     function withdraw(uint256 assets, address receiver, address owner) external returns (uint256);
-
-162:     function supportsInterface(bytes4 interfaceId) external view returns (bool);
-
-176:     function transferERC1155(
-
-193:     function depositAsset(
-
-```
-
-```solidity
-File: interfaces/IVerifier.sol
-
-16:     function exists(uint256 tokenId) external view returns (bool);
-
-24:     function ownerOf(uint256 tokenId) external view returns (address);
-
-33:     function safeMint(uint256 tokenId, address to, string memory uri) external;
+268:     error ReentrancyGuardReentrantCall();
 
 ```
 
@@ -3264,78 +1144,26 @@ File: interfaces/IVerifier.sol
 
 
  ### <a name="NC-22"></a>[NC-22]
- ### If-statement can be converted to a ternary
+ ### Events are missing sender information
 
 #### Impact:
-The code can be made more compact while also increasing readability by converting the following `if`-statements to ternaries (e.g. `foo += (x > y) ? a : b`)
+Including msg.sender in events triggered by user actions can make events more useful for end users.
 
-*Instances (20)*:
+*Instances (4)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: Asset.sol
+File: example/ddf.sol
 
-172:         if (totalSupply(id) == 0) {
+92:         emit OwnershipTransferred(oldOwner, newOwner);
 
-```
+679:         emit BetPlaced(msg.sender, block.number, msg.value, _boxNumber, salt);
 
-```solidity
-File: AssetFlowController.sol
+692:         emit PrizeClaimed(msg.sender, winAmount);
 
-646:         if (extendedDetails.isSeeding) {
-
-680:         } else {
-
-691:             } else {
-
-852:         if (buyOut.who == BuyOutBy.ASSET_OWNER) {
-
-1001:         if (assetType == IVault.AssetType.ERC721) {
-
-1006:         } else if (assetType == IVault.AssetType.ERC1155) {
-
-```
-
-```solidity
-File: AssetValuer.sol
-
-324:         if (holding.assetType == IVault.AssetType.ERC1155) {
-
-327:         } else if (holding.assetType == IVault.AssetType.ERC721) {
-
-330:         } else if (holding.assetType == IVault.AssetType.ERC20) {
-
-343:         } else if (holding.assetType == IVault.AssetType.VaultToken) {
-
-351:         } else {
-
-```
-
-```solidity
-File: Offer.sol
-
-177:         if (_msgSender() != to) {
-
-```
-
-```solidity
-File: Vault.sol
-
-561:         if (assetType == AssetType.ERC20) {
-
-580:         if (assetType == AssetType.ERC721) {
-
-583:         } else if (assetType == AssetType.ERC1155) {
-
-592:         } else if (assetType == AssetType.ERC20 || assetType == AssetType.VaultToken) {
-
-1261:         if (caller != owner) {
-
-1342:         if (holdings.add(holdingId)) {
-
-1356:         if (holdings.remove(holdingId)) {
+709:             emit RewardDistributed(totalWin);
 
 ```
 
@@ -3344,22 +1172,33 @@ File: Vault.sol
 
 
  ### <a name="NC-23"></a>[NC-23]
- ### Consider combining multiple address/ID mappings into a single mapping of an address/ID to a struct
+ ### NatSpec: Event declarations should have NatSpec descriptions
 
-#### Impact:
-Combining multiple mappings into a single mapping with a struct can improve readability and maintainability of the code.
-
-*Instances (2)*:
+*Instances (9)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: Vault.sol
+File: example/ddf.sol
 
-137:     mapping(address => uint) public withdrawalRequests;
+27:     event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
 
-149:     mapping(address => uint256) public maxDeposits;
+319:     event Transfer(address indexed from, address indexed to, uint256 value);
+
+325:     event Approval(address indexed owner, address indexed spender, uint256 value);
+
+400:     event Transfer(address indexed from, address indexed to, uint256 indexed tokenId);
+
+405:     event Approval(address indexed owner, address indexed approved, uint256 indexed tokenId);
+
+410:     event ApprovalForAll(address indexed owner, address indexed operator, bool approved);
+
+556:     event RewardDistributed(uint256 amount);
+
+564:     event BetPlaced(
+
+577:     event PrizeClaimed(address indexed player, uint256 winAmount);
 
 ```
 
@@ -3368,162 +1207,119 @@ File: Vault.sol
 
 
  ### <a name="NC-24"></a>[NC-24]
- ### Use of override is unnecessary
+ ### NatSpec: function declarations should have NatSpec descriptions
 
-#### Impact:
-Starting with Solidity version [0.8.8](https://docs.soliditylang.org/en/v0.8.20/contracts.html#function-overriding), using the override keyword when the function solely overrides an interface function, and the function doesnt exist in multiple base contracts, is unnecessary.
-
-*Instances (57)*:
+*Instances (52)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: Asset.sol
+File: example/ddf.sol
 
-234:     ) public virtual override(ERC1155Upgradeable, IAsset) {
+5:     function _msgSender() internal view virtual returns (address) {
 
-256:     ) public virtual override(ERC1155BurnableUpgradeable, IAsset) {
+9:     function _msgData() internal view virtual returns (bytes calldata) {
 
-272:     function setApprovalForAll(address operator, bool approved) public virtual override whenNotPaused {
+50:     function owner() public view virtual returns (address) {
 
-283:     function renounceRole(bytes32, address) public virtual override {
+57:     function _checkOwner() internal view virtual {
 
-297:     ) public view virtual override(ERC1155Upgradeable, AccessControlUpgradeable) returns (bool) {
+70:     function renounceOwnership() public virtual onlyOwner {
 
-311:     function exists(uint256 id) public view virtual override(ERC1155SupplyUpgradeable, IAsset) returns (bool) {
+78:     function transferOwnership(address newOwner) public virtual onlyOwner {
 
-329:     ) public view virtual override(ERC1155Upgradeable, IAsset) returns (uint256) {
+89:     function _transferOwnership(address newOwner) internal virtual {
 
-344:     ) public view virtual override(ERC1155Upgradeable, ERC1155URIStorageUpgradeable) returns (string memory) {
+128:     function sendValue(address payable recipient, uint256 amount) internal {
 
-381:     ) internal virtual override(ERC1155Upgradeable, ERC1155SupplyUpgradeable) whenNotPaused {
+157:     function functionCall(address target, bytes memory data) internal returns (bytes memory) {
 
-401:     function _authorizeUpgrade(address newImplementation) internal virtual override onlyRole(UPGRADER_ROLE) {}
+170:     function functionCallWithValue(address target, bytes memory data, uint256 value) internal returns (bytes memory) {
 
-```
+182:     function functionStaticCall(address target, bytes memory data) internal view returns (bytes memory) {
 
-```solidity
-File: AssetFlowController.sol
+191:     function functionDelegateCall(address target, bytes memory data) internal returns (bytes memory) {
 
-953:     function renounceRole(bytes32, address) public virtual override {
+201:     function verifyCallResultFromTarget(
 
-966:     function supportsInterface(bytes4 interfaceId) public view virtual override returns (bool) {
+222:     function verifyCallResult(bool success, bytes memory returndata) internal pure returns (bytes memory) {
 
-1077:     function _authorizeUpgrade(address newImplementation) internal virtual override onlyRole(UPGRADER_ROLE) {}
+233:     function _revert(bytes memory returndata) private pure {
 
-```
+287:     function _nonReentrantBefore() private {
 
-```solidity
-File: AssetValuer.sol
+297:     function _nonReentrantAfter() private {
 
-255:     function renounceRole(bytes32, address) public virtual override {
+307:     function _reentrancyGuardEntered() internal view returns (bool) {
 
-267:     function supportsInterface(bytes4 interfaceId) public view virtual override returns (bool) {
+330:     function totalSupply() external view returns (uint256);
 
-311:     function _authorizeUpgrade(address newImplementation) internal override onlyRole(UPGRADER_ROLE) {}
+335:     function balanceOf(address account) external view returns (uint256);
 
-```
+344:     function transfer(address to, uint256 value) external returns (bool);
 
-```solidity
-File: Offer.sol
+353:     function allowance(address owner, address spender) external view returns (uint256);
 
-150:     function renounceRole(bytes32, address) public virtual override {
+370:     function approve(address spender, uint256 value) external returns (bool);
 
-243:     ) public virtual override(ERC721Upgradeable, IERC721Upgradeable) whenNotPaused {
+381:     function transferFrom(address from, address to, uint256 value) external returns (bool);
 
-264:     ) public virtual override(ERC721Upgradeable, IERC721Upgradeable) whenNotPaused {
+393:     function supportsInterface(bytes4 interfaceId) external view returns (bool);
 
-292:     ) public virtual override(ERC721Upgradeable, IERC721Upgradeable, IOffer) {
+415:     function balanceOf(address owner) external view returns (uint256 balance);
 
-316:     ) public virtual override(ERC721Upgradeable, IERC721Upgradeable, IOffer) {
+424:     function ownerOf(uint256 tokenId) external view returns (address owner);
 
-333:     ) public view virtual override(ERC721Upgradeable, IERC721Upgradeable, IOffer) returns (bool) {
+440:     function safeTransferFrom(address from, address to, uint256 tokenId, bytes calldata data) external;
 
-348:     ) public view virtual override(ERC721Upgradeable, IERC721Upgradeable, IOffer) returns (address) {
+458:     function safeTransferFrom(address from, address to, uint256 tokenId) external;
 
-362:     ) public view virtual override(ERC721Upgradeable, ERC721URIStorageUpgradeable) returns (string memory) {
+476:     function transferFrom(address from, address to, uint256 tokenId) external;
 
-380:         override(ERC721Upgradeable, ERC721EnumerableUpgradeable, ERC721URIStorageUpgradeable, AccessControlUpgradeable)
+491:     function approve(address to, uint256 tokenId) external;
 
-419:     ) internal virtual override(ERC721Upgradeable, ERC721EnumerableUpgradeable) whenNotPaused {
+503:     function setApprovalForAll(address operator, bool approved) external;
 
-436:     function _burn(uint256 tokenId) internal virtual override(ERC721Upgradeable, ERC721URIStorageUpgradeable) {
+512:     function getApproved(uint256 tokenId) external view returns (address operator);
 
-454:     function _authorizeUpgrade(address newImplementation) internal virtual override onlyRole(UPGRADER_ROLE) {}
+519:     function isApprovedForAll(address owner, address operator) external view returns (bool);
 
-461:     function _baseURI() internal view virtual override returns (string memory) {
+523:     function sendFTN(address _to, uint256 _amount) external;
 
-```
+525:     function sendERC20(IERC20 _token, address _to, uint256 _amount) external;
 
-```solidity
-File: Vault.sol
+527:     function sendERC721(IERC721 _token, address _to, uint256 _id) external;
 
-445:     function renounceRole(bytes32, address) public virtual override {
+598:     function withdrawFTN(uint256 _amount) external onlyOwner {
 
-979:     ) public virtual override(ERC20Upgradeable, IERC20Upgradeable) whenNotPaused returns (bool) {
+608:     function setBankrollContract(
 
-1000:     ) public virtual override whenNotPaused returns (bool) {
+622:     function setMinBet(uint256 _minBet) external onlyOwner notZero(_minBet) {
 
-1022:     ) public virtual override whenNotPaused returns (bool) {
+630:     function setMaxBet(uint256 _maxBet) external onlyOwner notZero(_maxBet) {
 
-1055:         override(ERC4626Upgradeable, IVault)
+638:     function setWinCoefficient(
 
-1071:     function redeem(uint256, address, address) public virtual override returns (uint256) {
+648:     function setNumberOfBoxes(
 
-1152:     ) public virtual override whenNotPaused onlyRole(INVESTOR_ROLE) returns (uint256) {
+658:     function play(
 
-1160:     function mint(uint256, address) public virtual override returns (uint256) {
+687:     function getPrize() external nonReentrant {
 
-1174:     ) public view virtual override(AccessControlUpgradeable, IVault) returns (bool) {
+695:     function distributeReward(address _player) public {
 
-1194:     function totalAssets() public view virtual override(ERC4626Upgradeable, IVault) returns (uint256) {
+718:     function getPlayerBets(
 
-1208:     function maxDeposit(address investor) public view virtual override returns (uint256) {
+729:     function calculateTotalWin(address _player) public view returns (uint256) {
 
-1221:     function asset() public view virtual override(ERC4626Upgradeable, IVault) returns (address) {
+743:     function calculateWin(
 
-1235:     ) public view virtual override(AccessControlUpgradeable, IVault) returns (bool) {
+766:     function estimatePotentialReward(
 
-1260:     ) internal virtual override {
+777:     function getRand(
 
-1284:     function _deposit(address caller, address receiver, uint256 assets, uint256 shares) internal virtual override {
-
-1390:     function _beforeTokenTransfer(address from, address to, uint256 amount) internal virtual override whenNotPaused {
-
-1401:     function _authorizeUpgrade(address newImplementation) internal virtual override onlyRole(UPGRADER_ROLE) {}
-
-```
-
-```solidity
-File: VaultOfVault.sol
-
-79:     ) external virtual override initializer {
-
-```
-
-```solidity
-File: Verifier.sol
-
-221:     ) public virtual override(ERC721Upgradeable, IERC721Upgradeable) whenNotPaused {
-
-239:     ) public virtual override(ERC721Upgradeable, IERC721Upgradeable) whenNotPaused {
-
-251:     function renounceRole(bytes32, address) public virtual override {
-
-266:     ) public view virtual override(ERC721Upgradeable, ERC721URIStorageUpgradeable) returns (string memory) {
-
-284:         override(ERC721Upgradeable, ERC721EnumerableUpgradeable, ERC721URIStorageUpgradeable, AccessControlUpgradeable)
-
-302:     ) public view virtual override(ERC721Upgradeable, IERC721Upgradeable, IVerifier) returns (address) {
-
-335:     ) internal virtual override(ERC721Upgradeable, ERC721EnumerableUpgradeable) whenNotPaused {
-
-352:     function _burn(uint256 tokenId) internal virtual override(ERC721Upgradeable, ERC721URIStorageUpgradeable) {
-
-372:     function _authorizeUpgrade(address newImplementation) internal virtual override onlyRole(UPGRADER_ROLE) {}
-
-379:     function _baseURI() internal view virtual override returns (string memory) {
+803:     function checkGameResult(
 
 ```
 
@@ -3532,86 +1328,120 @@ File: Verifier.sol
 
 
  ### <a name="NC-25"></a>[NC-25]
- ### Consider using descriptive constants when using 0 in the code
+ ### NatSpec: function declarations should have @Notice tags
+@notice is used to explain to end users what the function does, and the compiler interprets /// or /** comments as this tag if one wasn't explicitly provided.  
 
-#### Impact:
-Passing zero as a function argument/Event emission can sometimes result in a security issue (e.g. passing zero as the slippage parameter). Consider using a constant variable with a descriptive name, so its clear that the 0 is intentionally being used, and for the right reasons.
-
-*Instances (29)*:
+*Instances (52)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: AssetFlowController.sol
+File: example/ddf.sol
 
-551:         require(offerId != 0, "AFC: offerId must be non-zero");
+5:     function _msgSender() internal view virtual returns (address) {
 
-592:         require(numTokens != 0, "AFC: numTokens must be non-zero");
+9:     function _msgData() internal view virtual returns (bytes calldata) {
 
-593:         require(settlementPrice != 0, "AFC: settlementPrice must be non-zero");
+50:     function owner() public view virtual returns (address) {
 
-597:         require(settlement[offerId].numTokens == 0, "AFC: Offer already submitted");
+57:     function _checkOwner() internal view virtual {
 
-628:         require(offerId != 0, "AFC: offerId must be non-zero");
+70:     function renounceOwnership() public virtual onlyOwner {
 
-632:         require(details.numTokens != 0, "AFC: Settlement details not set");
+78:     function transferOwnership(address newOwner) public virtual onlyOwner {
 
-715:         require(offerId != 0, "AFC: offerId must be non-zero");
+89:     function _transferOwnership(address newOwner) internal virtual {
 
-716:         require(settlement[offerId].numTokens != 0, "AFC: Settlement does not exist");
+128:     function sendValue(address payable recipient, uint256 amount) internal {
 
-775:         require(rentPrices[assetKey] != 0, "AFC: No rent price set");
+157:     function functionCall(address target, bytes memory data) internal returns (bytes memory) {
 
-809:         require(offerId != 0, "AFC: offerId must non-zero");
+170:     function functionCallWithValue(address target, bytes memory data, uint256 value) internal returns (bytes memory) {
 
-811:         require(numTokens != 0, "AFC: Specify number of tokens");
+182:     function functionStaticCall(address target, bytes memory data) internal view returns (bytes memory) {
 
-812:         require(amount != 0, "AFC: Must specify amount");
+191:     function functionDelegateCall(address target, bytes memory data) internal returns (bytes memory) {
 
-813:         require(buyOutDetails[offerId].numTokens == 0, "AFC: Buyout already submitted");
+201:     function verifyCallResultFromTarget(
 
-840:         require(offerId != 0, "AFC: offerId must be non-zero");
+222:     function verifyCallResult(bool success, bytes memory returndata) internal pure returns (bytes memory) {
 
-843:         require(buyOut.numTokens != 0, "AFC: BuyOutDetails not submitted");
+233:     function _revert(bytes memory returndata) private pure {
 
-875:         require(offerId != 0, "AFC: offerId must be non-zero");
+287:     function _nonReentrantBefore() private {
 
-876:         require(buyOutDetails[offerId].numTokens != 0, "AFC: buyOutDetails doesn't exist");
+297:     function _nonReentrantAfter() private {
 
-```
+307:     function _reentrancyGuardEntered() internal view returns (bool) {
 
-```solidity
-File: Vault.sol
+330:     function totalSupply() external view returns (uint256);
 
-502:         _setMaxDeposit(investor, 0);
+335:     function balanceOf(address account) external view returns (uint256);
 
-570:         require(assets != 0, "V:Asset has no valuation");
+344:     function transfer(address to, uint256 value) external returns (bool);
 
-594:             _addHoldings(0, assetAddress, assetType);
+353:     function allowance(address owner, address spender) external view returns (uint256);
 
-631:         require(amount != 0, "V:amount should be non-zero");
+370:     function approve(address spender, uint256 value) external returns (bool);
 
-666:         require(amount != 0, "V:amount should be non-zero");
+381:     function transferFrom(address from, address to, uint256 value) external returns (bool);
 
-670:         if (balance == 0) _removeHolding(0, erc20Address);
+393:     function supportsInterface(bytes4 interfaceId) external view returns (bool);
 
-810:         require(amountAssets != 0, "V:amountAssets cant be 0");
+415:     function balanceOf(address owner) external view returns (uint256 balance);
 
-829:         require(amountBefore != 0, "V:No withdrawal request exists");
+424:     function ownerOf(uint256 tokenId) external view returns (address owner);
 
-```
+440:     function safeTransferFrom(address from, address to, uint256 tokenId, bytes calldata data) external;
 
-```solidity
-File: VaultOfVault.sol
+458:     function safeTransferFrom(address from, address to, uint256 tokenId) external;
 
-103:         require(assets != 0, "VOV: assets must not be 0");
+476:     function transferFrom(address from, address to, uint256 tokenId) external;
 
-104:         _addHoldings(0, vaultToDepositInto, AssetType.VaultToken); 
+491:     function approve(address to, uint256 tokenId) external;
 
-128:         require(assets != 0, "VOV: assets must not be 0");
+503:     function setApprovalForAll(address operator, bool approved) external;
 
-134:         if (balance == 0) _removeHolding(0, vaultToWithdrawFrom);
+512:     function getApproved(uint256 tokenId) external view returns (address operator);
+
+519:     function isApprovedForAll(address owner, address operator) external view returns (bool);
+
+523:     function sendFTN(address _to, uint256 _amount) external;
+
+525:     function sendERC20(IERC20 _token, address _to, uint256 _amount) external;
+
+527:     function sendERC721(IERC721 _token, address _to, uint256 _id) external;
+
+598:     function withdrawFTN(uint256 _amount) external onlyOwner {
+
+608:     function setBankrollContract(
+
+622:     function setMinBet(uint256 _minBet) external onlyOwner notZero(_minBet) {
+
+630:     function setMaxBet(uint256 _maxBet) external onlyOwner notZero(_maxBet) {
+
+638:     function setWinCoefficient(
+
+648:     function setNumberOfBoxes(
+
+658:     function play(
+
+687:     function getPrize() external nonReentrant {
+
+695:     function distributeReward(address _player) public {
+
+718:     function getPlayerBets(
+
+729:     function calculateTotalWin(address _player) public view returns (uint256) {
+
+743:     function calculateWin(
+
+766:     function estimatePotentialReward(
+
+777:     function getRand(
+
+803:     function checkGameResult(
 
 ```
 
@@ -3620,93 +1450,119 @@ File: VaultOfVault.sol
 
 
  ### <a name="NC-26"></a>[NC-26]
- ### Non-external/public variable names should begin with an underscore
+ ### NatSpec: function declarations should have NatSpec descriptions
 
-#### Impact:
-Using an underscore at the beginning of non-external/public variable names can improve code clarity and maintainability. According to the Solidity Style Guide, non-external/public variable names should begin with an [underscore](https://docs.soliditylang.org/en/latest/style-guide.html#underscore-prefix-for-non-external-functions-and-variables)
-
-*Instances (25)*:
+*Instances (52)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: Asset.sol
+File: example/ddf.sol
 
-65:     string public name;
+5:     function _msgSender() internal view virtual returns (address) {
 
-70:     string public symbol;
+9:     function _msgData() internal view virtual returns (bytes calldata) {
 
-76:     bytes32 public version;
+50:     function owner() public view virtual returns (address) {
 
-```
+57:     function _checkOwner() internal view virtual {
 
-```solidity
-File: AssetFlowController.sol
+70:     function renounceOwnership() public virtual onlyOwner {
 
-177:     IVault public vault;
+78:     function transferOwnership(address newOwner) public virtual onlyOwner {
 
-184:     IOffer public offerCollection;
+89:     function _transferOwnership(address newOwner) internal virtual {
 
-191:     IAsset public assetCollection;
+128:     function sendValue(address payable recipient, uint256 amount) internal {
 
-198:     IVerifier public verifiedOfferCollection;
+157:     function functionCall(address target, bytes memory data) internal returns (bytes memory) {
 
-218:     mapping(uint256 => OfferExtendedDetails) public offerExtendedDetails;
+170:     function functionCallWithValue(address target, bytes memory data, uint256 value) internal returns (bytes memory) {
 
-230:     mapping(uint256 => Settlement) public settlement;
+182:     function functionStaticCall(address target, bytes memory data) internal view returns (bytes memory) {
 
-242:     mapping(uint256 => BuyOutDetails) public buyOutDetails;
+191:     function functionDelegateCall(address target, bytes memory data) internal returns (bytes memory) {
 
-254:     mapping(bytes32 => uint256) public rentPrices;
+201:     function verifyCallResultFromTarget(
 
-260:     bytes32 public version;
+222:     function verifyCallResult(bool success, bytes memory returndata) internal pure returns (bytes memory) {
 
-```
+233:     function _revert(bytes memory returndata) private pure {
 
-```solidity
-File: AssetValuer.sol
+287:     function _nonReentrantBefore() private {
 
-64:     mapping(bytes32 => uint256) public valuations;
+297:     function _nonReentrantAfter() private {
 
-70:     bytes32 public version;
+307:     function _reentrancyGuardEntered() internal view returns (bool) {
 
-```
+330:     function totalSupply() external view returns (uint256);
 
-```solidity
-File: Offer.sol
+335:     function balanceOf(address account) external view returns (uint256);
 
-75:     string internal baseURI;
+344:     function transfer(address to, uint256 value) external returns (bool);
 
-81:     bytes32 public version;
+353:     function allowance(address owner, address spender) external view returns (uint256);
 
-```
+370:     function approve(address spender, uint256 value) external returns (bool);
 
-```solidity
-File: Vault.sol
+381:     function transferFrom(address from, address to, uint256 value) external returns (bool);
 
-124:     mapping(bytes32 => Holding) public holdingsDetails;
+393:     function supportsInterface(bytes4 interfaceId) external view returns (bool);
 
-137:     mapping(address => uint) public withdrawalRequests;
+415:     function balanceOf(address owner) external view returns (uint256 balance);
 
-149:     mapping(address => uint256) public maxDeposits;
+424:     function ownerOf(uint256 tokenId) external view returns (address owner);
 
-156:     IAssetValuer public assetValuer;
+440:     function safeTransferFrom(address from, address to, uint256 tokenId, bytes calldata data) external;
 
-164:     bool public isParent;
+458:     function safeTransferFrom(address from, address to, uint256 tokenId) external;
 
-169:     uint256 public minDeposit;
+476:     function transferFrom(address from, address to, uint256 tokenId) external;
 
-175:     bytes32 public version;
+491:     function approve(address to, uint256 tokenId) external;
 
-```
+503:     function setApprovalForAll(address operator, bool approved) external;
 
-```solidity
-File: Verifier.sol
+512:     function getApproved(uint256 tokenId) external view returns (address operator);
 
-67:     string internal baseURI;
+519:     function isApprovedForAll(address owner, address operator) external view returns (bool);
 
-73:     bytes32 public version;
+523:     function sendFTN(address _to, uint256 _amount) external;
+
+525:     function sendERC20(IERC20 _token, address _to, uint256 _amount) external;
+
+527:     function sendERC721(IERC721 _token, address _to, uint256 _id) external;
+
+598:     function withdrawFTN(uint256 _amount) external onlyOwner {
+
+608:     function setBankrollContract(
+
+622:     function setMinBet(uint256 _minBet) external onlyOwner notZero(_minBet) {
+
+630:     function setMaxBet(uint256 _maxBet) external onlyOwner notZero(_maxBet) {
+
+638:     function setWinCoefficient(
+
+648:     function setNumberOfBoxes(
+
+658:     function play(
+
+687:     function getPrize() external nonReentrant {
+
+695:     function distributeReward(address _player) public {
+
+718:     function getPlayerBets(
+
+729:     function calculateTotalWin(address _player) public view returns (uint256) {
+
+743:     function calculateWin(
+
+766:     function estimatePotentialReward(
+
+777:     function getRand(
+
+803:     function checkGameResult(
 
 ```
 
@@ -3715,48 +1571,48 @@ File: Verifier.sol
 
 
  ### <a name="NC-27"></a>[NC-27]
- ### Return values of `approve()` not checked
-Not all IERC20 implementations `revert()` when there's a failure in `approve()`. The function signature has a boolean return value and they indicate errors that way instead. By not checking the return value, operations that should have marked as failed, may potentially go through without actually approving anything
+ ### If-statement can be converted to a ternary
 
-*Instances (6)*:
+#### Impact:
+The code can be made more compact while also increasing readability by converting the following `if`-statements to ternaries (e.g. `foo += (x > y) ? a : b`)
+
+*Instances (15)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: AssetFlowController.sol
+File: example/ddf.sol
 
-1025:             if (isSeeding) token.approve(address(vault), amount);
+33:         if (initialOwner == address(0)) {
 
-```
+58:         if (owner() != _msgSender()) {
 
-```solidity
-File: Offer.sol
+79:         if (newOwner == address(0)) {
 
-244:         super.approve(to, tokenId);
+129:         if (address(this).balance < amount) {
 
-```
+134:         if (!success) {
 
-```solidity
-File: Vault.sol
+171:         if (address(this).balance < value) {
 
-980:         return super.approve(spender, amount);
+206:         if (!success) {
 
-```
+223:         if (!success) {
 
-```solidity
-File: VaultOfVault.sol
+235:         if (returndata.length > 0) {
 
-105:         IERC20Upgradeable(asset()).approve(vaultToDepositInto, assets);     
+242:         } else {
 
-130:         IVault(vaultToWithdrawFrom).approve(vaultToWithdrawFrom, assets);
+289:         if (_status == ENTERED) {
 
-```
+707:         if (totalWin > 0) {
 
-```solidity
-File: Verifier.sol
+749:         if (_bet.boxNumber == winNum) {
 
-222:         super.approve(to, tokenId);
+783:         if (_blockNumber + 250 < block.number) {
+
+813:         if (winNum == _boxNumber) {
 
 ```
 
@@ -3765,77 +1621,20 @@ File: Verifier.sol
 
 
  ### <a name="NC-28"></a>[NC-28]
- ### Setters should prevent re-setting of the same value
-This especially problematic when the setter also emits the same value, which may be confusing to offline parsers  
+ ### Consider combining multiple address/ID mappings into a single mapping of an address/ID to a struct
 
-*Instances (18)*:
+#### Impact:
+Combining multiple mappings into a single mapping with a struct can improve readability and maintainability of the code.
+
+*Instances (1)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: Asset.sol
+File: example/ddf.sol
 
-272:     function setApprovalForAll(address operator, bool approved) public virtual override whenNotPaused {
-
-```
-
-```solidity
-File: AssetFlowController.sol
-
-627:     function settle(uint256 offerId) external virtual whenNotPaused onlyRole(INVESTMENT_MANAGER_ROLE) {
-
-1046:     function _sellToAssetOwner(uint256 offerId, BuyOutDetails memory buyOut) internal virtual {
-
-1063:     function _buyFromAssetOwner(uint256 offerId, BuyOutDetails memory buyOut) internal virtual {
-
-```
-
-```solidity
-File: AssetValuer.sol
-
-208:     function getAssetValuation(IVault vault, bytes32 key) external view virtual returns (uint256) {
-
-289:     function _setValuation(address collection, uint256 tokenId, uint256 value) internal virtual {
-
-320:     function _getAssetValuation(IVault vault, bytes32 key) internal view virtual returns (uint256) {
-
-```
-
-```solidity
-File: Vault.sol
-
-772:     function setMinDeposit(uint256 _minDeposit) external virtual whenNotPaused onlyRole(CONTRACT_ADMIN_ROLE) {
-
-792:     function setAssetValuer(address _assetValuer) external virtual whenNotPaused onlyRole(CONTRACT_ADMIN_ROLE) {
-
-1194:     function totalAssets() public view virtual override(ERC4626Upgradeable, IVault) returns (uint256) {
-
-1221:     function asset() public view virtual override(ERC4626Upgradeable, IVault) returns (address) {
-
-1302:     function _setMinDeposit(uint256 _minDeposit) internal virtual {
-
-1315:     function _setMaxDeposit(address investor, uint256 depositMax) internal virtual {
-
-```
-
-```solidity
-File: interfaces/IAssetValuer.sol
-
-37:     function setValuation(address collection, uint256 tokenId, uint256 value) external;
-
-67:     function getAssetValuation(IVault vault, bytes32 key) external view returns (uint256);
-
-```
-
-```solidity
-File: interfaces/IVault.sol
-
-54:     function totalAssets() external view returns (uint256);
-
-62:     function asset() external view returns (address);
-
-76:     function assetValuer() external view returns (IAssetValuer);
+554:     mapping(address => Bet[]) public bets;
 
 ```
 
@@ -3844,95 +1643,26 @@ File: interfaces/IVault.sol
 
 
  ### <a name="NC-29"></a>[NC-29]
- ### Use the latest solidity version for deployment  
-Upgrading to a newer Solidity release can optimize gas usage, take advantage of new features and improve overall contract efficiency. Where possible, based on compatibility requirements, it is recommended to use newer/latest solidity version to take advantage of the latest optimizations and features. You can see the latest version [here](https://soliditylang.org/blog/category/releases/)
+ ### Consider using descriptive constants when using 0 in the code
 
-*Instances (12)*:
+#### Impact:
+Passing zero as a function argument/Event emission can sometimes result in a security issue (e.g. passing zero as the slippage parameter). Consider using a constant variable with a descriptive name, so its clear that the 0 is intentionally being used, and for the right reasons.
+
+*Instances (4)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: Asset.sol
+File: example/ddf.sol
 
-2: pragma solidity 0.8.19;
+158:         return functionCallWithValue(target, data, 0);
 
-```
+580:         require(number > 0, "Number must be greater than zero");
 
-```solidity
-File: AssetFlowController.sol
+666:         require(
 
-2: pragma solidity 0.8.19;
-
-```
-
-```solidity
-File: AssetValuer.sol
-
-2: pragma solidity 0.8.19;
-
-```
-
-```solidity
-File: Offer.sol
-
-2: pragma solidity 0.8.19;
-
-```
-
-```solidity
-File: Vault.sol
-
-2: pragma solidity 0.8.19;
-
-```
-
-```solidity
-File: VaultOfVault.sol
-
-2: pragma solidity 0.8.19;
-
-```
-
-```solidity
-File: Verifier.sol
-
-2: pragma solidity 0.8.19;
-
-```
-
-```solidity
-File: interfaces/IAsset.sol
-
-2: pragma solidity 0.8.19;
-
-```
-
-```solidity
-File: interfaces/IAssetValuer.sol
-
-2: pragma solidity 0.8.19;
-
-```
-
-```solidity
-File: interfaces/IOffer.sol
-
-2: pragma solidity 0.8.19;
-
-```
-
-```solidity
-File: interfaces/IVault.sol
-
-2: pragma solidity 0.8.19;
-
-```
-
-```solidity
-File: interfaces/IVerifier.sol
-
-2: pragma solidity 0.8.19;
+689:         require(winAmount > 0, "You have not won");
 
 ```
 
@@ -3941,27 +1671,32 @@ File: interfaces/IVerifier.sol
 
 
  ### <a name="NC-30"></a>[NC-30]
- ### Strings should use double quotes rather than single quotes
+ ### Non-external/public variable names should begin with an underscore
 
 #### Impact:
-Using consistent double quotes for strings improves code readability and maintainability. Also see it here https://docs.soliditylang.org/en/v0.8.20/style-guide.html#other-recommendations
+Using an underscore at the beginning of non-external/public variable names can improve code clarity and maintainability. According to the Solidity Style Guide, non-external/public variable names should begin with an [underscore](https://docs.soliditylang.org/en/latest/style-guide.html#underscore-prefix-for-non-external-functions-and-variables)
 
-*Instances (2)*:
+*Instances (7)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: Asset.sol
+File: example/ddf.sol
 
-173:             _setURI(id, uri_); // according to natspec if token hasn't been minted before uri_ must be set but what if URI is emtpy?  
+538:     IBankroll public bankrollContract;
 
-```
+539:     uint256 private salt;
 
-```solidity
-File: AssetFlowController.sol
+540:     uint256 public minBet;
 
-96:         address recipient; // Functionally we don't need this but it has some security benefits. You can use ownerOf on
+541:     uint256 public maxBet;
+
+542:     uint256 public winCoefficient;
+
+543:     uint256 public numberOfBoxes;
+
+554:     mapping(address => Bet[]) public bets;
 
 ```
 
@@ -3970,53 +1705,22 @@ File: AssetFlowController.sol
 
 
  ### <a name="NC-31"></a>[NC-31]
- ### Owner can renounce while system is paused
-The contract owner or single user with a role is not prevented from renouncing the role/ownership while the contract is paused, which would cause any user assets stored in the protocol, to be locked indefinitely.
+ ### Setters should prevent re-setting of the same value
+This especially problematic when the setter also emits the same value, which may be confusing to offline parsers  
 
-*Instances (6)*:
+*Instances (3)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: Asset.sol
+File: example/ddf.sol
 
-191:     function pause() external virtual whenNotPaused onlyRole(PAUSER_ROLE) {
+503:     function setApprovalForAll(address operator, bool approved) external;
 
-```
+622:     function setMinBet(uint256 _minBet) external onlyOwner notZero(_minBet) {
 
-```solidity
-File: AssetFlowController.sol
-
-895:     function pause() external virtual whenNotPaused onlyRole(PAUSER_ROLE) {
-
-```
-
-```solidity
-File: AssetValuer.sol
-
-157:     function pause() external onlyRole(PAUSER_ROLE) {
-
-```
-
-```solidity
-File: Offer.sol
-
-194:     function pause() external virtual whenNotPaused onlyRole(PAUSER_ROLE) {
-
-```
-
-```solidity
-File: Vault.sol
-
-904:     function pause() external virtual whenNotPaused onlyRole(PAUSER_ROLE) {
-
-```
-
-```solidity
-File: Verifier.sol
-
-170:     function pause() external virtual whenNotPaused onlyRole(PAUSER_ROLE) {
+630:     function setMaxBet(uint256 _maxBet) external onlyOwner notZero(_maxBet) {
 
 ```
 
@@ -4025,167 +1729,18 @@ File: Verifier.sol
 
 
  ### <a name="NC-32"></a>[NC-32]
- ### Dont use _msgSender() if not supporting EIP-2771
-Use msg.sender if the code does not implement EIP-2771 trusted forwarder support
+ ### Use the latest solidity version for deployment  
+Upgrading to a newer Solidity release can optimize gas usage, take advantage of new features and improve overall contract efficiency. Where possible, based on compatibility requirements, it is recommended to use newer/latest solidity version to take advantage of the latest optimizations and features. You can see the latest version [here](https://soliditylang.org/blog/category/releases/)
 
-*Instances (63)*:
+*Instances (1)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: Asset.sol
+File: example/ddf.sol
 
-136:         _grantRole(DEFAULT_ADMIN_ROLE, _msgSender());
-
-137:         _grantRole(UPGRADER_ROLE, _msgSender());
-
-138:         _grantRole(PAUSER_ROLE, _msgSender());
-
-```
-
-```solidity
-File: AssetFlowController.sol
-
-467:         _grantRole(DEFAULT_ADMIN_ROLE, _msgSender());
-
-468:         _grantRole(UPGRADER_ROLE, _msgSender());
-
-469:         _grantRole(PAUSER_ROLE, _msgSender());
-
-470:         _grantRole(CONTRACT_ADMIN_ROLE, _msgSender());
-
-520:         uint256 offerId = offerCollection.safeMint(_msgSender(), uri); 
-
-521:         emit OfferSubmitted(_msgSender(), offerId, uri, extendedDetails);
-
-523:         _offerOwners.set(offerId, _msgSender());
-
-552:         emit OfferVerified(_msgSender(), offerId, uri); // emiting before fuction ending
-
-591:         require(offerCollection.ownerOf(offerId) == _msgSender(), "AFC: Not offer owner");
-
-595:         require(offerCollection.isApprovedForAll(_msgSender(), address(this)), "AFC: Offer not approved");
-
-598:         emit SettlementSubmitted(_msgSender(), offerId, numTokens, settlementPrice, uri);
-
-599:         settlement[offerId] = Settlement(settlementPrice, numTokens, uri, _msgSender());
-
-637:             _msgSender(),
-
-717:         emit SettlementRejected(_msgSender(), offerId, settlement[offerId]);
-
-749:         emit RentPriceSet(_msgSender(), assetKey, rentPrice);
-
-776:         emit RentPaid(_msgSender(), assetKey, rentPrices[assetKey], tag);
-
-777:         IERC20Upgradeable(vault.asset()).safeTransferFrom(_msgSender(), address(vault), rentPrices[assetKey]);
-
-814:         buyOutDetails[offerId] = BuyOutDetails(numTokens, amount, _msgSender(), who);
-
-815:         emit BuyOutSubmitted(_msgSender(), offerId, numTokens, amount, who);
-
-851:         emit BuyOutAccepted(_msgSender(), buyOut.broker, offerId, buyOut.numTokens, buyOut.amount, buyOut.who);
-
-878:         emit BuyOutRejected(_msgSender(), offerId);
-
-```
-
-```solidity
-File: AssetValuer.sol
-
-107:         _grantRole(DEFAULT_ADMIN_ROLE, _msgSender());
-
-108:         _grantRole(PAUSER_ROLE, _msgSender());
-
-109:         _grantRole(UPGRADER_ROLE, _msgSender());
-
-292:         emit AssetValued(_msgSender(), collection, tokenId, value);
-
-```
-
-```solidity
-File: Offer.sol
-
-140:         _grantRole(DEFAULT_ADMIN_ROLE, _msgSender());
-
-141:         _grantRole(UPGRADER_ROLE, _msgSender());
-
-142:         _grantRole(PAUSER_ROLE, _msgSender());
-
-177:         if (_msgSender() != to) {
-
-178:             _setApprovalForAll(to, _msgSender(), true); // Allow AssetFlowController to transfer
-
-```
-
-```solidity
-File: Vault.sol
-
-428:         _grantRole(DEFAULT_ADMIN_ROLE, _msgSender());
-
-429:         _grantRole(CONTRACT_ADMIN_ROLE, _msgSender());
-
-430:         _grantRole(UPGRADER_ROLE, _msgSender());
-
-431:         _grantRole(PAUSER_ROLE, _msgSender());
-
-476:         emit InvestorRegistered(_msgSender(), investor, _maxDeposit);
-
-503:         emit InvestorDeregistered(_msgSender(), investor);
-
-577:         emit AssetDeposited(_msgSender(), receiver, assetAddress, assetTokenId, assetAmount, assetType);
-
-581:             IERC721Upgradeable(assetAddress).safeTransferFrom(_msgSender(), address(this), assetTokenId);
-
-585:                 _msgSender(),
-
-593:             IERC20Upgradeable(assetAddress).safeTransferFrom(_msgSender(), address(this), assetAmount);
-
-667:         emit FundsTransferred(_msgSender(), erc20Address, to, amount, tag);
-
-795:         emit AssetValuerSet(_msgSender(), _assetValuer);
-
-811:         require(withdrawalRequests[_msgSender()] == 0, "V:Request already exists");
-
-812:         require(allowance(_msgSender(), address(this)) >= amountAssets, "V:Insufficient allowance");
-
-813:         withdrawalRequests[_msgSender()] = amountAssets;
-
-814:         emit WithdrawRequested(_msgSender(), amountAssets);
-
-828:         uint256 amountBefore = withdrawalRequests[_msgSender()];
-
-830:         withdrawalRequests[_msgSender()] = 0;
-
-831:         emit RequestCancelled(_msgSender(), amountBefore);
-
-1104:         _addHoldings(id, _msgSender(), AssetType.ERC1155);
-
-1105:         emit TokenReceived(_msgSender(), operator, from, id, amount, AssetType.ERC1155);
-
-1129:         _addHoldings(tokenId, _msgSender(), AssetType.ERC721);
-
-1130:         emit TokenReceived(_msgSender(), operator, from, tokenId, 1, AssetType.ERC721);
-
-1304:         emit MinDepositSet(_msgSender(), minDeposit);
-
-1317:         emit MaxDepositSet(_msgSender(), investor, depositMax);
-
-1344:             emit VaultHoldingsUpdated(_msgSender(), collection, id, assetType, true);
-
-1359:             emit VaultHoldingsUpdated(_msgSender(), holding.collection, holding.id, holding.assetType, false);
-
-```
-
-```solidity
-File: Verifier.sol
-
-124:         _grantRole(DEFAULT_ADMIN_ROLE, _msgSender());
-
-125:         _grantRole(UPGRADER_ROLE, _msgSender());
-
-126:         _grantRole(PAUSER_ROLE, _msgSender());
+1: pragma solidity 0.8.20;
 
 ```
 
@@ -4194,6 +1749,156 @@ File: Verifier.sol
 
 
  ### <a name="NC-33"></a>[NC-33]
+ ### Consider bounding input array length
+The functions below take in an unbounded array, and make function calls for entries in the array. While the function will revert if it eventually runs out of gas, it may be a nicer user experience to require() that the length of the array is below some reasonable maximum, so that the user doesnt have to use up a full transactions gas only to see that the transaction reverts
+
+*Instances (2)*:
+ 
+ <details>
+ <summary>Click to expand!</summary>
+
+```solidity
+File: example/ddf.sol
+
+703:         for (uint256 i = 0; i < bets[_player].length; i++) {
+
+731:         for (uint256 i = 0; i < bets[_player].length; i++) {
+
+```
+
+</details> 
+ 
+
+
+ ### <a name="NC-34"></a>[NC-34]
+ ### Consider using `SafeTransferLib.safeTransferETH()` or `Address.sendValue()` for clearer semantic meaning
+These Functions indicate their purpose with their name more clearly than using low-level calls.  
+
+*Instances (2)*:
+ 
+ <details>
+ <summary>Click to expand!</summary>
+
+```solidity
+File: example/ddf.sol
+
+133:         (bool success, ) = recipient.call{value: amount}("");
+
+174:         (bool success, bytes memory returndata) = target.call{value: value}(data);
+
+```
+
+</details> 
+ 
+
+
+ ### <a name="NC-35"></a>[NC-35]
+ ### Variables need not be initialized to zero
+The default value for variables is zero, so initializing them to zero is superfluous.  
+
+*Instances (2)*:
+ 
+ <details>
+ <summary>Click to expand!</summary>
+
+```solidity
+File: example/ddf.sol
+
+703:         for (uint256 i = 0; i < bets[_player].length; i++) {
+
+731:         for (uint256 i = 0; i < bets[_player].length; i++) {
+
+```
+
+</details> 
+ 
+
+
+ ### <a name="NC-36"></a>[NC-36]
+ ### Empty receive()/fallback() function
+If the intention is for Ether sent by a caller to be used for an actual purpose (i.e. the function is not just a WETH withdraw() handler), the function should call another function (e.g. call weth.deposit() and use the token on the caller's behalf) or at least emit an event to track that funds were sent directly to it.
+
+*Instances (1)*:
+ 
+ <details>
+ <summary>Click to expand!</summary>
+
+```solidity
+File: example/ddf.sol
+
+591: 
+
+```
+
+</details> 
+ 
+
+
+ ### <a name="NC-37"></a>[NC-37]
+ ### Consider moving msg.sender checks to modifiers
+If some functions are only allowed to be called by some specific users, consider using a modifier instead of checking with a require statement, especially if this check is done in multiple functions.  
+
+*Instances (11)*:
+ 
+ <details>
+ <summary>Click to expand!</summary>
+
+```solidity
+File: example/ddf.sol
+
+6:         return msg.sender;
+
+584:     constructor(IBankroll _bankrollContract) Ownable(msg.sender) {
+
+599:         payable(msg.sender).sendValue(_amount);
+
+675:         distributeReward(msg.sender);
+
+676:         bets[msg.sender].push(
+
+677:             Bet(block.number, msg.value, _boxNumber, salt, msg.sender)
+
+679:         emit BetPlaced(msg.sender, block.number, msg.value, _boxNumber, salt);
+
+688:         uint256 winAmount = calculateTotalWin(msg.sender);
+
+690:         delete bets[msg.sender];
+
+691:         bankrollContract.sendFTN(msg.sender, winAmount);
+
+692:         emit PrizeClaimed(msg.sender, winAmount);
+
+```
+
+</details> 
+ 
+
+
+ ### <a name="NC-38"></a>[NC-38]
+ ### Dont use _msgSender() if not supporting EIP-2771
+Use msg.sender if the code does not implement EIP-2771 trusted forwarder support
+
+*Instances (3)*:
+ 
+ <details>
+ <summary>Click to expand!</summary>
+
+```solidity
+File: example/ddf.sol
+
+5:     function _msgSender() internal view virtual returns (address) {
+
+58:         if (owner() != _msgSender()) {
+
+59:             revert OwnableUnauthorizedAccount(_msgSender());
+
+```
+
+</details> 
+ 
+
+
+ ### <a name="NC-39"></a>[NC-39]
  ### Array indices should be referenced via enums rather than numeric literals
 
 #### Impact:
@@ -4205,9 +1910,9 @@ Referencing array indices via enums can improve code readability and maintainabi
  <summary>Click to expand!</summary>
 
 ```solidity
-File: Vault.sol
+File: example/ddf.sol
 
-1413:     uint256[44] private __gap;
+698:             bets[_player][0].blockNumber == block.number
 
 ```
 
@@ -4215,83 +1920,25 @@ File: Vault.sol
  
 
 
- ### <a name="NC-34"></a>[NC-34]
+ ### <a name="NC-40"></a>[NC-40]
  ### Use assembly to emit events, in order to save gas
 Using the [scratch space](https://github.com/Vectorized/solady/blob/30558f5402f02351b96eeb6eaf32bcea29773841/src/tokens/ERC1155.sol#L501-L504) for event arguments (two words or fewer) will save gas over needing Soliditys full abi memory expansion used for emitting normally.
 
-*Instances (28)*:
+*Instances (4)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: AssetFlowController.sol
+File: example/ddf.sol
 
-521:         emit OfferSubmitted(_msgSender(), offerId, uri, extendedDetails);
+92:         emit OwnershipTransferred(oldOwner, newOwner);
 
-552:         emit OfferVerified(_msgSender(), offerId, uri); // emiting before fuction ending
+679:         emit BetPlaced(msg.sender, block.number, msg.value, _boxNumber, salt);
 
-598:         emit SettlementSubmitted(_msgSender(), offerId, numTokens, settlementPrice, uri);
+692:         emit PrizeClaimed(msg.sender, winAmount);
 
-636:         emit AssetSettled(
-
-717:         emit SettlementRejected(_msgSender(), offerId, settlement[offerId]);
-
-749:         emit RentPriceSet(_msgSender(), assetKey, rentPrice);
-
-776:         emit RentPaid(_msgSender(), assetKey, rentPrices[assetKey], tag);
-
-815:         emit BuyOutSubmitted(_msgSender(), offerId, numTokens, amount, who);
-
-851:         emit BuyOutAccepted(_msgSender(), buyOut.broker, offerId, buyOut.numTokens, buyOut.amount, buyOut.who);
-
-878:         emit BuyOutRejected(_msgSender(), offerId);
-
-```
-
-```solidity
-File: AssetValuer.sol
-
-292:         emit AssetValued(_msgSender(), collection, tokenId, value);
-
-```
-
-```solidity
-File: Vault.sol
-
-476:         emit InvestorRegistered(_msgSender(), investor, _maxDeposit);
-
-503:         emit InvestorDeregistered(_msgSender(), investor);
-
-577:         emit AssetDeposited(_msgSender(), receiver, assetAddress, assetTokenId, assetAmount, assetType);
-
-632:         emit FundsTransferred(from, erc20Address, address(this), amount, "");
-
-667:         emit FundsTransferred(_msgSender(), erc20Address, to, amount, tag);
-
-759:         emit FundAllocationApproved(spender, amount);
-
-795:         emit AssetValuerSet(_msgSender(), _assetValuer);
-
-814:         emit WithdrawRequested(_msgSender(), amountAssets);
-
-831:         emit RequestCancelled(_msgSender(), amountBefore);
-
-1105:         emit TokenReceived(_msgSender(), operator, from, id, amount, AssetType.ERC1155);
-
-1130:         emit TokenReceived(_msgSender(), operator, from, tokenId, 1, AssetType.ERC721);
-
-1268:         emit Withdraw(caller, receiver, owner, assets, shares);
-
-1287:         emit Deposit(caller, receiver, assets, shares);
-
-1304:         emit MinDepositSet(_msgSender(), minDeposit);
-
-1317:         emit MaxDepositSet(_msgSender(), investor, depositMax);
-
-1344:             emit VaultHoldingsUpdated(_msgSender(), collection, id, assetType, true);
-
-1359:             emit VaultHoldingsUpdated(_msgSender(), holding.collection, holding.id, holding.assetType, false);
+709:             emit RewardDistributed(totalWin);
 
 ```
 
@@ -4299,69 +1946,20 @@ File: Vault.sol
  
 
 
- ### <a name="NC-35"></a>[NC-35]
- ### Long revert strings
+ ### <a name="NC-41"></a>[NC-41]
+ ### Don't initialize variables with default value
 
-*Instances (14)*:
+*Instances (2)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: Asset.sol
+File: example/ddf.sol
 
-120:         require(upgraderRole != address(0), "Asset: `upgraderRole` cannot be the zero address");
+703:         for (uint256 i = 0; i < bets[_player].length; i++) {
 
-121:         require(pauserRole != address(0), "Asset: `pauserRole` cannot be the zero address");
-
-```
-
-```solidity
-File: AssetFlowController.sol
-
-593:         require(settlementPrice != 0, "AFC: settlementPrice must be non-zero");
-
-630:         require(verifiedOfferCollection.ownerOf(offerId) == address(vault), "AFC: Verified offer not owned by Vault");
-
-```
-
-```solidity
-File: AssetValuer.sol
-
-100:         require(pauserRole != address(0), "AssetValuer: `pauserRole` cannot be the zero address");
-
-101:         require(upgraderRole != address(0), "AssetValuer: `upgraderRole` cannot be the zero address");
-
-102:         require(valuerRole != address(0), "AssetValuer: `valuerRole` cannot be the zero address");
-
-```
-
-```solidity
-File: Offer.sol
-
-126:         require(offerer != address(0), "Offer: Offerer cannot be the zero address");
-
-127:         require(upgraderRole != address(0), "Offer: `upgraderRole` cannot be the zero address");
-
-128:         require(pauserRole != address(0), "Offer: `pauserRole` cannot be the zero address");
-
-```
-
-```solidity
-File: Vault.sol
-
-527:         require(shares >= expectedShares, "V:Share issue lower than expected"); // since there is slippage protection so its okay
-
-```
-
-```solidity
-File: Verifier.sol
-
-112:         require(bytes(baseURI_).length != 0, "Verifier: baseURI cannot be empty");
-
-113:         require(upgraderRole != address(0), "Verifier: `upgraderRole` cannot be the zero address");
-
-114:         require(pauserRole != address(0), "Verifier: `pauserRole` cannot be the zero address");
+731:         for (uint256 i = 0; i < bets[_player].length; i++) {
 
 ```
 
@@ -4376,92 +1974,15 @@ File: Verifier.sol
  ### Enable IR-based code generation
 By using `--via-ir` or `{"viaIR": true}`, the compiler is able to use more advanced [multi-function optimizations](https://docs.soliditylang.org/en/v0.8.17/ir-breaking-changes.html#solidity-ir-based-codegen-changes), for extra gas savings.
 
-*Instances (12)*:
+*Instances (1)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: Asset.sol
+File: example/ddf.sol
 
-2: pragma solidity 0.8.19;
-
-```
-
-```solidity
-File: AssetFlowController.sol
-
-2: pragma solidity 0.8.19;
-
-```
-
-```solidity
-File: AssetValuer.sol
-
-2: pragma solidity 0.8.19;
-
-```
-
-```solidity
-File: Offer.sol
-
-2: pragma solidity 0.8.19;
-
-```
-
-```solidity
-File: Vault.sol
-
-2: pragma solidity 0.8.19;
-
-```
-
-```solidity
-File: VaultOfVault.sol
-
-2: pragma solidity 0.8.19;
-
-```
-
-```solidity
-File: Verifier.sol
-
-2: pragma solidity 0.8.19;
-
-```
-
-```solidity
-File: interfaces/IAsset.sol
-
-2: pragma solidity 0.8.19;
-
-```
-
-```solidity
-File: interfaces/IAssetValuer.sol
-
-2: pragma solidity 0.8.19;
-
-```
-
-```solidity
-File: interfaces/IOffer.sol
-
-2: pragma solidity 0.8.19;
-
-```
-
-```solidity
-File: interfaces/IVault.sol
-
-2: pragma solidity 0.8.19;
-
-```
-
-```solidity
-File: interfaces/IVerifier.sol
-
-2: pragma solidity 0.8.19;
+1: pragma solidity 0.8.20;
 
 ```
 
@@ -4473,31 +1994,17 @@ File: interfaces/IVerifier.sol
  ### Use scientific notation (e.g. 1e18) rather than exponentiation (e.g. 10**18)
 While the compiler knows to optimize away the exponentiation, its still better coding practice to use idioms that do not require compiler optimization, if they exist.
 
-*Instances (4)*:
+*Instances (2)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: AssetFlowController.sol
+File: example/ddf.sol
 
-847:             diff <= 10 ** 6, // Max acceptable rounding error $1
+585:         minBet = 1 * 10 ** 18;
 
-1019:                         10 ** IERC20MetadataUpgradeable(assetAddress).decimals(),
-
-```
-
-```solidity
-File: AssetValuer.sol
-
-339:                         10 ** IERC20MetadataUpgradeable(holding.collection).decimals()
-
-```
-
-```solidity
-File: Vault.sol
-
-565:                 10 ** IERC20MetadataUpgradeable(assetAddress).decimals()
+586:         maxBet = 10 * 10 ** 18;
 
 ```
 
@@ -4509,64 +2016,19 @@ File: Vault.sol
  ### Nesting if-statements is cheaper than using &&
 Nesting if-statements avoids the stack operations of setting up and using an extra jumpdest, and saves 6 [gas](https://gist.github.com/IllIllI000/7f3b818abecfadbef93b894481ae7d19)
 
-*Instances (23)*:
+*Instances (3)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: AssetFlowController.sol
+File: example/ddf.sol
 
-451:             address(_vault) != address(0) &&
+211:             if (returndata.length == 0 && target.code.length == 0) {
 
-452:                 address(_offerCollection) != address(0) &&
+667:             _boxNumber > 0 && _boxNumber <= numberOfBoxes,
 
-453:                 address(_assetCollection) != address(0) &&
-
-454:                 address(_verifiedOfferCollection) != address(0) &&
-
-455:                 upgraderRole != address(0) &&
-
-456:                 pauserRole != address(0) &&
-
-457:                 investmentManagerRole != address(0) &&
-
-458:                 verifierRole != address(0) &&
-
-511:             (extendedDetails.isExistingAsset &&
-
-512:                 extendedDetails.assetType != IVault.AssetType.NONE &&
-
-514:                 (!extendedDetails.isExistingAsset &&
-
-515:                     extendedDetails.assetType == IVault.AssetType.NONE &&
-
-516:                     extendedDetails.assetAddress == address(0) &&
-
-```
-
-```solidity
-File: Vault.sol
-
-410:             bytes(_name).length != 0 &&
-
-411:                 bytes(_symbol).length != 0 &&
-
-412:                 vaultCurrency != address(0) &&
-
-413:                 assetController != address(0) &&
-
-414:                 contractAdmin != address(0) &&
-
-415:                 upgrader != address(0) &&
-
-1060:         require(assets != 0 && owner != address(0) && receiver != address(0), "V:Invalid 0 args");
-
-1060:         require(assets != 0 && owner != address(0) && receiver != address(0), "V:Invalid 0 args");
-
-1338:                 (!IVault(collection).isParent() && isParent && IVault(collection).asset() == asset()),
-
-1338:                 (!IVault(collection).isParent() && isParent && IVault(collection).asset() == asset()),
+671:             msg.value >= minBet && msg.value <= maxBet,
 
 ```
 
@@ -4578,15 +2040,17 @@ File: Vault.sol
  ### Consider using = instead of += and -= for gas efficiency
 Using = instead of += and -= can save gas in certain scenarios. Consider using = when appropriate.
 
-*Instances (1)*:
+*Instances (2)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: AssetValuer.sol
+File: example/ddf.sol
 
-243:             vaultValuation += _getAssetValuation(vault, holdingIds[i]);
+704:             totalWin += calculateWin(_player, i);
+
+732:             totalWin += calculateWin(_player, i);
 
 ```
 
@@ -4598,15 +2062,25 @@ File: AssetValuer.sol
  ### Use >= instead of > for gas efficiency
 Using >= costs less gas than >. Consider using >= when appropriate.
 
-*Instances (1)*:
+*Instances (6)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: AssetFlowController.sol
+File: example/ddf.sol
 
-845:         uint256 diff = expectedAmount > buyOut.amount ? expectedAmount - buyOut.amount : buyOut.amount - expectedAmount;
+235:         if (returndata.length > 0) {
+
+580:         require(number > 0, "Number must be greater than zero");
+
+667:             _boxNumber > 0 && _boxNumber <= numberOfBoxes,
+
+689:         require(winAmount > 0, "You have not won");
+
+707:         if (totalWin > 0) {
+
+782:         require(block.number > _blockNumber, "Block number is out of range");
 
 ```
 
@@ -4615,18 +2089,20 @@ File: AssetFlowController.sol
 
 
  ### <a name="GAS-6"></a>[GAS-6]
- ### Using bools for storage incurs overhead
-Use uint256(1) and uint256(2) for true/false to avoid a Gwarmaccess (100 gas), and to avoid Gsset (20000 gas) when changing from ‘false’ to ‘true’, after having been ‘true’ in the past. See [source](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/58f635312aa21f947cae5f8578638a85aa2519f5/contracts/security/ReentrancyGuard.sol#L23-L27).
+ ### Cache array length outside of loop
+If not cached, the solidity compiler will always read the length of the array during each iteration. That is, if it is a storage array, this is an extra sload operation (100 additional extra gas for each iteration except for the first) and if it is a memory array, this is an extra mload operation (3 additional gas for each iteration except for the first).
 
-*Instances (1)*:
+*Instances (2)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: Vault.sol
+File: example/ddf.sol
 
-164:     bool public isParent;
+703:         for (uint256 i = 0; i < bets[_player].length; i++) {
+
+731:         for (uint256 i = 0; i < bets[_player].length; i++) {
 
 ```
 
@@ -4635,25 +2111,24 @@ File: Vault.sol
 
 
  ### <a name="GAS-7"></a>[GAS-7]
- ### Consider using assembly for simple zero checks to save gas
-Using assembly for simple zero checks can save gas. Consider using assembly when appropriate.
+ ### Expressions for constant values should use immutable rather than constant
 
-*Instances (2)*:
+#### Impact:
+While it doesnt save any gas because the compiler knows that developers often make this mistake, its still best to use the right tool for the task at hand. There is a difference between constant variables and immutable variables, and they should each be used in their appropriate contexts. constants should be used for literal values written into the code, and immutable variables should be used for expressions, or values calculated in, or passed into the constructor.  
+
+*Instances (3)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: Vault.sol
+File: example/ddf.sol
 
-670:         if (balance == 0) _removeHolding(0, erc20Address);
+260:     uint256 private constant NOT_ENTERED = 1;
 
-```
+261:     uint256 private constant ENTERED = 2;
 
-```solidity
-File: VaultOfVault.sol
-
-134:         if (balance == 0) _removeHolding(0, vaultToWithdrawFrom);
+544:     uint256 public constant COEFFICIENT_DENOMINATOR = 100;
 
 ```
 
@@ -4662,98 +2137,22 @@ File: VaultOfVault.sol
 
 
  ### <a name="GAS-8"></a>[GAS-8]
- ### Expressions for constant values should use immutable rather than constant
+ ### Constructors can be marked payable
+Payable functions cost less gas to execute, since the compiler does not have to add extra checks to ensure that a payment wasn  t provided. A constructor can safely be marked as payable, since only the deployer would be able to pass funds, and the project itself would not pass any funds.
 
-#### Impact:
-While it doesnt save any gas because the compiler knows that developers often make this mistake, its still best to use the right tool for the task at hand. There is a difference between constant variables and immutable variables, and they should each be used in their appropriate contexts. constants should be used for literal values written into the code, and immutable variables should be used for expressions, or values calculated in, or passed into the constructor.  
-
-*Instances (25)*:
+*Instances (3)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: Asset.sol
+File: example/ddf.sol
 
-40:     bytes32 public constant PAUSER_ROLE = keccak256("PAUSER_ROLE");
+32:     constructor(address initialOwner) {
 
-49:     bytes32 public constant MINTER_ROLE = keccak256("MINTER_ROLE");
+270:     constructor() {
 
-58:     bytes32 public constant UPGRADER_ROLE = keccak256("UPGRADER_ROLE");
-
-```
-
-```solidity
-File: AssetFlowController.sol
-
-125:     bytes32 public constant UPGRADER_ROLE = keccak256("UPGRADER_ROLE");
-
-134:     bytes32 public constant PAUSER_ROLE = keccak256("PAUSER_ROLE");
-
-141:     bytes32 public constant CONTRACT_ADMIN_ROLE = keccak256("CONTRACT_ADMIN_ROLE");
-
-150:     bytes32 public constant INVESTMENT_MANAGER_ROLE = keccak256("INVESTMENT_MANAGER_ROLE");
-
-159:     bytes32 public constant OFFERER_ROLE = keccak256("OFFERER_ROLE");
-
-168:     bytes32 public constant VERIFIER_ROLE = keccak256("VERIFIER_ROLE");
-
-```
-
-```solidity
-File: AssetValuer.sol
-
-33:     bytes32 public constant UPGRADER_ROLE = keccak256("UPGRADER_ROLE");
-
-42:     bytes32 public constant PAUSER_ROLE = keccak256("PAUSER_ROLE");
-
-51:     bytes32 public constant VALUER_ROLE = keccak256("VALUER_ROLE");
-
-```
-
-```solidity
-File: Offer.sol
-
-45:     bytes32 public constant UPGRADER_ROLE = keccak256("UPGRADER_ROLE");
-
-54:     bytes32 public constant PAUSER_ROLE = keccak256("PAUSER_ROLE");
-
-63:     bytes32 public constant MINTER_ROLE = keccak256("MINTER_ROLE");
-
-```
-
-```solidity
-File: Vault.sol
-
-55:     bytes32 public constant UPGRADER_ROLE = keccak256("UPGRADER_ROLE");
-
-64:     bytes32 public constant PAUSER_ROLE = keccak256("PAUSER_ROLE");
-
-73:     bytes32 public constant ASSET_CONTROLLER_ROLE = keccak256("ASSET_CONTROLLER_ROLE");
-
-82:     bytes32 public constant CONTRACT_ADMIN_ROLE = keccak256("CONTRACT_ADMIN_ROLE");
-
-91:     bytes32 public constant INVESTOR_ROLE = keccak256("INVESTOR_ROLE");
-
-100:     bytes32 public constant WHITELISTED_CONTRACT = keccak256("WHITELISTED_CONTRACT");
-
-```
-
-```solidity
-File: VaultOfVault.sol
-
-36:     bytes32 public constant PARENT_ASSET_CONTROLLER = keccak256("PARENT_ASSET_CONTROLLER");
-
-```
-
-```solidity
-File: Verifier.sol
-
-42:     bytes32 public constant UPGRADER_ROLE = keccak256("UPGRADER_ROLE");
-
-51:     bytes32 public constant PAUSER_ROLE = keccak256("PAUSER_ROLE");
-
-60:     bytes32 public constant MINTER_ROLE = keccak256("MINTER_ROLE");
+584:     constructor(IBankroll _bankrollContract) Ownable(msg.sender) {
 
 ```
 
@@ -4762,60 +2161,23 @@ File: Verifier.sol
 
 
  ### <a name="GAS-9"></a>[GAS-9]
- ### Constructors can be marked payable
-Payable functions cost less gas to execute, since the compiler does not have to add extra checks to ensure that a payment wasn  t provided. A constructor can safely be marked as payable, since only the deployer would be able to pass funds, and the project itself would not pass any funds.
+ ### Use Custom Errors
+[Source](https://blog.soliditylang.org/2021/04/21/custom-errors/)
+Instead of using error strings, to reduce deployment and runtime cost, you should use Custom Errors. This would save both deployment and runtime cost.
 
-*Instances (7)*:
+*Instances (3)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: Asset.sol
+File: example/ddf.sol
 
-81:     constructor() {
+580:         require(number > 0, "Number must be greater than zero");
 
-```
+689:         require(winAmount > 0, "You have not won");
 
-```solidity
-File: AssetFlowController.sol
-
-403:     constructor() {
-
-```
-
-```solidity
-File: AssetValuer.sol
-
-75:     constructor() {
-
-```
-
-```solidity
-File: Offer.sol
-
-86:     constructor() {
-
-```
-
-```solidity
-File: Vault.sol
-
-330:     constructor() {
-
-```
-
-```solidity
-File: VaultOfVault.sol
-
-41:     constructor() {
-
-```
-
-```solidity
-File: Verifier.sol
-
-76:     constructor() {
+782:         require(block.number > _blockNumber, "Block number is out of range");
 
 ```
 
@@ -4824,235 +2186,20 @@ File: Verifier.sol
 
 
  ### <a name="GAS-10"></a>[GAS-10]
- ### Use Custom Errors
-[Source](https://blog.soliditylang.org/2021/04/21/custom-errors/)
-Instead of using error strings, to reduce deployment and runtime cost, you should use Custom Errors. This would save both deployment and runtime cost.
+ ### Use assembly for small keccak256 hashes, in order to save gas
+If the arguments to the encode call can fit into the scratch space (two words or fewer), then its more efficient to use assembly to generate the hash (80 gas): keccak256(abi.encodePacked(x, y)) -> assembly {mstore(0x00, a); mstore(0x20, b); let hash := keccak256(0x00, 0x40); }
 
-*Instances (94)*:
+*Instances (2)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: Asset.sol
+File: example/ddf.sol
 
-117:         require(bytes(_name).length != 0, "Asset: name cannot be empty");
+788:                 keccak256(
 
-118:         require(bytes(_symbol).length != 0, "Asset: symbol cannot be empty");
-
-119:         require(bytes(baseURI_).length != 0, "Asset: baseUri cannot be empty");
-
-120:         require(upgraderRole != address(0), "Asset: `upgraderRole` cannot be the zero address");
-
-121:         require(pauserRole != address(0), "Asset: `pauserRole` cannot be the zero address");
-
-175:             require(bytes(uri_).length == 0, "Asset: URI already set"); // if token is already minted how can URI be empty
-
-284:         revert("Asset: renounceRole has been disabled");
-
-```
-
-```solidity
-File: AssetFlowController.sol
-
-509:         require(bytes(uri).length != 0, "AFC: Uri cannot be empty");
-
-550:         require(bytes(uri).length != 0, "AFC: Uri cannot be empty");
-
-551:         require(offerId != 0, "AFC: offerId must be non-zero");
-
-553:         require(_offerOwners.remove(offerId), "AFC: Offer not submitted");
-
-591:         require(offerCollection.ownerOf(offerId) == _msgSender(), "AFC: Not offer owner");
-
-592:         require(numTokens != 0, "AFC: numTokens must be non-zero");
-
-593:         require(settlementPrice != 0, "AFC: settlementPrice must be non-zero");
-
-594:         require(bytes(uri).length != 0, "AFC: Uri cannot be empty");
-
-595:         require(offerCollection.isApprovedForAll(_msgSender(), address(this)), "AFC: Offer not approved");
-
-596:         require(!assetCollection.exists(offerId), "AFC: Offer already settled");
-
-597:         require(settlement[offerId].numTokens == 0, "AFC: Offer already submitted");
-
-628:         require(offerId != 0, "AFC: offerId must be non-zero");
-
-629:         require(verifiedOfferCollection.exists(offerId), "AFC: Offer not verified");
-
-630:         require(verifiedOfferCollection.ownerOf(offerId) == address(vault), "AFC: Verified offer not owned by Vault");
-
-632:         require(details.numTokens != 0, "AFC: Settlement details not set");
-
-715:         require(offerId != 0, "AFC: offerId must be non-zero");
-
-716:         require(settlement[offerId].numTokens != 0, "AFC: Settlement does not exist");
-
-775:         require(rentPrices[assetKey] != 0, "AFC: No rent price set");
-
-809:         require(offerId != 0, "AFC: offerId must non-zero");
-
-810:         require(assetCollection.balanceOf(address(vault), offerId) != 0, "AFC: Asset not held by vault");
-
-811:         require(numTokens != 0, "AFC: Specify number of tokens");
-
-812:         require(amount != 0, "AFC: Must specify amount");
-
-813:         require(buyOutDetails[offerId].numTokens == 0, "AFC: Buyout already submitted");
-
-840:         require(offerId != 0, "AFC: offerId must be non-zero");
-
-841:         require(assetCollection.balanceOf(address(vault), offerId) != 0, "AFC: Asset not held by vault");
-
-843:         require(buyOut.numTokens != 0, "AFC: BuyOutDetails not submitted");
-
-875:         require(offerId != 0, "AFC: offerId must be non-zero");
-
-876:         require(buyOutDetails[offerId].numTokens != 0, "AFC: buyOutDetails doesn't exist");
-
-954:         revert("AFC: renounceRole is disabled");
-
-1002:             require(amount == 1, "AFC: ERC721 amount must be 1");
-
-```
-
-```solidity
-File: AssetValuer.sol
-
-100:         require(pauserRole != address(0), "AssetValuer: `pauserRole` cannot be the zero address");
-
-101:         require(upgraderRole != address(0), "AssetValuer: `upgraderRole` cannot be the zero address");
-
-102:         require(valuerRole != address(0), "AssetValuer: `valuerRole` cannot be the zero address");
-
-256:         revert("AssetValuer: renounceRole has been disabled");
-
-352:             revert("Unsupported asset type");
-
-```
-
-```solidity
-File: Offer.sol
-
-123:         require(bytes(name_).length != 0, "Offer: name cannot be empty");
-
-124:         require(bytes(symbol_).length != 0, "Offer: symbol cannot be empty");
-
-125:         require(bytes(baseURI_).length != 0, "Offer: baseURI cannot be empty");
-
-126:         require(offerer != address(0), "Offer: Offerer cannot be the zero address");
-
-127:         require(upgraderRole != address(0), "Offer: `upgraderRole` cannot be the zero address");
-
-128:         require(pauserRole != address(0), "Offer: `pauserRole` cannot be the zero address");
-
-151:         revert("Offer: renounceRole has been disabled");
-
-```
-
-```solidity
-File: Vault.sol
-
-446:         revert("V:renounceRole has been disabled");
-
-473:         require(investor != address(0), "V:Investor cant be 0");
-
-500:         require(investor != address(0), "V:Investor cant be 0");
-
-527:         require(shares >= expectedShares, "V:Share issue lower than expected"); // since there is slippage protection so its okay
-
-557:         require(receiver != address(0), "V:receiver cant be 0");
-
-558:         require(assetAddress != address(0), "V:assetAddress cant be 0");
-
-559:         require(asset() != assetAddress, "V:Please use safeDeposit()");
-
-570:         require(assets != 0, "V:Asset has no valuation");
-
-572:         require(assets <= maxDeposit(receiver), "V:deposit more than max");
-
-575:         require(assets >= minDeposit, "V:amount below minimum");
-
-596:             revert("V:Invalid asset type");
-
-629:         require(erc20Address != address(0), "V:erc20Address cant be 0");
-
-630:         require(from != address(0), "V:from cant be 0");
-
-631:         require(amount != 0, "V:amount should be non-zero");
-
-664:         require(erc20Address != address(0), "V:erc20Address cant be 0");
-
-665:         require(to != address(0), "V:to cant be 0");
-
-666:         require(amount != 0, "V:amount should be non-zero");
-
-697:         require(to != address(0), "V:To address cant be 0");
-
-698:         require(collection != address(0), "V:collection cant be 0");
-
-734:         require(to != address(0), "V:To address cant be 0");
-
-735:         require(collection != address(0), "V:collection cant be 0");
-
-793:         require(_assetValuer != address(0), "V:Asset valuer cant be 0");
-
-810:         require(amountAssets != 0, "V:amountAssets cant be 0");
-
-811:         require(withdrawalRequests[_msgSender()] == 0, "V:Request already exists");
-
-812:         require(allowance(_msgSender(), address(this)) >= amountAssets, "V:Insufficient allowance");
-
-829:         require(amountBefore != 0, "V:No withdrawal request exists");
-
-870:             require(assetValuer.getAssetValuation(IVault(address(this)), holdingIds[i]) == 0, "V:Holding has value");
-
-940:         require(holdingsDetails[holdingId].collection != address(0), "V:Holding does not exist");
-
-1060:         require(assets != 0 && owner != address(0) && receiver != address(0), "V:Invalid 0 args");
-
-1062:         require(assets <= requestedAmount, "V:Exceeds requested");
-
-1285:         require(assets >= minDeposit, "V:Deposit below minimum");
-
-1335:         require(hasRole(WHITELISTED_CONTRACT, collection), "V:Contract not whitelisted");
-
-1391:         require(hasRole(INVESTOR_ROLE, to) || to == address(0), "V:to is not an investor");
-
-```
-
-```solidity
-File: VaultOfVault.sol
-
-102:         require(vaultToDepositInto != address(0), "VOV: vault must not be 0");
-
-103:         require(assets != 0, "VOV: assets must not be 0");
-
-127:         require(vaultToWithdrawFrom != address(0), "VOV: vault must not be 0");
-
-128:         require(assets != 0, "VOV: assets must not be 0");
-
-129:         require(hasRole(WHITELISTED_CONTRACT, vaultToWithdrawFrom), "VOV: Contract not whitelisted");
-
-```
-
-```solidity
-File: Verifier.sol
-
-110:         require(bytes(name_).length != 0, "Verifier: Name cannot be empty");
-
-111:         require(bytes(symbol_).length != 0, "Verifier: Symbol cannot be empty");
-
-112:         require(bytes(baseURI_).length != 0, "Verifier: baseURI cannot be empty");
-
-113:         require(upgraderRole != address(0), "Verifier: `upgraderRole` cannot be the zero address");
-
-114:         require(pauserRole != address(0), "Verifier: `pauserRole` cannot be the zero address");
-
-154:         require(bytes(uri).length != 0, "Verifier: uri cannot be empty");
-
-252:         revert("Verifier: renounceRole has been disabled");
+811:             keccak256(abi.encodePacked(_blockHash, _salt, _player))
 
 ```
 
@@ -5061,60 +2208,20 @@ File: Verifier.sol
 
 
  ### <a name="GAS-11"></a>[GAS-11]
- ### Initializers can be marked as payable to save deployment gas
-Payable functions cost less gas to execute, because the compiler does not have to add extra checks to ensure that no payment is provided. Initializers can be safely marked as payable, because only the deployer or the factory contract would call the function without carrying any funds.
+ ### Avoid fetching a low-level calls return data by using assembly
+Even if you dont assign the calls second return value, it still gets copied to memory. Use assembly instead to prevent this and save 159 gas: `(bool success,) = payable(receiver).call{gas: gas, value: value}("");` -> `bool success; assembly { success := call(gas, receiver, value, 0, 0, 0, 0)` }
 
-*Instances (7)*:
+*Instances (2)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: Asset.sol
+File: example/ddf.sol
 
-110:     function initialize(
+133:         (bool success, ) = recipient.call{value: amount}("");
 
-```
-
-```solidity
-File: AssetFlowController.sol
-
-439:     function initialize(
-
-```
-
-```solidity
-File: AssetValuer.sol
-
-99:     function initialize(address pauserRole, address upgraderRole, address valuerRole) external initializer {
-
-```
-
-```solidity
-File: Offer.sol
-
-115:     function initialize(
-
-```
-
-```solidity
-File: Vault.sol
-
-363:     function initialize(
-
-```
-
-```solidity
-File: VaultOfVault.sol
-
-70:     function initialize(
-
-```
-
-```solidity
-File: Verifier.sol
-
-103:     function initialize(
+174:         (bool success, bytes memory returndata) = target.call{value: value}(data);
 
 ```
 
@@ -5123,32 +2230,18 @@ File: Verifier.sol
 
 
  ### <a name="GAS-12"></a>[GAS-12]
- ### Use assembly for small keccak256 hashes, in order to save gas
-If the arguments to the encode call can fit into the scratch space (two words or fewer), then its more efficient to use assembly to generate the hash (80 gas): keccak256(abi.encodePacked(x, y)) -> assembly {mstore(0x00, a); mstore(0x20, b); let hash := keccak256(0x00, 0x40); }
+ ### Reduce gas usage by moving to Solidity 0.8.19 or later
+Solidity version 0.8.19 introduced a number of gas optimizations, refer to the [Solidity 0.8.19 Release Announcement](https://soliditylang.org/blog/2023/02/22/solidity-0.8.19-release-announcement) for details.
 
-*Instances (3)*:
+*Instances (1)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: AssetFlowController.sol
+File: example/ddf.sol
 
-1087:         return keccak256(abi.encode(id, collection));
-
-```
-
-```solidity
-File: AssetValuer.sol
-
-366:         return keccak256(abi.encode(id, collection));
-
-```
-
-```solidity
-File: Vault.sol
-
-1410:         return keccak256(abi.encode(id, collection));
+1: pragma solidity 0.8.20;
 
 ```
 
@@ -5157,95 +2250,26 @@ File: Vault.sol
 
 
  ### <a name="GAS-13"></a>[GAS-13]
- ### Reduce gas usage by moving to Solidity 0.8.19 or later
-Solidity version 0.8.19 introduced a number of gas optimizations, refer to the [Solidity 0.8.19 Release Announcement](https://soliditylang.org/blog/2023/02/22/solidity-0.8.19-release-announcement) for details.
+ ### Functions guaranteed to revert when called by normal users can be marked `payable`
+If a function modifier such as `onlyOwner` is used, the function will revert if a normal user tries to pay the function. Marking the function as `payable` will lower the gas cost for legitimate callers because the compiler will not include checks for whether a payment was provided.
 
-*Instances (12)*:
+*Instances (5)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: Asset.sol
+File: example/ddf.sol
 
-2: pragma solidity 0.8.19;
+70:     function renounceOwnership() public virtual onlyOwner {
 
-```
+78:     function transferOwnership(address newOwner) public virtual onlyOwner {
 
-```solidity
-File: AssetFlowController.sol
+598:     function withdrawFTN(uint256 _amount) external onlyOwner {
 
-2: pragma solidity 0.8.19;
+622:     function setMinBet(uint256 _minBet) external onlyOwner notZero(_minBet) {
 
-```
-
-```solidity
-File: AssetValuer.sol
-
-2: pragma solidity 0.8.19;
-
-```
-
-```solidity
-File: Offer.sol
-
-2: pragma solidity 0.8.19;
-
-```
-
-```solidity
-File: Vault.sol
-
-2: pragma solidity 0.8.19;
-
-```
-
-```solidity
-File: VaultOfVault.sol
-
-2: pragma solidity 0.8.19;
-
-```
-
-```solidity
-File: Verifier.sol
-
-2: pragma solidity 0.8.19;
-
-```
-
-```solidity
-File: interfaces/IAsset.sol
-
-2: pragma solidity 0.8.19;
-
-```
-
-```solidity
-File: interfaces/IAssetValuer.sol
-
-2: pragma solidity 0.8.19;
-
-```
-
-```solidity
-File: interfaces/IOffer.sol
-
-2: pragma solidity 0.8.19;
-
-```
-
-```solidity
-File: interfaces/IVault.sol
-
-2: pragma solidity 0.8.19;
-
-```
-
-```solidity
-File: interfaces/IVerifier.sol
-
-2: pragma solidity 0.8.19;
+630:     function setMaxBet(uint256 _maxBet) external onlyOwner notZero(_maxBet) {
 
 ```
 
@@ -5254,103 +2278,22 @@ File: interfaces/IVerifier.sol
 
 
  ### <a name="GAS-14"></a>[GAS-14]
- ### Functions guaranteed to revert when called by normal users can be marked `payable`
-If a function modifier such as `onlyOwner` is used, the function will revert if a normal user tries to pay the function. Marking the function as `payable` will lower the gas cost for legitimate callers because the compiler will not include checks for whether a payment was provided.
+ ### `++i` costs less gas than `i++`, especially when it's used in `for`-loops (`--i`/`i--` too)
+*Saves 5 gas per loop*
 
-*Instances (31)*:
+*Instances (3)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: Asset.sol
+File: example/ddf.sol
 
-191:     function pause() external virtual whenNotPaused onlyRole(PAUSER_ROLE) {
+680:         salt++;
 
-206:     function unpause() external virtual whenPaused onlyRole(PAUSER_ROLE) {
+703:         for (uint256 i = 0; i < bets[_player].length; i++) {
 
-401:     function _authorizeUpgrade(address newImplementation) internal virtual override onlyRole(UPGRADER_ROLE) {}
-
-```
-
-```solidity
-File: AssetFlowController.sol
-
-549:     function verifyOffer(uint256 offerId, string memory uri) external virtual whenNotPaused onlyRole(VERIFIER_ROLE) {
-
-627:     function settle(uint256 offerId) external virtual whenNotPaused onlyRole(INVESTMENT_MANAGER_ROLE) {
-
-714:     function rejectSettlement(uint256 offerId) external virtual whenNotPaused onlyRole(INVESTMENT_MANAGER_ROLE) {
-
-839:     function acceptBuyOut(uint256 offerId) external virtual whenNotPaused onlyRole(INVESTMENT_MANAGER_ROLE) {
-
-874:     function rejectBuyout(uint256 offerId) external virtual whenNotPaused onlyRole(INVESTMENT_MANAGER_ROLE) {
-
-895:     function pause() external virtual whenNotPaused onlyRole(PAUSER_ROLE) {
-
-913:     function unpause() external virtual whenPaused onlyRole(PAUSER_ROLE) {
-
-1077:     function _authorizeUpgrade(address newImplementation) internal virtual override onlyRole(UPGRADER_ROLE) {}
-
-```
-
-```solidity
-File: AssetValuer.sol
-
-157:     function pause() external onlyRole(PAUSER_ROLE) {
-
-172:     function unpause() external onlyRole(PAUSER_ROLE) {
-
-311:     function _authorizeUpgrade(address newImplementation) internal override onlyRole(UPGRADER_ROLE) {}
-
-```
-
-```solidity
-File: Offer.sol
-
-172:     function safeMint(address to, string calldata uri) external virtual onlyRole(MINTER_ROLE) returns (uint256) {
-
-194:     function pause() external virtual whenNotPaused onlyRole(PAUSER_ROLE) {
-
-209:     function unpause() external virtual whenPaused onlyRole(PAUSER_ROLE) {
-
-454:     function _authorizeUpgrade(address newImplementation) internal virtual override onlyRole(UPGRADER_ROLE) {}
-
-```
-
-```solidity
-File: Vault.sol
-
-499:     function deregisterInvestor(address investor) external virtual whenNotPaused onlyRole(CONTRACT_ADMIN_ROLE) { //@audit check if investor is already registered
-
-772:     function setMinDeposit(uint256 _minDeposit) external virtual whenNotPaused onlyRole(CONTRACT_ADMIN_ROLE) {
-
-792:     function setAssetValuer(address _assetValuer) external virtual whenNotPaused onlyRole(CONTRACT_ADMIN_ROLE) {
-
-809:     function requestWithdraw(uint256 amountAssets) external virtual whenNotPaused onlyRole(INVESTOR_ROLE) {
-
-827:     function cancelRequest() external virtual whenNotPaused onlyRole(INVESTOR_ROLE) {
-
-867:     function cleanHoldings(bytes32[] memory holdingIds) external virtual whenNotPaused onlyRole(CONTRACT_ADMIN_ROLE) {
-
-904:     function pause() external virtual whenNotPaused onlyRole(PAUSER_ROLE) {
-
-919:     function unpause() external virtual whenPaused onlyRole(PAUSER_ROLE) {
-
-1401:     function _authorizeUpgrade(address newImplementation) internal virtual override onlyRole(UPGRADER_ROLE) {}
-
-```
-
-```solidity
-File: Verifier.sol
-
-153:     function safeMint(uint256 tokenId, address to, string calldata uri) external virtual onlyRole(MINTER_ROLE) {
-
-170:     function pause() external virtual whenNotPaused onlyRole(PAUSER_ROLE) {
-
-185:     function unpause() external virtual whenPaused onlyRole(PAUSER_ROLE) {
-
-372:     function _authorizeUpgrade(address newImplementation) internal virtual override onlyRole(UPGRADER_ROLE) {}
+731:         for (uint256 i = 0; i < bets[_player].length; i++) {
 
 ```
 
@@ -5362,93 +2305,15 @@ File: Verifier.sol
  ### Using `private` rather than `public` for constants, saves gas
 If needed, the values can be read from the verified contract source code, or if there are multiple values there can be a single getter function that [returns a tuple](https://github.com/code-423n4/2022-08-frax/blob/90f55a9ce4e25bceed3a74290b854341d8de6afa/src/contracts/FraxlendPair.sol#L156-L178) of the values of all currently-public constants. Saves **3406-3606 gas** in deployment gas due to the compiler not having to create non-payable getter functions for deployment calldata, not having to store the bytes of the value outside of where it's used, and not adding another entry to the method ID table
 
-*Instances (25)*:
+*Instances (1)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: Asset.sol
+File: example/ddf.sol
 
-40:     bytes32 public constant PAUSER_ROLE = keccak256("PAUSER_ROLE");
-
-49:     bytes32 public constant MINTER_ROLE = keccak256("MINTER_ROLE");
-
-58:     bytes32 public constant UPGRADER_ROLE = keccak256("UPGRADER_ROLE");
-
-```
-
-```solidity
-File: AssetFlowController.sol
-
-125:     bytes32 public constant UPGRADER_ROLE = keccak256("UPGRADER_ROLE");
-
-134:     bytes32 public constant PAUSER_ROLE = keccak256("PAUSER_ROLE");
-
-141:     bytes32 public constant CONTRACT_ADMIN_ROLE = keccak256("CONTRACT_ADMIN_ROLE");
-
-150:     bytes32 public constant INVESTMENT_MANAGER_ROLE = keccak256("INVESTMENT_MANAGER_ROLE");
-
-159:     bytes32 public constant OFFERER_ROLE = keccak256("OFFERER_ROLE");
-
-168:     bytes32 public constant VERIFIER_ROLE = keccak256("VERIFIER_ROLE");
-
-```
-
-```solidity
-File: AssetValuer.sol
-
-33:     bytes32 public constant UPGRADER_ROLE = keccak256("UPGRADER_ROLE");
-
-42:     bytes32 public constant PAUSER_ROLE = keccak256("PAUSER_ROLE");
-
-51:     bytes32 public constant VALUER_ROLE = keccak256("VALUER_ROLE");
-
-```
-
-```solidity
-File: Offer.sol
-
-45:     bytes32 public constant UPGRADER_ROLE = keccak256("UPGRADER_ROLE");
-
-54:     bytes32 public constant PAUSER_ROLE = keccak256("PAUSER_ROLE");
-
-63:     bytes32 public constant MINTER_ROLE = keccak256("MINTER_ROLE");
-
-```
-
-```solidity
-File: Vault.sol
-
-55:     bytes32 public constant UPGRADER_ROLE = keccak256("UPGRADER_ROLE");
-
-64:     bytes32 public constant PAUSER_ROLE = keccak256("PAUSER_ROLE");
-
-73:     bytes32 public constant ASSET_CONTROLLER_ROLE = keccak256("ASSET_CONTROLLER_ROLE");
-
-82:     bytes32 public constant CONTRACT_ADMIN_ROLE = keccak256("CONTRACT_ADMIN_ROLE");
-
-91:     bytes32 public constant INVESTOR_ROLE = keccak256("INVESTOR_ROLE");
-
-100:     bytes32 public constant WHITELISTED_CONTRACT = keccak256("WHITELISTED_CONTRACT");
-
-```
-
-```solidity
-File: VaultOfVault.sol
-
-36:     bytes32 public constant PARENT_ASSET_CONTROLLER = keccak256("PARENT_ASSET_CONTROLLER");
-
-```
-
-```solidity
-File: Verifier.sol
-
-42:     bytes32 public constant UPGRADER_ROLE = keccak256("UPGRADER_ROLE");
-
-51:     bytes32 public constant PAUSER_ROLE = keccak256("PAUSER_ROLE");
-
-60:     bytes32 public constant MINTER_ROLE = keccak256("MINTER_ROLE");
+544:     uint256 public constant COEFFICIENT_DENOMINATOR = 100;
 
 ```
 
@@ -5460,105 +2325,19 @@ File: Verifier.sol
  ### require()/revert() strings longer than 32 bytes cost extra gas
 Each extra memory word of bytes past the original 32 [incurs an MSTORE](https://gist.github.com/hrkrshnn/ee8fabd532058307229d65dcd5836ddc#consider-having-short-revert-strings) which costs 3 gas.
 
-*Instances (31)*:
+*Instances (3)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: Asset.sol
+File: example/ddf.sol
 
-284:         revert("Asset: renounceRole has been disabled");
+580:         require(number > 0, "Number must be greater than zero");
 
-```
+666:         require(
 
-```solidity
-File: AssetFlowController.sol
-
-551:         require(offerId != 0, "AFC: offerId must be non-zero");
-
-592:         require(numTokens != 0, "AFC: numTokens must be non-zero");
-
-597:         require(settlement[offerId].numTokens == 0, "AFC: Offer already submitted");
-
-628:         require(offerId != 0, "AFC: offerId must be non-zero");
-
-632:         require(details.numTokens != 0, "AFC: Settlement details not set");
-
-715:         require(offerId != 0, "AFC: offerId must be non-zero");
-
-775:         require(rentPrices[assetKey] != 0, "AFC: No rent price set");
-
-809:         require(offerId != 0, "AFC: offerId must non-zero");
-
-812:         require(amount != 0, "AFC: Must specify amount");
-
-840:         require(offerId != 0, "AFC: offerId must be non-zero");
-
-843:         require(buyOut.numTokens != 0, "AFC: BuyOutDetails not submitted");
-
-875:         require(offerId != 0, "AFC: offerId must be non-zero");
-
-954:         revert("AFC: renounceRole is disabled");
-
-1002:             require(amount == 1, "AFC: ERC721 amount must be 1");
-
-```
-
-```solidity
-File: AssetValuer.sol
-
-256:         revert("AssetValuer: renounceRole has been disabled");
-
-```
-
-```solidity
-File: Offer.sol
-
-151:         revert("Offer: renounceRole has been disabled");
-
-```
-
-```solidity
-File: Vault.sol
-
-446:         revert("V:renounceRole has been disabled");
-
-527:         require(shares >= expectedShares, "V:Share issue lower than expected"); // since there is slippage protection so its okay
-
-570:         require(assets != 0, "V:Asset has no valuation");
-
-575:         require(assets >= minDeposit, "V:amount below minimum");
-
-596:             revert("V:Invalid asset type");
-
-631:         require(amount != 0, "V:amount should be non-zero");
-
-666:         require(amount != 0, "V:amount should be non-zero");
-
-810:         require(amountAssets != 0, "V:amountAssets cant be 0");
-
-829:         require(amountBefore != 0, "V:No withdrawal request exists");
-
-1062:         require(assets <= requestedAmount, "V:Exceeds requested");
-
-1285:         require(assets >= minDeposit, "V:Deposit below minimum");
-
-```
-
-```solidity
-File: VaultOfVault.sol
-
-103:         require(assets != 0, "VOV: assets must not be 0");
-
-128:         require(assets != 0, "VOV: assets must not be 0");
-
-```
-
-```solidity
-File: Verifier.sol
-
-252:         revert("Verifier: renounceRole has been disabled");
+689:         require(winAmount > 0, "You have not won");
 
 ```
 
@@ -5567,7 +2346,8 @@ File: Verifier.sol
 
 
  ### <a name="GAS-17"></a>[GAS-17]
- ### Splitting require() statements that use && saves gas
+ ### Structs can be packed into fewer storage slots
+Each slot saved can avoid an extra Gsset (20000 gas) for the first setting of the struct. Subsequent reads as well as writes have smaller gas savings
 
 *Instances (1)*:
  
@@ -5575,9 +2355,9 @@ File: Verifier.sol
  <summary>Click to expand!</summary>
 
 ```solidity
-File: Vault.sol
+File: example/ddf.sol
 
-1060:         require(assets != 0 && owner != address(0) && receiver != address(0), "V:Invalid 0 args");
+546:     struct Bet {
 
 ```
 
@@ -5586,29 +2366,27 @@ File: Vault.sol
 
 
  ### <a name="GAS-18"></a>[GAS-18]
- ### Structs can be packed into fewer storage slots
-Each slot saved can avoid an extra Gsset (20000 gas) for the first setting of the struct. Subsequent reads as well as writes have smaller gas savings
+ ### Use != 0 instead of > for unsigned integer comparison
 
-*Instances (4)*:
+*Instances (6)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: AssetFlowController.sol
+File: example/ddf.sol
 
-74:     struct OfferExtendedDetails {
+235:         if (returndata.length > 0) {
 
-92:     struct Settlement {
+580:         require(number > 0, "Number must be greater than zero");
 
-109:     struct BuyOutDetails {
+667:             _boxNumber > 0 && _boxNumber <= numberOfBoxes,
 
-```
+689:         require(winAmount > 0, "You have not won");
 
-```solidity
-File: interfaces/IVault.sol
+707:         if (totalWin > 0) {
 
-37:     struct Holding {
+782:         require(block.number > _blockNumber, "Block number is out of range");
 
 ```
 
@@ -5617,483 +2395,80 @@ File: interfaces/IVault.sol
 
 
  ### <a name="GAS-19"></a>[GAS-19]
- ### Consider using uint256(1)/uint256(2) instead of true/false for gas efficiency
-Using uint256(1) and uint256(2) instead of true and false can save gas for certain changes. Consider using uint256(1)/uint256(2) when appropriate.
-
-*Instances (9)*:
- 
- <details>
- <summary>Click to expand!</summary>
-
-```solidity
-File: AssetFlowController.sol
-
-649:                     true,
-
-671:                 IERC1155Upgradeable(address(assetCollection)).setApprovalForAll(address(vault), true);
-
-683:                     false,
-
-1005:             if (isSeeding) IERC721Upgradeable(assetAddress).setApprovalForAll(address(vault), true);
-
-1009:             if (isSeeding) IERC1155Upgradeable(assetAddress).setApprovalForAll(address(vault), true);
-
-```
-
-```solidity
-File: Offer.sol
-
-178:             _setApprovalForAll(to, _msgSender(), true); // Allow AssetFlowController to transfer
-
-```
-
-```solidity
-File: Vault.sol
-
-1344:             emit VaultHoldingsUpdated(_msgSender(), collection, id, assetType, true);
-
-1359:             emit VaultHoldingsUpdated(_msgSender(), holding.collection, holding.id, holding.assetType, false);
-
-```
-
-```solidity
-File: VaultOfVault.sol
-
-81:         isParent = true;
-
-```
-
-</details> 
- 
-
-
- ### <a name="GAS-20"></a>[GAS-20]
- ### Use != 0 instead of > for unsigned integer comparison
-
-*Instances (1)*:
- 
- <details>
- <summary>Click to expand!</summary>
-
-```solidity
-File: AssetFlowController.sol
-
-845:         uint256 diff = expectedAmount > buyOut.amount ? expectedAmount - buyOut.amount : buyOut.amount - expectedAmount;
-
-```
-
-</details> 
- 
-
-
- ### <a name="GAS-21"></a>[GAS-21]
  ### Optimize names to save gas
 public/external function names and public member variable names can be optimized to save gas. See [this](https://gist.github.com/IllIllI000/a5d8b486a8259f9f77891a919febd1a9) link for an example of how it works. Below are the interfaces/abstract contracts that can be optimized so that the most frequently-called functions use the least amount of gas possible during method lookup. Method IDs that have two leading zero bytes can save 128 gas each during deployment, and renaming functions to have lower method IDs will save 22 gas per call, [per sorted position shifted](https://medium.com/joyso/solidity-how-does-function-name-affect-gas-consumption-in-smart-contract-47d270d8ac92)
 
-*Instances (171)*:
+*Instances (32)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: Asset.sol
+File: example/ddf.sol
 
-40:     bytes32 public constant PAUSER_ROLE = keccak256("PAUSER_ROLE");
+50:     function owner() public view virtual returns (address) {
 
-49:     bytes32 public constant MINTER_ROLE = keccak256("MINTER_ROLE");
+70:     function renounceOwnership() public virtual onlyOwner {
 
-58:     bytes32 public constant UPGRADER_ROLE = keccak256("UPGRADER_ROLE");
+78:     function transferOwnership(address newOwner) public virtual onlyOwner {
 
-65:     string public name;
+330:     function totalSupply() external view returns (uint256);
 
-70:     string public symbol;
+335:     function balanceOf(address account) external view returns (uint256);
 
-76:     bytes32 public version;
+353:     function allowance(address owner, address spender) external view returns (uint256);
 
-116:     ) public initializer {
+393:     function supportsInterface(bytes4 interfaceId) external view returns (bool);
 
-171:     ) external virtual onlyRole(MINTER_ROLE) {
+415:     function balanceOf(address owner) external view returns (uint256 balance);
 
-191:     function pause() external virtual whenNotPaused onlyRole(PAUSER_ROLE) {
+424:     function ownerOf(uint256 tokenId) external view returns (address owner);
 
-206:     function unpause() external virtual whenPaused onlyRole(PAUSER_ROLE) {
+512:     function getApproved(uint256 tokenId) external view returns (address operator);
 
-234:     ) public virtual override(ERC1155Upgradeable, IAsset) {
+519:     function isApprovedForAll(address owner, address operator) external view returns (bool);
 
-256:     ) public virtual override(ERC1155BurnableUpgradeable, IAsset) {
+538:     IBankroll public bankrollContract;
 
-272:     function setApprovalForAll(address operator, bool approved) public virtual override whenNotPaused {
+540:     uint256 public minBet;
 
-283:     function renounceRole(bytes32, address) public virtual override {
+541:     uint256 public maxBet;
 
-297:     ) public view virtual override(ERC1155Upgradeable, AccessControlUpgradeable) returns (bool) {
+542:     uint256 public winCoefficient;
 
-311:     function exists(uint256 id) public view virtual override(ERC1155SupplyUpgradeable, IAsset) returns (bool) {
+543:     uint256 public numberOfBoxes;
 
-329:     ) public view virtual override(ERC1155Upgradeable, IAsset) returns (uint256) {
+544:     uint256 public constant COEFFICIENT_DENOMINATOR = 100;
 
-344:     ) public view virtual override(ERC1155Upgradeable, ERC1155URIStorageUpgradeable) returns (string memory) {
+554:     mapping(address => Bet[]) public bets;
 
-```
+592:     receive() external payable {}
 
-```solidity
-File: AssetFlowController.sol
+598:     function withdrawFTN(uint256 _amount) external onlyOwner {
 
-125:     bytes32 public constant UPGRADER_ROLE = keccak256("UPGRADER_ROLE");
+610:     ) external onlyOwner {
 
-134:     bytes32 public constant PAUSER_ROLE = keccak256("PAUSER_ROLE");
+622:     function setMinBet(uint256 _minBet) external onlyOwner notZero(_minBet) {
 
-141:     bytes32 public constant CONTRACT_ADMIN_ROLE = keccak256("CONTRACT_ADMIN_ROLE");
+630:     function setMaxBet(uint256 _maxBet) external onlyOwner notZero(_maxBet) {
 
-150:     bytes32 public constant INVESTMENT_MANAGER_ROLE = keccak256("INVESTMENT_MANAGER_ROLE");
+640:     ) external onlyOwner notZero(_winCoefficient) {
 
-159:     bytes32 public constant OFFERER_ROLE = keccak256("OFFERER_ROLE");
+650:     ) external onlyOwner notZero(_numberOfBoxes) {
 
-168:     bytes32 public constant VERIFIER_ROLE = keccak256("VERIFIER_ROLE");
+660:     ) external payable nonReentrant returns (uint256) {
 
-177:     IVault public vault;
+687:     function getPrize() external nonReentrant {
 
-184:     IOffer public offerCollection;
+720:     ) external view returns (Bet[] memory) {
 
-191:     IAsset public assetCollection;
+729:     function calculateTotalWin(address _player) public view returns (uint256) {
 
-198:     IVerifier public verifiedOfferCollection;
+746:     ) public view returns (uint256) {
 
-218:     mapping(uint256 => OfferExtendedDetails) public offerExtendedDetails;
+768:     ) public view returns (uint256) {
 
-230:     mapping(uint256 => Settlement) public settlement;
-
-242:     mapping(uint256 => BuyOutDetails) public buyOutDetails;
-
-254:     mapping(bytes32 => uint256) public rentPrices;
-
-260:     bytes32 public version;
-
-449:     ) external initializer {
-
-508:     ) external virtual whenNotPaused onlyRole(OFFERER_ROLE) {
-
-549:     function verifyOffer(uint256 offerId, string memory uri) external virtual whenNotPaused onlyRole(VERIFIER_ROLE) {
-
-590:     ) external virtual whenNotPaused {
-
-627:     function settle(uint256 offerId) external virtual whenNotPaused onlyRole(INVESTMENT_MANAGER_ROLE) {
-
-714:     function rejectSettlement(uint256 offerId) external virtual whenNotPaused onlyRole(INVESTMENT_MANAGER_ROLE) {
-
-746:     ) external virtual whenNotPaused onlyRole(INVESTMENT_MANAGER_ROLE) {
-
-773:     function payRent(uint256 id, address collection, string memory tag) external virtual whenNotPaused {
-
-808:     ) external virtual whenNotPaused onlyRole(OFFERER_ROLE) {
-
-839:     function acceptBuyOut(uint256 offerId) external virtual whenNotPaused onlyRole(INVESTMENT_MANAGER_ROLE) {
-
-874:     function rejectBuyout(uint256 offerId) external virtual whenNotPaused onlyRole(INVESTMENT_MANAGER_ROLE) {
-
-895:     function pause() external virtual whenNotPaused onlyRole(PAUSER_ROLE) {
-
-913:     function unpause() external virtual whenPaused onlyRole(PAUSER_ROLE) {
-
-923:     function getOfferOwner(uint256 offerId) external view virtual returns (address) {
-
-932:     function getOffers() external view virtual returns (uint256[] memory, address[] memory) {
-
-942:     function onERC1155Received(address, address, uint256, uint256, bytes memory) public virtual returns (bytes4) {
-
-953:     function renounceRole(bytes32, address) public virtual override {
-
-966:     function supportsInterface(bytes4 interfaceId) public view virtual override returns (bool) {
-
-```
-
-```solidity
-File: AssetValuer.sol
-
-33:     bytes32 public constant UPGRADER_ROLE = keccak256("UPGRADER_ROLE");
-
-42:     bytes32 public constant PAUSER_ROLE = keccak256("PAUSER_ROLE");
-
-51:     bytes32 public constant VALUER_ROLE = keccak256("VALUER_ROLE");
-
-64:     mapping(bytes32 => uint256) public valuations;
-
-70:     bytes32 public version;
-
-99:     function initialize(address pauserRole, address upgraderRole, address valuerRole) external initializer {
-
-142:     ) external virtual whenNotPaused onlyRole(VALUER_ROLE) {
-
-185:     function getValuation(address collection, uint256 tokenId) external view virtual returns (uint256) {
-
-197:     function getValuation(bytes32 key) external view virtual returns (uint256) {
-
-208:     function getAssetValuation(IVault vault, bytes32 key) external view virtual returns (uint256) {
-
-224:     ) external view virtual returns (uint256) {
-
-238:     function getVaultValuation(IVault vault) external view virtual returns (uint256) {
-
-255:     function renounceRole(bytes32, address) public virtual override {
-
-267:     function supportsInterface(bytes4 interfaceId) public view virtual override returns (bool) {
-
-```
-
-```solidity
-File: Offer.sol
-
-45:     bytes32 public constant UPGRADER_ROLE = keccak256("UPGRADER_ROLE");
-
-54:     bytes32 public constant PAUSER_ROLE = keccak256("PAUSER_ROLE");
-
-63:     bytes32 public constant MINTER_ROLE = keccak256("MINTER_ROLE");
-
-70:     CountersUpgradeable.Counter public _tokenIdCounter;
-
-81:     bytes32 public version;
-
-122:     ) external initializer {
-
-150:     function renounceRole(bytes32, address) public virtual override {
-
-172:     function safeMint(address to, string calldata uri) external virtual onlyRole(MINTER_ROLE) returns (uint256) {
-
-194:     function pause() external virtual whenNotPaused onlyRole(PAUSER_ROLE) {
-
-209:     function unpause() external virtual whenPaused onlyRole(PAUSER_ROLE) {
-
-219:     function exists(uint256 tokenId) external view virtual returns (bool) {
-
-243:     ) public virtual override(ERC721Upgradeable, IERC721Upgradeable) whenNotPaused {
-
-264:     ) public virtual override(ERC721Upgradeable, IERC721Upgradeable) whenNotPaused {
-
-292:     ) public virtual override(ERC721Upgradeable, IERC721Upgradeable, IOffer) {
-
-316:     ) public virtual override(ERC721Upgradeable, IERC721Upgradeable, IOffer) {
-
-333:     ) public view virtual override(ERC721Upgradeable, IERC721Upgradeable, IOffer) returns (bool) {
-
-348:     ) public view virtual override(ERC721Upgradeable, IERC721Upgradeable, IOffer) returns (address) {
-
-362:     ) public view virtual override(ERC721Upgradeable, ERC721URIStorageUpgradeable) returns (string memory) {
-
-377:         public
-
-```
-
-```solidity
-File: Vault.sol
-
-55:     bytes32 public constant UPGRADER_ROLE = keccak256("UPGRADER_ROLE");
-
-64:     bytes32 public constant PAUSER_ROLE = keccak256("PAUSER_ROLE");
-
-73:     bytes32 public constant ASSET_CONTROLLER_ROLE = keccak256("ASSET_CONTROLLER_ROLE");
-
-82:     bytes32 public constant CONTRACT_ADMIN_ROLE = keccak256("CONTRACT_ADMIN_ROLE");
-
-91:     bytes32 public constant INVESTOR_ROLE = keccak256("INVESTOR_ROLE");
-
-100:     bytes32 public constant WHITELISTED_CONTRACT = keccak256("WHITELISTED_CONTRACT");
-
-124:     mapping(bytes32 => Holding) public holdingsDetails;
-
-137:     mapping(address => uint) public withdrawalRequests;
-
-149:     mapping(address => uint256) public maxDeposits;
-
-156:     IAssetValuer public assetValuer;
-
-164:     bool public isParent;
-
-169:     uint256 public minDeposit;
-
-175:     bytes32 public version;
-
-372:     ) external virtual initializer {
-
-445:     function renounceRole(bytes32, address) public virtual override {
-
-472:     ) external virtual whenNotPaused onlyRole(CONTRACT_ADMIN_ROLE) {
-
-499:     function deregisterInvestor(address investor) external virtual whenNotPaused onlyRole(CONTRACT_ADMIN_ROLE) { //@audit check if investor is already registered
-
-525:     ) external virtual whenNotPaused onlyRole(INVESTOR_ROLE) returns (uint256) {
-
-556:     ) external virtual whenNotPaused onlyRole(ASSET_CONTROLLER_ROLE) returns (uint256) {
-
-628:     ) external virtual whenNotPaused onlyRole(ASSET_CONTROLLER_ROLE) {
-
-663:     ) external virtual whenNotPaused onlyRole(ASSET_CONTROLLER_ROLE) {
-
-696:     ) external virtual whenNotPaused onlyRole(ASSET_CONTROLLER_ROLE) {
-
-733:     ) external virtual whenNotPaused onlyRole(ASSET_CONTROLLER_ROLE) {
-
-758:     ) external virtual whenNotPaused onlyRole(ASSET_CONTROLLER_ROLE) {
-
-772:     function setMinDeposit(uint256 _minDeposit) external virtual whenNotPaused onlyRole(CONTRACT_ADMIN_ROLE) {
-
-792:     function setAssetValuer(address _assetValuer) external virtual whenNotPaused onlyRole(CONTRACT_ADMIN_ROLE) {
-
-809:     function requestWithdraw(uint256 amountAssets) external virtual whenNotPaused onlyRole(INVESTOR_ROLE) {
-
-827:     function cancelRequest() external virtual whenNotPaused onlyRole(INVESTOR_ROLE) {
-
-853:     ) external virtual whenNotPaused onlyRole(CONTRACT_ADMIN_ROLE) {
-
-867:     function cleanHoldings(bytes32[] memory holdingIds) external virtual whenNotPaused onlyRole(CONTRACT_ADMIN_ROLE) {
-
-889:     ) external virtual whenNotPaused onlyRole(CONTRACT_ADMIN_ROLE) {
-
-904:     function pause() external virtual whenNotPaused onlyRole(PAUSER_ROLE) {
-
-919:     function unpause() external virtual whenPaused onlyRole(PAUSER_ROLE) {
-
-929:     function getHoldings() external view virtual returns (bytes32[] memory) {
-
-939:     function getHoldingDetails(bytes32 holdingId) external view virtual returns (Holding memory) {
-
-951:     function getHoldingId(address collection, uint256 tokenId) external view virtual returns (bytes32) {
-
-979:     ) public virtual override(ERC20Upgradeable, IERC20Upgradeable) whenNotPaused returns (bool) {
-
-1000:     ) public virtual override whenNotPaused returns (bool) {
-
-1022:     ) public virtual override whenNotPaused returns (bool) {
-
-1053:         public
-
-1071:     function redeem(uint256, address, address) public virtual override returns (uint256) {
-
-1103:     ) public virtual whenNotPaused returns (bytes4) {
-
-1128:     ) public virtual whenNotPaused returns (bytes4) { //@audit can directly call this
-
-1152:     ) public virtual override whenNotPaused onlyRole(INVESTOR_ROLE) returns (uint256) {
-
-1160:     function mint(uint256, address) public virtual override returns (uint256) {
-
-1174:     ) public view virtual override(AccessControlUpgradeable, IVault) returns (bool) {
-
-1194:     function totalAssets() public view virtual override(ERC4626Upgradeable, IVault) returns (uint256) {
-
-1208:     function maxDeposit(address investor) public view virtual override returns (uint256) {
-
-1221:     function asset() public view virtual override(ERC4626Upgradeable, IVault) returns (address) {
-
-1235:     ) public view virtual override(AccessControlUpgradeable, IVault) returns (bool) {
-
-```
-
-```solidity
-File: VaultOfVault.sol
-
-36:     bytes32 public constant PARENT_ASSET_CONTROLLER = keccak256("PARENT_ASSET_CONTROLLER");
-
-79:     ) external virtual override initializer {
-
-101:     ) external virtual whenNotPaused onlyRole(PARENT_ASSET_CONTROLLER) {
-
-126:     ) external virtual whenNotPaused onlyRole(PARENT_ASSET_CONTROLLER) {
-
-```
-
-```solidity
-File: Verifier.sol
-
-42:     bytes32 public constant UPGRADER_ROLE = keccak256("UPGRADER_ROLE");
-
-51:     bytes32 public constant PAUSER_ROLE = keccak256("PAUSER_ROLE");
-
-60:     bytes32 public constant MINTER_ROLE = keccak256("MINTER_ROLE");
-
-73:     bytes32 public version;
-
-109:     ) public initializer {
-
-153:     function safeMint(uint256 tokenId, address to, string calldata uri) external virtual onlyRole(MINTER_ROLE) {
-
-170:     function pause() external virtual whenNotPaused onlyRole(PAUSER_ROLE) {
-
-185:     function unpause() external virtual whenPaused onlyRole(PAUSER_ROLE) {
-
-198:     function exists(uint256 tokenId) external view virtual returns (bool) {
-
-221:     ) public virtual override(ERC721Upgradeable, IERC721Upgradeable) whenNotPaused {
-
-239:     ) public virtual override(ERC721Upgradeable, IERC721Upgradeable) whenNotPaused {
-
-251:     function renounceRole(bytes32, address) public virtual override {
-
-266:     ) public view virtual override(ERC721Upgradeable, ERC721URIStorageUpgradeable) returns (string memory) {
-
-281:         public
-
-302:     ) public view virtual override(ERC721Upgradeable, IERC721Upgradeable, IVerifier) returns (address) {
-
-```
-
-```solidity
-File: interfaces/IAsset.sol
-
-20:     function balanceOf(address account, uint256 id) external view returns (uint256);
-
-37:     function exists(uint256 id) external view returns (bool);
-
-```
-
-```solidity
-File: interfaces/IAssetValuer.sol
-
-48:     function getVaultValuation(IVault vault) external view returns (uint256);
-
-57:     function getValuation(address collection, uint256 tokenId) external view returns (uint256);
-
-65:     function getValuation(bytes32 key) external view returns (uint256);
-
-67:     function getAssetValuation(IVault vault, bytes32 key) external view returns (uint256);
-
-```
-
-```solidity
-File: interfaces/IOffer.sol
-
-23:     function isApprovedForAll(address owner, address operator) external view returns (bool);
-
-31:     function ownerOf(uint256 tokenId) external view returns (address);
-
-```
-
-```solidity
-File: interfaces/IVault.sol
-
-54:     function totalAssets() external view returns (uint256);
-
-62:     function asset() external view returns (address);
-
-69:     function isParent() external view returns (bool);
-
-76:     function assetValuer() external view returns (IAssetValuer);
-
-84:     function getHoldings() external view returns (bytes32[] memory);
-
-92:     function getHoldingDetails(bytes32 holdingId) external view returns (Holding memory);
-
-101:     function hasRole(bytes32 role, address account) external view returns (bool);
-
-162:     function supportsInterface(bytes4 interfaceId) external view returns (bool);
-
-```
-
-```solidity
-File: interfaces/IVerifier.sol
-
-16:     function exists(uint256 tokenId) external view returns (bool);
-
-24:     function ownerOf(uint256 tokenId) external view returns (address);
+809:     ) external view returns (uint256) {
 
 ```
 
