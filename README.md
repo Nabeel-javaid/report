@@ -22,7 +22,7 @@
 | [L-7](#L-7) | Empty function body | 4 |
 | [L-8](#L-8) | Initializers could be front-run | 12 |
 | [L-9](#L-9) | Unsafe solidity low-level call can cause gas grief attack | 6 |
-| [L-10](#L-10) | Missing contract existence checks before low-level calls | 7 |
+| [L-10](#L-10) | Missing contract existence checks before low-level calls | 8 |
 | [L-11](#L-11) | Loss of precision | 5 |
 | [L-12](#L-12) | State variables not capped at reasonable values | 79 |
 | [L-13](#L-13) | Some tokens may revert when zero value transfers are made | 1 |
@@ -77,7 +77,7 @@
 | [NC-39](#NC-39) | Strings should use double quotes rather than single quotes | 6 |
 | [NC-40](#NC-40) | Consider using `SafeTransferLib.safeTransferETH()` or `Address.sendValue()` for clearer semantic meaning | 6 |
 | [NC-41](#NC-41) | Variables need not be initialized to zero | 61 |
-| [NC-42](#NC-42) | Empty receive()/fallback() function | 3 |
+| [NC-42](#NC-42) | Empty receive()/fallback() function | 2 |
 | [NC-43](#NC-43) | Consider moving msg.sender checks to modifiers | 6 |
 | [NC-44](#NC-44) | Dont use _msgSender() if not supporting EIP-2771 | 45 |
 | [NC-45](#NC-45) | Array indices should be referenced via enums rather than numeric literals | 5 |
@@ -136,7 +136,7 @@ Some tokens do not implement the ERC20 standard properly. For example Tether (US
 ```solidity
 File: StakingDepositUpgradeable.sol
 
-551:             payable(_msgSender()).transfer(slashAmount);
+551:             payable(_msgSender()).transfer(slashAmount); //@audit use .call
 
 ```
 
@@ -505,7 +505,7 @@ Consider adding a comment about why the function body is empty
 ```solidity
 File: JailedNodesUpgradeable.sol
 
-388:     receive() external payable {}
+388:     receive() external payable {} //@audit no withdraw
 
 ```
 
@@ -675,7 +675,7 @@ File: StakingDepositUpgradeable.sol
  ### Missing contract existence checks before low-level calls
 Low-level calls return success if there is no code present at the specified address. In addition to the zero-address checks, add a check to verify that `<address>.code.length > 0`.
 
-*Instances (7)*:
+*Instances (8)*:
  
  <details>
  <summary>Click to expand!</summary>
@@ -704,6 +704,8 @@ File: StakingDepositUpgradeable.sol
 475:         (bool sent, ) = payable(_msgSender()).call{value: unstakeValue}("");
 
 481:         (bool sentToTreasury, ) = payable(_treasuryAddress).call{
+
+551:             payable(_msgSender()).transfer(slashAmount); //@audit use .call
 
 ```
 
@@ -1009,7 +1011,7 @@ Despite the fact that [EIP-20](https://github.com/ethereum/EIPs/blob/7500ac4fc1b
 ```solidity
 File: StakingDepositUpgradeable.sol
 
-551:             payable(_msgSender()).transfer(slashAmount);
+551:             payable(_msgSender()).transfer(slashAmount); //@audit use .call
 
 ```
 
@@ -1029,7 +1031,7 @@ Even if the function follows the best practice of check-effects-interaction, not
 ```solidity
 File: StakingDepositUpgradeable.sol
 
-551:             payable(_msgSender()).transfer(slashAmount);
+551:             payable(_msgSender()).transfer(slashAmount); //@audit use .call
 
 ```
 
@@ -1049,7 +1051,7 @@ Tokens such as COMP or UNI will revert when an address balance reaches type(uint
 ```solidity
 File: StakingDepositUpgradeable.sol
 
-551:             payable(_msgSender()).transfer(slashAmount);
+551:             payable(_msgSender()).transfer(slashAmount); //@audit use .call
 
 ```
 
@@ -1088,7 +1090,7 @@ File: PermissionUpgradeable.sol
 ```solidity
 File: StakingDepositUpgradeable.sol
 
-551:             payable(_msgSender()).transfer(slashAmount);
+551:             payable(_msgSender()).transfer(slashAmount); //@audit use .call
 
 ```
 
@@ -6957,17 +6959,10 @@ File: TombstonedNodesUpgradeable.sol
  ### Empty receive()/fallback() function
 If the intention is for Ether sent by a caller to be used for an actual purpose (i.e. the function is not just a WETH withdraw() handler), the function should call another function (e.g. call weth.deposit() and use the token on the caller's behalf) or at least emit an event to track that funds were sent directly to it.
 
-*Instances (3)*:
+*Instances (2)*:
  
  <details>
  <summary>Click to expand!</summary>
-
-```solidity
-File: JailedNodesUpgradeable.sol
-
-387: 
-
-```
 
 ```solidity
 File: NetworkConfigurationUpgradeable.sol
@@ -7147,7 +7142,7 @@ File: StakingDepositUpgradeable.sol
 
 499:         emit StakeWithdrawn(_msgSender(), unstakeValue);
 
-551:             payable(_msgSender()).transfer(slashAmount);
+551:             payable(_msgSender()).transfer(slashAmount); //@audit use .call
 
 ```
 
@@ -9439,7 +9434,7 @@ File: JailedNodesUpgradeable.sol
 
 351:     ) external view returns (uint256) {
 
-388:     receive() external payable {}
+388:     receive() external payable {} //@audit no withdraw
 
 ```
 
