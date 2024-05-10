@@ -6,110 +6,112 @@
 
 | |Issue|Instances|
 |-|:-|:-:|
-| [M-1](#M-1) | Centralization Risk for trusted owners | 23 |
-| [M-2](#M-2) | Unsafe use of ERC20 transferFrom() | 8 |
-| [M-3](#M-3) | Unsafe use of ERC20 transfer() | 16 |
+| [M-1](#M-1) | Unsafe use of ERC20 transfer() | 1 |
 
 ## Low Issues
 
 
 | |Issue|Instances|
 |-|:-|:-:|
-| [L-1](#L-1) | complex casting | 16 |
-| [L-2](#L-2) | Functions calling contracts/addresses with transfer hooks are missing reentrancy guards | 6 |
-| [L-3](#L-3) | Tokens may be minted to address(0x0) | 7 |
+| [L-1](#L-1) | complex casting | 35 |
+| [L-2](#L-2) | The remaining ETH may be locked in the contract after call | 6 |
+| [L-3](#L-3) | External call recipient may consume all transaction gas | 6 |
 | [L-4](#L-4) |  `abi.encodePacked()` should not be used with dynamic types when passing the result to a hash function such as `keccak256()` | 2 |
-| [L-5](#L-5) | Division by zero not prevented | 17 |
-| [L-6](#L-6) | Empty function body | 4 |
-| [L-7](#L-7) | Use Ownable2Step instead of Ownable | 15 |
-| [L-8](#L-8) | Owner can renounce Ownership   | 15 |
-| [L-9](#L-9) | Loss of precision | 17 |
-| [L-10](#L-10) | State variables not capped at reasonable values | 61 |
-| [L-11](#L-11) | Some tokens may revert when zero value transfers are made | 16 |
-| [L-12](#L-12) |  Functions calling contracts/addresses with transfer hooks should be protected by reentrancy guard   | 16 |
-| [L-13](#L-13) | Some tokens may revert when large transfers are made | 26 |
-| [L-14](#L-14) | Unsafe casting | 13 |
-| [L-15](#L-15) | Unsafe ERC20 operation(s) | 20 |
+| [L-5](#L-5) | constructor/initialize function lacks parameter validation | 12 |
+| [L-6](#L-6) | Division by zero not prevented | 5 |
+| [L-7](#L-7) | Empty function body | 4 |
+| [L-8](#L-8) | Initializers could be front-run | 12 |
+| [L-9](#L-9) | Unsafe solidity low-level call can cause gas grief attack | 6 |
+| [L-10](#L-10) | Missing contract existence checks before low-level calls | 7 |
+| [L-11](#L-11) | Loss of precision | 5 |
+| [L-12](#L-12) | State variables not capped at reasonable values | 79 |
+| [L-13](#L-13) | Some tokens may revert when zero value transfers are made | 1 |
+| [L-14](#L-14) |  Functions calling contracts/addresses with transfer hooks should be protected by reentrancy guard   | 1 |
+| [L-15](#L-15) | Some tokens may revert when large transfers are made | 1 |
+| [L-16](#L-16) | Unsafe casting | 1 |
+| [L-17](#L-17) | Unsafe ERC20 operation(s) | 1 |
 
 ## Non Critical Issues
 
 
 | |Issue|Instances|
 |-|:-|:-:|
-| [NC-1](#NC-1) | Contracts should have full test coverage | 18 |
-| [NC-2](#NC-2) | Consider adding formal verification proofs | 18 |
-| [NC-3](#NC-3) | Large or complicated code bases should implement invariant tests | 18 |
-| [NC-4](#NC-4) | NatSpec: Library declarations should have NatSpec descriptions | 1 |
-| [NC-5](#NC-5) | Variables without visibility specifier | 25 |
+| [NC-1](#NC-1) | Contracts should have full test coverage | 23 |
+| [NC-2](#NC-2) | Consider adding formal verification proofs | 23 |
+| [NC-3](#NC-3) | Large or complicated code bases should implement invariant tests | 23 |
+| [NC-4](#NC-4) | NatSpec: Interface declarations should have NatSpec descriptions | 10 |
+| [NC-5](#NC-5) | Variables without visibility specifier | 46 |
 | [NC-6](#NC-6) | Array is push()ed but not pop()ed | 7 |
-| [NC-7](#NC-7) | Constants in comparisons should appear on the left side | 69 |
-| [NC-8](#NC-8) | constants should be defined rather than using magic numbers | 5 |
-| [NC-9](#NC-9) | Contract declarations should have NatSpec @author annotations | 38 |
-| [NC-10](#NC-10) | Contract declarations should have NatSpec @Title annotations | 38 |
-| [NC-11](#NC-11) | NatSpec: Contract declarations should have @dev tags | 38 |
-| [NC-12](#NC-12) | NatSpec: Contract declarations should have NatSpec descriptions | 38 |
-| [NC-13](#NC-13) | NatSpec: Contract declarations should have @notice tags | 38 |
-| [NC-14](#NC-14) | Consider using delete rather than assigning zero to clear value | 63 |
-| [NC-15](#NC-15) | Consider using delete rather than assigning false to clear value | 3 |
-| [NC-16](#NC-16) | Consider adding a block/deny-list" | 38 |
-| [NC-17](#NC-17) | Use bytes.concat() on bytes instead of abi.encodePacked() for clearer semantic meaning | 5 |
-| [NC-18](#NC-18) | Consider adding emergency-stop functionality | 38 |
-| [NC-19](#NC-19) | Events are missing sender information | 31 |
-| [NC-20](#NC-20) | NatSpec: Event declarations should have NatSpec descriptions | 38 |
-| [NC-21](#NC-21) | contracts should use fixed compiler versions | 18 |
-| [NC-22](#NC-22) | NatSpec: function declarations should have NatSpec descriptions | 143 |
-| [NC-23](#NC-23) | NatSpec: function declarations should have @Notice tags | 143 |
-| [NC-24](#NC-24) | NatSpec: function declarations should have NatSpec descriptions | 143 |
-| [NC-25](#NC-25) | If-statement can be converted to a ternary | 67 |
-| [NC-26](#NC-26) | Large multiples of ten should use scientific notation | 3 |
-| [NC-27](#NC-27) | Consider using named mappings | 3 |
-| [NC-28](#NC-28) | Consider combining multiple address/ID mappings into a single mapping of an address/ID to a struct | 13 |
-| [NC-29](#NC-29) | Use of override is unnecessary | 27 |
-| [NC-30](#NC-30) | Consider using descriptive constants when using 0 in the code | 36 |
-| [NC-31](#NC-31) | Non-external/public variable names should begin with an underscore | 42 |
-| [NC-32](#NC-32) | Return values of `approve()` not checked | 4 |
-| [NC-33](#NC-33) | Setters should prevent re-setting of the same value | 17 |
-| [NC-34](#NC-34) | Use the latest solidity version for deployment   | 18 |
-| [NC-35](#NC-35) | Consider bounding input array length | 18 |
-| [NC-36](#NC-36) | Overflows in unchecked blocks | 5 |
-| [NC-37](#NC-37) | Strings should use double quotes rather than single quotes | 2 |
-| [NC-38](#NC-38) | Variables need not be initialized to zero | 50 |
-| [NC-39](#NC-39) | Import Whole Files Instead of Specific Identifiers | 48 |
-| [NC-40](#NC-40) | Consider moving msg.sender checks to modifiers | 135 |
-| [NC-41](#NC-41) | Dont use _msgSender() if not supporting EIP-2771 | 14 |
-| [NC-42](#NC-42) | <array>.length should not be looked up in every loop of a for-loop | 6 |
-| [NC-43](#NC-43) | Use assembly to emit events, in order to save gas | 43 |
-| [NC-44](#NC-44) | Don't initialize variables with default value | 53 |
-| [NC-45](#NC-45) | Long revert strings | 10 |
+| [NC-7](#NC-7) | Assembly blocks should have extensive comments | 4 |
+| [NC-8](#NC-8) | Constants in comparisons should appear on the left side | 85 |
+| [NC-9](#NC-9) | constants should be defined rather than using magic numbers | 9 |
+| [NC-10](#NC-10) | Contract declarations should have NatSpec @author annotations | 16 |
+| [NC-11](#NC-11) | Contract declarations should have NatSpec @Title annotations | 16 |
+| [NC-12](#NC-12) | NatSpec: Contract declarations should have @dev tags | 16 |
+| [NC-13](#NC-13) | NatSpec: Contract declarations should have NatSpec descriptions | 16 |
+| [NC-14](#NC-14) | NatSpec: Contract declarations should have @notice tags | 16 |
+| [NC-15](#NC-15) | Consider using delete rather than assigning zero to clear value | 77 |
+| [NC-16](#NC-16) | Consider using delete rather than assigning false to clear value | 3 |
+| [NC-17](#NC-17) | Consider adding a block/deny-list" | 16 |
+| [NC-18](#NC-18) | Use bytes.concat() on bytes instead of abi.encodePacked() for clearer semantic meaning | 5 |
+| [NC-19](#NC-19) | Consider adding emergency-stop functionality | 16 |
+| [NC-20](#NC-20) | Error declarations should have NatSpec descriptions | 31 |
+| [NC-21](#NC-21) | Custom error has no error details | 31 |
+| [NC-22](#NC-22) | Events are missing sender information | 30 |
+| [NC-23](#NC-23) | NatSpec: Event declarations should have NatSpec descriptions | 35 |
+| [NC-24](#NC-24) | Events should use parameters to convey information | 1 |
+| [NC-25](#NC-25) | NatSpec: function declarations should have NatSpec descriptions | 242 |
+| [NC-26](#NC-26) | NatSpec: function declarations should have @Notice tags | 242 |
+| [NC-27](#NC-27) | NatSpec: function declarations should have NatSpec descriptions | 242 |
+| [NC-28](#NC-28) | If-statement can be converted to a ternary | 144 |
+| [NC-29](#NC-29) | Large multiples of ten should use scientific notation | 5 |
+| [NC-30](#NC-30) | Consider using named mappings | 7 |
+| [NC-31](#NC-31) | Consider combining multiple address/ID mappings into a single mapping of an address/ID to a struct | 4 |
+| [NC-32](#NC-32) | Use of override is unnecessary | 17 |
+| [NC-33](#NC-33) | Consider using descriptive constants when using 0 in the code | 19 |
+| [NC-34](#NC-34) | Non-external/public variable names should begin with an underscore | 26 |
+| [NC-35](#NC-35) | Setters should prevent re-setting of the same value | 9 |
+| [NC-36](#NC-36) | Use the latest solidity version for deployment   | 23 |
+| [NC-37](#NC-37) | Consider bounding input array length | 30 |
+| [NC-38](#NC-38) | Constants should be defined rather than using magic numbers | 2 |
+| [NC-39](#NC-39) | Strings should use double quotes rather than single quotes | 6 |
+| [NC-40](#NC-40) | Consider using `SafeTransferLib.safeTransferETH()` or `Address.sendValue()` for clearer semantic meaning | 6 |
+| [NC-41](#NC-41) | Variables need not be initialized to zero | 61 |
+| [NC-42](#NC-42) | Empty receive()/fallback() function | 3 |
+| [NC-43](#NC-43) | Consider moving msg.sender checks to modifiers | 6 |
+| [NC-44](#NC-44) | Dont use _msgSender() if not supporting EIP-2771 | 45 |
+| [NC-45](#NC-45) | Array indices should be referenced via enums rather than numeric literals | 5 |
+| [NC-46](#NC-46) | <array>.length should not be looked up in every loop of a for-loop | 29 |
+| [NC-47](#NC-47) | Use assembly to emit events, in order to save gas | 35 |
+| [NC-48](#NC-48) | Don't initialize variables with default value | 64 |
 
 ## Gas Optimizations
 
 
 | |Issue|Instances|
 |-|:-|:-:|
-| [GAS-1](#GAS-1) | Enable IR-based code generation | 18 |
-| [GAS-2](#GAS-2) | Use scientific notation (e.g. 1e18) rather than exponentiation (e.g. 10**18) | 1 |
-| [GAS-3](#GAS-3) | Nesting if-statements is cheaper than using && | 12 |
-| [GAS-4](#GAS-4) | Consider using = instead of += and -= for gas efficiency | 42 |
-| [GAS-5](#GAS-5) | Use >= instead of > for gas efficiency | 37 |
-| [GAS-6](#GAS-6) | Using bools for storage incurs overhead | 3 |
-| [GAS-7](#GAS-7) | Cache array length outside of loop | 18 |
-| [GAS-8](#GAS-8) | Consider using assembly for simple zero checks to save gas | 5 |
-| [GAS-9](#GAS-9) | Expressions for constant values should use immutable rather than constant | 8 |
-| [GAS-10](#GAS-10) | Constructors can be marked payable | 13 |
-| [GAS-11](#GAS-11) | Use Custom Errors | 45 |
-| [GAS-12](#GAS-12) | Use assembly for small keccak256 hashes, in order to save gas | 6 |
-| [GAS-13](#GAS-13) | Reduce gas usage by moving to Solidity 0.8.19 or later | 18 |
-| [GAS-14](#GAS-14) | Functions guaranteed to revert when called by normal users can be marked `payable` | 13 |
-| [GAS-15](#GAS-15) | `++i` costs less gas than `i++`, especially when it's used in `for`-loops (`--i`/`i--` too) | 31 |
-| [GAS-16](#GAS-16) | Using `private` rather than `public` for constants, saves gas | 2 |
-| [GAS-17](#GAS-17) | require()/revert() strings longer than 32 bytes cost extra gas | 27 |
-| [GAS-18](#GAS-18) | Splitting require() statements that use && saves gas | 2 |
-| [GAS-19](#GAS-19) | Structs can be packed into fewer storage slots | 6 |
-| [GAS-20](#GAS-20) | Consider using uint256(1)/uint256(2) instead of true/false for gas efficiency | 20 |
-| [GAS-21](#GAS-21) | Usage of uints/ints smaller than 32 bytes (256 bits) incurs overhead | 7 |
-| [GAS-22](#GAS-22) | Use != 0 instead of > for unsigned integer comparison | 37 |
-| [GAS-23](#GAS-23) | Optimize names to save gas | 136 |
+| [GAS-1](#GAS-1) | Enable IR-based code generation | 23 |
+| [GAS-2](#GAS-2) | Use scientific notation (e.g. 1e18) rather than exponentiation (e.g. 10**18) | 8 |
+| [GAS-3](#GAS-3) | Nesting if-statements is cheaper than using && | 23 |
+| [GAS-4](#GAS-4) | Consider using = instead of += and -= for gas efficiency | 13 |
+| [GAS-5](#GAS-5) | Use >= instead of > for gas efficiency | 25 |
+| [GAS-6](#GAS-6) | Using bools for storage incurs overhead | 7 |
+| [GAS-7](#GAS-7) | Cache array length outside of loop | 30 |
+| [GAS-8](#GAS-8) | Consider using assembly for simple zero checks to save gas | 4 |
+| [GAS-9](#GAS-9) | Expressions for constant values should use immutable rather than constant | 10 |
+| [GAS-10](#GAS-10) | Initializers can be marked as payable to save deployment gas | 12 |
+| [GAS-11](#GAS-11) | Use assembly for small keccak256 hashes, in order to save gas | 2 |
+| [GAS-12](#GAS-12) | Avoid fetching a low-level calls return data by using assembly | 6 |
+| [GAS-13](#GAS-13) | Reduce gas usage by moving to Solidity 0.8.19 or later | 23 |
+| [GAS-14](#GAS-14) | Functions guaranteed to revert when called by normal users can be marked `payable` | 17 |
+| [GAS-15](#GAS-15) | `++i` costs less gas than `i++`, especially when it's used in `for`-loops (`--i`/`i--` too) | 66 |
+| [GAS-16](#GAS-16) | Using `private` rather than `public` for constants, saves gas | 10 |
+| [GAS-17](#GAS-17) | Structs can be packed into fewer storage slots | 11 |
+| [GAS-18](#GAS-18) | Variables can be packed into fewer storage slots by truncating timestamp bytes | 1 |
+| [GAS-19](#GAS-19) | Consider using uint256(1)/uint256(2) instead of true/false for gas efficiency | 21 |
+| [GAS-20](#GAS-20) | Usage of uints/ints smaller than 32 bytes (256 bits) incurs overhead | 6 |
+| [GAS-21](#GAS-21) | Use != 0 instead of > for unsigned integer comparison | 25 |
+| [GAS-22](#GAS-22) | Optimize names to save gas | 194 |
 
 ##################################################################### 
  
@@ -123,208 +125,18 @@
 
 
  ### <a name="M-1"></a>[M-1]
- ### Centralization Risk for trusted owners
-
-#### Impact:
-Contracts have owners with privileged rights to perform admin tasks and need to be trusted to not perform malicious updates or drain funds.
-
-*Instances (23)*:
- 
- <details>
- <summary>Click to expand!</summary>
-
-```solidity
-File: Config.sol
-
-12: contract Config is IConfig, Ownable {
-
-17:     constructor(address _initialOwner) Ownable(_initialOwner) {
-
-```
-
-```solidity
-File: ListMarket.sol
-
-13: contract ListMarket is Ownable {
-
-19:     constructor(address _config, address _collector, address _initialOwner) Ownable(_initialOwner) {
-
-27:     function setPrice(string memory list_name, uint256 price) public onlyOwner {
-
-36:     function setCollector(address payable _collector) public onlyOwner {
-
-```
-
-```solidity
-File: Promo.sol
-
-49: abstract contract Ownable is Context {
-
-90:     function renounceOwnership() public virtual onlyOwner {
-
-98:     function transferOwnership(address newOwner) public virtual onlyOwner {
-
-599: contract BlockChat is ERC20, Ownable {
-
-649:     function setLiquidityWallet(address _liquidityWallet) external onlyOwner {
-
-653:     function setMarketingWallet(address _marketingWallet) external onlyOwner {
-
-657:     function setDevelopmentWallet(address _developmentWallet) external onlyOwner {
-
-661:     function setSellTax(uint256 _sellTax) external onlyOwner {
-
-665:     function setLiquidityTax(uint256 _liquidityTax) external onlyOwner {
-
-669:     function setMarketingTax(uint256 _marketingTax) external onlyOwner {
-
-673:     function setDevelopmentTax(uint256 _devTax) external onlyOwner {
-
-677:     function setAutomatedMarketMakerPair(address pair, bool enabled) public onlyOwner {   
-
-```
-
-```solidity
-File: RandomOracle.sol
-
-12: contract RandomOracle is IRandomOracle, Ownable {
-
-20:     constructor(address _initialOwner) Ownable(_initialOwner) {
-
-24:     function setUpdaterAccount(address _updaterAccount) public onlyOwner {
-
-```
-
-```solidity
-File: SavvaToken.sol
-
-24:         Ownable(_initialOwner)
-
-31:     function mint(uint256 amount) public override onlyOwner {
-
-```
-
-</details> 
- 
-
-
- ### <a name="M-2"></a>[M-2]
- ### Unsafe use of ERC20 transferFrom()
-Some tokens do not implement the ERC20 standard properly. For example Tether (USDT)'s transferFrom() function does not return a boolean as the ERC20 specification requires, and instead has no return value. When these sorts of tokens are cast to IERC20/ERC20, their function signatures do not match and therefore the calls made will revert. It is recommended to use the SafeERC20's safeTransferFrom() from OpenZeppelin instead.
-
-*Instances (8)*:
- 
- <details>
- <summary>Click to expand!</summary>
-
-```solidity
-File: ContentFund.sol
-
-219:         token.transferFrom(msg.sender, address(this), amount);
-
-```
-
-```solidity
-File: NFTMarketplace.sol
-
-55:         c_nft.transferFrom(msg.sender, address(this), tokenId);
-
-81:         c_nft.transferFrom(address(this), msg.sender, tokenId); // use safeTransferFrom
-
-143:         token.transferFrom(msg.sender, oldOwner, price);
-
-177:         token.transferFrom(msg.sender, oldOwner, price);
-
-```
-
-```solidity
-File: Promo.sol
-
-192:     function transferFrom(address from, address to, uint256 amount) external returns (bool);
-
-383:     function transferFrom(address from, address to, uint256 amount) public virtual override returns (bool) {
-
-```
-
-```solidity
-File: Staking.sol
-
-222:         savvaToken.transferFrom(msg.sender, address(this), amount);
-
-```
-
-</details> 
- 
-
-
- ### <a name="M-3"></a>[M-3]
  ### Unsafe use of ERC20 transfer()
 Some tokens do not implement the ERC20 standard properly. For example Tether (USDT)'s transfer() function does not return a boolean as the ERC20 specification requires, and instead has no return value. When these sorts of tokens are cast to IERC20/ERC20, their function signatures do not match and therefore the calls made will revert. It is recommended to use the SafeERC20's safeTransfer() from OpenZeppelin instead.
 
-*Instances (16)*:
+*Instances (1)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: ContentFund.sol
+File: StakingDepositUpgradeable.sol
 
-226:             token.transfer(author, authorShare);
-
-327:             token.transfer(winner, prize);
-
-410:         token.transfer(msg.sender, amount);
-
-484:                 token.transfer(msg.sender, amount);
-
-496:                     token.transfer(msg.sender, amount);
-
-```
-
-```solidity
-File: ContentNFT.sol
-
-54:         bb.transfer(msg.value); // Send ETH to Buy&Burn contract //
-
-```
-
-```solidity
-File: ListMarket.sol
-
-51:             bb.transfer(msg.value); 
-
-53:             collector.transfer(msg.value);
-
-```
-
-```solidity
-File: Promo.sol
-
-156:     function transfer(address to, uint256 amount) external returns (bool);
-
-338:     function transfer(address to, uint256 amount) public virtual override returns (bool) {
-
-```
-
-```solidity
-File: SavvaFaucet.sol
-
-111:         ORIGIN_ADDRESS.transfer(msg.value);
-
-140:                 savvaToken.transfer(depositor, amount);
-
-151:             savvaToken.transfer(stakingContract, tokensLeft); // send the rest to staking contract
-
-```
-
-```solidity
-File: Staking.sol
-
-273:             savvaToken.transfer(msg.sender, gain);
-
-302:         savvaToken.transfer(msg.sender, amount);
-
-402:         savvaToken.transfer(msg.sender, totalAmount);
+551:             payable(_msgSender()).transfer(slashAmount);
 
 ```
 
@@ -339,80 +151,98 @@ File: Staking.sol
  ### complex casting
 Consider whether the number of casts is really necessary, or whether using a different type would be more appropriate. Alternatively, add comments to explain in detail why the casts are necessary, and any implicit reasons why the cast does not introduce an overflow.
 
-*Instances (16)*:
+*Instances (35)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: ContentFund.sol
+File: NetworkConfigurationUpgradeable.sol
 
-381:                 random = uint256(
+90:             return int256(index);
 
-505:             uint256(total),
-
-```
-
-```solidity
-File: ContentNFT.sol
-
-25:     event Mint(
-
-35:     function mint(
-
-56:         _mint(author, tokenId); //
-
-59:         emit Mint(author, tokenId, domain, guid, uri, price, block.timestamp);
+495:             return int256(index);
 
 ```
 
 ```solidity
-File: Promo.sol
+File: PermissionUpgradeable.sol
 
-476:     function _mint(address account, uint256 amount) internal virtual {
-
-623:         _mint(msg.sender, TOTAL_SUPPLY);
+300:         return TimeParserUtils.stringToUint(unitTimestampString);
 
 ```
 
 ```solidity
-File: SavvaFaucet.sol
+File: ReconfigurationUpgradeable.sol
 
-123:         savvaToken.mint(roundTokensToShare);
+354:                     uint256(
+
+366:                     uint256(
+
+429:                 uint256(
+
+434:                 uint256(
+
+484:                 int256(rbnGovernors.length),
+
+485:                 int256(
+
+489:                 int256(tolerance)
+
+507:                     int256(requiredRbnCandidatesLen) -
+
+508:                         int256(rbnCandidatesFoundLen)
+
+511:                     int256(rbnGovernors.length),
+
+517:                     int256(rbnGovernors.length) - keepRbn
+
+520:                     int256(candidatesFound.length) - swapSize,
+
+521:                     int256(nonRbnGovernors.length)
+
+525:                     uint256(swapSize + nonRbnSwapSize)
+
+528:                     uint256(swapSize + nonRbnSwapSize)
+
+533:                     governorsToSwap[uint256(itr)] = rbnGovernors[uint256(itr)];
+
+533:                     governorsToSwap[uint256(itr)] = rbnGovernors[uint256(itr)];
+
+534:                     candidatesToSwap[uint256(itr)] = candidatesFound[
+
+535:                         uint256(itr)
+
+540:                     governorsToSwap[uint256(itr + swapSize)] = nonRbnGovernors[
+
+541:                         uint256(itr)
+
+543:                     candidatesToSwap[uint256(itr + swapSize)] = candidatesFound[
+
+544:                         uint256(itr + swapSize)
+
+618:             uint256(requiredRbnCandidatesLen),
+
+619:             uint256(requiredNonRbnCandidatesLen)
 
 ```
 
 ```solidity
-File: SavvaToken.sol
+File: StakingDepositUpgradeable.sol
 
-31:     function mint(uint256 amount) public override onlyOwner {
+306:             timeStaked = int256(
 
-32:         _mint(owner(), amount); // no total supply check
+315:             timeStaked = int256(
 
-```
+336:                 uint256 computeNum = uint256(
 
-```solidity
-File: Staking.sol
+338:                         (int256(_alpha.value) *
 
-215:         _mint(msg.sender, amount); // mint the voting tokens
+339:                             (timeStaked - int256(_rewardCycle)))
 
-316:         _mint(msg.sender, amount); // mint the voting tokens
+453:             int256 effectiveDaysForStake = int256(timeInNetwork / 1 days) -
 
-714:             _mint(to, from_ag); // mint the voting tokens
-
-```
-
-```solidity
-File: UserProfile.sol
-
-33:             uint8 ch = uint8(b[i]);
-
-```
-
-```solidity
-File: utils.sol
-
-16:         return uint256(keccak256(abi.encodePacked(author, domain, guid)));
+458:                 uint256 signUpBonusToBeGiven = (uint256(effectiveDaysForStake) *
 
 ```
 
@@ -421,8 +251,8 @@ File: utils.sol
 
 
  ### <a name="L-2"></a>[L-2]
- ### Functions calling contracts/addresses with transfer hooks are missing reentrancy guards
-Even if the function follows the best practice of check-effects-interaction, not using a reentrancy guard when there may be transfer hooks will open the users of this protocol up to [read-only reentrancies](https://chainsecurity.com/curve-lp-oracle-manipulation-post-mortem/) with no way to protect against it, except by block-listing the whole protocol.
+ ### The remaining ETH may be locked in the contract after call
+After calling an external contract and forwards some ETH value, the contract balance should be checked. If there is excess eth left over due to a failed call, or more eth being delivered than needed, or any other reason, this eth must be refunded to the user or handled appropriately, otherwise the eth may be frozen in the contract forever.
 
 *Instances (6)*:
  
@@ -430,29 +260,29 @@ Even if the function follows the best practice of check-effects-interaction, not
  <summary>Click to expand!</summary>
 
 ```solidity
-File: ContentFund.sol
+File: JailedNodesUpgradeable.sol
 
-219:         token.transferFrom(msg.sender, address(this), amount);
+307:         (bool sent, ) = payable(address(stakingDepository)).call{
 
-```
-
-```solidity
-File: NFTMarketplace.sol
-
-55:         c_nft.transferFrom(msg.sender, address(this), tokenId);
-
-81:         c_nft.transferFrom(address(this), msg.sender, tokenId); // use safeTransferFrom
-
-143:         token.transferFrom(msg.sender, oldOwner, price);
-
-177:         token.transferFrom(msg.sender, oldOwner, price);
+380:         (bool sent, ) = payable(treasuryAddress).call{value: slashedStake}("");
 
 ```
 
 ```solidity
-File: Staking.sol
+File: SignupBonusVestingUpgradeable.sol
 
-222:         savvaToken.transferFrom(msg.sender, address(this), amount);
+145:         (bool sent, ) = payable(_msgSender()).call{value: claimableTokens}("");
+
+```
+
+```solidity
+File: StakingDepositUpgradeable.sol
+
+371:         (bool sent, ) = payable(_msgSender()).call{value: rewardsToBeClaimed}(
+
+475:         (bool sent, ) = payable(_msgSender()).call{value: unstakeValue}("");
+
+481:         (bool sentToTreasury, ) = payable(_treasuryAddress).call{
 
 ```
 
@@ -461,45 +291,38 @@ File: Staking.sol
 
 
  ### <a name="L-3"></a>[L-3]
- ### Tokens may be minted to address(0x0)
-Neither the  functions, nor _mint() prevent minting to address(0x0)  
+ ### External call recipient may consume all transaction gas
+There is no limit specified on the amount of gas used, so the recipient can use up all of the transactions gas, causing it to revert. Use addr.call{gas: <amount>}("") or this https://github.com/nomad-xyz/ExcessivelySafeCall library instead.  
 
-*Instances (7)*:
+*Instances (6)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: ContentNFT.sol
+File: JailedNodesUpgradeable.sol
 
-56:         _mint(author, tokenId); //
+307:         (bool sent, ) = payable(address(stakingDepository)).call{
 
-```
-
-```solidity
-File: Promo.sol
-
-476:     function _mint(address account, uint256 amount) internal virtual {
-
-623:         _mint(msg.sender, TOTAL_SUPPLY);
+380:         (bool sent, ) = payable(treasuryAddress).call{value: slashedStake}("");
 
 ```
 
 ```solidity
-File: SavvaToken.sol
+File: SignupBonusVestingUpgradeable.sol
 
-32:         _mint(owner(), amount); // no total supply check
+145:         (bool sent, ) = payable(_msgSender()).call{value: claimableTokens}("");
 
 ```
 
 ```solidity
-File: Staking.sol
+File: StakingDepositUpgradeable.sol
 
-215:         _mint(msg.sender, amount); // mint the voting tokens
+371:         (bool sent, ) = payable(_msgSender()).call{value: rewardsToBeClaimed}(
 
-316:         _mint(msg.sender, amount); // mint the voting tokens
+475:         (bool sent, ) = payable(_msgSender()).call{value: unstakeValue}("");
 
-714:             _mint(to, from_ag); // mint the voting tokens
+481:         (bool sentToTreasury, ) = payable(_treasuryAddress).call{
 
 ```
 
@@ -518,16 +341,11 @@ If all arguments are strings and or bytes, `bytes.concat()` should be used inste
  <summary>Click to expand!</summary>
 
 ```solidity
-File: Staking.sol
+File: PermissionUpgradeable.sol
 
-599:         bytes32 key = keccak256(abi.encodePacked(msg.sender, event_id, author));
+138:                 keccak256(abi.encodePacked(proofs[i].proofType)) ==
 
-```
-
-```solidity
-File: utils.sol
-
-16:         return uint256(keccak256(abi.encodePacked(author, domain, guid)));
+139:                 keccak256(abi.encodePacked(_proofType))
 
 ```
 
@@ -536,65 +354,95 @@ File: utils.sol
 
 
  ### <a name="L-5"></a>[L-5]
- ### Division by zero not prevented
-The divisions below take an input parameter that has no zero-value checks, which can cause the functions reverting if zero is passed.  
+ ### constructor/initialize function lacks parameter validation
+Constructors and initialization functions play a critical role in contracts by setting important initial states when the contract is first deployed before the system starts. The parameters passed to the constructor and initialization functions directly affect the behavior of the contract / protocol. If incorrect parameters are provided, the system may fail to run, behave abnormally, be unstable, or lack security. Therefore, it's crucial to carefully check each parameter in the constructor and initialization functions. If an exception is found, the transaction should be rolled back.
 
-*Instances (17)*:
+*Instances (12)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: ContentFund.sol
+File: ActivityMonitorUpgradeable.sol
 
-172:                 (amount * config.getUInt(bytes32("authorShare"))) /
-
-177:                     (amount * config.getUInt(bytes32("nftOwnerCut"))) /
-
-317:             prize = (total * config.getUInt(bytes32("winnerShare"))) / 100;
+55:     function initialize(
 
 ```
 
 ```solidity
-File: Promo.sol
+File: ContractRoleAuthUpgradeable.sol
 
-632:             uint256 taxAmount = (amount * sellTax) / 100;
-
-634:             uint256 liquidityAmount = (taxAmount * liquidityTax) / 100;
-
-635:             uint256 marketingAmount = (taxAmount * marketingTax) / 100;
-
-636:             uint256 developmentAmount = (taxAmount * developmentTax) / 100;
+69:     function initialize() public virtual override onlyInitializing {
 
 ```
 
 ```solidity
-File: SavvaFaucet.sol
+File: IDPRegistryUpgradeable.sol
 
-51:         lastRoundPayWeek = block.timestamp / SECONDS_IN_WEEK;
-
-55:         uint256 week_now = block.timestamp / SECONDS_IN_WEEK;
-
-72:         uint256 week_now = block.timestamp / SECONDS_IN_WEEK;
-
-98:             uint256 week_now = block.timestamp / SECONDS_IN_WEEK;
-
-117:         uint256 week_now = block.timestamp / SECONDS_IN_WEEK;
-
-130:             (100 - STAKING_SHARE)) / 100;
-
-134:             uint256 amount = (deposited[depositor] * totalForEverybody) /
+86:     function initialize() public virtual override initializer {
 
 ```
 
 ```solidity
-File: Staking.sol
+File: JailedNodesUpgradeable.sol
 
-98:         currentFrameNumber = block.timestamp / SECONDS_PER_WEEK;
+104:     function initialize(
 
-128:         uint256 frame_n = block.timestamp / SECONDS_PER_WEEK;
+```
 
-198:             uint256 user_gain = (balanceOf(userAddress) * frame_tokens) /
+```solidity
+File: NetworkConfigurationUpgradeable.sol
+
+240:     function initialize(
+
+```
+
+```solidity
+File: PermissionUpgradeable.sol
+
+19:     function initialize(
+
+```
+
+```solidity
+File: RBACUpgradeable.sol
+
+30:     function initialize() public virtual onlyInitializing {
+
+```
+
+```solidity
+File: ReconfigurationUpgradeable.sol
+
+52:     function initialize(
+
+```
+
+```solidity
+File: SignupBonusVestingUpgradeable.sol
+
+73:     function initialize(
+
+```
+
+```solidity
+File: StakingDepositUpgradeable.sol
+
+148:     function initialize(
+
+```
+
+```solidity
+File: StakingEscrowUpgradeable.sol
+
+21:     function initialize() public virtual initializer {
+
+```
+
+```solidity
+File: TombstonedNodesUpgradeable.sol
+
+26:     function initialize(
 
 ```
 
@@ -603,6 +451,49 @@ File: Staking.sol
 
 
  ### <a name="L-6"></a>[L-6]
+ ### Division by zero not prevented
+The divisions below take an input parameter that has no zero-value checks, which can cause the functions reverting if zero is passed.  
+
+*Instances (5)*:
+ 
+ <details>
+ <summary>Click to expand!</summary>
+
+```solidity
+File: ActivityMonitorUpgradeable.sol
+
+386:         uint256 tolerance = (networkSize - 1) / 3;
+
+```
+
+```solidity
+File: ReconfigurationUpgradeable.sol
+
+201:             .length - 1) / toleranceFactor;
+
+```
+
+```solidity
+File: SignupBonusVestingUpgradeable.sol
+
+190:         uint256 vestedTokens = (signupBonus * activePeriodInDays) /
+
+```
+
+```solidity
+File: StakingDepositUpgradeable.sol
+
+351:                 uint256 rewardOnStake = computeNum / computeDem;
+
+515:             (_amountPrcnt)) / 100;
+
+```
+
+</details> 
+ 
+
+
+ ### <a name="L-7"></a>[L-7]
  ### Empty function body
 Consider adding a comment about why the function body is empty
 
@@ -612,93 +503,30 @@ Consider adding a comment about why the function body is empty
  <summary>Click to expand!</summary>
 
 ```solidity
-File: ContentFund.sol
+File: JailedNodesUpgradeable.sol
 
-158:         } catch {}
-
-```
-
-```solidity
-File: ContentRegistry.sol
-
-90:         } catch {}
+388:     receive() external payable {}
 
 ```
 
 ```solidity
-File: Promo.sol
+File: NetworkConfigurationUpgradeable.sol
 
-573:     function _beforeTokenTransfer(address from, address to, uint256 amount) internal virtual {}
-
-589:     function _afterTokenTransfer(address from, address to, uint256 amount) internal virtual {}
-
-```
-
-</details> 
- 
-
-
- ### <a name="L-7"></a>[L-7]
- ### Use Ownable2Step instead of Ownable
-Add a description of why Ownable2Step is recommended.
-
-*Instances (15)*:
- 
- <details>
- <summary>Click to expand!</summary>
-
-```solidity
-File: Config.sol
-
-9: import "@openzeppelin/contracts/access/Ownable.sol";
-
-12: contract Config is IConfig, Ownable {
-
-17:     constructor(address _initialOwner) Ownable(_initialOwner) {
+232:     receive() external payable {}
 
 ```
 
 ```solidity
-File: ListMarket.sol
+File: StakingDepositUpgradeable.sol
 
-9: import "@openzeppelin/contracts/access/Ownable.sol";
-
-13: contract ListMarket is Ownable {
-
-19:     constructor(address _config, address _collector, address _initialOwner) Ownable(_initialOwner) {
+636:     receive() external payable {}
 
 ```
 
 ```solidity
-File: Promo.sol
+File: StakingEscrowUpgradeable.sol
 
-49: abstract contract Ownable is Context {
-
-80:         require(owner() == _msgSender(), "Ownable: caller is not the owner");
-
-99:         require(newOwner != address(0), "Ownable: new owner is the zero address");
-
-599: contract BlockChat is ERC20, Ownable {
-
-```
-
-```solidity
-File: RandomOracle.sol
-
-9: import "@openzeppelin/contracts/access/Ownable.sol";
-
-12: contract RandomOracle is IRandomOracle, Ownable {
-
-20:     constructor(address _initialOwner) Ownable(_initialOwner) {
-
-```
-
-```solidity
-File: SavvaToken.sol
-
-10: import "@openzeppelin/contracts/access/Ownable.sol";
-
-24:         Ownable(_initialOwner)
+19:     function __stakingEscrowInitUnchained() internal onlyInitializing {}
 
 ```
 
@@ -707,66 +535,95 @@ File: SavvaToken.sol
 
 
  ### <a name="L-8"></a>[L-8]
- ### Owner can renounce Ownership  
-Each of the following contracts implements or inherits the renounceOwnership() function. This can represent a certain risk if the ownership is renounced for any other reason than by design. Renouncing ownership will leave the contract without an owner, thereby removing any functionality that is only available to the owner.
+ ### Initializers could be front-run
+Initializers could be front-run, allowing an attacker to either set their own values, take ownership of the contract, and in the best case forcing a re-deployment
 
-*Instances (15)*:
+*Instances (12)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: Config.sol
+File: ActivityMonitorUpgradeable.sol
 
-9: import "@openzeppelin/contracts/access/Ownable.sol";
-
-12: contract Config is IConfig, Ownable {
-
-17:     constructor(address _initialOwner) Ownable(_initialOwner) {
+55:     function initialize(
 
 ```
 
 ```solidity
-File: ListMarket.sol
+File: ContractRoleAuthUpgradeable.sol
 
-9: import "@openzeppelin/contracts/access/Ownable.sol";
-
-13: contract ListMarket is Ownable {
-
-19:     constructor(address _config, address _collector, address _initialOwner) Ownable(_initialOwner) {
+69:     function initialize() public virtual override onlyInitializing {
 
 ```
 
 ```solidity
-File: Promo.sol
+File: IDPRegistryUpgradeable.sol
 
-49: abstract contract Ownable is Context {
-
-80:         require(owner() == _msgSender(), "Ownable: caller is not the owner");
-
-99:         require(newOwner != address(0), "Ownable: new owner is the zero address");
-
-599: contract BlockChat is ERC20, Ownable {
+86:     function initialize() public virtual override initializer {
 
 ```
 
 ```solidity
-File: RandomOracle.sol
+File: JailedNodesUpgradeable.sol
 
-9: import "@openzeppelin/contracts/access/Ownable.sol";
-
-12: contract RandomOracle is IRandomOracle, Ownable {
-
-20:     constructor(address _initialOwner) Ownable(_initialOwner) {
+104:     function initialize(
 
 ```
 
 ```solidity
-File: SavvaToken.sol
+File: NetworkConfigurationUpgradeable.sol
 
-10: import "@openzeppelin/contracts/access/Ownable.sol";
+240:     function initialize(
 
-24:         Ownable(_initialOwner)
+```
+
+```solidity
+File: PermissionUpgradeable.sol
+
+19:     function initialize(
+
+```
+
+```solidity
+File: RBACUpgradeable.sol
+
+30:     function initialize() public virtual onlyInitializing {
+
+```
+
+```solidity
+File: ReconfigurationUpgradeable.sol
+
+52:     function initialize(
+
+```
+
+```solidity
+File: SignupBonusVestingUpgradeable.sol
+
+73:     function initialize(
+
+```
+
+```solidity
+File: StakingDepositUpgradeable.sol
+
+148:     function initialize(
+
+```
+
+```solidity
+File: StakingEscrowUpgradeable.sol
+
+21:     function initialize() public virtual initializer {
+
+```
+
+```solidity
+File: TombstonedNodesUpgradeable.sol
+
+26:     function initialize(
 
 ```
 
@@ -775,65 +632,38 @@ File: SavvaToken.sol
 
 
  ### <a name="L-9"></a>[L-9]
- ### Loss of precision
-Division by large numbers or variables may result in the result being zero, due to Solidity not supporting fractions.
+ ### Unsafe solidity low-level call can cause gas grief attack
+Using the low-level calls of a solidity address can leave the contract open to gas grief attacks. These attacks occur when the called contract returns a large amount of data. So when calling an external contract, it is necessary to check the length of the return data before reading/copying it (using returndatasize()).
 
-*Instances (17)*:
+*Instances (6)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: ContentFund.sol
+File: JailedNodesUpgradeable.sol
 
-172:                 (amount * config.getUInt(bytes32("authorShare"))) /
+307:         (bool sent, ) = payable(address(stakingDepository)).call{
 
-177:                     (amount * config.getUInt(bytes32("nftOwnerCut"))) /
-
-317:             prize = (total * config.getUInt(bytes32("winnerShare"))) / 100;
+380:         (bool sent, ) = payable(treasuryAddress).call{value: slashedStake}("");
 
 ```
 
 ```solidity
-File: Promo.sol
+File: SignupBonusVestingUpgradeable.sol
 
-632:             uint256 taxAmount = (amount * sellTax) / 100;
-
-634:             uint256 liquidityAmount = (taxAmount * liquidityTax) / 100;
-
-635:             uint256 marketingAmount = (taxAmount * marketingTax) / 100;
-
-636:             uint256 developmentAmount = (taxAmount * developmentTax) / 100;
+145:         (bool sent, ) = payable(_msgSender()).call{value: claimableTokens}("");
 
 ```
 
 ```solidity
-File: SavvaFaucet.sol
+File: StakingDepositUpgradeable.sol
 
-51:         lastRoundPayWeek = block.timestamp / SECONDS_IN_WEEK;
+371:         (bool sent, ) = payable(_msgSender()).call{value: rewardsToBeClaimed}(
 
-55:         uint256 week_now = block.timestamp / SECONDS_IN_WEEK;
+475:         (bool sent, ) = payable(_msgSender()).call{value: unstakeValue}("");
 
-72:         uint256 week_now = block.timestamp / SECONDS_IN_WEEK;
-
-98:             uint256 week_now = block.timestamp / SECONDS_IN_WEEK;
-
-117:         uint256 week_now = block.timestamp / SECONDS_IN_WEEK;
-
-130:             (100 - STAKING_SHARE)) / 100;
-
-134:             uint256 amount = (deposited[depositor] * totalForEverybody) /
-
-```
-
-```solidity
-File: Staking.sol
-
-98:         currentFrameNumber = block.timestamp / SECONDS_PER_WEEK;
-
-128:         uint256 frame_n = block.timestamp / SECONDS_PER_WEEK;
-
-198:             uint256 user_gain = (balanceOf(userAddress) * frame_tokens) /
+481:         (bool sentToTreasury, ) = payable(_treasuryAddress).call{
 
 ```
 
@@ -842,173 +672,45 @@ File: Staking.sol
 
 
  ### <a name="L-10"></a>[L-10]
- ### State variables not capped at reasonable values
-Consider adding minimum/maximum value checks to ensure that the state variables below can never be used to excessively harm users, including via griefing
+ ### Missing contract existence checks before low-level calls
+Low-level calls return success if there is no code present at the specified address. In addition to the zero-address checks, add a check to verify that `<address>.code.length > 0`.
 
-*Instances (61)*:
+*Instances (7)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: ContentFund.sol
+File: JailedNodesUpgradeable.sol
 
-21:         address author;
+307:         (bool sent, ) = payable(address(stakingDepository)).call{
 
-22:         string domain;
-
-23:         string guid;
-
-25:         uint256 amount;
-
-26:         uint256 round_time;
-
-27:         uint256 SLLeft; // Sorted List left
-
-28:         uint256 SLRight; // Sorted List right
-
-129:                 return false;
-
-138:                 return false;
-
-141: 
-
-310:             return h_next;
-
-312: 
-
-362: 
-
-370:         uint256 h;
-
-437: 
-
-462: 
-
-542:         return total;
+380:         (bool sent, ) = payable(treasuryAddress).call{value: slashedStake}("");
 
 ```
 
 ```solidity
-File: ContentRegistry.sol
+File: SignupBonusVestingUpgradeable.sol
 
-110:         return savva_cid;
-
-129:         return ids;
+145:         (bool sent, ) = payable(_msgSender()).call{value: claimableTokens}("");
 
 ```
 
 ```solidity
-File: NFTMarketplace.sol
+File: StakingDepositUpgradeable.sol
 
-20:         address owner;
+371:         (bool sent, ) = payable(_msgSender()).call{value: rewardsToBeClaimed}(
 
-21:         uint256 price;
+475:         (bool sent, ) = payable(_msgSender()).call{value: unstakeValue}("");
 
-```
-
-```solidity
-File: Promo.sol
-
-73:         return _owner;
-
-288:         return _name;
-
-296:         return _symbol;
-
-313:         return 18;
-
-320:         return _totalSupply;
-
-341:         return true;
-
-364:         return true;
-
-387:         return true;
-
-405:         return true;
-
-429: 
+481:         (bool sentToTreasury, ) = payable(_treasuryAddress).call{
 
 ```
 
 ```solidity
-File: RandomOracle.sol
+File: StakingEscrowUpgradeable.sol
 
-29:         return random;
-
-33:         return lastUpdateTime;
-
-```
-
-```solidity
-File: SavvaFaucet.sol
-
-38:         return SECONDS_IN_WEEK;
-
-63:                 return roundTokensToShare;
-
-160:         delete depositors;
-
-```
-
-```solidity
-File: Staking.sol
-
-16:         uint256 amount;
-
-17:         uint256 timestamp;
-
-21:         address author;
-
-22:         address event_contract;
-
-23:         bytes32 event_id;
-
-24:         uint256 amount;
-
-25:         uint256 index; // index in the array of keys
-
-29:         uint256 accruedGain;
-
-31:         uint256 nextUnstakeRequestId;
-
-32:         uint256 stake_frame;
-
-36:         uint256 event_contract;
-
-37:         uint256 last_paid_by_patrons;
-
-107:         uint256 to_share; // tokens accumulated for sharing
-
-108:         uint256 staked; // total staked in this frame
-
-181:             return 0;
-
-203:         return result;
-
-362: 
-
-563:             return 0;
-
-584:         return total;
-
-690:             return false;
-
-694:             return true;
-
-721:                 return false;
-
-726:         return true;
-
-```
-
-```solidity
-File: utils.sol
-
-38: 
-
-44: 
+79:         payable(_msgSender()).sendValue(amount); //@audit use .call to send eth
 
 ```
 
@@ -1017,73 +719,41 @@ File: utils.sol
 
 
  ### <a name="L-11"></a>[L-11]
- ### Some tokens may revert when zero value transfers are made
-Despite the fact that [EIP-20](https://github.com/ethereum/EIPs/blob/7500ac4fc1bbdfaf684e7ef851f798f6b667b2fe/EIPS/eip-20.md?plain=1#L116) states that zero-value transfers must be accepted, some tokens, such as LEND, will revert if this is attempted, which may cause transactions that involve other tokens (such as batch operations) to fully revert. Consider skipping the transfer if the amount is zero, which will also save gas.
+ ### Loss of precision
+Division by large numbers or variables may result in the result being zero, due to Solidity not supporting fractions.
 
-*Instances (16)*:
+*Instances (5)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: ContentFund.sol
+File: ActivityMonitorUpgradeable.sol
 
-226:             token.transfer(author, authorShare);
-
-327:             token.transfer(winner, prize);
-
-410:         token.transfer(msg.sender, amount);
-
-484:                 token.transfer(msg.sender, amount);
-
-496:                     token.transfer(msg.sender, amount);
+386:         uint256 tolerance = (networkSize - 1) / 3;
 
 ```
 
 ```solidity
-File: ContentNFT.sol
+File: ReconfigurationUpgradeable.sol
 
-54:         bb.transfer(msg.value); // Send ETH to Buy&Burn contract //
-
-```
-
-```solidity
-File: ListMarket.sol
-
-51:             bb.transfer(msg.value); 
-
-53:             collector.transfer(msg.value);
+201:             .length - 1) / toleranceFactor;
 
 ```
 
 ```solidity
-File: Promo.sol
+File: SignupBonusVestingUpgradeable.sol
 
-156:     function transfer(address to, uint256 amount) external returns (bool);
-
-338:     function transfer(address to, uint256 amount) public virtual override returns (bool) {
+190:         uint256 vestedTokens = (signupBonus * activePeriodInDays) /
 
 ```
 
 ```solidity
-File: SavvaFaucet.sol
+File: StakingDepositUpgradeable.sol
 
-111:         ORIGIN_ADDRESS.transfer(msg.value);
+351:                 uint256 rewardOnStake = computeNum / computeDem;
 
-140:                 savvaToken.transfer(depositor, amount);
-
-151:             savvaToken.transfer(stakingContract, tokensLeft); // send the rest to staking contract
-
-```
-
-```solidity
-File: Staking.sol
-
-273:             savvaToken.transfer(msg.sender, gain);
-
-302:         savvaToken.transfer(msg.sender, amount);
-
-402:         savvaToken.transfer(msg.sender, totalAmount);
+515:             (_amountPrcnt)) / 100;
 
 ```
 
@@ -1092,73 +762,234 @@ File: Staking.sol
 
 
  ### <a name="L-12"></a>[L-12]
- ###  Functions calling contracts/addresses with transfer hooks should be protected by reentrancy guard  
-Even if the function follows the best practice of check-effects-interaction, not using a reentrancy guard when there may be transfer hooks opens the users of this protocol up to [read-only reentrancy](https://chainsecurity.com/curve-lp-oracle-manipulation-post-mortem/) vulnerability with no way to protect them except by block-listing the entire protocol.
+ ### State variables not capped at reasonable values
+Consider adding minimum/maximum value checks to ensure that the state variables below can never be used to excessively harm users, including via griefing
 
-*Instances (16)*:
+*Instances (79)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: ContentFund.sol
+File: ActivityMonitorUpgradeable.sol
 
-226:             token.transfer(author, authorShare);
+137:         return nodeId;
 
-327:             token.transfer(winner, prize);
-
-410:         token.transfer(msg.sender, amount);
-
-484:                 token.transfer(msg.sender, amount);
-
-496:                     token.transfer(msg.sender, amount);
+220:         return 0;
 
 ```
 
 ```solidity
-File: ContentNFT.sol
+File: IDPRegistryUpgradeable.sol
 
-54:         bb.transfer(msg.value); // Send ETH to Buy&Burn contract //
+150:         return allIDPs;
 
-```
+218:         return info;
 
-```solidity
-File: ListMarket.sol
+251:         return idpInfo;
 
-51:             bb.transfer(msg.value); 
+276:         return deletedCount;
 
-53:             collector.transfer(msg.value);
-
-```
-
-```solidity
-File: Promo.sol
-
-156:     function transfer(address to, uint256 amount) external returns (bool);
-
-338:     function transfer(address to, uint256 amount) public virtual override returns (bool) {
+291:         return _supportedProofTypes;
 
 ```
 
 ```solidity
-File: SavvaFaucet.sol
+File: JailedNodesUpgradeable.sol
 
-111:         ORIGIN_ADDRESS.transfer(msg.value);
+256:         return timeServedInJail;
 
-140:                 savvaToken.transfer(depositor, amount);
-
-151:             savvaToken.transfer(stakingContract, tokensLeft); // send the rest to staking contract
+373:         return timeInJail;
 
 ```
 
 ```solidity
-File: Staking.sol
+File: NetworkConfigurationUpgradeable.sol
 
-273:             savvaToken.transfer(msg.sender, gain);
+514:         uint256 count;
 
-302:         savvaToken.transfer(msg.sender, amount);
+520:         return count;
 
-402:         savvaToken.transfer(msg.sender, totalAmount);
+594:         return safeToUpgradeCandidates;
+
+```
+
+```solidity
+File: PermissionUpgradeable.sol
+
+66: 
+
+154:         return true;
+
+248:                 return true;
+
+253:         return false;
+
+```
+
+```solidity
+File: ReconfigurationUpgradeable.sol
+
+12:         address nodeAddress;
+
+13:         bool isRedbelly;
+
+18:         private _nonRbnGovernorsPrioritisedForDowngrade;
+
+94:         uint256 upgradeWindow;
+
+95:         bool found;
+
+99:             return candidates;
+
+126:         return activeCandidates;
+
+130:         return _reconfigurationsCounter;
+
+162:         return _reconfigurationBuffer;
+
+312:         return withOwner;
+
+331:         return withOwner;
+
+375:         return governorsWithCoolOffInitiated;
+
+396:         return withOwner;
+
+411:         return withOwner;
+
+478:             uint256 requiredRbnCandidatesLen;
+
+479:             uint256 requiredNonRbnCandidatesLen;
+
+492:             uint256 rbnCandidatesFoundLen;
+
+493:             uint256 nonRbnCandidatesFoundLen;
+
+530: 
+
+574:         uint256 rbnGovernorsLen;
+
+584:         uint256 rbnLen;
+
+585:         uint256 nonRbnLen;
+
+610:         int256 requiredNonRbnCandidatesLen;
+
+630:         uint256 rbnFound;
+
+631:         uint256 nonRbnFound;
+
+```
+
+```solidity
+File: SignupBonusVestingUpgradeable.sol
+
+23:         private _networkConfigurationContractInstance;
+
+192:         return vestedTokens;
+
+259:             return _first200Bonus;
+
+261:             return _next400Bonus;
+
+263:             return 0;
+
+```
+
+```solidity
+File: StakingDepositUpgradeable.sol
+
+10:         uint256 value;
+
+11:         uint256 precision;
+
+15:         uint256 depositTimestamp;
+
+16:         uint256 unstakeTimestamp;
+
+17:         uint256 depositedAmount;
+
+18:         uint256 redbellyDeposit;
+
+19:         uint256 nodeOperatorDeposit;
+
+20:         uint256 slashedAmount;
+
+21:         uint256 slashedRedbellyDeposit;
+
+22:         uint256 slashedNodeOperatorDeposit;
+
+652:         return nodeConfig;
+
+664:         return _treasuryAddress;
+
+```
+
+```solidity
+File: TombstonedNodesUpgradeable.sol
+
+103:             return true;
+
+105:         return false;
+
+```
+
+```solidity
+File: interfaces/IIDPRegistry.sol
+
+6:         string proofType;
+
+7:         string publicKey;
+
+11:         string name;
+
+12:         string issuerDid;
+
+13:         string url;
+
+14:         address publicAddress;
+
+18:         string name;
+
+19:         string issuerDid;
+
+20:         string url;
+
+21:         address publicAddress;
+
+```
+
+```solidity
+File: interfaces/IJailedNodes.sol
+
+6:         uint256 jailedTimestamp;
+
+7:         uint256 daysToServe;
+
+8:         uint256 releasedTimestamp;
+
+```
+
+```solidity
+File: interfaces/IPermission.sol
+
+13:         string proofType;
+
+14:         Query query;
+
+```
+
+```solidity
+File: interfaces/IReconfiguration.sol
+
+8:         uint256 totalGovernors;
+
+9:         uint256 totalCandidates;
+
+13:         uint256 value;
+
+14:         uint256 precision;
 
 ```
 
@@ -1167,93 +998,18 @@ File: Staking.sol
 
 
  ### <a name="L-13"></a>[L-13]
- ### Some tokens may revert when large transfers are made
-Tokens such as COMP or UNI will revert when an address balance reaches type(uint96).max. Ensure that the calls below can be broken up into smaller batches if necessary.  
+ ### Some tokens may revert when zero value transfers are made
+Despite the fact that [EIP-20](https://github.com/ethereum/EIPs/blob/7500ac4fc1bbdfaf684e7ef851f798f6b667b2fe/EIPS/eip-20.md?plain=1#L116) states that zero-value transfers must be accepted, some tokens, such as LEND, will revert if this is attempted, which may cause transactions that involve other tokens (such as batch operations) to fully revert. Consider skipping the transfer if the amount is zero, which will also save gas.
 
-*Instances (26)*:
+*Instances (1)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: ContentFund.sol
+File: StakingDepositUpgradeable.sol
 
-226:             token.transfer(author, authorShare);
-
-327:             token.transfer(winner, prize);
-
-410:         token.transfer(msg.sender, amount);
-
-484:                 token.transfer(msg.sender, amount);
-
-496:                     token.transfer(msg.sender, amount);
-
-```
-
-```solidity
-File: ContentNFT.sol
-
-54:         bb.transfer(msg.value); // Send ETH to Buy&Burn contract //
-
-```
-
-```solidity
-File: ListMarket.sol
-
-51:             bb.transfer(msg.value); 
-
-53:             collector.transfer(msg.value);
-
-```
-
-```solidity
-File: Promo.sol
-
-156:     function transfer(address to, uint256 amount) external returns (bool);
-
-338:     function transfer(address to, uint256 amount) public virtual override returns (bool) {
-
-340:         _transfer(owner, to, amount);
-
-386:         _transfer(from, to, amount);
-
-447:     function _transfer(address from, address to, uint256 amount) internal virtual {
-
-626:     function _transfer(
-
-638:             super._transfer(sender, liquidityWallet, liquidityAmount);
-
-639:             super._transfer(sender, marketingWallet, marketingAmount);
-
-640:             super._transfer(sender, developmentWallet, developmentAmount);
-
-643:             super._transfer(sender, recipient, transferAmount);
-
-645:             super._transfer(sender, recipient, amount);
-
-```
-
-```solidity
-File: SavvaFaucet.sol
-
-111:         ORIGIN_ADDRESS.transfer(msg.value);
-
-140:                 savvaToken.transfer(depositor, amount);
-
-151:             savvaToken.transfer(stakingContract, tokensLeft); // send the rest to staking contract
-
-```
-
-```solidity
-File: Staking.sol
-
-273:             savvaToken.transfer(msg.sender, gain);
-
-302:         savvaToken.transfer(msg.sender, amount);
-
-402:         savvaToken.transfer(msg.sender, totalAmount);
-
-724:             _transfer(from, to, left2send);
+551:             payable(_msgSender()).transfer(slashAmount);
 
 ```
 
@@ -1262,67 +1018,18 @@ File: Staking.sol
 
 
  ### <a name="L-14"></a>[L-14]
- ### Unsafe casting
-Unsafe casting can cause alot of issues especially when a type is downcast to a smaller type, the higher order bits are truncated, effectively applying a modulo to the original value. Without any other checks, this wrapping will lead to unexpected behavior and bugs
+ ###  Functions calling contracts/addresses with transfer hooks should be protected by reentrancy guard  
+Even if the function follows the best practice of check-effects-interaction, not using a reentrancy guard when there may be transfer hooks opens the users of this protocol up to [read-only reentrancy](https://chainsecurity.com/curve-lp-oracle-manipulation-post-mortem/) vulnerability with no way to protect them except by block-listing the entire protocol.
 
-*Instances (13)*:
+*Instances (1)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: ContentNFT.sol
+File: StakingDepositUpgradeable.sol
 
-25:     event Mint(
-
-35:     function mint(
-
-56:         _mint(author, tokenId); //
-
-59:         emit Mint(author, tokenId, domain, guid, uri, price, block.timestamp);
-
-```
-
-```solidity
-File: Promo.sol
-
-476:     function _mint(address account, uint256 amount) internal virtual {
-
-623:         _mint(msg.sender, TOTAL_SUPPLY);
-
-```
-
-```solidity
-File: SavvaFaucet.sol
-
-123:         savvaToken.mint(roundTokensToShare);
-
-```
-
-```solidity
-File: SavvaToken.sol
-
-31:     function mint(uint256 amount) public override onlyOwner {
-
-32:         _mint(owner(), amount); // no total supply check
-
-```
-
-```solidity
-File: Staking.sol
-
-215:         _mint(msg.sender, amount); // mint the voting tokens
-
-316:         _mint(msg.sender, amount); // mint the voting tokens
-
-714:             _mint(to, from_ag); // mint the voting tokens
-
-```
-
-```solidity
-File: UserProfile.sol
-
-33:             uint8 ch = uint8(b[i]);
+551:             payable(_msgSender()).transfer(slashAmount);
 
 ```
 
@@ -1331,80 +1038,57 @@ File: UserProfile.sol
 
 
  ### <a name="L-15"></a>[L-15]
- ### Unsafe ERC20 operation(s)
+ ### Some tokens may revert when large transfers are made
+Tokens such as COMP or UNI will revert when an address balance reaches type(uint96).max. Ensure that the calls below can be broken up into smaller batches if necessary.  
 
-*Instances (20)*:
+*Instances (1)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: ContentFund.sol
+File: StakingDepositUpgradeable.sol
 
-219:         token.transferFrom(msg.sender, address(this), amount);
-
-226:             token.transfer(author, authorShare);
-
-327:             token.transfer(winner, prize);
-
-410:         token.transfer(msg.sender, amount);
-
-484:                 token.transfer(msg.sender, amount);
-
-496:                     token.transfer(msg.sender, amount);
+551:             payable(_msgSender()).transfer(slashAmount);
 
 ```
 
-```solidity
-File: ContentNFT.sol
+</details> 
+ 
 
-54:         bb.transfer(msg.value); // Send ETH to Buy&Burn contract //
+
+ ### <a name="L-16"></a>[L-16]
+ ### Unsafe casting
+Unsafe casting can cause alot of issues especially when a type is downcast to a smaller type, the higher order bits are truncated, effectively applying a modulo to the original value. Without any other checks, this wrapping will lead to unexpected behavior and bugs
+
+*Instances (1)*:
+ 
+ <details>
+ <summary>Click to expand!</summary>
+
+```solidity
+File: PermissionUpgradeable.sol
+
+300:         return TimeParserUtils.stringToUint(unitTimestampString);
 
 ```
 
-```solidity
-File: ListMarket.sol
+</details> 
+ 
 
-51:             bb.transfer(msg.value); 
 
-53:             collector.transfer(msg.value);
+ ### <a name="L-17"></a>[L-17]
+ ### Unsafe ERC20 operation(s)
 
-```
-
-```solidity
-File: NFTMarketplace.sol
-
-55:         c_nft.transferFrom(msg.sender, address(this), tokenId);
-
-81:         c_nft.transferFrom(address(this), msg.sender, tokenId); // use safeTransferFrom
-
-143:         token.transferFrom(msg.sender, oldOwner, price);
-
-177:         token.transferFrom(msg.sender, oldOwner, price);
-
-```
+*Instances (1)*:
+ 
+ <details>
+ <summary>Click to expand!</summary>
 
 ```solidity
-File: SavvaFaucet.sol
+File: StakingDepositUpgradeable.sol
 
-111:         ORIGIN_ADDRESS.transfer(msg.value);
-
-140:                 savvaToken.transfer(depositor, amount);
-
-151:             savvaToken.transfer(stakingContract, tokensLeft); // send the rest to staking contract
-
-```
-
-```solidity
-File: Staking.sol
-
-222:         savvaToken.transferFrom(msg.sender, address(this), amount);
-
-273:             savvaToken.transfer(msg.sender, gain);
-
-302:         savvaToken.transfer(msg.sender, amount);
-
-402:         savvaToken.transfer(msg.sender, totalAmount);
+551:             payable(_msgSender()).transfer(slashAmount);
 
 ```
 
@@ -1419,109 +1103,169 @@ File: Staking.sol
  ### Contracts should have full test coverage
 While 100% code coverage does not guarantee that there are no bugs, it often will catch easy-to-find bugs, and will ensure that there are fewer regressions when the code invariably has to be modified. Furthermore, in order to get full coverage, code authors will often have to re-organize their code so that it is more modular, so that each component can be tested separately, which reduces interdependencies between modules and layers, and makes for code that is easier to reason about and audit.
 
-*Instances (18)*:
+*Instances (23)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: Config.sol
+File: ActivityMonitorUpgradeable.sol
 
-7: pragma solidity ^0.8.18;
-
-```
-
-```solidity
-File: ContentFund.sol
-
-7: pragma solidity ^0.8.18;
+2: pragma solidity 0.8.22;
 
 ```
 
 ```solidity
-File: ContentNFT.sol
+File: ArtifactsFromRbnCore.sol
 
-7: pragma solidity ^0.8.18;
-
-```
-
-```solidity
-File: ContentRegistry.sol
-
-7: pragma solidity ^0.8.18;
+2: pragma solidity 0.8.22;
 
 ```
 
 ```solidity
-File: ListMarket.sol
+File: ContractRoleAuthUpgradeable.sol
 
-7: pragma solidity ^0.8.18;
-
-```
-
-```solidity
-File: NFTMarketplace.sol
-
-7: pragma solidity ^0.8.18;
+2: pragma solidity 0.8.22;
 
 ```
 
 ```solidity
-File: Promo.sol
+File: IDPRegistryUpgradeable.sol
 
-7: pragma solidity ^0.8.0;
-
-34: pragma solidity ^0.8.0;
-
-119: pragma solidity ^0.8.0;
-
-200: pragma solidity ^0.8.0;
-
-230: pragma solidity ^0.8.0;
-
-595: pragma solidity ^0.8.0;
+2: pragma solidity 0.8.22;
 
 ```
 
 ```solidity
-File: RandomOracle.sol
+File: JailedNodesUpgradeable.sol
 
-7: pragma solidity ^0.8.18;
-
-```
-
-```solidity
-File: SavvaFaucet.sol
-
-7: pragma solidity ^0.8.18;
+2: pragma solidity 0.8.22;
 
 ```
 
 ```solidity
-File: SavvaToken.sol
+File: NetworkConfigurationUpgradeable.sol
 
-8: pragma solidity ^0.8.18;
-
-```
-
-```solidity
-File: Staking.sol
-
-2: pragma solidity ^0.8.0;
+2: pragma solidity 0.8.22;
 
 ```
 
 ```solidity
-File: UserProfile.sol
+File: PermissionUpgradeable.sol
 
-7: pragma solidity ^0.8.18;
+2: pragma solidity 0.8.22;
 
 ```
 
 ```solidity
-File: utils.sol
+File: RBACUpgradeable.sol
 
-7: pragma solidity ^0.8.18;
+2: pragma solidity 0.8.22;
+
+```
+
+```solidity
+File: ReconfigurationUpgradeable.sol
+
+2: pragma solidity 0.8.22;
+
+```
+
+```solidity
+File: SignupBonusVestingUpgradeable.sol
+
+2: pragma solidity 0.8.22;
+
+```
+
+```solidity
+File: StakingDepositUpgradeable.sol
+
+2: pragma solidity 0.8.22;
+
+```
+
+```solidity
+File: StakingEscrowUpgradeable.sol
+
+2: pragma solidity 0.8.22;
+
+```
+
+```solidity
+File: TombstonedNodesUpgradeable.sol
+
+2: pragma solidity 0.8.22;
+
+```
+
+```solidity
+File: interfaces/IActivityMonitor.sol
+
+2: pragma solidity 0.8.22;
+
+```
+
+```solidity
+File: interfaces/IIDPRegistry.sol
+
+2: pragma solidity 0.8.22;
+
+```
+
+```solidity
+File: interfaces/IJailedNodes.sol
+
+2: pragma solidity 0.8.22;
+
+```
+
+```solidity
+File: interfaces/INetworkConfiguration.sol
+
+2: pragma solidity 0.8.22;
+
+```
+
+```solidity
+File: interfaces/IPermission.sol
+
+2: pragma solidity 0.8.22;
+
+```
+
+```solidity
+File: interfaces/IRandomNumberGenerator.sol
+
+2: pragma solidity 0.8.22;
+
+```
+
+```solidity
+File: interfaces/IReconfiguration.sol
+
+2: pragma solidity 0.8.22;
+
+```
+
+```solidity
+File: interfaces/ISignupBonusVesting.sol
+
+2: pragma solidity 0.8.22;
+
+```
+
+```solidity
+File: interfaces/IStakingDeposit.sol
+
+2: pragma solidity 0.8.22;
+
+```
+
+```solidity
+File: interfaces/ITombstonedNodes.sol
+
+2: pragma solidity 0.8.22;
 
 ```
 
@@ -1533,109 +1277,169 @@ File: utils.sol
  ### Consider adding formal verification proofs
 Consider using formal verification to mathematically prove that your code does what is intended, and does not have any edge cases with unexpected behavior. The solidity compiler itself has this functionality [built in](https://docs.soliditylang.org/en/latest/smtchecker.html#smtchecker-and-formal-verification)  
 
-*Instances (18)*:
+*Instances (23)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: Config.sol
+File: ActivityMonitorUpgradeable.sol
 
-7: pragma solidity ^0.8.18;
-
-```
-
-```solidity
-File: ContentFund.sol
-
-7: pragma solidity ^0.8.18;
+2: pragma solidity 0.8.22;
 
 ```
 
 ```solidity
-File: ContentNFT.sol
+File: ArtifactsFromRbnCore.sol
 
-7: pragma solidity ^0.8.18;
-
-```
-
-```solidity
-File: ContentRegistry.sol
-
-7: pragma solidity ^0.8.18;
+2: pragma solidity 0.8.22;
 
 ```
 
 ```solidity
-File: ListMarket.sol
+File: ContractRoleAuthUpgradeable.sol
 
-7: pragma solidity ^0.8.18;
-
-```
-
-```solidity
-File: NFTMarketplace.sol
-
-7: pragma solidity ^0.8.18;
+2: pragma solidity 0.8.22;
 
 ```
 
 ```solidity
-File: Promo.sol
+File: IDPRegistryUpgradeable.sol
 
-7: pragma solidity ^0.8.0;
-
-34: pragma solidity ^0.8.0;
-
-119: pragma solidity ^0.8.0;
-
-200: pragma solidity ^0.8.0;
-
-230: pragma solidity ^0.8.0;
-
-595: pragma solidity ^0.8.0;
+2: pragma solidity 0.8.22;
 
 ```
 
 ```solidity
-File: RandomOracle.sol
+File: JailedNodesUpgradeable.sol
 
-7: pragma solidity ^0.8.18;
-
-```
-
-```solidity
-File: SavvaFaucet.sol
-
-7: pragma solidity ^0.8.18;
+2: pragma solidity 0.8.22;
 
 ```
 
 ```solidity
-File: SavvaToken.sol
+File: NetworkConfigurationUpgradeable.sol
 
-8: pragma solidity ^0.8.18;
-
-```
-
-```solidity
-File: Staking.sol
-
-2: pragma solidity ^0.8.0;
+2: pragma solidity 0.8.22;
 
 ```
 
 ```solidity
-File: UserProfile.sol
+File: PermissionUpgradeable.sol
 
-7: pragma solidity ^0.8.18;
+2: pragma solidity 0.8.22;
 
 ```
 
 ```solidity
-File: utils.sol
+File: RBACUpgradeable.sol
 
-7: pragma solidity ^0.8.18;
+2: pragma solidity 0.8.22;
+
+```
+
+```solidity
+File: ReconfigurationUpgradeable.sol
+
+2: pragma solidity 0.8.22;
+
+```
+
+```solidity
+File: SignupBonusVestingUpgradeable.sol
+
+2: pragma solidity 0.8.22;
+
+```
+
+```solidity
+File: StakingDepositUpgradeable.sol
+
+2: pragma solidity 0.8.22;
+
+```
+
+```solidity
+File: StakingEscrowUpgradeable.sol
+
+2: pragma solidity 0.8.22;
+
+```
+
+```solidity
+File: TombstonedNodesUpgradeable.sol
+
+2: pragma solidity 0.8.22;
+
+```
+
+```solidity
+File: interfaces/IActivityMonitor.sol
+
+2: pragma solidity 0.8.22;
+
+```
+
+```solidity
+File: interfaces/IIDPRegistry.sol
+
+2: pragma solidity 0.8.22;
+
+```
+
+```solidity
+File: interfaces/IJailedNodes.sol
+
+2: pragma solidity 0.8.22;
+
+```
+
+```solidity
+File: interfaces/INetworkConfiguration.sol
+
+2: pragma solidity 0.8.22;
+
+```
+
+```solidity
+File: interfaces/IPermission.sol
+
+2: pragma solidity 0.8.22;
+
+```
+
+```solidity
+File: interfaces/IRandomNumberGenerator.sol
+
+2: pragma solidity 0.8.22;
+
+```
+
+```solidity
+File: interfaces/IReconfiguration.sol
+
+2: pragma solidity 0.8.22;
+
+```
+
+```solidity
+File: interfaces/ISignupBonusVesting.sol
+
+2: pragma solidity 0.8.22;
+
+```
+
+```solidity
+File: interfaces/IStakingDeposit.sol
+
+2: pragma solidity 0.8.22;
+
+```
+
+```solidity
+File: interfaces/ITombstonedNodes.sol
+
+2: pragma solidity 0.8.22;
 
 ```
 
@@ -1647,109 +1451,169 @@ File: utils.sol
  ### Large or complicated code bases should implement invariant tests
 Large code bases, or code with lots of inline-assembly, complicated math, or complicated interactions between multiple contracts, should implement [invariant fuzzing tests](https://medium.com/coinmonks/smart-contract-fuzzing-d9b88e0b0a05). Invariant fuzzers such as Echidna require the test writer to come up with invariants which should not be violated under any circumstances, and the fuzzer tests various inputs and function calls to ensure that the invariants always hold. Even code with 100% code coverage can still have bugs due to the order of the operations a user performs, and invariant fuzzers, with properly and extensively-written invariants, can close this testing gap significantly.  
 
-*Instances (18)*:
+*Instances (23)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: Config.sol
+File: ActivityMonitorUpgradeable.sol
 
-7: pragma solidity ^0.8.18;
-
-```
-
-```solidity
-File: ContentFund.sol
-
-7: pragma solidity ^0.8.18;
+2: pragma solidity 0.8.22;
 
 ```
 
 ```solidity
-File: ContentNFT.sol
+File: ArtifactsFromRbnCore.sol
 
-7: pragma solidity ^0.8.18;
-
-```
-
-```solidity
-File: ContentRegistry.sol
-
-7: pragma solidity ^0.8.18;
+2: pragma solidity 0.8.22;
 
 ```
 
 ```solidity
-File: ListMarket.sol
+File: ContractRoleAuthUpgradeable.sol
 
-7: pragma solidity ^0.8.18;
-
-```
-
-```solidity
-File: NFTMarketplace.sol
-
-7: pragma solidity ^0.8.18;
+2: pragma solidity 0.8.22;
 
 ```
 
 ```solidity
-File: Promo.sol
+File: IDPRegistryUpgradeable.sol
 
-7: pragma solidity ^0.8.0;
-
-34: pragma solidity ^0.8.0;
-
-119: pragma solidity ^0.8.0;
-
-200: pragma solidity ^0.8.0;
-
-230: pragma solidity ^0.8.0;
-
-595: pragma solidity ^0.8.0;
+2: pragma solidity 0.8.22;
 
 ```
 
 ```solidity
-File: RandomOracle.sol
+File: JailedNodesUpgradeable.sol
 
-7: pragma solidity ^0.8.18;
-
-```
-
-```solidity
-File: SavvaFaucet.sol
-
-7: pragma solidity ^0.8.18;
+2: pragma solidity 0.8.22;
 
 ```
 
 ```solidity
-File: SavvaToken.sol
+File: NetworkConfigurationUpgradeable.sol
 
-8: pragma solidity ^0.8.18;
-
-```
-
-```solidity
-File: Staking.sol
-
-2: pragma solidity ^0.8.0;
+2: pragma solidity 0.8.22;
 
 ```
 
 ```solidity
-File: UserProfile.sol
+File: PermissionUpgradeable.sol
 
-7: pragma solidity ^0.8.18;
+2: pragma solidity 0.8.22;
 
 ```
 
 ```solidity
-File: utils.sol
+File: RBACUpgradeable.sol
 
-7: pragma solidity ^0.8.18;
+2: pragma solidity 0.8.22;
+
+```
+
+```solidity
+File: ReconfigurationUpgradeable.sol
+
+2: pragma solidity 0.8.22;
+
+```
+
+```solidity
+File: SignupBonusVestingUpgradeable.sol
+
+2: pragma solidity 0.8.22;
+
+```
+
+```solidity
+File: StakingDepositUpgradeable.sol
+
+2: pragma solidity 0.8.22;
+
+```
+
+```solidity
+File: StakingEscrowUpgradeable.sol
+
+2: pragma solidity 0.8.22;
+
+```
+
+```solidity
+File: TombstonedNodesUpgradeable.sol
+
+2: pragma solidity 0.8.22;
+
+```
+
+```solidity
+File: interfaces/IActivityMonitor.sol
+
+2: pragma solidity 0.8.22;
+
+```
+
+```solidity
+File: interfaces/IIDPRegistry.sol
+
+2: pragma solidity 0.8.22;
+
+```
+
+```solidity
+File: interfaces/IJailedNodes.sol
+
+2: pragma solidity 0.8.22;
+
+```
+
+```solidity
+File: interfaces/INetworkConfiguration.sol
+
+2: pragma solidity 0.8.22;
+
+```
+
+```solidity
+File: interfaces/IPermission.sol
+
+2: pragma solidity 0.8.22;
+
+```
+
+```solidity
+File: interfaces/IRandomNumberGenerator.sol
+
+2: pragma solidity 0.8.22;
+
+```
+
+```solidity
+File: interfaces/IReconfiguration.sol
+
+2: pragma solidity 0.8.22;
+
+```
+
+```solidity
+File: interfaces/ISignupBonusVesting.sol
+
+2: pragma solidity 0.8.22;
+
+```
+
+```solidity
+File: interfaces/IStakingDeposit.sol
+
+2: pragma solidity 0.8.22;
+
+```
+
+```solidity
+File: interfaces/ITombstonedNodes.sol
+
+2: pragma solidity 0.8.22;
 
 ```
 
@@ -1758,18 +1622,81 @@ File: utils.sol
 
 
  ### <a name="NC-4"></a>[NC-4]
- ### NatSpec: Library declarations should have NatSpec descriptions
+ ### NatSpec: Interface declarations should have NatSpec descriptions
 e.g. @dev or @notice, and it must appear above the contract definition braces in order to be identified by the compiler as NatSpec
 
-*Instances (1)*:
+*Instances (10)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: utils.sol
+File: interfaces/IActivityMonitor.sol
 
-9: library utils {
+5: 
+
+```
+
+```solidity
+File: interfaces/IIDPRegistry.sol
+
+3: 
+
+```
+
+```solidity
+File: interfaces/IJailedNodes.sol
+
+3: 
+
+```
+
+```solidity
+File: interfaces/INetworkConfiguration.sol
+
+5: import {NodeConfigStorage} from "@redbellynetwork/bootstrap-contracts/src/libraries/NodeConfigStorage.sol";
+
+```
+
+```solidity
+File: interfaces/IPermission.sol
+
+5: 
+
+```
+
+```solidity
+File: interfaces/IRandomNumberGenerator.sol
+
+3: 
+
+```
+
+```solidity
+File: interfaces/IReconfiguration.sol
+
+5: 
+
+```
+
+```solidity
+File: interfaces/ISignupBonusVesting.sol
+
+3: 
+
+```
+
+```solidity
+File: interfaces/IStakingDeposit.sol
+
+3: 
+
+```
+
+```solidity
+File: interfaces/ITombstonedNodes.sol
+
+3: 
 
 ```
 
@@ -1783,78 +1710,140 @@ File: utils.sol
 #### Impact:
 Specifying visibility for variables can improve code readability and maintainability.
 
-*Instances (25)*:
+*Instances (46)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: ContentFund.sol
+File: NetworkConfigurationUpgradeable.sol
 
-21:         address author;
+11:     using Address for address payable;
 
-22:         string domain;
-
-23:         string guid;
-
-25:         uint256 amount;
-
-26:         uint256 round_time;
-
-27:         uint256 SLLeft; // Sorted List left
-
-28:         uint256 SLRight; // Sorted List right
-
-313:         uint256 prize;
-
-370:         uint256 h;
+514:         uint256 count;
 
 ```
 
 ```solidity
-File: NFTMarketplace.sol
+File: ReconfigurationUpgradeable.sol
 
-20:         address owner;
+12:         address nodeAddress;
 
-21:         uint256 price;
+13:         bool isRedbelly;
 
-```
+94:         uint256 upgradeWindow;
 
-```solidity
-File: Staking.sol
+95:         bool found;
 
-16:         uint256 amount;
+478:             uint256 requiredRbnCandidatesLen;
 
-17:         uint256 timestamp;
+479:             uint256 requiredNonRbnCandidatesLen;
 
-21:         address author;
+492:             uint256 rbnCandidatesFoundLen;
 
-22:         address event_contract;
+493:             uint256 nonRbnCandidatesFoundLen;
 
-24:         uint256 amount;
+531:                 int256 itr;
 
-25:         uint256 index; // index in the array of keys
+574:         uint256 rbnGovernorsLen;
 
-29:         uint256 accruedGain;
+584:         uint256 rbnLen;
 
-31:         uint256 nextUnstakeRequestId;
+585:         uint256 nonRbnLen;
 
-32:         uint256 stake_frame;
+610:         int256 requiredNonRbnCandidatesLen;
 
-36:         uint256 event_contract;
+630:         uint256 rbnFound;
 
-37:         uint256 last_paid_by_patrons;
-
-107:         uint256 to_share; // tokens accumulated for sharing
-
-108:         uint256 staked; // total staked in this frame
+631:         uint256 nonRbnFound;
 
 ```
 
 ```solidity
-File: UserProfile.sol
+File: StakingDepositUpgradeable.sol
 
-32:         for (uint256 i; i < b.length; i++) {
+10:         uint256 value;
+
+11:         uint256 precision;
+
+15:         uint256 depositTimestamp;
+
+16:         uint256 unstakeTimestamp;
+
+17:         uint256 depositedAmount;
+
+18:         uint256 redbellyDeposit;
+
+19:         uint256 nodeOperatorDeposit;
+
+20:         uint256 slashedAmount;
+
+21:         uint256 slashedRedbellyDeposit;
+
+22:         uint256 slashedNodeOperatorDeposit;
+
+```
+
+```solidity
+File: StakingEscrowUpgradeable.sol
+
+25:     using Address for address payable;
+
+```
+
+```solidity
+File: interfaces/IIDPRegistry.sol
+
+6:         string proofType;
+
+7:         string publicKey;
+
+11:         string name;
+
+12:         string issuerDid;
+
+13:         string url;
+
+14:         address publicAddress;
+
+18:         string name;
+
+19:         string issuerDid;
+
+20:         string url;
+
+21:         address publicAddress;
+
+```
+
+```solidity
+File: interfaces/IJailedNodes.sol
+
+6:         uint256 jailedTimestamp;
+
+7:         uint256 daysToServe;
+
+8:         uint256 releasedTimestamp;
+
+```
+
+```solidity
+File: interfaces/IPermission.sol
+
+13:         string proofType;
+
+```
+
+```solidity
+File: interfaces/IReconfiguration.sol
+
+8:         uint256 totalGovernors;
+
+9:         uint256 totalCandidates;
+
+13:         uint256 value;
+
+14:         uint256 precision;
 
 ```
 
@@ -1874,36 +1863,31 @@ Array entries are added but are never removed. Consider whether this should be t
  <summary>Click to expand!</summary>
 
 ```solidity
-File: ContentFund.sol
+File: IDPRegistryUpgradeable.sol
 
-246:             funds[savva_cid].contributors.push(msg.sender);
+128:             proofTypeToIssuers[idpData.proofs[i].proofType].push(
 
-257:                 funds[savva_cid].contributors.push(msg.sender);
-
-```
-
-```solidity
-File: NFTMarketplace.sol
-
-57:         nftsByOwner[msg.sender].push(tokenId);
-
-194:         nftsByOwner[msg.sender].push(tokenId);
+133:                 _supportedProofTypes.push(idpData.proofs[i].proofType);
 
 ```
 
 ```solidity
-File: SavvaFaucet.sol
+File: JailedNodesUpgradeable.sol
 
-103:             depositors.push(msg.sender);
+201:             jailTenures[nodeId].push(jailTenure);
 
 ```
 
 ```solidity
-File: Staking.sol
+File: StakingDepositUpgradeable.sol
 
-435:             user.PayRecordsKeys.push(key);
+181:         _tokensInCirculation.push(_initialtokensInCirculation);
 
-451:                 s_author.patrons.push(msg.sender);
+182:         _rewardsClaimedInYear.push(0);
+
+259:                 _tokensInCirculation.push(
+
+331:                 _rewardsClaimedInYear.push(0);
 
 ```
 
@@ -1912,186 +1896,24 @@ File: Staking.sol
 
 
  ### <a name="NC-7"></a>[NC-7]
- ### Constants in comparisons should appear on the left side
+ ### Assembly blocks should have extensive comments
+Assembly blocks take a lot more time to audit than normal Solidity code, and often have gotchas and side-effects that the Solidity versions of the same code do not. Consider adding more comments explaining what is being done in every step of the assembly code, and describe why assembly is being used instead of Solidity.  
 
-#### Impact:
-Placing constants on the left side of comparisons can improve code readability and prevent accidental assignment. Doing so will prevent typo [bugs](https://www.moserware.com/2008/01/constants-on-left-are-better-but-this.html)
-
-*Instances (69)*:
+*Instances (4)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: ContentFund.sol
+File: PermissionUpgradeable.sol
 
-71:         if (SLRoot == 0) {     
+181:         assembly {
 
-79:                 if (funds[h].round_time > rt) {
+219:         assembly {
 
-83:                     if (funds[h].SLLeft != 0) {
+270:         assembly {
 
-92:                 if (funds[h].SLRight == 0) {
-
-104:         if (funds[savva_cid].SLLeft != 0) {
-
-110:         if (funds[savva_cid].SLRight != 0) {
-
-124:         if (funds[savva_cid].SLLeft != 0) {
-
-125:             if (
-
-133:         if (funds[savva_cid].SLRight != 0) {
-
-134:             if (
-
-164:         if (
-
-175:             if (nft_owner != address(0)) {
-
-225:         if (authorShare > 0) {
-
-230:         if (nftShare > 0) {
-
-235:         if (funds[savva_cid].author == address(0)) {
-
-256:             if (contributions[savva_cid][msg.sender] == 0) {
-
-292:             if (winnerIndex < runningShareSum) {
-
-308:         if (winner == address(0)) {
-
-316:         if (total >= config.getUInt(bytes32("minFundToShare"))) {
-
-325:         if (prize > 0) {
-
-330:         if (funds[h].amount > 0) {
-
-374:             if (funds[h].round_time > block.timestamp) break; // Round is not finished yet
-
-375:             if (funds[h].round_time > getRandom.getLastUpdateTime()) break; // Need to wait for new random
-
-377:             if (random == 0) {
-
-480:             if (nftBalance[tokenId] > 0) {
-
-492:                 if (nftBalance[tokenId] > 0) {
-
-```
-
-```solidity
-File: ListMarket.sol
-
-47:         if (collector == address(0)) {
-
-```
-
-```solidity
-File: NFTMarketplace.sol
-
-67:             if (nftsByOwnerArray[i] == tokenId) {
-
-68:                 if (i != nftsByOwnerArray.length - 1) {
-
-182:             if (nftsByOwnerArray[i] == tokenId) {
-
-183:                 if (i != nftsByOwnerArray.length - 1) {
-
-```
-
-```solidity
-File: Promo.sol
-
-551:         if (currentAllowance != type(uint256).max) {
-
-```
-
-```solidity
-File: SavvaFaucet.sol
-
-43:         if ( _round_seconds == 0 ) {  // non zero used for testing
-
-57:         if (roundPayWeek == 0) {
-
-61:             if (week_now < roundPayWeek) {
-
-95:         if (roundPayWeek == 0) {
-
-102:         if (deposited[msg.sender] == 0) {
-
-119:         if (roundPayWeek == 0 || week_now < roundPayWeek) {
-
-139:             if (amount > 0 && amount <= tokensLeft) {
-
-150:         if (tokensLeft > 0) {
-
-```
-
-```solidity
-File: Staking.sol
-
-144:             if (frame.staked == 0) {
-
-165:         if (new_gain > 0) {
-
-186:             if (currentFrameNumber - i < user.stake_frame) {
-
-194:             if (frame_stake == 0 || frame_tokens == 0) {
-
-358:             if (request.amount > 0 && block.timestamp >= request.timestamp) {
-
-373:             if (request.amount > 0 && block.timestamp >= request.timestamp) {
-
-385:             if (user.unstakeRequests[i].amount > 0) {
-
-386:                 if (i != j) {
-
-428:         if (payment.amount == 0) {
-
-445:                 if (s_author.patrons[i] == msg.sender) {
-
-456:             if (payment.amount < amount) {
-
-498:         if (index != last_index) {
-
-510:             if (p.author == author) {
-
-521:                 if (s_author.patrons[i] == msg.sender) {
-
-522:                     if (i != n_to_pop - 1) {
-
-558:         if (
-
-574:             if (payment.amount > 0) {
-
-591:         if (
-
-605:             if (payment.amount > 0) {
-
-627:         if (total > 0) {
-
-644:         if( _user == address(0) || balanceOf(_user) == 0) {
-
-651:             if (currentFrameNumber - i < user.stake_frame) {
-
-657:             if (frame.staked == 0 || frame.to_share == 0) {
-
-663:             if (frame.staked < user_stake) {
-
-689:         if (from == address(0) || to == address(0)) {
-
-693:         if (from == to || amount == 0) {
-
-705:         if (sender.accruedGain > 0) {
-
-719:         if (left2send > 0) {
-
-```
-
-```solidity
-File: utils.sol
-
-25:             if (r[z] == 0) {
+324:         assembly {
 
 ```
 
@@ -2100,41 +1922,233 @@ File: utils.sol
 
 
  ### <a name="NC-8"></a>[NC-8]
- ### constants should be defined rather than using magic numbers
-Even [assembly](https://github.com/code-423n4/2022-05-opensea-seaport/blob/9d7ce4d08bf3c3010304a0476a785c70c0e90ae7/contracts/lib/TokenTransferrer.sol#L35-L39) can benefit from using readable constants instead of hex/numeric literals
+ ### Constants in comparisons should appear on the left side
 
-*Instances (5)*:
+#### Impact:
+Placing constants on the left side of comparisons can improve code readability and prevent accidental assignment. Doing so will prevent typo [bugs](https://www.moserware.com/2008/01/constants-on-left-are-better-but-this.html)
+
+*Instances (85)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: Config.sol
+File: ActivityMonitorUpgradeable.sol
 
-47:             0x29eA7545DEf87022BAdc76323F373EA1e707C523 // Buy&Burn PulseX factory contract
+60:         if (_config.inactivityThresholdForRounds <= 0) {
 
-50:             0xA1077a294dDE1B09bB078844df40758a5D0f9a27 // WETH contract (WPLS)
+64:         } else if (_config.inactivityThresholdForMessage <= 0) {
+
+68:         } else if (_config.recentVoteInterval <= 0) {
+
+205:         if (_inactivityVotes[nodeId].votesAgainstNode.length != 0) {
+
+208:             if (
+
+233:         if (_inactivityVotes[nodeId].votesAgainstNode.length != 0) {
+
+272:         if (_newInterval <= 0) {
+
+289:         if (_newWindowSize <= 0) {
+
+292:         if (_newWindowSize < config.inactivityThresholdForRounds) {
+
+310:         if (_newInactivityThreshold <= 0) {
+
+315:         if (_newInactivityThreshold > config.windowSize) {
+
+333:         if (_newInactivityThreshold <= 0) {
+
+373:             if (existingVoteTimestamp == 0) {
 
 ```
 
 ```solidity
-File: SavvaFaucet.sol
+File: IDPRegistryUpgradeable.sol
 
-31:         payable(0x69d6A50d2AB95FBa5582463148aD61C9a0AD6d1f);
+28:         if (uid >= _uidCounter || deletedUIDs[uid]) {
+
+58:         if (_uidToIDP[uid].publicAddress != msg.sender) {
+
+65:         if (_uidToIDP[issuerDidToUid[issuerDid]].publicAddress != msg.sender) {
+
+72:         if (proofs.length <= 0) {
+
+101:         if (idpData.publicAddress == address(0)) {
+
+161:         if (idp.publicAddress == address(0)) {
 
 ```
 
 ```solidity
-File: Staking.sol
+File: JailedNodesUpgradeable.sol
 
-104:     uint256 constant FRAME_MASK = 0x1F; // X & FRAME_MASK equals X % TOTAL_FRAMES
+62:         if (
+
+223:         if (len > 0) {
+
+250:             if (releasedTimestamp == 0) {
+
+271:         if (
+
+331:         if (_slashPrcnt > 100) {
+
+358:             if (jailData[i].releasedTimestamp == 0) {
+
+362:             if (endTime < startTimestamp || startTime > endTimestamp) {
 
 ```
 
 ```solidity
-File: utils.sol
+File: NetworkConfigurationUpgradeable.sol
 
-42:             r |= bytes32(b[i] & 0xFF) >> (i * 8);
+182:         if (safeToUpgradeCandidates.length <= 0) {
+
+198:             if (currIndex <= 0) {
+
+322:         if (amountReceived + escrowDeposit < registrationFee) {
+
+331:         if (amountReceived > registrationFee) {
+
+338:         if (registrationFee > amountReceived) {
+
+375:         if (refundAmount > 0) {
+
+```
+
+```solidity
+File: PermissionUpgradeable.sol
+
+113:         if (issuanceDateUnix >= block.timestamp) {
+
+247:             if (result[i] != 0x00) {
+
+```
+
+```solidity
+File: ReconfigurationUpgradeable.sol
+
+42:         if (
+
+154:         if (_toleranceFactor <= 0) {
+
+205:         if (candidatesNotInCooloff.length > 0) {
+
+220:             if (governorsInCooloff.length < tolerance) {
+
+255:             if (p.value == 0) {
+
+258:             if (p.value >= upgradeProbabilty.value) {
+
+275:             if (networkConfigurations[d].totalCandidates == 0) {
+
+278:             if (pie == 0) {
+
+288:         if (dValue > 0) {
+
+350:             if (i < nrlength) {
+
+362:             if (i < rlength) {
+
+504:             if (candidatesFound.length > 0) {
+
+611:         if (requiredRbnCandidatesLen >= tolerance) {
+
+640:             if (
+
+647:             } else if (nonRbnFound < requiredNonRbn) {
+
+```
+
+```solidity
+File: SignupBonusVestingUpgradeable.sol
+
+54:         if (signupBonus == 0) {
+
+258:         if (nodeId < 200) {
+
+260:         } else if (nodeId >= 200 && nodeId < 600) {
+
+```
+
+```solidity
+File: StakingDepositUpgradeable.sol
+
+54:         if (deposits[nodeId].depositTimestamp <= 0) {
+
+74:         if (deposits[nodeId].depositTimestamp <= 0) {
+
+100:         if (
+
+108:         if (coolOffStartTimestamp[nodeId] != 0) {
+
+142:         if (_newTreasuryAddress == address(0)) {
+
+156:         if (_newTreasuryAddress == address(0)) {
+
+257:         if (yearIndex > 0) {
+
+258:             if (_tokensInCirculation.length - 1 != yearIndex) {
+
+281:         if (
+
+288:         if (
+
+293:         } else if (
+
+300:         if (block.timestamp < stakeEndTimestamp) {
+
+330:             if (_rewardsClaimedInYear.length - 1 != yearIndex) {
+
+334:             if (timeStaked > -1) {
+
+413:         if (deposits[nodeConfig.id].unstakeTimestamp != 0) {
+
+426:         if (signUpBonus > 0) {
+
+428:             if (jTenure.jailedTimestamp > 0 && jTenure.releasedTimestamp == 0) {
+
+438:             if (nodeConfig.exitTimestamp > 0) {
+
+457:             if (effectiveDaysForStake > 0) {
+
+492:         if (slashedAmount > 0) {
+
+511:         if (deposits[nodeId].depositTimestamp <= 0) {
+
+520:         if (
+
+526:         } else if (
+
+541:         } else if (
+
+550:         if (slashAmount != 0) {
+
+617:         if (deposits[nodeId].depositTimestamp <= 0) {
+
+620:         if (deposits[nodeId].slashedAmount != 0) {
+
+623:         if (deposits[nodeId].depositedAmount < _feeAmount) {
+
+629:         if (deposits[nodeId].redbellyDeposit >= _feeAmount) {
+
+```
+
+```solidity
+File: StakingEscrowUpgradeable.sol
+
+7:         if (payer != _msgSender() && owner() != _msgSender()) {
+
+71:         if (payment < amount) {
+
+```
+
+```solidity
+File: TombstonedNodesUpgradeable.sol
+
+89:         if (tombstonedNodes[nodeId] != 0) {
+
+102:         if (tombstonedNodes[nodeId] > 0) {
 
 ```
 
@@ -2143,149 +2157,34 @@ File: utils.sol
 
 
  ### <a name="NC-9"></a>[NC-9]
- ### Contract declarations should have NatSpec @author annotations
+ ### constants should be defined rather than using magic numbers
+Even [assembly](https://github.com/code-423n4/2022-05-opensea-seaport/blob/9d7ce4d08bf3c3010304a0476a785c70c0e90ae7/contracts/lib/TokenTransferrer.sol#L35-L39) can benefit from using readable constants instead of hex/numeric literals
 
-#### Impact:
-Adding a NatSpec @author annotation to contract declarations can improve code documentation.
-
-*Instances (38)*:
+*Instances (9)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: Config.sol
+File: PermissionUpgradeable.sol
 
-12: contract Config is IConfig, Ownable {
+189:                 add(vc, 0x20),
 
-30:         configAddress[bytes32("contract_savvaToken")] = address(0); // SAVVA token contract
+191:                 add(hash, 0x20),
 
-32:         configAddress[bytes32("contract_staking")] = address(0); // Staking contract
+227:                 add(requestData, 0x20),
 
-33:         configAddress[bytes32("contract_userProfile")] = address(0); // Staking contract
+229:                 add(result, 0x20),
 
-34:         configAddress[bytes32("contract_contentNFT")] = address(0); // Content NFT contract
+247:             if (result[i] != 0x00) {
 
-35:         configAddress[bytes32("contract_contentFund")] = address(0); // Content Fund contract
+278:                 add(requestData, 0x20),
 
-36:         configAddress[bytes32("contract_governance")] = address(0); // Governance contract
+280:                 add(ret, 0x20),
 
-37:         configAddress[bytes32("contract_contentRegistry")] = address(0); // Content Registry contract
+332:                 add(requestData, 0x20),
 
-38:         configAddress[bytes32("contract_savvaFaucet")] = address(0); // SAVVA Faucet contract
-
-39:         configAddress[bytes32("contract_nftMarketplace")] = address(0); // NFT Market Place contract
-
-40:         configAddress[bytes32("contract_promo")] = address(0); // Promo contract
-
-41:         configAddress[bytes32("contract_buyBurn")] = address(0); // Buy&Burn contract
-
-42:         configAddress[bytes32("contract_listMarket")] = address(0); // List Market contract
-
-43:         configAddress[bytes32("contract_authorOfTheMonth")] = address(0); // Author of the Month contract
-
-47:             0x29eA7545DEf87022BAdc76323F373EA1e707C523 // Buy&Burn PulseX factory contract
-
-50:             0xA1077a294dDE1B09bB078844df40758a5D0f9a27 // WETH contract (WPLS)
-
-```
-
-```solidity
-File: ContentFund.sol
-
-19: contract ContentFund {
-
-58:     IConfig public config; // Config contract
-
-```
-
-```solidity
-File: ContentNFT.sol
-
-16: contract ContentNFT is ERC721, ERC721Enumerable, ERC721URIStorage {
-
-54:         bb.transfer(msg.value); // Send ETH to Buy&Burn contract //
-
-```
-
-```solidity
-File: ContentRegistry.sol
-
-16: contract ContentRegistry is IContentRegistry {
-
-```
-
-```solidity
-File: ListMarket.sol
-
-13: contract ListMarket is Ownable {
-
-14:     IConfig public config; // Config contract
-
-```
-
-```solidity
-File: NFTMarketplace.sol
-
-16: contract NFTMarketplace is INFTMarketplace, IERC721Receiver {
-
-17:     IConfig public config; // Config contract
-
-```
-
-```solidity
-File: Promo.sol
-
-19: abstract contract Context {
-
-49: abstract contract Ownable is Context {
-
-263: contract ERC20 is Context, IERC20, IERC20Metadata {
-
-599: contract BlockChat is ERC20, Ownable {
-
-```
-
-```solidity
-File: RandomOracle.sol
-
-12: contract RandomOracle is IRandomOracle, Ownable {
-
-```
-
-```solidity
-File: SavvaFaucet.sol
-
-14: contract SavvaFaucet {
-
-17:     uint256 constant STAKING_SHARE = 50; // 50% of the minted tokens go to staking contract
-
-19:     IConfig public config; // Config contract
-
-20:     ISavvaToken public savvaToken; // Savva token contract
-
-151:             savvaToken.transfer(stakingContract, tokensLeft); // send the rest to staking contract
-
-```
-
-```solidity
-File: SavvaToken.sol
-
-15: contract SavvaToken is ISavvaToken {
-
-```
-
-```solidity
-File: Staking.sol
-
-12: contract Staking is IStaking, ERC20, ERC20Permit, ERC20Votes { 
-
-```
-
-```solidity
-File: UserProfile.sol
-
-9: contract UserProfile {
+334:                 add(ret, 0x20),
 
 ```
 
@@ -2294,149 +2193,105 @@ File: UserProfile.sol
 
 
  ### <a name="NC-10"></a>[NC-10]
- ### Contract declarations should have NatSpec @Title annotations
+ ### Contract declarations should have NatSpec @author annotations
 
 #### Impact:
-Adding a NatSpec @Title annotation to contract declarations can improve code documentation.
+Adding a NatSpec @author annotation to contract declarations can improve code documentation.
 
-*Instances (38)*:
+*Instances (16)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: Config.sol
+File: ActivityMonitorUpgradeable.sol
 
-12: contract Config is IConfig, Ownable {
-
-30:         configAddress[bytes32("contract_savvaToken")] = address(0); // SAVVA token contract
-
-32:         configAddress[bytes32("contract_staking")] = address(0); // Staking contract
-
-33:         configAddress[bytes32("contract_userProfile")] = address(0); // Staking contract
-
-34:         configAddress[bytes32("contract_contentNFT")] = address(0); // Content NFT contract
-
-35:         configAddress[bytes32("contract_contentFund")] = address(0); // Content Fund contract
-
-36:         configAddress[bytes32("contract_governance")] = address(0); // Governance contract
-
-37:         configAddress[bytes32("contract_contentRegistry")] = address(0); // Content Registry contract
-
-38:         configAddress[bytes32("contract_savvaFaucet")] = address(0); // SAVVA Faucet contract
-
-39:         configAddress[bytes32("contract_nftMarketplace")] = address(0); // NFT Market Place contract
-
-40:         configAddress[bytes32("contract_promo")] = address(0); // Promo contract
-
-41:         configAddress[bytes32("contract_buyBurn")] = address(0); // Buy&Burn contract
-
-42:         configAddress[bytes32("contract_listMarket")] = address(0); // List Market contract
-
-43:         configAddress[bytes32("contract_authorOfTheMonth")] = address(0); // Author of the Month contract
-
-47:             0x29eA7545DEf87022BAdc76323F373EA1e707C523 // Buy&Burn PulseX factory contract
-
-50:             0xA1077a294dDE1B09bB078844df40758a5D0f9a27 // WETH contract (WPLS)
+4: contract ActivityMonitorUpgradeable is IActivityMonitor, RBACUpgradeable {
 
 ```
 
 ```solidity
-File: ContentFund.sol
+File: ContractRoleAuthUpgradeable.sol
 
-19: contract ContentFund {
-
-58:     IConfig public config; // Config contract
+5: abstract contract ContractRoleAuthUpgradeable is RBACUpgradeable {
 
 ```
 
 ```solidity
-File: ContentNFT.sol
+File: IDPRegistryUpgradeable.sol
 
-16: contract ContentNFT is ERC721, ERC721Enumerable, ERC721URIStorage {
-
-54:         bb.transfer(msg.value); // Send ETH to Buy&Burn contract //
+5: contract IDPRegistryUpgradeable is IIDPRegistry, RBACUpgradeable {
 
 ```
 
 ```solidity
-File: ContentRegistry.sol
+File: JailedNodesUpgradeable.sol
 
-16: contract ContentRegistry is IContentRegistry {
+8: contract JailedNodesUpgradeable is ContractRoleAuthUpgradeable, IJailedNodes {
 
-```
-
-```solidity
-File: ListMarket.sol
-
-13: contract ListMarket is Ownable {
-
-14:     IConfig public config; // Config contract
+38:                 "not enough balance in the smart contract for treasury transfer"
 
 ```
 
 ```solidity
-File: NFTMarketplace.sol
+File: NetworkConfigurationUpgradeable.sol
 
-16: contract NFTMarketplace is INFTMarketplace, IERC721Receiver {
-
-17:     IConfig public config; // Config contract
+5: contract NetworkConfigurationContractUpgradeable is
 
 ```
 
 ```solidity
-File: Promo.sol
+File: PermissionUpgradeable.sol
 
-19: abstract contract Context {
-
-49: abstract contract Ownable is Context {
-
-263: contract ERC20 is Context, IERC20, IERC20Metadata {
-
-599: contract BlockChat is ERC20, Ownable {
+7: contract PermissionUpgradeable is IPermission, RBACUpgradeable {
 
 ```
 
 ```solidity
-File: RandomOracle.sol
+File: RBACUpgradeable.sol
 
-12: contract RandomOracle is IRandomOracle, Ownable {
-
-```
-
-```solidity
-File: SavvaFaucet.sol
-
-14: contract SavvaFaucet {
-
-17:     uint256 constant STAKING_SHARE = 50; // 50% of the minted tokens go to staking contract
-
-19:     IConfig public config; // Config contract
-
-20:     ISavvaToken public savvaToken; // Savva token contract
-
-151:             savvaToken.transfer(stakingContract, tokensLeft); // send the rest to staking contract
+5: abstract contract RBACUpgradeable is AccessControlUpgradeable {
 
 ```
 
 ```solidity
-File: SavvaToken.sol
+File: ReconfigurationUpgradeable.sol
 
-15: contract SavvaToken is ISavvaToken {
-
-```
-
-```solidity
-File: Staking.sol
-
-12: contract Staking is IStaking, ERC20, ERC20Permit, ERC20Votes { 
+5: contract ReconfigurationContractUpgradeable is
 
 ```
 
 ```solidity
-File: UserProfile.sol
+File: SignupBonusVestingUpgradeable.sol
 
-9: contract UserProfile {
+14: contract SignupBonusVestingUpgradeable is
+
+142:             revert TransferBalanceError("not enough balance in the contract");
+
+```
+
+```solidity
+File: StakingDepositUpgradeable.sol
+
+5: contract StakingDepositUpgradeable is
+
+361:             revert InsufficientBalance("Insufficient contract balance");
+
+554:                 revert InsufficientBalance("Insufficient contract balance");
+
+```
+
+```solidity
+File: StakingEscrowUpgradeable.sol
+
+4: contract StakingEscrowUpgradeable is Initializable, OwnableUpgradeable {
+
+```
+
+```solidity
+File: TombstonedNodesUpgradeable.sol
+
+8: contract TombstonedNodesUpgradeable is
 
 ```
 
@@ -2445,149 +2300,105 @@ File: UserProfile.sol
 
 
  ### <a name="NC-11"></a>[NC-11]
- ### NatSpec: Contract declarations should have @dev tags
+ ### Contract declarations should have NatSpec @Title annotations
 
 #### Impact:
-@dev is used to explain extra details to developers
+Adding a NatSpec @Title annotation to contract declarations can improve code documentation.
 
-*Instances (38)*:
+*Instances (16)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: Config.sol
+File: ActivityMonitorUpgradeable.sol
 
-12: contract Config is IConfig, Ownable {
-
-30:         configAddress[bytes32("contract_savvaToken")] = address(0); // SAVVA token contract
-
-32:         configAddress[bytes32("contract_staking")] = address(0); // Staking contract
-
-33:         configAddress[bytes32("contract_userProfile")] = address(0); // Staking contract
-
-34:         configAddress[bytes32("contract_contentNFT")] = address(0); // Content NFT contract
-
-35:         configAddress[bytes32("contract_contentFund")] = address(0); // Content Fund contract
-
-36:         configAddress[bytes32("contract_governance")] = address(0); // Governance contract
-
-37:         configAddress[bytes32("contract_contentRegistry")] = address(0); // Content Registry contract
-
-38:         configAddress[bytes32("contract_savvaFaucet")] = address(0); // SAVVA Faucet contract
-
-39:         configAddress[bytes32("contract_nftMarketplace")] = address(0); // NFT Market Place contract
-
-40:         configAddress[bytes32("contract_promo")] = address(0); // Promo contract
-
-41:         configAddress[bytes32("contract_buyBurn")] = address(0); // Buy&Burn contract
-
-42:         configAddress[bytes32("contract_listMarket")] = address(0); // List Market contract
-
-43:         configAddress[bytes32("contract_authorOfTheMonth")] = address(0); // Author of the Month contract
-
-47:             0x29eA7545DEf87022BAdc76323F373EA1e707C523 // Buy&Burn PulseX factory contract
-
-50:             0xA1077a294dDE1B09bB078844df40758a5D0f9a27 // WETH contract (WPLS)
+4: contract ActivityMonitorUpgradeable is IActivityMonitor, RBACUpgradeable {
 
 ```
 
 ```solidity
-File: ContentFund.sol
+File: ContractRoleAuthUpgradeable.sol
 
-19: contract ContentFund {
-
-58:     IConfig public config; // Config contract
+5: abstract contract ContractRoleAuthUpgradeable is RBACUpgradeable {
 
 ```
 
 ```solidity
-File: ContentNFT.sol
+File: IDPRegistryUpgradeable.sol
 
-16: contract ContentNFT is ERC721, ERC721Enumerable, ERC721URIStorage {
-
-54:         bb.transfer(msg.value); // Send ETH to Buy&Burn contract //
+5: contract IDPRegistryUpgradeable is IIDPRegistry, RBACUpgradeable {
 
 ```
 
 ```solidity
-File: ContentRegistry.sol
+File: JailedNodesUpgradeable.sol
 
-16: contract ContentRegistry is IContentRegistry {
+8: contract JailedNodesUpgradeable is ContractRoleAuthUpgradeable, IJailedNodes {
 
-```
-
-```solidity
-File: ListMarket.sol
-
-13: contract ListMarket is Ownable {
-
-14:     IConfig public config; // Config contract
+38:                 "not enough balance in the smart contract for treasury transfer"
 
 ```
 
 ```solidity
-File: NFTMarketplace.sol
+File: NetworkConfigurationUpgradeable.sol
 
-16: contract NFTMarketplace is INFTMarketplace, IERC721Receiver {
-
-17:     IConfig public config; // Config contract
+5: contract NetworkConfigurationContractUpgradeable is
 
 ```
 
 ```solidity
-File: Promo.sol
+File: PermissionUpgradeable.sol
 
-19: abstract contract Context {
-
-49: abstract contract Ownable is Context {
-
-263: contract ERC20 is Context, IERC20, IERC20Metadata {
-
-599: contract BlockChat is ERC20, Ownable {
+7: contract PermissionUpgradeable is IPermission, RBACUpgradeable {
 
 ```
 
 ```solidity
-File: RandomOracle.sol
+File: RBACUpgradeable.sol
 
-12: contract RandomOracle is IRandomOracle, Ownable {
-
-```
-
-```solidity
-File: SavvaFaucet.sol
-
-14: contract SavvaFaucet {
-
-17:     uint256 constant STAKING_SHARE = 50; // 50% of the minted tokens go to staking contract
-
-19:     IConfig public config; // Config contract
-
-20:     ISavvaToken public savvaToken; // Savva token contract
-
-151:             savvaToken.transfer(stakingContract, tokensLeft); // send the rest to staking contract
+5: abstract contract RBACUpgradeable is AccessControlUpgradeable {
 
 ```
 
 ```solidity
-File: SavvaToken.sol
+File: ReconfigurationUpgradeable.sol
 
-15: contract SavvaToken is ISavvaToken {
-
-```
-
-```solidity
-File: Staking.sol
-
-12: contract Staking is IStaking, ERC20, ERC20Permit, ERC20Votes { 
+5: contract ReconfigurationContractUpgradeable is
 
 ```
 
 ```solidity
-File: UserProfile.sol
+File: SignupBonusVestingUpgradeable.sol
 
-9: contract UserProfile {
+14: contract SignupBonusVestingUpgradeable is
+
+142:             revert TransferBalanceError("not enough balance in the contract");
+
+```
+
+```solidity
+File: StakingDepositUpgradeable.sol
+
+5: contract StakingDepositUpgradeable is
+
+361:             revert InsufficientBalance("Insufficient contract balance");
+
+554:                 revert InsufficientBalance("Insufficient contract balance");
+
+```
+
+```solidity
+File: StakingEscrowUpgradeable.sol
+
+4: contract StakingEscrowUpgradeable is Initializable, OwnableUpgradeable {
+
+```
+
+```solidity
+File: TombstonedNodesUpgradeable.sol
+
+8: contract TombstonedNodesUpgradeable is
 
 ```
 
@@ -2596,147 +2407,105 @@ File: UserProfile.sol
 
 
  ### <a name="NC-12"></a>[NC-12]
- ### NatSpec: Contract declarations should have NatSpec descriptions
-e.g. @dev or @notice, and it must appear above the contract definition braces in order to be identified by the compiler as NatSpec
+ ### NatSpec: Contract declarations should have @dev tags
 
-*Instances (38)*:
+#### Impact:
+@dev is used to explain extra details to developers
+
+*Instances (16)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: Config.sol
+File: ActivityMonitorUpgradeable.sol
 
-12: contract Config is IConfig, Ownable {
-
-30:         configAddress[bytes32("contract_savvaToken")] = address(0); // SAVVA token contract
-
-32:         configAddress[bytes32("contract_staking")] = address(0); // Staking contract
-
-33:         configAddress[bytes32("contract_userProfile")] = address(0); // Staking contract
-
-34:         configAddress[bytes32("contract_contentNFT")] = address(0); // Content NFT contract
-
-35:         configAddress[bytes32("contract_contentFund")] = address(0); // Content Fund contract
-
-36:         configAddress[bytes32("contract_governance")] = address(0); // Governance contract
-
-37:         configAddress[bytes32("contract_contentRegistry")] = address(0); // Content Registry contract
-
-38:         configAddress[bytes32("contract_savvaFaucet")] = address(0); // SAVVA Faucet contract
-
-39:         configAddress[bytes32("contract_nftMarketplace")] = address(0); // NFT Market Place contract
-
-40:         configAddress[bytes32("contract_promo")] = address(0); // Promo contract
-
-41:         configAddress[bytes32("contract_buyBurn")] = address(0); // Buy&Burn contract
-
-42:         configAddress[bytes32("contract_listMarket")] = address(0); // List Market contract
-
-43:         configAddress[bytes32("contract_authorOfTheMonth")] = address(0); // Author of the Month contract
-
-47:             0x29eA7545DEf87022BAdc76323F373EA1e707C523 // Buy&Burn PulseX factory contract
-
-50:             0xA1077a294dDE1B09bB078844df40758a5D0f9a27 // WETH contract (WPLS)
+4: contract ActivityMonitorUpgradeable is IActivityMonitor, RBACUpgradeable {
 
 ```
 
 ```solidity
-File: ContentFund.sol
+File: ContractRoleAuthUpgradeable.sol
 
-19: contract ContentFund {
-
-58:     IConfig public config; // Config contract
+5: abstract contract ContractRoleAuthUpgradeable is RBACUpgradeable {
 
 ```
 
 ```solidity
-File: ContentNFT.sol
+File: IDPRegistryUpgradeable.sol
 
-16: contract ContentNFT is ERC721, ERC721Enumerable, ERC721URIStorage {
-
-54:         bb.transfer(msg.value); // Send ETH to Buy&Burn contract //
+5: contract IDPRegistryUpgradeable is IIDPRegistry, RBACUpgradeable {
 
 ```
 
 ```solidity
-File: ContentRegistry.sol
+File: JailedNodesUpgradeable.sol
 
-16: contract ContentRegistry is IContentRegistry {
+8: contract JailedNodesUpgradeable is ContractRoleAuthUpgradeable, IJailedNodes {
 
-```
-
-```solidity
-File: ListMarket.sol
-
-13: contract ListMarket is Ownable {
-
-14:     IConfig public config; // Config contract
+38:                 "not enough balance in the smart contract for treasury transfer"
 
 ```
 
 ```solidity
-File: NFTMarketplace.sol
+File: NetworkConfigurationUpgradeable.sol
 
-16: contract NFTMarketplace is INFTMarketplace, IERC721Receiver {
-
-17:     IConfig public config; // Config contract
+5: contract NetworkConfigurationContractUpgradeable is
 
 ```
 
 ```solidity
-File: Promo.sol
+File: PermissionUpgradeable.sol
 
-19: abstract contract Context {
-
-49: abstract contract Ownable is Context {
-
-263: contract ERC20 is Context, IERC20, IERC20Metadata {
-
-599: contract BlockChat is ERC20, Ownable {
+7: contract PermissionUpgradeable is IPermission, RBACUpgradeable {
 
 ```
 
 ```solidity
-File: RandomOracle.sol
+File: RBACUpgradeable.sol
 
-12: contract RandomOracle is IRandomOracle, Ownable {
-
-```
-
-```solidity
-File: SavvaFaucet.sol
-
-14: contract SavvaFaucet {
-
-17:     uint256 constant STAKING_SHARE = 50; // 50% of the minted tokens go to staking contract
-
-19:     IConfig public config; // Config contract
-
-20:     ISavvaToken public savvaToken; // Savva token contract
-
-151:             savvaToken.transfer(stakingContract, tokensLeft); // send the rest to staking contract
+5: abstract contract RBACUpgradeable is AccessControlUpgradeable {
 
 ```
 
 ```solidity
-File: SavvaToken.sol
+File: ReconfigurationUpgradeable.sol
 
-15: contract SavvaToken is ISavvaToken {
-
-```
-
-```solidity
-File: Staking.sol
-
-12: contract Staking is IStaking, ERC20, ERC20Permit, ERC20Votes { 
+5: contract ReconfigurationContractUpgradeable is
 
 ```
 
 ```solidity
-File: UserProfile.sol
+File: SignupBonusVestingUpgradeable.sol
 
-9: contract UserProfile {
+14: contract SignupBonusVestingUpgradeable is
+
+142:             revert TransferBalanceError("not enough balance in the contract");
+
+```
+
+```solidity
+File: StakingDepositUpgradeable.sol
+
+5: contract StakingDepositUpgradeable is
+
+361:             revert InsufficientBalance("Insufficient contract balance");
+
+554:                 revert InsufficientBalance("Insufficient contract balance");
+
+```
+
+```solidity
+File: StakingEscrowUpgradeable.sol
+
+4: contract StakingEscrowUpgradeable is Initializable, OwnableUpgradeable {
+
+```
+
+```solidity
+File: TombstonedNodesUpgradeable.sol
+
+8: contract TombstonedNodesUpgradeable is
 
 ```
 
@@ -2745,147 +2514,103 @@ File: UserProfile.sol
 
 
  ### <a name="NC-13"></a>[NC-13]
- ### NatSpec: Contract declarations should have @notice tags
-@notice is used to explain to end users what the contract does, and the compiler interprets /// or /** comments as this tag if one wasnt explicitly provided
+ ### NatSpec: Contract declarations should have NatSpec descriptions
+e.g. @dev or @notice, and it must appear above the contract definition braces in order to be identified by the compiler as NatSpec
 
-*Instances (38)*:
+*Instances (16)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: Config.sol
+File: ActivityMonitorUpgradeable.sol
 
-12: contract Config is IConfig, Ownable {
-
-30:         configAddress[bytes32("contract_savvaToken")] = address(0); // SAVVA token contract
-
-32:         configAddress[bytes32("contract_staking")] = address(0); // Staking contract
-
-33:         configAddress[bytes32("contract_userProfile")] = address(0); // Staking contract
-
-34:         configAddress[bytes32("contract_contentNFT")] = address(0); // Content NFT contract
-
-35:         configAddress[bytes32("contract_contentFund")] = address(0); // Content Fund contract
-
-36:         configAddress[bytes32("contract_governance")] = address(0); // Governance contract
-
-37:         configAddress[bytes32("contract_contentRegistry")] = address(0); // Content Registry contract
-
-38:         configAddress[bytes32("contract_savvaFaucet")] = address(0); // SAVVA Faucet contract
-
-39:         configAddress[bytes32("contract_nftMarketplace")] = address(0); // NFT Market Place contract
-
-40:         configAddress[bytes32("contract_promo")] = address(0); // Promo contract
-
-41:         configAddress[bytes32("contract_buyBurn")] = address(0); // Buy&Burn contract
-
-42:         configAddress[bytes32("contract_listMarket")] = address(0); // List Market contract
-
-43:         configAddress[bytes32("contract_authorOfTheMonth")] = address(0); // Author of the Month contract
-
-47:             0x29eA7545DEf87022BAdc76323F373EA1e707C523 // Buy&Burn PulseX factory contract
-
-50:             0xA1077a294dDE1B09bB078844df40758a5D0f9a27 // WETH contract (WPLS)
+4: contract ActivityMonitorUpgradeable is IActivityMonitor, RBACUpgradeable {
 
 ```
 
 ```solidity
-File: ContentFund.sol
+File: ContractRoleAuthUpgradeable.sol
 
-19: contract ContentFund {
-
-58:     IConfig public config; // Config contract
+5: abstract contract ContractRoleAuthUpgradeable is RBACUpgradeable {
 
 ```
 
 ```solidity
-File: ContentNFT.sol
+File: IDPRegistryUpgradeable.sol
 
-16: contract ContentNFT is ERC721, ERC721Enumerable, ERC721URIStorage {
-
-54:         bb.transfer(msg.value); // Send ETH to Buy&Burn contract //
+5: contract IDPRegistryUpgradeable is IIDPRegistry, RBACUpgradeable {
 
 ```
 
 ```solidity
-File: ContentRegistry.sol
+File: JailedNodesUpgradeable.sol
 
-16: contract ContentRegistry is IContentRegistry {
+8: contract JailedNodesUpgradeable is ContractRoleAuthUpgradeable, IJailedNodes {
 
-```
-
-```solidity
-File: ListMarket.sol
-
-13: contract ListMarket is Ownable {
-
-14:     IConfig public config; // Config contract
+38:                 "not enough balance in the smart contract for treasury transfer"
 
 ```
 
 ```solidity
-File: NFTMarketplace.sol
+File: NetworkConfigurationUpgradeable.sol
 
-16: contract NFTMarketplace is INFTMarketplace, IERC721Receiver {
-
-17:     IConfig public config; // Config contract
+5: contract NetworkConfigurationContractUpgradeable is
 
 ```
 
 ```solidity
-File: Promo.sol
+File: PermissionUpgradeable.sol
 
-19: abstract contract Context {
-
-49: abstract contract Ownable is Context {
-
-263: contract ERC20 is Context, IERC20, IERC20Metadata {
-
-599: contract BlockChat is ERC20, Ownable {
+7: contract PermissionUpgradeable is IPermission, RBACUpgradeable {
 
 ```
 
 ```solidity
-File: RandomOracle.sol
+File: RBACUpgradeable.sol
 
-12: contract RandomOracle is IRandomOracle, Ownable {
-
-```
-
-```solidity
-File: SavvaFaucet.sol
-
-14: contract SavvaFaucet {
-
-17:     uint256 constant STAKING_SHARE = 50; // 50% of the minted tokens go to staking contract
-
-19:     IConfig public config; // Config contract
-
-20:     ISavvaToken public savvaToken; // Savva token contract
-
-151:             savvaToken.transfer(stakingContract, tokensLeft); // send the rest to staking contract
+5: abstract contract RBACUpgradeable is AccessControlUpgradeable {
 
 ```
 
 ```solidity
-File: SavvaToken.sol
+File: ReconfigurationUpgradeable.sol
 
-15: contract SavvaToken is ISavvaToken {
-
-```
-
-```solidity
-File: Staking.sol
-
-12: contract Staking is IStaking, ERC20, ERC20Permit, ERC20Votes { 
+5: contract ReconfigurationContractUpgradeable is
 
 ```
 
 ```solidity
-File: UserProfile.sol
+File: SignupBonusVestingUpgradeable.sol
 
-9: contract UserProfile {
+14: contract SignupBonusVestingUpgradeable is
+
+142:             revert TransferBalanceError("not enough balance in the contract");
+
+```
+
+```solidity
+File: StakingDepositUpgradeable.sol
+
+5: contract StakingDepositUpgradeable is
+
+361:             revert InsufficientBalance("Insufficient contract balance");
+
+554:                 revert InsufficientBalance("Insufficient contract balance");
+
+```
+
+```solidity
+File: StakingEscrowUpgradeable.sol
+
+4: contract StakingEscrowUpgradeable is Initializable, OwnableUpgradeable {
+
+```
+
+```solidity
+File: TombstonedNodesUpgradeable.sol
+
+8: contract TombstonedNodesUpgradeable is
 
 ```
 
@@ -2894,169 +2619,103 @@ File: UserProfile.sol
 
 
  ### <a name="NC-14"></a>[NC-14]
- ### Consider using delete rather than assigning zero to clear value
+ ### NatSpec: Contract declarations should have @notice tags
+@notice is used to explain to end users what the contract does, and the compiler interprets /// or /** comments as this tag if one wasnt explicitly provided
 
-#### Impact:
-Consider using delete rather than assigning zero to clear values. The delete keyword more closely matches the semantics of what is being done, and draws more attention to the changing of state, which may lead to a more thorough audit of its associated logic.
-
-*Instances (63)*:
+*Instances (16)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: ContentFund.sol
+File: ActivityMonitorUpgradeable.sol
 
-74:             funds[savva_cid].SLLeft = 0;
-
-75:             funds[savva_cid].SLRight = 0;
-
-94:                     funds[savva_cid].SLRight = 0;
-
-150:         uint256 authorShare = 0;
-
-151:         uint256 nftShare = 0;
-
-221:         uint256 authorShare = 0;
-
-222:         uint256 nftShare = 0;
-
-281:         uint256 totalShares = 0;
-
-283:         for (uint256 i = 0; i < funds[h].contributors.length; i++) {
-
-288:         uint256 runningShareSum = 0;
-
-289:         for (uint256 i = 0; i < funds[h].contributors.length; i++) {
-
-351:             for (uint256 j = 0; j < funds[h].contributors.length; j++) {
-
-355:             for (uint256 j = 0; j < funds[h].contributors.length; j++) {
-
-371:         uint256 random = 0;
-
-422:         uint256 total = 0;
-
-424:         for (uint256 i = 0; i < nft.balanceOf(owner); i++) {
-
-430:         for (uint256 i = 0; i < nft.balanceOf(address(mp)); i++) {
-
-442:         uint256 total = 0;
-
-449:         for (uint256 i = 0; i < nft.balanceOf(msg.sender); i++) {
-
-455:         for (uint256 i = 0; i < nft.balanceOf(address(mp)); i++) {
-
-467:        uint256 total = 0;
-
-477:         for (uint256 i = 0; i < nft.balanceOf(msg.sender); i++) {
-
-488:         for (uint256 i = 0; i < nft.balanceOf(address(mp)); i++) {
-
-538:         uint256 total = 0;
-
-539:         for (uint256 i = 0; i < funds[savva_cid].contributors.length; i++) {
+4: contract ActivityMonitorUpgradeable is IActivityMonitor, RBACUpgradeable {
 
 ```
 
 ```solidity
-File: ContentRegistry.sol
+File: ContractRoleAuthUpgradeable.sol
 
-120:         for (uint256 i = 0; i < domains.length; i++) {
-
-```
-
-```solidity
-File: NFTMarketplace.sol
-
-66:         for (uint256 i = 0; i < nftsByOwnerArray.length; i++) {
-
-181:         for (uint256 i = 0; i < nftsByOwnerArray.length; i++) {
+5: abstract contract ContractRoleAuthUpgradeable is RBACUpgradeable {
 
 ```
 
 ```solidity
-File: SavvaFaucet.sol
+File: IDPRegistryUpgradeable.sol
 
-25:     uint256 public lastRoundPayWeek = 0;
-
-26:     uint256 public roundTotalDeposits = 0;
-
-27:     uint256 public roundTokensToShare = 0;
-
-28:     uint256 public roundPayWeek = 0;
-
-132:         for (uint256 i = 0; i < depositors.length; i++) {
-
-156:         roundTokensToShare = 0;
-
-157:         roundTotalDeposits = 0;
-
-159:         roundPayWeek = 0; //round will start after first deposit
+5: contract IDPRegistryUpgradeable is IIDPRegistry, RBACUpgradeable {
 
 ```
 
 ```solidity
-File: Staking.sol
+File: JailedNodesUpgradeable.sol
 
-112:     uint256 public currentFrameNumber = 0;
+8: contract JailedNodesUpgradeable is ContractRoleAuthUpgradeable, IJailedNodes {
 
-146:                 frame.to_share = 0;
-
-148:                 OldestFrame.to_share = 0;
-
-178:         uint256 result = 0;
-
-272:             user.accruedGain = 0;
-
-296:         user.accruedGain = 0;
-
-313:         user.accruedGain = 0;
-
-354:         uint256 totalAmount = 0;
-
-356:         for (uint256 i = 0; i < user.unstakeRequests.length; i++) {
-
-369:         uint256 totalAmount = 0;
-
-371:         for (uint256 i = 0; i < user.unstakeRequests.length; i++) {
-
-376:                 request.amount = 0; // Mark for deletion
-
-383:         uint256 j = 0;
-
-384:         for (uint256 i = 0; i < user.unstakeRequests.length; i++) {
-
-396:         for (uint256 i = 0; i < n_to_pop; i++) {
-
-426:         uint256 paid = 0;
-
-444:             for (uint256 i = 0; i < s_author.patrons.length; i++) {
-
-508:         for (uint256 i = 0; i < user.PayRecordsKeys.length; i++) {
-
-520:             for (uint256 i = 0; i < n_to_pop; i++) {
-
-556:         uint256 total = 0;
-
-570:         for (uint256 i = 0; i < s_author.patrons.length; i++) {
-
-588:         uint256 total = 0;
-
-601:         for (uint256 i = 0; i < s_author.patrons.length; i++) {
-
-648:         uint256 total_gain = 0;
+38:                 "not enough balance in the smart contract for treasury transfer"
 
 ```
 
 ```solidity
-File: utils.sol
+File: NetworkConfigurationUpgradeable.sol
 
-22:         uint z = 0;
+5: contract NetworkConfigurationContractUpgradeable is
 
-24:         for (z = 0; z < 32; z++) {
+```
 
-41:         for (uint256 i = 0; i < b.length; i++) {
+```solidity
+File: PermissionUpgradeable.sol
+
+7: contract PermissionUpgradeable is IPermission, RBACUpgradeable {
+
+```
+
+```solidity
+File: RBACUpgradeable.sol
+
+5: abstract contract RBACUpgradeable is AccessControlUpgradeable {
+
+```
+
+```solidity
+File: ReconfigurationUpgradeable.sol
+
+5: contract ReconfigurationContractUpgradeable is
+
+```
+
+```solidity
+File: SignupBonusVestingUpgradeable.sol
+
+14: contract SignupBonusVestingUpgradeable is
+
+142:             revert TransferBalanceError("not enough balance in the contract");
+
+```
+
+```solidity
+File: StakingDepositUpgradeable.sol
+
+5: contract StakingDepositUpgradeable is
+
+361:             revert InsufficientBalance("Insufficient contract balance");
+
+554:                 revert InsufficientBalance("Insufficient contract balance");
+
+```
+
+```solidity
+File: StakingEscrowUpgradeable.sol
+
+4: contract StakingEscrowUpgradeable is Initializable, OwnableUpgradeable {
+
+```
+
+```solidity
+File: TombstonedNodesUpgradeable.sol
+
+8: contract TombstonedNodesUpgradeable is
 
 ```
 
@@ -3065,6 +2724,220 @@ File: utils.sol
 
 
  ### <a name="NC-15"></a>[NC-15]
+ ### Consider using delete rather than assigning zero to clear value
+
+#### Impact:
+Consider using delete rather than assigning zero to clear values. The delete keyword more closely matches the semantics of what is being done, and draws more attention to the changing of state, which may lead to a more thorough audit of its associated logic.
+
+*Instances (77)*:
+ 
+ <details>
+ <summary>Click to expand!</summary>
+
+```solidity
+File: ActivityMonitorUpgradeable.sol
+
+78:         for (uint256 i = 0; i < authAddresses.length; i++) {
+
+```
+
+```solidity
+File: IDPRegistryUpgradeable.sol
+
+75:         for (uint256 i = 0; i < proofs.length; i++) {
+
+118:         for (uint256 i = 0; i < idpProofCounts[uid]; i++) {
+
+127:         for (uint256 i = 0; i < idpData.proofs.length; i++) {
+
+143:         uint256 index = 0;
+
+144:         for (uint256 i = 0; i < _uidCounter; i++) {
+
+158:         for (uint256 i = 0; i < idpProofCounts[uid]; i++) {
+
+205:         for (uint256 i = 0; i < idpProofCounts[uid]; i++) {
+
+270:         uint256 deletedCount = 0;
+
+271:         for (uint256 i = 0; i < _uidCounter; i++) {
+
+```
+
+```solidity
+File: JailedNodesUpgradeable.sol
+
+118:         for (uint256 i = 0; i < authorizedUsers.length; i++) {
+
+246:         uint256 timeServedInJail = 0;
+
+247:         for (uint256 i = 0; i < getJailCountForNode(_address); i++) {
+
+354:         uint256 timeInJail = 0;
+
+355:         for (uint256 i = 0; i < jailData.length; i++) {
+
+```
+
+```solidity
+File: NetworkConfigurationUpgradeable.sol
+
+187:         uint256 candidateIndex = 0;
+
+189:             uint256 currIndex = 0;
+
+190:             for (uint256 i = 0; i < safeToUpgradeCandidates.length; i++) {
+
+249:         for (uint256 i = 0; i < _authorisedUsers.length; i++) {
+
+252:         for (uint256 i = 0; i < _bootStrapNodes.length; i++) {
+
+319:         uint256 refundAmount = 0;
+
+336:         uint256 amountToWithdrawFromEscrow = 0;
+
+515:         for (uint256 i = 0; i < govs.length; i++) {
+
+583:         uint256 currIndex = 0;
+
+584:         for (uint256 i = 0; i < allCandidates.length; i++) {
+
+591:         for (uint256 i = 0; i < currIndex; i++) {
+
+```
+
+```solidity
+File: PermissionUpgradeable.sol
+
+28:         for (uint256 i = 0; i < authAddresses.length; i++) {
+
+49:         for (uint256 i = 0; i < supportedProofTypes.length; i++) {
+
+136:         for (uint256 i = 0; i < proofs.length; i++) {
+
+246:         for (uint256 i = 0; i < result.length; i++) {
+
+```
+
+```solidity
+File: ReconfigurationUpgradeable.sol
+
+71:         for (uint256 i = 0; i < authorizedAddresses.length; i++) {
+
+104:         uint256 currIndex = 0;
+
+107:         for (uint256 i = 0; i < candidates.length; i++) {
+
+123:         for (uint256 i = 0; i < currIndex; i++) {
+
+213:                 uint256 i = 0;
+
+232:                 for (uint256 i = 0; i < randomGovernors.length; i++) {
+
+307:         for (uint256 i = 0; i < safeToUpgradeCandidates.length; i++) {
+
+326:         for (uint256 i = 0; i < prioritisedForDowngradeGovernors.length; i++) {
+
+348:         uint256 j = 0;
+
+349:         for (uint256 i = 0; i < upto && j < count; i++) {
+
+387:         uint256 idx = 0;
+
+388:         for (uint256 i = 0; i < governors.length; i++) {
+
+408:         for (uint256 i = 0; i < count; i++) {
+
+427:         for (uint256 itr = 0; itr < swappableGovernors.length; itr++) {
+
+532:                 for (itr = 0; itr < swapSize; itr++) {
+
+539:                 for (itr = 0; itr < nonRbnSwapSize; itr++) {
+
+562:             for (uint256 i = 0; i < swapSize; i++) {
+
+575:         for (uint256 i = 0; i < governorsToDowngrade.length; i++) {
+
+586:         for (uint256 i = 0; i < governorsToDowngrade.length; i++) {
+
+613:             requiredNonRbnCandidatesLen = 0;
+
+639:         for (uint256 i = 0; i < randomIndexes.length; i++) {
+
+656:         uint256 candidatesFoundIdx = 0;
+
+657:         for (uint256 i = 0; i < rbnFound; i++) {
+
+660:         for (uint256 i = 0; i < nonRbnFound; i++) {
+
+688:             for (uint256 i = 0; i < governors.length; i++) {
+
+696:             for (uint256 i = 0; i < candidates.length; i++) {
+
+```
+
+```solidity
+File: SignupBonusVestingUpgradeable.sol
+
+93:         for (uint256 i = 0; i < bootNodeAddresses.length; i++) {
+
+97:         for (uint256 i = 0; i < _authorizedUsers.length; i++) {
+
+```
+
+```solidity
+File: StakingDepositUpgradeable.sol
+
+165:         for (uint256 i = 0; i < _authorisedUsers.length; i++) {
+
+299:         uint256 jailTimeBetweenSpan = 0;
+
+327:         uint256 rewardAmount = 0;
+
+328:         for (uint256 yearIndex = 0; yearIndex <= yearIndexes; yearIndex++) {
+
+424:         uint256 timeInNetwork = 0;
+
+467:         deposits[nodeConfig.id].depositedAmount = 0;
+
+468:         deposits[nodeConfig.id].redbellyDeposit = 0;
+
+469:         deposits[nodeConfig.id].nodeOperatorDeposit = 0;
+
+470:         deposits[nodeConfig.id].slashedAmount = 0;
+
+471:         deposits[nodeConfig.id].slashedNodeOperatorDeposit = 0;
+
+472:         deposits[nodeConfig.id].slashedRedbellyDeposit = 0;
+
+534:             deposits[nodeId].redbellyDeposit = 0;
+
+568:         deposits[nodeId].slashedAmount = 0;
+
+571:         deposits[nodeId].slashedRedbellyDeposit = 0;
+
+574:         deposits[nodeId].slashedNodeOperatorDeposit = 0;
+
+589:         deposits[nodeId].slashedAmount = 0;
+
+591:         deposits[nodeId].slashedNodeOperatorDeposit = 0;
+
+592:         deposits[nodeId].slashedRedbellyDeposit = 0;
+
+```
+
+```solidity
+File: TombstonedNodesUpgradeable.sol
+
+32:         for (uint256 i = 0; i < _authorisedUsers.length; i++) { //@audit cache first
+
+```
+
+</details> 
+ 
+
+
+ ### <a name="NC-16"></a>[NC-16]
  ### Consider using delete rather than assigning false to clear value
 
 #### Impact:
@@ -3076,167 +2949,13 @@ Consider using delete rather than assigning alse to clear values. The delete key
  <summary>Click to expand!</summary>
 
 ```solidity
-File: ContentRegistry.sol
+File: PermissionUpgradeable.sol
 
-83:         bool exists = false;
+176:         bool callresult = false;
 
-```
+259:         bool callresult = false;
 
-```solidity
-File: Staking.sol
-
-443:             bool found = false;
-
-507:         bool found = false;
-
-```
-
-</details> 
- 
-
-
- ### <a name="NC-16"></a>[NC-16]
- ### Consider adding a block/deny-list"
-Doing so will significantly increase centralization, but will help to prevent hackers from using stolen tokens  
-
-*Instances (38)*:
- 
- <details>
- <summary>Click to expand!</summary>
-
-```solidity
-File: Config.sol
-
-12: contract Config is IConfig, Ownable {
-
-30:         configAddress[bytes32("contract_savvaToken")] = address(0); // SAVVA token contract
-
-32:         configAddress[bytes32("contract_staking")] = address(0); // Staking contract
-
-33:         configAddress[bytes32("contract_userProfile")] = address(0); // Staking contract
-
-34:         configAddress[bytes32("contract_contentNFT")] = address(0); // Content NFT contract
-
-35:         configAddress[bytes32("contract_contentFund")] = address(0); // Content Fund contract
-
-36:         configAddress[bytes32("contract_governance")] = address(0); // Governance contract
-
-37:         configAddress[bytes32("contract_contentRegistry")] = address(0); // Content Registry contract
-
-38:         configAddress[bytes32("contract_savvaFaucet")] = address(0); // SAVVA Faucet contract
-
-39:         configAddress[bytes32("contract_nftMarketplace")] = address(0); // NFT Market Place contract
-
-40:         configAddress[bytes32("contract_promo")] = address(0); // Promo contract
-
-41:         configAddress[bytes32("contract_buyBurn")] = address(0); // Buy&Burn contract
-
-42:         configAddress[bytes32("contract_listMarket")] = address(0); // List Market contract
-
-43:         configAddress[bytes32("contract_authorOfTheMonth")] = address(0); // Author of the Month contract
-
-47:             0x29eA7545DEf87022BAdc76323F373EA1e707C523 // Buy&Burn PulseX factory contract
-
-50:             0xA1077a294dDE1B09bB078844df40758a5D0f9a27 // WETH contract (WPLS)
-
-```
-
-```solidity
-File: ContentFund.sol
-
-19: contract ContentFund {
-
-58:     IConfig public config; // Config contract
-
-```
-
-```solidity
-File: ContentNFT.sol
-
-16: contract ContentNFT is ERC721, ERC721Enumerable, ERC721URIStorage {
-
-54:         bb.transfer(msg.value); // Send ETH to Buy&Burn contract //
-
-```
-
-```solidity
-File: ContentRegistry.sol
-
-16: contract ContentRegistry is IContentRegistry {
-
-```
-
-```solidity
-File: ListMarket.sol
-
-13: contract ListMarket is Ownable {
-
-14:     IConfig public config; // Config contract
-
-```
-
-```solidity
-File: NFTMarketplace.sol
-
-16: contract NFTMarketplace is INFTMarketplace, IERC721Receiver {
-
-17:     IConfig public config; // Config contract
-
-```
-
-```solidity
-File: Promo.sol
-
-19: abstract contract Context {
-
-49: abstract contract Ownable is Context {
-
-263: contract ERC20 is Context, IERC20, IERC20Metadata {
-
-599: contract BlockChat is ERC20, Ownable {
-
-```
-
-```solidity
-File: RandomOracle.sol
-
-12: contract RandomOracle is IRandomOracle, Ownable {
-
-```
-
-```solidity
-File: SavvaFaucet.sol
-
-14: contract SavvaFaucet {
-
-17:     uint256 constant STAKING_SHARE = 50; // 50% of the minted tokens go to staking contract
-
-19:     IConfig public config; // Config contract
-
-20:     ISavvaToken public savvaToken; // Savva token contract
-
-151:             savvaToken.transfer(stakingContract, tokensLeft); // send the rest to staking contract
-
-```
-
-```solidity
-File: SavvaToken.sol
-
-15: contract SavvaToken is ISavvaToken {
-
-```
-
-```solidity
-File: Staking.sol
-
-12: contract Staking is IStaking, ERC20, ERC20Permit, ERC20Votes { 
-
-```
-
-```solidity
-File: UserProfile.sol
-
-9: contract UserProfile {
+313:         bool callresult = false;
 
 ```
 
@@ -3245,6 +2964,111 @@ File: UserProfile.sol
 
 
  ### <a name="NC-17"></a>[NC-17]
+ ### Consider adding a block/deny-list"
+Doing so will significantly increase centralization, but will help to prevent hackers from using stolen tokens  
+
+*Instances (16)*:
+ 
+ <details>
+ <summary>Click to expand!</summary>
+
+```solidity
+File: ActivityMonitorUpgradeable.sol
+
+4: contract ActivityMonitorUpgradeable is IActivityMonitor, RBACUpgradeable {
+
+```
+
+```solidity
+File: ContractRoleAuthUpgradeable.sol
+
+5: abstract contract ContractRoleAuthUpgradeable is RBACUpgradeable {
+
+```
+
+```solidity
+File: IDPRegistryUpgradeable.sol
+
+5: contract IDPRegistryUpgradeable is IIDPRegistry, RBACUpgradeable {
+
+```
+
+```solidity
+File: JailedNodesUpgradeable.sol
+
+8: contract JailedNodesUpgradeable is ContractRoleAuthUpgradeable, IJailedNodes {
+
+38:                 "not enough balance in the smart contract for treasury transfer"
+
+```
+
+```solidity
+File: NetworkConfigurationUpgradeable.sol
+
+5: contract NetworkConfigurationContractUpgradeable is
+
+```
+
+```solidity
+File: PermissionUpgradeable.sol
+
+7: contract PermissionUpgradeable is IPermission, RBACUpgradeable {
+
+```
+
+```solidity
+File: RBACUpgradeable.sol
+
+5: abstract contract RBACUpgradeable is AccessControlUpgradeable {
+
+```
+
+```solidity
+File: ReconfigurationUpgradeable.sol
+
+5: contract ReconfigurationContractUpgradeable is
+
+```
+
+```solidity
+File: SignupBonusVestingUpgradeable.sol
+
+14: contract SignupBonusVestingUpgradeable is
+
+142:             revert TransferBalanceError("not enough balance in the contract");
+
+```
+
+```solidity
+File: StakingDepositUpgradeable.sol
+
+5: contract StakingDepositUpgradeable is
+
+361:             revert InsufficientBalance("Insufficient contract balance");
+
+554:                 revert InsufficientBalance("Insufficient contract balance");
+
+```
+
+```solidity
+File: StakingEscrowUpgradeable.sol
+
+4: contract StakingEscrowUpgradeable is Initializable, OwnableUpgradeable {
+
+```
+
+```solidity
+File: TombstonedNodesUpgradeable.sol
+
+8: contract TombstonedNodesUpgradeable is
+
+```
+
+</details> 
+ 
+
+
+ ### <a name="NC-18"></a>[NC-18]
  ### Use bytes.concat() on bytes instead of abi.encodePacked() for clearer semantic meaning
 Starting with version 0.8.4, Solidity has the bytes.concat() function, which allows one to concatenate a list of bytes/strings, without extra padding. Using this function rather than abi.encodePacked() makes the intended operation more clear, leading to less reviewer confusion.  
 
@@ -3254,173 +3078,17 @@ Starting with version 0.8.4, Solidity has the bytes.concat() function, which all
  <summary>Click to expand!</summary>
 
 ```solidity
-File: Staking.sol
+File: PermissionUpgradeable.sol
 
-421:             abi.encodePacked(event_contract, event_id, author)
+102:                     abi.encodePacked(
 
-488:             abi.encodePacked(event_contract, event_id, author)
+138:                 keccak256(abi.encodePacked(proofs[i].proofType)) ==
 
-567:             abi.encodePacked(contract_address, event_id, author)
+139:                 keccak256(abi.encodePacked(_proofType))
 
-599:         bytes32 key = keccak256(abi.encodePacked(msg.sender, event_id, author));
+211:         bytes memory requestData = abi.encodePacked(
 
-```
-
-```solidity
-File: utils.sol
-
-16:         return uint256(keccak256(abi.encodePacked(author, domain, guid)));
-
-```
-
-</details> 
- 
-
-
- ### <a name="NC-18"></a>[NC-18]
- ### Consider adding emergency-stop functionality
-
-#### Impact:
-Adding a way to quickly halt protocol functionality in an emergency, rather than having to pause individual contracts one-by-one, will make in-progress hack mitigation faster and much less stressful.
-
-*Instances (38)*:
- 
- <details>
- <summary>Click to expand!</summary>
-
-```solidity
-File: Config.sol
-
-12: contract Config is IConfig, Ownable {
-
-30:         configAddress[bytes32("contract_savvaToken")] = address(0); // SAVVA token contract
-
-32:         configAddress[bytes32("contract_staking")] = address(0); // Staking contract
-
-33:         configAddress[bytes32("contract_userProfile")] = address(0); // Staking contract
-
-34:         configAddress[bytes32("contract_contentNFT")] = address(0); // Content NFT contract
-
-35:         configAddress[bytes32("contract_contentFund")] = address(0); // Content Fund contract
-
-36:         configAddress[bytes32("contract_governance")] = address(0); // Governance contract
-
-37:         configAddress[bytes32("contract_contentRegistry")] = address(0); // Content Registry contract
-
-38:         configAddress[bytes32("contract_savvaFaucet")] = address(0); // SAVVA Faucet contract
-
-39:         configAddress[bytes32("contract_nftMarketplace")] = address(0); // NFT Market Place contract
-
-40:         configAddress[bytes32("contract_promo")] = address(0); // Promo contract
-
-41:         configAddress[bytes32("contract_buyBurn")] = address(0); // Buy&Burn contract
-
-42:         configAddress[bytes32("contract_listMarket")] = address(0); // List Market contract
-
-43:         configAddress[bytes32("contract_authorOfTheMonth")] = address(0); // Author of the Month contract
-
-47:             0x29eA7545DEf87022BAdc76323F373EA1e707C523 // Buy&Burn PulseX factory contract
-
-50:             0xA1077a294dDE1B09bB078844df40758a5D0f9a27 // WETH contract (WPLS)
-
-```
-
-```solidity
-File: ContentFund.sol
-
-19: contract ContentFund {
-
-58:     IConfig public config; // Config contract
-
-```
-
-```solidity
-File: ContentNFT.sol
-
-16: contract ContentNFT is ERC721, ERC721Enumerable, ERC721URIStorage {
-
-54:         bb.transfer(msg.value); // Send ETH to Buy&Burn contract //
-
-```
-
-```solidity
-File: ContentRegistry.sol
-
-16: contract ContentRegistry is IContentRegistry {
-
-```
-
-```solidity
-File: ListMarket.sol
-
-13: contract ListMarket is Ownable {
-
-14:     IConfig public config; // Config contract
-
-```
-
-```solidity
-File: NFTMarketplace.sol
-
-16: contract NFTMarketplace is INFTMarketplace, IERC721Receiver {
-
-17:     IConfig public config; // Config contract
-
-```
-
-```solidity
-File: Promo.sol
-
-19: abstract contract Context {
-
-49: abstract contract Ownable is Context {
-
-263: contract ERC20 is Context, IERC20, IERC20Metadata {
-
-599: contract BlockChat is ERC20, Ownable {
-
-```
-
-```solidity
-File: RandomOracle.sol
-
-12: contract RandomOracle is IRandomOracle, Ownable {
-
-```
-
-```solidity
-File: SavvaFaucet.sol
-
-14: contract SavvaFaucet {
-
-17:     uint256 constant STAKING_SHARE = 50; // 50% of the minted tokens go to staking contract
-
-19:     IConfig public config; // Config contract
-
-20:     ISavvaToken public savvaToken; // Savva token contract
-
-151:             savvaToken.transfer(stakingContract, tokensLeft); // send the rest to staking contract
-
-```
-
-```solidity
-File: SavvaToken.sol
-
-15: contract SavvaToken is ISavvaToken {
-
-```
-
-```solidity
-File: Staking.sol
-
-12: contract Staking is IStaking, ERC20, ERC20Permit, ERC20Votes { 
-
-```
-
-```solidity
-File: UserProfile.sol
-
-9: contract UserProfile {
+213:             abi.encodePacked(_idpPublicKey, jwsBytes)
 
 ```
 
@@ -3429,130 +3097,105 @@ File: UserProfile.sol
 
 
  ### <a name="NC-19"></a>[NC-19]
- ### Events are missing sender information
+ ### Consider adding emergency-stop functionality
 
 #### Impact:
-Including msg.sender in events triggered by user actions can make events more useful for end users.
+Adding a way to quickly halt protocol functionality in an emergency, rather than having to pause individual contracts one-by-one, will make in-progress hack mitigation faster and much less stressful.
 
-*Instances (31)*:
+*Instances (16)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: Config.sol
+File: ActivityMonitorUpgradeable.sol
 
-70:         emit ConfigSet(key, value);
-
-85:         emit ConfigUintSet(key, value);
-
-100:         emit ConfigAddressSet(key, value);
+4: contract ActivityMonitorUpgradeable is IActivityMonitor, RBACUpgradeable {
 
 ```
 
 ```solidity
-File: ContentFund.sol
+File: ContractRoleAuthUpgradeable.sol
 
-264:         emit ContributeEvent(
-
-338:             emit PrizeEvent(
-
-348:             emit PrizeEvent(h, winner, prize, 0, block.timestamp, 0);
+5: abstract contract ContractRoleAuthUpgradeable is RBACUpgradeable {
 
 ```
 
 ```solidity
-File: ContentNFT.sol
+File: IDPRegistryUpgradeable.sol
 
-59:         emit Mint(author, tokenId, domain, guid, uri, price, block.timestamp);
-
-```
-
-```solidity
-File: ContentRegistry.sol
-
-100:         emit RegEvent(
-
-140:         emit Command(msg.sender, domain, cmd, p1, p2, p3, p4, block.timestamp);
+5: contract IDPRegistryUpgradeable is IIDPRegistry, RBACUpgradeable {
 
 ```
 
 ```solidity
-File: ListMarket.sol
+File: JailedNodesUpgradeable.sol
 
-29:         emit PriceSet(list_name, price, block.timestamp);
+8: contract JailedNodesUpgradeable is ContractRoleAuthUpgradeable, IJailedNodes {
 
-62:         emit Bought(list_name, msg.sender, msg.value, block.timestamp);
-
-```
-
-```solidity
-File: NFTMarketplace.sol
-
-59:         emit NFTAddedToMarket(tokenId, msg.sender, price);
-
-92:         emit NFTRemovedFromMarket(tokenId, msg.sender);
-
-146:         emit NFTBought(tokenId, oldOwner, msg.sender, price);
-
-198:         emit NFTOwnerChanged(tokenId, oldOwner, msg.sender, price, new_price);
-
-209:         emit NFTPriceChanged(tokenId, msg.sender, price);
+38:                 "not enough balance in the smart contract for treasury transfer"
 
 ```
 
 ```solidity
-File: Promo.sol
+File: NetworkConfigurationUpgradeable.sol
 
-110:         emit OwnershipTransferred(oldOwner, newOwner);
-
-462:         emit Transfer(from, to, amount);
-
-538:         emit Approval(owner, spender, amount);
+5: contract NetworkConfigurationContractUpgradeable is
 
 ```
 
 ```solidity
-File: RandomOracle.sol
+File: PermissionUpgradeable.sol
 
-46:         emit RandomUpdated(_random, _db_index, block.timestamp);
-
-```
-
-```solidity
-File: SavvaFaucet.sol
-
-113:         emit Deposit(msg.sender, msg.value, block.timestamp);
-
-125:         emit RoundFinished(roundPayWeek, roundTokensToShare, block.timestamp);
-
-141:                 emit TokensSent(depositor, amount, block.timestamp);
+7: contract PermissionUpgradeable is IPermission, RBACUpgradeable {
 
 ```
 
 ```solidity
-File: Staking.sol
+File: RBACUpgradeable.sol
 
-534:         emit PayRecordDeleted(msg.sender, event_contract, event_id, author);
+5: abstract contract RBACUpgradeable is AccessControlUpgradeable {
 
 ```
 
 ```solidity
-File: UserProfile.sol
+File: ReconfigurationUpgradeable.sol
 
-51:         emit NameSet(msg.sender, name);
+5: contract ReconfigurationContractUpgradeable is
 
-61:         emit NameSet(msg.sender, "");
+```
 
-66:         emit AvatarSet(msg.sender, avatar);
+```solidity
+File: SignupBonusVestingUpgradeable.sol
 
-80:         emit NameSet(to, name);
+14: contract SignupBonusVestingUpgradeable is
 
-81:         emit NameSet(msg.sender, "");
+142:             revert TransferBalanceError("not enough balance in the contract");
 
-90:         emit StringSet(msg.sender, domain, key, value);
+```
 
-100:         emit UIntSet(msg.sender, domain, key, value);
+```solidity
+File: StakingDepositUpgradeable.sol
+
+5: contract StakingDepositUpgradeable is
+
+361:             revert InsufficientBalance("Insufficient contract balance");
+
+554:                 revert InsufficientBalance("Insufficient contract balance");
+
+```
+
+```solidity
+File: StakingEscrowUpgradeable.sol
+
+4: contract StakingEscrowUpgradeable is Initializable, OwnableUpgradeable {
+
+```
+
+```solidity
+File: TombstonedNodesUpgradeable.sol
+
+8: contract TombstonedNodesUpgradeable is
 
 ```
 
@@ -3561,141 +3204,127 @@ File: UserProfile.sol
 
 
  ### <a name="NC-20"></a>[NC-20]
- ### NatSpec: Event declarations should have NatSpec descriptions
+ ### Error declarations should have NatSpec descriptions
 
-*Instances (38)*:
+*Instances (31)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: Config.sol
+File: ActivityMonitorUpgradeable.sol
 
-58:     event ConfigSet(bytes32 key, string value);
+12:     error UnauthorisedVoter(string);
 
-59:     event ConfigUintSet(bytes32 key, uint256 value);
+13:     error InvalidProposal(string);
 
-60:     event ConfigAddressSet(bytes32 key, address value);
+14:     error InvalidValue(string);
 
-```
-
-```solidity
-File: ContentFund.sol
-
-31:     event ContributeEvent(
-
-43:     event PrizeEvent(
-
-52:     event NFTGainWithdrawEvent(
+15:     error InvalidVote(string);
 
 ```
 
 ```solidity
-File: ContentNFT.sol
+File: IDPRegistryUpgradeable.sol
 
-25:     event Mint(
+23:     error InvalidUID(string);
 
-```
+24:     error InvalidDID(string);
 
-```solidity
-File: ContentRegistry.sol
-
-17:     event RegEvent(
-
-28:     event Command(
+25:     error InvalidValue(string);
 
 ```
 
 ```solidity
-File: ListMarket.sol
+File: JailedNodesUpgradeable.sol
 
-24:     event PriceSet(string list_name, uint256 price, uint256 timestamp);
+9:     error IncorrectRegistrationFee(string, uint256, uint256);
 
-25:     event Bought(string list_name, address buyer, uint256 price, uint256 timestamp);
+16:     error InvalidAddress(string);
 
-```
+17:     error InsufficientBalance(string);
 
-```solidity
-File: NFTMarketplace.sol
+18:     error InvalidValue(string);
 
-24:     event NFTAddedToMarket(uint256 token_id, address owner, uint256 price);
-
-25:     event NFTRemovedFromMarket(uint256 token_id, address owner);
-
-26:     event NFTBought(uint256 token_id, address old_owner, address new_owner, uint256 price);
-
-27:     event NFTPriceChanged(uint256 token_id, address owner, uint256 price);
-
-28:     event NFTOwnerChanged(
+19:     error TransferBalanceError(string);
 
 ```
 
 ```solidity
-File: Promo.sol
+File: NetworkConfigurationUpgradeable.sol
 
-52:     event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
+14:     error IncorrectRegistrationFee(string, uint256, uint256);
 
-131:     event Transfer(address indexed from, address indexed to, uint256 value);
+40:     error InvalidAddress(string);
 
-137:     event Approval(address indexed owner, address indexed spender, uint256 value);
+41:     error InvalidHostname(string);
 
-```
-
-```solidity
-File: RandomOracle.sol
-
-18:     event RandomUpdated(uint256 random, uint256 db_index, uint256 timestamp);
+42:     error InsufficientNodes(string);
 
 ```
 
 ```solidity
-File: SavvaFaucet.sol
+File: PermissionUpgradeable.sol
 
-33:     event Deposit(address user, uint256 amount, uint256 timestamp);
+13:     error InvalidData(string);
 
-34:     event RoundFinished(uint256 round, uint256 tokensToShare, uint256 timestamp);
-
-35:     event TokensSent(address user, uint256 amount, uint256 timestamp);
+14:     error InvalidProof(string);
 
 ```
 
 ```solidity
-File: Staking.sol
+File: RBACUpgradeable.sol
 
-46:     event Staked(address indexed user, uint256 amount, uint256 staked);
-
-47:     event Unstaked(address indexed user, uint256 amount, uint256 staked);
-
-48:     event GainClaimed(address indexed user, uint256 amount, uint256 staked);
-
-49:     event ClaimUnstaked(address indexed user, uint256 amount, uint256 staked);
-
-50:     event Transferred(
-
-57:     event Compounded(address indexed user, uint256 amount, uint256 staked);
-
-59:     event PayRecordSet(
-
-70:     event PayRecordDeleted(
-
-77:     event PatronPaid(
-
-85:     event PatronPaymentClaimed(
-
-417:             "Invalid event"
+14:     error UnauthorisedAccess(string);
 
 ```
 
 ```solidity
-File: UserProfile.sol
+File: ReconfigurationUpgradeable.sol
 
-17:     event NameSet(address user, string name);
+36:     error InvalidValue(string);
 
-18:     event AvatarSet(address user, string avatar);
+```
 
-19:     event StringSet(address user, bytes32 domain, bytes32 key, string value);
+```solidity
+File: SignupBonusVestingUpgradeable.sol
 
-20:     event UIntSet(address user, bytes32 domain, bytes32 key, uint256 value);
+37:     error UnauthorisedError(string);
+
+38:     error NotEligible(string);
+
+39:     error TransferBalanceError(string);
+
+```
+
+```solidity
+File: StakingDepositUpgradeable.sol
+
+46:     error InvalidAddress(string);
+
+47:     error InsufficientBalance(string);
+
+48:     error InvalidValue(string);
+
+49:     error TransferBalanceError(string);
+
+50:     error NotAllowed(string);
+
+```
+
+```solidity
+File: StakingEscrowUpgradeable.sol
+
+5:     error UnauthorisedError(string);
+
+```
+
+```solidity
+File: TombstonedNodesUpgradeable.sol
+
+21:     error InsufficientNodes(string);
+
+22:     error InvalidAddress(string);
 
 ```
 
@@ -3704,112 +3333,128 @@ File: UserProfile.sol
 
 
  ### <a name="NC-21"></a>[NC-21]
- ### contracts should use fixed compiler versions
-To prevent the contracts being deployed and behaving differently depending on the compiler version, it is recommended to use fixed solidity versions for contracts and libraries. Although we can configure a specific version through config (like hardhat, forge config files), it is recommended to set the fixed version in the solidity pragma directly before deploying to the mainnet.
+ ### Custom error has no error details
+Custom errors should have a description of the error. This is used to explain to end users what the error means. 
 
-*Instances (18)*:
+*Instances (31)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: Config.sol
+File: ActivityMonitorUpgradeable.sol
 
-7: pragma solidity ^0.8.18;
+12:     error UnauthorisedVoter(string);
 
-```
+13:     error InvalidProposal(string);
 
-```solidity
-File: ContentFund.sol
+14:     error InvalidValue(string);
 
-7: pragma solidity ^0.8.18;
-
-```
-
-```solidity
-File: ContentNFT.sol
-
-7: pragma solidity ^0.8.18;
+15:     error InvalidVote(string);
 
 ```
 
 ```solidity
-File: ContentRegistry.sol
+File: IDPRegistryUpgradeable.sol
 
-7: pragma solidity ^0.8.18;
+23:     error InvalidUID(string);
 
-```
+24:     error InvalidDID(string);
 
-```solidity
-File: ListMarket.sol
-
-7: pragma solidity ^0.8.18;
+25:     error InvalidValue(string);
 
 ```
 
 ```solidity
-File: NFTMarketplace.sol
+File: JailedNodesUpgradeable.sol
 
-7: pragma solidity ^0.8.18;
+9:     error IncorrectRegistrationFee(string, uint256, uint256);
 
-```
+16:     error InvalidAddress(string);
 
-```solidity
-File: Promo.sol
+17:     error InsufficientBalance(string);
 
-7: pragma solidity ^0.8.0;
+18:     error InvalidValue(string);
 
-34: pragma solidity ^0.8.0;
-
-119: pragma solidity ^0.8.0;
-
-200: pragma solidity ^0.8.0;
-
-230: pragma solidity ^0.8.0;
-
-595: pragma solidity ^0.8.0;
+19:     error TransferBalanceError(string);
 
 ```
 
 ```solidity
-File: RandomOracle.sol
+File: NetworkConfigurationUpgradeable.sol
 
-7: pragma solidity ^0.8.18;
+14:     error IncorrectRegistrationFee(string, uint256, uint256);
 
-```
+40:     error InvalidAddress(string);
 
-```solidity
-File: SavvaFaucet.sol
+41:     error InvalidHostname(string);
 
-7: pragma solidity ^0.8.18;
-
-```
-
-```solidity
-File: SavvaToken.sol
-
-8: pragma solidity ^0.8.18;
+42:     error InsufficientNodes(string);
 
 ```
 
 ```solidity
-File: Staking.sol
+File: PermissionUpgradeable.sol
 
-2: pragma solidity ^0.8.0;
+13:     error InvalidData(string);
 
-```
-
-```solidity
-File: UserProfile.sol
-
-7: pragma solidity ^0.8.18;
+14:     error InvalidProof(string);
 
 ```
 
 ```solidity
-File: utils.sol
+File: RBACUpgradeable.sol
 
-7: pragma solidity ^0.8.18;
+14:     error UnauthorisedAccess(string);
+
+```
+
+```solidity
+File: ReconfigurationUpgradeable.sol
+
+36:     error InvalidValue(string);
+
+```
+
+```solidity
+File: SignupBonusVestingUpgradeable.sol
+
+37:     error UnauthorisedError(string);
+
+38:     error NotEligible(string);
+
+39:     error TransferBalanceError(string);
+
+```
+
+```solidity
+File: StakingDepositUpgradeable.sol
+
+46:     error InvalidAddress(string);
+
+47:     error InsufficientBalance(string);
+
+48:     error InvalidValue(string);
+
+49:     error TransferBalanceError(string);
+
+50:     error NotAllowed(string);
+
+```
+
+```solidity
+File: StakingEscrowUpgradeable.sol
+
+5:     error UnauthorisedError(string);
+
+```
+
+```solidity
+File: TombstonedNodesUpgradeable.sol
+
+21:     error InsufficientNodes(string);
+
+22:     error InvalidAddress(string);
 
 ```
 
@@ -3818,361 +3463,123 @@ File: utils.sol
 
 
  ### <a name="NC-22"></a>[NC-22]
- ### NatSpec: function declarations should have NatSpec descriptions
+ ### Events are missing sender information
 
-*Instances (143)*:
+#### Impact:
+Including msg.sender in events triggered by user actions can make events more useful for end users.
+
+*Instances (30)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: Config.sol
+File: ActivityMonitorUpgradeable.sol
 
-62:     function set(bytes32 key, string memory value) public override {
+279:         emit RecentVotingIntervalUpdated(_newInterval);
 
-73:     function get(bytes32 key) public view override returns (string memory) {
+298:         emit InactivityThresholdForRoundsUpdated(_newWindowSize);
 
-77:     function setUInt(bytes32 key, uint256 value) public override {
+321:         emit InactivityThresholdForRoundsUpdated(_newInactivityThreshold);
 
-88:     function getUInt(bytes32 key) public view override returns (uint256) {
+340:         emit InactivityThresholdForMessageUpdated(_newInactivityThreshold);
 
-92:     function setAddr(bytes32 key, address value) public override {
-
-103:     function getAddr(bytes32 key) public view override returns (address) {
+392:         emit ProposalRaised(_inactiveNode, _timestamp);
 
 ```
 
 ```solidity
-File: ContentFund.sol
+File: IDPRegistryUpgradeable.sol
 
-70:     function _sl_insert(uint256 savva_cid) private {
+137:         emit IDPRegistered(idpData);
 
-103:     function _sl_remove(uint256 savva_cid) private {
+217:         emit IDPUpdated(info);
 
-115:     function _sl_update_position(uint256 savva_cid) private {
-
-121:     function _sl_is_position_correct(
-
-145:     function _calc_shares(
-
-185:     function contributeWithPermit(
-
-203:     function contribute(
-
-277:     function _choose_winner(
-
-300:     function _process_round(
-
-366:     function processRounds() public { //@audit i think should have any modifier
-
-390:     function withdrawNFTGain(uint256 tokenId) public {
-
-413:     function getNFTCut(uint256 tokenId) public view returns (uint256) {
-
-417:     function getTotalOwnerCut(address owner) public view returns (uint256) {
-
-441:     function getMyNFTGain() public view returns (uint256) {
-
-466:     function withdrawMyNFTGain() public {
-
-511:     function getNumberOfContributors(
-
-517:     function getContributor(
-
-524:     function getContribution(
-
-531:     function getFund(uint256 savva_cid) public view returns (Fund memory) {
-
-535:     function getTotalContributed(
+250:         emit IDPRemoved(idpInfo);
 
 ```
 
 ```solidity
-File: ContentNFT.sol
+File: JailedNodesUpgradeable.sol
 
-35:     function mint(
-
-62:     function burn(uint256 tokenId) public {
-
-70:     function _update(
-
-78:     function _increaseBalance(
-
-85:     function tokenURI(
-
-91:     function supportsInterface(
+210:             emit Jailed(
 
 ```
 
 ```solidity
-File: ContentRegistry.sol
+File: NetworkConfigurationUpgradeable.sol
 
-47:     function allow(address allowed_address) public {
+164:         emit NodeRemoved(nodeAddress);
 
-52:     function disallow(address allowed_address) public {
+170:         emit NodeRemoved(nodeAddress);
 
-59:     function reg(
+378:         emit NodeRegistered(nodeAddress);
 
-113:     function regArray(
+445:         emit NodeConfigUpdated(nodeAddr);
 
-122:                 domains[i], // no check on length, if length is different, it will revert also if length is too long then this function will revert due to gas limit
-
-132:     function command(
+475:         emit CoolOffPeriodInitiated(nodeAddress);
 
 ```
 
 ```solidity
-File: ListMarket.sol
+File: PermissionUpgradeable.sol
 
-27:     function setPrice(string memory list_name, uint256 price) public onlyOwner {
+123:         emit PermissionsEnabled();
 
-32:     function getPrice(string memory list_name) public view returns (uint256) {
-
-36:     function setCollector(address payable _collector) public onlyOwner {
-
-40:     function buy(
+162:         emit UserAuthorized(_userAddress);
 
 ```
 
 ```solidity
-File: NFTMarketplace.sol
+File: ReconfigurationUpgradeable.sol
 
-43:     function addToMarket(uint256 tokenId, uint256 price) public {
+142:         emit ReconfigurationIntervalUpdated(reconfigurationInterval);
 
-62:     function _removeFromMarket(uint256 tokenId) public { // https://chat.openai.com/c/0dcd0a5a-17ac-4139-866f-b39b4de7251f
+158:         emit ToleranceFactorUpdated(toleranceFactor);
 
-84:     function removeFromMarket(uint256 tokenId) public {
+175:         emit ReconfigurationBiasnessUpdated(biasedReconfiguration);
 
-95:     function getPrice(uint256 tokenId) public view returns (uint256) {
+192:         emit UpgradeProbabilityUpdated(current, upgradeProbabilty);
 
-99:     function getNFTOwner(uint256 tokenId) public view returns (address) {
-
-103:     function buyWithPermit( //buy with permit
-
-118:     function buy(uint256 tokenId, uint256 amount) public {
-
-149:     function buyAndLeaveOnMarket(
-
-201:     function changePrice(uint256 tokenId, uint256 price) public {
-
-212:     function onERC721Received(
+249:         emit ReconfigurationComplete(lastReconfigurationTime);
 
 ```
 
 ```solidity
-File: Promo.sol
+File: SignupBonusVestingUpgradeable.sol
 
-20:     function _msgSender() internal view virtual returns (address) {
-
-24:     function _msgData() internal view virtual returns (bytes calldata) {
-
-72:     function owner() public view virtual returns (address) {
-
-79:     function _checkOwner() internal view virtual {
-
-90:     function renounceOwnership() public virtual onlyOwner {
-
-98:     function transferOwnership(address newOwner) public virtual onlyOwner {
-
-107:     function _transferOwnership(address newOwner) internal virtual {
-
-142:     function totalSupply() external view returns (uint256);
-
-147:     function balanceOf(address account) external view returns (uint256);
-
-156:     function transfer(address to, uint256 amount) external returns (bool);
-
-165:     function allowance(address owner, address spender) external view returns (uint256);
-
-181:     function approve(address spender, uint256 amount) external returns (bool);
-
-192:     function transferFrom(address from, address to, uint256 amount) external returns (bool);
-
-212:     function name() external view returns (string memory);
-
-217:     function symbol() external view returns (string memory);
-
-222:     function decimals() external view returns (uint8);
-
-287:     function name() public view virtual override returns (string memory) {
-
-295:     function symbol() public view virtual override returns (string memory) {
-
-312:     function decimals() public view virtual override returns (uint8) {
-
-319:     function totalSupply() public view virtual override returns (uint256) {
-
-326:     function balanceOf(address account) public view virtual override returns (uint256) {
-
-338:     function transfer(address to, uint256 amount) public virtual override returns (bool) {
-
-347:     function allowance(address owner, address spender) public view virtual override returns (uint256) {
-
-361:     function approve(address spender, uint256 amount) public virtual override returns (bool) {
-
-383:     function transferFrom(address from, address to, uint256 amount) public virtual override returns (bool) {
-
-402:     function increaseAllowance(address spender, uint256 addedValue) public virtual returns (bool) {
-
-422:     function decreaseAllowance(address spender, uint256 subtractedValue) public virtual returns (bool) {
-
-447:     function _transfer(address from, address to, uint256 amount) internal virtual {
-
-476:     function _mint(address account, uint256 amount) internal virtual {
-
-502:     function _burn(address account, uint256 amount) internal virtual {
-
-533:     function _approve(address owner, address spender, uint256 amount) internal virtual {
-
-549:     function _spendAllowance(address owner, address spender, uint256 amount) internal virtual {
-
-573:     function _beforeTokenTransfer(address from, address to, uint256 amount) internal virtual {}
-
-589:     function _afterTokenTransfer(address from, address to, uint256 amount) internal virtual {}
-
-626:     function _transfer(
-
-649:     function setLiquidityWallet(address _liquidityWallet) external onlyOwner {
-
-653:     function setMarketingWallet(address _marketingWallet) external onlyOwner {
-
-657:     function setDevelopmentWallet(address _developmentWallet) external onlyOwner {
-
-661:     function setSellTax(uint256 _sellTax) external onlyOwner {
-
-665:     function setLiquidityTax(uint256 _liquidityTax) external onlyOwner {
-
-669:     function setMarketingTax(uint256 _marketingTax) external onlyOwner {
-
-673:     function setDevelopmentTax(uint256 _devTax) external onlyOwner {
-
-677:     function setAutomatedMarketMakerPair(address pair, bool enabled) public onlyOwner {   
+125:         emit Registered(_nodeAddr);
 
 ```
 
 ```solidity
-File: RandomOracle.sol
+File: StakingDepositUpgradeable.sol
 
-24:     function setUpdaterAccount(address _updaterAccount) public onlyOwner {
+126:         emit MinimumStakeAmountUpdated(_minStakeAmount);
 
-28:     function getRandom() public view override returns (uint256) {
+378:         emit Reward(rewardsToBeClaimed);
 
-32:     function getLastUpdateTime() public view override returns (uint256) {
+401:         emit StakeDeposited(_depositor, msg.value);
 
-36:     function update(uint256 _random, uint256 _db_index) public {
+557:         emit StakeSlashed(_depositor, slashAmount);
 
-```
+576:         emit SlashedStakeReverted(_depositor, slashedAmt);
 
-```solidity
-File: SavvaFaucet.sol
-
-37:     function getRoundLength() public view returns (uint256) {
-
-54:     function TokensToShare() public view returns (uint256) {
-
-71:     function IsRoundFinished() public view returns (bool) {
-
-76:     function NumberOfDepositors() public view returns (uint256) {
-
-84:     function deposit() public payable {
-
-116:     function finishRound() public {
-
-163:     function ChangeOrigin(address payable newOrigin) public {
+602:         emit StakeDeposited(_depositor, msg.value);
 
 ```
 
 ```solidity
-File: SavvaToken.sol
+File: StakingEscrowUpgradeable.sol
 
-31:     function mint(uint256 amount) public override onlyOwner {
-
-```
-
-```solidity
-File: Staking.sol
-
-114:     function getUnprocessedGane() external view returns (uint256) {
-
-127:     function updatePool() public override {
-
-173:     function getPendingGain(
-
-206:     function stake(uint256 amount) public {
-
-227:     function stakeWithPermit(
-
-249:     function unstake(uint256 amount) external {
-
-289:     function claimGain() external {
-
-306:     function compoundGain() external {
-
-322:     function getAccruedGain(address _user) external view returns (uint256) {
-
-326:     function transferStake(address to, uint256 amount) public {
-
-343:     function getUnstakeRequests(
-
-349:     function getAvailableUnstaked(
-
-366:     function claimUnstaked() external {
-
-407:     function setPayRecord(
-
-482:     function deletePayRecord(
-
-537:     function getPayRecordsKeys(
-
-543:     function getPayRecord(
-
-550:     function getExpectedPatronPayment(
-
-587:     function claimPayment(address author, bytes32 event_id) external override {
-
-641:     function _accrue_gain(address _user) internal {
-
-684:     function _safe_transfer_stake_from(
-
-729:     function _update(
-
-739:     function nonces(
+49:         emit Deposited(payee, amount);
 
 ```
 
 ```solidity
-File: UserProfile.sol
+File: TombstonedNodesUpgradeable.sol
 
-22:     function setName(string memory name) public {
-
-54:     function removeName() public {
-
-64:     function setAvatar(string memory avatar) public {
-
-69:     function transferName(address to) public {
-
-84:     function setString(
-
-93:     function setUInt(
-
-103:     function getString(
-
-111:     function getUInt(
-
-119:     function setPubKey(string memory _modifier, string memory _pub_key) public {
-
-124:     function setAll( 
-
-```
-
-```solidity
-File: utils.sol
-
-11:     function SavvaID(
-
-20:     function concat(bytes32 a, bytes32 b) public pure returns (bytes32) {
-
-34:     function str2bytes32(
+93:         emit Tombstoned(_nodeAddress);
 
 ```
 
@@ -4181,362 +3588,130 @@ File: utils.sol
 
 
  ### <a name="NC-23"></a>[NC-23]
- ### NatSpec: function declarations should have @Notice tags
-@notice is used to explain to end users what the function does, and the compiler interprets /// or /** comments as this tag if one wasn't explicitly provided.  
+ ### NatSpec: Event declarations should have NatSpec descriptions
 
-*Instances (143)*:
+*Instances (35)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: Config.sol
+File: IDPRegistryUpgradeable.sol
 
-62:     function set(bytes32 key, string memory value) public override {
+8:     event IDPRegistered(IDPInformationIO idpInfo);
 
-73:     function get(bytes32 key) public view override returns (string memory) {
+9:     event IDPUpdated(IDPInformationIO idpInfo);
 
-77:     function setUInt(bytes32 key, uint256 value) public override {
-
-88:     function getUInt(bytes32 key) public view override returns (uint256) {
-
-92:     function setAddr(bytes32 key, address value) public override {
-
-103:     function getAddr(bytes32 key) public view override returns (address) {
+10:     event IDPRemoved(IDPInformationIO idpInfo);
 
 ```
 
 ```solidity
-File: ContentFund.sol
+File: NetworkConfigurationUpgradeable.sol
 
-70:     function _sl_insert(uint256 savva_cid) private {
+34:     event NodeConfigUpdated(address nodeAddress);
 
-103:     function _sl_remove(uint256 savva_cid) private {
+35:     event GovernorsUpdated(address[] governorAddresses);
 
-115:     function _sl_update_position(uint256 savva_cid) private {
+36:     event NodeRegistered(address nodeAddress);
 
-121:     function _sl_is_position_correct(
+37:     event NodeRemoved(address nodeAddress);
 
-145:     function _calc_shares(
-
-185:     function contributeWithPermit(
-
-203:     function contribute(
-
-277:     function _choose_winner(
-
-300:     function _process_round(
-
-366:     function processRounds() public { //@audit i think should have any modifier
-
-390:     function withdrawNFTGain(uint256 tokenId) public {
-
-413:     function getNFTCut(uint256 tokenId) public view returns (uint256) {
-
-417:     function getTotalOwnerCut(address owner) public view returns (uint256) {
-
-441:     function getMyNFTGain() public view returns (uint256) {
-
-466:     function withdrawMyNFTGain() public {
-
-511:     function getNumberOfContributors(
-
-517:     function getContributor(
-
-524:     function getContribution(
-
-531:     function getFund(uint256 savva_cid) public view returns (Fund memory) {
-
-535:     function getTotalContributed(
+38:     event CoolOffPeriodInitiated(address nodeOperator);
 
 ```
 
 ```solidity
-File: ContentNFT.sol
+File: SignupBonusVestingUpgradeable.sol
 
-35:     function mint(
+33:     event Received(address from, uint256 value);
 
-62:     function burn(uint256 tokenId) public {
+34:     event Registered(address nodeAddr);
 
-70:     function _update(
-
-78:     function _increaseBalance(
-
-85:     function tokenURI(
-
-91:     function supportsInterface(
+35:     event Claimed(address by, uint256 value);
 
 ```
 
 ```solidity
-File: ContentRegistry.sol
+File: StakingEscrowUpgradeable.sol
 
-47:     function allow(address allowed_address) public {
+27:     event Deposited(address indexed payee, uint256 weiAmount);
 
-52:     function disallow(address allowed_address) public {
-
-59:     function reg(
-
-113:     function regArray(
-
-122:                 domains[i], // no check on length, if length is different, it will revert also if length is too long then this function will revert due to gas limit
-
-132:     function command(
+28:     event Withdrawn(
 
 ```
 
 ```solidity
-File: ListMarket.sol
+File: TombstonedNodesUpgradeable.sol
 
-27:     function setPrice(string memory list_name, uint256 price) public onlyOwner {
-
-32:     function getPrice(string memory list_name) public view returns (uint256) {
-
-36:     function setCollector(address payable _collector) public onlyOwner {
-
-40:     function buy(
+20:     event Tombstoned(address governor);
 
 ```
 
 ```solidity
-File: NFTMarketplace.sol
+File: interfaces/IActivityMonitor.sol
 
-43:     function addToMarket(uint256 tokenId, uint256 price) public {
+8:     event RecentVotingIntervalUpdated(uint256 _interval);
 
-62:     function _removeFromMarket(uint256 tokenId) public { // https://chat.openai.com/c/0dcd0a5a-17ac-4139-866f-b39b4de7251f
+11:     event InactivityThresholdForRoundsUpdated(uint256 inactivityThreshold);
 
-84:     function removeFromMarket(uint256 tokenId) public {
+12:     event InactivityThresholdForMessageUpdated(uint256 inactivityThreshold);
 
-95:     function getPrice(uint256 tokenId) public view returns (uint256) {
+13:     event WindowSizeUpdated(uint256 _windowSize);
 
-99:     function getNFTOwner(uint256 tokenId) public view returns (address) {
+14:     event ProposalRaised(address _inactiveNodeAddress, uint256 timestamp);
 
-103:     function buyWithPermit( //buy with permit
-
-118:     function buy(uint256 tokenId, uint256 amount) public {
-
-149:     function buyAndLeaveOnMarket(
-
-201:     function changePrice(uint256 tokenId, uint256 price) public {
-
-212:     function onERC721Received(
+15:     event NodeJailed(address _jailedNodeAddress, uint256 votes);
 
 ```
 
 ```solidity
-File: Promo.sol
+File: interfaces/IJailedNodes.sol
 
-20:     function _msgSender() internal view virtual returns (address) {
-
-24:     function _msgData() internal view virtual returns (bytes calldata) {
-
-72:     function owner() public view virtual returns (address) {
-
-79:     function _checkOwner() internal view virtual {
-
-90:     function renounceOwnership() public virtual onlyOwner {
-
-98:     function transferOwnership(address newOwner) public virtual onlyOwner {
-
-107:     function _transferOwnership(address newOwner) internal virtual {
-
-142:     function totalSupply() external view returns (uint256);
-
-147:     function balanceOf(address account) external view returns (uint256);
-
-156:     function transfer(address to, uint256 amount) external returns (bool);
-
-165:     function allowance(address owner, address spender) external view returns (uint256);
-
-181:     function approve(address spender, uint256 amount) external returns (bool);
-
-192:     function transferFrom(address from, address to, uint256 amount) external returns (bool);
-
-212:     function name() external view returns (string memory);
-
-217:     function symbol() external view returns (string memory);
-
-222:     function decimals() external view returns (uint8);
-
-287:     function name() public view virtual override returns (string memory) {
-
-295:     function symbol() public view virtual override returns (string memory) {
-
-312:     function decimals() public view virtual override returns (uint8) {
-
-319:     function totalSupply() public view virtual override returns (uint256) {
-
-326:     function balanceOf(address account) public view virtual override returns (uint256) {
-
-338:     function transfer(address to, uint256 amount) public virtual override returns (bool) {
-
-347:     function allowance(address owner, address spender) public view virtual override returns (uint256) {
-
-361:     function approve(address spender, uint256 amount) public virtual override returns (bool) {
-
-383:     function transferFrom(address from, address to, uint256 amount) public virtual override returns (bool) {
-
-402:     function increaseAllowance(address spender, uint256 addedValue) public virtual returns (bool) {
-
-422:     function decreaseAllowance(address spender, uint256 subtractedValue) public virtual returns (bool) {
-
-447:     function _transfer(address from, address to, uint256 amount) internal virtual {
-
-476:     function _mint(address account, uint256 amount) internal virtual {
-
-502:     function _burn(address account, uint256 amount) internal virtual {
-
-533:     function _approve(address owner, address spender, uint256 amount) internal virtual {
-
-549:     function _spendAllowance(address owner, address spender, uint256 amount) internal virtual {
-
-573:     function _beforeTokenTransfer(address from, address to, uint256 amount) internal virtual {}
-
-589:     function _afterTokenTransfer(address from, address to, uint256 amount) internal virtual {}
-
-626:     function _transfer(
-
-649:     function setLiquidityWallet(address _liquidityWallet) external onlyOwner {
-
-653:     function setMarketingWallet(address _marketingWallet) external onlyOwner {
-
-657:     function setDevelopmentWallet(address _developmentWallet) external onlyOwner {
-
-661:     function setSellTax(uint256 _sellTax) external onlyOwner {
-
-665:     function setLiquidityTax(uint256 _liquidityTax) external onlyOwner {
-
-669:     function setMarketingTax(uint256 _marketingTax) external onlyOwner {
-
-673:     function setDevelopmentTax(uint256 _devTax) external onlyOwner {
-
-677:     function setAutomatedMarketMakerPair(address pair, bool enabled) public onlyOwner {   
+11:     event Jailed(
 
 ```
 
 ```solidity
-File: RandomOracle.sol
+File: interfaces/IPermission.sol
 
-24:     function setUpdaterAccount(address _updaterAccount) public onlyOwner {
+20:     event UserAuthorized(address userAddress);
 
-28:     function getRandom() public view override returns (uint256) {
-
-32:     function getLastUpdateTime() public view override returns (uint256) {
-
-36:     function update(uint256 _random, uint256 _db_index) public {
+23:     event PermissionsEnabled();
 
 ```
 
 ```solidity
-File: SavvaFaucet.sol
+File: interfaces/IReconfiguration.sol
 
-37:     function getRoundLength() public view returns (uint256) {
+17:     event ReconfigurationComplete(uint256 latestReconfigurationTime);
 
-54:     function TokensToShare() public view returns (uint256) {
+18:     event ToleranceFactorUpdated(uint256 toleranceFactor);
 
-71:     function IsRoundFinished() public view returns (bool) {
+19:     event NetworkConfigurationAddressUpdated(address newAddr);
 
-76:     function NumberOfDepositors() public view returns (uint256) {
+20:     event ReconfigurationIntervalUpdated(
 
-84:     function deposit() public payable {
+23:     event ReconfigurationBiasnessUpdated(bool isBiasedNetwork);
 
-116:     function finishRound() public {
-
-163:     function ChangeOrigin(address payable newOrigin) public {
+24:     event UpgradeProbabilityUpdated(
 
 ```
 
 ```solidity
-File: SavvaToken.sol
+File: interfaces/IStakingDeposit.sol
 
-31:     function mint(uint256 amount) public override onlyOwner {
+5:     event StakeDeposited(address indexed depositor, uint256 indexed amount);
 
-```
+6:     event StakeWithdrawn(address indexed depositor, uint256 indexed amount);
 
-```solidity
-File: Staking.sol
+7:     event MinimumStakeAmountUpdated(uint256 _minStakeAmount);
 
-114:     function getUnprocessedGane() external view returns (uint256) {
+8:     event StakeSlashed(address indexed depositor, uint256 indexed amount);
 
-127:     function updatePool() public override {
+9:     event SlashedStakeReverted(
 
-173:     function getPendingGain(
-
-206:     function stake(uint256 amount) public {
-
-227:     function stakeWithPermit(
-
-249:     function unstake(uint256 amount) external {
-
-289:     function claimGain() external {
-
-306:     function compoundGain() external {
-
-322:     function getAccruedGain(address _user) external view returns (uint256) {
-
-326:     function transferStake(address to, uint256 amount) public {
-
-343:     function getUnstakeRequests(
-
-349:     function getAvailableUnstaked(
-
-366:     function claimUnstaked() external {
-
-407:     function setPayRecord(
-
-482:     function deletePayRecord(
-
-537:     function getPayRecordsKeys(
-
-543:     function getPayRecord(
-
-550:     function getExpectedPatronPayment(
-
-587:     function claimPayment(address author, bytes32 event_id) external override {
-
-641:     function _accrue_gain(address _user) internal {
-
-684:     function _safe_transfer_stake_from(
-
-729:     function _update(
-
-739:     function nonces(
-
-```
-
-```solidity
-File: UserProfile.sol
-
-22:     function setName(string memory name) public {
-
-54:     function removeName() public {
-
-64:     function setAvatar(string memory avatar) public {
-
-69:     function transferName(address to) public {
-
-84:     function setString(
-
-93:     function setUInt(
-
-103:     function getString(
-
-111:     function getUInt(
-
-119:     function setPubKey(string memory _modifier, string memory _pub_key) public {
-
-124:     function setAll( 
-
-```
-
-```solidity
-File: utils.sol
-
-11:     function SavvaID(
-
-20:     function concat(bytes32 a, bytes32 b) public pure returns (bytes32) {
-
-34:     function str2bytes32(
+13:     event Reward(uint256 indexed amount);
 
 ```
 
@@ -4545,361 +3720,20 @@ File: utils.sol
 
 
  ### <a name="NC-24"></a>[NC-24]
- ### NatSpec: function declarations should have NatSpec descriptions
+ ### Events should use parameters to convey information
 
-*Instances (143)*:
+#### Impact:
+Using parameters in events can provide additional information to subscribers about the event occurrence.
+
+*Instances (1)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: Config.sol
+File: PermissionUpgradeable.sol
 
-62:     function set(bytes32 key, string memory value) public override {
-
-73:     function get(bytes32 key) public view override returns (string memory) {
-
-77:     function setUInt(bytes32 key, uint256 value) public override {
-
-88:     function getUInt(bytes32 key) public view override returns (uint256) {
-
-92:     function setAddr(bytes32 key, address value) public override {
-
-103:     function getAddr(bytes32 key) public view override returns (address) {
-
-```
-
-```solidity
-File: ContentFund.sol
-
-70:     function _sl_insert(uint256 savva_cid) private {
-
-103:     function _sl_remove(uint256 savva_cid) private {
-
-115:     function _sl_update_position(uint256 savva_cid) private {
-
-121:     function _sl_is_position_correct(
-
-145:     function _calc_shares(
-
-185:     function contributeWithPermit(
-
-203:     function contribute(
-
-277:     function _choose_winner(
-
-300:     function _process_round(
-
-366:     function processRounds() public { //@audit i think should have any modifier
-
-390:     function withdrawNFTGain(uint256 tokenId) public {
-
-413:     function getNFTCut(uint256 tokenId) public view returns (uint256) {
-
-417:     function getTotalOwnerCut(address owner) public view returns (uint256) {
-
-441:     function getMyNFTGain() public view returns (uint256) {
-
-466:     function withdrawMyNFTGain() public {
-
-511:     function getNumberOfContributors(
-
-517:     function getContributor(
-
-524:     function getContribution(
-
-531:     function getFund(uint256 savva_cid) public view returns (Fund memory) {
-
-535:     function getTotalContributed(
-
-```
-
-```solidity
-File: ContentNFT.sol
-
-35:     function mint(
-
-62:     function burn(uint256 tokenId) public {
-
-70:     function _update(
-
-78:     function _increaseBalance(
-
-85:     function tokenURI(
-
-91:     function supportsInterface(
-
-```
-
-```solidity
-File: ContentRegistry.sol
-
-47:     function allow(address allowed_address) public {
-
-52:     function disallow(address allowed_address) public {
-
-59:     function reg(
-
-113:     function regArray(
-
-122:                 domains[i], // no check on length, if length is different, it will revert also if length is too long then this function will revert due to gas limit
-
-132:     function command(
-
-```
-
-```solidity
-File: ListMarket.sol
-
-27:     function setPrice(string memory list_name, uint256 price) public onlyOwner {
-
-32:     function getPrice(string memory list_name) public view returns (uint256) {
-
-36:     function setCollector(address payable _collector) public onlyOwner {
-
-40:     function buy(
-
-```
-
-```solidity
-File: NFTMarketplace.sol
-
-43:     function addToMarket(uint256 tokenId, uint256 price) public {
-
-62:     function _removeFromMarket(uint256 tokenId) public { // https://chat.openai.com/c/0dcd0a5a-17ac-4139-866f-b39b4de7251f
-
-84:     function removeFromMarket(uint256 tokenId) public {
-
-95:     function getPrice(uint256 tokenId) public view returns (uint256) {
-
-99:     function getNFTOwner(uint256 tokenId) public view returns (address) {
-
-103:     function buyWithPermit( //buy with permit
-
-118:     function buy(uint256 tokenId, uint256 amount) public {
-
-149:     function buyAndLeaveOnMarket(
-
-201:     function changePrice(uint256 tokenId, uint256 price) public {
-
-212:     function onERC721Received(
-
-```
-
-```solidity
-File: Promo.sol
-
-20:     function _msgSender() internal view virtual returns (address) {
-
-24:     function _msgData() internal view virtual returns (bytes calldata) {
-
-72:     function owner() public view virtual returns (address) {
-
-79:     function _checkOwner() internal view virtual {
-
-90:     function renounceOwnership() public virtual onlyOwner {
-
-98:     function transferOwnership(address newOwner) public virtual onlyOwner {
-
-107:     function _transferOwnership(address newOwner) internal virtual {
-
-142:     function totalSupply() external view returns (uint256);
-
-147:     function balanceOf(address account) external view returns (uint256);
-
-156:     function transfer(address to, uint256 amount) external returns (bool);
-
-165:     function allowance(address owner, address spender) external view returns (uint256);
-
-181:     function approve(address spender, uint256 amount) external returns (bool);
-
-192:     function transferFrom(address from, address to, uint256 amount) external returns (bool);
-
-212:     function name() external view returns (string memory);
-
-217:     function symbol() external view returns (string memory);
-
-222:     function decimals() external view returns (uint8);
-
-287:     function name() public view virtual override returns (string memory) {
-
-295:     function symbol() public view virtual override returns (string memory) {
-
-312:     function decimals() public view virtual override returns (uint8) {
-
-319:     function totalSupply() public view virtual override returns (uint256) {
-
-326:     function balanceOf(address account) public view virtual override returns (uint256) {
-
-338:     function transfer(address to, uint256 amount) public virtual override returns (bool) {
-
-347:     function allowance(address owner, address spender) public view virtual override returns (uint256) {
-
-361:     function approve(address spender, uint256 amount) public virtual override returns (bool) {
-
-383:     function transferFrom(address from, address to, uint256 amount) public virtual override returns (bool) {
-
-402:     function increaseAllowance(address spender, uint256 addedValue) public virtual returns (bool) {
-
-422:     function decreaseAllowance(address spender, uint256 subtractedValue) public virtual returns (bool) {
-
-447:     function _transfer(address from, address to, uint256 amount) internal virtual {
-
-476:     function _mint(address account, uint256 amount) internal virtual {
-
-502:     function _burn(address account, uint256 amount) internal virtual {
-
-533:     function _approve(address owner, address spender, uint256 amount) internal virtual {
-
-549:     function _spendAllowance(address owner, address spender, uint256 amount) internal virtual {
-
-573:     function _beforeTokenTransfer(address from, address to, uint256 amount) internal virtual {}
-
-589:     function _afterTokenTransfer(address from, address to, uint256 amount) internal virtual {}
-
-626:     function _transfer(
-
-649:     function setLiquidityWallet(address _liquidityWallet) external onlyOwner {
-
-653:     function setMarketingWallet(address _marketingWallet) external onlyOwner {
-
-657:     function setDevelopmentWallet(address _developmentWallet) external onlyOwner {
-
-661:     function setSellTax(uint256 _sellTax) external onlyOwner {
-
-665:     function setLiquidityTax(uint256 _liquidityTax) external onlyOwner {
-
-669:     function setMarketingTax(uint256 _marketingTax) external onlyOwner {
-
-673:     function setDevelopmentTax(uint256 _devTax) external onlyOwner {
-
-677:     function setAutomatedMarketMakerPair(address pair, bool enabled) public onlyOwner {   
-
-```
-
-```solidity
-File: RandomOracle.sol
-
-24:     function setUpdaterAccount(address _updaterAccount) public onlyOwner {
-
-28:     function getRandom() public view override returns (uint256) {
-
-32:     function getLastUpdateTime() public view override returns (uint256) {
-
-36:     function update(uint256 _random, uint256 _db_index) public {
-
-```
-
-```solidity
-File: SavvaFaucet.sol
-
-37:     function getRoundLength() public view returns (uint256) {
-
-54:     function TokensToShare() public view returns (uint256) {
-
-71:     function IsRoundFinished() public view returns (bool) {
-
-76:     function NumberOfDepositors() public view returns (uint256) {
-
-84:     function deposit() public payable {
-
-116:     function finishRound() public {
-
-163:     function ChangeOrigin(address payable newOrigin) public {
-
-```
-
-```solidity
-File: SavvaToken.sol
-
-31:     function mint(uint256 amount) public override onlyOwner {
-
-```
-
-```solidity
-File: Staking.sol
-
-114:     function getUnprocessedGane() external view returns (uint256) {
-
-127:     function updatePool() public override {
-
-173:     function getPendingGain(
-
-206:     function stake(uint256 amount) public {
-
-227:     function stakeWithPermit(
-
-249:     function unstake(uint256 amount) external {
-
-289:     function claimGain() external {
-
-306:     function compoundGain() external {
-
-322:     function getAccruedGain(address _user) external view returns (uint256) {
-
-326:     function transferStake(address to, uint256 amount) public {
-
-343:     function getUnstakeRequests(
-
-349:     function getAvailableUnstaked(
-
-366:     function claimUnstaked() external {
-
-407:     function setPayRecord(
-
-482:     function deletePayRecord(
-
-537:     function getPayRecordsKeys(
-
-543:     function getPayRecord(
-
-550:     function getExpectedPatronPayment(
-
-587:     function claimPayment(address author, bytes32 event_id) external override {
-
-641:     function _accrue_gain(address _user) internal {
-
-684:     function _safe_transfer_stake_from(
-
-729:     function _update(
-
-739:     function nonces(
-
-```
-
-```solidity
-File: UserProfile.sol
-
-22:     function setName(string memory name) public {
-
-54:     function removeName() public {
-
-64:     function setAvatar(string memory avatar) public {
-
-69:     function transferName(address to) public {
-
-84:     function setString(
-
-93:     function setUInt(
-
-103:     function getString(
-
-111:     function getUInt(
-
-119:     function setPubKey(string memory _modifier, string memory _pub_key) public {
-
-124:     function setAll( 
-
-```
-
-```solidity
-File: utils.sol
-
-11:     function SavvaID(
-
-20:     function concat(bytes32 a, bytes32 b) public pure returns (bytes32) {
-
-34:     function str2bytes32(
+123:         emit PermissionsEnabled();
 
 ```
 
@@ -4908,187 +3742,604 @@ File: utils.sol
 
 
  ### <a name="NC-25"></a>[NC-25]
- ### If-statement can be converted to a ternary
+ ### NatSpec: function declarations should have NatSpec descriptions
 
-#### Impact:
-The code can be made more compact while also increasing readability by converting the following `if`-statements to ternaries (e.g. `foo += (x > y) ? a : b`)
-
-*Instances (67)*:
+*Instances (242)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: ContentFund.sol
+File: ActivityMonitorUpgradeable.sol
 
-71:         if (SLRoot == 0) {     
+55:     function initialize(
 
-85:                     } else {
+86:     function _getNetworkConfigurationContract()
 
-92:                 if (funds[h].SLRight == 0) {
+105:     function _getNodeAddressUsingSignerAddress(
 
-104:         if (funds[savva_cid].SLLeft != 0) {
+125:     function isVoteRecent(uint256 timestamp) public view returns (bool) {
 
-110:         if (funds[savva_cid].SLRight != 0) {
+130:     function _getNodeIdForAddress(
 
-124:         if (funds[savva_cid].SLLeft != 0) {
+145:     function _removeOutdatedVotes(address _inactiveNode) private {
 
-133:         if (funds[savva_cid].SLRight != 0) {
+164:     function _isGovernor(address signerAddress) private view returns (bool) {
 
-175:             if (nft_owner != address(0)) {
+183:     function _isGovernorNodeAddress(
 
-225:         if (authorShare > 0) {
+200:     function getGovernorVoteTimestampForInactiveNode(
 
-230:         if (nftShare > 0) {
+229:     function getEarliestNodeInactivityVote(
 
-235:         if (funds[savva_cid].author == address(0)) {
+245:     function votesCountAgainstNode(
 
-259:             } else {
+252:     function _getJailedNodesContract() private view returns (IJailedNodes) {
 
-292:             if (winnerIndex < runningShareSum) {
+269:     function updateRecentVoteInterval(
 
-308:         if (winner == address(0)) {
+288:     function updateWindowSize(uint256 _newWindowSize) external onlyRedbelly {
 
-316:         if (total >= config.getUInt(bytes32("minFundToShare"))) {
+307:     function updateInactivityThresholdForRounds(
 
-325:         if (prize > 0) {
+330:     function updateInactivityThresholdForMessage(
 
-330:         if (funds[h].amount > 0) {
-
-377:             if (random == 0) {
-
-433:             if (mp.getNFTOwner(tokenId) == owner) {
-
-458:             if (mp.getNFTOwner(tokenId) == msg.sender) {
-
-480:             if (nftBalance[tokenId] > 0) {
-
-491:             if (mp.getNFTOwner(tokenId) == msg.sender) {
+349:     function addProposal(
 
 ```
 
 ```solidity
-File: ListMarket.sol
+File: ContractRoleAuthUpgradeable.sol
 
-47:         if (collector == address(0)) {
-
-```
-
-```solidity
-File: NFTMarketplace.sol
-
-67:             if (nftsByOwnerArray[i] == tokenId) {
-
-182:             if (nftsByOwnerArray[i] == tokenId) {
+69:     function initialize() public virtual override onlyInitializing {
 
 ```
 
 ```solidity
-File: Promo.sol
+File: IDPRegistryUpgradeable.sol
 
-551:         if (currentAllowance != type(uint256).max) {
+86:     function initialize() public virtual override initializer {
 
-631:         if(automatedMarketMakerPairs[recipient]) {
+90:     function register(
 
-```
+140:     function getAll() external view returns (IDPInformationIO[] memory) {
 
-```solidity
-File: SavvaFaucet.sol
+153:     function getByUid(
 
-43:         if ( _round_seconds == 0 ) {  // non zero used for testing
+175:     function getByIssuerDid(
 
-57:         if (roundPayWeek == 0) {
+189:     function updateByUid(
 
-64:             } else {
+221:     function updateByIssuerDid(
 
-95:         if (roundPayWeek == 0) {
+237:     function removeByUid(
 
-102:         if (deposited[msg.sender] == 0) {
+254:     function removeByIssuerDid(
 
-119:         if (roundPayWeek == 0 || week_now < roundPayWeek) {
+269:     function _getDeletedCount() private view returns (uint256) {
 
-139:             if (amount > 0 && amount <= tokensLeft) {
+279:     function getIssuersByProofType(
 
-150:         if (tokensLeft > 0) {
-
-```
-
-```solidity
-File: Staking.sol
-
-144:             if (frame.staked == 0) {
-
-165:         if (new_gain > 0) {
-
-180:         if (balanceOf(userAddress) == 0) {
-
-186:             if (currentFrameNumber - i < user.stake_frame) {
-
-194:             if (frame_stake == 0 || frame_tokens == 0) {
-
-263:         if (balanceOf(msg.sender) == 0 && user.accruedGain > 0) {
-
-358:             if (request.amount > 0 && block.timestamp >= request.timestamp) {
-
-373:             if (request.amount > 0 && block.timestamp >= request.timestamp) {
-
-385:             if (user.unstakeRequests[i].amount > 0) {
-
-428:         if (payment.amount == 0) {
-
-450:             if (!found) {
-
-453:         } else {
-
-498:         if (index != last_index) {
-
-510:             if (p.author == author) {
-
-516:         if (!found) {
-
-574:             if (payment.amount > 0) {
-
-605:             if (payment.amount > 0) {
-
-627:         if (total > 0) {
-
-644:         if( _user == address(0) || balanceOf(_user) == 0) {
-
-651:             if (currentFrameNumber - i < user.stake_frame) {
-
-657:             if (frame.staked == 0 || frame.to_share == 0) {
-
-663:             if (frame.staked < user_stake) {
-
-689:         if (from == address(0) || to == address(0)) {
-
-693:         if (from == to || amount == 0) {
-
-705:         if (sender.accruedGain > 0) {
-
-719:         if (left2send > 0) {
+285:     function getSupportedProofTypes()
 
 ```
 
 ```solidity
-File: UserProfile.sol
+File: JailedNodesUpgradeable.sol
 
-23:         if (bytes(name).length == 0) {
+104:     function initialize(
 
-43:         if (bytes(names[msg.sender]).length != 0) {
+125:     function _getNetworkConfigurationContract()
 
-130:         if( keccak256(bytes(name) ) != keccak256(bytes(names[msg.sender])) ) {
+140:     function _getNodeIdForAddress(
 
-135:         if( keccak256(bytes(avatar)) != keccak256(bytes(avatars[msg.sender])) ) {
+147:     function _getTombstonedContractInstance()
 
-140:         if( keccak256(bytes(profile) ) != keccak256(bytes(getString(msg.sender, domain, bytes32("profile_cid")))) ) {
+160:     function _getStakingContractInstance()
+
+175:     function jail(
+
+218:     function getRecentJailTenure(
+
+229:     function getJailCountForNode(
+
+236:     function isJailedNode(address _governor) public view returns (bool) {
+
+242:     function getTimeServedInJail(
+
+259:     function freeServedGuilty(
+
+290:     function freeInnocent(
+
+318:     function _reinitiateNodeAsCandidate(address _address) private {
+
+330:     function setSlashPrcnt(uint8 _slashPrcnt) external onlyRedbelly {
+
+343:     function setDaysToServe(uint256 _daysToServe) public onlyRedbelly {
+
+347:     function getJailedDuration(
+
+376:     function sendSlashedStakeToTreasury(
 
 ```
 
 ```solidity
-File: utils.sol
+File: NetworkConfigurationUpgradeable.sol
 
-25:             if (r[z] == 0) {
+67:     function getActiveCandidateNodes()
+
+77:     function isGovernor(address nodeAddress) public view returns (bool) {
+
+81:     function isCandidate(address nodeAddress) public view returns (bool) {
+
+85:     function getCandidateIndex(
+
+95:     function getGovernors() public view returns (address[] memory) {
+
+99:     function getCandidates() public view returns (address[] memory) {
+
+103:     function getNetworkSize() public view returns (uint256) {
+
+109:     function getNodeConfigurationsByAddresses(
+
+115:     function getNodeConfiguration(
+
+128:     function isBootNode(address _nodeAddress) public view returns (bool) {
+
+132:     function removeNodeDetailsFromNetwork(
+
+153:     function addCandidate(
+
+159:     function setNodeAsExited(
+
+167:     function removeCandidate(address nodeAddress) external onlyRedbelly {
+
+173:     function removeJailedCandidateFromNetwork(
+
+179:     function _safelyReplaceGovernor(address nodeAddress) private {
+
+224:     function removeGovernorFromNetwork(
+
+233:     function signingAddressToNodeAddress(
+
+240:     function initialize(
+
+277:     function swapNodesWithIndexesAndUpdateRoles(
+
+296:     function register(
+
+381:     function addGovernor(
+
+407:     function removeGovernor(address nodeAddress) public onlyRedbelly {
+
+422:     function addRedbellyNodes(address nodeAddress) public onlyRedbelly {
+
+426:     function removeRedbellyNodes(address nodeAddress) public onlyRedbelly {
+
+430:     function updateCandidateConfig(
+
+448:     function removeNode(
+
+478:     function notifyAboutGovernorsUpdate() public {
+
+482:     function getBootNodeAddresses() public view returns (address[] memory) {
+
+486:     function isRedbellyNode(address nodeAddr) public view returns (bool) {
+
+490:     function getGovernorIndex(
+
+500:     function getCandidateAddressAtIndex(
+
+506:     function getGovernorAddressAtIndex(
+
+512:     function getCountOfRedbellyGovernors() public view returns (uint256) {
+
+523:     function getRedbellyNodes() public view returns (address[] memory) {
+
+527:     function _getStakingDepositContractInstance()
+
+542:     function _getReconfigurationContractInstance()
+
+557:     function _setNodeExitTimestamp(
+
+564:     function getCandidatesWithoutCooloffInitiated()
+
+572:     function _candidatesWithoutCooloffInitiated()
+
+```
+
+```solidity
+File: PermissionUpgradeable.sol
+
+19:     function initialize(
+
+34:     function getSupportedCredentials()
+
+74:     function request(
+
+121:     function enablePermissionedAccess() external onlyRedbelly {
+
+126:     function getProofpublicKey(
+
+150:     function isAllowed(address _address) external view returns (bool) {
+
+160:     function _authorizeUser(address _userAddress) private {
+
+171:     function _verifyED25519(
+
+256:     function _convertTimestampStringToUnix(
+
+309:     function _parseJson(
+
+```
+
+```solidity
+File: RBACUpgradeable.sol
+
+30:     function initialize() public virtual onlyInitializing {
+
+```
+
+```solidity
+File: ReconfigurationUpgradeable.sol
+
+52:     function initialize(
+
+76:     function pushToCoolOffQueue(
+
+91:     function filterActiveCandidatesOnly(
+
+129:     function getReconfigurationCount() public view returns (uint256) {
+
+138:     function setReconfigurationInterval(
+
+151:     function updateToleranceFactor(
+
+161:     function getReconfigurationBuffer() public view returns (uint256) {
+
+171:     function setReconfigurationBiasness(
+
+185:     function setUpgradeProbability(
+
+195:     function triggerReconfiguration() public onlyAfterReconfigInterval {
+
+252:     function _calculateD() internal view returns (uint256, bool) {
+
+265:     function _calculateProbability(
+
+296:     function _getCandidatesNotInCooloff()
+
+315:     function _getGovernorsInCooloff(
+
+334:     function _getGovernorsWithCooloffInitiated(
+
+378:     function _getGovernorsNotInCooloff(
+
+399:     function _getRandomGovernorsToDowngrade(
+
+414:     function _performSwap(
+
+465:     function _getSwappableAddresses(
+
+571:     function _getGovernorsByRatio(
+
+597:     function _getRequiredRatioForCandidates(
+
+623:     function _getCandidatesByRequiredRatio(
+
+666:     function _getNetworkConfigurationContractInstance()
+
+681:     function _pushNetworkConfigForRound() internal {
+
+```
+
+```solidity
+File: SignupBonusVestingUpgradeable.sol
+
+73:     function initialize(
+
+121:     function register(
+
+131:     function claim()
+
+157:     function status()
+
+200:     function claimable()
+
+216:     function _getNetworkConfigurationContractInstance()
+
+236:     function _getJailedNodesContractInstance()
+
+257:     function _getSignupBonus(uint256 nodeId) private view returns (uint256) {
+
+274:     function _calculateActivePeriodInDays(
+
+```
+
+```solidity
+File: StakingDepositUpgradeable.sol
+
+80:     function isCoolOffFinished(
+
+91:     function initiateCooloff(
+
+122:     function setMinimumStakeAmount(
+
+129:     function setCoolOffPeriod(
+
+135:     function setRewardCycle(uint256 _newRewardCycle) external onlyRedbelly {
+
+139:     function setTreasuryAddress(
+
+148:     function initialize(
+
+189:     function getNetworkConfigurationContract()
+
+204:     function getJailedNodesContract()
+
+217:     function setValueOfAlpha(
+
+224:     function setValueOfTheta(
+
+231:     function setValueOfGamma(uint256 _value) external onlyRedbelly {
+
+235:     function _computeJ() internal view returns (uint256) {
+
+242:     function _computeH(uint256 yearIndex) internal view returns (uint256) {
+
+248:     function _getRewardsClaimedInAYear(
+
+254:     function _getTokensInCirculationInAYear(
+
+269:     function _computeStakeDurationInWeeks(
+
+322:     function withdrawStakingRewards() external {
+
+382:     @dev - main deposit function - can be called any entity - no validation for _msgSender()
+
+384:     function stake(
+
+404:     function unstake() external payable canUnstake {
+
+506:     function slashStake(
+
+560:     function revertSlashedStake(
+
+582:     function redepositSlashedStake(
+
+605:     function getSlashedAmount(
+
+612:     function deductFeeFromStake(
+
+638:     function _getNodeConfigForAddress(
+
+655:     function _getNodeIdForAddress(
+
+663:     function getTreasuryAddress() external view virtual returns (address) {
+
+667:     function getDepositTimestamp(
+
+674:     function getCoolOffStartTimestamp(
+
+681:     function isCoolOffInitiated(
+
+688:     function deleteCoolOffStartTimestamp(
+
+695:     function existingStake(address _depositor) external view returns (uint256) {
+
+```
+
+```solidity
+File: StakingEscrowUpgradeable.sol
+
+15:     function __stakingEscrowInit() internal onlyInitializing {
+
+19:     function __stakingEscrowInitUnchained() internal onlyInitializing {}
+
+21:     function initialize() public virtual initializer {
+
+36:     function depositsOf(address payee) public view returns (uint256) {
+
+46:     function deposit(address payee) public payable {
+
+65:     function withdraw(
+
+```
+
+```solidity
+File: TombstonedNodesUpgradeable.sol
+
+26:     function initialize(
+
+51:     function _getNodeIdForAddress(
+
+68:     function tombstone(address _nodeAddress) external onlyJailedNodesContract {
+
+96:     function setTombstoneThreshold(uint256 _threshold) external onlyRedbelly {
+
+100:     function isTombstoned(address _nodeAddress) external view returns (bool) {
+
+```
+
+```solidity
+File: interfaces/IActivityMonitor.sol
+
+17:     function isVoteRecent(uint256) external view returns (bool);
+
+22:     function updateRecentVoteInterval(uint256 _newInterval) external;
+
+27:     function updateInactivityThresholdForMessage(
+
+34:     function updateWindowSize(uint256 _newWindowSize) external;
+
+36:     function votesCountAgainstNode(
+
+43:     function addProposal(address _inactiveNode, uint256 timestamp) external;
+
+```
+
+```solidity
+File: interfaces/IIDPRegistry.sol
+
+25:     function register(IDPInformationIO memory idpData) external;
+
+27:     function getIssuersByProofType(
+
+31:     function getSupportedProofTypes() external view returns (string[] memory);
+
+33:     function getAll() external view returns (IDPInformationIO[] memory);
+
+35:     function getByUid(
+
+39:     function getByIssuerDid(
+
+43:     function updateByUid(
+
+48:     function updateByIssuerDid(
+
+53:     function removeByUid(
+
+57:     function removeByIssuerDid(
+
+```
+
+```solidity
+File: interfaces/IJailedNodes.sol
+
+16:     function isJailedNode(address _governor) external view returns (bool);
+
+18:     function setSlashPrcnt(uint8 _slashPrcnt) external;
+
+20:     function setDaysToServe(uint256 _daysToServe) external;
+
+22:     function jail(address _governor) external;
+
+24:     function freeInnocent(address _jailedNode) external;
+
+26:     function freeServedGuilty(address _jailedNode) external payable;
+
+28:     function sendSlashedStakeToTreasury(
+
+33:     function getRecentJailTenure(
+
+```
+
+```solidity
+File: interfaces/INetworkConfiguration.sol
+
+7:     function register(
+
+16:     function getActiveCandidateNodes() external view returns (address[] memory);
+
+17:     function addGovernor(address nodeAddress) external;
+
+19:     function removeGovernor(address nodeAddress) external;
+
+21:     function isGovernor(address nodeAddress) external view returns (bool);
+
+23:     function isCandidate(address nodeAddress) external view returns (bool);
+
+25:     function getCandidateIndex(
+
+29:     function getCandidatesWithoutCooloffInitiated()
+
+34:     function getCandidates() external view returns (address[] memory);
+
+36:     function addCandidate(address nodeAddress) external;
+
+38:     function getNetworkSize() external view returns (uint256);
+
+40:     function getNodeConfiguration(
+
+44:     function removeCandidate(address nodeAddress) external;
+
+46:     function addRedbellyNodes(address) external;
+
+48:     function removeRedbellyNodes(address) external;
+
+50:     function updateCandidateConfig(
+
+55:     function removeNode(address, uint256) external;
+
+57:     function removeNodeDetailsFromNetwork(address) external;
+
+59:     function signingAddressToNodeAddress(
+
+```
+
+```solidity
+File: interfaces/IPermission.sol
+
+30:     function request(
+
+37:     function getSupportedCredentials()
+
+43:     function enablePermissionedAccess() external;
+
+```
+
+```solidity
+File: interfaces/IRandomNumberGenerator.sol
+
+5:     function generateRandomNumbers(
+
+```
+
+```solidity
+File: interfaces/IReconfiguration.sol
+
+33:     function setReconfigurationInterval(uint256 _updatedInterval) external;
+
+41:     function updateToleranceFactor(uint256 _toleranceFactor) external;
+
+43:     function filterActiveCandidatesOnly(
+
+50:     function triggerReconfiguration() external;
+
+```
+
+```solidity
+File: interfaces/ISignupBonusVesting.sol
+
+5:     function register(address _nodeAddr) external;
+
+7:     function status() external view returns (uint256);
+
+9:     function claimable() external view returns (uint256);
+
+11:     function claim() external payable;
+
+```
+
+```solidity
+File: interfaces/IStakingDeposit.sol
+
+15:     function initiateCooloff(address _depositor) external;
+
+17:     function setCoolOffPeriod(uint256 _updatedCoolOffPeriod) external;
+
+19:     function stake(
+
+25:     function unstake() external payable;
+
+27:     function slashStake(address _depositor, uint8 _amountPrcnt) external;
+
+29:     function redepositSlashedStake(address _depositor) external payable;
+
+31:     function revertSlashedStake(address _depositor) external payable;
+
+33:     function getSlashedAmount(
+
+37:     function isCoolOffInitiated(
+
+```
+
+```solidity
+File: interfaces/ITombstonedNodes.sol
+
+5:     function tombstone(address _governor) external;
+
+7:     function isTombstoned(address _nodeAddress) external view returns (bool);
 
 ```
 
@@ -5097,32 +4348,605 @@ File: utils.sol
 
 
  ### <a name="NC-26"></a>[NC-26]
- ### Large multiples of ten should use scientific notation
-Use a scientific notation rather than decimal literals (e.g. 1e6 instead of 1000000), for better code readability.
+ ### NatSpec: function declarations should have @Notice tags
+@notice is used to explain to end users what the function does, and the compiler interprets /// or /** comments as this tag if one wasn't explicitly provided.  
 
-*Instances (3)*:
+*Instances (242)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: Promo.sol
+File: ActivityMonitorUpgradeable.sol
 
-601:     uint256 public constant TOTAL_SUPPLY = 23383574 * 10 ** DECIMALS;
+55:     function initialize(
+
+86:     function _getNetworkConfigurationContract()
+
+105:     function _getNodeAddressUsingSignerAddress(
+
+125:     function isVoteRecent(uint256 timestamp) public view returns (bool) {
+
+130:     function _getNodeIdForAddress(
+
+145:     function _removeOutdatedVotes(address _inactiveNode) private {
+
+164:     function _isGovernor(address signerAddress) private view returns (bool) {
+
+183:     function _isGovernorNodeAddress(
+
+200:     function getGovernorVoteTimestampForInactiveNode(
+
+229:     function getEarliestNodeInactivityVote(
+
+245:     function votesCountAgainstNode(
+
+252:     function _getJailedNodesContract() private view returns (IJailedNodes) {
+
+269:     function updateRecentVoteInterval(
+
+288:     function updateWindowSize(uint256 _newWindowSize) external onlyRedbelly {
+
+307:     function updateInactivityThresholdForRounds(
+
+330:     function updateInactivityThresholdForMessage(
+
+349:     function addProposal(
 
 ```
 
 ```solidity
-File: SavvaFaucet.sol
+File: ContractRoleAuthUpgradeable.sol
 
-16:     uint256 constant TOKENS_PER_ROUND = 240000 ether; // (in SAVVA) Approximately 5% per year initially
+69:     function initialize() public virtual override onlyInitializing {
 
 ```
 
 ```solidity
-File: Staking.sol
+File: IDPRegistryUpgradeable.sol
 
-102:     uint256 constant SECONDS_PER_WEEK = 604800; //
+86:     function initialize() public virtual override initializer {
+
+90:     function register(
+
+140:     function getAll() external view returns (IDPInformationIO[] memory) {
+
+153:     function getByUid(
+
+175:     function getByIssuerDid(
+
+189:     function updateByUid(
+
+221:     function updateByIssuerDid(
+
+237:     function removeByUid(
+
+254:     function removeByIssuerDid(
+
+269:     function _getDeletedCount() private view returns (uint256) {
+
+279:     function getIssuersByProofType(
+
+285:     function getSupportedProofTypes()
+
+```
+
+```solidity
+File: JailedNodesUpgradeable.sol
+
+104:     function initialize(
+
+125:     function _getNetworkConfigurationContract()
+
+140:     function _getNodeIdForAddress(
+
+147:     function _getTombstonedContractInstance()
+
+160:     function _getStakingContractInstance()
+
+175:     function jail(
+
+218:     function getRecentJailTenure(
+
+229:     function getJailCountForNode(
+
+236:     function isJailedNode(address _governor) public view returns (bool) {
+
+242:     function getTimeServedInJail(
+
+259:     function freeServedGuilty(
+
+290:     function freeInnocent(
+
+318:     function _reinitiateNodeAsCandidate(address _address) private {
+
+330:     function setSlashPrcnt(uint8 _slashPrcnt) external onlyRedbelly {
+
+343:     function setDaysToServe(uint256 _daysToServe) public onlyRedbelly {
+
+347:     function getJailedDuration(
+
+376:     function sendSlashedStakeToTreasury(
+
+```
+
+```solidity
+File: NetworkConfigurationUpgradeable.sol
+
+67:     function getActiveCandidateNodes()
+
+77:     function isGovernor(address nodeAddress) public view returns (bool) {
+
+81:     function isCandidate(address nodeAddress) public view returns (bool) {
+
+85:     function getCandidateIndex(
+
+95:     function getGovernors() public view returns (address[] memory) {
+
+99:     function getCandidates() public view returns (address[] memory) {
+
+103:     function getNetworkSize() public view returns (uint256) {
+
+109:     function getNodeConfigurationsByAddresses(
+
+115:     function getNodeConfiguration(
+
+128:     function isBootNode(address _nodeAddress) public view returns (bool) {
+
+132:     function removeNodeDetailsFromNetwork(
+
+153:     function addCandidate(
+
+159:     function setNodeAsExited(
+
+167:     function removeCandidate(address nodeAddress) external onlyRedbelly {
+
+173:     function removeJailedCandidateFromNetwork(
+
+179:     function _safelyReplaceGovernor(address nodeAddress) private {
+
+224:     function removeGovernorFromNetwork(
+
+233:     function signingAddressToNodeAddress(
+
+240:     function initialize(
+
+277:     function swapNodesWithIndexesAndUpdateRoles(
+
+296:     function register(
+
+381:     function addGovernor(
+
+407:     function removeGovernor(address nodeAddress) public onlyRedbelly {
+
+422:     function addRedbellyNodes(address nodeAddress) public onlyRedbelly {
+
+426:     function removeRedbellyNodes(address nodeAddress) public onlyRedbelly {
+
+430:     function updateCandidateConfig(
+
+448:     function removeNode(
+
+478:     function notifyAboutGovernorsUpdate() public {
+
+482:     function getBootNodeAddresses() public view returns (address[] memory) {
+
+486:     function isRedbellyNode(address nodeAddr) public view returns (bool) {
+
+490:     function getGovernorIndex(
+
+500:     function getCandidateAddressAtIndex(
+
+506:     function getGovernorAddressAtIndex(
+
+512:     function getCountOfRedbellyGovernors() public view returns (uint256) {
+
+523:     function getRedbellyNodes() public view returns (address[] memory) {
+
+527:     function _getStakingDepositContractInstance()
+
+542:     function _getReconfigurationContractInstance()
+
+557:     function _setNodeExitTimestamp(
+
+564:     function getCandidatesWithoutCooloffInitiated()
+
+572:     function _candidatesWithoutCooloffInitiated()
+
+```
+
+```solidity
+File: PermissionUpgradeable.sol
+
+19:     function initialize(
+
+34:     function getSupportedCredentials()
+
+74:     function request(
+
+121:     function enablePermissionedAccess() external onlyRedbelly {
+
+126:     function getProofpublicKey(
+
+150:     function isAllowed(address _address) external view returns (bool) {
+
+160:     function _authorizeUser(address _userAddress) private {
+
+171:     function _verifyED25519(
+
+256:     function _convertTimestampStringToUnix(
+
+309:     function _parseJson(
+
+```
+
+```solidity
+File: RBACUpgradeable.sol
+
+30:     function initialize() public virtual onlyInitializing {
+
+```
+
+```solidity
+File: ReconfigurationUpgradeable.sol
+
+52:     function initialize(
+
+76:     function pushToCoolOffQueue(
+
+91:     function filterActiveCandidatesOnly(
+
+129:     function getReconfigurationCount() public view returns (uint256) {
+
+138:     function setReconfigurationInterval(
+
+151:     function updateToleranceFactor(
+
+161:     function getReconfigurationBuffer() public view returns (uint256) {
+
+171:     function setReconfigurationBiasness(
+
+185:     function setUpgradeProbability(
+
+195:     function triggerReconfiguration() public onlyAfterReconfigInterval {
+
+252:     function _calculateD() internal view returns (uint256, bool) {
+
+265:     function _calculateProbability(
+
+296:     function _getCandidatesNotInCooloff()
+
+315:     function _getGovernorsInCooloff(
+
+334:     function _getGovernorsWithCooloffInitiated(
+
+378:     function _getGovernorsNotInCooloff(
+
+399:     function _getRandomGovernorsToDowngrade(
+
+414:     function _performSwap(
+
+465:     function _getSwappableAddresses(
+
+571:     function _getGovernorsByRatio(
+
+597:     function _getRequiredRatioForCandidates(
+
+623:     function _getCandidatesByRequiredRatio(
+
+666:     function _getNetworkConfigurationContractInstance()
+
+681:     function _pushNetworkConfigForRound() internal {
+
+```
+
+```solidity
+File: SignupBonusVestingUpgradeable.sol
+
+73:     function initialize(
+
+121:     function register(
+
+131:     function claim()
+
+157:     function status()
+
+200:     function claimable()
+
+216:     function _getNetworkConfigurationContractInstance()
+
+236:     function _getJailedNodesContractInstance()
+
+257:     function _getSignupBonus(uint256 nodeId) private view returns (uint256) {
+
+274:     function _calculateActivePeriodInDays(
+
+```
+
+```solidity
+File: StakingDepositUpgradeable.sol
+
+80:     function isCoolOffFinished(
+
+91:     function initiateCooloff(
+
+122:     function setMinimumStakeAmount(
+
+129:     function setCoolOffPeriod(
+
+135:     function setRewardCycle(uint256 _newRewardCycle) external onlyRedbelly {
+
+139:     function setTreasuryAddress(
+
+148:     function initialize(
+
+189:     function getNetworkConfigurationContract()
+
+204:     function getJailedNodesContract()
+
+217:     function setValueOfAlpha(
+
+224:     function setValueOfTheta(
+
+231:     function setValueOfGamma(uint256 _value) external onlyRedbelly {
+
+235:     function _computeJ() internal view returns (uint256) {
+
+242:     function _computeH(uint256 yearIndex) internal view returns (uint256) {
+
+248:     function _getRewardsClaimedInAYear(
+
+254:     function _getTokensInCirculationInAYear(
+
+269:     function _computeStakeDurationInWeeks(
+
+322:     function withdrawStakingRewards() external {
+
+382:     @dev - main deposit function - can be called any entity - no validation for _msgSender()
+
+384:     function stake(
+
+404:     function unstake() external payable canUnstake {
+
+506:     function slashStake(
+
+560:     function revertSlashedStake(
+
+582:     function redepositSlashedStake(
+
+605:     function getSlashedAmount(
+
+612:     function deductFeeFromStake(
+
+638:     function _getNodeConfigForAddress(
+
+655:     function _getNodeIdForAddress(
+
+663:     function getTreasuryAddress() external view virtual returns (address) {
+
+667:     function getDepositTimestamp(
+
+674:     function getCoolOffStartTimestamp(
+
+681:     function isCoolOffInitiated(
+
+688:     function deleteCoolOffStartTimestamp(
+
+695:     function existingStake(address _depositor) external view returns (uint256) {
+
+```
+
+```solidity
+File: StakingEscrowUpgradeable.sol
+
+15:     function __stakingEscrowInit() internal onlyInitializing {
+
+19:     function __stakingEscrowInitUnchained() internal onlyInitializing {}
+
+21:     function initialize() public virtual initializer {
+
+36:     function depositsOf(address payee) public view returns (uint256) {
+
+46:     function deposit(address payee) public payable {
+
+65:     function withdraw(
+
+```
+
+```solidity
+File: TombstonedNodesUpgradeable.sol
+
+26:     function initialize(
+
+51:     function _getNodeIdForAddress(
+
+68:     function tombstone(address _nodeAddress) external onlyJailedNodesContract {
+
+96:     function setTombstoneThreshold(uint256 _threshold) external onlyRedbelly {
+
+100:     function isTombstoned(address _nodeAddress) external view returns (bool) {
+
+```
+
+```solidity
+File: interfaces/IActivityMonitor.sol
+
+17:     function isVoteRecent(uint256) external view returns (bool);
+
+22:     function updateRecentVoteInterval(uint256 _newInterval) external;
+
+27:     function updateInactivityThresholdForMessage(
+
+34:     function updateWindowSize(uint256 _newWindowSize) external;
+
+36:     function votesCountAgainstNode(
+
+43:     function addProposal(address _inactiveNode, uint256 timestamp) external;
+
+```
+
+```solidity
+File: interfaces/IIDPRegistry.sol
+
+25:     function register(IDPInformationIO memory idpData) external;
+
+27:     function getIssuersByProofType(
+
+31:     function getSupportedProofTypes() external view returns (string[] memory);
+
+33:     function getAll() external view returns (IDPInformationIO[] memory);
+
+35:     function getByUid(
+
+39:     function getByIssuerDid(
+
+43:     function updateByUid(
+
+48:     function updateByIssuerDid(
+
+53:     function removeByUid(
+
+57:     function removeByIssuerDid(
+
+```
+
+```solidity
+File: interfaces/IJailedNodes.sol
+
+16:     function isJailedNode(address _governor) external view returns (bool);
+
+18:     function setSlashPrcnt(uint8 _slashPrcnt) external;
+
+20:     function setDaysToServe(uint256 _daysToServe) external;
+
+22:     function jail(address _governor) external;
+
+24:     function freeInnocent(address _jailedNode) external;
+
+26:     function freeServedGuilty(address _jailedNode) external payable;
+
+28:     function sendSlashedStakeToTreasury(
+
+33:     function getRecentJailTenure(
+
+```
+
+```solidity
+File: interfaces/INetworkConfiguration.sol
+
+7:     function register(
+
+16:     function getActiveCandidateNodes() external view returns (address[] memory);
+
+17:     function addGovernor(address nodeAddress) external;
+
+19:     function removeGovernor(address nodeAddress) external;
+
+21:     function isGovernor(address nodeAddress) external view returns (bool);
+
+23:     function isCandidate(address nodeAddress) external view returns (bool);
+
+25:     function getCandidateIndex(
+
+29:     function getCandidatesWithoutCooloffInitiated()
+
+34:     function getCandidates() external view returns (address[] memory);
+
+36:     function addCandidate(address nodeAddress) external;
+
+38:     function getNetworkSize() external view returns (uint256);
+
+40:     function getNodeConfiguration(
+
+44:     function removeCandidate(address nodeAddress) external;
+
+46:     function addRedbellyNodes(address) external;
+
+48:     function removeRedbellyNodes(address) external;
+
+50:     function updateCandidateConfig(
+
+55:     function removeNode(address, uint256) external;
+
+57:     function removeNodeDetailsFromNetwork(address) external;
+
+59:     function signingAddressToNodeAddress(
+
+```
+
+```solidity
+File: interfaces/IPermission.sol
+
+30:     function request(
+
+37:     function getSupportedCredentials()
+
+43:     function enablePermissionedAccess() external;
+
+```
+
+```solidity
+File: interfaces/IRandomNumberGenerator.sol
+
+5:     function generateRandomNumbers(
+
+```
+
+```solidity
+File: interfaces/IReconfiguration.sol
+
+33:     function setReconfigurationInterval(uint256 _updatedInterval) external;
+
+41:     function updateToleranceFactor(uint256 _toleranceFactor) external;
+
+43:     function filterActiveCandidatesOnly(
+
+50:     function triggerReconfiguration() external;
+
+```
+
+```solidity
+File: interfaces/ISignupBonusVesting.sol
+
+5:     function register(address _nodeAddr) external;
+
+7:     function status() external view returns (uint256);
+
+9:     function claimable() external view returns (uint256);
+
+11:     function claim() external payable;
+
+```
+
+```solidity
+File: interfaces/IStakingDeposit.sol
+
+15:     function initiateCooloff(address _depositor) external;
+
+17:     function setCoolOffPeriod(uint256 _updatedCoolOffPeriod) external;
+
+19:     function stake(
+
+25:     function unstake() external payable;
+
+27:     function slashStake(address _depositor, uint8 _amountPrcnt) external;
+
+29:     function redepositSlashedStake(address _depositor) external payable;
+
+31:     function revertSlashedStake(address _depositor) external payable;
+
+33:     function getSlashedAmount(
+
+37:     function isCoolOffInitiated(
+
+```
+
+```solidity
+File: interfaces/ITombstonedNodes.sol
+
+5:     function tombstone(address _governor) external;
+
+7:     function isTombstoned(address _nodeAddress) external view returns (bool);
 
 ```
 
@@ -5131,29 +4955,604 @@ File: Staking.sol
 
 
  ### <a name="NC-27"></a>[NC-27]
- ### Consider using named mappings
+ ### NatSpec: function declarations should have NatSpec descriptions
 
-#### Impact:
-Using named mappings can improve code readability and maintainability.
-
-*Instances (3)*:
+*Instances (242)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: Promo.sol
+File: ActivityMonitorUpgradeable.sol
 
-264:     mapping(address => uint256) private _balances;
+55:     function initialize(
 
-266:     mapping(address => mapping(address => uint256)) private _allowances;
+86:     function _getNetworkConfigurationContract()
+
+105:     function _getNodeAddressUsingSignerAddress(
+
+125:     function isVoteRecent(uint256 timestamp) public view returns (bool) {
+
+130:     function _getNodeIdForAddress(
+
+145:     function _removeOutdatedVotes(address _inactiveNode) private {
+
+164:     function _isGovernor(address signerAddress) private view returns (bool) {
+
+183:     function _isGovernorNodeAddress(
+
+200:     function getGovernorVoteTimestampForInactiveNode(
+
+229:     function getEarliestNodeInactivityVote(
+
+245:     function votesCountAgainstNode(
+
+252:     function _getJailedNodesContract() private view returns (IJailedNodes) {
+
+269:     function updateRecentVoteInterval(
+
+288:     function updateWindowSize(uint256 _newWindowSize) external onlyRedbelly {
+
+307:     function updateInactivityThresholdForRounds(
+
+330:     function updateInactivityThresholdForMessage(
+
+349:     function addProposal(
 
 ```
 
 ```solidity
-File: Staking.sol
+File: ContractRoleAuthUpgradeable.sol
 
-33:         mapping(bytes32 => PayRecord) PayRecords;
+69:     function initialize() public virtual override onlyInitializing {
+
+```
+
+```solidity
+File: IDPRegistryUpgradeable.sol
+
+86:     function initialize() public virtual override initializer {
+
+90:     function register(
+
+140:     function getAll() external view returns (IDPInformationIO[] memory) {
+
+153:     function getByUid(
+
+175:     function getByIssuerDid(
+
+189:     function updateByUid(
+
+221:     function updateByIssuerDid(
+
+237:     function removeByUid(
+
+254:     function removeByIssuerDid(
+
+269:     function _getDeletedCount() private view returns (uint256) {
+
+279:     function getIssuersByProofType(
+
+285:     function getSupportedProofTypes()
+
+```
+
+```solidity
+File: JailedNodesUpgradeable.sol
+
+104:     function initialize(
+
+125:     function _getNetworkConfigurationContract()
+
+140:     function _getNodeIdForAddress(
+
+147:     function _getTombstonedContractInstance()
+
+160:     function _getStakingContractInstance()
+
+175:     function jail(
+
+218:     function getRecentJailTenure(
+
+229:     function getJailCountForNode(
+
+236:     function isJailedNode(address _governor) public view returns (bool) {
+
+242:     function getTimeServedInJail(
+
+259:     function freeServedGuilty(
+
+290:     function freeInnocent(
+
+318:     function _reinitiateNodeAsCandidate(address _address) private {
+
+330:     function setSlashPrcnt(uint8 _slashPrcnt) external onlyRedbelly {
+
+343:     function setDaysToServe(uint256 _daysToServe) public onlyRedbelly {
+
+347:     function getJailedDuration(
+
+376:     function sendSlashedStakeToTreasury(
+
+```
+
+```solidity
+File: NetworkConfigurationUpgradeable.sol
+
+67:     function getActiveCandidateNodes()
+
+77:     function isGovernor(address nodeAddress) public view returns (bool) {
+
+81:     function isCandidate(address nodeAddress) public view returns (bool) {
+
+85:     function getCandidateIndex(
+
+95:     function getGovernors() public view returns (address[] memory) {
+
+99:     function getCandidates() public view returns (address[] memory) {
+
+103:     function getNetworkSize() public view returns (uint256) {
+
+109:     function getNodeConfigurationsByAddresses(
+
+115:     function getNodeConfiguration(
+
+128:     function isBootNode(address _nodeAddress) public view returns (bool) {
+
+132:     function removeNodeDetailsFromNetwork(
+
+153:     function addCandidate(
+
+159:     function setNodeAsExited(
+
+167:     function removeCandidate(address nodeAddress) external onlyRedbelly {
+
+173:     function removeJailedCandidateFromNetwork(
+
+179:     function _safelyReplaceGovernor(address nodeAddress) private {
+
+224:     function removeGovernorFromNetwork(
+
+233:     function signingAddressToNodeAddress(
+
+240:     function initialize(
+
+277:     function swapNodesWithIndexesAndUpdateRoles(
+
+296:     function register(
+
+381:     function addGovernor(
+
+407:     function removeGovernor(address nodeAddress) public onlyRedbelly {
+
+422:     function addRedbellyNodes(address nodeAddress) public onlyRedbelly {
+
+426:     function removeRedbellyNodes(address nodeAddress) public onlyRedbelly {
+
+430:     function updateCandidateConfig(
+
+448:     function removeNode(
+
+478:     function notifyAboutGovernorsUpdate() public {
+
+482:     function getBootNodeAddresses() public view returns (address[] memory) {
+
+486:     function isRedbellyNode(address nodeAddr) public view returns (bool) {
+
+490:     function getGovernorIndex(
+
+500:     function getCandidateAddressAtIndex(
+
+506:     function getGovernorAddressAtIndex(
+
+512:     function getCountOfRedbellyGovernors() public view returns (uint256) {
+
+523:     function getRedbellyNodes() public view returns (address[] memory) {
+
+527:     function _getStakingDepositContractInstance()
+
+542:     function _getReconfigurationContractInstance()
+
+557:     function _setNodeExitTimestamp(
+
+564:     function getCandidatesWithoutCooloffInitiated()
+
+572:     function _candidatesWithoutCooloffInitiated()
+
+```
+
+```solidity
+File: PermissionUpgradeable.sol
+
+19:     function initialize(
+
+34:     function getSupportedCredentials()
+
+74:     function request(
+
+121:     function enablePermissionedAccess() external onlyRedbelly {
+
+126:     function getProofpublicKey(
+
+150:     function isAllowed(address _address) external view returns (bool) {
+
+160:     function _authorizeUser(address _userAddress) private {
+
+171:     function _verifyED25519(
+
+256:     function _convertTimestampStringToUnix(
+
+309:     function _parseJson(
+
+```
+
+```solidity
+File: RBACUpgradeable.sol
+
+30:     function initialize() public virtual onlyInitializing {
+
+```
+
+```solidity
+File: ReconfigurationUpgradeable.sol
+
+52:     function initialize(
+
+76:     function pushToCoolOffQueue(
+
+91:     function filterActiveCandidatesOnly(
+
+129:     function getReconfigurationCount() public view returns (uint256) {
+
+138:     function setReconfigurationInterval(
+
+151:     function updateToleranceFactor(
+
+161:     function getReconfigurationBuffer() public view returns (uint256) {
+
+171:     function setReconfigurationBiasness(
+
+185:     function setUpgradeProbability(
+
+195:     function triggerReconfiguration() public onlyAfterReconfigInterval {
+
+252:     function _calculateD() internal view returns (uint256, bool) {
+
+265:     function _calculateProbability(
+
+296:     function _getCandidatesNotInCooloff()
+
+315:     function _getGovernorsInCooloff(
+
+334:     function _getGovernorsWithCooloffInitiated(
+
+378:     function _getGovernorsNotInCooloff(
+
+399:     function _getRandomGovernorsToDowngrade(
+
+414:     function _performSwap(
+
+465:     function _getSwappableAddresses(
+
+571:     function _getGovernorsByRatio(
+
+597:     function _getRequiredRatioForCandidates(
+
+623:     function _getCandidatesByRequiredRatio(
+
+666:     function _getNetworkConfigurationContractInstance()
+
+681:     function _pushNetworkConfigForRound() internal {
+
+```
+
+```solidity
+File: SignupBonusVestingUpgradeable.sol
+
+73:     function initialize(
+
+121:     function register(
+
+131:     function claim()
+
+157:     function status()
+
+200:     function claimable()
+
+216:     function _getNetworkConfigurationContractInstance()
+
+236:     function _getJailedNodesContractInstance()
+
+257:     function _getSignupBonus(uint256 nodeId) private view returns (uint256) {
+
+274:     function _calculateActivePeriodInDays(
+
+```
+
+```solidity
+File: StakingDepositUpgradeable.sol
+
+80:     function isCoolOffFinished(
+
+91:     function initiateCooloff(
+
+122:     function setMinimumStakeAmount(
+
+129:     function setCoolOffPeriod(
+
+135:     function setRewardCycle(uint256 _newRewardCycle) external onlyRedbelly {
+
+139:     function setTreasuryAddress(
+
+148:     function initialize(
+
+189:     function getNetworkConfigurationContract()
+
+204:     function getJailedNodesContract()
+
+217:     function setValueOfAlpha(
+
+224:     function setValueOfTheta(
+
+231:     function setValueOfGamma(uint256 _value) external onlyRedbelly {
+
+235:     function _computeJ() internal view returns (uint256) {
+
+242:     function _computeH(uint256 yearIndex) internal view returns (uint256) {
+
+248:     function _getRewardsClaimedInAYear(
+
+254:     function _getTokensInCirculationInAYear(
+
+269:     function _computeStakeDurationInWeeks(
+
+322:     function withdrawStakingRewards() external {
+
+382:     @dev - main deposit function - can be called any entity - no validation for _msgSender()
+
+384:     function stake(
+
+404:     function unstake() external payable canUnstake {
+
+506:     function slashStake(
+
+560:     function revertSlashedStake(
+
+582:     function redepositSlashedStake(
+
+605:     function getSlashedAmount(
+
+612:     function deductFeeFromStake(
+
+638:     function _getNodeConfigForAddress(
+
+655:     function _getNodeIdForAddress(
+
+663:     function getTreasuryAddress() external view virtual returns (address) {
+
+667:     function getDepositTimestamp(
+
+674:     function getCoolOffStartTimestamp(
+
+681:     function isCoolOffInitiated(
+
+688:     function deleteCoolOffStartTimestamp(
+
+695:     function existingStake(address _depositor) external view returns (uint256) {
+
+```
+
+```solidity
+File: StakingEscrowUpgradeable.sol
+
+15:     function __stakingEscrowInit() internal onlyInitializing {
+
+19:     function __stakingEscrowInitUnchained() internal onlyInitializing {}
+
+21:     function initialize() public virtual initializer {
+
+36:     function depositsOf(address payee) public view returns (uint256) {
+
+46:     function deposit(address payee) public payable {
+
+65:     function withdraw(
+
+```
+
+```solidity
+File: TombstonedNodesUpgradeable.sol
+
+26:     function initialize(
+
+51:     function _getNodeIdForAddress(
+
+68:     function tombstone(address _nodeAddress) external onlyJailedNodesContract {
+
+96:     function setTombstoneThreshold(uint256 _threshold) external onlyRedbelly {
+
+100:     function isTombstoned(address _nodeAddress) external view returns (bool) {
+
+```
+
+```solidity
+File: interfaces/IActivityMonitor.sol
+
+17:     function isVoteRecent(uint256) external view returns (bool);
+
+22:     function updateRecentVoteInterval(uint256 _newInterval) external;
+
+27:     function updateInactivityThresholdForMessage(
+
+34:     function updateWindowSize(uint256 _newWindowSize) external;
+
+36:     function votesCountAgainstNode(
+
+43:     function addProposal(address _inactiveNode, uint256 timestamp) external;
+
+```
+
+```solidity
+File: interfaces/IIDPRegistry.sol
+
+25:     function register(IDPInformationIO memory idpData) external;
+
+27:     function getIssuersByProofType(
+
+31:     function getSupportedProofTypes() external view returns (string[] memory);
+
+33:     function getAll() external view returns (IDPInformationIO[] memory);
+
+35:     function getByUid(
+
+39:     function getByIssuerDid(
+
+43:     function updateByUid(
+
+48:     function updateByIssuerDid(
+
+53:     function removeByUid(
+
+57:     function removeByIssuerDid(
+
+```
+
+```solidity
+File: interfaces/IJailedNodes.sol
+
+16:     function isJailedNode(address _governor) external view returns (bool);
+
+18:     function setSlashPrcnt(uint8 _slashPrcnt) external;
+
+20:     function setDaysToServe(uint256 _daysToServe) external;
+
+22:     function jail(address _governor) external;
+
+24:     function freeInnocent(address _jailedNode) external;
+
+26:     function freeServedGuilty(address _jailedNode) external payable;
+
+28:     function sendSlashedStakeToTreasury(
+
+33:     function getRecentJailTenure(
+
+```
+
+```solidity
+File: interfaces/INetworkConfiguration.sol
+
+7:     function register(
+
+16:     function getActiveCandidateNodes() external view returns (address[] memory);
+
+17:     function addGovernor(address nodeAddress) external;
+
+19:     function removeGovernor(address nodeAddress) external;
+
+21:     function isGovernor(address nodeAddress) external view returns (bool);
+
+23:     function isCandidate(address nodeAddress) external view returns (bool);
+
+25:     function getCandidateIndex(
+
+29:     function getCandidatesWithoutCooloffInitiated()
+
+34:     function getCandidates() external view returns (address[] memory);
+
+36:     function addCandidate(address nodeAddress) external;
+
+38:     function getNetworkSize() external view returns (uint256);
+
+40:     function getNodeConfiguration(
+
+44:     function removeCandidate(address nodeAddress) external;
+
+46:     function addRedbellyNodes(address) external;
+
+48:     function removeRedbellyNodes(address) external;
+
+50:     function updateCandidateConfig(
+
+55:     function removeNode(address, uint256) external;
+
+57:     function removeNodeDetailsFromNetwork(address) external;
+
+59:     function signingAddressToNodeAddress(
+
+```
+
+```solidity
+File: interfaces/IPermission.sol
+
+30:     function request(
+
+37:     function getSupportedCredentials()
+
+43:     function enablePermissionedAccess() external;
+
+```
+
+```solidity
+File: interfaces/IRandomNumberGenerator.sol
+
+5:     function generateRandomNumbers(
+
+```
+
+```solidity
+File: interfaces/IReconfiguration.sol
+
+33:     function setReconfigurationInterval(uint256 _updatedInterval) external;
+
+41:     function updateToleranceFactor(uint256 _toleranceFactor) external;
+
+43:     function filterActiveCandidatesOnly(
+
+50:     function triggerReconfiguration() external;
+
+```
+
+```solidity
+File: interfaces/ISignupBonusVesting.sol
+
+5:     function register(address _nodeAddr) external;
+
+7:     function status() external view returns (uint256);
+
+9:     function claimable() external view returns (uint256);
+
+11:     function claim() external payable;
+
+```
+
+```solidity
+File: interfaces/IStakingDeposit.sol
+
+15:     function initiateCooloff(address _depositor) external;
+
+17:     function setCoolOffPeriod(uint256 _updatedCoolOffPeriod) external;
+
+19:     function stake(
+
+25:     function unstake() external payable;
+
+27:     function slashStake(address _depositor, uint8 _amountPrcnt) external;
+
+29:     function redepositSlashedStake(address _depositor) external payable;
+
+31:     function revertSlashedStake(address _depositor) external payable;
+
+33:     function getSlashedAmount(
+
+37:     function isCoolOffInitiated(
+
+```
+
+```solidity
+File: interfaces/ITombstonedNodes.sol
+
+5:     function tombstone(address _governor) external;
+
+7:     function isTombstoned(address _nodeAddress) external view returns (bool);
 
 ```
 
@@ -5162,74 +5561,361 @@ File: Staking.sol
 
 
  ### <a name="NC-28"></a>[NC-28]
- ### Consider combining multiple address/ID mappings into a single mapping of an address/ID to a struct
+ ### If-statement can be converted to a ternary
 
 #### Impact:
-Combining multiple mappings into a single mapping with a struct can improve readability and maintainability of the code.
+The code can be made more compact while also increasing readability by converting the following `if`-statements to ternaries (e.g. `foo += (x > y) ? a : b`)
 
-*Instances (13)*:
+*Instances (144)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: ContentFund.sol
+File: ActivityMonitorUpgradeable.sol
 
-60:     mapping(uint256 => mapping(address => uint256)) public contributions;
+24:         if (!_isGovernor(msg.sender)) {
 
-```
+32:         if (networkConfigurationContract.isBootNode(_address)) {
 
-```solidity
-File: ContentRegistry.sol
+39:         if (!_isGovernorNodeAddress(_address)) {
 
-40:     mapping(address => mapping(address => bool)) public allowed;
+60:         if (_config.inactivityThresholdForRounds <= 0) {
 
-56:     mapping(address => mapping(address => bool)) public allowed;
+64:         } else if (_config.inactivityThresholdForMessage <= 0) {
 
-```
+68:         } else if (_config.recentVoteInterval <= 0) {
 
-```solidity
-File: NFTMarketplace.sol
+147:         if (_inactivityVotes[nodeId].size() <= 0) {
 
-41:     mapping(address => uint256[]) public nftsByOwner;
+205:         if (_inactivityVotes[nodeId].votesAgainstNode.length != 0) {
 
-```
+233:         if (_inactivityVotes[nodeId].votesAgainstNode.length != 0) {
 
-```solidity
-File: Promo.sol
+272:         if (_newInterval <= 0) {
 
-264:     mapping(address => uint256) private _balances;
+289:         if (_newWindowSize <= 0) {
 
-266:     mapping(address => mapping(address => uint256)) private _allowances;
+292:         if (_newWindowSize < config.inactivityThresholdForRounds) {
 
-612:     mapping(address => bool) public automatedMarketMakerPairs;
+310:         if (_newInactivityThreshold <= 0) {
 
-```
+315:         if (_newInactivityThreshold > config.windowSize) {
 
-```solidity
-File: SavvaFaucet.sol
+333:         if (_newInactivityThreshold <= 0) {
 
-22:     mapping(address => uint256) public deposited;
+361:         if (!isVoteRecent(_timestamp)) {
 
-```
+367:         if (_inactivityVotes[nodeId].size() > 0) {
 
-```solidity
-File: Staking.sol
+382:         } else {
 
-44:     mapping(address => Staker) public stakers;
+388:         if (_inactivityVotes[nodeId].size() >= votesRequiredForMajority) {
 
 ```
 
 ```solidity
-File: UserProfile.sol
+File: ContractRoleAuthUpgradeable.sol
 
-10:     mapping(address => mapping(bytes32 => mapping(bytes32 => string))) public profileString;
+19:         if (!hasRole(STAKING_DEPOSIT_CONTRACT_ROLE, _msgSender())) {
 
-11:     mapping(address => mapping(bytes32 => mapping(bytes32 => uint256))) public profileUInt;
+28:         if (!hasRole(JAILED_NODES_CONTRACT_ROLE, _msgSender())) {
 
-14:     mapping(address => string) public names;
+37:         if (!hasRole(NETWORK_CONFIG_CONTRACT_ROLE, _msgSender())) {
 
-15:     mapping(address => string) public avatars;
+```
+
+```solidity
+File: IDPRegistryUpgradeable.sol
+
+28:         if (uid >= _uidCounter || deletedUIDs[uid]) {
+
+35:         if (!_issuerDidPresent[issuerDid]) {
+
+42:         if (deletedUIDs[uid]) {
+
+51:         if (bytes(str).length <= 0) {
+
+58:         if (_uidToIDP[uid].publicAddress != msg.sender) {
+
+65:         if (_uidToIDP[issuerDidToUid[issuerDid]].publicAddress != msg.sender) {
+
+72:         if (proofs.length <= 0) {
+
+76:             if (bytes(proofs[i].proofType).length <= 0) {
+
+79:             if (bytes(proofs[i].publicKey).length <= 0) {
+
+101:         if (idpData.publicAddress == address(0)) {
+
+104:         if (_issuerDidPresent[idpData.issuerDid]) {
+
+131:             if (!isProofTypeSupported[idpData.proofs[i].proofType]) {
+
+145:             if (!deletedUIDs[i]) {
+
+161:         if (idp.publicAddress == address(0)) {
+
+272:             if (deletedUIDs[i]) {
+
+```
+
+```solidity
+File: JailedNodesUpgradeable.sol
+
+36:         if (address(this).balance < amount) {
+
+46:         if (tombstonedContract.isTombstoned(_governor)) {
+
+54:         if (networkConfigurationContract.isBootNode(_address)) {
+
+195:         } else {
+
+205:             } else {
+
+223:         if (len > 0) {
+
+250:             if (releasedTimestamp == 0) {
+
+311:         if (!sent) {
+
+331:         if (_slashPrcnt > 100) {
+
+358:             if (jailData[i].releasedTimestamp == 0) {
+
+362:             if (endTime < startTimestamp || startTime > endTimestamp) {
+
+381:         if (!sent) {
+
+```
+
+```solidity
+File: NetworkConfigurationUpgradeable.sol
+
+48:         if (_tombstonedNodesContract.isTombstoned(_nodeAddress)) {
+
+60:         if (_jailedNodesContract.isJailedNode(_nodeAddress)) {
+
+89:         if (_candidates.getAddressAtIndex(index) == nodeAddress) {
+
+143:         if (_governors.nodeExists(nodeAddress)) {
+
+146:         if (_candidates.nodeExists(nodeAddress)) {
+
+182:         if (safeToUpgradeCandidates.length <= 0) {
+
+188:         if (isRedbellyNode(nodeAddress)) {
+
+198:             if (currIndex <= 0) {
+
+211:         } else {
+
+308:         if (_nodeConfig.nodeExists(nodeAddress)) {
+
+311:         if (_nodeConfig.hostnameInUse[hostname]) {
+
+322:         if (amountReceived + escrowDeposit < registrationFee) {
+
+331:         if (amountReceived > registrationFee) {
+
+338:         if (registrationFee > amountReceived) {
+
+375:         if (refundAmount > 0) {
+
+391:         if (isGovernor(nodeAddress)) {
+
+395:         if (_stakingDepositContract.isCoolOffInitiated(nodeAddress)) {
+
+408:         if (!isGovernor(nodeAddress)) {
+
+411:         if (getNetworkSize() <= 4) {
+
+434:         if (!_candidates.nodeExists(nodeAddr)) {
+
+439:         if (isBootNode(nodeAddr)) {
+
+442:         if (isRedbellyNode(nodeAddr)) {
+
+468:         if (isGovernor(nodeAddress)) {
+
+494:         if (_governors.getAddressAtIndex(index) == nodeAddress) {
+
+516:             if (isRedbellyNode(govs[i])) {
+
+585:             if (!stakingDeposit.isCoolOffInitiated(allCandidates[i])) {
+
+```
+
+```solidity
+File: PermissionUpgradeable.sol
+
+90:         if (!signatureCheck) {
+
+99:         if (StringToAddress.stringToAddress(user) != msg.sender) {
+
+113:         if (issuanceDateUnix >= block.timestamp) {
+
+151:         if (isPermissionedAccessEnabled) {
+
+203:         if (!callresult) {
+
+241:         if (!callresult) {
+
+247:             if (result[i] != 0x00) {
+
+296:         if (!callresult) {
+
+346:         if (!callresult) {
+
+```
+
+```solidity
+File: RBACUpgradeable.sol
+
+17:         if (!hasRole(REDBELLY_ROLE, _msgSender())) {
+
+24:         if (!hasRole(IDP_ROLE, _msgSender())) {
+
+```
+
+```solidity
+File: ReconfigurationUpgradeable.sol
+
+98:         if (!found) {
+
+154:         if (_toleranceFactor <= 0) {
+
+205:         if (candidatesNotInCooloff.length > 0) {
+
+220:             if (governorsInCooloff.length < tolerance) {
+
+255:             if (p.value == 0) {
+
+258:             if (p.value >= upgradeProbabilty.value) {
+
+275:             if (networkConfigurations[d].totalCandidates == 0) {
+
+278:             if (pie == 0) {
+
+288:         if (dValue > 0) {
+
+350:             if (i < nrlength) {
+
+362:             if (i < rlength) {
+
+389:             if (!_isGovernorInCooloff[governors[i]]) {
+
+449:             } else if (_isGovernorInCooloff[swappableGovernors[itr]]) {
+
+472:         if (biasedReconfiguration) {
+
+548:         } else {
+
+576:             if (governorsToDowngrade[i].isRedbelly) {
+
+587:             if (governorsToDowngrade[i].isRedbelly) {
+
+611:         if (requiredRbnCandidatesLen >= tolerance) {
+
+647:             } else if (nonRbnFound < requiredNonRbn) {
+
+687:         if (biasedReconfiguration) {
+
+704:         } else {
+
+```
+
+```solidity
+File: SignupBonusVestingUpgradeable.sol
+
+42:         if (!_registeredNodes.nodeExists(_msgSender())) {
+
+54:         if (signupBonus == 0) {
+
+61:         if (claimable() <= 0) {
+
+141:         if (address(this).balance < claimableTokens) {
+
+146:         if (!sent) {
+
+258:         if (nodeId < 200) {
+
+260:         } else if (nodeId >= 200 && nodeId < 600) {
+
+```
+
+```solidity
+File: StakingDepositUpgradeable.sol
+
+54:         if (deposits[nodeId].depositTimestamp <= 0) {
+
+74:         if (deposits[nodeId].depositTimestamp <= 0) {
+
+108:         if (coolOffStartTimestamp[nodeId] != 0) {
+
+142:         if (_newTreasuryAddress == address(0)) {
+
+156:         if (_newTreasuryAddress == address(0)) {
+
+257:         if (yearIndex > 0) {
+
+300:         if (block.timestamp < stakeEndTimestamp) {
+
+330:             if (_rewardsClaimedInYear.length - 1 != yearIndex) {
+
+334:             if (timeStaked > -1) {
+
+360:         if (address(this).balance < rewardsToBeClaimed) {
+
+374:         if (!sent) {
+
+413:         if (deposits[nodeConfig.id].unstakeTimestamp != 0) {
+
+426:         if (signUpBonus > 0) {
+
+438:             if (nodeConfig.exitTimestamp > 0) {
+
+457:             if (effectiveDaysForStake > 0) {
+
+476:         if (!sent) {
+
+484:         if (!sentToTreasury) {
+
+492:         if (slashedAmount > 0) {
+
+511:         if (deposits[nodeId].depositTimestamp <= 0) {
+
+547:         } else {
+
+550:         if (slashAmount != 0) {
+
+617:         if (deposits[nodeId].depositTimestamp <= 0) {
+
+620:         if (deposits[nodeId].slashedAmount != 0) {
+
+623:         if (deposits[nodeId].depositedAmount < _feeAmount) {
+
+629:         if (deposits[nodeId].redbellyDeposit >= _feeAmount) {
+
+```
+
+```solidity
+File: StakingEscrowUpgradeable.sol
+
+7:         if (payer != _msgSender() && owner() != _msgSender()) {
+
+71:         if (payment < amount) {
+
+```
+
+```solidity
+File: TombstonedNodesUpgradeable.sol
+
+76:         if (networkConfiguration.isGovernor(_nodeAddress)) {
+
+89:         if (tombstonedNodes[nodeId] != 0) {
+
+102:         if (tombstonedNodes[nodeId] > 0) {
 
 ```
 
@@ -5238,97 +5924,31 @@ File: UserProfile.sol
 
 
  ### <a name="NC-29"></a>[NC-29]
- ### Use of override is unnecessary
+ ### Large multiples of ten should use scientific notation
+Use a scientific notation rather than decimal literals (e.g. 1e6 instead of 1000000), for better code readability.
 
-#### Impact:
-Starting with Solidity version [0.8.8](https://docs.soliditylang.org/en/v0.8.20/contracts.html#function-overriding), using the override keyword when the function solely overrides an interface function, and the function doesnt exist in multiple base contracts, is unnecessary.
-
-*Instances (27)*:
+*Instances (5)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: Config.sol
+File: SignupBonusVestingUpgradeable.sol
 
-62:     function set(bytes32 key, string memory value) public override {
+87:         _first200Bonus = 400000 * 1e18;
 
-73:     function get(bytes32 key) public view override returns (string memory) {
-
-77:     function setUInt(bytes32 key, uint256 value) public override {
-
-88:     function getUInt(bytes32 key) public view override returns (uint256) {
-
-92:     function setAddr(bytes32 key, address value) public override {
-
-103:     function getAddr(bytes32 key) public view override returns (address) {
+88:         _next400Bonus = 150000 * 1e18;
 
 ```
 
 ```solidity
-File: ContentNFT.sol
+File: StakingDepositUpgradeable.sol
 
-74:     ) internal override(ERC721, ERC721Enumerable) returns (address) {
+178:         minimumStakeAmount = 100000 ether;
 
-81:     ) internal override(ERC721, ERC721Enumerable) {
+179:         _totalSupplyOfTokens = 10000000000 ether;
 
-87:     ) public view override(ERC721, ERC721URIStorage) returns (string memory) {
-
-96:         override(ERC721, ERC721Enumerable, ERC721URIStorage)
-
-```
-
-```solidity
-File: Promo.sol
-
-287:     function name() public view virtual override returns (string memory) {
-
-295:     function symbol() public view virtual override returns (string memory) {
-
-312:     function decimals() public view virtual override returns (uint8) {
-
-319:     function totalSupply() public view virtual override returns (uint256) {
-
-326:     function balanceOf(address account) public view virtual override returns (uint256) {
-
-338:     function transfer(address to, uint256 amount) public virtual override returns (bool) {
-
-347:     function allowance(address owner, address spender) public view virtual override returns (uint256) {
-
-361:     function approve(address spender, uint256 amount) public virtual override returns (bool) {
-
-383:     function transferFrom(address from, address to, uint256 amount) public virtual override returns (bool) {
-
-630:     ) internal virtual override {
-
-```
-
-```solidity
-File: RandomOracle.sol
-
-28:     function getRandom() public view override returns (uint256) {
-
-32:     function getLastUpdateTime() public view override returns (uint256) {
-
-```
-
-```solidity
-File: SavvaToken.sol
-
-31:     function mint(uint256 amount) public override onlyOwner {
-
-```
-
-```solidity
-File: Staking.sol
-
-127:     function updatePool() public override {
-
-587:     function claimPayment(address author, bytes32 event_id) external override {
-
-733:     ) internal override(ERC20, ERC20Votes) {
-
-741:     ) public view override(ERC20Permit, Nonces) returns (uint256) {
+183:         _alpha = FloatValue(192307692, 10);
 
 ```
 
@@ -5337,115 +5957,62 @@ File: Staking.sol
 
 
  ### <a name="NC-30"></a>[NC-30]
- ### Consider using descriptive constants when using 0 in the code
+ ### Consider using named mappings
 
 #### Impact:
-Passing zero as a function argument/Event emission can sometimes result in a security issue (e.g. passing zero as the slippage parameter). Consider using a constant variable with a descriptive name, so its clear that the 0 is intentionally being used, and for the right reasons.
+Using named mappings can improve code readability and maintainability.
 
-*Instances (36)*:
+*Instances (7)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: Config.sol
+File: ActivityMonitorUpgradeable.sol
 
-30:         configAddress[bytes32("contract_savvaToken")] = address(0); // SAVVA token contract
-
-31:         configAddress[bytes32("contract_randomOracle")] = address(0); // random oracle (0 - no oracle)
-
-32:         configAddress[bytes32("contract_staking")] = address(0); // Staking contract
-
-33:         configAddress[bytes32("contract_userProfile")] = address(0); // Staking contract
-
-34:         configAddress[bytes32("contract_contentNFT")] = address(0); // Content NFT contract
-
-35:         configAddress[bytes32("contract_contentFund")] = address(0); // Content Fund contract
-
-36:         configAddress[bytes32("contract_governance")] = address(0); // Governance contract
-
-37:         configAddress[bytes32("contract_contentRegistry")] = address(0); // Content Registry contract
-
-38:         configAddress[bytes32("contract_savvaFaucet")] = address(0); // SAVVA Faucet contract
-
-39:         configAddress[bytes32("contract_nftMarketplace")] = address(0); // NFT Market Place contract
-
-40:         configAddress[bytes32("contract_promo")] = address(0); // Promo contract
-
-41:         configAddress[bytes32("contract_buyBurn")] = address(0); // Buy&Burn contract
-
-42:         configAddress[bytes32("contract_listMarket")] = address(0); // List Market contract
-
-43:         configAddress[bytes32("contract_authorOfTheMonth")] = address(0); // Author of the Month contract
+22:     mapping(uint256 => VotesMinHeapLib.VotesMinHeap) internal _inactivityVotes;
 
 ```
 
 ```solidity
-File: ContentFund.sol
+File: IDPRegistryUpgradeable.sol
 
-153:         address nft_owner = address(0);
-
-297:         return address(0); // should never happen
-
-348:             emit PrizeEvent(h, winner, prize, 0, block.timestamp, 0);
-
-379:                 require(random != 0, "Random is zero");
-
-391:         require(nftBalance[tokenId] > 0, "Nothing to withdraw");
-
-424:         for (uint256 i = 0; i < nft.balanceOf(owner); i++) {
-
-449:         for (uint256 i = 0; i < nft.balanceOf(msg.sender); i++) {
-
-477:         for (uint256 i = 0; i < nft.balanceOf(msg.sender); i++) {
-
-501:         require(total > 0, "Nothing to withdraw");
+12:     mapping(uint256 => IDPInformation) private _uidToIDP;
 
 ```
 
 ```solidity
-File: ListMarket.sol
+File: PermissionUpgradeable.sol
 
-45:         require(msg.value > 0 && msg.value == prices[list_name], "Wrong price");  // allow more price also owner can change
-
-60:         reg.command(domain, "list_add_post", list_name, savva_cid, "0", "");
+9:     mapping(address => bool) private _isAuthorizedUser;
 
 ```
 
 ```solidity
-File: NFTMarketplace.sol
+File: ReconfigurationUpgradeable.sol
 
-53:         require(price > 0, "Price must be greater than 0");
-
-206:         require(price > 0, "Price must be greater than 0");
+20:     mapping(address => bool) private _isGovernorInCooloff;
 
 ```
 
 ```solidity
-File: Staking.sol
+File: SignupBonusVestingUpgradeable.sol
 
-207:         require(amount > 0, "Cannot stake 0");
-
-294:         require(user.accruedGain > 0, "No gain to claim");
-
-311:         require(user.accruedGain > 0, "No gain to compound");
-
-327:         require(amount > 0, "Amount must be greater than 0");
-
-380:         require(totalAmount > 0, "Nothing to claim");
-
-413:         require(amount > 0, "Amount must be greater than 0");
-
-493:         require(payment.amount > 0, "No such payment");
+25:     mapping(address => uint256) private _alreadyClaimedTokens;
 
 ```
 
 ```solidity
-File: UserProfile.sol
+File: StakingDepositUpgradeable.sol
 
-45:             owners[names[msg.sender]] = address(0);
+28:     mapping(uint256 => uint256) private _rewardsClaimed;
 
-58:         owners[name] = address(0);
+```
+
+```solidity
+File: StakingEscrowUpgradeable.sol
+
+34:     mapping(address => uint256) private _deposits;
 
 ```
 
@@ -5454,157 +6021,41 @@ File: UserProfile.sol
 
 
  ### <a name="NC-31"></a>[NC-31]
- ### Non-external/public variable names should begin with an underscore
+ ### Consider combining multiple address/ID mappings into a single mapping of an address/ID to a struct
 
 #### Impact:
-Using an underscore at the beginning of non-external/public variable names can improve code clarity and maintainability. According to the Solidity Style Guide, non-external/public variable names should begin with an [underscore](https://docs.soliditylang.org/en/latest/style-guide.html#underscore-prefix-for-non-external-functions-and-variables)
+Combining multiple mappings into a single mapping with a struct can improve readability and maintainability of the code.
 
-*Instances (42)*:
+*Instances (4)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: Config.sol
+File: PermissionUpgradeable.sol
 
-13:     mapping(bytes32 => string) public config;
-
-14:     mapping(bytes32 => uint256) public configUint;
-
-15:     mapping(bytes32 => address) public configAddress;
+9:     mapping(address => bool) private _isAuthorizedUser;
 
 ```
 
 ```solidity
-File: ContentFund.sol
+File: ReconfigurationUpgradeable.sol
 
-58:     IConfig public config; // Config contract
-
-59:     mapping(uint256 => Fund) public funds;
-
-60:     mapping(uint256 => mapping(address => uint256)) public contributions;
-
-61:     mapping(uint256 => uint256) public nftBalance; // NFT balance
-
-62:     uint256 public SLRoot; // Sorted List root
+20:     mapping(address => bool) private _isGovernorInCooloff;
 
 ```
 
 ```solidity
-File: ContentNFT.sol
+File: SignupBonusVestingUpgradeable.sol
 
-19:     IConfig public config;
-
-```
-
-```solidity
-File: ContentRegistry.sol
-
-39:     IConfig public config;
-
-40:     mapping(address => mapping(address => bool)) public allowed;
-
-56:     mapping(address => mapping(address => bool)) public allowed;
+25:     mapping(address => uint256) private _alreadyClaimedTokens;
 
 ```
 
 ```solidity
-File: ListMarket.sol
+File: StakingEscrowUpgradeable.sol
 
-14:     IConfig public config; // Config contract
-
-15:     address payable public collector; // Payment collector
-
-17:     mapping(string => uint256) public prices;
-
-```
-
-```solidity
-File: NFTMarketplace.sol
-
-17:     IConfig public config; // Config contract
-
-40:     mapping(uint256 => NFT) public nfts;
-
-41:     mapping(address => uint256[]) public nftsByOwner;
-
-```
-
-```solidity
-File: Promo.sol
-
-603:     address public liquidityWallet;
-
-604:     address public marketingWallet;
-
-605:     address public developmentWallet;
-
-612:     mapping(address => bool) public automatedMarketMakerPairs;
-
-```
-
-```solidity
-File: RandomOracle.sol
-
-13:     uint256 public lastUpdateTime;
-
-14:     uint256 public random; //@audit so random number is public
-
-15:     address public updaterAccount;
-
-16:     uint256 public db_index;  // index in DB where the prove is stored
-
-```
-
-```solidity
-File: SavvaFaucet.sol
-
-19:     IConfig public config; // Config contract
-
-20:     ISavvaToken public savvaToken; // Savva token contract
-
-22:     mapping(address => uint256) public deposited;
-
-23:     address[] public depositors;
-
-```
-
-```solidity
-File: SavvaToken.sol
-
-16:     IConfig public config;
-
-```
-
-```solidity
-File: Staking.sol
-
-13:     IConfig public config;
-
-40:     uint256 public totalUnstaking;
-
-41:     uint256 public totalAccruedGain;
-
-42:     uint256 public totalInFrames;
-
-44:     mapping(address => Staker) public stakers;
-
-111:     Frame[TOTAL_FRAMES] public frames;
-
-```
-
-```solidity
-File: UserProfile.sol
-
-10:     mapping(address => mapping(bytes32 => mapping(bytes32 => string))) public profileString;
-
-11:     mapping(address => mapping(bytes32 => mapping(bytes32 => uint256))) public profileUInt;
-
-13:     mapping(string => address) public owners; // name owners
-
-14:     mapping(address => string) public names;
-
-15:     mapping(address => string) public avatars;
+34:     mapping(address => uint256) private _deposits;
 
 ```
 
@@ -5613,24 +6064,72 @@ File: UserProfile.sol
 
 
  ### <a name="NC-32"></a>[NC-32]
- ### Return values of `approve()` not checked
-Not all IERC20 implementations `revert()` when there's a failure in `approve()`. The function signature has a boolean return value and they indicate errors that way instead. By not checking the return value, operations that should have marked as failed, may potentially go through without actually approving anything
+ ### Use of override is unnecessary
 
-*Instances (4)*:
+#### Impact:
+Starting with Solidity version [0.8.8](https://docs.soliditylang.org/en/v0.8.20/contracts.html#function-overriding), using the override keyword when the function solely overrides an interface function, and the function doesnt exist in multiple base contracts, is unnecessary.
+
+*Instances (17)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: Promo.sol
+File: ContractRoleAuthUpgradeable.sol
 
-363:         _approve(owner, spender, amount);
+69:     function initialize() public virtual override onlyInitializing {
 
-404:         _approve(owner, spender, allowance(owner, spender) + addedValue);
+```
 
-427:             _approve(owner, spender, currentAllowance - subtractedValue);
+```solidity
+File: IDPRegistryUpgradeable.sol
 
-554:                 _approve(owner, spender, currentAllowance - amount);
+86:     function initialize() public virtual override initializer {
+
+94:         override
+
+155:     ) public view override idpExists(uid) returns (IDPInformationIO memory) {
+
+180:         override
+
+194:         override
+
+226:         override
+
+241:         override
+
+258:         override
+
+281:     ) external view override returns (string[] memory) {
+
+288:         override
+
+```
+
+```solidity
+File: NetworkConfigurationUpgradeable.sol
+
+235:     ) external view override returns (address) {
+
+```
+
+```solidity
+File: ReconfigurationUpgradeable.sol
+
+153:     ) public override onlyRedbelly {
+
+```
+
+```solidity
+File: SignupBonusVestingUpgradeable.sol
+
+123:     ) external override onlyNetworkConfigurationContract {
+
+134:         override
+
+160:         override
+
+203:         override
 
 ```
 
@@ -5639,70 +6138,81 @@ File: Promo.sol
 
 
  ### <a name="NC-33"></a>[NC-33]
- ### Setters should prevent re-setting of the same value
-This especially problematic when the setter also emits the same value, which may be confusing to offline parsers  
+ ### Consider using descriptive constants when using 0 in the code
 
-*Instances (17)*:
+#### Impact:
+Passing zero as a function argument/Event emission can sometimes result in a security issue (e.g. passing zero as the slippage parameter). Consider using a constant variable with a descriptive name, so its clear that the 0 is intentionally being used, and for the right reasons.
+
+*Instances (19)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: Config.sol
+File: ActivityMonitorUpgradeable.sol
 
-62:     function set(bytes32 key, string memory value) public override {
-
-77:     function setUInt(bytes32 key, uint256 value) public override {
-
-92:     function setAddr(bytes32 key, address value) public override {
+126:         return (timestamp > 0 &&
 
 ```
 
 ```solidity
-File: ListMarket.sol
+File: JailedNodesUpgradeable.sol
 
-27:     function setPrice(string memory list_name, uint256 price) public onlyOwner {
+196:             JailTenure memory jailTenure = JailTenure(
 
-36:     function setCollector(address payable _collector) public onlyOwner {
+226:         return JailTenure(0, 0, 0);
 
-```
-
-```solidity
-File: Promo.sol
-
-649:     function setLiquidityWallet(address _liquidityWallet) external onlyOwner {
-
-653:     function setMarketingWallet(address _marketingWallet) external onlyOwner {
-
-657:     function setDevelopmentWallet(address _developmentWallet) external onlyOwner {
-
-661:     function setSellTax(uint256 _sellTax) external onlyOwner {
-
-665:     function setLiquidityTax(uint256 _liquidityTax) external onlyOwner {
-
-669:     function setMarketingTax(uint256 _marketingTax) external onlyOwner {
-
-673:     function setDevelopmentTax(uint256 _devTax) external onlyOwner {
-
-677:     function setAutomatedMarketMakerPair(address pair, bool enabled) public onlyOwner {   
+247:         for (uint256 i = 0; i < getJailCountForNode(_address); i++) {
 
 ```
 
 ```solidity
-File: RandomOracle.sol
+File: NetworkConfigurationUpgradeable.sol
 
-24:     function setUpdaterAccount(address _updaterAccount) public onlyOwner {
+199:                 candidateIndex = PseudoRandomNumberGenerator.generateOne(
+
+205:                 candidateIndex = PseudoRandomNumberGenerator.generateOne(
+
+212:             candidateIndex = PseudoRandomNumberGenerator.generateOne(
+
+346:             .NodeParameters(
 
 ```
 
 ```solidity
-File: UserProfile.sol
+File: ReconfigurationUpgradeable.sol
 
-22:     function setName(string memory name) public {
+212:             for (
 
-64:     function setAvatar(string memory avatar) public {
+256:                 return (0, false);
 
-119:     function setPubKey(string memory _modifier, string memory _pub_key) public {
+262:         return (0, false);
+
+276:                 return UpgradeProbability(0, 0);
+
+404:             .generateMultiple(0, governorsNotInCooloff.length, count, _seed);
+
+556:                 .generateMultiple(
+
+633:             .generateMultiple(
+
+```
+
+```solidity
+File: SignupBonusVestingUpgradeable.sol
+
+279:             MathUtils.min(
+
+```
+
+```solidity
+File: StakingDepositUpgradeable.sol
+
+182:         _rewardsClaimedInYear.push(0);
+
+331:                 _rewardsClaimedInYear.push(0);
+
+391:         deposits[nodeId] = Deposit(
 
 ```
 
@@ -5711,112 +6221,100 @@ File: UserProfile.sol
 
 
  ### <a name="NC-34"></a>[NC-34]
- ### Use the latest solidity version for deployment  
-Upgrading to a newer Solidity release can optimize gas usage, take advantage of new features and improve overall contract efficiency. Where possible, based on compatibility requirements, it is recommended to use newer/latest solidity version to take advantage of the latest optimizations and features. You can see the latest version [here](https://soliditylang.org/blog/category/releases/)
+ ### Non-external/public variable names should begin with an underscore
 
-*Instances (18)*:
+#### Impact:
+Using an underscore at the beginning of non-external/public variable names can improve code clarity and maintainability. According to the Solidity Style Guide, non-external/public variable names should begin with an [underscore](https://docs.soliditylang.org/en/latest/style-guide.html#underscore-prefix-for-non-external-functions-and-variables)
+
+*Instances (26)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: Config.sol
+File: ActivityMonitorUpgradeable.sol
 
-7: pragma solidity ^0.8.18;
+8:     Config public config;
 
-```
-
-```solidity
-File: ContentFund.sol
-
-7: pragma solidity ^0.8.18;
+10:     uint256 public daysToServInJail;
 
 ```
 
 ```solidity
-File: ContentNFT.sol
+File: IDPRegistryUpgradeable.sol
 
-7: pragma solidity ^0.8.18;
+13:     mapping(string => uint256) public issuerDidToUid;
 
-```
+15:     mapping(uint256 => bool) public deletedUIDs;
 
-```solidity
-File: ContentRegistry.sol
+16:     mapping(uint256 => mapping(uint256 => Proof)) public idpProofs;
 
-7: pragma solidity ^0.8.18;
+17:     mapping(uint256 => uint256) public idpProofCounts;
 
-```
+18:     mapping(string => string[]) public proofTypeToIssuers;
 
-```solidity
-File: ListMarket.sol
-
-7: pragma solidity ^0.8.18;
+19:     mapping(string => bool) public isProofTypeSupported;
 
 ```
 
 ```solidity
-File: NFTMarketplace.sol
+File: JailedNodesUpgradeable.sol
 
-7: pragma solidity ^0.8.18;
+10:     uint256 public daysToServe;
 
-```
+11:     uint8 public slashPrcnt;
 
-```solidity
-File: Promo.sol
-
-7: pragma solidity ^0.8.0;
-
-34: pragma solidity ^0.8.0;
-
-119: pragma solidity ^0.8.0;
-
-200: pragma solidity ^0.8.0;
-
-230: pragma solidity ^0.8.0;
-
-595: pragma solidity ^0.8.0;
+14:     mapping(uint256 => JailTenure[]) public jailTenures;
 
 ```
 
 ```solidity
-File: RandomOracle.sol
+File: PermissionUpgradeable.sol
 
-7: pragma solidity ^0.8.18;
-
-```
-
-```solidity
-File: SavvaFaucet.sol
-
-7: pragma solidity ^0.8.18;
+11:     bool public isPermissionedAccessEnabled;
 
 ```
 
 ```solidity
-File: SavvaToken.sol
+File: ReconfigurationUpgradeable.sol
 
-8: pragma solidity ^0.8.18;
+21:     bool public biasedReconfiguration;
 
-```
+22:     uint256 public reconfigurationInterval; // Interval after which reconfiguration can be called
 
-```solidity
-File: Staking.sol
+23:     uint256 public lastReconfigurationTime; // Unix Timestamp when reconfiguration was called last time
 
-2: pragma solidity ^0.8.0;
+24:     uint256 public toleranceFactor; // the fraction of governor nodes that need to be replaced with candidate nodes
 
-```
+25:     UpgradeProbability public upgradeProbabilty; // the probability upto 3 decimal places
 
-```solidity
-File: UserProfile.sol
+27:     mapping(uint256 => uint256) public lastUpdatedToGovernor; // (nodeId => timestamp)
 
-7: pragma solidity ^0.8.18;
+30:     mapping(uint256 => NetworkConfiguration) public networkConfigurations;
 
 ```
 
 ```solidity
-File: utils.sol
+File: StakingDepositUpgradeable.sol
 
-7: pragma solidity ^0.8.18;
+25:     uint256 public minimumStakeAmount;
+
+38:     uint256 public coolOffPeriod;
+
+41:     mapping(uint256 => Deposit) public deposits;
+
+42:     mapping(uint256 => uint256) public coolOffStartTimestamp;
+
+44:     IBootstrapContractsRegistry public bootstrapRegistryContract;
+
+```
+
+```solidity
+File: TombstonedNodesUpgradeable.sol
+
+14:     mapping(uint256 => uint256) public tombstonedNodes;
+
+17:     uint256 public tombstoneThreshold;
 
 ```
 
@@ -5825,82 +6323,59 @@ File: utils.sol
 
 
  ### <a name="NC-35"></a>[NC-35]
- ### Consider bounding input array length
-The functions below take in an unbounded array, and make function calls for entries in the array. While the function will revert if it eventually runs out of gas, it may be a nicer user experience to require() that the length of the array is below some reasonable maximum, so that the user doesnt have to use up a full transactions gas only to see that the transaction reverts
+ ### Setters should prevent re-setting of the same value
+This especially problematic when the setter also emits the same value, which may be confusing to offline parsers  
 
-*Instances (18)*:
+*Instances (9)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: ContentFund.sol
+File: JailedNodesUpgradeable.sol
 
-283:         for (uint256 i = 0; i < funds[h].contributors.length; i++) {
+330:     function setSlashPrcnt(uint8 _slashPrcnt) external onlyRedbelly {
 
-289:         for (uint256 i = 0; i < funds[h].contributors.length; i++) {
-
-351:             for (uint256 j = 0; j < funds[h].contributors.length; j++) {
-
-355:             for (uint256 j = 0; j < funds[h].contributors.length; j++) {
-
-539:         for (uint256 i = 0; i < funds[savva_cid].contributors.length; i++) {
+343:     function setDaysToServe(uint256 _daysToServe) public onlyRedbelly {
 
 ```
 
 ```solidity
-File: ContentRegistry.sol
+File: StakingDepositUpgradeable.sol
 
-120:         for (uint256 i = 0; i < domains.length; i++) {
+135:     function setRewardCycle(uint256 _newRewardCycle) external onlyRedbelly {
 
-```
-
-```solidity
-File: NFTMarketplace.sol
-
-66:         for (uint256 i = 0; i < nftsByOwnerArray.length; i++) {
-
-181:         for (uint256 i = 0; i < nftsByOwnerArray.length; i++) {
+231:     function setValueOfGamma(uint256 _value) external onlyRedbelly {
 
 ```
 
 ```solidity
-File: SavvaFaucet.sol
+File: TombstonedNodesUpgradeable.sol
 
-132:         for (uint256 i = 0; i < depositors.length; i++) {
-
-```
-
-```solidity
-File: Staking.sol
-
-356:         for (uint256 i = 0; i < user.unstakeRequests.length; i++) {
-
-371:         for (uint256 i = 0; i < user.unstakeRequests.length; i++) {
-
-384:         for (uint256 i = 0; i < user.unstakeRequests.length; i++) {
-
-444:             for (uint256 i = 0; i < s_author.patrons.length; i++) {
-
-508:         for (uint256 i = 0; i < user.PayRecordsKeys.length; i++) {
-
-570:         for (uint256 i = 0; i < s_author.patrons.length; i++) {
-
-601:         for (uint256 i = 0; i < s_author.patrons.length; i++) {
+96:     function setTombstoneThreshold(uint256 _threshold) external onlyRedbelly {
 
 ```
 
 ```solidity
-File: UserProfile.sol
+File: interfaces/IJailedNodes.sol
 
-32:         for (uint256 i; i < b.length; i++) {
+18:     function setSlashPrcnt(uint8 _slashPrcnt) external;
+
+20:     function setDaysToServe(uint256 _daysToServe) external;
 
 ```
 
 ```solidity
-File: utils.sol
+File: interfaces/IReconfiguration.sol
 
-41:         for (uint256 i = 0; i < b.length; i++) {
+33:     function setReconfigurationInterval(uint256 _updatedInterval) external;
+
+```
+
+```solidity
+File: interfaces/IStakingDeposit.sol
+
+17:     function setCoolOffPeriod(uint256 _updatedCoolOffPeriod) external;
 
 ```
 
@@ -5909,26 +6384,172 @@ File: utils.sol
 
 
  ### <a name="NC-36"></a>[NC-36]
- ### Overflows in unchecked blocks
-While integers with a large number of bits are unlikely to overflow on human time scales, it is not strictly correct to use an unchecked block around them, because eventually they will overflow, and unchecked blocks are meant for cases where it is mathematically impossible for an operation to trigger an overflow (e.g. a prior require() statement prevents the overflow case)
+ ### Use the latest solidity version for deployment  
+Upgrading to a newer Solidity release can optimize gas usage, take advantage of new features and improve overall contract efficiency. Where possible, based on compatibility requirements, it is recommended to use newer/latest solidity version to take advantage of the latest optimizations and features. You can see the latest version [here](https://soliditylang.org/blog/category/releases/)
 
-*Instances (5)*:
+*Instances (23)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: Promo.sol
+File: ActivityMonitorUpgradeable.sol
 
-426:         unchecked {
+2: pragma solidity 0.8.22;
 
-455:         unchecked {
+```
 
-482:         unchecked {
+```solidity
+File: ArtifactsFromRbnCore.sol
 
-509:         unchecked {
+2: pragma solidity 0.8.22;
 
-553:             unchecked {
+```
+
+```solidity
+File: ContractRoleAuthUpgradeable.sol
+
+2: pragma solidity 0.8.22;
+
+```
+
+```solidity
+File: IDPRegistryUpgradeable.sol
+
+2: pragma solidity 0.8.22;
+
+```
+
+```solidity
+File: JailedNodesUpgradeable.sol
+
+2: pragma solidity 0.8.22;
+
+```
+
+```solidity
+File: NetworkConfigurationUpgradeable.sol
+
+2: pragma solidity 0.8.22;
+
+```
+
+```solidity
+File: PermissionUpgradeable.sol
+
+2: pragma solidity 0.8.22;
+
+```
+
+```solidity
+File: RBACUpgradeable.sol
+
+2: pragma solidity 0.8.22;
+
+```
+
+```solidity
+File: ReconfigurationUpgradeable.sol
+
+2: pragma solidity 0.8.22;
+
+```
+
+```solidity
+File: SignupBonusVestingUpgradeable.sol
+
+2: pragma solidity 0.8.22;
+
+```
+
+```solidity
+File: StakingDepositUpgradeable.sol
+
+2: pragma solidity 0.8.22;
+
+```
+
+```solidity
+File: StakingEscrowUpgradeable.sol
+
+2: pragma solidity 0.8.22;
+
+```
+
+```solidity
+File: TombstonedNodesUpgradeable.sol
+
+2: pragma solidity 0.8.22;
+
+```
+
+```solidity
+File: interfaces/IActivityMonitor.sol
+
+2: pragma solidity 0.8.22;
+
+```
+
+```solidity
+File: interfaces/IIDPRegistry.sol
+
+2: pragma solidity 0.8.22;
+
+```
+
+```solidity
+File: interfaces/IJailedNodes.sol
+
+2: pragma solidity 0.8.22;
+
+```
+
+```solidity
+File: interfaces/INetworkConfiguration.sol
+
+2: pragma solidity 0.8.22;
+
+```
+
+```solidity
+File: interfaces/IPermission.sol
+
+2: pragma solidity 0.8.22;
+
+```
+
+```solidity
+File: interfaces/IRandomNumberGenerator.sol
+
+2: pragma solidity 0.8.22;
+
+```
+
+```solidity
+File: interfaces/IReconfiguration.sol
+
+2: pragma solidity 0.8.22;
+
+```
+
+```solidity
+File: interfaces/ISignupBonusVesting.sol
+
+2: pragma solidity 0.8.22;
+
+```
+
+```solidity
+File: interfaces/IStakingDeposit.sol
+
+2: pragma solidity 0.8.22;
+
+```
+
+```solidity
+File: interfaces/ITombstonedNodes.sol
+
+2: pragma solidity 0.8.22;
 
 ```
 
@@ -5937,27 +6558,116 @@ File: Promo.sol
 
 
  ### <a name="NC-37"></a>[NC-37]
- ### Strings should use double quotes rather than single quotes
+ ### Consider bounding input array length
+The functions below take in an unbounded array, and make function calls for entries in the array. While the function will revert if it eventually runs out of gas, it may be a nicer user experience to require() that the length of the array is below some reasonable maximum, so that the user doesnt have to use up a full transactions gas only to see that the transaction reverts
 
-#### Impact:
-Using consistent double quotes for strings improves code readability and maintainability. Also see it here https://docs.soliditylang.org/en/v0.8.20/style-guide.html#other-recommendations
-
-*Instances (2)*:
+*Instances (30)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: ContentRegistry.sol
+File: ActivityMonitorUpgradeable.sol
 
-66:         require(bytes(guid).length > 0, "Guid can't be empty");
+78:         for (uint256 i = 0; i < authAddresses.length; i++) {
 
 ```
 
 ```solidity
-File: NFTMarketplace.sol
+File: IDPRegistryUpgradeable.sol
 
-124:             "Owner can't buy his own NFT"
+75:         for (uint256 i = 0; i < proofs.length; i++) {
+
+127:         for (uint256 i = 0; i < idpData.proofs.length; i++) {
+
+```
+
+```solidity
+File: JailedNodesUpgradeable.sol
+
+118:         for (uint256 i = 0; i < authorizedUsers.length; i++) {
+
+355:         for (uint256 i = 0; i < jailData.length; i++) {
+
+```
+
+```solidity
+File: NetworkConfigurationUpgradeable.sol
+
+190:             for (uint256 i = 0; i < safeToUpgradeCandidates.length; i++) {
+
+249:         for (uint256 i = 0; i < _authorisedUsers.length; i++) {
+
+252:         for (uint256 i = 0; i < _bootStrapNodes.length; i++) {
+
+515:         for (uint256 i = 0; i < govs.length; i++) {
+
+584:         for (uint256 i = 0; i < allCandidates.length; i++) {
+
+```
+
+```solidity
+File: PermissionUpgradeable.sol
+
+28:         for (uint256 i = 0; i < authAddresses.length; i++) {
+
+49:         for (uint256 i = 0; i < supportedProofTypes.length; i++) {
+
+136:         for (uint256 i = 0; i < proofs.length; i++) {
+
+246:         for (uint256 i = 0; i < result.length; i++) {
+
+```
+
+```solidity
+File: ReconfigurationUpgradeable.sol
+
+71:         for (uint256 i = 0; i < authorizedAddresses.length; i++) {
+
+107:         for (uint256 i = 0; i < candidates.length; i++) {
+
+232:                 for (uint256 i = 0; i < randomGovernors.length; i++) {
+
+307:         for (uint256 i = 0; i < safeToUpgradeCandidates.length; i++) {
+
+326:         for (uint256 i = 0; i < prioritisedForDowngradeGovernors.length; i++) {
+
+388:         for (uint256 i = 0; i < governors.length; i++) {
+
+427:         for (uint256 itr = 0; itr < swappableGovernors.length; itr++) {
+
+575:         for (uint256 i = 0; i < governorsToDowngrade.length; i++) {
+
+586:         for (uint256 i = 0; i < governorsToDowngrade.length; i++) {
+
+639:         for (uint256 i = 0; i < randomIndexes.length; i++) {
+
+688:             for (uint256 i = 0; i < governors.length; i++) {
+
+696:             for (uint256 i = 0; i < candidates.length; i++) {
+
+```
+
+```solidity
+File: SignupBonusVestingUpgradeable.sol
+
+93:         for (uint256 i = 0; i < bootNodeAddresses.length; i++) {
+
+97:         for (uint256 i = 0; i < _authorizedUsers.length; i++) {
+
+```
+
+```solidity
+File: StakingDepositUpgradeable.sol
+
+165:         for (uint256 i = 0; i < _authorisedUsers.length; i++) {
+
+```
+
+```solidity
+File: TombstonedNodesUpgradeable.sol
+
+32:         for (uint256 i = 0; i < _authorisedUsers.length; i++) { //@audit cache first
 
 ```
 
@@ -5966,141 +6676,19 @@ File: NFTMarketplace.sol
 
 
  ### <a name="NC-38"></a>[NC-38]
- ### Variables need not be initialized to zero
-The default value for variables is zero, so initializing them to zero is superfluous.  
+ ### Constants should be defined rather than using magic numbers
 
-*Instances (50)*:
+*Instances (2)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: ContentFund.sol
+File: StakingDepositUpgradeable.sol
 
-150:         uint256 authorShare = 0;
+183:         _alpha = FloatValue(192307692, 10);
 
-151:         uint256 nftShare = 0;
-
-221:         uint256 authorShare = 0;
-
-222:         uint256 nftShare = 0;
-
-281:         uint256 totalShares = 0;
-
-283:         for (uint256 i = 0; i < funds[h].contributors.length; i++) {
-
-288:         uint256 runningShareSum = 0;
-
-289:         for (uint256 i = 0; i < funds[h].contributors.length; i++) {
-
-351:             for (uint256 j = 0; j < funds[h].contributors.length; j++) {
-
-355:             for (uint256 j = 0; j < funds[h].contributors.length; j++) {
-
-371:         uint256 random = 0;
-
-422:         uint256 total = 0;
-
-424:         for (uint256 i = 0; i < nft.balanceOf(owner); i++) {
-
-430:         for (uint256 i = 0; i < nft.balanceOf(address(mp)); i++) {
-
-442:         uint256 total = 0;
-
-449:         for (uint256 i = 0; i < nft.balanceOf(msg.sender); i++) {
-
-455:         for (uint256 i = 0; i < nft.balanceOf(address(mp)); i++) {
-
-467:        uint256 total = 0;
-
-477:         for (uint256 i = 0; i < nft.balanceOf(msg.sender); i++) {
-
-488:         for (uint256 i = 0; i < nft.balanceOf(address(mp)); i++) {
-
-538:         uint256 total = 0;
-
-539:         for (uint256 i = 0; i < funds[savva_cid].contributors.length; i++) {
-
-```
-
-```solidity
-File: ContentRegistry.sol
-
-120:         for (uint256 i = 0; i < domains.length; i++) {
-
-```
-
-```solidity
-File: NFTMarketplace.sol
-
-66:         for (uint256 i = 0; i < nftsByOwnerArray.length; i++) {
-
-181:         for (uint256 i = 0; i < nftsByOwnerArray.length; i++) {
-
-```
-
-```solidity
-File: SavvaFaucet.sol
-
-25:     uint256 public lastRoundPayWeek = 0;
-
-26:     uint256 public roundTotalDeposits = 0;
-
-27:     uint256 public roundTokensToShare = 0;
-
-28:     uint256 public roundPayWeek = 0;
-
-132:         for (uint256 i = 0; i < depositors.length; i++) {
-
-```
-
-```solidity
-File: Staking.sol
-
-112:     uint256 public currentFrameNumber = 0;
-
-178:         uint256 result = 0;
-
-354:         uint256 totalAmount = 0;
-
-356:         for (uint256 i = 0; i < user.unstakeRequests.length; i++) {
-
-369:         uint256 totalAmount = 0;
-
-371:         for (uint256 i = 0; i < user.unstakeRequests.length; i++) {
-
-383:         uint256 j = 0;
-
-384:         for (uint256 i = 0; i < user.unstakeRequests.length; i++) {
-
-396:         for (uint256 i = 0; i < n_to_pop; i++) {
-
-426:         uint256 paid = 0;
-
-444:             for (uint256 i = 0; i < s_author.patrons.length; i++) {
-
-508:         for (uint256 i = 0; i < user.PayRecordsKeys.length; i++) {
-
-520:             for (uint256 i = 0; i < n_to_pop; i++) {
-
-556:         uint256 total = 0;
-
-570:         for (uint256 i = 0; i < s_author.patrons.length; i++) {
-
-588:         uint256 total = 0;
-
-601:         for (uint256 i = 0; i < s_author.patrons.length; i++) {
-
-648:         uint256 total_gain = 0;
-
-```
-
-```solidity
-File: utils.sol
-
-22:         uint z = 0;
-
-41:         for (uint256 i = 0; i < b.length; i++) {
+459:                     signUpBonus) / (365 * 4);
 
 ```
 
@@ -6109,157 +6697,35 @@ File: utils.sol
 
 
  ### <a name="NC-39"></a>[NC-39]
- ### Import Whole Files Instead of Specific Identifiers
-Import declarations should import specific identifiers, rather than the whole file.
+ ### Strings should use double quotes rather than single quotes
 
-*Instances (48)*:
+#### Impact:
+Using consistent double quotes for strings improves code readability and maintainability. Also see it here https://docs.soliditylang.org/en/v0.8.20/style-guide.html#other-recommendations
+
+*Instances (6)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: Config.sol
+File: ActivityMonitorUpgradeable.sol
 
-9: import "@openzeppelin/contracts/access/Ownable.sol";
+33:             revert InvalidProposal("Can't raise proposal against boot node");
 
-10: import "../interfaces/IConfig.sol";
+62:                 "Inactivity threshold for rounds can't be negative or zero"
 
-```
+70:                 "Recent vote interval can't be negative or zero"
 
-```solidity
-File: ContentFund.sol
+290:             revert InvalidValue("Window size can't be negative or zero");
 
-9: import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
-
-10: import "@openzeppelin/contracts/token/ERC20/extensions/IERC20Permit.sol";
-
-11: import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
-
-12: import "@openzeppelin/contracts/token/ERC721/extensions/IERC721Enumerable.sol";
-
-13: import "../interfaces/IConfig.sol";
-
-14: import "../interfaces/IRandomOracle.sol";
-
-15: import "../interfaces/INFTMarketplace.sol";
-
-16: import "../audited/utils.sol";
+312:                 "Inactivity threshold can't be negative or zero"
 
 ```
 
 ```solidity
-File: ContentNFT.sol
+File: PermissionUpgradeable.sol
 
-9: import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
-
-10: import "../interfaces/ISavvaToken.sol";
-
-11: import "../interfaces/IConfig.sol";
-
-12: import "../audited/utils.sol";
-
-13: import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
-
-14: import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
-
-```
-
-```solidity
-File: ContentRegistry.sol
-
-9: import "./utils.sol";
-
-10: import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
-
-11: import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
-
-12: import "../interfaces/IConfig.sol";
-
-13: import "../interfaces/IStaking.sol";
-
-14: import "../interfaces/IContentRegistry.sol";
-
-```
-
-```solidity
-File: ListMarket.sol
-
-9: import "@openzeppelin/contracts/access/Ownable.sol";
-
-10: import "../interfaces/IConfig.sol";
-
-11: import "../interfaces/IContentRegistry.sol";
-
-```
-
-```solidity
-File: NFTMarketplace.sol
-
-9: import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
-
-10: import "@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol";
-
-11: import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
-
-12: import "@openzeppelin/contracts/token/ERC20/extensions/IERC20Permit.sol";
-
-13: import "../interfaces/IConfig.sol";
-
-14: import "../interfaces/INFTMarketplace.sol";
-
-```
-
-```solidity
-File: RandomOracle.sol
-
-9: import "@openzeppelin/contracts/access/Ownable.sol";
-
-10: import "../interfaces/IRandomOracle.sol";
-
-```
-
-```solidity
-File: SavvaFaucet.sol
-
-9: import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
-
-10: import "../interfaces/ISavvaToken.sol";
-
-11: import "../interfaces/IConfig.sol";
-
-12: import "../interfaces/IStaking.sol";
-
-```
-
-```solidity
-File: SavvaToken.sol
-
-10: import "@openzeppelin/contracts/access/Ownable.sol";
-
-11: import "../interfaces/ISavvaToken.sol";
-
-12: import "../interfaces/IConfig.sol";
-
-13: import "../interfaces/IStaking.sol";
-
-```
-
-```solidity
-File: Staking.sol
-
-4: import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
-
-5: import "@openzeppelin/contracts/governance/utils/Votes.sol";
-
-6: import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
-
-7: import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Permit.sol";
-
-8: import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Votes.sol";
-
-9: import "../interfaces/IConfig.sol";
-
-10: import "../interfaces/IStaking.sol";
+144:         revert InvalidProof("proof type doesn't exists");
 
 ```
 
@@ -6268,331 +6734,38 @@ File: Staking.sol
 
 
  ### <a name="NC-40"></a>[NC-40]
- ### Consider moving msg.sender checks to modifiers
-If some functions are only allowed to be called by some specific users, consider using a modifier instead of checking with a require statement, especially if this check is done in multiple functions.  
+ ### Consider using `SafeTransferLib.safeTransferETH()` or `Address.sendValue()` for clearer semantic meaning
+These Functions indicate their purpose with their name more clearly than using low-level calls.  
 
-*Instances (135)*:
+*Instances (6)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: ContentFund.sol
+File: JailedNodesUpgradeable.sol
 
-165:             msg.sender != author &&
+307:         (bool sent, ) = payable(address(stakingDepository)).call{
 
-166:             msg.sender != nft_owner &&
-
-167:             msg.sender != mp.getNFTOwner(savva_cid)
-
-198:         token.permit(msg.sender, address(this), amount, deadline, v, r, s);
-
-219:         token.transferFrom(msg.sender, address(this), amount);
-
-246:             funds[savva_cid].contributors.push(msg.sender);
-
-247:             contributions[savva_cid][msg.sender] = amount;
-
-256:             if (contributions[savva_cid][msg.sender] == 0) {
-
-257:                 funds[savva_cid].contributors.push(msg.sender);
-
-258:                 contributions[savva_cid][msg.sender] = amount;
-
-260:                 contributions[savva_cid][msg.sender] += amount;
-
-266:             msg.sender,
-
-399:             nft.ownerOf(tokenId) == msg.sender ||
-
-400:                 mp.getNFTOwner(tokenId) == msg.sender,
-
-410:         token.transfer(msg.sender, amount);
-
-449:         for (uint256 i = 0; i < nft.balanceOf(msg.sender); i++) {
-
-451:                 .tokenOfOwnerByIndex(msg.sender, i);
-
-458:             if (mp.getNFTOwner(tokenId) == msg.sender) {
-
-477:         for (uint256 i = 0; i < nft.balanceOf(msg.sender); i++) {
-
-479:                 .tokenOfOwnerByIndex(msg.sender, i);
-
-484:                 token.transfer(msg.sender, amount);
-
-491:             if (mp.getNFTOwner(tokenId) == msg.sender) {
-
-496:                     token.transfer(msg.sender, amount);
-
-504:             msg.sender,
+380:         (bool sent, ) = payable(treasuryAddress).call{value: slashedStake}("");
 
 ```
 
 ```solidity
-File: ContentNFT.sol
+File: SignupBonusVestingUpgradeable.sol
 
-42:         require(msg.sender == author, "Only author can mint");
-
-64:         require(msg.sender == owner, "Only owner can burn");
+145:         (bool sent, ) = payable(_msgSender()).call{value: claimableTokens}("");
 
 ```
 
 ```solidity
-File: ContentRegistry.sol
+File: StakingDepositUpgradeable.sol
 
-48:         allowed[msg.sender][allowed_address] = true;
+371:         (bool sent, ) = payable(_msgSender()).call{value: rewardsToBeClaimed}(
 
-53:         allowed[msg.sender][allowed_address] = false;
+475:         (bool sent, ) = payable(_msgSender()).call{value: unstakeValue}("");
 
-69:             author == msg.sender || allowed[author][msg.sender],
-
-69:             author == msg.sender || allowed[author][msg.sender],
-
-76:             IERC20(staking).balanceOf(msg.sender) >=
-
-98:         IStaking(staking).claimPayment(msg.sender, event_id);
-
-103:             msg.sender,
-
-123:                 msg.sender,
-
-140:         emit Command(msg.sender, domain, cmd, p1, p2, p3, p4, block.timestamp);
-
-```
-
-```solidity
-File: ListMarket.sol
-
-62:         emit Bought(list_name, msg.sender, msg.value, block.timestamp);
-
-```
-
-```solidity
-File: NFTMarketplace.sol
-
-50:             c_nft.ownerOf(tokenId) == msg.sender,
-
-55:         c_nft.transferFrom(msg.sender, address(this), tokenId);
-
-56:         nfts[tokenId] = NFT(msg.sender, price);
-
-57:         nftsByOwner[msg.sender].push(tokenId);
-
-59:         emit NFTAddedToMarket(tokenId, msg.sender, price);
-
-65:         uint256[] storage nftsByOwnerArray = nftsByOwner[msg.sender];
-
-81:         c_nft.transferFrom(address(this), msg.sender, tokenId); // use safeTransferFrom
-
-86:             nfts[tokenId].owner == msg.sender,
-
-92:         emit NFTRemovedFromMarket(tokenId, msg.sender);
-
-114:         token.permit(msg.sender, address(this), amount, deadline, v, r, s);
-
-123:             nft.owner != msg.sender,
-
-133:             token.balanceOf(msg.sender) >= price,
-
-143:         token.transferFrom(msg.sender, oldOwner, price);
-
-146:         emit NFTBought(tokenId, oldOwner, msg.sender, price);
-
-158:             nft.owner != msg.sender,
-
-167:             token.balanceOf(msg.sender) >= price,
-
-177:         token.transferFrom(msg.sender, oldOwner, price);
-
-180:         uint256[] storage nftsByOwnerArray = nftsByOwner[msg.sender];
-
-194:         nftsByOwner[msg.sender].push(tokenId);
-
-196:         nfts[tokenId] = NFT(msg.sender, new_price);
-
-198:         emit NFTOwnerChanged(tokenId, oldOwner, msg.sender, price, new_price);
-
-203:             nfts[tokenId].owner == msg.sender,
-
-209:         emit NFTPriceChanged(tokenId, msg.sender, price);
-
-222:             msg.sender == address(c_nft),
-
-```
-
-```solidity
-File: Promo.sol
-
-21:         return msg.sender;
-
-623:         _mint(msg.sender, TOTAL_SUPPLY);
-
-```
-
-```solidity
-File: RandomOracle.sol
-
-21:         updaterAccount = msg.sender;
-
-38:             msg.sender == updaterAccount,
-
-```
-
-```solidity
-File: SavvaFaucet.sol
-
-102:         if (deposited[msg.sender] == 0) {
-
-103:             depositors.push(msg.sender);
-
-104:             deposited[msg.sender] = msg.value;
-
-106:             deposited[msg.sender] += msg.value;
-
-113:         emit Deposit(msg.sender, msg.value, block.timestamp);
-
-164:         require(msg.sender == ORIGIN_ADDRESS, "Only origin can change origin");
-
-```
-
-```solidity
-File: Staking.sol
-
-211:         Staker storage user = stakers[msg.sender];
-
-213:         _accrue_gain(msg.sender);
-
-215:         _mint(msg.sender, amount); // mint the voting tokens
-
-222:         savvaToken.transferFrom(msg.sender, address(this), amount);
-
-224:         emit Staked(msg.sender, amount, balanceOf(msg.sender));
-
-224:         emit Staked(msg.sender, amount, balanceOf(msg.sender));
-
-238:             msg.sender,
-
-250:         Staker storage user = stakers[msg.sender];
-
-252:             balanceOf(msg.sender) >= amount,
-
-257:         _accrue_gain(msg.sender);
-
-260:         _burn(msg.sender, amount);
-
-263:         if (balanceOf(msg.sender) == 0 && user.accruedGain > 0) {
-
-273:             savvaToken.transfer(msg.sender, gain);
-
-286:         emit Unstaked(msg.sender, amount, balanceOf(msg.sender));
-
-286:         emit Unstaked(msg.sender, amount, balanceOf(msg.sender));
-
-291:         Staker storage user = stakers[msg.sender];
-
-292:         _accrue_gain(msg.sender);
-
-302:         savvaToken.transfer(msg.sender, amount);
-
-303:         emit GainClaimed(msg.sender, amount, balanceOf(msg.sender));
-
-303:         emit GainClaimed(msg.sender, amount, balanceOf(msg.sender));
-
-308:         Staker storage user = stakers[msg.sender];
-
-309:         _accrue_gain(msg.sender);
-
-316:         _mint(msg.sender, amount); // mint the voting tokens
-
-319:         emit Staked(msg.sender, amount, balanceOf(msg.sender));
-
-319:         emit Staked(msg.sender, amount, balanceOf(msg.sender));
-
-328:         require(to != address(0) && to != msg.sender, "Invalid recipient");
-
-330:         bool success = _safe_transfer_stake_from(msg.sender, to, amount);
-
-335:             msg.sender,
-
-338:             balanceOf(msg.sender),
-
-367:         Staker storage user = stakers[msg.sender];
-
-402:         savvaToken.transfer(msg.sender, totalAmount);
-
-403:         emit ClaimUnstaked(msg.sender, totalAmount, balanceOf(msg.sender));
-
-403:         emit ClaimUnstaked(msg.sender, totalAmount, balanceOf(msg.sender));
-
-423:         Staker storage user = stakers[msg.sender];
-
-437:             bool ok = _safe_transfer_stake_from(msg.sender, author, amount);
-
-445:                 if (s_author.patrons[i] == msg.sender) {
-
-451:                 s_author.patrons.push(msg.sender);
-
-459:                     msg.sender,
-
-471:             msg.sender,
-
-476:             balanceOf(msg.sender),
-
-490:         Staker storage user = stakers[msg.sender];
-
-521:                 if (s_author.patrons[i] == msg.sender) {
-
-534:         emit PayRecordDeleted(msg.sender, event_contract, event_id, author);
-
-599:         bytes32 key = keccak256(abi.encodePacked(msg.sender, event_id, author));
-
-630:                 msg.sender,
-
-```
-
-```solidity
-File: UserProfile.sol
-
-43:         if (bytes(names[msg.sender]).length != 0) {
-
-45:             owners[names[msg.sender]] = address(0);
-
-48:         owners[name] = msg.sender;
-
-49:         names[msg.sender] = name;
-
-51:         emit NameSet(msg.sender, name);
-
-55:         string memory name = names[msg.sender];
-
-59:         delete names[msg.sender];
-
-61:         emit NameSet(msg.sender, "");
-
-65:         avatars[msg.sender] = avatar;
-
-66:         emit AvatarSet(msg.sender, avatar);
-
-70:         string memory name = names[msg.sender];
-
-78:         delete names[msg.sender];
-
-81:         emit NameSet(msg.sender, "");
-
-89:         profileString[msg.sender][domain][key] = value;
-
-90:         emit StringSet(msg.sender, domain, key, value);
-
-98:         profileUInt[msg.sender][domain][key] = value;
-
-100:         emit UIntSet(msg.sender, domain, key, value);
-
-130:         if( keccak256(bytes(name) ) != keccak256(bytes(names[msg.sender])) ) {
-
-135:         if( keccak256(bytes(avatar)) != keccak256(bytes(avatars[msg.sender])) ) {
-
-140:         if( keccak256(bytes(profile) ) != keccak256(bytes(getString(msg.sender, domain, bytes32("profile_cid")))) ) {
+481:         (bool sentToTreasury, ) = payable(_treasuryAddress).call{
 
 ```
 
@@ -6601,49 +6774,178 @@ File: UserProfile.sol
 
 
  ### <a name="NC-41"></a>[NC-41]
- ### Dont use _msgSender() if not supporting EIP-2771
-Use msg.sender if the code does not implement EIP-2771 trusted forwarder support
+ ### Variables need not be initialized to zero
+The default value for variables is zero, so initializing them to zero is superfluous.  
 
-*Instances (14)*:
+*Instances (61)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: Config.sol
+File: ActivityMonitorUpgradeable.sol
 
-64:             _msgSender() == owner() ||
-
-65:                 _msgSender() == configAddress[bytes32("contract_governance")],
-
-79:             _msgSender() == owner() ||
-
-80:                 _msgSender() == configAddress[bytes32("contract_governance")],
-
-94:             _msgSender() == owner() ||
-
-95:                 _msgSender() == configAddress[bytes32("contract_governance")],
+78:         for (uint256 i = 0; i < authAddresses.length; i++) {
 
 ```
 
 ```solidity
-File: Promo.sol
+File: IDPRegistryUpgradeable.sol
 
-20:     function _msgSender() internal view virtual returns (address) {
+75:         for (uint256 i = 0; i < proofs.length; i++) {
 
-58:         _transferOwnership(_msgSender());
+118:         for (uint256 i = 0; i < idpProofCounts[uid]; i++) {
 
-80:         require(owner() == _msgSender(), "Ownable: caller is not the owner");
+127:         for (uint256 i = 0; i < idpData.proofs.length; i++) {
 
-339:         address owner = _msgSender();
+143:         uint256 index = 0;
 
-362:         address owner = _msgSender();
+144:         for (uint256 i = 0; i < _uidCounter; i++) {
 
-384:         address spender = _msgSender();
+158:         for (uint256 i = 0; i < idpProofCounts[uid]; i++) {
 
-403:         address owner = _msgSender();
+205:         for (uint256 i = 0; i < idpProofCounts[uid]; i++) {
 
-423:         address owner = _msgSender();
+270:         uint256 deletedCount = 0;
+
+271:         for (uint256 i = 0; i < _uidCounter; i++) {
+
+```
+
+```solidity
+File: JailedNodesUpgradeable.sol
+
+118:         for (uint256 i = 0; i < authorizedUsers.length; i++) {
+
+246:         uint256 timeServedInJail = 0;
+
+247:         for (uint256 i = 0; i < getJailCountForNode(_address); i++) {
+
+354:         uint256 timeInJail = 0;
+
+355:         for (uint256 i = 0; i < jailData.length; i++) {
+
+```
+
+```solidity
+File: NetworkConfigurationUpgradeable.sol
+
+187:         uint256 candidateIndex = 0;
+
+189:             uint256 currIndex = 0;
+
+190:             for (uint256 i = 0; i < safeToUpgradeCandidates.length; i++) {
+
+249:         for (uint256 i = 0; i < _authorisedUsers.length; i++) {
+
+252:         for (uint256 i = 0; i < _bootStrapNodes.length; i++) {
+
+319:         uint256 refundAmount = 0;
+
+336:         uint256 amountToWithdrawFromEscrow = 0;
+
+515:         for (uint256 i = 0; i < govs.length; i++) {
+
+583:         uint256 currIndex = 0;
+
+584:         for (uint256 i = 0; i < allCandidates.length; i++) {
+
+591:         for (uint256 i = 0; i < currIndex; i++) {
+
+```
+
+```solidity
+File: PermissionUpgradeable.sol
+
+28:         for (uint256 i = 0; i < authAddresses.length; i++) {
+
+49:         for (uint256 i = 0; i < supportedProofTypes.length; i++) {
+
+136:         for (uint256 i = 0; i < proofs.length; i++) {
+
+246:         for (uint256 i = 0; i < result.length; i++) {
+
+```
+
+```solidity
+File: ReconfigurationUpgradeable.sol
+
+71:         for (uint256 i = 0; i < authorizedAddresses.length; i++) {
+
+104:         uint256 currIndex = 0;
+
+107:         for (uint256 i = 0; i < candidates.length; i++) {
+
+123:         for (uint256 i = 0; i < currIndex; i++) {
+
+213:                 uint256 i = 0;
+
+232:                 for (uint256 i = 0; i < randomGovernors.length; i++) {
+
+307:         for (uint256 i = 0; i < safeToUpgradeCandidates.length; i++) {
+
+326:         for (uint256 i = 0; i < prioritisedForDowngradeGovernors.length; i++) {
+
+348:         uint256 j = 0;
+
+349:         for (uint256 i = 0; i < upto && j < count; i++) {
+
+387:         uint256 idx = 0;
+
+388:         for (uint256 i = 0; i < governors.length; i++) {
+
+408:         for (uint256 i = 0; i < count; i++) {
+
+427:         for (uint256 itr = 0; itr < swappableGovernors.length; itr++) {
+
+562:             for (uint256 i = 0; i < swapSize; i++) {
+
+575:         for (uint256 i = 0; i < governorsToDowngrade.length; i++) {
+
+586:         for (uint256 i = 0; i < governorsToDowngrade.length; i++) {
+
+639:         for (uint256 i = 0; i < randomIndexes.length; i++) {
+
+656:         uint256 candidatesFoundIdx = 0;
+
+657:         for (uint256 i = 0; i < rbnFound; i++) {
+
+660:         for (uint256 i = 0; i < nonRbnFound; i++) {
+
+688:             for (uint256 i = 0; i < governors.length; i++) {
+
+696:             for (uint256 i = 0; i < candidates.length; i++) {
+
+```
+
+```solidity
+File: SignupBonusVestingUpgradeable.sol
+
+93:         for (uint256 i = 0; i < bootNodeAddresses.length; i++) {
+
+97:         for (uint256 i = 0; i < _authorizedUsers.length; i++) {
+
+```
+
+```solidity
+File: StakingDepositUpgradeable.sol
+
+165:         for (uint256 i = 0; i < _authorisedUsers.length; i++) {
+
+299:         uint256 jailTimeBetweenSpan = 0;
+
+327:         uint256 rewardAmount = 0;
+
+328:         for (uint256 yearIndex = 0; yearIndex <= yearIndexes; yearIndex++) {
+
+424:         uint256 timeInNetwork = 0;
+
+```
+
+```solidity
+File: TombstonedNodesUpgradeable.sol
+
+32:         for (uint256 i = 0; i < _authorisedUsers.length; i++) { //@audit cache first
 
 ```
 
@@ -6652,48 +6954,32 @@ File: Promo.sol
 
 
  ### <a name="NC-42"></a>[NC-42]
- ### <array>.length should not be looked up in every loop of a for-loop
-The overheads outlined below are PER LOOP, excluding the first loop. Storage arrays incur a Gwarmaccess (100 gas), memory arrays use MLOAD (3 gas), calldata arrays use CALLDATALOAD (3 gas). Caching the length changes each of these to a DUP<N> (3 gas), and gets rid of the extra DUP<N> needed to store the stack offset.
+ ### Empty receive()/fallback() function
+If the intention is for Ether sent by a caller to be used for an actual purpose (i.e. the function is not just a WETH withdraw() handler), the function should call another function (e.g. call weth.deposit() and use the token on the caller's behalf) or at least emit an event to track that funds were sent directly to it.
 
-*Instances (6)*:
+*Instances (3)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: ContentRegistry.sol
+File: JailedNodesUpgradeable.sol
 
-120:         for (uint256 i = 0; i < domains.length; i++) {
-
-```
-
-```solidity
-File: NFTMarketplace.sol
-
-66:         for (uint256 i = 0; i < nftsByOwnerArray.length; i++) {
-
-181:         for (uint256 i = 0; i < nftsByOwnerArray.length; i++) {
+387: 
 
 ```
 
 ```solidity
-File: SavvaFaucet.sol
+File: NetworkConfigurationUpgradeable.sol
 
-132:         for (uint256 i = 0; i < depositors.length; i++) {
-
-```
-
-```solidity
-File: UserProfile.sol
-
-32:         for (uint256 i; i < b.length; i++) {
+231: 
 
 ```
 
 ```solidity
-File: utils.sol
+File: StakingDepositUpgradeable.sol
 
-41:         for (uint256 i = 0; i < b.length; i++) {
+635: 
 
 ```
 
@@ -6702,152 +6988,38 @@ File: utils.sol
 
 
  ### <a name="NC-43"></a>[NC-43]
- ### Use assembly to emit events, in order to save gas
-Using the [scratch space](https://github.com/Vectorized/solady/blob/30558f5402f02351b96eeb6eaf32bcea29773841/src/tokens/ERC1155.sol#L501-L504) for event arguments (two words or fewer) will save gas over needing Soliditys full abi memory expansion used for emitting normally.
+ ### Consider moving msg.sender checks to modifiers
+If some functions are only allowed to be called by some specific users, consider using a modifier instead of checking with a require statement, especially if this check is done in multiple functions.  
 
-*Instances (43)*:
+*Instances (6)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: Config.sol
+File: ActivityMonitorUpgradeable.sol
 
-70:         emit ConfigSet(key, value);
-
-85:         emit ConfigUintSet(key, value);
-
-100:         emit ConfigAddressSet(key, value);
+24:         if (!_isGovernor(msg.sender)) {
 
 ```
 
 ```solidity
-File: ContentFund.sol
+File: IDPRegistryUpgradeable.sol
 
-264:         emit ContributeEvent(
+58:         if (_uidToIDP[uid].publicAddress != msg.sender) {
 
-338:             emit PrizeEvent(
-
-348:             emit PrizeEvent(h, winner, prize, 0, block.timestamp, 0);
-
-503:         emit NFTGainWithdrawEvent(
+65:         if (_uidToIDP[issuerDidToUid[issuerDid]].publicAddress != msg.sender) {
 
 ```
 
 ```solidity
-File: ContentNFT.sol
+File: PermissionUpgradeable.sol
 
-59:         emit Mint(author, tokenId, domain, guid, uri, price, block.timestamp);
+99:         if (StringToAddress.stringToAddress(user) != msg.sender) {
 
-```
+103:                         "credentialSubject.publicAddress and msg.sender doesn't match:",
 
-```solidity
-File: ContentRegistry.sol
-
-100:         emit RegEvent(
-
-140:         emit Command(msg.sender, domain, cmd, p1, p2, p3, p4, block.timestamp);
-
-```
-
-```solidity
-File: ListMarket.sol
-
-29:         emit PriceSet(list_name, price, block.timestamp);
-
-62:         emit Bought(list_name, msg.sender, msg.value, block.timestamp);
-
-```
-
-```solidity
-File: NFTMarketplace.sol
-
-59:         emit NFTAddedToMarket(tokenId, msg.sender, price);
-
-92:         emit NFTRemovedFromMarket(tokenId, msg.sender);
-
-146:         emit NFTBought(tokenId, oldOwner, msg.sender, price);
-
-198:         emit NFTOwnerChanged(tokenId, oldOwner, msg.sender, price, new_price);
-
-209:         emit NFTPriceChanged(tokenId, msg.sender, price);
-
-```
-
-```solidity
-File: Promo.sol
-
-110:         emit OwnershipTransferred(oldOwner, newOwner);
-
-462:         emit Transfer(from, to, amount);
-
-486:         emit Transfer(address(0), account, amount);
-
-515:         emit Transfer(account, address(0), amount);
-
-538:         emit Approval(owner, spender, amount);
-
-```
-
-```solidity
-File: RandomOracle.sol
-
-46:         emit RandomUpdated(_random, _db_index, block.timestamp);
-
-```
-
-```solidity
-File: SavvaFaucet.sol
-
-113:         emit Deposit(msg.sender, msg.value, block.timestamp);
-
-125:         emit RoundFinished(roundPayWeek, roundTokensToShare, block.timestamp);
-
-141:                 emit TokensSent(depositor, amount, block.timestamp);
-
-```
-
-```solidity
-File: Staking.sol
-
-224:         emit Staked(msg.sender, amount, balanceOf(msg.sender));
-
-286:         emit Unstaked(msg.sender, amount, balanceOf(msg.sender));
-
-303:         emit GainClaimed(msg.sender, amount, balanceOf(msg.sender));
-
-319:         emit Staked(msg.sender, amount, balanceOf(msg.sender));
-
-334:         emit Transferred(
-
-403:         emit ClaimUnstaked(msg.sender, totalAmount, balanceOf(msg.sender));
-
-470:         emit PayRecordSet(
-
-534:         emit PayRecordDeleted(msg.sender, event_contract, event_id, author);
-
-615:                     emit PatronPaid(
-
-628:             emit PatronPaymentClaimed(
-
-```
-
-```solidity
-File: UserProfile.sol
-
-51:         emit NameSet(msg.sender, name);
-
-61:         emit NameSet(msg.sender, "");
-
-66:         emit AvatarSet(msg.sender, avatar);
-
-80:         emit NameSet(to, name);
-
-81:         emit NameSet(msg.sender, "");
-
-90:         emit StringSet(msg.sender, domain, key, value);
-
-100:         emit UIntSet(msg.sender, domain, key, value);
+117:         _authorizeUser(msg.sender);
 
 ```
 
@@ -6856,146 +7028,141 @@ File: UserProfile.sol
 
 
  ### <a name="NC-44"></a>[NC-44]
- ### Don't initialize variables with default value
+ ### Dont use _msgSender() if not supporting EIP-2771
+Use msg.sender if the code does not implement EIP-2771 trusted forwarder support
 
-*Instances (53)*:
+*Instances (45)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: ContentFund.sol
+File: ActivityMonitorUpgradeable.sol
 
-150:         uint256 authorShare = 0;
-
-151:         uint256 nftShare = 0;
-
-221:         uint256 authorShare = 0;
-
-222:         uint256 nftShare = 0;
-
-281:         uint256 totalShares = 0;
-
-283:         for (uint256 i = 0; i < funds[h].contributors.length; i++) {
-
-288:         uint256 runningShareSum = 0;
-
-289:         for (uint256 i = 0; i < funds[h].contributors.length; i++) {
-
-351:             for (uint256 j = 0; j < funds[h].contributors.length; j++) {
-
-355:             for (uint256 j = 0; j < funds[h].contributors.length; j++) {
-
-371:         uint256 random = 0;
-
-422:         uint256 total = 0;
-
-424:         for (uint256 i = 0; i < nft.balanceOf(owner); i++) {
-
-430:         for (uint256 i = 0; i < nft.balanceOf(address(mp)); i++) {
-
-442:         uint256 total = 0;
-
-449:         for (uint256 i = 0; i < nft.balanceOf(msg.sender); i++) {
-
-455:         for (uint256 i = 0; i < nft.balanceOf(address(mp)); i++) {
-
-467:        uint256 total = 0;
-
-477:         for (uint256 i = 0; i < nft.balanceOf(msg.sender); i++) {
-
-488:         for (uint256 i = 0; i < nft.balanceOf(address(mp)); i++) {
-
-538:         uint256 total = 0;
-
-539:         for (uint256 i = 0; i < funds[savva_cid].contributors.length; i++) {
+365:         address voterAddress = _getNodeAddressUsingSignerAddress(_msgSender());
 
 ```
 
 ```solidity
-File: ContentRegistry.sol
+File: ContractRoleAuthUpgradeable.sol
 
-83:         bool exists = false;
+19:         if (!hasRole(STAKING_DEPOSIT_CONTRACT_ROLE, _msgSender())) {
 
-120:         for (uint256 i = 0; i < domains.length; i++) {
+28:         if (!hasRole(JAILED_NODES_CONTRACT_ROLE, _msgSender())) {
 
-```
+37:         if (!hasRole(NETWORK_CONFIG_CONTRACT_ROLE, _msgSender())) {
 
-```solidity
-File: NFTMarketplace.sol
+47:             !hasRole(ACTIVITY_MONITOR_CONTRACT_ROLE, _msgSender()) &&
 
-66:         for (uint256 i = 0; i < nftsByOwnerArray.length; i++) {
+48:             !hasRole(REDBELLY_ROLE, _msgSender())
 
-181:         for (uint256 i = 0; i < nftsByOwnerArray.length; i++) {
+59:             !hasRole(JAILED_NODES_CONTRACT_ROLE, _msgSender()) &&
 
-```
-
-```solidity
-File: SavvaFaucet.sol
-
-25:     uint256 public lastRoundPayWeek = 0;
-
-26:     uint256 public roundTotalDeposits = 0;
-
-27:     uint256 public roundTokensToShare = 0;
-
-28:     uint256 public roundPayWeek = 0;
-
-132:         for (uint256 i = 0; i < depositors.length; i++) {
+60:             !hasRole(REDBELLY_ROLE, _msgSender())
 
 ```
 
 ```solidity
-File: Staking.sol
+File: JailedNodesUpgradeable.sol
 
-112:     uint256 public currentFrameNumber = 0;
+23:         bool hasRedbellyRole = hasRole(REDBELLY_ROLE, _msgSender());
 
-178:         uint256 result = 0;
-
-354:         uint256 totalAmount = 0;
-
-356:         for (uint256 i = 0; i < user.unstakeRequests.length; i++) {
-
-369:         uint256 totalAmount = 0;
-
-371:         for (uint256 i = 0; i < user.unstakeRequests.length; i++) {
-
-383:         uint256 j = 0;
-
-384:         for (uint256 i = 0; i < user.unstakeRequests.length; i++) {
-
-396:         for (uint256 i = 0; i < n_to_pop; i++) {
-
-426:         uint256 paid = 0;
-
-443:             bool found = false;
-
-444:             for (uint256 i = 0; i < s_author.patrons.length; i++) {
-
-507:         bool found = false;
-
-508:         for (uint256 i = 0; i < user.PayRecordsKeys.length; i++) {
-
-520:             for (uint256 i = 0; i < n_to_pop; i++) {
-
-556:         uint256 total = 0;
-
-570:         for (uint256 i = 0; i < s_author.patrons.length; i++) {
-
-588:         uint256 total = 0;
-
-601:         for (uint256 i = 0; i < s_author.patrons.length; i++) {
-
-648:         uint256 total_gain = 0;
+26:             !(!hasRedbellyRole && isJailedNode(_msgSender()))
 
 ```
 
 ```solidity
-File: utils.sol
+File: NetworkConfigurationUpgradeable.sol
 
-22:         uint z = 0;
+376:             payable(_msgSender()).sendValue(refundAmount);
 
-41:         for (uint256 i = 0; i < b.length; i++) {
+```
+
+```solidity
+File: RBACUpgradeable.sol
+
+17:         if (!hasRole(REDBELLY_ROLE, _msgSender())) {
+
+24:         if (!hasRole(IDP_ROLE, _msgSender())) {
+
+33:         _grantRole(DEFAULT_ADMIN_ROLE, _msgSender());
+
+34:         _grantRole(OWNER_ROLE, _msgSender());
+
+```
+
+```solidity
+File: SignupBonusVestingUpgradeable.sol
+
+42:         if (!_registeredNodes.nodeExists(_msgSender())) {
+
+51:             .getNodeConfiguration(_msgSender());
+
+113:         emit Received(_msgSender(), msg.value);
+
+144:         _alreadyClaimedTokens[_msgSender()] += claimableTokens;
+
+145:         (bool sent, ) = payable(_msgSender()).call{value: claimableTokens}("");
+
+149:         emit Claimed(_msgSender(), claimableTokens);
+
+167:             .getNodeConfiguration(_msgSender());
+
+173:             _msgSender()
+
+208:         return status() - _alreadyClaimedTokens[_msgSender()];
+
+```
+
+```solidity
+File: StakingDepositUpgradeable.sol
+
+63:         uint256 nodeId = _getNodeIdForAddress(_msgSender());
+
+66:             networkConfiguration.isGovernor(_msgSender()) ||
+
+67:             networkConfiguration.isCandidate(_msgSender())
+
+275:             memory nodeConfig = _getNodeConfigForAddress(_msgSender());
+
+302:                 _msgSender(),
+
+311:                 _msgSender(),
+
+324:             memory nodeConfig = _getNodeConfigForAddress(_msgSender());
+
+371:         (bool sent, ) = payable(_msgSender()).call{value: rewardsToBeClaimed}(
+
+382:     @dev - main deposit function - can be called any entity - no validation for _msgSender()
+
+407:             memory nodeConfig = _getNodeConfigForAddress(_msgSender());
+
+411:             .getRecentJailTenure(_msgSender());
+
+430:                     _msgSender(),
+
+446:                 _msgSender(),
+
+475:         (bool sent, ) = payable(_msgSender()).call{value: unstakeValue}("");
+
+499:         emit StakeWithdrawn(_msgSender(), unstakeValue);
+
+551:             payable(_msgSender()).transfer(slashAmount);
+
+```
+
+```solidity
+File: StakingEscrowUpgradeable.sol
+
+7:         if (payer != _msgSender() && owner() != _msgSender()) {
+
+7:         if (payer != _msgSender() && owner() != _msgSender()) {
+
+16:         __Ownable_init_unchained(_msgSender());
+
+79:         payable(_msgSender()).sendValue(amount); //@audit use .call to send eth
+
+81:         emit Withdrawn(_msgSender(), payer, amount);
 
 ```
 
@@ -7004,40 +7171,482 @@ File: utils.sol
 
 
  ### <a name="NC-45"></a>[NC-45]
- ### Long revert strings
+ ### Array indices should be referenced via enums rather than numeric literals
 
-*Instances (10)*:
+#### Impact:
+Referencing array indices via enums can improve code readability and maintainability.
+
+*Instances (5)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: ContentRegistry.sol
+File: ActivityMonitorUpgradeable.sol
 
-92:         require(!exists, "NFT minted. Content change is not allowed.");
+211:                     _inactivityVotes[nodeId].votesAgainstNode[0].voter ==
 
 ```
 
 ```solidity
-File: Promo.sol
+File: ContractRoleAuthUpgradeable.sol
 
-99:         require(newOwner != address(0), "Ownable: new owner is the zero address");
+16:     bytes32[20] internal ___gap;
 
-425:         require(currentAllowance >= subtractedValue, "ERC20: decreased allowance below zero");
+```
 
-448:         require(from != address(0), "ERC20: transfer from the zero address");
+```solidity
+File: PermissionUpgradeable.sol
 
-449:         require(to != address(0), "ERC20: transfer to the zero address");
+57:             query.typeOfCredential[0] = "RedbellyCredential";
 
-454:         require(fromBalance >= amount, "ERC20: transfer amount exceeds balance");
+```
 
-503:         require(account != address(0), "ERC20: burn from the zero address");
+```solidity
+File: RBACUpgradeable.sol
 
-508:         require(accountBalance >= amount, "ERC20: burn amount exceeds balance");
+12:     bytes32[20] internal __gap;
 
-534:         require(owner != address(0), "ERC20: approve from the zero address");
+```
 
-535:         require(spender != address(0), "ERC20: approve to the zero address");
+```solidity
+File: StakingEscrowUpgradeable.sol
+
+89:     uint256[49] private __gap;
+
+```
+
+</details> 
+ 
+
+
+ ### <a name="NC-46"></a>[NC-46]
+ ### <array>.length should not be looked up in every loop of a for-loop
+The overheads outlined below are PER LOOP, excluding the first loop. Storage arrays incur a Gwarmaccess (100 gas), memory arrays use MLOAD (3 gas), calldata arrays use CALLDATALOAD (3 gas). Caching the length changes each of these to a DUP<N> (3 gas), and gets rid of the extra DUP<N> needed to store the stack offset.
+
+*Instances (29)*:
+ 
+ <details>
+ <summary>Click to expand!</summary>
+
+```solidity
+File: ActivityMonitorUpgradeable.sol
+
+78:         for (uint256 i = 0; i < authAddresses.length; i++) {
+
+```
+
+```solidity
+File: IDPRegistryUpgradeable.sol
+
+75:         for (uint256 i = 0; i < proofs.length; i++) {
+
+```
+
+```solidity
+File: JailedNodesUpgradeable.sol
+
+118:         for (uint256 i = 0; i < authorizedUsers.length; i++) {
+
+355:         for (uint256 i = 0; i < jailData.length; i++) {
+
+```
+
+```solidity
+File: NetworkConfigurationUpgradeable.sol
+
+190:             for (uint256 i = 0; i < safeToUpgradeCandidates.length; i++) {
+
+249:         for (uint256 i = 0; i < _authorisedUsers.length; i++) {
+
+252:         for (uint256 i = 0; i < _bootStrapNodes.length; i++) {
+
+515:         for (uint256 i = 0; i < govs.length; i++) {
+
+584:         for (uint256 i = 0; i < allCandidates.length; i++) {
+
+```
+
+```solidity
+File: PermissionUpgradeable.sol
+
+28:         for (uint256 i = 0; i < authAddresses.length; i++) {
+
+49:         for (uint256 i = 0; i < supportedProofTypes.length; i++) {
+
+136:         for (uint256 i = 0; i < proofs.length; i++) {
+
+246:         for (uint256 i = 0; i < result.length; i++) {
+
+```
+
+```solidity
+File: ReconfigurationUpgradeable.sol
+
+71:         for (uint256 i = 0; i < authorizedAddresses.length; i++) {
+
+107:         for (uint256 i = 0; i < candidates.length; i++) {
+
+232:                 for (uint256 i = 0; i < randomGovernors.length; i++) {
+
+307:         for (uint256 i = 0; i < safeToUpgradeCandidates.length; i++) {
+
+326:         for (uint256 i = 0; i < prioritisedForDowngradeGovernors.length; i++) {
+
+388:         for (uint256 i = 0; i < governors.length; i++) {
+
+427:         for (uint256 itr = 0; itr < swappableGovernors.length; itr++) {
+
+575:         for (uint256 i = 0; i < governorsToDowngrade.length; i++) {
+
+586:         for (uint256 i = 0; i < governorsToDowngrade.length; i++) {
+
+639:         for (uint256 i = 0; i < randomIndexes.length; i++) {
+
+688:             for (uint256 i = 0; i < governors.length; i++) {
+
+696:             for (uint256 i = 0; i < candidates.length; i++) {
+
+```
+
+```solidity
+File: SignupBonusVestingUpgradeable.sol
+
+93:         for (uint256 i = 0; i < bootNodeAddresses.length; i++) {
+
+97:         for (uint256 i = 0; i < _authorizedUsers.length; i++) {
+
+```
+
+```solidity
+File: StakingDepositUpgradeable.sol
+
+165:         for (uint256 i = 0; i < _authorisedUsers.length; i++) {
+
+```
+
+```solidity
+File: TombstonedNodesUpgradeable.sol
+
+32:         for (uint256 i = 0; i < _authorisedUsers.length; i++) { //@audit cache first
+
+```
+
+</details> 
+ 
+
+
+ ### <a name="NC-47"></a>[NC-47]
+ ### Use assembly to emit events, in order to save gas
+Using the [scratch space](https://github.com/Vectorized/solady/blob/30558f5402f02351b96eeb6eaf32bcea29773841/src/tokens/ERC1155.sol#L501-L504) for event arguments (two words or fewer) will save gas over needing Soliditys full abi memory expansion used for emitting normally.
+
+*Instances (35)*:
+ 
+ <details>
+ <summary>Click to expand!</summary>
+
+```solidity
+File: ActivityMonitorUpgradeable.sol
+
+279:         emit RecentVotingIntervalUpdated(_newInterval);
+
+298:         emit InactivityThresholdForRoundsUpdated(_newWindowSize);
+
+321:         emit InactivityThresholdForRoundsUpdated(_newInactivityThreshold);
+
+340:         emit InactivityThresholdForMessageUpdated(_newInactivityThreshold);
+
+392:         emit ProposalRaised(_inactiveNode, _timestamp);
+
+```
+
+```solidity
+File: IDPRegistryUpgradeable.sol
+
+137:         emit IDPRegistered(idpData);
+
+217:         emit IDPUpdated(info);
+
+250:         emit IDPRemoved(idpInfo);
+
+```
+
+```solidity
+File: JailedNodesUpgradeable.sol
+
+210:             emit Jailed(
+
+```
+
+```solidity
+File: NetworkConfigurationUpgradeable.sol
+
+164:         emit NodeRemoved(nodeAddress);
+
+170:         emit NodeRemoved(nodeAddress);
+
+378:         emit NodeRegistered(nodeAddress);
+
+445:         emit NodeConfigUpdated(nodeAddr);
+
+475:         emit CoolOffPeriodInitiated(nodeAddress);
+
+479:         emit GovernorsUpdated(_governors.getAll());
+
+```
+
+```solidity
+File: PermissionUpgradeable.sol
+
+123:         emit PermissionsEnabled();
+
+162:         emit UserAuthorized(_userAddress);
+
+```
+
+```solidity
+File: ReconfigurationUpgradeable.sol
+
+142:         emit ReconfigurationIntervalUpdated(reconfigurationInterval);
+
+158:         emit ToleranceFactorUpdated(toleranceFactor);
+
+175:         emit ReconfigurationBiasnessUpdated(biasedReconfiguration);
+
+192:         emit UpgradeProbabilityUpdated(current, upgradeProbabilty);
+
+249:         emit ReconfigurationComplete(lastReconfigurationTime);
+
+```
+
+```solidity
+File: SignupBonusVestingUpgradeable.sol
+
+113:         emit Received(_msgSender(), msg.value);
+
+125:         emit Registered(_nodeAddr);
+
+149:         emit Claimed(_msgSender(), claimableTokens);
+
+```
+
+```solidity
+File: StakingDepositUpgradeable.sol
+
+126:         emit MinimumStakeAmountUpdated(_minStakeAmount);
+
+378:         emit Reward(rewardsToBeClaimed);
+
+401:         emit StakeDeposited(_depositor, msg.value);
+
+499:         emit StakeWithdrawn(_msgSender(), unstakeValue);
+
+557:         emit StakeSlashed(_depositor, slashAmount);
+
+576:         emit SlashedStakeReverted(_depositor, slashedAmt);
+
+602:         emit StakeDeposited(_depositor, msg.value);
+
+```
+
+```solidity
+File: StakingEscrowUpgradeable.sol
+
+49:         emit Deposited(payee, amount);
+
+81:         emit Withdrawn(_msgSender(), payer, amount);
+
+```
+
+```solidity
+File: TombstonedNodesUpgradeable.sol
+
+93:         emit Tombstoned(_nodeAddress);
+
+```
+
+</details> 
+ 
+
+
+ ### <a name="NC-48"></a>[NC-48]
+ ### Don't initialize variables with default value
+
+*Instances (64)*:
+ 
+ <details>
+ <summary>Click to expand!</summary>
+
+```solidity
+File: ActivityMonitorUpgradeable.sol
+
+78:         for (uint256 i = 0; i < authAddresses.length; i++) {
+
+```
+
+```solidity
+File: IDPRegistryUpgradeable.sol
+
+75:         for (uint256 i = 0; i < proofs.length; i++) {
+
+118:         for (uint256 i = 0; i < idpProofCounts[uid]; i++) {
+
+127:         for (uint256 i = 0; i < idpData.proofs.length; i++) {
+
+143:         uint256 index = 0;
+
+144:         for (uint256 i = 0; i < _uidCounter; i++) {
+
+158:         for (uint256 i = 0; i < idpProofCounts[uid]; i++) {
+
+205:         for (uint256 i = 0; i < idpProofCounts[uid]; i++) {
+
+270:         uint256 deletedCount = 0;
+
+271:         for (uint256 i = 0; i < _uidCounter; i++) {
+
+```
+
+```solidity
+File: JailedNodesUpgradeable.sol
+
+118:         for (uint256 i = 0; i < authorizedUsers.length; i++) {
+
+246:         uint256 timeServedInJail = 0;
+
+247:         for (uint256 i = 0; i < getJailCountForNode(_address); i++) {
+
+354:         uint256 timeInJail = 0;
+
+355:         for (uint256 i = 0; i < jailData.length; i++) {
+
+```
+
+```solidity
+File: NetworkConfigurationUpgradeable.sol
+
+187:         uint256 candidateIndex = 0;
+
+189:             uint256 currIndex = 0;
+
+190:             for (uint256 i = 0; i < safeToUpgradeCandidates.length; i++) {
+
+249:         for (uint256 i = 0; i < _authorisedUsers.length; i++) {
+
+252:         for (uint256 i = 0; i < _bootStrapNodes.length; i++) {
+
+319:         uint256 refundAmount = 0;
+
+336:         uint256 amountToWithdrawFromEscrow = 0;
+
+515:         for (uint256 i = 0; i < govs.length; i++) {
+
+583:         uint256 currIndex = 0;
+
+584:         for (uint256 i = 0; i < allCandidates.length; i++) {
+
+591:         for (uint256 i = 0; i < currIndex; i++) {
+
+```
+
+```solidity
+File: PermissionUpgradeable.sol
+
+28:         for (uint256 i = 0; i < authAddresses.length; i++) {
+
+49:         for (uint256 i = 0; i < supportedProofTypes.length; i++) {
+
+136:         for (uint256 i = 0; i < proofs.length; i++) {
+
+176:         bool callresult = false;
+
+246:         for (uint256 i = 0; i < result.length; i++) {
+
+259:         bool callresult = false;
+
+313:         bool callresult = false;
+
+```
+
+```solidity
+File: ReconfigurationUpgradeable.sol
+
+71:         for (uint256 i = 0; i < authorizedAddresses.length; i++) {
+
+104:         uint256 currIndex = 0;
+
+107:         for (uint256 i = 0; i < candidates.length; i++) {
+
+123:         for (uint256 i = 0; i < currIndex; i++) {
+
+213:                 uint256 i = 0;
+
+232:                 for (uint256 i = 0; i < randomGovernors.length; i++) {
+
+307:         for (uint256 i = 0; i < safeToUpgradeCandidates.length; i++) {
+
+326:         for (uint256 i = 0; i < prioritisedForDowngradeGovernors.length; i++) {
+
+348:         uint256 j = 0;
+
+349:         for (uint256 i = 0; i < upto && j < count; i++) {
+
+387:         uint256 idx = 0;
+
+388:         for (uint256 i = 0; i < governors.length; i++) {
+
+408:         for (uint256 i = 0; i < count; i++) {
+
+427:         for (uint256 itr = 0; itr < swappableGovernors.length; itr++) {
+
+562:             for (uint256 i = 0; i < swapSize; i++) {
+
+575:         for (uint256 i = 0; i < governorsToDowngrade.length; i++) {
+
+586:         for (uint256 i = 0; i < governorsToDowngrade.length; i++) {
+
+639:         for (uint256 i = 0; i < randomIndexes.length; i++) {
+
+656:         uint256 candidatesFoundIdx = 0;
+
+657:         for (uint256 i = 0; i < rbnFound; i++) {
+
+660:         for (uint256 i = 0; i < nonRbnFound; i++) {
+
+688:             for (uint256 i = 0; i < governors.length; i++) {
+
+696:             for (uint256 i = 0; i < candidates.length; i++) {
+
+```
+
+```solidity
+File: SignupBonusVestingUpgradeable.sol
+
+93:         for (uint256 i = 0; i < bootNodeAddresses.length; i++) {
+
+97:         for (uint256 i = 0; i < _authorizedUsers.length; i++) {
+
+```
+
+```solidity
+File: StakingDepositUpgradeable.sol
+
+165:         for (uint256 i = 0; i < _authorisedUsers.length; i++) {
+
+299:         uint256 jailTimeBetweenSpan = 0;
+
+327:         uint256 rewardAmount = 0;
+
+328:         for (uint256 yearIndex = 0; yearIndex <= yearIndexes; yearIndex++) {
+
+424:         uint256 timeInNetwork = 0;
+
+```
+
+```solidity
+File: TombstonedNodesUpgradeable.sol
+
+32:         for (uint256 i = 0; i < _authorisedUsers.length; i++) { //@audit cache first
 
 ```
 
@@ -7052,109 +7661,169 @@ File: Promo.sol
  ### Enable IR-based code generation
 By using `--via-ir` or `{"viaIR": true}`, the compiler is able to use more advanced [multi-function optimizations](https://docs.soliditylang.org/en/v0.8.17/ir-breaking-changes.html#solidity-ir-based-codegen-changes), for extra gas savings.
 
-*Instances (18)*:
+*Instances (23)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: Config.sol
+File: ActivityMonitorUpgradeable.sol
 
-7: pragma solidity ^0.8.18;
-
-```
-
-```solidity
-File: ContentFund.sol
-
-7: pragma solidity ^0.8.18;
+2: pragma solidity 0.8.22;
 
 ```
 
 ```solidity
-File: ContentNFT.sol
+File: ArtifactsFromRbnCore.sol
 
-7: pragma solidity ^0.8.18;
-
-```
-
-```solidity
-File: ContentRegistry.sol
-
-7: pragma solidity ^0.8.18;
+2: pragma solidity 0.8.22;
 
 ```
 
 ```solidity
-File: ListMarket.sol
+File: ContractRoleAuthUpgradeable.sol
 
-7: pragma solidity ^0.8.18;
-
-```
-
-```solidity
-File: NFTMarketplace.sol
-
-7: pragma solidity ^0.8.18;
+2: pragma solidity 0.8.22;
 
 ```
 
 ```solidity
-File: Promo.sol
+File: IDPRegistryUpgradeable.sol
 
-7: pragma solidity ^0.8.0;
-
-34: pragma solidity ^0.8.0;
-
-119: pragma solidity ^0.8.0;
-
-200: pragma solidity ^0.8.0;
-
-230: pragma solidity ^0.8.0;
-
-595: pragma solidity ^0.8.0;
+2: pragma solidity 0.8.22;
 
 ```
 
 ```solidity
-File: RandomOracle.sol
+File: JailedNodesUpgradeable.sol
 
-7: pragma solidity ^0.8.18;
-
-```
-
-```solidity
-File: SavvaFaucet.sol
-
-7: pragma solidity ^0.8.18;
+2: pragma solidity 0.8.22;
 
 ```
 
 ```solidity
-File: SavvaToken.sol
+File: NetworkConfigurationUpgradeable.sol
 
-8: pragma solidity ^0.8.18;
-
-```
-
-```solidity
-File: Staking.sol
-
-2: pragma solidity ^0.8.0;
+2: pragma solidity 0.8.22;
 
 ```
 
 ```solidity
-File: UserProfile.sol
+File: PermissionUpgradeable.sol
 
-7: pragma solidity ^0.8.18;
+2: pragma solidity 0.8.22;
 
 ```
 
 ```solidity
-File: utils.sol
+File: RBACUpgradeable.sol
 
-7: pragma solidity ^0.8.18;
+2: pragma solidity 0.8.22;
+
+```
+
+```solidity
+File: ReconfigurationUpgradeable.sol
+
+2: pragma solidity 0.8.22;
+
+```
+
+```solidity
+File: SignupBonusVestingUpgradeable.sol
+
+2: pragma solidity 0.8.22;
+
+```
+
+```solidity
+File: StakingDepositUpgradeable.sol
+
+2: pragma solidity 0.8.22;
+
+```
+
+```solidity
+File: StakingEscrowUpgradeable.sol
+
+2: pragma solidity 0.8.22;
+
+```
+
+```solidity
+File: TombstonedNodesUpgradeable.sol
+
+2: pragma solidity 0.8.22;
+
+```
+
+```solidity
+File: interfaces/IActivityMonitor.sol
+
+2: pragma solidity 0.8.22;
+
+```
+
+```solidity
+File: interfaces/IIDPRegistry.sol
+
+2: pragma solidity 0.8.22;
+
+```
+
+```solidity
+File: interfaces/IJailedNodes.sol
+
+2: pragma solidity 0.8.22;
+
+```
+
+```solidity
+File: interfaces/INetworkConfiguration.sol
+
+2: pragma solidity 0.8.22;
+
+```
+
+```solidity
+File: interfaces/IPermission.sol
+
+2: pragma solidity 0.8.22;
+
+```
+
+```solidity
+File: interfaces/IRandomNumberGenerator.sol
+
+2: pragma solidity 0.8.22;
+
+```
+
+```solidity
+File: interfaces/IReconfiguration.sol
+
+2: pragma solidity 0.8.22;
+
+```
+
+```solidity
+File: interfaces/ISignupBonusVesting.sol
+
+2: pragma solidity 0.8.22;
+
+```
+
+```solidity
+File: interfaces/IStakingDeposit.sol
+
+2: pragma solidity 0.8.22;
+
+```
+
+```solidity
+File: interfaces/ITombstonedNodes.sol
+
+2: pragma solidity 0.8.22;
 
 ```
 
@@ -7166,15 +7835,34 @@ File: utils.sol
  ### Use scientific notation (e.g. 1e18) rather than exponentiation (e.g. 10**18)
 While the compiler knows to optimize away the exponentiation, its still better coding practice to use idioms that do not require compiler optimization, if they exist.
 
-*Instances (1)*:
+*Instances (8)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: Promo.sol
+File: ReconfigurationUpgradeable.sol
 
-601:     uint256 public constant TOTAL_SUPPLY = 23383574 * 10 ** DECIMALS;
+269:         uint256 multiplier = 10 ** upgradeProbabilty.precision;
+
+289:             uint256 divisor = multiplier ** (dValue - 1);
+
+```
+
+```solidity
+File: StakingDepositUpgradeable.sol
+
+244:             (((1 + yearIndex) ** _gamma * 10 ** _theta.precision) -
+
+244:             (((1 + yearIndex) ** _gamma * 10 ** _theta.precision) -
+
+245:                 _theta.value) / (1 + yearIndex) ** _gamma;
+
+337:                     int256(10 ** _alpha.precision) +
+
+348:                 computeDem *= 10 ** _theta.precision;
+
+349:                 computeDem *= 10 ** _alpha.precision;
 
 ```
 
@@ -7186,57 +7874,94 @@ File: Promo.sol
  ### Nesting if-statements is cheaper than using &&
 Nesting if-statements avoids the stack operations of setting up and using an extra jumpdest, and saves 6 [gas](https://gist.github.com/IllIllI000/7f3b818abecfadbef93b894481ae7d19)
 
-*Instances (12)*:
+*Instances (23)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: ContentFund.sol
+File: ActivityMonitorUpgradeable.sol
 
-165:             msg.sender != author &&
+126:         return (timestamp > 0 &&
 
-166:             msg.sender != nft_owner &&
+151:             _inactivityVotes[nodeId].size() != 0 &&
 
-```
-
-```solidity
-File: ListMarket.sol
-
-45:         require(msg.value > 0 && msg.value == prices[list_name], "Wrong price");  // allow more price also owner can change
+210:                 (nodeVoteIndex == 0 &&
 
 ```
 
 ```solidity
-File: SavvaFaucet.sol
+File: ContractRoleAuthUpgradeable.sol
 
-73:         return roundPayWeek != 0 && week_now >= roundPayWeek;
+47:             !hasRole(ACTIVITY_MONITOR_CONTRACT_ROLE, _msgSender()) &&
 
-139:             if (amount > 0 && amount <= tokensLeft) {
-
-```
-
-```solidity
-File: Staking.sol
-
-263:         if (balanceOf(msg.sender) == 0 && user.accruedGain > 0) {
-
-328:         require(to != address(0) && to != msg.sender, "Invalid recipient");
-
-358:             if (request.amount > 0 && block.timestamp >= request.timestamp) {
-
-373:             if (request.amount > 0 && block.timestamp >= request.timestamp) {
-
-416:             event_contract != address(0) && event_id != bytes32(0),
+59:             !hasRole(JAILED_NODES_CONTRACT_ROLE, _msgSender()) &&
 
 ```
 
 ```solidity
-File: UserProfile.sol
+File: JailedNodesUpgradeable.sol
 
-35:                     (ch > 96 && ch < 123) || // a-z
+25:             !hasRedbellyRole &&
 
-36:                     (ch > 47 && ch < 58) ||  // 0-9
+26:             !(!hasRedbellyRole && isJailedNode(_msgSender()))
+
+238:             getRecentJailTenure(_governor).jailedTimestamp > 0 &&
+
+```
+
+```solidity
+File: NetworkConfigurationUpgradeable.sol
+
+461:             !_candidates.nodeExists(nodeAddress) &&
+
+```
+
+```solidity
+File: ReconfigurationUpgradeable.sol
+
+349:         for (uint256 i = 0; i < upto && j < count; i++) {
+
+445:                 ) && _isGovernorInCooloff[swappableGovernors[itr]]
+
+641:                 rbnFound < requiredRbn &&
+
+```
+
+```solidity
+File: SignupBonusVestingUpgradeable.sol
+
+260:         } else if (nodeId >= 200 && nodeId < 600) {
+
+```
+
+```solidity
+File: StakingDepositUpgradeable.sol
+
+87:             coolOffStartTimestamp[nodeId] > 0 &&
+
+101:             jailTenure.releasedTimestamp == 0 &&
+
+282:             nodeConfig.exitTimestamp > 0 &&
+
+289:             deposits[nodeConfig.id].depositTimestamp >= stakeStartTimestamp &&
+
+428:             if (jTenure.jailedTimestamp > 0 && jTenure.releasedTimestamp == 0) {
+
+521:             deposits[nodeId].redbellyDeposit > 0 &&
+
+527:             deposits[nodeId].redbellyDeposit > 0 &&
+
+528:             deposits[nodeId].redbellyDeposit < slashAmount &&
+
+542:             deposits[nodeId].redbellyDeposit == 0 &&
+
+```
+
+```solidity
+File: StakingEscrowUpgradeable.sol
+
+7:         if (payer != _msgSender() && owner() != _msgSender()) {
 
 ```
 
@@ -7248,112 +7973,39 @@ File: UserProfile.sol
  ### Consider using = instead of += and -= for gas efficiency
 Using = instead of += and -= can save gas in certain scenarios. Consider using = when appropriate.
 
-*Instances (42)*:
+*Instances (13)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: ContentFund.sol
+File: StakingDepositUpgradeable.sol
 
-227:             amount -= authorShare;
+354:                 rewardAmount += rewardOnStake;
 
-232:             amount -= nftShare;
+451:             timeInNetwork -= totalJailDuration;
 
-255:             funds[savva_cid].amount += amount;
+461:                 unstakeValue += signUpBonusToBeGiven;
 
-284:             totalShares += contributions[h][funds[h].contributors[i]];
+525:             deposits[nodeId].redbellyDeposit -= slashAmount;
 
-290:             runningShareSum += contributions[h][funds[h].contributors[i]];
+539:             deposits[nodeId].nodeOperatorDeposit -= deposits[nodeId]
 
-326:             funds[h].amount -= prize;
+546:             deposits[nodeId].nodeOperatorDeposit -= slashAmount;
 
-427:             total += nftBalance[tokenId];
+569:         deposits[nodeId].redbellyDeposit += deposits[nodeId]
 
-434:                 total += nftBalance[tokenId];
+572:         deposits[nodeId].nodeOperatorDeposit += deposits[nodeId]
 
-452:                 total += nftBalance[tokenId];
+588:         deposits[nodeId].depositedAmount += deposits[nodeId].slashedAmount;
 
-459:                 total += nftBalance[tokenId];
+590:         deposits[nodeId].nodeOperatorDeposit += msg.value;
 
-482:                 total += nftBalance[tokenId];
+627:         deposits[nodeId].depositedAmount -= _feeAmount;
 
-494:                     total += nftBalance[tokenId];
+630:             deposits[nodeId].redbellyDeposit -= _feeAmount;
 
-540:             total += contributions[savva_cid][funds[savva_cid].contributors[i]];
-
-```
-
-```solidity
-File: Promo.sol
-
-481:         _totalSupply += amount;
-
-512:             _totalSupply -= amount;
-
-```
-
-```solidity
-File: SavvaFaucet.sol
-
-109:         roundTotalDeposits += msg.value;
-
-142:                 tokensLeft -= amount;
-
-```
-
-```solidity
-File: Staking.sol
-
-141:             Second2OldestFrame.to_share += OldestFrame.to_share;
-
-166:             frames[currentFrameNumber & FRAME_MASK].to_share += new_gain;
-
-167:             totalInFrames += new_gain;
-
-200:             result += user_gain;
-
-202:         result += user.accruedGain;
-
-216:         frames[currentFrameNumber & FRAME_MASK].staked += amount;
-
-271:             totalAccruedGain -= gain;
-
-284:         totalUnstaking += amount;
-
-297:         totalAccruedGain -= amount;
-
-314:         totalAccruedGain -= amount;
-
-317:         frames[currentFrameNumber & FRAME_MASK].staked += amount;
-
-359:                 totalAmount += request.amount;
-
-374:                 totalAmount += request.amount;
-
-375:                 totalUnstaking -= request.amount;
-
-580:                     total += payment.amount;
-
-613:                     total += payment.amount;
-
-672:             frame.to_share -= user_gain;
-
-673:             totalInFrames -= user_gain;
-
-674:             frame.staked -= user_stake;
-
-676:             total_gain += user_gain;
-
-679:         user.accruedGain += total_gain;
-
-680:         totalAccruedGain += total_gain;
-
-709:             left2send -= from_ag;
-
-711:             sender.accruedGain -= from_ag;
-
-712:             totalAccruedGain -= from_ag;
+632:             deposits[nodeId].nodeOperatorDeposit -= _feeAmount;
 
 ```
 
@@ -7365,117 +8017,88 @@ File: Staking.sol
  ### Use >= instead of > for gas efficiency
 Using >= costs less gas than >. Consider using >= when appropriate.
 
-*Instances (37)*:
+*Instances (25)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: ContentFund.sol
+File: ActivityMonitorUpgradeable.sol
 
-79:                 if (funds[h].round_time > rt) {
+126:         return (timestamp > 0 &&
 
-126:                 funds[funds[savva_cid].SLLeft].round_time >
-
-225:         if (authorShare > 0) {
-
-230:         if (nftShare > 0) {
-
-251:                 funds[savva_cid].round_time > block.timestamp,
-
-325:         if (prize > 0) {
-
-330:         if (funds[h].amount > 0) {
-
-374:             if (funds[h].round_time > block.timestamp) break; // Round is not finished yet
-
-375:             if (funds[h].round_time > getRandom.getLastUpdateTime()) break; // Need to wait for new random
-
-501:         require(total > 0, "Nothing to withdraw");
+315:         if (_newInactivityThreshold > config.windowSize) {
 
 ```
 
 ```solidity
-File: ContentRegistry.sol
+File: JailedNodesUpgradeable.sol
 
-66:         require(bytes(guid).length > 0, "Guid can't be empty");
+223:         if (len > 0) {
 
-67:         require(bytes(domain).length > 0, "Domain can't be empty");
+238:             getRecentJailTenure(_governor).jailedTimestamp > 0 &&
 
-```
+331:         if (_slashPrcnt > 100) {
 
-```solidity
-File: ListMarket.sol
+362:             if (endTime < startTimestamp || startTime > endTimestamp) {
 
-45:         require(msg.value > 0 && msg.value == prices[list_name], "Wrong price");  // allow more price also owner can change
-
-```
-
-```solidity
-File: NFTMarketplace.sol
-
-53:         require(price > 0, "Price must be greater than 0");
-
-206:         require(price > 0, "Price must be greater than 0");
+370:                 (startTimestamp > startTime ? startTimestamp : startTime) +
 
 ```
 
 ```solidity
-File: SavvaFaucet.sol
+File: NetworkConfigurationUpgradeable.sol
 
-139:             if (amount > 0 && amount <= tokensLeft) {
+331:         if (amountReceived > registrationFee) {
 
-150:         if (tokensLeft > 0) {
+338:         if (registrationFee > amountReceived) {
 
-```
-
-```solidity
-File: Staking.sol
-
-165:         if (new_gain > 0) {
-
-207:         require(amount > 0, "Cannot stake 0");
-
-263:         if (balanceOf(msg.sender) == 0 && user.accruedGain > 0) {
-
-294:         require(user.accruedGain > 0, "No gain to claim");
-
-311:         require(user.accruedGain > 0, "No gain to compound");
-
-327:         require(amount > 0, "Amount must be greater than 0");
-
-358:             if (request.amount > 0 && block.timestamp >= request.timestamp) {
-
-373:             if (request.amount > 0 && block.timestamp >= request.timestamp) {
-
-380:         require(totalAmount > 0, "Nothing to claim");
-
-385:             if (user.unstakeRequests[i].amount > 0) {
-
-413:         require(amount > 0, "Amount must be greater than 0");
-
-493:         require(payment.amount > 0, "No such payment");
-
-574:             if (payment.amount > 0) {
-
-605:             if (payment.amount > 0) {
-
-627:         if (total > 0) {
-
-705:         if (sender.accruedGain > 0) {
-
-706:             uint256 from_ag = (left2send > sender.accruedGain)
-
-719:         if (left2send > 0) {
+375:         if (refundAmount > 0) {
 
 ```
 
 ```solidity
-File: UserProfile.sol
+File: ReconfigurationUpgradeable.sol
 
-35:                     (ch > 96 && ch < 123) || // a-z
+205:         if (candidatesNotInCooloff.length > 0) {
 
-36:                     (ch > 47 && ch < 58) ||  // 0-9
+288:         if (dValue > 0) {
+
+504:             if (candidatesFound.length > 0) {
+
+```
+
+```solidity
+File: SignupBonusVestingUpgradeable.sol
+
+180:             endTimestamp > nodeParameters.registrationTimestamp
+
+280:                 daysSinceRegistration > daysSpentInJail
+
+```
+
+```solidity
+File: StakingDepositUpgradeable.sol
+
+257:         if (yearIndex > 0) {
+
+282:             nodeConfig.exitTimestamp > 0 &&
+
+294:             deposits[nodeConfig.id].depositTimestamp > stakeEndTimestamp
+
+426:         if (signUpBonus > 0) {
+
+428:             if (jTenure.jailedTimestamp > 0 && jTenure.releasedTimestamp == 0) {
+
+438:             if (nodeConfig.exitTimestamp > 0) {
+
+457:             if (effectiveDaysForStake > 0) {
+
+492:         if (slashedAmount > 0) {
+
+521:             deposits[nodeId].redbellyDeposit > 0 &&
+
+527:             deposits[nodeId].redbellyDeposit > 0 &&
 
 ```
 
@@ -7487,24 +8110,37 @@ File: UserProfile.sol
  ### Using bools for storage incurs overhead
 Use uint256(1) and uint256(2) for true/false to avoid a Gwarmaccess (100 gas), and to avoid Gsset (20000 gas) when changing from ‘false’ to ‘true’, after having been ‘true’ in the past. See [source](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/58f635312aa21f947cae5f8578638a85aa2519f5/contracts/security/ReentrancyGuard.sol#L23-L27).
 
-*Instances (3)*:
+*Instances (7)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: ContentRegistry.sol
+File: IDPRegistryUpgradeable.sol
 
-40:     mapping(address => mapping(address => bool)) public allowed;
+14:     mapping(string => bool) private _issuerDidPresent;
 
-56:     mapping(address => mapping(address => bool)) public allowed;
+15:     mapping(uint256 => bool) public deletedUIDs;
+
+19:     mapping(string => bool) public isProofTypeSupported;
 
 ```
 
 ```solidity
-File: Promo.sol
+File: PermissionUpgradeable.sol
 
-612:     mapping(address => bool) public automatedMarketMakerPairs;
+9:     mapping(address => bool) private _isAuthorizedUser;
+
+11:     bool public isPermissionedAccessEnabled;
+
+```
+
+```solidity
+File: ReconfigurationUpgradeable.sol
+
+20:     mapping(address => bool) private _isGovernorInCooloff;
+
+21:     bool public biasedReconfiguration;
 
 ```
 
@@ -7516,79 +8152,113 @@ File: Promo.sol
  ### Cache array length outside of loop
 If not cached, the solidity compiler will always read the length of the array during each iteration. That is, if it is a storage array, this is an extra sload operation (100 additional extra gas for each iteration except for the first) and if it is a memory array, this is an extra mload operation (3 additional gas for each iteration except for the first).
 
-*Instances (18)*:
+*Instances (30)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: ContentFund.sol
+File: ActivityMonitorUpgradeable.sol
 
-283:         for (uint256 i = 0; i < funds[h].contributors.length; i++) {
-
-289:         for (uint256 i = 0; i < funds[h].contributors.length; i++) {
-
-351:             for (uint256 j = 0; j < funds[h].contributors.length; j++) {
-
-355:             for (uint256 j = 0; j < funds[h].contributors.length; j++) {
-
-539:         for (uint256 i = 0; i < funds[savva_cid].contributors.length; i++) {
+78:         for (uint256 i = 0; i < authAddresses.length; i++) {
 
 ```
 
 ```solidity
-File: ContentRegistry.sol
+File: IDPRegistryUpgradeable.sol
 
-120:         for (uint256 i = 0; i < domains.length; i++) {
+75:         for (uint256 i = 0; i < proofs.length; i++) {
 
-```
-
-```solidity
-File: NFTMarketplace.sol
-
-66:         for (uint256 i = 0; i < nftsByOwnerArray.length; i++) {
-
-181:         for (uint256 i = 0; i < nftsByOwnerArray.length; i++) {
+127:         for (uint256 i = 0; i < idpData.proofs.length; i++) {
 
 ```
 
 ```solidity
-File: SavvaFaucet.sol
+File: JailedNodesUpgradeable.sol
 
-132:         for (uint256 i = 0; i < depositors.length; i++) {
+118:         for (uint256 i = 0; i < authorizedUsers.length; i++) {
 
-```
-
-```solidity
-File: Staking.sol
-
-356:         for (uint256 i = 0; i < user.unstakeRequests.length; i++) {
-
-371:         for (uint256 i = 0; i < user.unstakeRequests.length; i++) {
-
-384:         for (uint256 i = 0; i < user.unstakeRequests.length; i++) {
-
-444:             for (uint256 i = 0; i < s_author.patrons.length; i++) {
-
-508:         for (uint256 i = 0; i < user.PayRecordsKeys.length; i++) {
-
-570:         for (uint256 i = 0; i < s_author.patrons.length; i++) {
-
-601:         for (uint256 i = 0; i < s_author.patrons.length; i++) {
+355:         for (uint256 i = 0; i < jailData.length; i++) {
 
 ```
 
 ```solidity
-File: UserProfile.sol
+File: NetworkConfigurationUpgradeable.sol
 
-32:         for (uint256 i; i < b.length; i++) {
+190:             for (uint256 i = 0; i < safeToUpgradeCandidates.length; i++) {
+
+249:         for (uint256 i = 0; i < _authorisedUsers.length; i++) {
+
+252:         for (uint256 i = 0; i < _bootStrapNodes.length; i++) {
+
+515:         for (uint256 i = 0; i < govs.length; i++) {
+
+584:         for (uint256 i = 0; i < allCandidates.length; i++) {
 
 ```
 
 ```solidity
-File: utils.sol
+File: PermissionUpgradeable.sol
 
-41:         for (uint256 i = 0; i < b.length; i++) {
+28:         for (uint256 i = 0; i < authAddresses.length; i++) {
+
+49:         for (uint256 i = 0; i < supportedProofTypes.length; i++) {
+
+136:         for (uint256 i = 0; i < proofs.length; i++) {
+
+246:         for (uint256 i = 0; i < result.length; i++) {
+
+```
+
+```solidity
+File: ReconfigurationUpgradeable.sol
+
+71:         for (uint256 i = 0; i < authorizedAddresses.length; i++) {
+
+107:         for (uint256 i = 0; i < candidates.length; i++) {
+
+232:                 for (uint256 i = 0; i < randomGovernors.length; i++) {
+
+307:         for (uint256 i = 0; i < safeToUpgradeCandidates.length; i++) {
+
+326:         for (uint256 i = 0; i < prioritisedForDowngradeGovernors.length; i++) {
+
+388:         for (uint256 i = 0; i < governors.length; i++) {
+
+427:         for (uint256 itr = 0; itr < swappableGovernors.length; itr++) {
+
+575:         for (uint256 i = 0; i < governorsToDowngrade.length; i++) {
+
+586:         for (uint256 i = 0; i < governorsToDowngrade.length; i++) {
+
+639:         for (uint256 i = 0; i < randomIndexes.length; i++) {
+
+688:             for (uint256 i = 0; i < governors.length; i++) {
+
+696:             for (uint256 i = 0; i < candidates.length; i++) {
+
+```
+
+```solidity
+File: SignupBonusVestingUpgradeable.sol
+
+93:         for (uint256 i = 0; i < bootNodeAddresses.length; i++) {
+
+97:         for (uint256 i = 0; i < _authorizedUsers.length; i++) {
+
+```
+
+```solidity
+File: StakingDepositUpgradeable.sol
+
+165:         for (uint256 i = 0; i < _authorisedUsers.length; i++) {
+
+```
+
+```solidity
+File: TombstonedNodesUpgradeable.sol
+
+32:         for (uint256 i = 0; i < _authorisedUsers.length; i++) { //@audit cache first
 
 ```
 
@@ -7600,28 +8270,36 @@ File: utils.sol
  ### Consider using assembly for simple zero checks to save gas
 Using assembly for simple zero checks can save gas. Consider using assembly when appropriate.
 
-*Instances (5)*:
+*Instances (4)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: ContentFund.sol
+File: ActivityMonitorUpgradeable.sol
 
-71:         if (SLRoot == 0) {     
-
-377:             if (random == 0) {
+373:             if (existingVoteTimestamp == 0) {
 
 ```
 
 ```solidity
-File: SavvaFaucet.sol
+File: JailedNodesUpgradeable.sol
 
-43:         if ( _round_seconds == 0 ) {  // non zero used for testing
+250:             if (releasedTimestamp == 0) {
 
-57:         if (roundPayWeek == 0) {
+```
 
-95:         if (roundPayWeek == 0) {
+```solidity
+File: ReconfigurationUpgradeable.sol
+
+278:             if (pie == 0) {
+
+```
+
+```solidity
+File: SignupBonusVestingUpgradeable.sol
+
+54:         if (signupBonus == 0) {
 
 ```
 
@@ -7635,44 +8313,38 @@ File: SavvaFaucet.sol
 #### Impact:
 While it doesnt save any gas because the compiler knows that developers often make this mistake, its still best to use the right tool for the task at hand. There is a difference between constant variables and immutable variables, and they should each be used in their appropriate contexts. constants should be used for literal values written into the code, and immutable variables should be used for expressions, or values calculated in, or passed into the constructor.  
 
-*Instances (8)*:
+*Instances (10)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: Promo.sol
+File: ContractRoleAuthUpgradeable.sol
 
-600:     uint256 public constant DECIMALS = 18;
+6:     bytes32 public constant RECONFIGURATION_CONTRACT_ROLE =
 
-601:     uint256 public constant TOTAL_SUPPLY = 23383574 * 10 ** DECIMALS;
+8:     bytes32 public constant ACTIVITY_MONITOR_CONTRACT_ROLE =
 
-```
+10:     bytes32 public constant JAILED_NODES_CONTRACT_ROLE =
 
-```solidity
-File: SavvaFaucet.sol
+12:     bytes32 public constant NETWORK_CONFIG_CONTRACT_ROLE =
 
-16:     uint256 constant TOKENS_PER_ROUND = 240000 ether; // (in SAVVA) Approximately 5% per year initially
-
-17:     uint256 constant STAKING_SHARE = 50; // 50% of the minted tokens go to staking contract
+14:     bytes32 public constant STAKING_DEPOSIT_CONTRACT_ROLE =
 
 ```
 
 ```solidity
-File: SavvaToken.sol
+File: RBACUpgradeable.sol
 
-17:     bytes32 private constant DELEGATION_TYPEHASH =
+6:     bytes32 public constant OWNER_ROLE = keccak256("OWNER_ROLE");
 
-```
+7:     bytes32 public constant REDBELLY_ROLE = keccak256("REDBELLY_ROLE");
 
-```solidity
-File: Staking.sol
+8:     bytes32 public constant IDP_ROLE = keccak256("IDP_ROLE");
 
-102:     uint256 constant SECONDS_PER_WEEK = 604800; //
+9:     bytes32 public constant REDBELLY_NODE_OPERATOR_ROLE =
 
-103:     uint256 constant TOTAL_FRAMES = 32; // approximatly 8 months
-
-104:     uint256 constant FRAME_MASK = 0x1F; // X & FRAME_MASK equals X % TOTAL_FRAMES
+11:     bytes32 public constant GOVERNOR_ROLE = keccak256("GOVERNOR_ROLE");
 
 ```
 
@@ -7681,92 +8353,95 @@ File: Staking.sol
 
 
  ### <a name="GAS-10"></a>[GAS-10]
- ### Constructors can be marked payable
-Payable functions cost less gas to execute, since the compiler does not have to add extra checks to ensure that a payment wasn  t provided. A constructor can safely be marked as payable, since only the deployer would be able to pass funds, and the project itself would not pass any funds.
+ ### Initializers can be marked as payable to save deployment gas
+Payable functions cost less gas to execute, because the compiler does not have to add extra checks to ensure that no payment is provided. Initializers can be safely marked as payable, because only the deployer or the factory contract would call the function without carrying any funds.
 
-*Instances (13)*:
+*Instances (12)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: Config.sol
+File: ActivityMonitorUpgradeable.sol
 
-17:     constructor(address _initialOwner) Ownable(_initialOwner) {
-
-```
-
-```solidity
-File: ContentFund.sol
-
-64:     constructor(address _config) {
+55:     function initialize(
 
 ```
 
 ```solidity
-File: ContentNFT.sol
+File: ContractRoleAuthUpgradeable.sol
 
-21:     constructor(address _config) ERC721("Savva Content NFT", "CNFT") {
-
-```
-
-```solidity
-File: ContentRegistry.sol
-
-42:     constructor(address _config) {
+69:     function initialize() public virtual override onlyInitializing {
 
 ```
 
 ```solidity
-File: ListMarket.sol
+File: IDPRegistryUpgradeable.sol
 
-19:     constructor(address _config, address _collector, address _initialOwner) Ownable(_initialOwner) {
-
-```
-
-```solidity
-File: NFTMarketplace.sol
-
-36:     constructor(address _config) {
+86:     function initialize() public virtual override initializer {
 
 ```
 
 ```solidity
-File: Promo.sol
+File: JailedNodesUpgradeable.sol
 
-57:     constructor() {
-
-279:     constructor(string memory name_, string memory symbol_) {
-
-614:     constructor(
+104:     function initialize(
 
 ```
 
 ```solidity
-File: RandomOracle.sol
+File: NetworkConfigurationUpgradeable.sol
 
-20:     constructor(address _initialOwner) Ownable(_initialOwner) {
-
-```
-
-```solidity
-File: SavvaFaucet.sol
-
-41:     constructor(address _config, address _token, uint256 _round_seconds) {
+240:     function initialize(
 
 ```
 
 ```solidity
-File: SavvaToken.sol
+File: PermissionUpgradeable.sol
 
-20:     constructor(
+19:     function initialize(
 
 ```
 
 ```solidity
-File: Staking.sol
+File: RBACUpgradeable.sol
 
-93:     constructor(
+30:     function initialize() public virtual onlyInitializing {
+
+```
+
+```solidity
+File: ReconfigurationUpgradeable.sol
+
+52:     function initialize(
+
+```
+
+```solidity
+File: SignupBonusVestingUpgradeable.sol
+
+73:     function initialize(
+
+```
+
+```solidity
+File: StakingDepositUpgradeable.sol
+
+148:     function initialize(
+
+```
+
+```solidity
+File: StakingEscrowUpgradeable.sol
+
+21:     function initialize() public virtual initializer {
+
+```
+
+```solidity
+File: TombstonedNodesUpgradeable.sol
+
+26:     function initialize(
 
 ```
 
@@ -7775,147 +8450,20 @@ File: Staking.sol
 
 
  ### <a name="GAS-11"></a>[GAS-11]
- ### Use Custom Errors
-[Source](https://blog.soliditylang.org/2021/04/21/custom-errors/)
-Instead of using error strings, to reduce deployment and runtime cost, you should use Custom Errors. This would save both deployment and runtime cost.
+ ### Use assembly for small keccak256 hashes, in order to save gas
+If the arguments to the encode call can fit into the scratch space (two words or fewer), then its more efficient to use assembly to generate the hash (80 gas): keccak256(abi.encodePacked(x, y)) -> assembly {mstore(0x00, a); mstore(0x20, b); let hash := keccak256(0x00, 0x40); }
 
-*Instances (45)*:
+*Instances (2)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: ContentFund.sol
+File: PermissionUpgradeable.sol
 
-379:                 require(random != 0, "Random is zero");
+138:                 keccak256(abi.encodePacked(proofs[i].proofType)) ==
 
-391:         require(nftBalance[tokenId] > 0, "Nothing to withdraw");
-
-501:         require(total > 0, "Nothing to withdraw");
-
-```
-
-```solidity
-File: ContentNFT.sol
-
-42:         require(msg.sender == author, "Only author can mint");
-
-49:         require(msg.value == price, "Wrong price"); // allow more and return dust
-
-64:         require(msg.sender == owner, "Only owner can burn");
-
-```
-
-```solidity
-File: ContentRegistry.sol
-
-66:         require(bytes(guid).length > 0, "Guid can't be empty");
-
-67:         require(bytes(domain).length > 0, "Domain can't be empty");
-
-92:         require(!exists, "NFT minted. Content change is not allowed.");
-
-```
-
-```solidity
-File: ListMarket.sol
-
-45:         require(msg.value > 0 && msg.value == prices[list_name], "Wrong price");  // allow more price also owner can change
-
-```
-
-```solidity
-File: NFTMarketplace.sol
-
-48:         require(nfts[tokenId].owner == address(0), "NFT already on market");
-
-53:         require(price > 0, "Price must be greater than 0");
-
-121:         require(nft.owner != address(0), "NFT not on market");
-
-156:         require(nft.owner != address(0), "NFT not on market");
-
-206:         require(price > 0, "Price must be greater than 0");
-
-```
-
-```solidity
-File: Promo.sol
-
-80:         require(owner() == _msgSender(), "Ownable: caller is not the owner");
-
-99:         require(newOwner != address(0), "Ownable: new owner is the zero address");
-
-425:         require(currentAllowance >= subtractedValue, "ERC20: decreased allowance below zero");
-
-448:         require(from != address(0), "ERC20: transfer from the zero address");
-
-449:         require(to != address(0), "ERC20: transfer to the zero address");
-
-454:         require(fromBalance >= amount, "ERC20: transfer amount exceeds balance");
-
-477:         require(account != address(0), "ERC20: mint to the zero address");
-
-503:         require(account != address(0), "ERC20: burn from the zero address");
-
-508:         require(accountBalance >= amount, "ERC20: burn amount exceeds balance");
-
-534:         require(owner != address(0), "ERC20: approve from the zero address");
-
-535:         require(spender != address(0), "ERC20: approve to the zero address");
-
-552:             require(currentAllowance >= amount, "ERC20: insufficient allowance");
-
-678:         require(automatedMarketMakerPairs[pair] != enabled, "Pair Already Enabled");
-
-```
-
-```solidity
-File: SavvaFaucet.sol
-
-164:         require(msg.sender == ORIGIN_ADDRESS, "Only origin can change origin");
-
-```
-
-```solidity
-File: Staking.sol
-
-207:         require(amount > 0, "Cannot stake 0");
-
-294:         require(user.accruedGain > 0, "No gain to claim");
-
-311:         require(user.accruedGain > 0, "No gain to compound");
-
-327:         require(amount > 0, "Amount must be greater than 0");
-
-328:         require(to != address(0) && to != msg.sender, "Invalid recipient");
-
-333:         require(success, "Insufficient staked balance");
-
-380:         require(totalAmount > 0, "Nothing to claim");
-
-413:         require(amount > 0, "Amount must be greater than 0");
-
-414:         require(author != address(0), "Invalid author");
-
-438:             require(ok, "Insufficient staked balance");
-
-463:                 require(ok, "Insufficient staked balance");
-
-493:         require(payment.amount > 0, "No such payment");
-
-```
-
-```solidity
-File: UserProfile.sol
-
-28:         require(owners[name] == address(0), "Name already taken"); // unique name
-
-56:         require(bytes(name).length != 0, "Name not set");
-
-72:         require(bytes(name).length != 0, "Name not set");
-
-73:         require(bytes(names[to]).length == 0, "Recipient already has a name");
+139:                 keccak256(abi.encodePacked(_proofType))
 
 ```
 
@@ -7924,8 +8472,8 @@ File: UserProfile.sol
 
 
  ### <a name="GAS-12"></a>[GAS-12]
- ### Use assembly for small keccak256 hashes, in order to save gas
-If the arguments to the encode call can fit into the scratch space (two words or fewer), then its more efficient to use assembly to generate the hash (80 gas): keccak256(abi.encodePacked(x, y)) -> assembly {mstore(0x00, a); mstore(0x20, b); let hash := keccak256(0x00, 0x40); }
+ ### Avoid fetching a low-level calls return data by using assembly
+Even if you dont assign the calls second return value, it still gets copied to memory. Use assembly instead to prevent this and save 159 gas: `(bool success,) = payable(receiver).call{gas: gas, value: value}("");` -> `bool success; assembly { success := call(gas, receiver, value, 0, 0, 0, 0)` }
 
 *Instances (6)*:
  
@@ -7933,29 +8481,29 @@ If the arguments to the encode call can fit into the scratch space (two words or
  <summary>Click to expand!</summary>
 
 ```solidity
-File: ContentFund.sol
+File: JailedNodesUpgradeable.sol
 
-382:                     keccak256(abi.encode(random ^ block.timestamp))
+307:         (bool sent, ) = payable(address(stakingDepository)).call{
 
-```
-
-```solidity
-File: Staking.sol
-
-420:         bytes32 key = keccak256(
-
-487:         bytes32 key = keccak256(
-
-566:         bytes32 key = keccak256(
-
-599:         bytes32 key = keccak256(abi.encodePacked(msg.sender, event_id, author));
+380:         (bool sent, ) = payable(treasuryAddress).call{value: slashedStake}("");
 
 ```
 
 ```solidity
-File: utils.sol
+File: SignupBonusVestingUpgradeable.sol
 
-16:         return uint256(keccak256(abi.encodePacked(author, domain, guid)));
+145:         (bool sent, ) = payable(_msgSender()).call{value: claimableTokens}("");
+
+```
+
+```solidity
+File: StakingDepositUpgradeable.sol
+
+371:         (bool sent, ) = payable(_msgSender()).call{value: rewardsToBeClaimed}(
+
+475:         (bool sent, ) = payable(_msgSender()).call{value: unstakeValue}("");
+
+481:         (bool sentToTreasury, ) = payable(_treasuryAddress).call{
 
 ```
 
@@ -7967,109 +8515,169 @@ File: utils.sol
  ### Reduce gas usage by moving to Solidity 0.8.19 or later
 Solidity version 0.8.19 introduced a number of gas optimizations, refer to the [Solidity 0.8.19 Release Announcement](https://soliditylang.org/blog/2023/02/22/solidity-0.8.19-release-announcement) for details.
 
-*Instances (18)*:
+*Instances (23)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: Config.sol
+File: ActivityMonitorUpgradeable.sol
 
-7: pragma solidity ^0.8.18;
-
-```
-
-```solidity
-File: ContentFund.sol
-
-7: pragma solidity ^0.8.18;
+2: pragma solidity 0.8.22;
 
 ```
 
 ```solidity
-File: ContentNFT.sol
+File: ArtifactsFromRbnCore.sol
 
-7: pragma solidity ^0.8.18;
-
-```
-
-```solidity
-File: ContentRegistry.sol
-
-7: pragma solidity ^0.8.18;
+2: pragma solidity 0.8.22;
 
 ```
 
 ```solidity
-File: ListMarket.sol
+File: ContractRoleAuthUpgradeable.sol
 
-7: pragma solidity ^0.8.18;
-
-```
-
-```solidity
-File: NFTMarketplace.sol
-
-7: pragma solidity ^0.8.18;
+2: pragma solidity 0.8.22;
 
 ```
 
 ```solidity
-File: Promo.sol
+File: IDPRegistryUpgradeable.sol
 
-7: pragma solidity ^0.8.0;
-
-34: pragma solidity ^0.8.0;
-
-119: pragma solidity ^0.8.0;
-
-200: pragma solidity ^0.8.0;
-
-230: pragma solidity ^0.8.0;
-
-595: pragma solidity ^0.8.0;
+2: pragma solidity 0.8.22;
 
 ```
 
 ```solidity
-File: RandomOracle.sol
+File: JailedNodesUpgradeable.sol
 
-7: pragma solidity ^0.8.18;
-
-```
-
-```solidity
-File: SavvaFaucet.sol
-
-7: pragma solidity ^0.8.18;
+2: pragma solidity 0.8.22;
 
 ```
 
 ```solidity
-File: SavvaToken.sol
+File: NetworkConfigurationUpgradeable.sol
 
-8: pragma solidity ^0.8.18;
-
-```
-
-```solidity
-File: Staking.sol
-
-2: pragma solidity ^0.8.0;
+2: pragma solidity 0.8.22;
 
 ```
 
 ```solidity
-File: UserProfile.sol
+File: PermissionUpgradeable.sol
 
-7: pragma solidity ^0.8.18;
+2: pragma solidity 0.8.22;
 
 ```
 
 ```solidity
-File: utils.sol
+File: RBACUpgradeable.sol
 
-7: pragma solidity ^0.8.18;
+2: pragma solidity 0.8.22;
+
+```
+
+```solidity
+File: ReconfigurationUpgradeable.sol
+
+2: pragma solidity 0.8.22;
+
+```
+
+```solidity
+File: SignupBonusVestingUpgradeable.sol
+
+2: pragma solidity 0.8.22;
+
+```
+
+```solidity
+File: StakingDepositUpgradeable.sol
+
+2: pragma solidity 0.8.22;
+
+```
+
+```solidity
+File: StakingEscrowUpgradeable.sol
+
+2: pragma solidity 0.8.22;
+
+```
+
+```solidity
+File: TombstonedNodesUpgradeable.sol
+
+2: pragma solidity 0.8.22;
+
+```
+
+```solidity
+File: interfaces/IActivityMonitor.sol
+
+2: pragma solidity 0.8.22;
+
+```
+
+```solidity
+File: interfaces/IIDPRegistry.sol
+
+2: pragma solidity 0.8.22;
+
+```
+
+```solidity
+File: interfaces/IJailedNodes.sol
+
+2: pragma solidity 0.8.22;
+
+```
+
+```solidity
+File: interfaces/INetworkConfiguration.sol
+
+2: pragma solidity 0.8.22;
+
+```
+
+```solidity
+File: interfaces/IPermission.sol
+
+2: pragma solidity 0.8.22;
+
+```
+
+```solidity
+File: interfaces/IRandomNumberGenerator.sol
+
+2: pragma solidity 0.8.22;
+
+```
+
+```solidity
+File: interfaces/IReconfiguration.sol
+
+2: pragma solidity 0.8.22;
+
+```
+
+```solidity
+File: interfaces/ISignupBonusVesting.sol
+
+2: pragma solidity 0.8.22;
+
+```
+
+```solidity
+File: interfaces/IStakingDeposit.sol
+
+2: pragma solidity 0.8.22;
+
+```
+
+```solidity
+File: interfaces/ITombstonedNodes.sol
+
+2: pragma solidity 0.8.22;
 
 ```
 
@@ -8081,54 +8689,92 @@ File: utils.sol
  ### Functions guaranteed to revert when called by normal users can be marked `payable`
 If a function modifier such as `onlyOwner` is used, the function will revert if a normal user tries to pay the function. Marking the function as `payable` will lower the gas cost for legitimate callers because the compiler will not include checks for whether a payment was provided.
 
-*Instances (13)*:
+*Instances (17)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: ListMarket.sol
+File: ActivityMonitorUpgradeable.sol
 
-27:     function setPrice(string memory list_name, uint256 price) public onlyOwner {
-
-```
-
-```solidity
-File: Promo.sol
-
-90:     function renounceOwnership() public virtual onlyOwner {
-
-98:     function transferOwnership(address newOwner) public virtual onlyOwner {
-
-649:     function setLiquidityWallet(address _liquidityWallet) external onlyOwner {
-
-653:     function setMarketingWallet(address _marketingWallet) external onlyOwner {
-
-657:     function setDevelopmentWallet(address _developmentWallet) external onlyOwner {
-
-661:     function setSellTax(uint256 _sellTax) external onlyOwner {
-
-665:     function setLiquidityTax(uint256 _liquidityTax) external onlyOwner {
-
-669:     function setMarketingTax(uint256 _marketingTax) external onlyOwner {
-
-673:     function setDevelopmentTax(uint256 _devTax) external onlyOwner {
-
-677:     function setAutomatedMarketMakerPair(address pair, bool enabled) public onlyOwner {   
+288:     function updateWindowSize(uint256 _newWindowSize) external onlyRedbelly {
 
 ```
 
 ```solidity
-File: RandomOracle.sol
+File: ContractRoleAuthUpgradeable.sol
 
-24:     function setUpdaterAccount(address _updaterAccount) public onlyOwner {
+69:     function initialize() public virtual override onlyInitializing {
 
 ```
 
 ```solidity
-File: SavvaToken.sol
+File: JailedNodesUpgradeable.sol
 
-31:     function mint(uint256 amount) public override onlyOwner {
+330:     function setSlashPrcnt(uint8 _slashPrcnt) external onlyRedbelly {
+
+343:     function setDaysToServe(uint256 _daysToServe) public onlyRedbelly {
+
+```
+
+```solidity
+File: NetworkConfigurationUpgradeable.sol
+
+167:     function removeCandidate(address nodeAddress) external onlyRedbelly {
+
+407:     function removeGovernor(address nodeAddress) public onlyRedbelly {
+
+422:     function addRedbellyNodes(address nodeAddress) public onlyRedbelly {
+
+426:     function removeRedbellyNodes(address nodeAddress) public onlyRedbelly {
+
+```
+
+```solidity
+File: PermissionUpgradeable.sol
+
+121:     function enablePermissionedAccess() external onlyRedbelly {
+
+```
+
+```solidity
+File: RBACUpgradeable.sol
+
+30:     function initialize() public virtual onlyInitializing {
+
+```
+
+```solidity
+File: ReconfigurationUpgradeable.sol
+
+195:     function triggerReconfiguration() public onlyAfterReconfigInterval {
+
+```
+
+```solidity
+File: StakingDepositUpgradeable.sol
+
+135:     function setRewardCycle(uint256 _newRewardCycle) external onlyRedbelly {
+
+231:     function setValueOfGamma(uint256 _value) external onlyRedbelly {
+
+```
+
+```solidity
+File: StakingEscrowUpgradeable.sol
+
+15:     function __stakingEscrowInit() internal onlyInitializing {
+
+19:     function __stakingEscrowInitUnchained() internal onlyInitializing {}
+
+```
+
+```solidity
+File: TombstonedNodesUpgradeable.sol
+
+68:     function tombstone(address _nodeAddress) external onlyJailedNodesContract {
+
+96:     function setTombstoneThreshold(uint256 _threshold) external onlyRedbelly {
 
 ```
 
@@ -8140,105 +8786,185 @@ File: SavvaToken.sol
  ### `++i` costs less gas than `i++`, especially when it's used in `for`-loops (`--i`/`i--` too)
 *Saves 5 gas per loop*
 
-*Instances (31)*:
+*Instances (66)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: ContentFund.sol
+File: ActivityMonitorUpgradeable.sol
 
-283:         for (uint256 i = 0; i < funds[h].contributors.length; i++) {
-
-289:         for (uint256 i = 0; i < funds[h].contributors.length; i++) {
-
-351:             for (uint256 j = 0; j < funds[h].contributors.length; j++) {
-
-355:             for (uint256 j = 0; j < funds[h].contributors.length; j++) {
-
-424:         for (uint256 i = 0; i < nft.balanceOf(owner); i++) {
-
-430:         for (uint256 i = 0; i < nft.balanceOf(address(mp)); i++) {
-
-449:         for (uint256 i = 0; i < nft.balanceOf(msg.sender); i++) {
-
-455:         for (uint256 i = 0; i < nft.balanceOf(address(mp)); i++) {
-
-477:         for (uint256 i = 0; i < nft.balanceOf(msg.sender); i++) {
-
-488:         for (uint256 i = 0; i < nft.balanceOf(address(mp)); i++) {
-
-539:         for (uint256 i = 0; i < funds[savva_cid].contributors.length; i++) {
+78:         for (uint256 i = 0; i < authAddresses.length; i++) {
 
 ```
 
 ```solidity
-File: ContentRegistry.sol
+File: IDPRegistryUpgradeable.sol
 
-120:         for (uint256 i = 0; i < domains.length; i++) {
+75:         for (uint256 i = 0; i < proofs.length; i++) {
 
-```
+118:         for (uint256 i = 0; i < idpProofCounts[uid]; i++) {
 
-```solidity
-File: NFTMarketplace.sol
+127:         for (uint256 i = 0; i < idpData.proofs.length; i++) {
 
-66:         for (uint256 i = 0; i < nftsByOwnerArray.length; i++) {
+144:         for (uint256 i = 0; i < _uidCounter; i++) {
 
-181:         for (uint256 i = 0; i < nftsByOwnerArray.length; i++) {
+147:                 index++;
 
-```
+158:         for (uint256 i = 0; i < idpProofCounts[uid]; i++) {
 
-```solidity
-File: SavvaFaucet.sol
+205:         for (uint256 i = 0; i < idpProofCounts[uid]; i++) {
 
-132:         for (uint256 i = 0; i < depositors.length; i++) {
+271:         for (uint256 i = 0; i < _uidCounter; i++) {
 
-```
-
-```solidity
-File: Staking.sol
-
-152:             currentFrameNumber++;
-
-184:         for (uint256 i = 1; i < TOTAL_FRAMES; i++) {
-
-356:         for (uint256 i = 0; i < user.unstakeRequests.length; i++) {
-
-371:         for (uint256 i = 0; i < user.unstakeRequests.length; i++) {
-
-384:         for (uint256 i = 0; i < user.unstakeRequests.length; i++) {
-
-389:                 j++;
-
-396:         for (uint256 i = 0; i < n_to_pop; i++) {
-
-444:             for (uint256 i = 0; i < s_author.patrons.length; i++) {
-
-508:         for (uint256 i = 0; i < user.PayRecordsKeys.length; i++) {
-
-520:             for (uint256 i = 0; i < n_to_pop; i++) {
-
-570:         for (uint256 i = 0; i < s_author.patrons.length; i++) {
-
-601:         for (uint256 i = 0; i < s_author.patrons.length; i++) {
-
-650:         for (uint256 i = 1; i < TOTAL_FRAMES; i++) {
+273:                 deletedCount++;
 
 ```
 
 ```solidity
-File: UserProfile.sol
+File: JailedNodesUpgradeable.sol
 
-32:         for (uint256 i; i < b.length; i++) {
+118:         for (uint256 i = 0; i < authorizedUsers.length; i++) {
+
+247:         for (uint256 i = 0; i < getJailCountForNode(_address); i++) {
+
+355:         for (uint256 i = 0; i < jailData.length; i++) {
 
 ```
 
 ```solidity
-File: utils.sol
+File: NetworkConfigurationUpgradeable.sol
 
-24:         for (z = 0; z < 32; z++) {
+190:             for (uint256 i = 0; i < safeToUpgradeCandidates.length; i++) {
 
-41:         for (uint256 i = 0; i < b.length; i++) {
+195:                     currIndex++;
+
+249:         for (uint256 i = 0; i < _authorisedUsers.length; i++) {
+
+252:         for (uint256 i = 0; i < _bootStrapNodes.length; i++) {
+
+515:         for (uint256 i = 0; i < govs.length; i++) {
+
+517:                 count++;
+
+584:         for (uint256 i = 0; i < allCandidates.length; i++) {
+
+587:                 currIndex++;
+
+591:         for (uint256 i = 0; i < currIndex; i++) {
+
+```
+
+```solidity
+File: PermissionUpgradeable.sol
+
+28:         for (uint256 i = 0; i < authAddresses.length; i++) {
+
+49:         for (uint256 i = 0; i < supportedProofTypes.length; i++) {
+
+136:         for (uint256 i = 0; i < proofs.length; i++) {
+
+246:         for (uint256 i = 0; i < result.length; i++) {
+
+```
+
+```solidity
+File: ReconfigurationUpgradeable.sol
+
+71:         for (uint256 i = 0; i < authorizedAddresses.length; i++) {
+
+107:         for (uint256 i = 0; i < candidates.length; i++) {
+
+118:                 currIndex++;
+
+123:         for (uint256 i = 0; i < currIndex; i++) {
+
+215:                 i++
+
+232:                 for (uint256 i = 0; i < randomGovernors.length; i++) {
+
+253:         for (uint256 dValue = 1; dValue < _reconfigurationsCounter; dValue++) {
+
+307:         for (uint256 i = 0; i < safeToUpgradeCandidates.length; i++) {
+
+326:         for (uint256 i = 0; i < prioritisedForDowngradeGovernors.length; i++) {
+
+349:         for (uint256 i = 0; i < upto && j < count; i++) {
+
+352:                     j++
+
+364:                     j++
+
+388:         for (uint256 i = 0; i < governors.length; i++) {
+
+393:                 idx++;
+
+408:         for (uint256 i = 0; i < count; i++) {
+
+427:         for (uint256 itr = 0; itr < swappableGovernors.length; itr++) {
+
+532:                 for (itr = 0; itr < swapSize; itr++) {
+
+539:                 for (itr = 0; itr < nonRbnSwapSize; itr++) {
+
+562:             for (uint256 i = 0; i < swapSize; i++) {
+
+575:         for (uint256 i = 0; i < governorsToDowngrade.length; i++) {
+
+577:                 rbnGovernorsLen++;
+
+586:         for (uint256 i = 0; i < governorsToDowngrade.length; i++) {
+
+588:                 rbnGovernors[rbnLen++] = governorsToDowngrade[i].nodeAddress;
+
+590:                 nonRbnGovernors[nonRbnLen++] = governorsToDowngrade[i]
+
+639:         for (uint256 i = 0; i < randomIndexes.length; i++) {
+
+644:                 rbnCandidates[rbnFound++] = candidatesNotInCooloff[
+
+648:                 nonRbnCandidates[nonRbnFound++] = candidatesNotInCooloff[
+
+657:         for (uint256 i = 0; i < rbnFound; i++) {
+
+658:             candidatesFound[candidatesFoundIdx++] = rbnCandidates[i];
+
+660:         for (uint256 i = 0; i < nonRbnFound; i++) {
+
+661:             candidatesFound[candidatesFoundIdx++] = nonRbnCandidates[i];
+
+688:             for (uint256 i = 0; i < governors.length; i++) {
+
+693:                         .totalGovernors++;
+
+696:             for (uint256 i = 0; i < candidates.length; i++) {
+
+701:                         .totalCandidates++;
+
+```
+
+```solidity
+File: SignupBonusVestingUpgradeable.sol
+
+93:         for (uint256 i = 0; i < bootNodeAddresses.length; i++) {
+
+97:         for (uint256 i = 0; i < _authorizedUsers.length; i++) {
+
+```
+
+```solidity
+File: StakingDepositUpgradeable.sol
+
+165:         for (uint256 i = 0; i < _authorisedUsers.length; i++) {
+
+328:         for (uint256 yearIndex = 0; yearIndex <= yearIndexes; yearIndex++) {
+
+```
+
+```solidity
+File: TombstonedNodesUpgradeable.sol
+
+32:         for (uint256 i = 0; i < _authorisedUsers.length; i++) { //@audit cache first
 
 ```
 
@@ -8250,17 +8976,38 @@ File: utils.sol
  ### Using `private` rather than `public` for constants, saves gas
 If needed, the values can be read from the verified contract source code, or if there are multiple values there can be a single getter function that [returns a tuple](https://github.com/code-423n4/2022-08-frax/blob/90f55a9ce4e25bceed3a74290b854341d8de6afa/src/contracts/FraxlendPair.sol#L156-L178) of the values of all currently-public constants. Saves **3406-3606 gas** in deployment gas due to the compiler not having to create non-payable getter functions for deployment calldata, not having to store the bytes of the value outside of where it's used, and not adding another entry to the method ID table
 
-*Instances (2)*:
+*Instances (10)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: Promo.sol
+File: ContractRoleAuthUpgradeable.sol
 
-600:     uint256 public constant DECIMALS = 18;
+6:     bytes32 public constant RECONFIGURATION_CONTRACT_ROLE =
 
-601:     uint256 public constant TOTAL_SUPPLY = 23383574 * 10 ** DECIMALS;
+8:     bytes32 public constant ACTIVITY_MONITOR_CONTRACT_ROLE =
+
+10:     bytes32 public constant JAILED_NODES_CONTRACT_ROLE =
+
+12:     bytes32 public constant NETWORK_CONFIG_CONTRACT_ROLE =
+
+14:     bytes32 public constant STAKING_DEPOSIT_CONTRACT_ROLE =
+
+```
+
+```solidity
+File: RBACUpgradeable.sol
+
+6:     bytes32 public constant OWNER_ROLE = keccak256("OWNER_ROLE");
+
+7:     bytes32 public constant REDBELLY_ROLE = keccak256("REDBELLY_ROLE");
+
+8:     bytes32 public constant IDP_ROLE = keccak256("IDP_ROLE");
+
+9:     bytes32 public constant REDBELLY_NODE_OPERATOR_ROLE =
+
+11:     bytes32 public constant GOVERNOR_ROLE = keccak256("GOVERNOR_ROLE");
 
 ```
 
@@ -8269,110 +9016,63 @@ File: Promo.sol
 
 
  ### <a name="GAS-17"></a>[GAS-17]
- ### require()/revert() strings longer than 32 bytes cost extra gas
-Each extra memory word of bytes past the original 32 [incurs an MSTORE](https://gist.github.com/hrkrshnn/ee8fabd532058307229d65dcd5836ddc#consider-having-short-revert-strings) which costs 3 gas.
+ ### Structs can be packed into fewer storage slots
+Each slot saved can avoid an extra Gsset (20000 gas) for the first setting of the struct. Subsequent reads as well as writes have smaller gas savings
 
-*Instances (27)*:
+*Instances (11)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: ContentFund.sol
+File: ReconfigurationUpgradeable.sol
 
-250:             require(
-
-379:                 require(random != 0, "Random is zero");
+11:     struct NodeAddressWithOwner {
 
 ```
 
 ```solidity
-File: ContentNFT.sol
+File: StakingDepositUpgradeable.sol
 
-42:         require(msg.sender == author, "Only author can mint");
+9:     struct FloatValue {
 
-49:         require(msg.value == price, "Wrong price"); // allow more and return dust
-
-```
-
-```solidity
-File: ContentRegistry.sol
-
-68:         require(
-
-92:         require(!exists, "NFT minted. Content change is not allowed.");
+14:     struct Deposit {
 
 ```
 
 ```solidity
-File: ListMarket.sol
+File: interfaces/IIDPRegistry.sol
 
-45:         require(msg.value > 0 && msg.value == prices[list_name], "Wrong price");  // allow more price also owner can change
+5:     struct Proof {
 
-```
+10:     struct IDPInformation {
 
-```solidity
-File: NFTMarketplace.sol
-
-53:         require(price > 0, "Price must be greater than 0");
-
-85:         require(
-
-122:         require(
-
-136:         require(
-
-157:         require(
-
-170:         require(
-
-206:         require(price > 0, "Price must be greater than 0");
+17:     struct IDPInformationIO {
 
 ```
 
 ```solidity
-File: Promo.sol
+File: interfaces/IJailedNodes.sol
 
-425:         require(currentAllowance >= subtractedValue, "ERC20: decreased allowance below zero");
-
-454:         require(fromBalance >= amount, "ERC20: transfer amount exceeds balance");
-
-508:         require(accountBalance >= amount, "ERC20: burn amount exceeds balance");
-
-552:             require(currentAllowance >= amount, "ERC20: insufficient allowance");
+5:     struct JailTenure {
 
 ```
 
 ```solidity
-File: RandomOracle.sol
+File: interfaces/IPermission.sol
 
-37:         require(
+7:     struct Query {
 
-```
-
-```solidity
-File: SavvaFaucet.sol
-
-88:         require(
+12:     struct SupportedCredential {
 
 ```
 
 ```solidity
-File: Staking.sol
+File: interfaces/IReconfiguration.sol
 
-207:         require(amount > 0, "Cannot stake 0");
+7:     struct NetworkConfiguration {
 
-294:         require(user.accruedGain > 0, "No gain to claim");
-
-311:         require(user.accruedGain > 0, "No gain to compound");
-
-333:         require(success, "Insufficient staked balance");
-
-413:         require(amount > 0, "Amount must be greater than 0");
-
-438:             require(ok, "Insufficient staked balance");
-
-493:         require(payment.amount > 0, "No such payment");
+12:     struct UpgradeProbability {
 
 ```
 
@@ -8381,24 +9081,18 @@ File: Staking.sol
 
 
  ### <a name="GAS-18"></a>[GAS-18]
- ### Splitting require() statements that use && saves gas
+ ### Variables can be packed into fewer storage slots by truncating timestamp bytes
+By using a uint32 rather than a larger type for variables that track timestamps, one can save gas at the expense of the protocol breaking after the year 2106 (when uint32 wraps). Subsequent reads as well as writes have smaller gas savings
 
-*Instances (2)*:
+*Instances (1)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: ListMarket.sol
+File: StakingDepositUpgradeable.sol
 
-45:         require(msg.value > 0 && msg.value == prices[list_name], "Wrong price");  // allow more price also owner can change
-
-```
-
-```solidity
-File: Staking.sol
-
-328:         require(to != address(0) && to != msg.sender, "Invalid recipient");
+435:             uint256 networkExitTimestamp = block.timestamp;
 
 ```
 
@@ -8407,38 +9101,73 @@ File: Staking.sol
 
 
  ### <a name="GAS-19"></a>[GAS-19]
- ### Structs can be packed into fewer storage slots
-Each slot saved can avoid an extra Gsset (20000 gas) for the first setting of the struct. Subsequent reads as well as writes have smaller gas savings
+ ### Consider using uint256(1)/uint256(2) instead of true/false for gas efficiency
+Using uint256(1) and uint256(2) instead of true and false can save gas for certain changes. Consider using uint256(1)/uint256(2) when appropriate.
 
-*Instances (6)*:
+*Instances (21)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: ContentFund.sol
+File: IDPRegistryUpgradeable.sol
 
-20:     struct Fund {
+124:         _issuerDidPresent[idpData.issuerDid] = true;
+
+132:                 isProofTypeSupported[idpData.proofs[i].proofType] = true;
+
+248:         deletedUIDs[uid] = true;
+
+249:         _issuerDidPresent[idpInfo.issuerDid] = false;
+
+265:         _issuerDidPresent[issuerDid] = false;
 
 ```
 
 ```solidity
-File: NFTMarketplace.sol
+File: PermissionUpgradeable.sol
 
-19:     struct NFT {
+122:         isPermissionedAccessEnabled = true;
+
+154:         return true;
+
+161:         _isAuthorizedUser[_userAddress] = true;
+
+176:         bool callresult = false;
+
+248:                 return true;
+
+253:         return false;
+
+259:         bool callresult = false;
+
+313:         bool callresult = false;
 
 ```
 
 ```solidity
-File: Staking.sol
+File: ReconfigurationUpgradeable.sol
 
-15:     struct UnstakeRequest {
+88:         _isGovernorInCooloff[addr] = true;
 
-20:     struct PayRecord {
+256:                 return (0, false);
 
-28:     struct Staker {
+259:                 return (dValue, true);
 
-106:     struct Frame {
+262:         return (0, false);
+
+448:                 _isGovernorInCooloff[swappableGovernors[itr]] = false;
+
+453:                 _isGovernorInCooloff[swappableGovernors[itr]] = false;
+
+```
+
+```solidity
+File: TombstonedNodesUpgradeable.sol
+
+103:             return true;
+
+105:         return false;
 
 ```
 
@@ -8447,71 +9176,43 @@ File: Staking.sol
 
 
  ### <a name="GAS-20"></a>[GAS-20]
- ### Consider using uint256(1)/uint256(2) instead of true/false for gas efficiency
-Using uint256(1) and uint256(2) instead of true and false can save gas for certain changes. Consider using uint256(1)/uint256(2) when appropriate.
+ ### Usage of uints/ints smaller than 32 bytes (256 bits) incurs overhead
+Using uints or ints smaller than 32 bytes (256 bits) can incur overhead. Consider using uint256 or int256 to avoid potential issues.
 
-*Instances (20)*:
+*Instances (6)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: ContentFund.sol
+File: JailedNodesUpgradeable.sol
 
-129:                 return false;
+11:     uint8 public slashPrcnt;
 
-138:                 return false;
+106:         uint8 _slashPrcnt,
 
-142:         return true;
-
-```
-
-```solidity
-File: ContentRegistry.sol
-
-48:         allowed[msg.sender][allowed_address] = true;
-
-53:         allowed[msg.sender][allowed_address] = false;
-
-83:         bool exists = false;
-
-89:             exists = true;
+330:     function setSlashPrcnt(uint8 _slashPrcnt) external onlyRedbelly {
 
 ```
 
 ```solidity
-File: Promo.sol
+File: StakingDepositUpgradeable.sol
 
-341:         return true;
-
-364:         return true;
-
-387:         return true;
-
-405:         return true;
-
-430:         return true;
+508:         uint8 _amountPrcnt
 
 ```
 
 ```solidity
-File: Staking.sol
+File: interfaces/IJailedNodes.sol
 
-443:             bool found = false;
+18:     function setSlashPrcnt(uint8 _slashPrcnt) external;
 
-446:                     found = true;
+```
 
-507:         bool found = false;
+```solidity
+File: interfaces/IStakingDeposit.sol
 
-511:                 found = true;
-
-690:             return false;
-
-694:             return true;
-
-721:                 return false;
-
-726:         return true;
+27:     function slashStake(address _depositor, uint8 _amountPrcnt) external;
 
 ```
 
@@ -8520,50 +9221,90 @@ File: Staking.sol
 
 
  ### <a name="GAS-21"></a>[GAS-21]
- ### Usage of uints/ints smaller than 32 bytes (256 bits) incurs overhead
-Using uints or ints smaller than 32 bytes (256 bits) can incur overhead. Consider using uint256 or int256 to avoid potential issues.
+ ### Use != 0 instead of > for unsigned integer comparison
 
-*Instances (7)*:
+*Instances (25)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: ContentFund.sol
+File: ActivityMonitorUpgradeable.sol
 
-191:         uint8 v,
+126:         return (timestamp > 0 &&
 
-```
-
-```solidity
-File: NFTMarketplace.sol
-
-107:         uint8 v,
+315:         if (_newInactivityThreshold > config.windowSize) {
 
 ```
 
 ```solidity
-File: Promo.sol
+File: JailedNodesUpgradeable.sol
 
-222:     function decimals() external view returns (uint8);
+223:         if (len > 0) {
 
-312:     function decimals() public view virtual override returns (uint8) {
+238:             getRecentJailTenure(_governor).jailedTimestamp > 0 &&
+
+331:         if (_slashPrcnt > 100) {
+
+362:             if (endTime < startTimestamp || startTime > endTimestamp) {
+
+370:                 (startTimestamp > startTime ? startTimestamp : startTime) +
 
 ```
 
 ```solidity
-File: Staking.sol
+File: NetworkConfigurationUpgradeable.sol
 
-230:         uint8 _v,
+331:         if (amountReceived > registrationFee) {
+
+338:         if (registrationFee > amountReceived) {
+
+375:         if (refundAmount > 0) {
 
 ```
 
 ```solidity
-File: UserProfile.sol
+File: ReconfigurationUpgradeable.sol
 
-33:             uint8 ch = uint8(b[i]);
+205:         if (candidatesNotInCooloff.length > 0) {
 
-33:             uint8 ch = uint8(b[i]);
+288:         if (dValue > 0) {
+
+504:             if (candidatesFound.length > 0) {
+
+```
+
+```solidity
+File: SignupBonusVestingUpgradeable.sol
+
+180:             endTimestamp > nodeParameters.registrationTimestamp
+
+280:                 daysSinceRegistration > daysSpentInJail
+
+```
+
+```solidity
+File: StakingDepositUpgradeable.sol
+
+257:         if (yearIndex > 0) {
+
+282:             nodeConfig.exitTimestamp > 0 &&
+
+294:             deposits[nodeConfig.id].depositTimestamp > stakeEndTimestamp
+
+426:         if (signUpBonus > 0) {
+
+428:             if (jTenure.jailedTimestamp > 0 && jTenure.releasedTimestamp == 0) {
+
+438:             if (nodeConfig.exitTimestamp > 0) {
+
+457:             if (effectiveDaysForStake > 0) {
+
+492:         if (slashedAmount > 0) {
+
+521:             deposits[nodeId].redbellyDeposit > 0 &&
+
+527:             deposits[nodeId].redbellyDeposit > 0 &&
 
 ```
 
@@ -8572,469 +9313,509 @@ File: UserProfile.sol
 
 
  ### <a name="GAS-22"></a>[GAS-22]
- ### Use != 0 instead of > for unsigned integer comparison
-
-*Instances (37)*:
- 
- <details>
- <summary>Click to expand!</summary>
-
-```solidity
-File: ContentFund.sol
-
-79:                 if (funds[h].round_time > rt) {
-
-126:                 funds[funds[savva_cid].SLLeft].round_time >
-
-225:         if (authorShare > 0) {
-
-230:         if (nftShare > 0) {
-
-251:                 funds[savva_cid].round_time > block.timestamp,
-
-325:         if (prize > 0) {
-
-330:         if (funds[h].amount > 0) {
-
-374:             if (funds[h].round_time > block.timestamp) break; // Round is not finished yet
-
-375:             if (funds[h].round_time > getRandom.getLastUpdateTime()) break; // Need to wait for new random
-
-501:         require(total > 0, "Nothing to withdraw");
-
-```
-
-```solidity
-File: ContentRegistry.sol
-
-66:         require(bytes(guid).length > 0, "Guid can't be empty");
-
-67:         require(bytes(domain).length > 0, "Domain can't be empty");
-
-```
-
-```solidity
-File: ListMarket.sol
-
-45:         require(msg.value > 0 && msg.value == prices[list_name], "Wrong price");  // allow more price also owner can change
-
-```
-
-```solidity
-File: NFTMarketplace.sol
-
-53:         require(price > 0, "Price must be greater than 0");
-
-206:         require(price > 0, "Price must be greater than 0");
-
-```
-
-```solidity
-File: SavvaFaucet.sol
-
-139:             if (amount > 0 && amount <= tokensLeft) {
-
-150:         if (tokensLeft > 0) {
-
-```
-
-```solidity
-File: Staking.sol
-
-165:         if (new_gain > 0) {
-
-207:         require(amount > 0, "Cannot stake 0");
-
-263:         if (balanceOf(msg.sender) == 0 && user.accruedGain > 0) {
-
-294:         require(user.accruedGain > 0, "No gain to claim");
-
-311:         require(user.accruedGain > 0, "No gain to compound");
-
-327:         require(amount > 0, "Amount must be greater than 0");
-
-358:             if (request.amount > 0 && block.timestamp >= request.timestamp) {
-
-373:             if (request.amount > 0 && block.timestamp >= request.timestamp) {
-
-380:         require(totalAmount > 0, "Nothing to claim");
-
-385:             if (user.unstakeRequests[i].amount > 0) {
-
-413:         require(amount > 0, "Amount must be greater than 0");
-
-493:         require(payment.amount > 0, "No such payment");
-
-574:             if (payment.amount > 0) {
-
-605:             if (payment.amount > 0) {
-
-627:         if (total > 0) {
-
-705:         if (sender.accruedGain > 0) {
-
-706:             uint256 from_ag = (left2send > sender.accruedGain)
-
-719:         if (left2send > 0) {
-
-```
-
-```solidity
-File: UserProfile.sol
-
-35:                     (ch > 96 && ch < 123) || // a-z
-
-36:                     (ch > 47 && ch < 58) ||  // 0-9
-
-```
-
-</details> 
- 
-
-
- ### <a name="GAS-23"></a>[GAS-23]
  ### Optimize names to save gas
 public/external function names and public member variable names can be optimized to save gas. See [this](https://gist.github.com/IllIllI000/a5d8b486a8259f9f77891a919febd1a9) link for an example of how it works. Below are the interfaces/abstract contracts that can be optimized so that the most frequently-called functions use the least amount of gas possible during method lookup. Method IDs that have two leading zero bytes can save 128 gas each during deployment, and renaming functions to have lower method IDs will save 22 gas per call, [per sorted position shifted](https://medium.com/joyso/solidity-how-does-function-name-affect-gas-consumption-in-smart-contract-47d270d8ac92)
 
-*Instances (136)*:
+*Instances (194)*:
  
  <details>
  <summary>Click to expand!</summary>
 
 ```solidity
-File: Config.sol
+File: ActivityMonitorUpgradeable.sol
 
-13:     mapping(bytes32 => string) public config;
+8:     Config public config;
 
-14:     mapping(bytes32 => uint256) public configUint;
+10:     uint256 public daysToServInJail;
 
-15:     mapping(bytes32 => address) public configAddress;
+59:     ) public initializer {
 
-62:     function set(bytes32 key, string memory value) public override {
+125:     function isVoteRecent(uint256 timestamp) public view returns (bool) {
 
-73:     function get(bytes32 key) public view override returns (string memory) {
+203:     ) public view returns (uint256) {
 
-77:     function setUInt(bytes32 key, uint256 value) public override {
+231:     ) public view returns (VotesMinHeapLib.NodeVotes memory) {
 
-88:     function getUInt(bytes32 key) public view override returns (uint256) {
+247:     ) external view returns (uint256) {
 
-92:     function setAddr(bytes32 key, address value) public override {
+271:     ) external onlyRedbelly {
 
-103:     function getAddr(bytes32 key) public view override returns (address) {
+288:     function updateWindowSize(uint256 _newWindowSize) external onlyRedbelly {
 
-```
+309:     ) external onlyRedbelly {
 
-```solidity
-File: ContentFund.sol
+332:     ) external onlyRedbelly {
 
-58:     IConfig public config; // Config contract
-
-59:     mapping(uint256 => Fund) public funds;
-
-60:     mapping(uint256 => mapping(address => uint256)) public contributions;
-
-61:     mapping(uint256 => uint256) public nftBalance; // NFT balance
-
-62:     uint256 public SLRoot; // Sorted List root
-
-194:     ) public payable {
-
-208:     ) public payable {
-
-413:     function getNFTCut(uint256 tokenId) public view returns (uint256) {
-
-417:     function getTotalOwnerCut(address owner) public view returns (uint256) {
-
-441:     function getMyNFTGain() public view returns (uint256) {
-
-513:     ) public view returns (uint256) {
-
-520:     ) public view returns (address) {
-
-527:     ) public view returns (uint256) {
-
-531:     function getFund(uint256 savva_cid) public view returns (Fund memory) {
-
-537:     ) public view returns (uint256) {
+353:         external
 
 ```
 
 ```solidity
-File: ContentNFT.sol
+File: ContractRoleAuthUpgradeable.sol
 
-19:     IConfig public config;
+6:     bytes32 public constant RECONFIGURATION_CONTRACT_ROLE =
 
-41:     ) public payable {
+8:     bytes32 public constant ACTIVITY_MONITOR_CONTRACT_ROLE =
 
-87:     ) public view override(ERC721, ERC721URIStorage) returns (string memory) {
+10:     bytes32 public constant JAILED_NODES_CONTRACT_ROLE =
 
-94:         public
+12:     bytes32 public constant NETWORK_CONFIG_CONTRACT_ROLE =
 
-```
+14:     bytes32 public constant STAKING_DEPOSIT_CONTRACT_ROLE =
 
-```solidity
-File: ContentRegistry.sol
-
-39:     IConfig public config;
-
-40:     mapping(address => mapping(address => bool)) public allowed;
-
-56:     mapping(address => mapping(address => bool)) public allowed;
-
-122:                 domains[i], // no check on length, if length is different, it will revert also if length is too long then this function will revert due to gas limit
+69:     function initialize() public virtual override onlyInitializing {
 
 ```
 
 ```solidity
-File: ListMarket.sol
+File: IDPRegistryUpgradeable.sol
 
-14:     IConfig public config; // Config contract
+13:     mapping(string => uint256) public issuerDidToUid;
 
-15:     address payable public collector; // Payment collector
+15:     mapping(uint256 => bool) public deletedUIDs;
 
-17:     mapping(string => uint256) public prices;
+16:     mapping(uint256 => mapping(uint256 => Proof)) public idpProofs;
 
-27:     function setPrice(string memory list_name, uint256 price) public onlyOwner {
+17:     mapping(uint256 => uint256) public idpProofCounts;
 
-32:     function getPrice(string memory list_name) public view returns (uint256) {
+18:     mapping(string => string[]) public proofTypeToIssuers;
 
-36:     function setCollector(address payable _collector) public onlyOwner {
+19:     mapping(string => bool) public isProofTypeSupported;
 
-44:     ) public payable {
+86:     function initialize() public virtual override initializer {
 
-```
+93:         external
 
-```solidity
-File: NFTMarketplace.sol
+102:             revert UnauthorisedAccess("Invalid public address");
 
-17:     IConfig public config; // Config contract
+140:     function getAll() external view returns (IDPInformationIO[] memory) {
 
-40:     mapping(uint256 => NFT) public nfts;
+155:     ) public view override idpExists(uid) returns (IDPInformationIO memory) {
 
-41:     mapping(address => uint256[]) public nftsByOwner;
+178:         external
 
-95:     function getPrice(uint256 tokenId) public view returns (uint256) {
+193:         public
 
-99:     function getNFTOwner(uint256 tokenId) public view returns (address) {
+225:         external
 
-217:     ) external view returns (bytes4) {
+240:         public
 
-```
+257:         external
 
-```solidity
-File: Promo.sol
+281:     ) external view override returns (string[] memory) {
 
-72:     function owner() public view virtual returns (address) {
-
-90:     function renounceOwnership() public virtual onlyOwner {
-
-98:     function transferOwnership(address newOwner) public virtual onlyOwner {
-
-142:     function totalSupply() external view returns (uint256);
-
-147:     function balanceOf(address account) external view returns (uint256);
-
-165:     function allowance(address owner, address spender) external view returns (uint256);
-
-212:     function name() external view returns (string memory);
-
-217:     function symbol() external view returns (string memory);
-
-222:     function decimals() external view returns (uint8);
-
-287:     function name() public view virtual override returns (string memory) {
-
-295:     function symbol() public view virtual override returns (string memory) {
-
-312:     function decimals() public view virtual override returns (uint8) {
-
-319:     function totalSupply() public view virtual override returns (uint256) {
-
-326:     function balanceOf(address account) public view virtual override returns (uint256) {
-
-338:     function transfer(address to, uint256 amount) public virtual override returns (bool) {
-
-347:     function allowance(address owner, address spender) public view virtual override returns (uint256) {
-
-361:     function approve(address spender, uint256 amount) public virtual override returns (bool) {
-
-383:     function transferFrom(address from, address to, uint256 amount) public virtual override returns (bool) {
-
-402:     function increaseAllowance(address spender, uint256 addedValue) public virtual returns (bool) {
-
-422:     function decreaseAllowance(address spender, uint256 subtractedValue) public virtual returns (bool) {
-
-600:     uint256 public constant DECIMALS = 18;
-
-601:     uint256 public constant TOTAL_SUPPLY = 23383574 * 10 ** DECIMALS;
-
-603:     address public liquidityWallet;
-
-604:     address public marketingWallet;
-
-605:     address public developmentWallet;
-
-607:     uint256 public sellTax = 3;
-
-608:     uint256 public liquidityTax = 50; // 1.5% of the sell tax
-
-609:     uint256 public marketingTax = 33; // 1% of the sell tax
-
-610:     uint256 public developmentTax = 17; // 0.5% of the sell tax
-
-612:     mapping(address => bool) public automatedMarketMakerPairs;
-
-649:     function setLiquidityWallet(address _liquidityWallet) external onlyOwner {
-
-653:     function setMarketingWallet(address _marketingWallet) external onlyOwner {
-
-657:     function setDevelopmentWallet(address _developmentWallet) external onlyOwner {
-
-661:     function setSellTax(uint256 _sellTax) external onlyOwner {
-
-665:     function setLiquidityTax(uint256 _liquidityTax) external onlyOwner {
-
-669:     function setMarketingTax(uint256 _marketingTax) external onlyOwner {
-
-673:     function setDevelopmentTax(uint256 _devTax) external onlyOwner {
-
-677:     function setAutomatedMarketMakerPair(address pair, bool enabled) public onlyOwner {   
+286:         external
 
 ```
 
 ```solidity
-File: RandomOracle.sol
+File: JailedNodesUpgradeable.sol
 
-13:     uint256 public lastUpdateTime;
+10:     uint256 public daysToServe;
 
-14:     uint256 public random; //@audit so random number is public
+11:     uint8 public slashPrcnt;
 
-14:     uint256 public random; //@audit so random number is public
+14:     mapping(uint256 => JailTenure[]) public jailTenures;
 
-15:     address public updaterAccount;
+109:     ) public initializer {
 
-16:     uint256 public db_index;  // index in DB where the prove is stored
+178:         external
 
-24:     function setUpdaterAccount(address _updaterAccount) public onlyOwner {
+220:     ) public view returns (JailTenure memory) {
 
-28:     function getRandom() public view override returns (uint256) {
+231:     ) public view returns (uint256) {
 
-32:     function getLastUpdateTime() public view override returns (uint256) {
+236:     function isJailedNode(address _governor) public view returns (bool) {
 
-```
+244:     ) external view returns (uint256) {
 
-```solidity
-File: SavvaFaucet.sol
+262:         external
 
-19:     IConfig public config; // Config contract
+293:         external
 
-20:     ISavvaToken public savvaToken; // Savva token contract
+330:     function setSlashPrcnt(uint8 _slashPrcnt) external onlyRedbelly {
 
-22:     mapping(address => uint256) public deposited;
-
-23:     address[] public depositors;
-
-25:     uint256 public lastRoundPayWeek = 0;
-
-26:     uint256 public roundTotalDeposits = 0;
-
-27:     uint256 public roundTokensToShare = 0;
-
-28:     uint256 public roundPayWeek = 0;
-
-30:     address payable public ORIGIN_ADDRESS =
-
-37:     function getRoundLength() public view returns (uint256) {
-
-54:     function TokensToShare() public view returns (uint256) {
-
-71:     function IsRoundFinished() public view returns (bool) {
-
-76:     function NumberOfDepositors() public view returns (uint256) {
-
-80:     receive() external payable {
-
-84:     function deposit() public payable {
-
-```
-
-```solidity
-File: SavvaToken.sol
-
-16:     IConfig public config;
-
-31:     function mint(uint256 amount) public override onlyOwner {
-
-```
-
-```solidity
-File: Staking.sol
-
-13:     IConfig public config;
-
-40:     uint256 public totalUnstaking;
-
-41:     uint256 public totalAccruedGain;
-
-42:     uint256 public totalInFrames;
-
-44:     mapping(address => Staker) public stakers;
-
-111:     Frame[TOTAL_FRAMES] public frames;
-
-112:     uint256 public currentFrameNumber = 0;
-
-114:     function getUnprocessedGane() external view returns (uint256) {
-
-127:     function updatePool() public override {
-
-175:     ) external view returns (uint256) {
-
-322:     function getAccruedGain(address _user) external view returns (uint256) {
-
-345:     ) external view returns (UnstakeRequest[] memory) {
+343:     function setDaysToServe(uint256 _daysToServe) public onlyRedbelly {
 
 351:     ) external view returns (uint256) {
 
-539:     ) external view returns (bytes32[] memory) {
-
-546:     ) external view returns (PayRecord memory) {
-
-554:     ) external view returns (uint256) {
-
-587:     function claimPayment(address author, bytes32 event_id) external override {
-
-741:     ) public view override(ERC20Permit, Nonces) returns (uint256) {
+388:     receive() external payable {}
 
 ```
 
 ```solidity
-File: UserProfile.sol
+File: NetworkConfigurationUpgradeable.sol
 
-10:     mapping(address => mapping(bytes32 => mapping(bytes32 => string))) public profileString;
+68:         external
 
-11:     mapping(address => mapping(bytes32 => mapping(bytes32 => uint256))) public profileUInt;
+77:     function isGovernor(address nodeAddress) public view returns (bool) {
 
-13:     mapping(string => address) public owners; // name owners
+81:     function isCandidate(address nodeAddress) public view returns (bool) {
 
-14:     mapping(address => string) public names;
+87:     ) public view returns (int256) {
 
-15:     mapping(address => string) public avatars;
+95:     function getGovernors() public view returns (address[] memory) {
 
-107:     ) public view returns (string memory) {
+99:     function getCandidates() public view returns (address[] memory) {
 
-115:     ) public view returns (uint256) {
+103:     function getNetworkSize() public view returns (uint256) {
+
+111:     ) public view returns (NodeConfigStorage.NodeParameters[] memory) {
+
+117:     ) public view returns (NodeConfigStorage.NodeParameters memory) {
+
+128:     function isBootNode(address _nodeAddress) public view returns (bool) {
+
+134:     ) external onlyJailedNodesContract {
+
+155:     ) external onlyJailedNodesContract {
+
+162:     ) external onlyStakingDepositContract {
+
+167:     function removeCandidate(address nodeAddress) external onlyRedbelly {
+
+175:     ) external onlyJailedNodesContractORRedbellyRole {
+
+226:     ) external onlyJailedNodesContract {
+
+232:     receive() external payable {}
+
+235:     ) external view override returns (address) {
+
+244:     ) public initializer {
+
+303:     ) public payable onlyRedbelly {
+
+384:         public
+
+407:     function removeGovernor(address nodeAddress) public onlyRedbelly {
+
+422:     function addRedbellyNodes(address nodeAddress) public onlyRedbelly {
+
+426:     function removeRedbellyNodes(address nodeAddress) public onlyRedbelly {
+
+433:     ) public onlyRedbelly {
+
+452:         public
+
+482:     function getBootNodeAddresses() public view returns (address[] memory) {
+
+486:     function isRedbellyNode(address nodeAddr) public view returns (bool) {
+
+492:     ) public view returns (int256) {
+
+502:     ) public view returns (address) {
+
+508:     ) public view returns (address) {
+
+512:     function getCountOfRedbellyGovernors() public view returns (uint256) {
+
+523:     function getRedbellyNodes() public view returns (address[] memory) {
+
+565:         public
 
 ```
 
 ```solidity
-File: utils.sol
+File: PermissionUpgradeable.sol
 
-15:     ) public pure returns (uint256) {
+11:     bool public isPermissionedAccessEnabled;
 
-20:     function concat(bytes32 a, bytes32 b) public pure returns (bytes32) {
+22:     ) public virtual initializer {
 
-36:     ) public pure returns (bytes32 result) {
+35:         external
+
+121:     function enablePermissionedAccess() external onlyRedbelly {
+
+129:     ) public view virtual returns (string memory) {
+
+150:     function isAllowed(address _address) external view returns (bool) {
+
+```
+
+```solidity
+File: RBACUpgradeable.sol
+
+6:     bytes32 public constant OWNER_ROLE = keccak256("OWNER_ROLE");
+
+7:     bytes32 public constant REDBELLY_ROLE = keccak256("REDBELLY_ROLE");
+
+8:     bytes32 public constant IDP_ROLE = keccak256("IDP_ROLE");
+
+9:     bytes32 public constant REDBELLY_NODE_OPERATOR_ROLE =
+
+11:     bytes32 public constant GOVERNOR_ROLE = keccak256("GOVERNOR_ROLE");
+
+30:     function initialize() public virtual onlyInitializing {
+
+```
+
+```solidity
+File: ReconfigurationUpgradeable.sol
+
+21:     bool public biasedReconfiguration;
+
+22:     uint256 public reconfigurationInterval; // Interval after which reconfiguration can be called
+
+23:     uint256 public lastReconfigurationTime; // Unix Timestamp when reconfiguration was called last time
+
+24:     uint256 public toleranceFactor; // the fraction of governor nodes that need to be replaced with candidate nodes
+
+25:     UpgradeProbability public upgradeProbabilty; // the probability upto 3 decimal places
+
+27:     mapping(uint256 => uint256) public lastUpdatedToGovernor; // (nodeId => timestamp)
+
+30:     mapping(uint256 => NetworkConfiguration) public networkConfigurations;
+
+60:     ) public initializer {
+
+80:     ) external onlyNetworkConfigurationContract {
+
+93:     ) external view returns (address[] memory) {
+
+129:     function getReconfigurationCount() public view returns (uint256) {
+
+140:     ) public onlyRedbelly {
+
+153:     ) public override onlyRedbelly {
+
+161:     function getReconfigurationBuffer() public view returns (uint256) {
+
+173:     ) public onlyRedbelly {
+
+188:     ) public onlyRedbelly {
+
+195:     function triggerReconfiguration() public onlyAfterReconfigInterval {
+
+```
+
+```solidity
+File: SignupBonusVestingUpgradeable.sol
+
+76:     ) public initializer {
+
+112:     receive() external payable onlyRedbelly {
+
+123:     ) external override onlyNetworkConfigurationContract {
+
+132:         external
+
+158:         public
+
+201:         public
+
+```
+
+```solidity
+File: StakingDepositUpgradeable.sol
+
+25:     uint256 public minimumStakeAmount;
+
+38:     uint256 public coolOffPeriod;
+
+41:     mapping(uint256 => Deposit) public deposits;
+
+42:     mapping(uint256 => uint256) public coolOffStartTimestamp;
+
+44:     IBootstrapContractsRegistry public bootstrapRegistryContract;
+
+82:     ) public view returns (bool) {
+
+93:     ) external onlyNetworkConfigurationContract {
+
+124:     ) external onlyRedbelly {
+
+131:     ) external onlyRedbelly {
+
+135:     function setRewardCycle(uint256 _newRewardCycle) external onlyRedbelly {
+
+141:     ) external onlyRedbelly {
+
+153:     ) public initializer {
+
+190:         public
+
+205:         public
+
+220:     ) external onlyRedbelly {
+
+227:     ) external onlyRedbelly {
+
+231:     function setValueOfGamma(uint256 _value) external onlyRedbelly {
+
+388:     ) external payable onlyNetworkConfigurationContract {
+
+404:     function unstake() external payable canUnstake {
+
+509:     ) external onlyJailedNodesContract {
+
+562:     ) external payable onlyJailedNodesContract {
+
+584:     ) external payable onlyJailedNodesContract {
+
+607:     ) external view returns (uint256) {
+
+615:     ) external onlyNetworkConfigurationContract hasStaked(_depositor) {
+
+636:     receive() external payable {}
+
+663:     function getTreasuryAddress() external view virtual returns (address) {
+
+669:     ) external view virtual returns (uint256) {
+
+676:     ) external view virtual returns (uint256) {
+
+683:     ) external view virtual returns (bool) {
+
+690:     ) external virtual onlyNetworkConfigurationContract {
+
+695:     function existingStake(address _depositor) external view returns (uint256) {
+
+```
+
+```solidity
+File: StakingEscrowUpgradeable.sol
+
+21:     function initialize() public virtual initializer {
+
+36:     function depositsOf(address payee) public view returns (uint256) {
+
+46:     function deposit(address payee) public payable {
+
+68:     ) public virtual onlyDepositorOrOwner(payer) {
+
+```
+
+```solidity
+File: TombstonedNodesUpgradeable.sol
+
+14:     mapping(uint256 => uint256) public tombstonedNodes;
+
+17:     uint256 public tombstoneThreshold;
+
+30:     ) public initializer {
+
+68:     function tombstone(address _nodeAddress) external onlyJailedNodesContract {
+
+96:     function setTombstoneThreshold(uint256 _threshold) external onlyRedbelly {
+
+100:     function isTombstoned(address _nodeAddress) external view returns (bool) {
+
+```
+
+```solidity
+File: interfaces/IActivityMonitor.sol
+
+17:     function isVoteRecent(uint256) external view returns (bool);
+
+38:     ) external view returns (uint256);
+
+```
+
+```solidity
+File: interfaces/IIDPRegistry.sol
+
+29:     ) external view returns (string[] memory);
+
+31:     function getSupportedProofTypes() external view returns (string[] memory);
+
+33:     function getAll() external view returns (IDPInformationIO[] memory);
+
+37:     ) external view returns (IDPInformationIO memory);
+
+41:     ) external view returns (IDPInformationIO memory);
+
+```
+
+```solidity
+File: interfaces/IJailedNodes.sol
+
+16:     function isJailedNode(address _governor) external view returns (bool);
+
+26:     function freeServedGuilty(address _jailedNode) external payable;
+
+35:     ) external view returns (JailTenure memory);
+
+```
+
+```solidity
+File: interfaces/INetworkConfiguration.sol
+
+14:     ) external payable;
+
+16:     function getActiveCandidateNodes() external view returns (address[] memory);
+
+21:     function isGovernor(address nodeAddress) external view returns (bool);
+
+23:     function isCandidate(address nodeAddress) external view returns (bool);
+
+27:     ) external view returns (int256);
+
+30:         external
+
+34:     function getCandidates() external view returns (address[] memory);
+
+38:     function getNetworkSize() external view returns (uint256);
+
+42:     ) external view returns (NodeConfigStorage.NodeParameters memory);
+
+61:     ) external view returns (address);
+
+```
+
+```solidity
+File: interfaces/IPermission.sol
+
+38:         external
+
+```
+
+```solidity
+File: interfaces/IRandomNumberGenerator.sol
+
+10:     ) external view returns (uint256[] memory, uint256);
+
+```
+
+```solidity
+File: interfaces/IReconfiguration.sol
+
+45:     ) external view returns (address[] memory);
+
+```
+
+```solidity
+File: interfaces/ISignupBonusVesting.sol
+
+7:     function status() external view returns (uint256);
+
+9:     function claimable() external view returns (uint256);
+
+11:     function claim() external payable;
+
+```
+
+```solidity
+File: interfaces/IStakingDeposit.sol
+
+23:     ) external payable;
+
+25:     function unstake() external payable;
+
+29:     function redepositSlashedStake(address _depositor) external payable;
+
+31:     function revertSlashedStake(address _depositor) external payable;
+
+35:     ) external view returns (uint256);
+
+39:     ) external view returns (bool);
+
+```
+
+```solidity
+File: interfaces/ITombstonedNodes.sol
+
+7:     function isTombstoned(address _nodeAddress) external view returns (bool);
 
 ```
 
