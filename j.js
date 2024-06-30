@@ -13,9 +13,6 @@ axios.get(url)
     .then(response => {
         const data = response.data;
 
-        // Log the full response for debugging
-        console.log('API Response:', data);
-
         // Check if the API response is successful
         if (data.status === '1') {
             // Extract the contract's source code
@@ -33,7 +30,7 @@ axios.get(url)
                 }
             });
         } else {
-            console.error('Error:', data.result, 'Message:', data.message);
+            console.error('Error:', data.message);
         }
     })
     .catch(error => {
